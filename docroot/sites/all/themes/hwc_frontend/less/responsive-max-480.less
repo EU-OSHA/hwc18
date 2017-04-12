@@ -1,0 +1,301 @@
+//rewrite styles for responsive design
+
+@media only screen and (max-width : 480px) {
+
+#colorbox{
+	margin-top: -3em;
+}
+
+#colorbox, #cboxWrapper{
+	height: 475px!important;
+	
+}
+
+#cboxTitle{
+	position: relative!important;
+}
+
+#cboxContent{
+	height: 400px!important;
+}
+	
+
+.btn-default-hwc{
+	display: block;
+    margin: 0 auto;
+}
+
+.page-get-your-certificate .hwc-share-widget {
+	ul{
+		padding-bottom: 2.2em;
+	} 
+	
+	li{
+		display: flex;
+	}
+}
+
+.become-partner .partners .partner .partner-name h3{
+	font-size: 27px;
+}
+
+/*Header*/
+header{
+	&.navbar-default {
+		.campaigns-header {
+			.navbar-header{
+				.row{
+					padding: 0px;
+				}
+				a.pull-left{
+					padding-right: .5em;
+					margin-right: .5em;
+					img{
+						margin-left: 15px;
+						width: 95px;
+					}
+				}
+				a img.pull-left{
+					width: 125px;
+					margin-top: 0px; 
+				}
+				img:nth-child(3){
+					width: 40px;
+				    padding: 63px 0 0;
+				}
+				
+				.header-text{
+				    font-size: @size7;
+				    width: 120px;
+				    padding-top: 3em;
+				    padding-left: 0.8em;
+				}
+				.header_top_bar{
+					.region-above-header{
+						display: none;
+					}
+				}
+				.region-header{
+					#block-search-form{
+						margin-top:0.5em;
+						.input-group{
+							width: inherit;
+							input{
+								width: 150px;
+								float: right;
+								height: 25px;
+							}
+							button{
+								height: 25px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.xs-menu{
+    margin-top: 1em;
+	#block-search-form{
+		display:block;
+		float: left;
+		padding-left: 0;
+		margin-left: 0;
+		width: 180px;
+	}
+	#block-menu-menu-header-login{
+		display:block;
+		clear: both;
+	}
+}
+/*FIN header*/
+
+.front{
+	//slider
+	#block-views-frontpage-slider-block{
+		margin-left: 0px;
+		margin-right: 0px;
+		img{
+			right: -1221px !important;
+			transform: scale(1.5) !important;
+    		-webkit-transform: scale(1.5) !important;
+    		-moz-transform: scale(1.5) !important;
+		}
+	}
+}
+
+/*container*/	
+ /*home*/
+
+#block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form>div{
+	display: block;
+}
+
+#block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text .form-group{
+	display: block;
+}
+
+#block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form #edit-email{
+	width: 100%;
+}
+
+
+#block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form button{
+	width: 100%;
+	padding-bottom:1em;
+	margin-bottom: 0.5em;
+}
+
+
+/*FIN home*/
+
+/*news*/
+//detail
+.node-type-news{
+	.field-type-image {
+		img {
+	    	padding: 0 3em;
+		}
+	}
+}
+/*end news*/
+
+/*create events & news*/
+.page-node-add-events, .page-node-add-news{
+	.node-events-form, .node-news-form{
+		.field-name-field-related-documents{
+			.form-file{
+				max-width: 200px !important;
+			}
+		}
+	}
+}
+/*fin create events & news*/
+	
+.view-mode-full .hwc-share-widget{
+	ul{
+		.share-this-article{
+			top: -5px;
+		}
+
+		li[id*="facebook-share-button-"]{
+		    display: block; 
+		}
+		li[id*="facebook-like-button-"]{
+		    display: block; 
+		}
+		li[id*="twitter-share-button-"]{	
+		   display: block; 
+		   margin-top: 5px;
+		}
+		li[id*="linked-in-"]{
+		  display: block; 
+		  margin-top: 5px;
+		}
+		li[class="pull-right"]{
+		   display: block;
+		   margin-top:-25px;
+		}
+		.label.label-rss.pull-right{
+			display: block;
+			margin-left: -34px;
+    		margin-top: -2px !important;
+		}
+	}
+}
+
+.hwc-share-widget{
+	ul{
+		.share-this-article{
+			top: -5px;
+			display: block;
+			clear: both;
+		}
+	}
+}
+
+/*Focal points*/
+
+.view-display-id-fop img{
+	width: 78px;
+	height:48px;
+}
+/*FIn container*/
+
+/*Oficial campaigns partners*/
+
+.view-id-partners_list .quicktabs-views-group{
+	float:none;
+}
+
+/* Videos */
+
+.video-iframe{
+	width:320px!important;
+	height:210px!important;
+}
+
+/* Media partners */
+
+.view-id-partners_list .quicktabs-views-group, .view-id-partners_list .views-row{
+	float:none;
+	width: 100%;
+	border-right: 1px dotted #749b00;
+}
+
+button.navbar-toggle.active{
+	position: absolute;
+    top: 0px;
+    right: 0em;
+}
+
+header.navbar-default .campaigns-header .navbar-header .region-header #block-lang-dropdown-language, header.navbar-default .campaigns-header .navbar-header .region-header #block-menu-menu-header-login ~ #block-lang-dropdown-language{
+	bottom: -4px;
+	position: relative;
+	float: left;
+    padding-left: 1em;
+}
+
+.node-type-article .hwc-share-widget {
+	li{
+		display: inline-block!important;
+	}
+
+	.share-this-article{
+		display: block;
+		width: 100%;
+	}
+}
+
+
+.pane-node-field-access-tool-link .field-label-inline .field-label, .pane-node-field-access-tool-link-fc .field-label-inline .field-label, .pane-node-field-external-urls .field-label-inline .field-label{
+	width: 100%;
+}
+
+/*Fix DA language*/
+.main-container h1 {
+    font-size: 1.60em;
+}
+
+.main-container h2{
+	font-size: 1.45em!important;
+}
+
+.employers-section .case-studies .one-resource h4, .employers-section .other-practical-tools .one-resource h4, .employers-section .publications .one-resource h4{
+	font-size:1.4em;
+}
+
+.pane-hwc-practical-tool-hwc-practical-tool-listing #edit-content .form-type-radios.form-item-sort div{
+	display: block;
+}
+
+.pane-hwc-practical-tool-hwc-practical-tool-listing #edit-content .form-type-radios.form-item-sort label{
+	float: none;
+}
+
+.get-involved-section .information-tailored h3{
+	font-size:1.95em;
+}
+
+}

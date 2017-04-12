@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Implements hook_module_enable().
+ */
+function osha_newsletter_enable() {
+  $mail_system = array(
+    'default-system' => 'HTMLMailSystem',
+    'htmlmail' => 'DefaultMailSystem',
+  );
+
+  variable_set('mail_system', $mail_system);
+  variable_set('mailsystem_theme', 'default');
+
+  $site_default_theme = variable_get('theme_default', 'bartik');
+  variable_set('htmlmail_theme', $site_default_theme);
+  variable_set('htmlmail_postfilter', '0');
+}
+
+function osha_newsletter_update_7001() {
+  variable_set('htmlmail_postfilter', '0');
+}
+
+/**
+ * Revert osha_newsletter module - add start date for events in newsletter add content form
+ */
+function osha_newsletter_update_7002() {
+  features_revert_module('osha_newsletter');
+}
+
+/**
+ * Enable image cache modules and revert newsletter
+ */
+function osha_newsletter_update_7003() {
+  module_enable(array(
+    'imagecache_actions',
+    'imagecache_canvasactions',
+  ));
+  features_revert_module('hwc');
+}
+
+/**
+ * MDR-856 - Revert osha_newsletter module - new layout for newsletter page
+ */
+function osha_newsletter_update_7004() {
+  features_revert_module('osha_newsletter');
+}

@@ -1,0 +1,191 @@
+//rewrite styles for responsive design
+
+@media only screen and (max-width : 1200px) {
+	/*header*/
+	header{
+		&.navbar-default {
+			.campaigns-header {
+				.navbar-header{
+					a.pull-left{
+						padding-right: 1em;
+    					margin-right: 1em;
+    					img{
+							width: 140px;
+						}
+					}
+					a img.pull-left{
+						width: 150px;
+					}
+					img:nth-child(3){
+						width: 70px;
+    					padding-right: 1em !important;
+					}
+					.header-text{
+					    font-size: @size2;
+					    width: 218px;
+					    padding-top: 1.5em;
+					    padding-left: 0.8em;
+					}
+					.header_top_bar{
+						.region-above-header{
+							min-width: 250px;
+						}
+					}
+				}
+			}
+		}
+	}
+	/*fin header*/
+
+.pane-osha-publication .publication-download-label{
+	float: none;
+}
+	/*homepage slider*/
+	.front{
+		#block-views-frontpage-slider-block{
+			#homepage_slider{
+				img{
+					position: absolute;
+				    width: initial;
+				    right: -127px;
+				}
+			}
+		}
+	}
+	/*fin homepage slider*/
+	
+	/*Articles*/
+	.node-article{
+		.field.field-name-field-image img {
+			width: 100%;
+			height: auto;
+			min-height: 360px;
+			min-width: 100%;
+		}
+		.node-article{
+			.field.field-name-field-image img {
+				height: auto;
+				min-height: 0;
+				max-width: none;
+				width: auto;
+				min-width: 0;
+			}
+		}
+	}
+	/*Fin Articles*/
+
+	/* pag Search */
+	.page-search{
+		.views-exposed-form{
+			.views-widget-sort-order {
+				padding: 0;
+			}
+			.views-widget-sort-by {
+				padding-right: 0.5em;
+				> .form-item-sort-by > label {
+					margin-right: 1em;
+				}
+			}
+		}
+		.views-submit-button {
+			padding-left: 0;
+			padding-right: 0;
+			button {
+				margin-left: 0;
+			}
+		}
+	}
+	/*Fin pag Search */
+	
+/* Block: recommended-articles and recommended-resources and article aditional resources*/
+.node-article{
+	.field-name-field-recommended-articles, .field-name-field-recommended-resources{
+		.field.field-name-field-image img{
+			min-height: auto;
+		}
+	}
+}
+/* End Block: recommended-articles and recommended-resources and article aditional resources*/
+
+/*Publications*/
+#block-system-main #publications_slideshow #num_slides .publication-item .field-files{
+	display: none;
+}
+
+#block-system-main #publications_slideshow #num_slides>div{
+	width:94%!important;
+}
+
+/*pag National focal points*/
+.page-national-focal-points, .page-official-campaign-partners, .page-campaign-media-partners{
+	.main-container .section-introduction .node.node-article, .section-introduction{
+		.field-type-text-with-summary{
+			padding-right: 0;
+			padding-left: 0;
+		}
+	}
+	#block-views-partners-list-block {
+		border-top: 1px dotted @border-default-color;
+		margin-top: 20px;
+		padding-top: 20px;
+	}
+	#quicktabs-view__partners_list__block {
+		position: relative;
+		display: inline-block;
+		width: 95%;
+		&:after {
+			width: 30px;
+			height: 30px;
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0px;
+			right: 0;
+			pointer-events: none;
+			background: @bg-color-2 url("../images/content/arrow-down.png") no-repeat  top;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		select {
+			font-style: normal;
+			font-weight: normal;
+			line-height: 100%;
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			width: 100%;
+			height: 30px;
+			margin-bottom: 1em;
+		}
+	}
+	.container{
+		padding-left: @margin-movil;
+		padding-right: @margin-movil;
+	}
+}
+
+header.navbar-default .campaigns-header .navbar-header #block-search-form{
+    margin-bottom: 5px;
+}
+
+header.navbar-default .campaigns-header #block-menu-menu-header-login{
+	padding-right: 0px;
+	padding-top: 0px;
+	clear: both;
+}
+
+header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-login~#block-lang-dropdown-language{
+    right: 0;
+    padding-right: 0;
+    position: relative;
+    bottom: 0;
+    margin-left: 70px;
+}
+
+
+}
+

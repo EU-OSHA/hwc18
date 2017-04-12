@@ -1,0 +1,50 @@
+<?php
+/**
+ * @file
+ * Code for the News feature.
+ */
+
+include_once 'osha_news.features.inc';
+
+define('OSHA_NEWS_CONTENT_TYPE_NEWS', 'news');
+
+/**
+ * Implements hook_post_features_enable_feature().
+ *
+ * {@inheritdoc}
+ * {@codeCoverageIgnore}
+ */
+function osha_news_post_features_enable_feature($component) {
+  // After the field_instance ...
+  if ($component == 'variable') {
+    menu_rebuild();
+    drupal_static_reset();
+    if ($role = user_role_load_by_name('administrator')) {
+      $permissions = array(
+        'create news content',
+        'edit own news content',
+        'edit any news content',
+        'delete own news content',
+        'delete any news content',
+      );
+      user_role_grant_permissions($role->rid, $permissions);
+    }
+  }
+}
+
+/**
+ * Implements hook_osha_tmgmt_i18n_string_list().
+ */
+function osha_news_osha_tmgmt_i18n_string_list() {
+  module_load_include('inc', 'osha_news', 'osha_news.translations');
+  return osha_news_get_translatable_strings();
+}
+
+function osha_news_form_alter(&$form, &$form_state, $form_id) {
+  global $theme;
+
+  if($theme != 'osha_admin' && $form_id == 'news_node_form'){
+    $form['actions']['#attributes']['class'] = array('container');
+    $form['field_aditional_resources']['#access'] = FALSE;
+  }
+}

@@ -1,0 +1,32 @@
+<!--{if $HelpMessage != "print"}
+<div id="container-message" class="container-message">   
+
+        <div id="MESSAGE">
+            Please make sure you thoroughly check, whether all your information is still valid
+                       and indicate <br>     this by checking the button next to the appropiate fields
+                       <a class="close">[X]</a>
+        </div>            
+    </div>
+{else}
+{/if}-->
+
+<fieldset>
+    <legend id="PLEDGE">
+        Your Campaign Pledge
+        <div data-section="PLEDGE" class="validation{$locked}"></div>
+    </legend>
+    
+    <div class="separatorFieldSet">&nbsp;</div>
+    
+    <div class="marginRightForm">
+        {$attributes.involvement_osh_campaignpledge}
+    </div>
+        <div class="hidden">
+            {$attributes.helpMessage}
+            {$attributes.contact_osh_mainemailAux}
+            {$attributes.company_osh_orgnameAux}
+            {$attributes.contact_osh_maincontactpersonfirstnameAux}
+            {$attributes.contact_osh_maincontactpersonlastnameAux}
+            {$attributes.osh_yourcampaignpledgesection}
+        </div>
+</fieldset>
