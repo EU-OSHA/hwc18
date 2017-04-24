@@ -4,6 +4,20 @@ function hwc_admin_config_form() {
   $form['title'] = array(
     '#markup' => '<h1>HWC website configuration</h1>',
   );
+
+  $form['hwc_old_site_url'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_old_site_url', ''),
+    '#title' => 'Previous campaign site urls. One per line',
+  );
+
+  $form['hwc_prev_site_redirect_pages'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_prev_site_redirect_pages', ''),
+    '#title' => 'URIs to redirect to previous website',
+    '#description' => 'URIs that exists in current website but you want to redirect to the previous websites. One uri per line in format  path/to/page|redirect/to/full/url',
+  );
+
   $form['fb_app_key'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('fb_app_key', ''),
