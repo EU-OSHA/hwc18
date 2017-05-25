@@ -5,6 +5,9 @@
  */
 function ncw_migration_drush_command() {
   return array(
+    'hwc-migrate-av-related' => array(
+      'description' => 'Import audio-video related taxonomies from the corporate website',
+    ),
     'hwc-migrate-all' => array(
       'description' => 'Import all content from the corporate website',
     ),
@@ -19,6 +22,28 @@ function ncw_migration_drush_command() {
       )
     ),
   );
+}
+
+function drush_ncw_migration_hwc_migrate_av_related() {
+  $migrations = array(
+    'tax_priority_area',
+    'tax_provider_type',
+    'tax_hazmap_categories',
+    'tax_biological_hazard',
+    'tax_hazard_physical_state',
+    'tax_hazard_health_effects',
+    'tax_exposure_route',
+    'tax_worker_groups',
+    'tax_prevention_measures',
+    'tax_material_purpose',
+    'tax_target_group',
+    'tax_evaluation',
+    'tax_material_objective',
+    'tax_nace_codes',
+  );
+  foreach($migrations as $migration) {
+    ncw_migration_run_single($migration);
+  }
 }
 
 function drush_ncw_migration_hwc_migrate_all() {

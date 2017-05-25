@@ -16,6 +16,81 @@ function ncw_migration_migrate_api() {
       ),
     ),
     'migrations' => array(
+      'audio_visual' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWAudioVisualMigration',
+      ),
+      'tax_priority_area' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyPriorityAreaMigration',
+      ),
+      'tax_provider_type' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyProviderTypeMigration',
+      ),
+      'tax_nace_codes' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyNaceCodesMigration',
+      ),
+      'tax_hazmap_categories' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyHazmapCategoriesMigration',
+      ),
+      'tax_biological_hazard' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyBiologicalHazardMigration',
+      ),
+      'tax_hazard_physical_state' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyHazardPhysicalStateMigration',
+      ),
+      'tax_hazard_health_effects' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyHazardHealthEffectsMigration',
+      ),
+      'tax_exposure_route' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyExposureRouteMigration',
+      ),
+      'tax_worker_groups' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyWorkerGroupsMigration',
+      ),
+      'tax_prevention_measures' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyPreventionMeasuresMigration',
+      ),
+      'tax_material_purpose' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyMaterialPurposeMigration',
+      ),
+      'tax_target_group' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyTargetGroupMigration',
+      ),
+      'tax_evaluation' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyEvaluationMigration',
+      ),
+      'tax_material_objective' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWTaxonomyMaterialObjectiveMigration',
+      ),
       'events' => array(
         'group_name' => 'ncw',
         'dependencies' => array('tax_tags'),
@@ -878,7 +953,7 @@ function osha_migration_normalize_field_text_long($row, $field_name, $field_info
       foreach($values as $v) {
         $field[] = $v['value'];
         $languages[] = $language;
-        $format[] = $v['format'];
+        $format[] = str_replace('dangerous_substances','audio_visual', $v['format']);
       }
     }
   }
@@ -921,6 +996,15 @@ function osha_migration_normalize_field_link_field($row, $field_name, $field_inf
   $row->{$field_name . '_title'} = $field['title'];
   $row->{$field_name . '_attributes'} = $field['attributes'];//@todo not tested
   $row->{$field_name . '_language'} = $field['language'];
+}
+
+function osha_migration_normalize_field_field_collection($row, $field_name, $field_info, $filter_languages) {
+}
+
+function osha_migration_normalize_field_cck_time($row, $field_name, $field_info, $filter_languages) {
+}
+
+function osha_migration_normalize_field_language_field($row, $field_name, $field_info, $filter_languages) {
 }
 
 function osha_migration_normalize_field_text($row, $field_name, $field_info, $filter_languages) {
