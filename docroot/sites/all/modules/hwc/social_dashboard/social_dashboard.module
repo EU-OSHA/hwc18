@@ -1,0 +1,781 @@
+<?php
+include_once 'social_dashboard.features.inc';
+
+/**
+ * Implements Elysia hook_cronapi().
+ */
+function social_dashboard_cronapi() {
+  return array(
+    'social_dashboard_linkedin_cron' => array(
+      'description' => 'Download linkedin updates',
+      'rule' => '0 */2 * * *', // Every two hours
+    ),
+    'social_dashboard_twitter_cron' => array(
+      'description' => 'Download twitter tweets',
+      'rule' => '0 */2 * * *', // Every two hours
+    ),
+    'social_dashboard_facebook_cron' => array(
+      'description' => 'Download facebook posts',
+      'rule' => '0 */2 * * *', // Every two hours
+    ),
+  );
+}
+
+/**
+ * Implements hook_views_plugins().
+ */
+function social_dashboard_views_plugins() {
+  $module_path = drupal_get_path('module', 'social_dashboard');
+
+  return array(
+
+    'style' => array(
+      'social_dashboard_column_plugin_style' => array(
+        'title' => t('Social Dashboard Columns'),
+        'help' => t('Social Dashboard Columns Style'),
+
+        'path' => $module_path . '/plugins/column',
+        'handler' => 'SocialDashboardColumnPluginStyle',
+
+        'parent' => 'default',
+
+        'theme' => 'social_dashboard_column_plugin_style',
+        'theme path' => $module_path . '/templates/column',
+
+        'theme file' => 'theme.inc',
+        'uses row plugin' => TRUE,
+        'uses grouping' => FALSE,
+        'uses options' => TRUE,
+        'type' => 'normal',
+      ),
+    ),
+
+    'row' => array(
+      'social_dashboard_column_plugin_rows' => array(
+        'title' => t('Social Dashboard Column'),
+        'help' => t('Social Dashboard rows.'),
+
+        'path' => $module_path . '/plugins/column',
+        'handler' => 'SocialDashboardColumnPluginRows',
+
+        'theme' => 'social_dashboard_column_plugin_rows',
+        'theme path' => $module_path . '/templates/column',
+
+        'theme file' => 'theme.inc',
+        'uses fields' => TRUE,
+        'uses options' => TRUE,
+        'type' => 'normal',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-social-dashboard-page') {
+    $options = [
+      '' => 'All',
+      'facebook' => 'Facebook',
+      'twitter' => 'Twitter',
+      'linkedin' => 'Linkedin'
+    ];
+
+    $form['source'] = array(
+      '#type' => 'select',
+      '#options' => $options,
+    );
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function social_dashboard_views_query_alter(&$view, &$query) {
+  if ($view->name == 'social_dashboard' && $view->current_display == 'page') {
+//    krumo($view);
+    $map = array();
+    $map['facebook'] = variable_get('social_facebook_selected_tag', '');
+    $map['linkedin'] = variable_get('social_linkedin_selected_tag', '');
+    $map['twitter'] = variable_get('social_twitter_selected_tag', '');
+    foreach($map as $source => $selected_tag) {
+      if (isset($_REQUEST['source']) && $_REQUEST['source'] && $source != $_REQUEST['source']) {
+        continue;
+      }
+      $condition_group = [
+        'conditions' => [],
+        'args' => [],
+        'type' => 'AND'
+      ];
+      if ($selected_tag) {
+        $condition_group['conditions'][] = [
+          'field' => 'dashboard_item.tags',
+          'value' => '%' . $selected_tag . ',%',
+          'operator' => 'LIKE',
+        ];
+      }
+      $condition_group['conditions'][] = [
+        'field' => 'dashboard_item.source',
+        'value' => $source,
+        'operator' => '=',
+      ];
+      $query->where[] = $condition_group;
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function social_dashboard_menu() {
+  $base = 'admin/config/media/social-dashboard/';
+  $menu = [];
+
+  $sources = social_dashboard_social_dashboard_sources();
+  foreach($sources as $source => $source_name) {
+    $menu += [
+      $base . $source => array(
+        'title' => $source_name,
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('social_dashboard_social_' . $source . '_form'),
+        'access callback' => 'user_access',
+        'access arguments' => array('administer social dashboard'),
+        'type' => MENU_LOCAL_TASK,
+        'file' => 'social_dashboard.admin.inc',
+        'module' => 'social_dashboard',
+      ),
+    ];
+    if ($source == 'linkedin') {
+      $menu += [
+        $base . $source . '/settings' => array(
+          'title' => $source_name . ' Settings',
+          'page callback' => 'drupal_get_form',
+          'page arguments' => array('social_dashboard_social_' . $source . '_form'),
+          'access callback' => 'user_access',
+          'access arguments' => array('administer social dashboard'),
+          'type' => MENU_DEFAULT_LOCAL_TASK,
+          'file' => 'social_dashboard.admin.inc',
+          'module' => 'social_dashboard',
+        ),
+
+        $base . $source . '/login' => array(
+          'title' => 'Login ' . $source_name,
+          'page callback' => 'social_dashboard_social_' . $source . '_login',
+          'access callback' => 'user_access',
+          'access arguments' => array('administer social dashboard'),
+          'file' => 'social_dashboard.admin.inc',
+          'type' => MENU_LOCAL_TASK,
+          'module' => 'social_dashboard',
+        ),
+      ];
+    }
+  }
+
+  return array(
+      'admin/config/media/social-dashboard' => array(
+        'title' => 'Dashboard Settings',
+        'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('social_dashboard_settings_form'),
+        'access callback' => 'user_access',
+        'access arguments' => array('administer social dashboard'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'social_dashboard.admin.inc',
+        'module' => 'social_dashboard',
+      ),
+
+      'admin/config/media/social-dashboard/settings' => array(
+        'title' => 'Dashboard Settings',
+        'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('social_dashboard_settings_form'),
+        'access callback' => 'user_access',
+        'access arguments' => array('administer social dashboard'),
+        'type' => MENU_DEFAULT_LOCAL_TASK,
+        'file' => 'social_dashboard.admin.inc',
+        'module' => 'social_dashboard',
+      ),
+
+    ) + $menu;
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function social_dashboard_entity_info() {
+
+  $entity_info['dashboard_item'] = array(
+    'label' => t('Dashboard item'),
+    'entity class' => 'Entity',
+    'controller class' => 'DashboardItemEntityController',
+    'base table' => 'dashboard_item',
+    'fieldable' => TRUE,
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'dashboard_item_id',
+      'label' => 'title',
+      'name' => 'name',
+    ),
+    'static cache' => TRUE,
+    'module' => 'social_dashboard',
+    'access callback' => 'social_dashboard_admin_access',
+    'views controller class' => 'EntityDefaultViewsController',
+    'bundles' => array(
+      // Entity defaults to entity type for single bundles.
+      'dashboard_item' => array(
+        'label' => t('Dashboard item'),
+      ),
+    ),
+  );
+
+  return $entity_info;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function social_dashboard_permission() {
+  return array(
+    'view social dashboard' => [
+      'title' => t('View social dashboard'),
+      'description' => 'Allows a user view dashboard',
+    ],
+    'administer dashboard items' => [
+      'title' => t('Administer dashboard items'),
+      'description' => 'Allows a user administer dashboard items',
+    ],
+    'administer social dashboard' => [
+      'title' => t('Administer social dashboard'),
+      'description' => t('Allows a user to add, edit, and delete dashboard items.'),
+    ],
+  );
+}
+
+/**
+ * Implements hook_social_dashboard_sources().
+ */
+function social_dashboard_social_dashboard_sources() {
+  return ['facebook' => 'Facebook', 'twitter' => 'Twitter', 'linkedin' => 'Linkedin'];
+}
+
+/**
+ * Checks access for user for social_dashboard.
+ *
+ * @return
+ *  True if user has access, false if they don't.
+ */
+function social_dashboard_admin_access() {
+  return user_access('administer dashboard items');
+}
+
+/**
+ * Implement hook_theme().
+ *
+ */
+function social_dashboard_theme() {
+  return array(
+    'embedded_facebook_post' => array(
+      'render element' => 'element',
+      'template' => 'templates/embedded-facebook-post',
+      'variables' => array('content'),
+      'path' => drupal_get_path('module', 'social_dashboard'),
+    ),
+    'embedded_twitter_tweet' => array(
+      'render element' => 'element',
+      'template' => 'templates/embedded-twitter-tweet',
+      'variables' => array('content'),
+      'path' => drupal_get_path('module', 'social_dashboard'),
+    ),
+    'linkedin_update' => array(
+      'render element' => 'element',
+      'template' => 'templates/linkedin-update',
+      'variables' => array('content'),
+      'path' => drupal_get_path('module', 'social_dashboard'),
+    ),
+  );
+}
+
+function social_dashboard_facebook_cron() {
+  global $user;
+  $library_path = (module_exists('libraries') && libraries_get_path('facebook')) ? libraries_get_path('facebook') : 'sites/all/libraries/facebook';
+  require_once $library_path . "/vendor/autoload.php";
+
+  $selected_tag = variable_get('social_facebook_selected_tag', '');
+  $items = social_dashboard_get_stored_items('facebook');
+  $appId  = variable_get('social_facebook_application_id', '');
+  $secret = variable_get('social_facebook_consumer_secret', '');
+  $page_id = variable_get('social_facebook_page_id', '');
+  $access_token = $appId . '|' . $secret;
+  if (!$appId || !$secret) {
+    return;
+  }
+  if (!$page_id) {
+    return t('No facebook page id');
+  }
+
+  $fb = new \Facebook\Facebook([
+    'app_id' => $appId,
+    'app_secret' => $secret,
+    'default_graph_version' => 'v2.9',
+  ]);
+
+  try {
+    $limit = variable_get('social_dashboard_limit', 20);
+    $fb->setDefaultAccessToken($access_token);
+    $response = $fb->get($page_id . '/posts?fields=name,id,from,message,updated_time,created_time&limit=' . $limit);
+    $offset = 0;
+    foreach ($response->getGraphEdge() as $post) {
+      $post = $post->asArray();
+      $entity_id = NULL;
+      $name = $post['from']['name'];
+      $content = social_dashboard_remove_utf8mb4(check_plain(@$post['message'])) . ' ' . @$post['name'];
+      $tags = social_dashboard_get_tags($content);
+      $tags = implode(',', $tags);
+      if ($tags) {
+        $tags .= ',';
+      }
+      if (@$items[$post['id']]) {
+        $entity_id = $items[$post['id']];
+      }
+      $timestamp = strtotime($post['updated_time']->date);
+      if (social_dashboard_is_item_visible($tags, $selected_tag)) {
+        $weight = date('Ymd') . (9999 - $offset++);
+      } else {
+        $weight = date('Ymd') . '1000';
+      }
+      social_dashboard_create_dashboard_item($entity_id, $post['id'], 'facebook', $name, $content, $tags, $weight, $timestamp);
+    }
+  }
+  catch (FacebookApiException $e) {
+    if ($user->uid == 1) {
+      print_r($e);
+    }
+  }
+  return count($response->getGraphEdge());
+}
+
+function social_dashboard_linkedin_cron() {
+  $library_path = (module_exists('libraries') && libraries_get_path('linkedin')) ? libraries_get_path('linkedin') : 'sites/all/libraries/linkedin';
+  require_once $library_path . "/vendor/autoload.php";
+  $selected_tag = variable_get('social_linkedin_selected_tag', '');
+
+  $consumer_key = variable_get('social_linkedin_consumer_key', '');
+  $consumer_secret = variable_get('social_linkedin_consumer_secret', '');
+  $token = variable_get('social_linkedin_token', '');
+  if (!$consumer_key || !$consumer_secret || !$token) {
+    return;
+  }
+
+  $items = social_dashboard_get_stored_items('linkedin');
+  $linkedIn = new Happyr\LinkedIn\LinkedIn($consumer_key, $consumer_secret);
+  $linkedIn->setAccessToken($token);
+  $id = variable_get('social_linkedin_company_id', '');
+  $start = 0;
+  $count = variable_get('social_dashboard_limit', 20);
+  $updates = $linkedIn->get("v1/companies/{$id}/updates?count={$count}&start={$start}");
+  $offset = 0;
+  foreach($updates['values'] as $update) {
+    $entity_id = NULL;
+    $name = @$update['updateContent']['companyStatusUpdate']['share']['content']['title'];
+    $content = @$update['updateContent']['companyStatusUpdate']['share']['content']['description'];
+
+    $id_str = $update['updateKey'];
+    $timestamp = intval($update['timestamp'] / 1000);
+    $variables = $update['updateContent'];
+    $tags = social_dashboard_get_tags($content . ' '. $name);
+    $tags = implode(',', $tags);
+    if ($tags) {
+      $tags .= ',';
+    }
+    if (@$items[$id_str]) {
+      $entity_id = $items[$id_str];
+    }
+
+    if (social_dashboard_is_item_visible($tags, $selected_tag)) {
+      $weight = date('Ymd') . (9999 - $offset++);
+    } else {
+      $weight = date('Ymd') . '1000';
+    }
+    social_dashboard_create_dashboard_item($entity_id, $id_str, 'linkedin', $name, $content, $tags, $weight, $timestamp, $variables);
+  }
+  return count($updates['values']);
+}
+
+function social_dashboard_is_item_visible($tags, $selected_tag) {
+  if (!$selected_tag) {
+    return TRUE;
+  }
+  if (strpos($tags, $selected_tag . ',') !== FALSE) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+function social_dashboard_twitter_cron() {
+  $library_path = (module_exists('libraries') && libraries_get_path('twitter')) ? libraries_get_path('twitter') : 'sites/all/libraries/twitter';
+  require_once $library_path . '/TwitterAPIExchange.php';
+  $selected_tag = variable_get('social_twitter_selected_tag', '');
+
+  $consumer_key = variable_get('social_twitter_consumer_key', '');
+  $consumer_secret = variable_get('social_twitter_consumer_secret', '');
+  $oauth_access_token = variable_get('social_twitter_oauth_access_token', '');
+  $oauth_access_token_secret = variable_get('social_twitter_oauth_access_token_secret', '');
+
+  if (!$consumer_key || !$consumer_secret || !$oauth_access_token || !$oauth_access_token_secret) {
+    return;
+  }
+
+  $screen_name = variable_get('social_twitter_screen_name', '');
+  $count = variable_get('social_dashboard_limit', 20);
+  $items = social_dashboard_get_stored_items('twitter');
+  $getfield = '?include_entities=false&include_rts=true&screen_name=' . $screen_name . '&count=' . $count;
+  $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
+  $requestMethod = 'GET';
+  $twitter = new TwitterAPIExchange(
+    [
+      'consumer_key' => $consumer_key,
+      'consumer_secret' => $consumer_secret,
+      'oauth_access_token' => $oauth_access_token,
+      'oauth_access_token_secret' => $oauth_access_token_secret,
+    ]
+  );
+  $response = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
+  $tweets = json_decode($response, TRUE);
+  $offset = 0;
+  foreach($tweets as $tweet) {
+    $entity_id = NULL;
+    $content = $tweet['text'];
+    $id_str = $tweet['id_str'];
+    $name = $tweet['user']['screen_name'];
+    $timestamp = strtotime($tweet['created_at']);
+
+    $tags = social_dashboard_get_tags($content);
+    $tags = implode(',', $tags);
+    if ($tags) {
+      $tags .= ',';
+    }
+    if (@$items[$id_str]) {
+      $entity_id = $items[$id_str];
+    }
+
+    if (social_dashboard_is_item_visible($tags, $selected_tag)) {
+      $weight = date('Ymd') . (9999 - $offset++);
+    } else {
+      $weight = date('Ymd') . '1000';
+    }
+
+    social_dashboard_create_dashboard_item($entity_id, $id_str, 'twitter', $name, $content, $tags, $weight, $timestamp);
+  }
+  return count($tweets);
+}
+
+function social_dashboard_create_dashboard_item($entity_id, $social_id, $source, $name, $content, $tags, $weight = 0, $timestamp = NULL, $variables = NULL) {
+  $content = drupal_substr(social_dashboard_remove_utf8mb4(check_plain($content)), 0, 200);
+  if ($entity_id) {
+    $entities = entity_load('dashboard_item', [$entity_id]);
+    $entity = $entities[$entity_id];
+    $entity->social_id = $social_id;
+    $entity->name      = $name;
+    $entity->source    = $source;
+    $entity->content   = $content;
+    $entity->tags      = $tags;
+    $entity->weight    = $weight;
+    $entity->timestamp = $timestamp;
+    $entity->variables = serialize($variables);
+  } else {
+    $entity = entity_create('dashboard_item', [
+        'social_id' => $social_id,
+        'source'    => $source,
+        'name'      => $name,
+        'content'   => $content,
+        'tags'      => $tags,
+        'weight'    => $weight,
+        'timestamp' => $timestamp,
+        'variables' => serialize($variables),
+      ]
+    );
+  }
+  $entity->save();
+  return $entity;
+}
+
+function social_dashboard_get_tags($tweet) {
+  preg_match_all("/(#\w+)/",  $tweet, $matches);
+  return $matches[1];
+}
+
+function social_dashboard_get_stored_items($source) {
+  $result = db_query("SELECT * FROM {dashboard_item} di WHERE di.source IN (:source)", array(':source' => $source));
+  $items = [];
+  foreach ($result as $item) {
+    $items[$item->social_id] = $item->dashboard_item_id;
+  }
+  return $items;
+}
+
+function social_dashboard_remove_utf8mb4($text) {
+  // Strip overly long 2 byte sequences, as well as characters
+  //  above U+10000 and remove it
+  $processed_text = preg_replace(
+    '/[\x00-\x08\x10\x0B\x0C\x0E-\x19\x7F]' .
+    '|[\x00-\x7F][\x80-\xBF]+' .
+    '|([\xC0\xC1]|[\xF0-\xFF])[\x80-\xBF]*' .
+    '|[\xC2-\xDF]((?![\x80-\xBF])|[\x80-\xBF]{2,})' .
+    '|[\xE0-\xEF](([\x80-\xBF](?![\x80-\xBF]))|(?![\x80-\xBF]{2})|[\x80-\xBF]{3,})/S',
+    '', $text);
+
+  // Strip overly long 3 byte sequences and UTF-16 surrogates and delete with ''
+  $processed_text = preg_replace('/\xE0[\x80-\x9F][\x80-\xBF]' . '|\xED[\xA0-\xBF][\x80-\xBF]/S', '', $processed_text);
+  return $processed_text;
+}
+
+/**
+ * Implements hook_views_default_views().
+ */
+function social_dashboard_views_default_views() {
+  $export = array();
+
+  $view = new view();
+  $view->name = 'social_dashboard';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'dashboard_item';
+  $view->human_name = 'Social Dashboard';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Social media centre';
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'See more tweets';
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'access dashboard';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['expose_sort_order'] = FALSE;
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'source' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+    'tags' => array(
+      'bef_format' => 'default',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+      ),
+    ),
+  );
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '30';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'social_dashboard_column_plugin_style';
+  $handler->display->display_options['row_plugin'] = 'social_dashboard_column_plugin_rows';
+  $handler->display->display_options['row_options']['content'] = array(
+    'name' => 'name',
+    'content' => 'content',
+    'social_id' => 'social_id',
+    'source' => 'source',
+    'tags' => 'tags',
+    'timestamp' => 'timestamp',
+    'dashboard_item_id' => 'dashboard_item_id',
+  );
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  /* Field: Dashboard item: Machine-readable name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  /* Field: Dashboard item: Content */
+  $handler->display->display_options['fields']['content']['id'] = 'content';
+  $handler->display->display_options['fields']['content']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['content']['field'] = 'content';
+  /* Field: Dashboard item: Social_id */
+  $handler->display->display_options['fields']['social_id']['id'] = 'social_id';
+  $handler->display->display_options['fields']['social_id']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['social_id']['field'] = 'social_id';
+  /* Field: Dashboard item: Source */
+  $handler->display->display_options['fields']['source']['id'] = 'source';
+  $handler->display->display_options['fields']['source']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['source']['field'] = 'source';
+  /* Field: Dashboard item: Tags */
+  $handler->display->display_options['fields']['tags']['id'] = 'tags';
+  $handler->display->display_options['fields']['tags']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['tags']['field'] = 'tags';
+  /* Field: Dashboard item: Timestamp */
+  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
+  /* Field: Dashboard item: Internal, numeric dashboard item ID */
+  $handler->display->display_options['fields']['dashboard_item_id']['id'] = 'dashboard_item_id';
+  $handler->display->display_options['fields']['dashboard_item_id']['table'] = 'dashboard_item';
+  $handler->display->display_options['fields']['dashboard_item_id']['field'] = 'dashboard_item_id';
+  /* Sort criterion: Dashboard item: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'dashboard_item';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+    2 => 'AND',
+  );
+  /* Filter criterion: Dashboard item: Source */
+  $handler->display->display_options['filters']['source']['id'] = 'source';
+  $handler->display->display_options['filters']['source']['table'] = 'dashboard_item';
+  $handler->display->display_options['filters']['source']['field'] = 'source';
+  $handler->display->display_options['filters']['source']['group'] = 1;
+  $handler->display->display_options['filters']['source']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['source']['expose']['operator_id'] = 'source_op';
+  $handler->display->display_options['filters']['source']['expose']['label'] = 'Source';
+  $handler->display->display_options['filters']['source']['expose']['operator'] = 'source_op';
+  $handler->display->display_options['filters']['source']['expose']['identifier'] = 'source';
+  $handler->display->display_options['filters']['source']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'social-dashboard';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Social media centre';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Latest Tweets */
+  $handler = $view->new_display('block', 'Latest Tweets', 'block_1');
+  $handler->display->display_options['link_url'] = 'social-dashboard?source=twitter';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '2';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'OR',
+    2 => 'AND',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Dashboard item: Source */
+  $handler->display->display_options['filters']['source']['id'] = 'source';
+  $handler->display->display_options['filters']['source']['table'] = 'dashboard_item';
+  $handler->display->display_options['filters']['source']['field'] = 'source';
+  $handler->display->display_options['filters']['source']['value'] = 'twitter';
+  $handler->display->display_options['filters']['source']['group'] = 1;
+  $handler->display->display_options['filters']['source']['expose']['operator_id'] = 'source_op';
+  $handler->display->display_options['filters']['source']['expose']['label'] = 'Source';
+  $handler->display->display_options['filters']['source']['expose']['operator'] = 'source_op';
+  $handler->display->display_options['filters']['source']['expose']['identifier'] = 'source';
+  $handler->display->display_options['filters']['source']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    17 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+  );
+  $translatables['social_dashboard'] = array(
+    t('Master'),
+    t('Social media centre'),
+    t('See more tweets'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Select any filter and click on Apply to see results'),
+    t('Advanced options'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Machine-readable name'),
+    t('Content'),
+    t('Social_id'),
+    t('Source'),
+    t('Tags'),
+    t('Timestamp'),
+    t('Internal, numeric dashboard item ID'),
+    t('.'),
+    t(','),
+    t('Page'),
+    t('more'),
+    t('Latest Tweets'),
+  );
+
+  $export['social_dashboard'] = $view;
+
+  return $export;
+}
+

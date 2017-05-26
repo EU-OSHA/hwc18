@@ -1,0 +1,6 @@
+<?php
+
+function hwc_audio_visual_install() {
+  features_revert_module('hwc_homepage');
+  features_revert_module('osha_news');
+}
