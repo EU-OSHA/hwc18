@@ -7249,11 +7249,11 @@ header.navbar-default .campaigns-header .navbar-header img:nth-child(3) {
 }
 header.navbar-default .campaigns-header .navbar-header .header-text {
   color: #003399;
-  font-size: 1.65em;
+  font-size: 1.6em;
   font-weight: bold;
-  width: 250px;
-  padding-top: 1.2em;
-  padding-left: 2em;
+  max-width: 315px;
+  padding-top: 1em;
+  padding-left: 1.5em;
   float: left;
 }
 header.navbar-default .campaigns-header .navbar-header #block-lang-dropdown-language {
@@ -8150,6 +8150,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   width: auto;
   height: auto;
   max-height: 356px;
+  max-width: inherit;
 }
 #homepage_slider #num_slides > div div p {
   color: #ffffff;
@@ -15296,9 +15297,9 @@ input#edit-field-image-und-0-upload::before {
     -ms-transition: all 0.6s;
     -o-transition: all 0.6s;
     transition: all 0.6s;
-    font-size: 1.85em !important;
-    width: 362px !important;
-    padding-top: 0.4em !important;
+    font-size: 1.5em !important;
+    width: 330px !important;
+    padding-top: 0.3em !important;
     padding-left: 0em !important;
     float: right !important;
     text-align: right !important;
@@ -15317,7 +15318,7 @@ input#edit-field-image-und-0-upload::before {
     -ms-transition: all 0.6s;
     -o-transition: all 0.6s;
     transition: all 0.6s;
-    font-size: 1.55em !important;
+    font-size: 1.4em !important;
     width: 292px !important;
     padding-top: 0.9em !important;
   }
@@ -15455,8 +15456,8 @@ input#edit-field-image-und-0-upload::before {
   }
   header.navbar-default .campaigns-header .navbar-header .header-text {
     font-size: 20px;
-    width: 218px;
-    padding-top: 1.5em;
+    width: 238px;
+    padding-top: 1em;
     padding-left: 0.8em;
   }
   header.navbar-default .campaigns-header .navbar-header .header_top_bar .region-above-header {
@@ -15669,9 +15670,9 @@ input#edit-field-image-und-0-upload::before {
     width: 150px;
   }
   header.navbar-default .campaigns-header .navbar-header .header-text {
-    font-size: 16px;
-    width: 145px;
-    padding-top: 2.5em;
+    font-size: 15px;
+    width: 137px;
+    padding-top: 1em;
     padding-left: 0.8em;
   }
   header.navbar-default .campaigns-header .navbar-header .header_top_bar .region-above-header {
