@@ -751,7 +751,7 @@ function osha_newsletter_fix_entity_collection_add_form(&$form, &$form_state) {
   $default_row = 'entity_collection_row_view_mode';
   $allowed_bundles_var = variable_get('osha_newsletter_allowed_bundles',
     array(
-      'news', 'events'
+      'publication', 'article', 'blog', 'news', 'press_release', 'highlight', 'newsletter_article'
     )
   );
   $allowed_bundles = array(
