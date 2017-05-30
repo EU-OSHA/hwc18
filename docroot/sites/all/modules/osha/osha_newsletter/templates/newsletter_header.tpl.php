@@ -1,127 +1,194 @@
 <?php
-$newsletter_ready_date = date('F Y');
-if($newsletter_date) {
-  $newsletter_ready_date = date('F Y', strtotime($newsletter_date));
-}?>
-<table border="0" cellpadding="0" cellspacing="0" width="800" style="font-family: Oswald, Arial,sans-serif; margin-left: 25px; margin-bottom: 0px; background-repeat: no-repeat;" height="300" background="<?php print file_create_url('sites/all/modules/osha/osha_newsletter/images/header-newsletter.png'); ?>">
-  <!--[if gte mso 9]>
-  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:800px;height:300px;">
-  <v:fill type="tile" src="<?php print file_create_url('sites/all/modules/osha/osha_newsletter/images/header-newsletter.png'); ?>"/>
-  <v:textbox inset="0,0,0,0">
-  <![endif]-->
+
+if (empty($campaign_id)) {
+  if (!empty($variables['elements']['#campaign_id'])) {
+    $campaign_id = $variables['elements']['#campaign_id'];
+  }
+  elseif (!empty($variables['campaign_id'])) {
+    $campaign_id = $variables['campaign_id'];
+  }
+}
+
+$url_query = array();
+if (!empty($campaign_id)) {
+  $url_query = array('pk_campaign' => $campaign_id);
+}
+
+global $language;
+$directory = drupal_get_path('module','osha_newsletter');
+?>
+
+<span class="preview-text" style="color: transparent; display: none !important; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">
+  <?php
+    $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y');
+    print t("Occupational Safety and Health News &ndash; Europe &ndash; ");
+    print t($newsletter_ready_date);
+  ?>
+</span>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="preheader template-container">
   <tbody>
     <tr>
-      <td width="800" style="vertical-align: top; padding-top: 0; padding-bottom: 0; height: 90px; ">
-        <table width="100%" border="0" cellpadding="8" cellspacing="0">
+      <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="language-bar" style="max-width:100%;">
           <tbody>
-            <tr style="vertical-align: middle;">
-              <?php
-              if (isset($campaign_id)) {
-                $url_query = array('pk_campaign' => $campaign_id);
-              }
-              else {
-                $url_query = array();
-              }
-              $directory = drupal_get_path('module', 'osha_newsletter');
-              global $base_url;
-              ?>
-              <td height="1" width="50%" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
-              <td style="font-family: Arial, sans-serif;">
-                <h4 style="text-align: left; font-size: 12px; font-weight: bold; color: #003399; font-family: Arial,sans-serif;line-height: 12px;">
-                  <?php print t('Healthy Workplaces for All Ages'); ?>
-                </h4>
-              </td><td>
+            <tr>
+              <td style="font-size: 12px; padding-left: 30px; padding-right: 30px; font-family: Arial,sans-serif;">
                 <?php
-                print l(
-                  theme(
-                    'image',
-                    array(
-                      'path' => $directory . '/images/Osha-EU-logos.png',
-                      'width' => 105,
-                      'alt' => 'Osha logo',
-                      'attributes' => array('style' => 'border: 0px;'),
-                    )
-                  ),
-                  $base_url, array(
-                    'html' => TRUE,
-                    'external' => TRUE,
-                    'query' => $url_query,
-                  )
-                );
+                 if ($languages) {
+                   $languages_text = [];
+                   foreach ($languages as $l) {
+                     if ($l->language != "tr" && $l->language != "ru") {
+                       $languages_text[] = strtr('<a href="!link" style="text-decoration: none; color: !color; ">!text</a>',
+                          [
+                            '!link' => url('entity-collection/' . $newsletter_id, array('absolute' => TRUE, 'language' => $l, 'query' => $url_query)),
+                            '!color' => ($l->language == $language->language) ? '#003399' : '#606060',
+                            '!text' => $l->native
+                          ]);
+                    }
+                  }
+                 }
                 ?>
-              </td><td>
-                <?php
-                print l(
-                  theme(
-                    'image',
-                    array(
-                      'path' => $directory . '/images/logo-eu.png',
-                      'width' => 50,
-                      'alt' => 'Osha logo',
-                      'attributes' => array('style' => 'border: 0px;'),
-                    )
-                  ),
-                  $base_url, array(
-                    'html' => TRUE,
-                    'external' => TRUE,
-                    'query' => $url_query,
-                  )
-                );
-                ?>
-              </td><td>
-                <?php
-                print l(
-                  theme(
-                    'image',
-                    array(
-                      'path' => $directory . '/images/healthy_workplaces.png',
-                      'width' => 80,
-                      'alt' => 'Healthy workplaces logo',
-                      'attributes' => array('style' => 'border: 0px;'),
-                    )
-                  ),
-                  $base_url, array(
-                    'html' => TRUE,
-                    'external' => TRUE,
-                    'query' => $url_query,
-                  )
-                );
-                ?></td></tr>
+                <?php foreach ($languages_text as $lidx =>  $lang_text) { ?>
+                  <?php if ($lidx > 0): ?>
+                    <span style="color: #606060;"> | </span>
+                  <?php endif; ?>
+                  <?php print $lang_text;?>
+                <?php } ?>
+              </td>
+            </tr>
           </tbody>
         </table>
       </td>
     </tr>
     <tr>
-      <td width="800" style="vertical-align: top; padding: 0;">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tbody>
-            <tr>
-              <td height="1" width="50%" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
-              <td style="font-family: Arial,sans-serif;">
-                <h1 style="font-family: Arial, sans-serif; font-size: 28px; color: #ffffff; border: none; margin: 0; text-align: left; line-height: 28px;"><?php print $newsletter_title ?></h1>
-              </td>
-            </tr>
-            <tr>
-              <td height="1" width="50%" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
-              <td style="font-family: Arial, sans-serif;">
-                <h2 style="font-family: Arial, sans-serif; font-style: italic; font-weight: normal; font-size: 18px; color: #ffffff; margin: 0; text-align: left;"><?php print $newsletter_ready_date ?></h2>
-              </td>
-            </tr>
-            <?php if(!empty($newsletter_intro)){ ?>
-              <tr>
-                <td height="1" width="50%" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
-                <td>
-                  <p style="font-style: italic; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif;"><?php print($newsletter_intro);?></p>
+      <td class="social">
+        <table border="0" cellpadding="20" cellspacing="0" width="auto" align="Right" style="width:auto!important;">
+          <tbody><tr>
+            <?php
+              $social = array(
+                'twitter' => array(
+                  'path' => 'https://twitter.com/eu_osha',
+                  'alt' => t('Twitter')
+                ),
+                'face' => array(
+                  'path' => 'https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork',
+                  'alt' => t('Facebook')
+                ),
+                'linkedin' => array(
+                  'path' => 'https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work',
+                  'alt' => t('LinkedIn')
+                ),
+                'youtube' => array(
+                  'path' => 'https://www.youtube.com/user/EUOSHA',
+                  'alt' => t('Youtube')
+                ),
+                'flickr' => array(
+                  'path' => 'https://www.flickr.com/photos/euosha/albums',
+                  'alt' => t('Flickr')
+                ),
+                'blog' => array(
+                  'path' => url('tools-and-publications/blog', array('alias' => TRUE, 'absolute' => TRUE, 'query' => $url_query)),
+                  'alt' => t('Blog')
+                ),
+              );
+
+              foreach ($social as $name => $options):?>
+                <td align="Right">
+                <?php
+                  print l(theme('image', array(
+                    'path' => $directory . '/images/' . $name . '-blue.png',
+                    'width' => 'auto',
+                    'height' => 20,
+                    'alt' => $options['alt'],
+                    'attributes' => array('style' => 'border:0px;height:20px;max-height:20px;max-width:20px;')
+                  )), $options['path'], array(
+                    'attributes' => array('style' => 'color:#144989;text-decoration:none;'),
+                    'html' => TRUE,
+                    'external' => TRUE
+                  ));
+                ?>
                 </td>
-              </tr>
-            <?php } ?>
-          </tbody>
+              <?php endforeach; ?>
+          </tr>
+        </tbody>
         </table>
-    </td>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td colspan="2" style="background-color:#003399; width:800px; height: 4px;" valign="top"></td>
+    </tr> -->
+  </tbody>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Oswald, Arial,sans-serif;" class="header template-container">
+  <tbody>
+    <tr>
+      <td class="osha-logos">
+        <?php
+          global $base_url;
+          print l(theme('image', array(
+            'path' => $directory . '/images/EU-OSHA-en.png',
+            'width' => 247,
+            'height' => 84,
+            'alt' => 'European Agency for Safety and Health at Work',
+            'attributes' => array('style' => 'border: 0px; width: 247px; max-width: 247px; height: 87px; max-height: 87px;')
+            )), $base_url.'/'.$language->language, array(
+            'html' => TRUE,
+            'external' => TRUE,
+            'query' => $url_query
+          ));
+          print theme('image', array(
+            'path' => $directory . '/images/europeLogo.png',
+            'width' => 63,
+            'height' => 41,
+            'alt' => 'EU',
+            'attributes' => array('style' => 'border: 0px; margin-left: 20px; width: 63px; max-width: 63px; height: 41px; max-height: 41px;')
+          ));
+        ?>
+      </td>
+      <td class="osha-info">
+        <div class="newsletter-number" style="color: #003399; font-size: 20px; font-weight: 200; text-align: right;"><?php print $newsletter_title; ?></div>
+        <div class="newsletter-month" style="color: #DC2F82; font-size: 26px; text-align: right;"><?php print $newsletter_ready_date; ?></div>
+      </td>
     </tr>
   </tbody>
-  <!--[if gte mso 9]>
-  </v:textbox>
-  </v:rect>
-  <![endif]-->
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="template-container">
+  <tbody>
+    <tr>
+      <td style="padding-top: 0px; padding-bottom: 25px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="header-title">
+          <tbody>
+            <tr>
+              <td style="background-color: #003399; width: 70%; text-align: left; font-size: 24px; font-weight: 200; color: #ffffff; font-family: Oswald, Arial,sans-serif;">
+                <?php print t("Occupational Safety and Health News &ndash; Europe");?>
+              </td>
+              <td style="background-color: #003399; width: 30%; text-align: right; font-size: 14px; font-weight: 200; color: #ffffff; font-family: Oswald, Arial,sans-serif;" class="hidden-print">
+                <?php
+                  $mailto_subject = 'OSH Newsletter: ' . $newsletter_title;
+                  $newsletter_url = url('entity-collection/' . $newsletter_id, array('absolute' => TRUE, 'language' => $language));
+                  $mailto_body = t('Check out this newsletter') . ': ' . $newsletter_url;
+                ?>
+                <a href="mailto:?subject=<?php print $mailto_subject; ?>&amp;body=<?php print $mailto_body; ?>"
+                   title="Share by Email"
+                   class="forward-newsletter-link"
+                   style="color: #ffffff;">
+                  <?php print t("Forward this newsletter");?>
+                  &nbsp;
+                  <?php print theme('image', array(
+                      'path' => $directory . '/images/external_link_white.png',
+                      'width' => 'auto',
+                      'height' => '13px',
+                      'attributes' => array('style' => 'border:0px;height:13px;max-height:13px;max-width:13px;')
+                    ));
+                  ?>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
