@@ -1113,76 +1113,17 @@ function osha_newsletter_mail_alter(&$message) {
  * array $source - The EntityCollection instance.
  */
 function osha_newsletter_build_mail(&$message, EntityCollection $source) {
-  $content = entity_collection_load_content($source->bundle, $source);
-
-  $newsletter_title = $source->title;
-  $newsletter_id = $source->eid;
-  $newsletter_date = $source->field_created[LANGUAGE_NONE][0]['value'];
-  if (!empty($source->field_publication_date)) {
-    $newsletter_date = $source->field_publication_date[LANGUAGE_NONE][0]['value'];
-  }
-
-  $newsletter_intro = NULL;
-  if (isset($source->field_introduction_text[LANGUAGE_NONE][0])) {
-    $newsletter_intro = $source->field_introduction_text[LANGUAGE_NONE][0]['value'];
-  };
-
-  $campaign_id = '';
-  if (isset($source->field_campaign_id[LANGUAGE_NONE][0]['value'])) {
-    $campaign_id = $source->field_campaign_id[LANGUAGE_NONE][0]['value'];
-  };
-
-  $items = $content->children;
-  $elements = array();
-  $last_section = NULL;
-  $events = array();
-
-  foreach ($items as $item) {
-    if ($item->type == 'taxonomy_term') {
-      $term = taxonomy_term_view($item->content, 'token');
-      $last_section = $item->content->name_original;
-      if ($last_section == 'Events') {
-        $events[] = $term;
-      } else {
-        $elements[] = $term;
-      }
-    } else if ($item->type == 'node') {
-      $style = $item->style;
-      $node = node_view($item->content,$style);
-      $node['#campaign_id'] = $campaign_id;
-
-     if ($last_section == 'Events') {
-        $events[] = $node;
-      } else {
-        $elements[] = $node;
-      }
-    }
-  }
-
-  $languages = osha_language_list(TRUE);
-
+  global $osha_newsletter_send_mail;
+  $osha_newsletter_send_mail = TRUE;
   // Get message data from source.
   $message['subject'] = $source->title;
-  $message['body']['header'] = theme('newsletter_header', array(
-    'languages' => $languages, 'newsletter_title' => $newsletter_title,
-    'newsletter_id' => $newsletter_id, 'newsletter_date' => $newsletter_date,
-    'newsletter_intro' => $newsletter_intro,
-    'campaign_id' => $campaign_id
-  ));
-  $message['body']['body'] = theme('newsletter_body', array(
-    'items' => $elements,
-    'events' => $events,
-    'campaign_id' => $campaign_id
-  ));
-  //add css styles to href in body
-  $message['body']['body'] = osha_newsletter_format_body($message['body']['body']);
-  $message['body']['footer'] = theme('newsletter_footer', array('campaign_id' => $campaign_id));
 
-  $message['body'] = implode("", $message['body']);
+  $message['body'] = ['body' => OSHNewsletter::render($source)];
 
   // Optional params for HTML mails.
   $message['params']['plain'] = NULL;
 }
+
 
 /**
  * Format message body
@@ -1192,8 +1133,7 @@ function osha_newsletter_format_body($text) {
     foreach ($dom->getElementsByTagName('a') as $href) {
       $style = $href->getAttribute('style');
       if(empty($style)) {
-//        $href->setAttribute('style', 'color:#003399;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;font-weight:bold; display:none;');
-        $href->setAttribute('style', 'color:#003399;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;');
+        $href->setAttribute('style', 'color:#003399;text-decoration:none;font-family:Arial,sans-serif;font-size:12px;font-weight:bold');
       }
     }
     $body = $dom->getElementsByTagName('body')->item(0);
