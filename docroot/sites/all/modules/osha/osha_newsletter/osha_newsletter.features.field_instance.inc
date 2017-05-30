@@ -167,54 +167,6 @@ function osha_newsletter_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'entity_collection-newsletter_content_collection-field_introduction_text'.
-  $field_instances['entity_collection-newsletter_content_collection-field_introduction_text'] = array(
-    'bundle' => 'newsletter_content_collection',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_class' => '',
-        ),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-    ),
-    'entity_type' => 'entity_collection',
-    'field_name' => 'field_introduction_text',
-    'label' => 'Introduction text',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'linkit' => array(
-        'button_text' => 'Search',
-        'enable' => 0,
-        'profile' => '',
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 240,
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 0,
-    ),
-    'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance:
   // 'entity_collection-newsletter_content_collection-field_newsletter_author'.
   $field_instances['entity_collection-newsletter_content_collection-field_newsletter_author'] = array(
     'bundle' => 'newsletter_content_collection',
@@ -818,7 +770,6 @@ function osha_newsletter_field_default_field_instances() {
   t('Description');
   t('Enter the number of tweets that you want to display in your newsletter.');
   t('Images');
-  t('Introduction text');
   t('Left column image');
   t('Name');
   t('Newsletter configuration');
