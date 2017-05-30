@@ -91,7 +91,7 @@ function osha_newsletter_update_7005() {
 
   $newsletter_sections = [
     [
-      // Highlights
+      'name' => 'Highlights',
       'field_newsletter_template' => 'newsletter_full_width_details',
       'field_link' => '/highlights',
       'weight' => -9,
@@ -102,7 +102,7 @@ function osha_newsletter_update_7005() {
       'weight' => -8,
     ],
     [
-      // News
+      'name' => 'News',
       'field_newsletter_template' => 'newsletter_half_width_list',
       'field_link' => '/oshnews',
       'weight' => -7,
@@ -114,32 +114,32 @@ function osha_newsletter_update_7005() {
       'weight' => -6,
     ],
     [
-      // Healthy workplaces campaign
+      'name' => 'Healthy workplaces campaign',
       'field_newsletter_template' => 'newsletter_half_image_left',
       'field_background_color' => '#aec70f',
       'field_background_image' => $files['hwc'],
       'weight' => -5,
     ],
     [
-      // OiRA - Online Interactive Risk Assessment
+      'name' => 'OiRA',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'field_icon' => $files['oira'],
       'weight' => -4,
     ],
     [
-      // OSHWiki
+      'name' => 'OSHWiki',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'field_icon' => $files['oshwiki'],
       'weight' => -3,
     ],
     [
-      // Events
+      'name' => 'Events',
       'field_newsletter_template' => 'newsletter_full_width_2_col_blocks',
       'field_link' => '/oshevents',
       'weight' => -2,
     ],
     [
-      // Coming soon
+      'name' => 'Coming soon',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'weight' => -1,
     ],
