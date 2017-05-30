@@ -97,17 +97,20 @@ function osha_newsletter_update_7005() {
       'weight' => -9,
     ],
     [
+      'tid' => '1798',
       'name' => 'Videos',
       'field_newsletter_template' => 'newsletter_full_width_details',
       'weight' => -8,
     ],
     [
+      'tid' => '86',
       'name' => 'News',
       'field_newsletter_template' => 'newsletter_half_width_list',
       'field_link' => '/oshnews',
       'weight' => -7,
     ],
     [
+      'tid' => '1797',
       'name' => 'Tweets',
       'field_newsletter_template' => 'newsletter_half_width_twitter',
       'field_link' => 'https://twitter.com/EU_OSHA',
@@ -133,6 +136,7 @@ function osha_newsletter_update_7005() {
       'weight' => -3,
     ],
     [
+      'tid' => '82',
       'name' => 'Events',
       'field_newsletter_template' => 'newsletter_full_width_2_col_blocks',
       'field_link' => '/oshevents',
