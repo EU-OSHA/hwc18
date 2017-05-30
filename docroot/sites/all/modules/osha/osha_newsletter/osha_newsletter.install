@@ -181,8 +181,11 @@ function osha_newsletter_update_7005() {
 
 /**
  *  Allow youtube videos and wiki pages to be added to newsletters
+ *  MDR-1126 - select the number of tweets to appear.
+ * MDR-910 - enable imagecache modules and revert newsletter
  */
 function osha_newsletter_update_7006() {
+  module_enable(['imagecache_actions', 'imagecache_canvasactions']);
   features_revert_module('osha_newsletter');
   $allowed_bundles = variable_get('osha_newsletter_allowed_bundles',
     [
@@ -200,19 +203,3 @@ function osha_newsletter_update_7006() {
   $allowed_bundles["youtube"] = "youtube";
   variable_set('osha_newsletter_allowed_bundles', $allowed_bundles);
 }
-
-/**
- *  MDR-1126 - select the number of tweets to appear.
- */
-function osha_newsletter_update_7007() {
-  features_revert_module('osha_newsletter');
-}
-
-/**
- * MDR-910 - enable imagecache modules and revert newsletter
- */
-function osha_newsletter_update_7008() {
-  module_enable(['imagecache_actions', 'imagecache_canvasactions']);
-  features_revert_module('osha_newsletter');
-}
-
