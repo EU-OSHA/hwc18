@@ -1202,7 +1202,6 @@ function osha_newsletter_theme() {
       'newsletter_title' => NULL,
       'newsletter_id' => NULL,
       'newsletter_date' => NULL,
-      'newsletter_intro' => NULL,
       'campaign_id' => NULL
     ),
     'path' => $path . '/templates'
@@ -1211,6 +1210,8 @@ function osha_newsletter_theme() {
     'template' => 'newsletter_body',
     'variables' => array(
       'items' => NULL,
+      'blogs' => NULL,
+      'news' => NULL,
       'events' => NULL,
       'campaign_id' => NULL
     ),
@@ -1230,20 +1231,28 @@ function osha_newsletter_theme() {
     ),
     'path' => $path . '/templates'
   );
-   $theme['osha_newsletter_image'] = array(
-     'template' => 'osha_newsletter_image_block',
-     'variables' => array(
-       'background_image_url' => NULL,
-       'newsletter_intro_text' => NULL,
-     ),
-     'path' => $path . '/templates'
-   );
+  $theme['osha_newsletter_image'] = array(
+    'template' => 'osha_newsletter_image_block',
+    'variables' => array(
+      'background_image_url' => NULL,
+      'start_text' => NULL,
+      'subscribers_no' => NULL,
+      'end_text' => NULL,
+    ),
+    'path' => $path . '/templates'
+  );
   $theme['latest_newsletters_block'] = array(
     'template' => 'latest_newsletters_block',
     'variables' => array(
       'items' => NULL,
-      'newsletter_items_no' => NULL,
-      'newsletter_items_date_enable' => NULL
+      'newsletter_items_no' => NULL
+    ),
+    'path' => $path . '/templates'
+  );
+  $theme['newsletter_base_table'] = array(
+    'template' => 'newsletter_base_table',
+    'variables' => array(
+      'content' => NULL,
     ),
     'path' => $path . '/templates'
   );
