@@ -323,42 +323,6 @@ function osha_newsletter_views_default_views() {
   );
   $handler->display->display_options['filters']['field_activity_tid']['vocabulary'] = 'activity';
   $handler->display->display_options['filters']['field_activity_tid']['hierarchy'] = 1;
-  /* Filter criterion: Field: Nace (field_nace_codes) */
-  $handler->display->display_options['filters']['field_nace_codes_tid']['id'] = 'field_nace_codes_tid';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['table'] = 'field_data_field_nace_codes';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['field'] = 'field_nace_codes_tid';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['value'] = '';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_nace_codes_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator_id'] = 'field_nace_codes_tid_op';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['label'] = 'Nace Codes';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator'] = 'field_nace_codes_tid_op';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['identifier'] = 'field_nace_codes_tid';
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_nace_codes_tid']['vocabulary'] = 'nace_codes';
-  /* Filter criterion: Field: Thesaurus (field_thesaurus) */
-  $handler->display->display_options['filters']['field_thesaurus_tid']['id'] = 'field_thesaurus_tid';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['table'] = 'field_data_field_thesaurus';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['field'] = 'field_thesaurus_tid';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['value'] = '';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_thesaurus_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator_id'] = 'field_thesaurus_tid_op';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['label'] = 'Thesaurus';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator'] = 'field_thesaurus_tid_op';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['identifier'] = 'field_thesaurus_tid';
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-  );
-  $handler->display->display_options['filters']['field_thesaurus_tid']['vocabulary'] = 'thesaurus';
   /* Filter criterion: User: Name (raw) */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'users';
@@ -463,8 +427,6 @@ function osha_newsletter_views_default_views() {
     t('Node ID'),
     t('Activity'),
     t('Activity (field_activity)'),
-    t('Nace Codes'),
-    t('Thesaurus'),
     t('Enter name or part of author\'s name'),
     t('Select an interval for filtering'),
     t('Vocabulary'),
