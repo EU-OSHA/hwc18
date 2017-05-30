@@ -492,6 +492,11 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
  */
 function hwc_form_alter(&$form, &$form_state, $form_id) {
   global $user;
+  if ($form_id == 'tmgmt_job_form') {
+    if ($form['translator_wrapper']['info']['file']['#title'] == 'File file') {
+      $form['translator_wrapper']['info']['file']['#title'] = 'File';
+    }
+  }
   if (isset($form['field_activity'])
     && !empty($form['#node'])
     && empty($form['#node']->nid)
