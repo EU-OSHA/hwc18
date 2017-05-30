@@ -117,7 +117,8 @@ function osha_newsletter_strongarm() {
     'publication' => 0,
     'slideshare' => 0,
     'webform' => 0,
-    'youtube' => 0,
+    'youtube' => 'youtube',
+    'wiki_page' => 'wiki_page',
   );
   $export['osha_newsletter_allowed_bundles'] = $strongarm;
 
