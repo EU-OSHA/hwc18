@@ -421,4 +421,7 @@ a:after{
 	display:none!important;
 }
 
+#share-popup-container {
+	display: none;
+}
 }
