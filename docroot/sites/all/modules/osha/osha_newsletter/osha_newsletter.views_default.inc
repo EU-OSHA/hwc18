@@ -118,6 +118,8 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['relationships']['term_node_tid']['vocabularies'] = array(
     'activity' => 0,
     'article_types' => 0,
+    'directive_type' => 0,
+    'legislation_category' => 0,
     'esener' => 0,
     'nace_codes' => 0,
     'section' => 0,
@@ -129,6 +131,9 @@ function osha_newsletter_views_default_views() {
     'organised_by' => 0,
     'publication_types' => 0,
     'tags' => 0,
+    'thesaurus' => 0,
+    'wiki_categories' => 0,
+    'workflow_status' => 0,
   );
   /* Relationship: Content: Entity translation: translations */
   $handler->display->display_options['relationships']['entity_translations']['id'] = 'entity_translations';
@@ -146,13 +151,13 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['skip_batching'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
-    'action::osha_newsletter_add_to_newsletter_action' => array(
+    'rules_component::rules_add_to_newsletter' => array(
       'selected' => 1,
-      'postpone_processing' => 0,
       'skip_confirmation' => 1,
       'override_label' => 0,
       'label' => '',
@@ -165,20 +170,6 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'vid';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Starting date and time */
-  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
-  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
-  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
-  $handler->display->display_options['fields']['field_start_date']['label'] = 'Date';
-  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
-    'format_type' => 'long',
-    'fromto' => 'value',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'osha_date_theme' => '',
-    'field_formatter_class' => '',
-  );
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -197,6 +188,11 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -251,8 +247,15 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'blog' => 'blog',
     'events' => 'events',
+    'highlight' => 'highlight',
     'news' => 'news',
+    'newsletter_article' => 'newsletter_article',
+    'press_release' => 'press_release',
+    'publication' => 'publication',
+    'wiki_page' => 'wiki_page',
+    'youtube' => 'youtube',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
@@ -275,6 +278,8 @@ function osha_newsletter_views_default_views() {
     10 => 0,
     11 => 0,
     12 => 0,
+    13 => 0,
+    14 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   /* Filter criterion: Content: Nid */
@@ -292,6 +297,68 @@ function osha_newsletter_views_default_views() {
     1 => 0,
     3 => 0,
   );
+  /* Filter criterion: Content: Activity (field_activity) */
+  $handler->display->display_options['filters']['field_activity_tid']['id'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['filters']['field_activity_tid']['field'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_activity_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator_id'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['label'] = 'Activity';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['identifier'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_activity_tid']['group_info']['label'] = 'Activity (field_activity)';
+  $handler->display->display_options['filters']['field_activity_tid']['group_info']['identifier'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_activity_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  $handler->display->display_options['filters']['field_activity_tid']['vocabulary'] = 'activity';
+  $handler->display->display_options['filters']['field_activity_tid']['hierarchy'] = 1;
+  /* Filter criterion: Field: Nace (field_nace_codes) */
+  $handler->display->display_options['filters']['field_nace_codes_tid']['id'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['table'] = 'field_data_field_nace_codes';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['field'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_nace_codes_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator_id'] = 'field_nace_codes_tid_op';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['label'] = 'Nace Codes';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator'] = 'field_nace_codes_tid_op';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['identifier'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_nace_codes_tid']['vocabulary'] = 'nace_codes';
+  /* Filter criterion: Field: Thesaurus (field_thesaurus) */
+  $handler->display->display_options['filters']['field_thesaurus_tid']['id'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['table'] = 'field_data_field_thesaurus';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['field'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_thesaurus_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator_id'] = 'field_thesaurus_tid_op';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['label'] = 'Thesaurus';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator'] = 'field_thesaurus_tid_op';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['identifier'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_thesaurus_tid']['vocabulary'] = 'thesaurus';
   /* Filter criterion: User: Name (raw) */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'users';
@@ -352,11 +419,6 @@ function osha_newsletter_views_default_views() {
     11 => 0,
     12 => 0,
   );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Newsletter content selection */
   $handler = $view->new_display('page', 'Newsletter content selection', 'newsletter_selection_view_page');
@@ -389,16 +451,20 @@ function osha_newsletter_views_default_views() {
     t('Get the actual content from a content revision.'),
     t('- Choose an operation -'),
     t('Title'),
-    t('Date'),
     t('Type of content'),
     t('Author'),
     t('Updated'),
+    t('Published'),
     t('Edit'),
     t('Post date'),
     t('Updated date'),
     t('Author name'),
     t('Type'),
     t('Node ID'),
+    t('Activity'),
+    t('Activity (field_activity)'),
+    t('Nace Codes'),
+    t('Thesaurus'),
     t('Enter name or part of author\'s name'),
     t('Select an interval for filtering'),
     t('Vocabulary'),
@@ -419,7 +485,8 @@ function osha_newsletter_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'List of newsletters';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'manage content in newsletter_content_collection entity collections';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
