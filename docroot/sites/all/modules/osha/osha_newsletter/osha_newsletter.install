@@ -92,7 +92,6 @@ function osha_newsletter_update_7005() {
   $newsletter_sections = [
     [
       // Highlights
-      'tid' => '12',
       'field_newsletter_template' => 'newsletter_full_width_details',
       'field_link' => '/highlights',
       'weight' => -9,
@@ -104,7 +103,6 @@ function osha_newsletter_update_7005() {
     ],
     [
       // News
-      'tid' => '11',
       'field_newsletter_template' => 'newsletter_half_width_list',
       'field_link' => '/oshnews',
       'weight' => -7,
@@ -117,7 +115,6 @@ function osha_newsletter_update_7005() {
     ],
     [
       // Healthy workplaces campaign
-      'tid' => '3036',
       'field_newsletter_template' => 'newsletter_half_image_left',
       'field_background_color' => '#aec70f',
       'field_background_image' => $files['hwc'],
@@ -125,28 +122,24 @@ function osha_newsletter_update_7005() {
     ],
     [
       // OiRA - Online Interactive Risk Assessment
-      'tid' => '3117',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'field_icon' => $files['oira'],
       'weight' => -4,
     ],
     [
       // OSHWiki
-      'tid' => '3080',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'field_icon' => $files['oshwiki'],
       'weight' => -3,
     ],
     [
       // Events
-      'tid' => '15',
       'field_newsletter_template' => 'newsletter_full_width_2_col_blocks',
       'field_link' => '/oshevents',
       'weight' => -2,
     ],
     [
       // Coming soon
-      'tid' => '13',
       'field_newsletter_template' => 'newsletter_full_width_list',
       'weight' => -1,
     ],
@@ -159,7 +152,7 @@ function osha_newsletter_update_7005() {
     }
     else {
       $term = (object) [
-        'vid' => '11', // Newsletter sections
+        'vid' => '19', // Newsletter sections
         'name' => $section['name'],
       ];
     }
