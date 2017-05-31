@@ -426,9 +426,9 @@ function osha_newsletter_block_view($delta = '') {
 
         $block['content'] = theme('osha_newsletter_image', array(
           'background_image_url' => $image_uri,
-          'intro_text' => t(variable_get('osha_newsletter_image_block_intro_text', 'Would you like to stay informed about the latest developments regarding ageing workers?')),
-          'subscribe_form' => drupal_render($subscribe_form),
-          'details_link' => $details_link,
+          'start_text' => t(variable_get('osha_newsletter_image_block_intro_text', 'Would you like to stay informed about the latest developments regarding ageing workers?')),
+          'subscribers_no' => drupal_render($subscribe_form),
+          'end_text' => $details_link,
         ));
         return $block;
       }
