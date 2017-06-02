@@ -166,6 +166,24 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'hidden',
+        'module' => 'smart_trim',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'more_link' => FALSE,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 300,
+          'trim_link' => FALSE,
+          'trim_options' => array(),
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
+        'weight' => 0,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -272,6 +290,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'teaser' => array(
         'label' => 'inline',
         'settings' => array(),
@@ -345,6 +369,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -425,6 +455,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -510,6 +546,16 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'inline',
+        'module' => 'shs',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'linked' => FALSE,
+        ),
+        'type' => 'shs_default',
+        'weight' => 1,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -607,6 +653,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -700,6 +752,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -788,6 +846,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -829,6 +893,76 @@ function hwc_practical_tool_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 11,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-practical_tool-field_priority_area'.
+  $field_instances['node-practical_tool-field_priority_area'] = array(
+    'bundle' => 'practical_tool',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_priority_area',
+    'label' => 'Priority area',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 32,
     ),
     'workbench_access_field' => 0,
   );
@@ -884,6 +1018,15 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -973,6 +1116,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1051,6 +1200,16 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'inline',
+        'module' => 'shs',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'linked' => FALSE,
+        ),
+        'type' => 'shs_default',
+        'weight' => 3,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -1149,6 +1308,12 @@ function hwc_practical_tool_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -1364,6 +1529,7 @@ function hwc_practical_tool_field_default_field_instances() {
   t('Language');
   t('Name');
   t('Objective');
+  t('Priority area');
   t('Provider');
   t('Segment');
   t('Tool name');

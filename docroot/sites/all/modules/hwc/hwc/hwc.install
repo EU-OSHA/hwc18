@@ -596,3 +596,10 @@ function hwc_update_7032() {
   ncw_migration_run_single('news');
   ncw_migration_run_single('events');
 }
+
+/**
+ * enabled hwc priority areas module
+ */
+function hwc_update_7033() {
+  module_enable(['hwc_priority_areas']);
+}

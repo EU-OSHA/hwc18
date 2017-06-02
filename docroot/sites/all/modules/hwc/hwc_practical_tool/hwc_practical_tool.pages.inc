@@ -127,8 +127,9 @@ function _hwc_practical_tool_sort_nodes(&$nids) {
 function hwc_practical_tool_menu_tools_search_native($form_state) {
   global $language;
   $languages = hwc_req_param($form_state, 'languages', array($language->language));
-  if(!$languages)
+  if (!$languages) {
     $languages = array($language->language);
+  }
   $text = hwc_req_param($form_state, 'text');
   $relevant_for = hwc_req_param($form_state, 'relevant_for', array());
   $is_search = !empty($text);
