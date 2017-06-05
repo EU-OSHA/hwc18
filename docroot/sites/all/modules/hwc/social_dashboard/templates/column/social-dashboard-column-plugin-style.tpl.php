@@ -32,7 +32,7 @@
     $width = intval(100 / count($items));
     foreach ($items as $title => $rows) { ?>
     <div class="col-md-<?php echo $columns ?>" style="width: <?php echo $width?>%;float: left;">
-        <h2><?php echo ucfirst($title) ?></h2>
+        <?php if ($current_display != 'block_1') { ?><h2><?php echo ucfirst($title) ?></h2><?php } ?>
 <?php
       foreach ($rows as $row) {
           foreach ($row['content'] as $column) {
