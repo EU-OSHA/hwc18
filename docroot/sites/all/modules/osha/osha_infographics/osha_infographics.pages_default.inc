@@ -85,7 +85,7 @@ function osha_infographics_default_page_manager_pages() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'section-intorduction',
+    'css_class' => 'section-introduction',
   );
   $pane->extras = array();
   $pane->position = 0;

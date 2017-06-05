@@ -1,0 +1,13 @@
+name = Social Dashboard
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = elysia_cron
+dependencies[] = entityreference
+dependencies[] = jquery_update
+dependencies[] = timeago
+stylesheets[all][] = css/social_dashboard.css
+files[] = social_dashboard.controller.inc
+files[] = plugins/column/social_dashboard_column_plugin_style.inc
+files[] = plugins/column/social_dashboard_column_plugin_rows.inc
