@@ -700,6 +700,8 @@ function social_dashboard_views_default_views() {
 
   /* Display: Latest Tweets */
   $handler = $view->new_display('block', 'Latest Tweets', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Latest Tweets';
   $handler->display->display_options['link_url'] = 'social-dashboard?source=twitter';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';

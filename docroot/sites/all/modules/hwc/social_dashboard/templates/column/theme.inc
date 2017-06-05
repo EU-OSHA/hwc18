@@ -4,6 +4,7 @@
  */
 function template_preprocess_social_dashboard_column_plugin_style(&$vars) {
   $view = $vars['view'];
+  $vars['current_display'] = $view->current_display;
   $vars['items'] = array();
   foreach ($vars['rows'] as $item) {
     $vars['items'][]['content'][0]['content'] = $item;
