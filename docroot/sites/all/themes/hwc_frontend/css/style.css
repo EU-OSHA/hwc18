@@ -7544,6 +7544,10 @@ header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-
   background: url('../images/header/flickr.png') no-repeat center bottom;
   padding: 18px 0 8px 32px;
 }
+.region-above-header.region .block-on-the-web .otw-blogger a {
+  background: url('../images/header/blogger.png') no-repeat center bottom;
+  padding: 18px 0 8px 32px;
+}
 .region-above-header.region .block-on-the-web a img {
   display: none;
 }
@@ -9848,6 +9852,208 @@ html:lang(no) .pane-node-field-provider .field-items,
 #block-nodeblock-29 h1 {
   border-bottom: none;
   font-size: 30px;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources {
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 30px;
+  padding-bottom: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: url(../images/content/bg-campaign-partner.png) no-repeat left 20px;
+  background-size: cover;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title {
+  margin-top: 15px;
+  padding-top: 100px;
+  margin-bottom: 40px;
+  font-style: normal;
+  background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
+  background-size: 61px;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title a {
+  color: white;
+  font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title a:before {
+  content: "";
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content .text-muted {
+  color: white;
+  margin: 0 auto;
+  max-width: 940px;
+  margin-bottom: 30px;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul {
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 40px;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a {
+  color: white;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a:before {
+  content: "> ";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics {
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title {
+  margin-top: 15px;
+  padding-top: 100px;
+  margin-bottom: 40px;
+  font-style: normal;
+  background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
+  background-size: 61px;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title a {
+  color: #749b00;
+  font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title a:before {
+  content: "";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .text-muted {
+  color: #333333;
+  margin: 0 auto;
+  max-width: 940px;
+  margin-bottom: 30px;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul {
+  width: 50%;
+  margin: 0px;
+  padding: 0px;
+  display: inline-block;
+  text-align: left;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li {
+  margin-left: 25%;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li a {
+  font-size: 1.4em;
+  color: #003399;
+  font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_1 a:before {
+  content: ">";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_2 a:before {
+  content: ">";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_3 a:before {
+  content: ">";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_4 a:before {
+  content: ">";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_5 a:before {
+  content: ">";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_6 a:before {
+  content: ">";
+}
+.front .panels-flexible-region-new-home_left,
+.front .panels-flexible-region-new-center,
+.front .panels-flexible-region-new-home_right {
+  padding: 0px 25px !important;
+  min-height: 500px;
+  margin-top: 25px;
+}
+.front .panels-flexible-region-new-home_left h2.pane-title,
+.front .panels-flexible-region-new-center h2.pane-title,
+.front .panels-flexible-region-new-home_right h2.pane-title {
+  margin-top: 15px;
+  padding-top: 100px;
+  margin-bottom: 40px;
+  font-style: normal;
+  background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
+  background-size: 61px;
+  color: #749b00;
+  font-weight: bold;
+  text-align: center;
+}
+.front .panels-flexible-region-new-home_left h2.pane-title:before,
+.front .panels-flexible-region-new-center h2.pane-title:before,
+.front .panels-flexible-region-new-home_right h2.pane-title:before {
+  content: "";
+}
+.front .panels-flexible-region-new-home_left .date-display-single,
+.front .panels-flexible-region-new-center .date-display-single,
+.front .panels-flexible-region-new-home_right .date-display-single {
+  font-weight: normal;
+  font-size: .8em !important;
+  color: #333333;
+}
+.front .panels-flexible-region-new-home_left .pull-left,
+.front .panels-flexible-region-new-center .pull-left,
+.front .panels-flexible-region-new-home_right .pull-left {
+  margin-right: 5px;
+}
+.front .panels-flexible-region-new-home_left .media-list,
+.front .panels-flexible-region-new-center .media-list,
+.front .panels-flexible-region-new-home_right .media-list {
+  margin-bottom: 20px;
+}
+.front .panels-flexible-region-new-home_left .media-body a,
+.front .panels-flexible-region-new-center .media-body a,
+.front .panels-flexible-region-new-home_right .media-body a {
+  color: #003399;
+  font-weight: bold;
+}
+.front .panels-flexible-region-new-home_left .media-body a:before,
+.front .panels-flexible-region-new-center .media-body a:before,
+.front .panels-flexible-region-new-home_right .media-body a:before {
+  content: "> ";
+}
+.front .panels-flexible-region-new-home_left .more-link,
+.front .panels-flexible-region-new-center .more-link,
+.front .panels-flexible-region-new-home_right .more-link {
+  display: table;
+  margin: 0px auto;
+}
+.front .panels-flexible-region-new-center {
+  border-left: 1px dotted #749b00;
+  border-right: 1px dotted #749b00;
+}
+.front .panels-flexible-region-new-center .event_day_month .event_day {
+  background-color: #003399;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-bottom: 3px;
+}
+.front .panels-flexible-region-new-center .event_day_month .event_country {
+  background-color: #8d98c5;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet .MediaCard {
+  display: none !important;
+}
+.front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet .MediaCard img {
+  display: none !important;
 }
 /*End Home*/
 /*share line*/
@@ -15393,6 +15599,9 @@ input#edit-field-image-und-0-upload::before {
 .footer div.on-the-web .otw-linkedin a {
   background: url("../images/footer/linkedin.png") no-repeat;
 }
+.footer div.on-the-web .otw-blogger a {
+  background: url("../images/footer/blogger.png") no-repeat;
+}
 @media (min-width: 1400px) {
   /*CSS to image official campaign partners  */
   .page-official-campaign-partners .node-article .field-name-field-image + .field-name-title-field {
@@ -19725,148 +19934,4 @@ input#edit-field-image-und-0-upload::before {
   #edit-text {
     max-width: 215px !important;
   }
-}
-
-body.page-entity-collection .newsletter-container {
-  margin: 0 auto !important;
-}
-/* osha share */
-.osha-share-widget ul {
-  list-style: none;
-  padding: 0;
-}
-
-.osha-share-widget li.share-this-article:after {
-  content: ":";
-}
-.osha-share-widget li {
-  vertical-align: middle;
-  display: inline-block;
-  padding: 0 4px;
-}
-
-.osha-share-widget li.osha-share-widget-button {
-  width: 20px;
-  height: 20px;
-}
-.osha-share-widget li.osha-share-widget-button a {
-  display: inline-block;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 20px;
-  height: 20px;
-  background: #eee;
-  color: transparent !important;
-  border: 0 !important;
-}
-
-.osha-share-widget li.osha-share-widget-google-plus a {
-  background: url("../images/google-corporate.png") repeat-x scroll 0% 100% rgba(0, 0, 0, 0)!important;
-}
-.osha-share-widget li.osha-share-widget-linkedin a {
-  background: url("../images/share_in.png") repeat-x scroll 0% 100% rgba(0, 0, 0, 0)!important;
-}
-.osha-share-widget li.osha-share-widget-twitter a {
-  background: url("../images/share_twitter.png") repeat-x scroll 0% 100% rgba(0, 0, 0, 0)!important;
-}
-.osha-share-widget li.osha-share-widget-facebook a {
-  background: url("../images/share_facebook.png") repeat-x scroll 0% 100% rgba(0, 0, 0, 0)!important;
-}
-.osha-share-widget li.osha-share-widget-print a {
-  width: 48px;
-  background: url("../images/share_print.png") no-repeat scroll 0% 100% rgba(0, 0, 0, 0)!important;
-}
-
-#share-popup-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1000000; /* > header */
-}
-
-#share-popup-container .close-share-popup-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
-#share-popup-container .close-share-popup-container button.close-share-popup {
-  background: #fff;
-  border-radius: 100%;
-  border: none;
-  padding: 0;
-}
-
-#share-popup-container .close-share-popup-container button.close-share-popup:hover {
-  background-color: #666;
-  color: #fff;
-  transition: all 0.2s ease;
-}
-
-#share-popup-container .close-share-popup-container .close-share-popup span {
-  display: block;
-  width: 30px;
-  height: 30px;
-  line-height: 25px;
-  font-size: 24px;
-}
-
-#share-popup-container .share-popup-title {
-  text-align: center;
-  margin-top: 20%;
-  color: #fff;
-}
-
-#share-popup-container .share-popup-title h3 {
-  font-size: 3em;
-  margin: 0;
-}
-#share-popup-container .share-popup-title h4 {
-  font-size: 2em;
-  margin-top: 1em;
-}
-
-#share-popup-container .share-widget-container {
-  width: 100%;
-  text-align: center;
-}
-
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button {
-  width: 70px;
-  height: 70px;
-}
-
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button a {
-  width: 60px;
-  height: 60px;
-  margin: 5px;
-  background-size: 100% 100%!important;
-  background-repeat: no-repeat!important;
-}
-
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button a:hover {
-  width: 70px;
-  height: 70px;
-  margin: 0;
-  transition: all 0.2s ease;
-}
-
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-facebook a {
-  background-image: url("../images/share-popup/facebook.png")!important;
-}
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-twitter a {
-  background-image: url("../images/share-popup/twitter.png")!important;
-}
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-linkedin a {
-  background-image: url("../images/share-popup/linkedin.png")!important;
-}
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-google-plus a {
-  background-image: url("../images/share-popup/google-plus.png")!important;
-}
-#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-print a {
-  background-image: url("../images/share-popup/print_icon.png")!important;
 }
