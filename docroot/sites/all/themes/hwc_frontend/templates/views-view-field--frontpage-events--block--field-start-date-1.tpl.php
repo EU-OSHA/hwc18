@@ -22,8 +22,9 @@
  * the view is modified.
  */
 $parts = explode(' ', strip_tags($output));
+$country_code = $row->field_field_country_code[0]['raw']['value'];
 ?>
 <div class="event_day_month">
   <div class="event_day"><?php print $parts[0]; ?></div>
-  <div class="event_month"><?php print t($parts[1]); ?></div>
+  <div class="event_country"><?php print $country_code; ?></div>
 </div>

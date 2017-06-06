@@ -190,7 +190,6 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['label'] = '';
-  $handler->display->display_options['fields']['field_start_date']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_start_date']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_start_date']['element_class'] = 'featured_event';
   $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
@@ -213,7 +212,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_field']['settings'] = array(
     'field_formatter_class' => '',
   );
-  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
   /* Field: Content: Starting date and time */
   $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
   $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
@@ -227,6 +226,17 @@ function hwc_homepage_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
     'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['label'] = '';
+  $handler->display->display_options['fields']['field_country_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_code']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_country_code']['settings'] = array(
     'field_formatter_class' => '',
   );
   /* Sort criterion: Content: Starting date and time -  start date (field_start_date) */
