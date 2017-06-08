@@ -603,3 +603,10 @@ function hwc_update_7032() {
 function hwc_update_7033() {
   module_enable(['hwc_priority_areas']);
 }
+
+/**
+ * enabled hwc priority areas module
+ */
+function hwc_update_7034() {
+  module_enable(['hwc_napo_films']);
+}
