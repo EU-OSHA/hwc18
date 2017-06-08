@@ -605,7 +605,7 @@ function hwc_update_7033() {
 }
 
 /**
- * enabled hwc priority areas module
+ * enabled napo films module
  */
 function hwc_update_7034() {
   module_enable(['hwc_napo_films']);
