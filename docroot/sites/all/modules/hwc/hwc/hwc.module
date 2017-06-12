@@ -8,6 +8,8 @@ define('ROLE_SUPERVISOR', 'supervisor');
 define('ROLE_SUPERADMINISTRATOR', 'Superadministrators');
 define('SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
 
+define('NAPO_WEBSITE', 'https://www.napofilm.net/');
+
 /**
  * Implements hook_permission().
  */
@@ -171,7 +173,6 @@ function hwc_on_the_web_get_services_alter(&$services) {
     'itunes' => array('name' => 'iTunes'),
     'delicious' => array('name' => 'Delicious'),
     'friendfeed' => array('name' => 'FriendFeed'),
-    'blogger' => array('name' => 'Blog'),
     'rss' => array('name' => 'RSS'),
   );
 }
@@ -735,7 +736,7 @@ function hwc_node_view($node, $view_mode, $langcode) {
   );
   // Array of nids where to hide the share widget.
   $no_share_widget = array(
-    162, 241, 242, 243, 244, 245, 246,
+    160, 162, 241, 242, 243, 244, 245, 246,
   );
 
   if (($view_mode == 'full' && !empty($node->field_activity))) {
@@ -760,6 +761,19 @@ function hwc_node_view($node, $view_mode, $langcode) {
 
       $node->content['share_widget'] = array('#markup' => hwc_news_share_widget($node, $options));
     }
+  }
+  if ($view_mode == 'full' && $node->nid == 160) {
+    $watch_other_link = NAPO_WEBSITE . '/search?search_block_form=Dangerous+substances+Chemicals';//todo check (or|and) search
+    $napo_logo_link = NAPO_WEBSITE . '/';
+    $about_napo_link = NAPO_WEBSITE . '/about-napo/the-napo-story';
+    $know_more_about_napo = NAPO_WEBSITE . '/about-napo/the-napo-story';
+
+    $node->content['title_field'][0]['#markup'] =
+      '<div class="watch-other-link"><a href="' . $watch_other_link . '">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
+      '<div class="icon napo-logo"><a href="' . $napo_logo_link . '"></a></div>' .
+      '<h2>' . l(t('About Napo'), $about_napo_link) . '</h2>';
+
+    $node->content['body'][0]['#markup'] .= '<div class="more-link"><a href="' . $know_more_about_napo . '">' . t('Know more about Napo') . '</a></div>';
   }
 }
 

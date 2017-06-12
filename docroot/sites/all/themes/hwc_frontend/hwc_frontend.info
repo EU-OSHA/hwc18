@@ -27,6 +27,7 @@ regions[contact_form_widget]   = 'Contact form widget'
 stylesheets[all][] = css/style.css
 scripts[] = js/campaigns.js
 scripts[] = js/back_button.js
+scripts[] = js/napo-video.js
 files[] = theme/menu/menu.inc
 
 ;;;;;;;;;;;;;;;;;;;;;

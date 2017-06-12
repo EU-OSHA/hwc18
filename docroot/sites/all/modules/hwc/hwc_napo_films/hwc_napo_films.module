@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the HWC NAPO films feature.
+ */
+
+include_once 'hwc_napo_films.features.inc';
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function hwc_napo_films_views_pre_render(&$view) {
+  $jssor_path = libraries_get_path('jquery-slider-master');
+  if ($view->name == 'napo_film_carousel') {
+    drupal_add_js($jssor_path . '/jssor.slider.mini.js');
+    drupal_add_css($jssor_path . '/jssor.css');
+  }
+}
