@@ -73,6 +73,16 @@ function hwc_priority_areas_block_info() {
 }
 
 /**
+ * Implements hook_views_pre_render
+ * {@inheritdoc}
+ */
+function hwc_priority_areas_views_pre_render(&$view) {
+  if ($view->name == 'topics') {
+    $view->header['area_text_custom']->options['content'] = str_replace('_topics_message_', t(variable_get('hwc_homepage_topics_message')), $view->header['area_text_custom']->options['content']);
+  }
+}
+
+/**
  * Implements hook_block_configure().
  *
  * This hook declares configuration options for blocks provided by this module.
