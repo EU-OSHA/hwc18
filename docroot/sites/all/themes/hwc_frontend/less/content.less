@@ -446,8 +446,7 @@ ul.tabs--primary.nav.nav-tabs{
 			width: 100% !important;
 			height: 356px !important;
 			> div{ /* .views-field.views-field-field-image */
-				background-color: #456E00;
-				background-color: #6B9000;
+				background-color: #7dad35;
 				width: 1139px;
 				width: 100% !important;
 				height: 356px !important;
@@ -957,6 +956,10 @@ ul.tabs--primary.nav.nav-tabs{
 				padding-top:0px;
 			}
 		}
+		.field-name-body.field-type-text-with-summary p{
+			margin:0em 0em 1em;
+  		}
+
 		.more-link{
 			color: @btn-default-bg;
 			background-color: transparent;
@@ -1154,7 +1157,7 @@ ul.tabs--primary.nav.nav-tabs{
 			padding-top: 100px;
 			margin-bottom: 15px;
 			font-style: normal;
-			background: url("../images/content/mail-newsletter-big.png") no-repeat center 20px;
+			background: url("../images/content/icono-newsletter.png") no-repeat center 20px;
 			background-size: 61px;
 			color: @h2-default-color;
 		}
@@ -2165,7 +2168,7 @@ ul.tabs--primary.nav.nav-tabs{
 		    padding-top: 100px;
 		    margin-bottom: 40px;
 		    font-style: normal;
-		    background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
+		    background: url(../images/content/tools-and-resources.png) no-repeat center 20px;
 		    background-size: 61px;
 		    a{
 		    	color: white;
@@ -2210,7 +2213,7 @@ ul.tabs--primary.nav.nav-tabs{
 		    padding-top: 100px;
 		    margin-bottom: 40px;
 		    font-style: normal;
-		    background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
+		    background: url(../images/content/icono-topics.png) no-repeat center 20px;
 		    background-size: 61px;
 		    a{
 		    	color: @color3;
@@ -2248,42 +2251,84 @@ ul.tabs--primary.nav.nav-tabs{
 	    			li.priority_area_1{
 						a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-awareness-raising.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 27px;
+							    width: 27px;
+							    margin-right: 10px;
+							    margin-top: 2px;
 							}
 						}
 	    			}
 	    			li.priority_area_2{
 	    				a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-facts-and-figures.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 23px;
+							    width: 27px;
+							    margin-right: 10px;
+							    margin-top: 2px;
 							}
 						}
 	    			}
 	    			li.priority_area_3{
 	    				a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-managing-risk.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 24px;
+							    width: 27px;
+							    margin-right: 10px;
+							    margin-top: 2px;
 							}
 						}
 	    			}
 	    			li.priority_area_4{
 	    				a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-substitution.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 23px;
+							    width: 27px;
+							    margin-right: 10px;
+							    margin-top: 2px;
 							}
 						}
 	    			}
 	    			li.priority_area_5{
 	    				a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-specific-groups.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 25px;
+							    width: 27px;
+							    margin-right: 10px;
+							    margin-top: 2px;
 							}
 						}
 	    			}
 	    			li.priority_area_6{
 	    				a{
 							&:before{
-								content: ">";
+								content: "";
+								background: url(../images/content/icono-carcinogens.png) no-repeat;
+								float: left;
+							    background-size: cover;
+							    height: 31px;
+							    width: 25px;
+							    margin-right: 10px;
+							    margin-top: 0px;
 							}
 						}
 	    			}
@@ -2337,11 +2382,16 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 	}
 	.panels-flexible-region-new-home_left{
-		
+		h2.pane-title{
+		    background: url(../images/content/news.png) no-repeat center 20px;
+		}
 	}
 	.panels-flexible-region-new-center{
 		border-left: 1px dotted @color3;
 		border-right: 1px dotted @color3;
+		h2.pane-title{
+		    background: url(../images/content/icono-events-section.png) no-repeat center 20px;
+		}
 		.event_day_month{
 			.event_day{
 				background-color: @color2;
@@ -2349,10 +2399,11 @@ ul.tabs--primary.nav.nav-tabs{
 				height: 50px;
 				text-align: center;
 				color: white;
-				line-height: 50px;
+				line-height: 58px;
 				font-weight: bold;
 				font-size: 1.4em;
 				margin-bottom: 3px;
+				background: url(../images/content/icono-events-day.png) no-repeat center;
 			}
 			.event_country{
 				background-color: @color2-ligth;
@@ -2367,6 +2418,9 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 	}
 	.panels-flexible-region-new-home_right{
+		h2.pane-title{
+		    background: url(../images/content/icono-twitter.png) no-repeat center 20px;
+		}
 		.view-id-social_dashboard{
 			.twitter-tweet{
 				.MediaCard{
@@ -3314,12 +3368,11 @@ p.no-results{
 		border-top: 1px dotted @border-default-color;
 		padding-top: 2em;
 		padding-bottom: 1em;
-		color: @text-color-3;;
+		color: @text-color-3;
 		margin-bottom: 0em;
 		font-weight: bold;
-		padding-left: 1em;
 		&:after{
-			content:":"
+			content:":";
 		}
 	}
 
