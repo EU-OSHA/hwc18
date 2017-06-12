@@ -173,7 +173,6 @@ function hwc_on_the_web_get_services_alter(&$services) {
     'itunes' => array('name' => 'iTunes'),
     'delicious' => array('name' => 'Delicious'),
     'friendfeed' => array('name' => 'FriendFeed'),
-    'blogger' => array('name' => 'Blog'),
     'rss' => array('name' => 'RSS'),
   );
 }
