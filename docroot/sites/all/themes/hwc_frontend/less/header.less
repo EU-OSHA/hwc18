@@ -62,13 +62,36 @@ header.navbar-default{
 				position: absolute;
 				bottom: -4px;
 				right: 0;
-				select{
+				#lang_dropdown_select_language_chosen > .chosen-single, select{
+					background: none !important;
 					background-color: @input-language-default-bg;
 					color: @input-language-default-color;
 					border: none;
 					height: 25px;
 					padding: 0px;
 					cursor: pointer;
+					box-shadow: none !important;
+					span{
+						padding: 0px 4px;
+					}
+				}
+				#lang_dropdown_select_language_chosen{
+					background-color: @input-language-default-bg;
+					color: @input-language-default-color;
+					border: none;
+					height: 25px;
+					padding: 0px;
+					cursor: pointer;
+					margin: 0px;
+
+				}
+				.chosen-drop{
+					background-color: @input-language-default-bg;
+					ul{
+						padding: 0px;
+						margin: 0px;
+						margin-bottom: 0px;
+					}
 				}
 				&:after{
 					width: 30px;
