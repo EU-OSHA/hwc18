@@ -60,7 +60,7 @@ function hwc_homepage_default_panels_mini() {
         'width' => '34.31325959046965',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => 'col-sm-4',
+        'class' => 'col-xs-12 col-sm-6 col-md-4',
         'hide_empty' => 0,
       ),
       5 => array(
@@ -79,7 +79,7 @@ function hwc_homepage_default_panels_mini() {
         'width' => '34.05934343434343',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => 'col-sm-4',
+        'class' => 'col-xs-12 col-sm-6 col-md-4',
         'hide_empty' => 0,
       ),
       'home_right' => array(
@@ -88,7 +88,7 @@ function hwc_homepage_default_panels_mini() {
         'width' => '31.62739697518692',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => 'col-sm-4',
+        'class' => 'col-xs-12 col-sm-6 col-md-4',
         'hide_empty' => 0,
       ),
       6 => array(

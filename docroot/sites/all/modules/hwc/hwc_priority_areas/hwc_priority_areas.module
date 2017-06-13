@@ -62,13 +62,6 @@ function hwc_priority_areas_block_info() {
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['hwc_pa_relevant_resources'] = array(
-    'info' => t('Priority Areas - Other relevant resources'),
-    'status' => 1,
-    'region' => '-1',
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'cache' => DRUPAL_NO_CACHE,
-  );
   return $blocks;
 }
 
@@ -92,18 +85,6 @@ function hwc_priority_areas_block_configure($delta = '') {
 
   switch($delta) {
     case 'hwc_pa_links_and_info':
-      $form['hwc_pa_links_and_info_link_label'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Partner text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_links_and_info_link_label', ''),
-      );
-      $form['hwc_pa_links_and_info_link_url'] = array(
-        '#type' => 'textfield',
-        '#title' => 'Partner Link URL',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_links_and_info_link_url', ''),
-      );
       $form['hwc_pa_links_and_info_text'] = array(
         '#type' => 'textfield',
         '#title' => 'Recommended resources text',
@@ -159,14 +140,6 @@ function hwc_priority_areas_block_configure($delta = '') {
         '#default_value' => variable_get('hwc_pa_related_links_text', ''),
       );
       break;
-    case 'hwc_pa_relevant_resources':
-      $form['hwc_pa_relevant_resources_text'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Introductory text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_relevant_resources_text', ''),
-      );
-      break;
   }
 
   return $form;
@@ -179,8 +152,6 @@ function hwc_priority_areas_block_save($delta = '', $edit = array()) {
   // We need to save settings from the configuration form.
   switch ($delta) {
     case 'hwc_pa_links_and_info':
-      variable_set('hwc_pa_links_and_info_link_label', $edit['hwc_pa_links_and_info_link_label']);
-      variable_set('hwc_pa_links_and_info_link_url', $edit['hwc_pa_links_and_info_link_url']);
       variable_set('hwc_pa_links_and_info_text', $edit['hwc_pa_links_and_info_text']);
       break;
     case 'hwc_pa_highlights':
@@ -201,9 +172,6 @@ function hwc_priority_areas_block_save($delta = '', $edit = array()) {
     case 'hwc_pa_related_links':
       variable_set('hwc_pa_related_links_text', $edit['hwc_pa_related_links_text']);
       break;
-    case 'hwc_pa_relevant_resources':
-      variable_set('hwc_pa_relevant_resources_text', $edit['hwc_pa_relevant_resources_text']);
-      break;
   }
 }
 
@@ -215,12 +183,10 @@ function hwc_priority_areas_block_view($delta = '') {
   $block['content'] = '';
   $relevant_for = arg(2);
   if ($delta == 'hwc_pa_links_and_info') {
-    $text = variable_get('hwc_pa_links_and_info_link_label', '');
-    $link = variable_get('hwc_pa_links_and_info_link_url', '');
     $recommended = variable_get('hwc_pa_links_and_info_text', 'Recommended resources for you');
     $block['content'] = theme('priority_areas_links_and_info', array(
-        'text' => $text,
-        'link' => $link,
+        'text' => NULL,
+        'link' => NULL,
         'recommended' => $recommended,
       )
     );
@@ -230,8 +196,6 @@ function hwc_priority_areas_block_view($delta = '') {
     $block['title'] = t('Highlights');
     $block['content'] = variable_get('hwc_pa_highlights_text', '');
     $block['content'] .= hwc_priority_areas_get_highlights($relevant_for, 2);
-    $link = url('highlights', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
-    $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('See More Highlights'), 'link' => $link]);
   }
 
   if ($delta == 'hwc_pa_practical_tools') {
@@ -263,12 +227,6 @@ function hwc_priority_areas_block_view($delta = '') {
     $block['content'] = variable_get('hwc_pa_etool_text', '');
     $link = url('gpa_section_in_campaign_website', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
     $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('GPA section in campaign website'), 'link' => $link]);
-  }
-
-  if ($delta == 'hwc_pa_relevant_resources') {
-    $block['title'] = t('Other relevant resources');
-    $block['content'] = variable_get('hwc_pa_relevant_resources_text', '');
-    $block['content'] .= hwc_priority_areas_get_other_relevant_resources($relevant_for, NULL);
   }
 
   if ($delta == 'hwc_pa_related_links') {
@@ -317,7 +275,7 @@ function hwc_priority_areas_theme() {
 function hwc_priority_areas_get_highlights($relevant_for = NULL, $limit = NULL) {
   $q = db_select('node', 'a');
   $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'highlight');
+  $q->condition('a.type', 'article');
   $q->condition('a.status', 1);
   $q->orderBy('a.changed', 'DESC');
   if (!empty($relevant_for)) {
