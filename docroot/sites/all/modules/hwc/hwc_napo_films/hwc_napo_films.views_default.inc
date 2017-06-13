@@ -120,24 +120,6 @@ function hwc_napo_films_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Video */
-  $handler->display->display_options['fields']['field_video']['id'] = 'field_video';
-  $handler->display->display_options['fields']['field_video']['table'] = 'field_data_field_video';
-  $handler->display->display_options['fields']['field_video']['field'] = 'field_video';
-  $handler->display->display_options['fields']['field_video']['label'] = '';
-  $handler->display->display_options['fields']['field_video']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_video']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_video']['type'] = 'videojs';
-  $handler->display->display_options['fields']['field_video']['settings'] = array(
-    'width' => NULL,
-    'height' => NULL,
-    'autoplay' => FALSE,
-    'loop' => FALSE,
-    'hidecontrols' => FALSE,
-    'defaulttrack' => NULL,
-    'preload' => 'auto',
-    'field_formatter_class' => '',
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
@@ -170,6 +152,24 @@ function hwc_napo_films_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'napo-film-title';
+  /* Field: Content: Video */
+  $handler->display->display_options['fields']['field_video']['id'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['table'] = 'field_data_field_video';
+  $handler->display->display_options['fields']['field_video']['field'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['label'] = '';
+  $handler->display->display_options['fields']['field_video']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_video']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_video']['type'] = 'videojs';
+  $handler->display->display_options['fields']['field_video']['settings'] = array(
+    'width' => NULL,
+    'height' => NULL,
+    'autoplay' => FALSE,
+    'loop' => FALSE,
+    'hidecontrols' => FALSE,
+    'defaulttrack' => NULL,
+    'preload' => 'auto',
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Global: Random */
   $handler->display->display_options['sorts']['random']['id'] = 'random';

@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
 });
 </script>
 <div id="napo_films" class="napo_films">
-    <div id="num_slides" data-u="slides" style="">
+    <div class="num_slides" data-u="slides">
       <?php print $rows; ?>
     </div>
     <div data-u="navigator" class="jssorb03">
