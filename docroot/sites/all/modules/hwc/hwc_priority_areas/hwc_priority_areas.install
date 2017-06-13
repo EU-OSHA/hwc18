@@ -19,6 +19,18 @@ function hwc_priority_areas_update_7002() {
   }
 }
 
+/**
+ * Revert priority areas module
+ */
+function hwc_priority_areas_update_7003() {
+  features_revert_module('hwc_priority_areas');
+  $voc = taxonomy_vocabulary_machine_name_load('priority_area');
+  $tree = taxonomy_get_tree($voc->vid);
+  foreach($tree as $term) {
+    hwc_priority_areas_create_topic_related_node($term->tid);
+  }
+}
+
 function hwc_priority_areas_create_topic_related_node($tid) {
   $q = db_select('node', 'a');
   $q->fields('a', array('nid', 'vid'));

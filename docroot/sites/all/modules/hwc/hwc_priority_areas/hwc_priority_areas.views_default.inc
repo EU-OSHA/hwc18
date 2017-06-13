@@ -37,6 +37,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'priority_areas';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -107,6 +111,13 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['link_url'] = 'case-studies?relevant_for[%1]';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Case Studies */
   $handler->display->display_options['relationships']['reverse_field_case_studies_node']['id'] = 'reverse_field_case_studies_node';
@@ -181,6 +192,13 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tools and Guidance';
   $handler->display->display_options['link_url'] = 'practical-tools?relevant_for[%1]';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Topic */
   $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['id'] = 'reverse_field_tools_and_guidance_node';
@@ -221,6 +239,13 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See More Publications';
   $handler->display->display_options['link_url'] = 'publications?relevant_for[%1]';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Publications */
   $handler->display->display_options['relationships']['reverse_field_publications_node']['id'] = 'reverse_field_publications_node';
@@ -298,6 +323,7 @@ function hwc_priority_areas_views_default_views() {
     t('All'),
     t('Case studies'),
     t('See More Case Studies'),
+    t('Introductory text'),
     t('Case Studies'),
     t('Topic Related - Case studies'),
     t('Tools and Guidance'),
