@@ -170,6 +170,14 @@ function hwc_napo_films_views_default_views() {
     'preload' => 'auto',
     'field_formatter_class' => '',
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '__SHARE__
+';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Global: Random */
   $handler->display->display_options['sorts']['random']['id'] = 'random';
@@ -207,6 +215,7 @@ function hwc_napo_films_views_default_views() {
     t('Block'),
     t('[title_field]
 <div class="homepage-video-body">[body]</div>'),
+    t('__SHARE__'),
   );
   $export['napo_film_carousel'] = $view;
 
