@@ -8,6 +8,39 @@ include_once 'hwc_priority_areas.features.inc';
 
 define('PRIORITY_AREAS_CASE_STUDY_TID', 521);
 
+function hwc_priority_areas_get_topic_related_nid($tid) {
+  $q = db_select('node', 'a');
+  $q->fields('a', array('nid', 'vid'));
+  $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
+  $q->condition('a.type', 'topic_related');
+  $q->condition('fs.field_priority_area_tid', $tid);
+  $nids = $q->execute()->fetchCol();
+  if ($nids) {
+    return $nids;
+  }
+  $term = taxonomy_term_load($tid);
+
+  $node = new stdClass();
+  node_submit($node);
+  // Do not delete/change this marker unless you know what you are doing!
+  $node->title_field['en'][0]['value'] = $term->name;
+  $node->field_priority_area[LANGUAGE_NONE][]['tid'] = $tid;
+  $node->language = 'en';
+  $node->type = 'topic_related';
+  $node->uid = 0;
+  $node->status = 1;
+  $node->path['pathauto'] = 0;
+  $node->path['alias'] = '';
+  node_save($node);
+  if (isset($node->nid)) {
+    return array($node->nid);
+  }
+  else {
+    return FALSE;
+  }
+}
+
+
 /**
  * Implements hook_block_info().
  */
@@ -100,30 +133,6 @@ function hwc_priority_areas_block_configure($delta = '') {
         '#default_value' => variable_get('hwc_pa_highlights_text', ''),
       );
       break;
-    case 'hwc_pa_practical_tools':
-      $form['hwc_pa_practical_tools_text'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Introductory text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_practical_tools_text', ''),
-      );
-      break;
-    case 'hwc_pa_case_studies':
-      $form['hwc_pa_case_studies_text'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Introductory text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_case_studies_text', ''),
-      );
-      break;
-    case 'hwc_pa_publications':
-      $form['hwc_pa_publications_text'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Introductory text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_publications_text', ''),
-      );
-      break;
     case 'hwc_pa_etool':
       $form['hwc_pa_etool_text'] = array(
         '#type' => 'textarea',
@@ -157,15 +166,6 @@ function hwc_priority_areas_block_save($delta = '', $edit = array()) {
     case 'hwc_pa_highlights':
       variable_set('hwc_pa_highlights_text', $edit['hwc_pa_highlights_text']);
       break;
-    case 'hwc_pa_practical_tools':
-      variable_set('hwc_pa_practical_tools_text', $edit['hwc_pa_practical_tools_text']);
-      break;
-    case 'hwc_pa_case_studies':
-      variable_set('hwc_pa_case_studies_text', $edit['hwc_pa_case_studies_text']);
-      break;
-    case 'hwc_pa_publications':
-      variable_set('hwc_pa_publications_text', $edit['hwc_pa_publications_text']);
-      break;
     case 'hwc_pa_etool':
       variable_set('hwc_pa_etool_text', $edit['hwc_pa_etool_text']);
       break;
@@ -179,56 +179,26 @@ function hwc_priority_areas_block_save($delta = '', $edit = array()) {
  * Implements hook_block_view().
  */
 function hwc_priority_areas_block_view($delta = '') {
+  $relevant_for = arg(2);
   $block = array();
   $block['content'] = '';
-  $relevant_for = arg(2);
   if ($delta == 'hwc_pa_links_and_info') {
-    $recommended = variable_get('hwc_pa_links_and_info_text', 'Recommended resources for you');
     $block['content'] = theme('priority_areas_links_and_info', array(
-        'text' => NULL,
-        'link' => NULL,
-        'recommended' => $recommended,
+        'recommended' => t(variable_get('hwc_pa_links_and_info_text', 'Recommended resources for you')),
       )
     );
   }
-
   if ($delta == 'hwc_pa_highlights') {
     $block['title'] = t('Highlights');
-    $block['content'] = variable_get('hwc_pa_highlights_text', '');
+    $block['content'] = t(variable_get('hwc_pa_highlights_text', ''));
     $block['content'] .= hwc_priority_areas_get_highlights($relevant_for, 2);
   }
-
-  if ($delta == 'hwc_pa_practical_tools') {
-    $block['title'] = t('Tools and Guidance');
-    $block['content'] = variable_get('hwc_pa_practical_tools_text', '');
-    $block['content'] .= hwc_priority_areas_get_practical_tools($relevant_for, 1);
-    $link = url('practical-tools', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
-    $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('See More tools'), 'link' => $link]);
-  }
-
-  if ($delta == 'hwc_pa_case_studies') {
-    $block['title'] = t('Case studies');
-    $block['content'] = variable_get('hwc_pa_case_studies_text', '');
-    $block['content'] .= hwc_priority_areas_get_case_studies($relevant_for, 1);
-    $link = url('case-studies', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
-    $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('See More Case Studies'), 'link' => $link]);
-  }
-
-  if ($delta == 'hwc_pa_publications') {
-    $block['title'] = t('Publications');
-    $block['content'] = variable_get('hwc_pa_publications_text', '');
-    $block['content'] .= hwc_priority_areas_get_publications($relevant_for, 1);
-    $link = url('publications', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
-    $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('See More Publications'), 'link' => $link]);
-  }
-
   if ($delta == 'hwc_pa_etool') {
     $block['title'] = t('Dangerous Substances e-tool');
-    $block['content'] = variable_get('hwc_pa_etool_text', '');
+    $block['content'] = t(variable_get('hwc_pa_etool_text', ''));
     $link = url('gpa_section_in_campaign_website', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
     $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('GPA section in campaign website'), 'link' => $link]);
   }
-
   if ($delta == 'hwc_pa_related_links') {
     $block['title'] = t('Related links');
     $block['content'] .= hwc_priority_areas_get_related_links($relevant_for, 3);
@@ -255,8 +225,6 @@ function hwc_priority_areas_theme() {
   $theme['priority_areas_links_and_info'] = array(
     'template' => 'hwc_priority_areas_links_and_info',
     'variables' => array(
-      'text' => NULL,
-      'link' => NULL,
       'recommended' => NULL,
     ),
     'path' => $path . '/templates',
@@ -289,71 +257,6 @@ function hwc_priority_areas_get_highlights($relevant_for = NULL, $limit = NULL) 
   return hwc_priority_areas_render_nodes($nids);
 }
 
-function hwc_priority_areas_get_practical_tools($relevant_for = NULL, $limit = NULL) {
-  $q = db_select('node', 'a');
-  $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'practical_tool');
-  $q->condition('a.status', 1);
-  $q->orderBy('a.changed', 'DESC');
-  if (!empty($restrict)) {
-    $q->condition('a.nid', $restrict, 'IN');
-  }
-  if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_priority_area_tid', $relevant_for);
-  }
-  if ($limit) {
-    $q = $q->extend('PagerDefault')->limit($limit);
-  }
-  $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids);
-}
-
-function hwc_priority_areas_get_case_studies($relevant_for = NULL, $limit = NULL) {
-
-  $q = db_select('node', 'a');
-  $q->innerJoin('field_data_field_publication_type', 'b', 'a.nid = b.entity_id');
-  $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'publication');
-  $q->condition('a.status', 1);
-  $q->orderBy('a.changed', 'DESC');
-  $q->condition('b.field_publication_type_tid', PRIORITY_AREAS_CASE_STUDY_TID);
-  if (!empty($restrict)) {
-    $q->condition('a.nid', $restrict, 'IN');
-  }
-  if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_priority_area_tid', $relevant_for);
-  }
-  if ($limit) {
-    $q = $q->extend('PagerDefault')->limit($limit);
-  }
-  $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids);
-}
-
-function hwc_priority_areas_get_publications($relevant_for = NULL, $limit = NULL) {
-  $q = db_select('node', 'a');
-  $q->innerJoin('field_data_field_publication_type', 'b', 'a.nid = b.entity_id');
-  $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'publication');
-  $q->condition('a.status', 1);
-  $q->orderBy('a.changed', 'DESC');
-  $q->condition('b.field_publication_type_tid', PRIORITY_AREAS_CASE_STUDY_TID, '!=');
-  if (!empty($restrict)) {
-    $q->condition('a.nid', $restrict, 'IN');
-  }
-  if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_priority_area_tid', $relevant_for);
-  }
-  if ($limit) {
-    $q = $q->extend('PagerDefault')->limit($limit);
-  }
-  $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids);
-}
-
 function hwc_priority_areas_get_related_links($relevant_for = NULL, $limit = NULL, $know_more = FALSE) {
   $q = db_select('node', 'a');
   $q->fields('a', array('nid', 'vid'));
@@ -372,26 +275,6 @@ function hwc_priority_areas_get_related_links($relevant_for = NULL, $limit = NUL
   }
   $nids = $q->execute()->fetchCol();
   return hwc_priority_areas_render_nodes($nids, 'priority_areas');
-}
-
-function hwc_priority_areas_get_other_relevant_resources($relevant_for = NULL, $limit = NULL) {
-  $q = db_select('node', 'a');
-  $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'other_relevant_resources'); // todo
-  $q->condition('a.status', 1);
-  $q->orderBy('a.changed', 'DESC');
-  if (!empty($restrict)) {
-    $q->condition('a.nid', $restrict, 'IN');
-  }
-  if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_priority_area_tid', $relevant_for);
-  }
-  if ($limit) {
-    $q = $q->extend('PagerDefault')->limit($limit);
-  }
-  $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids);
 }
 
 function hwc_priority_areas_render_nodes($nids, $view_mode = 'priority_areas', $know_more = TRUE) {
