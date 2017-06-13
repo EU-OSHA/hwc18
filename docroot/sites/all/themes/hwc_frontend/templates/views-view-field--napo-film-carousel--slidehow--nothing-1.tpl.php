@@ -23,4 +23,4 @@
  */
 ?>
 <?php
-print $output;
+print hwc_news_share_widget($row->_field_data['nid']['entity'], ['rss_hide' => 1]);
