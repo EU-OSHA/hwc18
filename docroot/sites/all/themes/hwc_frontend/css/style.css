@@ -15519,6 +15519,7 @@ input#edit-field-image-und-0-upload::before {
 /*napo film*/
 .page-node-160 #block-views-napo-film-carousel-slidehow {
   margin-bottom: 40px;
+  height: 665px;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films {
   width: 100%;
@@ -15532,12 +15533,10 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
   font-size: 16px;
-  position: inherit !important;
-  overflow: inherit !important;
-}
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div {
-  position: relative !important;
-  height: inherit !important;
+  overflow: hidden !important;
+  margin: 0 auto;
+  width: 100%;
+  height: 600px;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title {
   margin: 0 auto;
@@ -15547,7 +15546,7 @@ input#edit-field-image-und-0-upload::before {
   z-index: 2;
   padding: 0px 100px;
   bottom: 0px;
-  margin-bottom: 50px;
+  margin-bottom: 120px;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title a {
   color: white;
@@ -15563,6 +15562,7 @@ input#edit-field-image-und-0-upload::before {
   margin: 0 auto;
   width: 100%;
   height: 564px;
+  background-color: inherit !important;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget {
   border-top: none;
@@ -15597,11 +15597,14 @@ input#edit-field-image-und-0-upload::before {
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
   display: block !important;
 }
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03l.publications {
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03l {
   display: block !important;
   position: relative;
+  background-color: red;
+  height: 400px;
+  background: url(/images/content/arrow-left-blue.png) no-repeat !important;
 }
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03r.publications {
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03r {
   display: block !important;
   position: relative;
 }
