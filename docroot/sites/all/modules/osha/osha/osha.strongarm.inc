@@ -903,6 +903,10 @@ el.remove();
             'weight' => '0',
             'visible' => TRUE,
           ),
+          'priority_areas' => array(
+            'weight' => '6',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
