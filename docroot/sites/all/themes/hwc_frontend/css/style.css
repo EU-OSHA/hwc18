@@ -15516,6 +15516,144 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 2.5em;
 }
 /*end Data visualisation – ageing & OSH*/
+/*napo film*/
+.page-node-160 #block-views-napo-film-carousel-slidehow {
+  margin-bottom: 40px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  height: inherit !important;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films > div {
+  height: inherit !important;
+  position: relative !important;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
+  font-size: 16px;
+  position: inherit !important;
+  overflow: inherit !important;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div {
+  position: relative !important;
+  height: inherit !important;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  padding: 0px 100px;
+  bottom: 0px;
+  margin-bottom: 50px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title a {
+  color: white;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title p {
+  color: white;
+  font-size: 1em;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .video-js {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  height: 564px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget {
+  border-top: none;
+  border-bottom: none;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #003399;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget ul {
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 8px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget ul li[id*="facebook-share-button-"] {
+  background: url(../images/content/facebook-w.png) no-repeat;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget ul li[id*="twitter-share-button-"] {
+  background: url(../images/content/twitter-w.png) no-repeat;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget ul li[id*="linked-in-"] {
+  background: url(../images/content/linkedin-w.png) no-repeat;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget ul li[id*="google-plus-"] {
+  background: url(../images/content/google-w.png) no-repeat;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget .label {
+  display: none;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
+  display: block !important;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03l.publications {
+  display: block !important;
+  position: relative;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .jssora03r.publications {
+  display: block !important;
+  position: relative;
+}
+.page-node-160 article .field-name-title-field .watch-other-link a {
+  color: #003399;
+  text-decoration: underline;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: block;
+}
+.page-node-160 article .field-name-title-field .watch-other-link a:before {
+  content: "> ";
+}
+.page-node-160 article .field-name-title-field h2 {
+  margin-top: 15px;
+  padding-top: 100px;
+  margin-bottom: 40px;
+  font-style: normal;
+  background: url(../images/content/icono-napo.png) no-repeat center 20px;
+  background-size: 61px;
+  text-align: center;
+}
+.page-node-160 article .field-name-title-field h2 a {
+  color: #749b00;
+  font-weight: bold;
+  font-size: 30px;
+}
+.page-node-160 article .field-name-title-field h2 a:before {
+  content: "";
+}
+.page-node-160 article .field-type-text-with-summary {
+  text-align: center;
+}
+.page-node-160 article .field-type-text-with-summary .more-link {
+  background-color: #003399 !important;
+  padding: 8px 20px 8px 20px;
+  margin-top: 15px;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+.page-node-160 article .field-type-text-with-summary .more-link:before {
+  content: "> ";
+  color: white;
+}
+.page-node-160 article .field-type-text-with-summary .more-link a {
+  color: white;
+  border: none;
+  width: auto;
+  font-style: normal;
+}
+/*end napo film*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
