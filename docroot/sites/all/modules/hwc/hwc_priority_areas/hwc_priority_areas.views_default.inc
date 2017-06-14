@@ -15,7 +15,7 @@ function hwc_priority_areas_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'topic-related';
+  $view->human_name = 'Topic Related Content';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -309,6 +309,78 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['filters']['field_publication_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_publication_type_tid']['vocabulary'] = 'publication_types';
   $handler->display->display_options['block_description'] = 'Topic Related - Publications';
+
+  /* Display: Highlights */
+  $handler = $view->new_display('block', 'Highlights', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Highlights';
+  $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['defaults']['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['defaults']['use_more_text'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'See More Publications';
+  $handler->display->display_options['link_url'] = 'publications?relevant_for[%1]';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_highlights_node']['id'] = 'reverse_field_highlights_node';
+  $handler->display->display_options['relationships']['reverse_field_highlights_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_highlights_node']['field'] = 'reverse_field_highlights_node';
+  $handler->display->display_options['relationships']['reverse_field_highlights_node']['label'] = 'Highlights';
+  $handler->display->display_options['relationships']['reverse_field_highlights_node']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'reverse_field_publications_node';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Highlights (field_highlights:delta) */
+  $handler->display->display_options['sorts']['delta']['id'] = 'delta';
+  $handler->display->display_options['sorts']['delta']['table'] = 'field_data_field_highlights';
+  $handler->display->display_options['sorts']['delta']['field'] = 'delta';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Priority area (field_priority_area) */
+  $handler->display->display_options['arguments']['field_priority_area_tid']['id'] = 'field_priority_area_tid';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['table'] = 'field_data_field_priority_area';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['field'] = 'field_priority_area_tid';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['relationship'] = 'reverse_field_highlights_node';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+  );
+  $handler->display->display_options['block_description'] = 'Topic Related - Publications';
   $translatables['topic_related'] = array(
     t('Master'),
     t('Related'),
@@ -333,6 +405,7 @@ function hwc_priority_areas_views_default_views() {
     t('Publications'),
     t('See More Publications'),
     t('Topic Related - Publications'),
+    t('Highlights'),
   );
   $export['topic_related'] = $view;
 

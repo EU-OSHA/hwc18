@@ -53,13 +53,6 @@ function hwc_priority_areas_block_info() {
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'cache' => DRUPAL_NO_CACHE,
   );
-  $blocks['hwc_pa_highlights'] = array(
-    'info' => t('Priority Areas - Highlights'),
-    'status' => 1,
-    'region' => '-1',
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'cache' => DRUPAL_NO_CACHE,
-  );
   $blocks['hwc_pa_practical_tools'] = array(
     'info' => t('Priority Areas - Practical tools'),
     'status' => 1,
@@ -125,14 +118,6 @@ function hwc_priority_areas_block_configure($delta = '') {
         '#default_value' => variable_get('hwc_pa_links_and_info_text', 'Recommended resources for you'),
       );
       break;
-    case 'hwc_pa_highlights':
-      $form['hwc_pa_highlights_text'] = array(
-        '#type' => 'textarea',
-        '#title' => 'Introductory text',
-        '#size' => 60,
-        '#default_value' => variable_get('hwc_pa_highlights_text', ''),
-      );
-      break;
     case 'hwc_pa_etool':
       $form['hwc_pa_etool_text'] = array(
         '#type' => 'textarea',
@@ -163,9 +148,6 @@ function hwc_priority_areas_block_save($delta = '', $edit = array()) {
     case 'hwc_pa_links_and_info':
       variable_set('hwc_pa_links_and_info_text', $edit['hwc_pa_links_and_info_text']);
       break;
-    case 'hwc_pa_highlights':
-      variable_set('hwc_pa_highlights_text', $edit['hwc_pa_highlights_text']);
-      break;
     case 'hwc_pa_etool':
       variable_set('hwc_pa_etool_text', $edit['hwc_pa_etool_text']);
       break;
@@ -187,11 +169,6 @@ function hwc_priority_areas_block_view($delta = '') {
         'recommended' => t(variable_get('hwc_pa_links_and_info_text', 'Recommended resources for you')),
       )
     );
-  }
-  if ($delta == 'hwc_pa_highlights') {
-    $block['title'] = t('Highlights');
-    $block['content'] = t(variable_get('hwc_pa_highlights_text', ''));
-    $block['content'] .= hwc_priority_areas_get_highlights($relevant_for, 2);
   }
   if ($delta == 'hwc_pa_etool') {
     $block['title'] = t('Dangerous Substances e-tool');
@@ -238,23 +215,6 @@ function hwc_priority_areas_theme() {
     'path' => $path . '/templates',
   );
   return $theme;
-}
-
-function hwc_priority_areas_get_highlights($relevant_for = NULL, $limit = NULL) {
-  $q = db_select('node', 'a');
-  $q->fields('a', array('nid', 'vid'));
-  $q->condition('a.type', 'article');
-  $q->condition('a.status', 1);
-  $q->orderBy('a.changed', 'DESC');
-  if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_priority_area_tid', $relevant_for);
-  }
-  if ($limit) {
-    $q = $q->extend('PagerDefault')->limit($limit);
-  }
-  $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids);
 }
 
 function hwc_priority_areas_get_related_links($relevant_for = NULL, $limit = NULL, $know_more = FALSE) {
