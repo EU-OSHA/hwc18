@@ -883,9 +883,9 @@ function _hwc_get_allowed_section_node_types() {
   return array('news','events');
 }
 
-function _hwc_segment_options_list() {
-  $return = array('0' => t('All audience'));
-  $vocabulary = taxonomy_vocabulary_machine_name_load('segment');
+function _hwc_priority_area_options_list() {
+  $return = array('0' => t('All topics'));
+  $vocabulary = taxonomy_vocabulary_machine_name_load('priority_area');
   if (!empty($vocabulary)) {
     $terms = taxonomy_term_load_multiple(array(), array('vid' => $vocabulary->vid));
     foreach($terms as $key => $term) {
