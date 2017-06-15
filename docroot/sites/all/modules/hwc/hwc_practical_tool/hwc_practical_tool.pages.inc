@@ -51,7 +51,7 @@ function hwc_practical_tool_menu_tools_form($form, $form_state) {
   );
   $form['left-column']['relevant_for'] = array(
     '#type' => 'checkboxes',
-    '#options' => _hwc_segment_options_list(),
+    '#options' => _hwc_priority_area_options_list(),
     '#default_value' => $relevant_for,
     '#title' => t('Relevant for'),
   );
@@ -170,8 +170,8 @@ function hwc_practical_tool_menu_tools_search_native($form_state) {
     $q->condition('al.field_available_languages_value', $languages, 'IN');
   }
   if (!empty($relevant_for)) {
-    $q->innerJoin('field_data_field_segment', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
-    $q->condition('fs.field_segment_tid', $relevant_for, 'IN');
+    $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
+    $q->condition('fs.field_priority_area_tid', $relevant_for, 'IN');
   }
   $nids = $q->execute()->fetchCol();
   $nids = array_unique($nids);
@@ -248,12 +248,12 @@ function hwc_practical_tool_menu_tools_search_related($form_state, $native_nids)
   foreach ($pnids as $pnid) {
     if (!empty($relevant_for)) {
       // Check if the node is relevant for all selected 'relevant for' checkboxes.
-      $q2 = db_select('field_data_field_segment', 'b');
+      $q2 = db_select('field_data_field_priority_area', 'b');
       $q2->fields('b', array('entity_id'));
       $q2->innerJoin('node', 'a', 'a.nid = b.entity_id');
       $q2->condition('b.entity_id', $pnid);
       $q2->condition('b.entity_type', 'node');
-      $q2->condition('b.field_segment_tid', $relevant_for, 'IN');
+      $q2->condition('b.field_priority_area_tid', $relevant_for, 'IN');
       $c2 = $q2->countQuery()->execute()->fetchField();
     }
     else {

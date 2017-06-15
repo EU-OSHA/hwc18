@@ -57,3 +57,10 @@ function osha_taxonomies_update_7001() {
     }
   }
 }
+
+/**
+ * Inserts contact taxonomies terms.
+ */
+function osha_taxonomies_update_7002() {
+  features_revert_module('osha_taxonomies');
+}
