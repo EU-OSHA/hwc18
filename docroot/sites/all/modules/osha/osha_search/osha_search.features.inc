@@ -38,9 +38,10 @@ function osha_search_default_search_api_index() {
     "server" : "solr_server",
     "item_type" : "search_api_et_node",
     "options" : {
+      "datasource" : { "bundles" : [] },
       "index_directly" : 1,
       "cron_limit" : "10",
-      "search_api_et" : { "include" : "incomplete", "fallback language" : "" },
+      "search_api_et" : { "include" : "incomplete", "fallback language" : "en" },
       "fields" : {
         "attachments_field_file" : { "type" : "text" },
         "attachments_field_publication_related_res" : { "type" : "text" },
@@ -115,6 +116,7 @@ function osha_search_default_search_api_index() {
         "field_press_contact_job_title" : { "type" : "text" },
         "field_press_contact_location" : { "type" : "text" },
         "field_press_contact_organization" : { "type" : "text" },
+        "field_priority_area" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_provider" : { "type" : "text" },
         "field_publication_bookshop_id" : { "type" : "text" },
         "field_publication_date" : { "type" : "date" },
@@ -183,7 +185,7 @@ function osha_search_default_search_api_index() {
           "status" : 1,
           "weight" : "0",
           "settings" : {
-            "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv",
+            "excluded_extensions" : "aif art avi bmp gif ico mov oga ogv png psd ra ram rgb flv webm mp4 wmv zip rar swf fla flv",
             "number_indexed" : "0"
           }
         },
