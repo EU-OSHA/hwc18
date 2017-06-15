@@ -8,6 +8,15 @@ include_once 'hwc_priority_areas.features.inc';
 
 define('PRIORITY_AREAS_CASE_STUDY_TID', 521);
 
+/**
+ * Implements hook_node_view().
+ */
+function hwc_priority_areas_node_view($node, $view_mode) {
+  if ($view_mode == 'priority_areas') {
+    $node->title = NULL;
+  }
+}
+
 function hwc_priority_areas_get_topic_related_nid($tid) {
   $q = db_select('node', 'a');
   $q->fields('a', array('nid', 'vid'));
