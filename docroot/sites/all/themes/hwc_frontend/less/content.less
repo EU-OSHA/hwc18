@@ -7106,7 +7106,7 @@ input#edit-field-image-und-0-upload::before {
 		margin-bottom: 40px;
 		height: 665px;
 		#napo_films{
-			width: 100%;
+			width: 100% !important;
 			max-width: 1170px;
 			margin: 0 auto;
 			height: inherit !important;
@@ -7120,11 +7120,12 @@ input#edit-field-image-und-0-upload::before {
 					//position: inherit !important;
 					overflow: hidden !important;
 					margin: 0 auto;
-					width: 100%;
+					width: 100% !important;
 					height: 600px;
 					>div{
 						//position: relative !important;
 						//height: inherit !important;
+						width: 100% !important;
 						.napo-film-title{
 						    margin: 0 auto;
 						    width: 100%;
@@ -7164,6 +7165,7 @@ input#edit-field-image-und-0-upload::before {
 								text-align: right;
 								padding-right: 10px;
 								padding-top: 8px;
+								left: 0px !important;
 								li[id*="facebook-share-button-"]{
 									background: url(../images/content/facebook-w.png) no-repeat;
 								}
@@ -7178,24 +7180,51 @@ input#edit-field-image-und-0-upload::before {
 								}
 							}
 							.label{
-								display: none;
+								display: none !important;
+							}
+						}
+						.vjs-big-play-button{
+							width: 90px;
+							height: 90px;
+							background-color: @color2;
+							border-radius: 50%;
+							border: none;
+							position: absolute;
+							top: 50%; 
+							left: 50%;
+							transform: translate(-50%, -50%);
+							.vjs-icon-placeholder{
+								&:before{
+									font-size: 3em;
+    								line-height: 90px;
+								}
 							}
 						}
 					}
 				}
 				.jssorb03{
 					display: block !important;
-					.jssora03l{
-						display: block !important;
-						position: relative;
-						background-color: red;
-						height: 400px;
-						background: url(/images/content/arrow-left-blue.png) no-repeat !important;
-					}
-					.jssora03r{
-						display: block !important;
-						position: relative;
-					}
+					
+				}
+				.jssora03l{
+					display: block !important;
+					background-image: url(../images/content/arrow-blue-left-napo.png) !important;
+				    background-size: 24px;
+				    background-position: top;
+				    height: 75px;
+				    background-repeat: no-repeat;
+				    width: 25px;
+				    margin-left: 15px;
+				}
+				.jssora03r{
+					display: block !important;
+					background-image: url(../images/content/arrow-blue-right-napo.png) !important;
+				    background-size: 24px;
+				    background-position: top;
+				    height: 75px;
+				    background-repeat: no-repeat;
+				    width: 25px;
+				    margin-right: 15px;
 				}
 			}
 		}
