@@ -598,12 +598,12 @@ function osha_publication_field_default_field_instances() {
         'weight' => 12,
       ),
       'priority_areas' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium',
         ),
         'type' => 'image',
         'weight' => 0,
