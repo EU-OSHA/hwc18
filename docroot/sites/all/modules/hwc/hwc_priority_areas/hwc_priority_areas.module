@@ -100,11 +100,41 @@ function hwc_priority_areas_block_info() {
   return $blocks;
 }
 
+
+function hwc_priority_areas_get_intro_map() {
+  static $intro_map = [];
+  if (!$intro_map) {
+    $map = [
+      '_case_studies_intro_' => 'field_case_studies_intro',
+      '_tools_and_guidance_intro_' => 'field_tools_and_guidance_intro',
+      '_publications_intro_' => 'field_publications_intro',
+      '_highlights_intro_' => 'field_highlights_intro'
+    ];
+
+    $tid = arg(2);
+    $nids = hwc_priority_areas_get_topic_related_nid($tid);
+    $nid = $nids[0];
+    $node = node_load($nid);
+    $w = entity_metadata_wrapper('node', $node->nid);
+    foreach($map as $search => $field) {
+      $intro_map[$search] = $w->$field->value()['safe_value'];
+    }
+  }
+  return $intro_map;
+}
+
 /**
  * Implements hook_views_pre_render
  * {@inheritdoc}
  */
 function hwc_priority_areas_views_pre_render(&$view) {
+
+  if ($view->name == 'topic_related') {
+    $intro_map = hwc_priority_areas_get_intro_map();
+    foreach($intro_map as $search => $replace) {
+      $view->header['area']->options['content'] = str_replace($search, $replace, $view->header['area']->options['content']);
+    }
+  }
   if ($view->name == 'topics') {
     $view->header['area_text_custom']->options['content'] = str_replace('_topics_message_', t(variable_get('hwc_homepage_topics_message')), $view->header['area_text_custom']->options['content']);
   }

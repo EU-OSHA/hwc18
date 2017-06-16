@@ -136,7 +136,10 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'term_title topic_title',
+  );
   $pane->extras = array();
   $pane->position = 1;
   $pane->locks = array();
@@ -178,7 +181,10 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'intro_text term_intro_text',
+  );
   $pane->extras = array();
   $pane->position = 2;
   $pane->locks = array();
@@ -209,30 +215,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $display->content['new-24f5a734-25a7-43d0-8984-23bfc1e4b712'] = $pane;
   $display->panels['center'][3] = 'new-24f5a734-25a7-43d0-8984-23bfc1e4b712';
   $pane = new stdClass();
-  $pane->pid = 'new-dc45b8e7-31cd-464f-a59c-7ea8e53cc683';
-  $pane->panel = 'center';
-  $pane->type = 'block';
-  $pane->subtype = 'hwc_priority_areas-hwc_pa_highlights';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 4;
-  $pane->locks = array();
-  $pane->uuid = 'dc45b8e7-31cd-464f-a59c-7ea8e53cc683';
-  $display->content['new-dc45b8e7-31cd-464f-a59c-7ea8e53cc683'] = $pane;
-  $display->panels['center'][4] = 'new-dc45b8e7-31cd-464f-a59c-7ea8e53cc683';
-  $pane = new stdClass();
-  $pane->pid = 'new-85770891-f81a-4ad0-999d-af2ae8123e68';
+  $pane->pid = 'new-521bab7b-ff93-477c-89ab-c94f70f631e0';
   $pane->panel = 'center';
   $pane->type = 'views';
   $pane->subtype = 'topic_related';
@@ -250,7 +233,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
     'link_to_view' => 0,
     'args' => '',
     'url' => '',
-    'display' => 'block_1',
+    'display' => 'highlights',
     'context' => array(
       0 => '',
     ),
@@ -262,13 +245,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'highlights',
+  );
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 4;
   $pane->locks = array();
-  $pane->uuid = '85770891-f81a-4ad0-999d-af2ae8123e68';
-  $display->content['new-85770891-f81a-4ad0-999d-af2ae8123e68'] = $pane;
-  $display->panels['center'][5] = 'new-85770891-f81a-4ad0-999d-af2ae8123e68';
+  $pane->uuid = '521bab7b-ff93-477c-89ab-c94f70f631e0';
+  $display->content['new-521bab7b-ff93-477c-89ab-c94f70f631e0'] = $pane;
+  $display->panels['center'][4] = 'new-521bab7b-ff93-477c-89ab-c94f70f631e0';
   $pane = new stdClass();
   $pane->pid = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
   $pane->panel = 'center';
@@ -300,13 +286,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'tools_and_guidance',
+  );
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = 'cc8679eb-3fca-47b3-860e-9679e824098d';
   $display->content['new-cc8679eb-3fca-47b3-860e-9679e824098d'] = $pane;
-  $display->panels['center'][6] = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
+  $display->panels['center'][5] = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
   $pane = new stdClass();
   $pane->pid = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
   $pane->panel = 'center';
@@ -338,13 +327,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'case_studies',
+  );
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = 'a9d10346-b230-4170-8fee-b4a2b27fdfd8';
   $display->content['new-a9d10346-b230-4170-8fee-b4a2b27fdfd8'] = $pane;
-  $display->panels['center'][7] = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
+  $display->panels['center'][6] = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
   $pane = new stdClass();
   $pane->pid = 'new-3419489e-f8e4-4e04-ba2b-afb0f0f06544';
   $pane->panel = 'center';
@@ -376,13 +368,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'publications',
+  );
   $pane->extras = array();
-  $pane->position = 8;
+  $pane->position = 7;
   $pane->locks = array();
   $pane->uuid = '3419489e-f8e4-4e04-ba2b-afb0f0f06544';
   $display->content['new-3419489e-f8e4-4e04-ba2b-afb0f0f06544'] = $pane;
-  $display->panels['center'][8] = 'new-3419489e-f8e4-4e04-ba2b-afb0f0f06544';
+  $display->panels['center'][7] = 'new-3419489e-f8e4-4e04-ba2b-afb0f0f06544';
   $pane = new stdClass();
   $pane->pid = 'new-3612da0a-99af-4965-af71-093a59605e52';
   $pane->panel = 'center';
@@ -399,13 +394,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'e_tools',
+  );
   $pane->extras = array();
-  $pane->position = 9;
+  $pane->position = 8;
   $pane->locks = array();
   $pane->uuid = '3612da0a-99af-4965-af71-093a59605e52';
   $display->content['new-3612da0a-99af-4965-af71-093a59605e52'] = $pane;
-  $display->panels['center'][9] = 'new-3612da0a-99af-4965-af71-093a59605e52';
+  $display->panels['center'][8] = 'new-3612da0a-99af-4965-af71-093a59605e52';
   $pane = new stdClass();
   $pane->pid = 'new-181b6a0c-9a3e-4d64-88b5-2287352c1203';
   $pane->panel = 'center';
@@ -422,13 +420,16 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'related_links',
+  );
   $pane->extras = array();
-  $pane->position = 10;
+  $pane->position = 9;
   $pane->locks = array();
   $pane->uuid = '181b6a0c-9a3e-4d64-88b5-2287352c1203';
   $display->content['new-181b6a0c-9a3e-4d64-88b5-2287352c1203'] = $pane;
-  $display->panels['center'][10] = 'new-181b6a0c-9a3e-4d64-88b5-2287352c1203';
+  $display->panels['center'][9] = 'new-181b6a0c-9a3e-4d64-88b5-2287352c1203';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
