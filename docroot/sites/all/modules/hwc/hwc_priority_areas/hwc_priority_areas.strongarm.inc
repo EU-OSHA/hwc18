@@ -68,16 +68,16 @@ function hwc_priority_areas_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '15',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '8',
+          'weight' => '12',
         ),
         'language' => array(
           'weight' => '1',

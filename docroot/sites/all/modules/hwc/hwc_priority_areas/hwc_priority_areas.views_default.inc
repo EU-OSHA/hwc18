@@ -116,7 +116,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['content'] = '_case_studies_intro_';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Case Studies */
@@ -197,7 +197,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['content'] = '_tools_and_guidance_intro_';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Topic */
@@ -244,7 +244,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['content'] = '_publications_intro_';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Publications */
@@ -311,7 +311,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['block_description'] = 'Topic Related - Publications';
 
   /* Display: Highlights */
-  $handler = $view->new_display('block', 'Highlights', 'block_1');
+  $handler = $view->new_display('block', 'Highlights', 'highlights');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Highlights';
   $handler->display->display_options['defaults']['use_more'] = FALSE;
@@ -326,7 +326,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Introductory text';
+  $handler->display->display_options['header']['area']['content'] = '_highlights_intro_';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Entity Reference: Referencing entity */
@@ -395,17 +395,20 @@ function hwc_priority_areas_views_default_views() {
     t('All'),
     t('Case studies'),
     t('See More Case Studies'),
-    t('Introductory text'),
+    t('_case_studies_intro_'),
     t('Case Studies'),
     t('Topic Related - Case studies'),
     t('Tools and Guidance'),
     t('more'),
+    t('_tools_and_guidance_intro_'),
     t('Topic'),
     t('Topic Related - Tools and Guidance'),
     t('Publications'),
     t('See More Publications'),
+    t('_publications_intro_'),
     t('Topic Related - Publications'),
     t('Highlights'),
+    t('_highlights_intro_'),
   );
   $export['topic_related'] = $view;
 
