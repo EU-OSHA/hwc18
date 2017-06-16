@@ -91,7 +91,6 @@ function osha_publication_form_osha_publication_menu_publications_form_alter(&$f
   unset($form['form_build_id']);
 }
 
-
 function osha_publication_menu_publications_form_submit($form, &$form_state) {
   $form_state['rebuild'] = TRUE;
   $form_state['redirect'] = FALSE;
@@ -335,8 +334,6 @@ function osha_publication_form_osha_publication_menu_case_studies_form_alter(&$f
   unset($form['form_id']);
   unset($form['form_build_id']);
 }
-
-
 
 function osha_publication_menu_case_studies_form_submit($form, &$form_state) {
   $form_state['rebuild'] = TRUE;
