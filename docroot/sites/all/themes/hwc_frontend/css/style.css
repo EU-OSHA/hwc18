@@ -15685,6 +15685,173 @@ input#edit-field-image-und-0-upload::before {
   font-style: normal;
 }
 /*end napo film*/
+/*priority areas*/
+.page-taxonomy-term.page-taxonomy-term-783 .container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.page-taxonomy-term.page-taxonomy-term-783 h1 {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
+  position: absolute;
+  background: url("../images/content/image-shadow.png") repeat-x left bottom;
+  width: 100%;
+  height: 360px;
+  z-index: 22;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field h1 {
+  color: #ffffff;
+  padding-top: 230px;
+  border: none;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image .field.field-name-field-image {
+  float: left;
+  margin-bottom: 1em;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image .field.field-name-field-image img {
+  width: 100%;
+  height: auto;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .panels-flexible-region-inside > div {
+  padding-right: 15px;
+  padding-left: 15px;
+  text-align: center;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-links-and-info {
+  background: url(/sites/all/themes/hwc_frontend/images/content/bg-campaign-partner.png);
+  background-size: cover;
+  margin-bottom: 0em;
+  display: inline-block;
+  width: 100%;
+  margin-top: 2em;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-links-and-info .recomended-resources-for-you {
+  color: #ffffff;
+  font-size: 30px;
+  font-style: italic;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-weight: 100;
+  text-align: center;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies,
+.page-taxonomy-term.page-taxonomy-term-783 .publications,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links {
+  margin-top: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px dotted #749b00;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title,
+.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title {
+  color: #749b00;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title:before,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title:before,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title:before,
+.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title:before,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title:before {
+  display: block;
+  padding-bottom: 10px;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link,
+.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link {
+  display: block;
+  margin-top: 1em;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link:before,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link:before,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link:before,
+.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link:before,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link:before,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link:before {
+  content: "";
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link a,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link a,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link a,
+.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link a,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link a,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link a {
+  background-color: #003399;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-style: normal;
+  padding: 5px 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link a:before,
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link a:before,
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link a:before,
+.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link a:before,
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link a:before,
+.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link a:before {
+  content: "> ";
+}
+.page-taxonomy-term.page-taxonomy-term-783 .panels-flexible-region-inside > div:last-child {
+  border-bottom: none;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title:before {
+  content: url(../images/content/icono-highlights.png);
+}
+.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title:before {
+  content: url(../images/content/tools-and-resources.png);
+}
+.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title:before {
+  content: url(../images/content/icono-case-studies.png);
+}
+.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title:before {
+  content: url(../images/content/icono-publications.png);
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before {
+  content: url(../images/content/e-guide.png);
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool button {
+  background-color: #003399;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-style: normal;
+  padding: 5px 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool button:before {
+  content: "> ";
+}
+.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title:before {
+  content: url(../images/content/icono-related-links.png);
+}
+/*end priority areas*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
