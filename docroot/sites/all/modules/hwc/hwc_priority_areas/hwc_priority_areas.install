@@ -77,3 +77,10 @@ function hwc_priority_areas_create_topic_related_node($tid) {
 function hwc_priority_areas_update_7005() {
   features_revert_module('hwc_priority_areas');
 }
+
+/**
+ * Revert priority areas module
+ */
+function hwc_priority_areas_update_7006() {
+  features_revert_module('hwc_priority_areas');
+}

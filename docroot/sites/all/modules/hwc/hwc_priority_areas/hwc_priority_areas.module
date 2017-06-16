@@ -135,9 +135,6 @@ function hwc_priority_areas_views_pre_render(&$view) {
       $view->header['area']->options['content'] = str_replace($search, $replace, $view->header['area']->options['content']);
     }
   }
-  if ($view->name == 'topics') {
-    $view->header['area_text_custom']->options['content'] = str_replace('_topics_message_', t(variable_get('hwc_homepage_topics_message')), $view->header['area_text_custom']->options['content']);
-  }
 }
 
 /**
