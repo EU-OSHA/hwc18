@@ -1,2 +1,2 @@
-<?php
-echo '<blockquote data-cards="hidden" class="twitter-tweet" data-lang="en"><a href="' . "https://twitter.com/" . $content['name'] . "/status/" . $content['social_id'] . '"> </a></blockquote>';
+<?php //data-cards="hidden"  - hides images...
+echo '<blockquote class="twitter-tweet" data-lang="en"><a href="' . "https://twitter.com/" . $content['name'] . "/status/" . $content['social_id'] . '"> </a></blockquote>';
