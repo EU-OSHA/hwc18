@@ -183,7 +183,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'intro_text term_intro_text',
+    'css_class' => 'intro_text term_intro_text col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 2;
@@ -247,7 +247,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'highlights',
+    'css_class' => 'highlights col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 4;
@@ -288,7 +288,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'tools_and_guidance',
+    'css_class' => 'tools_and_guidance col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 5;
@@ -329,7 +329,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'case_studies',
+    'css_class' => 'case_studies col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 6;
@@ -370,7 +370,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'publications',
+    'css_class' => 'publications col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 7;
@@ -396,7 +396,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'e_tools',
+    'css_class' => 'e_tools col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 8;
@@ -422,7 +422,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
   );
   $pane->css = array(
     'css_id' => '',
-    'css_class' => 'related_links',
+    'css_class' => 'related_links col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
   $pane->position = 9;
