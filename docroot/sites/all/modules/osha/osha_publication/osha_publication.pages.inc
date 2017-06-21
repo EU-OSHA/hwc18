@@ -144,6 +144,16 @@ function osha_publication_menu_publications_faceted_form($variables) {
       }
     }
   }
+
+  if (!empty($query_params)) {
+    // Clear filter link
+    // it's really just a link to current url without params.
+    $form['left-column']['link'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="clear_filters">' . l(t('Clear filters'), current_path()) . '</div>',
+    );
+  }
+
   $native_nids = $form['content']['results-native']['#nids'];
   $form['content']['results-related'] = osha_publication_menu_publications_search_related($form_state, $native_nids);
   if (!empty($form_state['#results-native'])) {
@@ -153,6 +163,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
   if (empty($form['content']['results-native']['#nids'])) {
     $form['content']['results-native']['#markup'] = '<p class="no-results">' . t('No results found to match your search.') . '</p>';
   }
+
   return $form;
 }
 
@@ -493,6 +504,15 @@ function osha_publication_menu_case_studies_faceted_form($variables) {
         }
       }
     }
+  }
+
+  if (!empty($query_params)) {
+    // Clear filter link
+    // it's really just a link to current url without params.
+    $form['left-column']['link'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="clear_filters">' . l(t('Clear filters'), current_path()) . '</div>',
+    );
   }
   return $form;
 }
