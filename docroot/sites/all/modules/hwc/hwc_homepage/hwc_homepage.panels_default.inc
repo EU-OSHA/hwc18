@@ -88,7 +88,7 @@ function hwc_homepage_default_panels_mini() {
         'width' => '31.62739697518692',
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => 'col-xs-12 col-sm-6 col-md-4',
+        'class' => 'col-xs-12 col-sm-12 col-md-4',
         'hide_empty' => 0,
       ),
       6 => array(
