@@ -25,6 +25,5 @@ $parts = explode(' ', strip_tags($output));
 $country_code = $row->field_field_country_code[0]['raw']['value'];
 ?>
 <div class="event_day_month">
-  <div class="event_day"><?php print $parts[0]; ?></div>
-  <div class="event_country"><?php print $country_code; ?></div>
+  <div class="event_country code_<?php print $country_code; ?>"> </div>
 </div>

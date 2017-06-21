@@ -111,10 +111,6 @@ function hwc_frontend_preprocess_page(&$vars) {
     drupal_set_title('');
   }
 
-  if (arg(0) == 'topics' || arg(0) == 'tools_and_publications') {
-    $vars['page']['content']['system_main']['content']['#markup'] = '<div class="container">' . $vars['page']['content']['system_main']['content']['#markup'] . '</div>';
-  }
-
   // add back to links (e.g. Back to news)
   if (isset($vars['node'])) {
     $node = $vars['node'];

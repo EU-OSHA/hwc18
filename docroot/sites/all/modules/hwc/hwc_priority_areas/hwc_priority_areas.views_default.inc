@@ -609,7 +609,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => 'large',
+    'image_style' => 'medium_thumbnail_mc_340',
     'image_link' => '',
     'field_formatter_class' => '',
   );
@@ -648,7 +648,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'large',
+    'image_style' => 'medium_thumbnail_mc_340',
     'image_link' => '',
     'field_formatter_class' => '',
   );
