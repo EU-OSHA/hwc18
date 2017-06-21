@@ -183,7 +183,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
           if ($facet_value['filter'] == CASE_STUDY_TID) {
             continue;
           }
-          $options[$facet_value['filter']] = $values_list[$facet_value['filter']] . ' ' . strtr('(@no)', array('@no' => $facet_value['count']));
+          $options[$facet_value['filter']] = $values_list[$facet_value['filter']];// . ' ' . strtr('(@no)', array('@no' => $facet_value['count']));
           $form['left-column'][$field_name] = array(
             '#type' => 'checkboxes',
             '#options' => $options,
