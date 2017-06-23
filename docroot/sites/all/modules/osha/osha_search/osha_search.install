@@ -63,3 +63,10 @@ function osha_search_update_7004() {
 function osha_search_update_7005() {
   features_revert(array('osha_search' => 'fe_block_settings'));
 }
+
+/**
+ * New search filters blocks
+ */
+function osha_search_update_7006() {
+  features_revert(array('osha_search' => 'views_view'));
+}
