@@ -610,3 +610,10 @@ function hwc_update_7033() {
 function hwc_update_7034() {
   module_enable(['hwc_napo_films']);
 }
+
+/**
+ * enabled get_your_certificate view
+ */
+function hwc_update_7035() {
+  module_enable(['hwc']);
+}
