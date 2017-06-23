@@ -12,6 +12,64 @@ function osha_search_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['facetapi-0CytJ17GKzhRj01QOSWuDS3Op30a9Ojl'] = array(
+    'cache' => -1,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => '0CytJ17GKzhRj01QOSWuDS3Op30a9Ojl',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => 'search',
+    'roles' => array(),
+    'themes' => array(
+      'hwc_frontend' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'hwc_frontend',
+        'weight' => -79,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Language:',
+    'visibility' => 1,
+  );
+
+  $export['facetapi-azovHlgKCMoXFeRqtkoZUGezu72WIJwb'] = array(
+    'cache' => -1,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => 'azovHlgKCMoXFeRqtkoZUGezu72WIJwb',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'facetapi',
+    'node_types' => array(),
+    'pages' => 'search',
+    'roles' => array(),
+    'themes' => array(
+      'hwc_frontend' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'hwc_frontend',
+        'weight' => -80,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => 'Priority area:',
+    'visibility' => 1,
+  );
+
   $export['facetapi-bhmRHTzU2n0ejKZP9wDI0S1oi2DgbSDm'] = array(
     'cache' => -1,
     'css_class' => '',
@@ -28,7 +86,7 @@ function osha_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => 0,
+        'weight' => -81,
       ),
       'seven' => array(
         'region' => '',
@@ -80,7 +138,8 @@ search/wiki',
     'i18n_mode' => 0,
     'module' => 'osha_search',
     'node_types' => array(),
-    'pages' => 'search/*
+    'pages' => 'search
+search/*
 tools-and-publications/publications
 tools-and-publications/seminars
 legislation/directives/*
@@ -93,11 +152,11 @@ legislation/guidelines/*',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -51,
+        'weight' => -82,
       ),
       'seven' => array(
-        'region' => 'content',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'seven',
         'weight' => 0,
       ),
@@ -151,7 +210,7 @@ legislation/guidelines/*',
         'region' => 'content',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -67,
+        'weight' => -79,
       ),
       'seven' => array(
         'region' => '',
