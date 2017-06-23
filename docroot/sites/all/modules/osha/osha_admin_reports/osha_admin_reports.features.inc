@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * hwc_admin_reports.features.inc
+ * osha_admin_reports.features.inc
  */
 
 /**
