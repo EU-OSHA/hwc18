@@ -8810,15 +8810,15 @@ div[class*='node-'] .more-link {
 #block-osha-newsletter-osha-newsletter-image {
   clear: both;
   background: url("../images/content/bg-newsletter.png") no-repeat left top;
-  background: url("../images/content/bg-campaign-partner.png") no-repeat left 20px;
+  background: url("../images/content/bg-campaign-partner.png") no-repeat left 0px;
   min-height: 275px;
   height: auto !important;
   text-align: center;
   color: #ffffff;
   background-size: cover;
-  padding-bottom: 1em;
+  padding-bottom: 3em;
   margin-top: 0em;
-  padding-top: 1px;
+  padding-top: 1em;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #join_subscribers img,
 #block-osha-newsletter-osha-newsletter-image #join_subscribers img {
@@ -8880,7 +8880,6 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe .captcha,
 #block-osha-newsletter-osha-newsletter-image .captcha {
-  margin-top: 0px !important;
   height: 1%;
   overflow: hidden;
 }
@@ -8979,8 +8978,8 @@ div[class*='node-'] .more-link {
 }
 #block-views-partners-block-1 h2 {
   text-align: center;
-  background: url("../images/content/partners.png") no-repeat center top;
-  padding-top: 70px;
+  background: url("../images/content/partners.png") no-repeat center top 20px;
+  padding-top: 100px;
   padding-bottom: 0.5em;
   margin-bottom: 0em;
 }
@@ -9888,8 +9887,8 @@ html:lang(no) .pane-node-field-provider .field-items,
   padding-top: 30px;
   padding-bottom: 60px;
   margin-top: 30px;
-  margin-bottom: 30px;
-  background: url(../images/content/bg-campaign-partner.png) no-repeat left 20px;
+  margin-bottom: 0px;
+  background: url(../images/content/bg-campaign-partner.png) no-repeat left;
   background-size: cover;
 }
 .front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title {
@@ -10115,23 +10114,91 @@ html:lang(no) .pane-node-field-provider .field-items,
   background: url(../images/content/icono-events-day.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .event_country {
-  background-color: #8d98c5;
   width: 50px;
-  height: 50px;
+  height: 52px;
   text-align: center;
   color: white;
   line-height: 50px;
   font-weight: bold;
   font-size: 1.4em;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_EN {
+  background: url(../images/events/England.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_BG {
+  background: url(../images/events/Bulgaria.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_CS {
+  background: url(../images/events/Czech-Republic.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_DA {
+  background: url(../images/events/Denmark.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_DE {
+  background: url(../images/events/Germany.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_EL {
+  background: url(../images/events/Greece.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_ES {
+  background: url(../images/events/Spain.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_ET {
+  background: url(../images/events/Estonia.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_FI {
+  background: url(../images/events/Finland.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_HR {
+  background: url(../images/events/Croatia.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_FR {
+  background: url(../images/events/France.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_HU {
+  background: url(../images/events/Hungary.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_IS {
+  background: url(../images/events/Icelandic.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_IT {
+  background: url(../images/events/Itali.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_LV {
+  background: url(../images/events/Latvia.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_LT {
+  background: url(../images/events/Lithuania.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_NL {
+  background: url(../images/events/Netherlands.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_MT {
+  background: url(../images/events/Malta.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_NO {
+  background: url(../images/events/Norwegian.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_PL {
+  background: url(../images/events/Poland.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_PT {
+  background: url(../images/events/Portugal.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_RO {
+  background: url(../images/events/Romania.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_SK {
+  background: url(../images/events/Slovakia.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_SL {
+  background: url(../images/events/Slovenia.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_SV {
+  background: url(../images/events/Sweden.png) no-repeat center;
+}
 .front .panels-flexible-region-new-home_right h2.pane-title {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
-}
-.front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet .MediaCard {
-  display: none !important;
-}
-.front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet .MediaCard img {
-  display: none !important;
 }
 /*End Home*/
 /*share line*/
@@ -16509,6 +16576,57 @@ input#edit-field-image-und-0-upload::before {
     margin-left: 0px;
     margin-right: 0px;
   }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul {
+    margin-bottom: 40px;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li {
+    display: inline-block;
+    width: 30%;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a {
+    margin-top: 0px;
+    padding-top: 85px;
+    margin-bottom: 0px;
+    font-style: normal;
+    background-size: 61px;
+    color: white;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a:before {
+    content: "";
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li:nth-child(1) a {
+    background: url(../images/content/case-studies.png) no-repeat center 20px;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li:nth-child(2) a {
+    background: url(../images/content/e-guide.png) no-repeat center 20px;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li:nth-child(3) a {
+    background: url(../images/content/tools-and-resources.png) no-repeat center 20px;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content .text-muted {
+    margin-bottom: 0px;
+  }
+  .front .panels-flexible-region-new-center {
+    border-right: none;
+  }
+  .front .panels-flexible-region-new-home_right h2.pane-title {
+    border-top: 1px dotted #749b00;
+  }
+  .front .panels-flexible-region-new-home_right div.more-link {
+    margin-top: 30px;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet {
+    width: 50% !important;
+    float: left;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard #twitter-widget-0 {
+    padding-right: 15px;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard #twitter-widget-1 {
+    padding-left: 15px;
+  }
   /*fin home*/
   /*articles*/
   .node-type-article article {
@@ -17943,6 +18061,9 @@ input#edit-field-image-und-0-upload::before {
   .front #homepage_slider img {
     display: none !important;
   }
+  .front #homepage_slider #num_slides > div {
+    background: url(../images/content/mobile-top-background.png) no-repeat 0px 0px;
+  }
   .front #homepage_slider #num_slides > div div {
     margin-left: 15px !important;
     padding-right: 15px !important;
@@ -18202,6 +18323,53 @@ input#edit-field-image-und-0-upload::before {
     margin-left: 11px;
     text-align: left;
   }
+  .front .panels-flexible-region-new-home_left,
+  .front .panels-flexible-region-new-center,
+  .front .panels-flexible-region-new-home_right {
+    min-height: inherit !important;
+    margin-top: 5px;
+  }
+  .front .panels-flexible-region-new-home_left h2.pane-title,
+  .front .panels-flexible-region-new-center h2.pane-title,
+  .front .panels-flexible-region-new-home_right h2.pane-title {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .front .panels-flexible-region-new-home_left {
+    margin-top: 0px;
+  }
+  .front .panels-flexible-region-new-home_left .media-list li .pull-left {
+    display: none;
+  }
+  .front .panels-flexible-region-new-center h2.pane-title,
+  .front .panels-flexible-region-new-home_right h2.pane-title {
+    border-top: 1px dotted #749b00;
+  }
+  .front .panels-flexible-region-new-home_right h2.pane-title {
+    border-top: 1px dotted #749b00;
+  }
+  .front .panels-flexible-region-new-home_right div.more-link {
+    margin-top: 30px;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard .twitter-tweet {
+    width: 100% !important;
+    float: none;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard #twitter-widget-0 {
+    padding-right: 0px;
+  }
+  .front .panels-flexible-region-new-home_right .view-id-social_dashboard #twitter-widget-1 {
+    padding-left: 0px;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li {
+    display: block;
+    width: 100%;
+  }
+  .front .pane-hwc-homepage-hwc-homepage-topics .priority_area ul.menu.nav {
+    display: block;
+    margin: 0 auto;
+    min-width: 250px;
+  }
   #block-views-news-oshnews-latest,
   .panels-flexible-column-new-1,
   .panels-flexible-column-first,
@@ -18225,10 +18393,6 @@ input#edit-field-image-und-0-upload::before {
   .panels-flexible-column-new-2 .view-content,
   .panels-flexible-column-last .view-content {
     height: auto;
-  }
-  #block-osha-newsletter-osha-newsletter-subscribe .captcha,
-  #block-osha-newsletter-osha-newsletter-image .captcha {
-    margin-left: -257px;
   }
   #block-osha-newsletter-osha-newsletter-image {
     padding-right: 15px;
@@ -18262,7 +18426,7 @@ input#edit-field-image-und-0-upload::before {
   }
   #block-views-partners-block-1 h2,
   .front #block-views-partners-block-1 h2 {
-    margin-top: 20px;
+    margin-top: 40px;
     padding-top: 70px;
     padding-bottom: 0px;
     padding-left: 0px;
@@ -20324,6 +20488,16 @@ input#edit-field-image-und-0-upload::before {
     -webkit-transform: scale(1.5) !important;
     -moz-transform: scale(1.5) !important;
   }
+  .front #homepage_slider {
+    margin-bottom: 0;
+    height: 356px !important;
+  }
+  .front #homepage_slider img {
+    display: none !important;
+  }
+  .front #homepage_slider #num_slides > div {
+    background: url(../images/content/mobile-top-background.png) no-repeat -200px 0px !important;
+  }
   /*container*/
   /*home*/
   #block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form > div {
@@ -20414,7 +20588,7 @@ input#edit-field-image-und-0-upload::before {
   }
   header.navbar-default .campaigns-header .navbar-header .region-header #block-lang-dropdown-language,
   header.navbar-default .campaigns-header .navbar-header .region-header #block-menu-menu-header-login ~ #block-lang-dropdown-language {
-    bottom: -4px;
+    bottom: -1px;
     position: relative;
     float: left;
     padding-left: 1em;
