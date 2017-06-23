@@ -84,6 +84,8 @@ Get your certificate of participation in the Healthy Workplaces Campaign',
   $display->cache = array();
   $display->title = 'Get your certificate of participation in the Healthy Workplaces Campaign';
   $display->uuid = '7094f568-dc86-496f-9cdf-6998ee08d501';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_get_your_certificate_page__panel_context_c40663c3-4cd7-4dc9-bd7d-b973c46fc933';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
