@@ -610,3 +610,11 @@ function hwc_update_7033() {
 function hwc_update_7034() {
   module_enable(['hwc_napo_films']);
 }
+
+/**
+ * enabled get_your_certificate view and enable module osha_admin_reports
+ */
+function hwc_update_7035() {
+  module_enable(['osha_admin_reports']);
+  features_revert_module('hwc');
+}

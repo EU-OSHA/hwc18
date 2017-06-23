@@ -62,6 +62,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 2,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -176,6 +182,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'galleryformatter_default',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'pub_teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -273,6 +285,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -364,6 +382,12 @@ function hwc_gallery_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 1,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'pub_teaser' => array(
         'label' => 'above',

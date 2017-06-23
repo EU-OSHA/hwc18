@@ -11,6 +11,513 @@ function hwc_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'get_your_certificate';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'webform_submissions';
+  $view->human_name = 'Get your certificate';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Get your certificate';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer nodes';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
+  $handler->display->display_options['exposed_form']['options']['bef'] = array(
+    'general' => array(
+      'input_required' => 0,
+      'text_input_required' => array(
+        'text_input_required' => array(
+          'value' => 'Select any filter and click on Apply to see results',
+          'format' => 'full_html',
+        ),
+      ),
+      'allow_secondary' => 0,
+      'secondary_label' => 'Advanced options',
+      'secondary_collapse_override' => '0',
+    ),
+    'completed' => array(
+      'bef_format' => 'bef_datepicker',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+        'datepicker_options' => '',
+      ),
+    ),
+    'completed_1' => array(
+      'bef_format' => 'bef_datepicker',
+      'more_options' => array(
+        'autosubmit' => 0,
+        'is_secondary' => 0,
+        'any_label' => '',
+        'bef_filter_description' => '',
+        'tokens' => array(
+          'available' => array(
+            0 => 'global_types',
+          ),
+        ),
+        'rewrite' => array(
+          'filter_rewrite_values' => '',
+        ),
+        'datepicker_options' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'view_submission' => 'view_submission',
+    'completed' => 'completed',
+    'value' => 'value',
+    'value_1' => 'value_1',
+    'value_2' => 'value_2',
+    'value_3' => 'value_3',
+    'value_4' => 'value_4',
+    'value_5' => 'value_5',
+    'download_pdf' => 'download_pdf',
+    'value_6' => 'value_6',
+    'value_7' => 'value_7',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'view_submission' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'completed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_1' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_2' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_3' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_4' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_5' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'download_pdf' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_6' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'value_7' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Webform submissions: View link */
+  $handler->display->display_options['fields']['view_submission']['id'] = 'view_submission';
+  $handler->display->display_options['fields']['view_submission']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['view_submission']['field'] = 'view_submission';
+  $handler->display->display_options['fields']['view_submission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_submission']['access_check'] = 1;
+  /* Field: Webform submissions: Completed */
+  $handler->display->display_options['fields']['completed']['id'] = 'completed';
+  $handler->display->display_options['fields']['completed']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['completed']['field'] = 'completed';
+  $handler->display->display_options['fields']['completed']['date_format'] = 'osha_day_only';
+  $handler->display->display_options['fields']['completed']['second_date_format'] = 'year';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value']['id'] = 'value';
+  $handler->display->display_options['fields']['value']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value']['field'] = 'value';
+  $handler->display->display_options['fields']['value']['label'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value']['custom_label'] = 'custom';
+  $handler->display->display_options['fields']['value']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value']['webform_cid'] = '1';
+  /* Field: Company / Organisation */
+  $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
+  $handler->display->display_options['fields']['value_1']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_1']['field'] = 'value';
+  $handler->display->display_options['fields']['value_1']['ui_name'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value_1']['label'] = 'Country';
+  $handler->display->display_options['fields']['value_1']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_1']['webform_cid'] = '2';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
+  $handler->display->display_options['fields']['value_2']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_2']['field'] = 'value';
+  $handler->display->display_options['fields']['value_2']['label'] = '';
+  $handler->display->display_options['fields']['value_2']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_2']['webform_cid'] = '3';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
+  $handler->display->display_options['fields']['value_3']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_3']['field'] = 'value';
+  $handler->display->display_options['fields']['value_3']['label'] = '';
+  $handler->display->display_options['fields']['value_3']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_3']['webform_cid'] = '4';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
+  $handler->display->display_options['fields']['value_4']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_4']['field'] = 'value';
+  $handler->display->display_options['fields']['value_4']['label'] = '';
+  $handler->display->display_options['fields']['value_4']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_4']['webform_cid'] = '5';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
+  $handler->display->display_options['fields']['value_5']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_5']['field'] = 'value';
+  $handler->display->display_options['fields']['value_5']['label'] = '';
+  $handler->display->display_options['fields']['value_5']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_5']['webform_cid'] = '6';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
+  $handler->display->display_options['fields']['value_6']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_6']['field'] = 'value';
+  $handler->display->display_options['fields']['value_6']['label'] = '';
+  $handler->display->display_options['fields']['value_6']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_6']['webform_cid'] = '7';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
+  $handler->display->display_options['fields']['value_7']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_7']['field'] = 'value';
+  $handler->display->display_options['fields']['value_7']['label'] = 'Other';
+  $handler->display->display_options['fields']['value_7']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_7']['webform_cid'] = '8';
+  /* Field: Webform submissions: Download PDF */
+  $handler->display->display_options['fields']['download_pdf']['id'] = 'download_pdf';
+  $handler->display->display_options['fields']['download_pdf']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['download_pdf']['field'] = 'download_pdf';
+  $handler->display->display_options['fields']['download_pdf']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['download_pdf']['access_check'] = 1;
+  /* Filter criterion: Webform submissions: Completed */
+  $handler->display->display_options['filters']['completed']['id'] = 'completed';
+  $handler->display->display_options['filters']['completed']['table'] = 'webform_submissions';
+  $handler->display->display_options['filters']['completed']['field'] = 'completed';
+  $handler->display->display_options['filters']['completed']['operator'] = '>=';
+  $handler->display->display_options['filters']['completed']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['completed']['expose']['operator_id'] = 'completed_op';
+  $handler->display->display_options['filters']['completed']['expose']['label'] = 'From';
+  $handler->display->display_options['filters']['completed']['expose']['operator'] = 'completed_op';
+  $handler->display->display_options['filters']['completed']['expose']['identifier'] = 'completed';
+  $handler->display->display_options['filters']['completed']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+  );
+  /* Filter criterion: Webform submissions: Completed */
+  $handler->display->display_options['filters']['completed_1']['id'] = 'completed_1';
+  $handler->display->display_options['filters']['completed_1']['table'] = 'webform_submissions';
+  $handler->display->display_options['filters']['completed_1']['field'] = 'completed';
+  $handler->display->display_options['filters']['completed_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['completed_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['completed_1']['expose']['operator_id'] = 'completed_1_op';
+  $handler->display->display_options['filters']['completed_1']['expose']['label'] = 'To';
+  $handler->display->display_options['filters']['completed_1']['expose']['operator'] = 'completed_1_op';
+  $handler->display->display_options['filters']['completed_1']['expose']['identifier'] = 'completed_1';
+  $handler->display->display_options['filters']['completed_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Webform submissions: View link */
+  $handler->display->display_options['fields']['view_submission']['id'] = 'view_submission';
+  $handler->display->display_options['fields']['view_submission']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['view_submission']['field'] = 'view_submission';
+  $handler->display->display_options['fields']['view_submission']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_submission']['access_check'] = 1;
+  /* Field: Webform submissions: Completed */
+  $handler->display->display_options['fields']['completed']['id'] = 'completed';
+  $handler->display->display_options['fields']['completed']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['completed']['field'] = 'completed';
+  $handler->display->display_options['fields']['completed']['date_format'] = 'osha_day_only';
+  $handler->display->display_options['fields']['completed']['second_date_format'] = 'year';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value']['id'] = 'value';
+  $handler->display->display_options['fields']['value']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value']['field'] = 'value';
+  $handler->display->display_options['fields']['value']['label'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value']['custom_label'] = 'custom';
+  $handler->display->display_options['fields']['value']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value']['webform_cid'] = '1';
+  /* Field: Company / Organisation */
+  $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
+  $handler->display->display_options['fields']['value_1']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_1']['field'] = 'value';
+  $handler->display->display_options['fields']['value_1']['ui_name'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value_1']['label'] = 'Country';
+  $handler->display->display_options['fields']['value_1']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_1']['webform_cid'] = '2';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
+  $handler->display->display_options['fields']['value_2']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_2']['field'] = 'value';
+  $handler->display->display_options['fields']['value_2']['label'] = '';
+  $handler->display->display_options['fields']['value_2']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_2']['webform_cid'] = '3';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
+  $handler->display->display_options['fields']['value_3']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_3']['field'] = 'value';
+  $handler->display->display_options['fields']['value_3']['label'] = '';
+  $handler->display->display_options['fields']['value_3']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_3']['webform_cid'] = '4';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
+  $handler->display->display_options['fields']['value_4']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_4']['field'] = 'value';
+  $handler->display->display_options['fields']['value_4']['label'] = '';
+  $handler->display->display_options['fields']['value_4']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_4']['webform_cid'] = '5';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
+  $handler->display->display_options['fields']['value_5']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_5']['field'] = 'value';
+  $handler->display->display_options['fields']['value_5']['label'] = '';
+  $handler->display->display_options['fields']['value_5']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_5']['webform_cid'] = '6';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
+  $handler->display->display_options['fields']['value_6']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_6']['field'] = 'value';
+  $handler->display->display_options['fields']['value_6']['label'] = 'I/we participated in the Healthy Workplaces Campaign and organised the following activities:';
+  $handler->display->display_options['fields']['value_6']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_6']['webform_cid'] = '7';
+  /* Field: Webform submission data: Value */
+  $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
+  $handler->display->display_options['fields']['value_7']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_7']['field'] = 'value';
+  $handler->display->display_options['fields']['value_7']['label'] = 'Other';
+  $handler->display->display_options['fields']['value_7']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_7']['webform_cid'] = '8';
+  /* Field: Webform submissions: Download PDF */
+  $handler->display->display_options['fields']['download_pdf']['id'] = 'download_pdf';
+  $handler->display->display_options['fields']['download_pdf']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['download_pdf']['field'] = 'download_pdf';
+  $handler->display->display_options['fields']['download_pdf']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['download_pdf']['access_check'] = 1;
+  $handler->display->display_options['path'] = 'admin/content/get_your_certificate';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Submissions */
+  $handler->display->display_options['fields']['completed']['id'] = 'completed';
+  $handler->display->display_options['fields']['completed']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['completed']['field'] = 'completed';
+  $handler->display->display_options['fields']['completed']['ui_name'] = 'Submissions';
+  $handler->display->display_options['fields']['completed']['date_format'] = 'osha_day_only';
+  $handler->display->display_options['fields']['completed']['second_date_format'] = 'year';
+  /* Field: Company / Organisation */
+  $handler->display->display_options['fields']['value']['id'] = 'value';
+  $handler->display->display_options['fields']['value']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value']['field'] = 'value';
+  $handler->display->display_options['fields']['value']['ui_name'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value']['label'] = 'Company / Organisation';
+  $handler->display->display_options['fields']['value']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value']['webform_cid'] = '1';
+  /* Field: Country */
+  $handler->display->display_options['fields']['value_1']['id'] = 'value_1';
+  $handler->display->display_options['fields']['value_1']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_1']['field'] = 'value';
+  $handler->display->display_options['fields']['value_1']['ui_name'] = 'Country';
+  $handler->display->display_options['fields']['value_1']['label'] = 'Country';
+  $handler->display->display_options['fields']['value_1']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_1']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_1']['webform_cid'] = '2';
+  /* Field: First name of contact person */
+  $handler->display->display_options['fields']['value_2']['id'] = 'value_2';
+  $handler->display->display_options['fields']['value_2']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_2']['field'] = 'value';
+  $handler->display->display_options['fields']['value_2']['ui_name'] = 'First name of contact person';
+  $handler->display->display_options['fields']['value_2']['label'] = 'First name of contact person';
+  $handler->display->display_options['fields']['value_2']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_2']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_2']['webform_cid'] = '3';
+  /* Field: Last name */
+  $handler->display->display_options['fields']['value_3']['id'] = 'value_3';
+  $handler->display->display_options['fields']['value_3']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_3']['field'] = 'value';
+  $handler->display->display_options['fields']['value_3']['ui_name'] = 'Last name';
+  $handler->display->display_options['fields']['value_3']['label'] = 'Last name';
+  $handler->display->display_options['fields']['value_3']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_3']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_3']['webform_cid'] = '4';
+  /* Field: Business sector */
+  $handler->display->display_options['fields']['value_4']['id'] = 'value_4';
+  $handler->display->display_options['fields']['value_4']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_4']['field'] = 'value';
+  $handler->display->display_options['fields']['value_4']['ui_name'] = 'Business sector';
+  $handler->display->display_options['fields']['value_4']['label'] = 'Business sector';
+  $handler->display->display_options['fields']['value_4']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_4']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_4']['webform_cid'] = '5';
+  /* Field: E-mail address */
+  $handler->display->display_options['fields']['value_5']['id'] = 'value_5';
+  $handler->display->display_options['fields']['value_5']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_5']['field'] = 'value';
+  $handler->display->display_options['fields']['value_5']['ui_name'] = 'E-mail address';
+  $handler->display->display_options['fields']['value_5']['label'] = 'E-mail address';
+  $handler->display->display_options['fields']['value_5']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_5']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_5']['webform_cid'] = '6';
+  /* Field: I/we participated in the Healthy Workplaces Campaign and organized the following activities: */
+  $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
+  $handler->display->display_options['fields']['value_6']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_6']['field'] = 'value';
+  $handler->display->display_options['fields']['value_6']['ui_name'] = 'I/we participated in the Healthy Workplaces Campaign and organized the following activities:';
+  $handler->display->display_options['fields']['value_6']['label'] = '';
+  $handler->display->display_options['fields']['value_6']['format'] = 'text';
+  $handler->display->display_options['fields']['value_6']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_6']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_6']['webform_cid'] = '7';
+  /* Field: Other */
+  $handler->display->display_options['fields']['value_7']['id'] = 'value_7';
+  $handler->display->display_options['fields']['value_7']['table'] = 'webform_submissions';
+  $handler->display->display_options['fields']['value_7']['field'] = 'value';
+  $handler->display->display_options['fields']['value_7']['ui_name'] = 'Other';
+  $handler->display->display_options['fields']['value_7']['label'] = 'Other';
+  $handler->display->display_options['fields']['value_7']['custom_label'] = 'none';
+  $handler->display->display_options['fields']['value_7']['webform_nid'] = '240';
+  $handler->display->display_options['fields']['value_7']['webform_cid'] = '8';
+  $handler->display->display_options['path'] = 'admin/content/get_your_certificate/xls';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $translatables['get_your_certificate'] = array(
+    t('Master'),
+    t('Get your certificate'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Select any filter and click on Apply to see results'),
+    t('Advanced options'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('view'),
+    t('Completed'),
+    t('Company / Organisation'),
+    t('Country'),
+    t('Other'),
+    t('download pdf'),
+    t('From'),
+    t('To'),
+    t('Page'),
+    t('I/we participated in the Healthy Workplaces Campaign and organised the following activities:'),
+    t('Data export'),
+    t('First name of contact person'),
+    t('Last name'),
+    t('Business sector'),
+    t('E-mail address'),
+  );
+  $export['get_your_certificate'] = $view;
+
+  $view = new view();
   $view->name = 'ncw_export';
   $view->description = '';
   $view->tag = 'default';
