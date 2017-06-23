@@ -457,11 +457,11 @@ function hwc_views_default_views() {
   $handler->display->display_options['fields']['value_5']['custom_label'] = 'none';
   $handler->display->display_options['fields']['value_5']['webform_nid'] = '240';
   $handler->display->display_options['fields']['value_5']['webform_cid'] = '6';
-  /* Field: I/ve participated in the Healthy Workplaces Campaign and organized the following activities: */
+  /* Field: I/we participated in the Healthy Workplaces Campaign and organized the following activities: */
   $handler->display->display_options['fields']['value_6']['id'] = 'value_6';
   $handler->display->display_options['fields']['value_6']['table'] = 'webform_submissions';
   $handler->display->display_options['fields']['value_6']['field'] = 'value';
-  $handler->display->display_options['fields']['value_6']['ui_name'] = 'I/ve participated in the Healthy Workplaces Campaign and organized the following activities:';
+  $handler->display->display_options['fields']['value_6']['ui_name'] = 'I/we participated in the Healthy Workplaces Campaign and organized the following activities:';
   $handler->display->display_options['fields']['value_6']['label'] = '';
   $handler->display->display_options['fields']['value_6']['format'] = 'text';
   $handler->display->display_options['fields']['value_6']['custom_label'] = 'none';
