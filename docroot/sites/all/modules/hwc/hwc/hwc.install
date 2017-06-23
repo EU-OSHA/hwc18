@@ -612,8 +612,9 @@ function hwc_update_7034() {
 }
 
 /**
- * enabled get_your_certificate view
+ * enabled get_your_certificate view and enable module osha_admin_reports
  */
 function hwc_update_7035() {
-  module_enable(['hwc']);
+  module_enable(['osha_admin_reports']);
+  features_revert_module('hwc');
 }
