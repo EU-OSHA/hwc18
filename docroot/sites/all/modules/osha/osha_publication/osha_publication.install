@@ -57,3 +57,10 @@ function osha_publication_update_7004() {
 function osha_publication_update_7005() {
   features_revert_module('osha_publication');
 }
+
+/**
+ * publication type field order
+ */
+function osha_publication_update_7006() {
+  features_revert_module('osha_publication');
+}
