@@ -29,7 +29,7 @@
 <div id="social-dashboard-column-<?php print $id ?>" class="row <?php print $classes ?>">
 <?php
     foreach ($items as $title => $rows) { ?>
-    <div class="col-xs-12 col-sm-12 col-md-4">
+    <div <?php if ($current_display != 'block_1') { ?>class="col-xs-12 col-sm-12 col-md-4"<?php } ?>
         <?php if ($current_display != 'block_1') { ?><h2><?php echo ucfirst($title) ?></h2><?php } ?>
 <?php
       foreach ($rows as $row) {
