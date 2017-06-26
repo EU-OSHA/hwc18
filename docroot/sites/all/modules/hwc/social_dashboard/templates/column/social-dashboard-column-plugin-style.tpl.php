@@ -28,10 +28,8 @@
     }(document, "script", "twitter-wjs"));</script>
 <div id="social-dashboard-column-<?php print $id ?>" class="row <?php print $classes ?>">
 <?php
-    $columns = 12 / count($items);
-    $width = intval(100 / count($items));
     foreach ($items as $title => $rows) { ?>
-    <div class="col-md-<?php echo $columns ?>" style="width: <?php echo $width?>%;float: left;">
+    <div class="col-xs-12 col-sm-12 col-md-4">
         <?php if ($current_display != 'block_1') { ?><h2><?php echo ucfirst($title) ?></h2><?php } ?>
 <?php
       foreach ($rows as $row) {

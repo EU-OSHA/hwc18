@@ -47,3 +47,26 @@ function osha_search_update_7003() {
   features_revert_module('osha_search');
   search_api_index_reindex('default_multilingual_node_index');
 }
+
+/**
+ * New search filters
+ */
+function osha_search_update_7004() {
+  features_revert_module('osha_search');
+  search_api_index_reindex('default_multilingual_node_index');
+  features_revert_module('osha_search');
+}
+
+/**
+ * New search filters blocks
+ */
+function osha_search_update_7005() {
+  features_revert(array('osha_search' => 'fe_block_settings'));
+}
+
+/**
+ * New search filters blocks
+ */
+function osha_search_update_7006() {
+  features_revert(array('osha_search' => 'views_view'));
+}

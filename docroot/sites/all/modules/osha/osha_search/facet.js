@@ -6,6 +6,26 @@
 
 (function ($) {
 
+    Drupal.behaviors.search_facets = {
+        attach: function(context, settings) {
+            jQuery('.page-search .region-sidebar-first').once('publication_toggle_facets', function() {
+                jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').hide();
+                jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').siblings('h2').on('click', function() {
+                    var $checkboxes = jQuery(this).parent().find('.facetapi-facetapi-checkbox-links');
+                    if ($checkboxes.is(':visible')) {
+                        $checkboxes.slideUp();
+                        jQuery(this).removeClass('area-shown');
+                    }
+                    else {
+                        jQuery(this).addClass('area-shown');
+                        $checkboxes.slideDown();
+                    }
+                });
+            });
+        }
+    }
+
     Drupal.behaviors.dropdownfacetapi = {
         attach: function(context, settings) {
             if (settings.facetapi) {
