@@ -354,6 +354,7 @@ header.navbar-default{
 			}
 			#num_slides{
 				> div{
+					background: url(../images/content/mobile-top-background.png) no-repeat 0px 0px;
 					div{
 						margin-left: @margin-movil !important;
     					padding-right: @margin-movil !important;
@@ -538,6 +539,71 @@ header.navbar-default{
 				text-align: left;
 			}
 		}
+		.panels-flexible-region-new-home_left,
+		.panels-flexible-region-new-center,
+		.panels-flexible-region-new-home_right{
+			min-height: inherit !important;
+			margin-top: 5px;
+			h2.pane-title{
+				margin-right: 0px;
+				margin-left: 0px;
+			}
+		}
+		.panels-flexible-region-new-home_left{
+			margin-top: 0px;
+			.media-list{
+				li{
+					.pull-left{
+						display: none;
+					}
+				}
+			}
+		}
+		.panels-flexible-region-new-center,
+		.panels-flexible-region-new-home_right{
+			h2.pane-title{
+				border-top: 1px dotted @color3;
+			}
+		}
+		.panels-flexible-region-new-home_right{
+			h2.pane-title{
+				border-top: 1px dotted @border-default-color;
+			}
+			div.more-link{
+				margin-top: 30px;
+			}
+			.view-id-social_dashboard{
+				.twitter-tweet{
+					width: 100% !important;
+					float: none;
+				}
+				#twitter-widget-0{
+					padding-right: 0px;
+				}
+				#twitter-widget-1{
+					padding-left: 0px;
+				}
+			}
+		}
+		.pane-hwc-homepage-hwc-homepage-tools-and-resources{
+			.pane-content{
+		    	ul{
+		    		li{
+						display: block;
+						width: 100%;
+					}
+				}
+			}
+		}
+		.pane-hwc-homepage-hwc-homepage-topics{
+			.priority_area{
+				ul.menu.nav{
+					display: block;
+				    margin: 0 auto;
+				    min-width: 250px;
+				}
+			}
+		}
 	}
 
 	#block-views-news-oshnews-latest, .panels-flexible-column-new-1,  .panels-flexible-column-first,
@@ -553,7 +619,7 @@ header.navbar-default{
 		}
 	}
 	#block-osha-newsletter-osha-newsletter-subscribe .captcha, #block-osha-newsletter-osha-newsletter-image .captcha{
-		margin-left: -257px;
+		//margin-left: -257px;
 	}
 
 	//subscribe newsletter
@@ -589,7 +655,7 @@ header.navbar-default{
 		padding-right: @margin-movil;
 		padding-left: @margin-movil;
 		h2{
-			margin-top: 20px;
+			margin-top: 40px;
 		    padding-top: 70px;
 			padding-bottom: 0px;
 			padding-left: 0px;

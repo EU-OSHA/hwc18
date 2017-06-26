@@ -1139,15 +1139,15 @@ ul.tabs--primary.nav.nav-tabs{
 	#block-osha-newsletter-osha-newsletter-subscribe, #block-osha-newsletter-osha-newsletter-image{
 		clear: both;
 		background: url("../images/content/bg-newsletter.png") no-repeat left top;
-		background: url("../images/content/bg-campaign-partner.png") no-repeat left 20px;
+		background: url("../images/content/bg-campaign-partner.png") no-repeat left 0px;
 		min-height: 275px;
 		height: auto !important;
 		text-align: center;
 		color: @color1;
 		background-size: cover;
-		padding-bottom: 1em;
+		padding-bottom: 3em;
 		margin-top: 0em;
-    	padding-top: 1px;
+    	padding-top: 1em;
 		#join_subscribers img{
 			left: 0;
 		}
@@ -1200,7 +1200,7 @@ ul.tabs--primary.nav.nav-tabs{
 			display: none;
 		}
 		.captcha {
-			margin-top: 0px !important;
+			//margin-top: 0px !important;
 			height:1%;
 			overflow:hidden;
 		}
@@ -1281,8 +1281,8 @@ ul.tabs--primary.nav.nav-tabs{
 		padding-right: @margin1;
 		h2{
 			text-align: center;
-			background: url("../images/content/partners.png") no-repeat center top;
-			padding-top: 70px;
+			background: url("../images/content/partners.png") no-repeat center top 20px;
+			padding-top: 100px;
 			padding-bottom: 0.5em;
 			margin-bottom: 0em;
 		}
@@ -2159,8 +2159,8 @@ ul.tabs--primary.nav.nav-tabs{
 	    padding-top: 30px;
 	    padding-bottom: 60px;
 	    margin-top: 30px;
-	    margin-bottom: 30px;
-	    background: url(../images/content/bg-campaign-partner.png) no-repeat left 20px;
+	    margin-bottom: 0px;
+	    background: url(../images/content/bg-campaign-partner.png) no-repeat left;
 	    background-size: cover;
 	    h2.pane-title{
 	    	
@@ -2190,6 +2190,7 @@ ul.tabs--primary.nav.nav-tabs{
 	    		margin: 0px;
 	    		margin-bottom: 40px;
 	    		li{
+	    			
 	    			a{
 	    				color: white;
 	    				font-size: 1.4em;
@@ -2406,14 +2407,88 @@ ul.tabs--primary.nav.nav-tabs{
 				background: url(../images/content/icono-events-day.png) no-repeat center;
 			}
 			.event_country{
-				background-color: @color2-ligth;
 				width: 50px;
-				height: 50px;
+				height: 52px;
 				text-align: center;
 				color: white;
 				line-height: 50px;
 				font-weight: bold;
 				font-size: 1.4em;
+			}
+			.code_EN{
+				background: url(../images/events/England.png) no-repeat center;
+			}
+			.code_BG{
+				background: url(../images/events/Bulgaria.png) no-repeat center;
+			}
+			.code_CS{
+				background: url(../images/events/Czech-Republic.png) no-repeat center;
+			}
+			.code_DA{
+				background: url(../images/events/Denmark.png) no-repeat center;
+			}
+			.code_DE{
+				background: url(../images/events/Germany.png) no-repeat center;
+			}
+			.code_EL{
+				background: url(../images/events/Greece.png) no-repeat center;
+			}
+			.code_ES{
+				background: url(../images/events/Spain.png) no-repeat center;
+			}
+			.code_ET{
+				background: url(../images/events/Estonia.png) no-repeat center;
+			}
+			.code_FI{
+				background: url(../images/events/Finland.png) no-repeat center;
+			}
+			.code_HR{
+				background: url(../images/events/Croatia.png) no-repeat center;
+			}
+			.code_FR{
+				background: url(../images/events/France.png) no-repeat center;
+			}
+			.code_HU{
+				background: url(../images/events/Hungary.png) no-repeat center;
+			}
+			.code_IS{
+				background: url(../images/events/Icelandic.png) no-repeat center;
+			}
+			.code_IT{
+				background: url(../images/events/Itali.png) no-repeat center;
+			}
+			.code_LV{
+				background: url(../images/events/Latvia.png) no-repeat center;
+			}
+			.code_LT{
+				background: url(../images/events/Lithuania.png) no-repeat center;
+			}
+			.code_NL{
+				background: url(../images/events/Netherlands.png) no-repeat center;
+			}
+			.code_MT{
+				background: url(../images/events/Malta.png) no-repeat center;
+			}
+			.code_NO{
+				background: url(../images/events/Norwegian.png) no-repeat center;
+			}
+			.code_PL{
+				background: url(../images/events/Poland.png) no-repeat center;
+			}
+			.code_PT{
+				background: url(../images/events/Portugal.png) no-repeat center;
+			}
+			.code_RO{
+				background: url(../images/events/Romania.png) no-repeat center;
+			}
+			.code_SK{
+				background: url(../images/events/Slovakia.png) no-repeat center;
+			}
+			.code_SL{
+				background: url(../images/events/Slovenia.png) no-repeat center;
+			}
+			.code_SV{
+				background: url(../images/events/Sweden.png) no-repeat center;
 			}
 		}
 	}
@@ -2423,12 +2498,6 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 		.view-id-social_dashboard{
 			.twitter-tweet{
-				.MediaCard{
-					display: none !important;
-					img{
-						display: none !important;
-					}
-				}
 			}
 		}
 	}
