@@ -146,7 +146,7 @@ function osha_newsletter_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => '%title',
+    'override_title_text' => 'Subscribe',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
@@ -169,7 +169,7 @@ function osha_newsletter_default_page_manager_handlers() {
   $pane->access = array();
   $pane->configuration = array(
     'override_title' => 1,
-    'override_title_text' => '%title',
+    'override_title_text' => 'Latest newsletters',
     'override_title_heading' => 'h2',
   );
   $pane->cache = array();
