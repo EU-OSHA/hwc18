@@ -9702,7 +9702,6 @@ div[class*='node-'] .more-link {
   padding: 0;
 }
 .pane-node-field-provider,
-.pane-node-body,
 .pane-node-field-implementation-steps,
 .pane-node-field-dissemination-used,
 .pane-node-field-access-tool-link,
@@ -9717,7 +9716,6 @@ div[class*='node-'] .more-link {
   margin: 1em 0 0;
 }
 .pane-node-field-provider .field-label,
-.pane-node-body .field-label,
 .pane-node-field-implementation-steps .field-label,
 .pane-node-field-dissemination-used .field-label,
 .pane-node-field-access-tool-link .field-label,
@@ -9730,7 +9728,6 @@ div[class*='node-'] .more-link {
   float: left;
 }
 .pane-node-field-provider .field-items,
-.pane-node-body .field-items,
 .pane-node-field-implementation-steps .field-items,
 .pane-node-field-dissemination-used .field-items,
 .pane-node-field-access-tool-link .field-items,
@@ -9743,7 +9740,6 @@ div[class*='node-'] .more-link {
   float: left;
 }
 .pane-node-field-provider .practical-tool-languages,
-.pane-node-body .practical-tool-languages,
 .pane-node-field-implementation-steps .practical-tool-languages,
 .pane-node-field-dissemination-used .practical-tool-languages,
 .pane-node-field-access-tool-link .practical-tool-languages,
@@ -9755,7 +9751,6 @@ div[class*='node-'] .more-link {
   font-weight: bold;
 }
 .pane-node-field-provider .practical-tool-languages b,
-.pane-node-body .practical-tool-languages b,
 .pane-node-field-implementation-steps .practical-tool-languages b,
 .pane-node-field-dissemination-used .practical-tool-languages b,
 .pane-node-field-access-tool-link .practical-tool-languages b,
@@ -9767,9 +9762,7 @@ div[class*='node-'] .more-link {
   width: 15%;
   float: left;
 }
-/*FIx NO language*/
-html:lang(no) .pane-node-field-provider .field-label,
-.pane-node-body .field-label,
+.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-label,
 .pane-node-field-implementation-steps .field-label,
 .pane-node-field-dissemination-used .field-label,
 .pane-node-field-access-tool-link .field-label,
@@ -9780,8 +9773,7 @@ html:lang(no) .pane-node-field-provider .field-label,
 .access-tool-languages .field-label {
   width: 22%;
 }
-html:lang(no) .pane-node-field-provider .field-items,
-.pane-node-body .field-items,
+.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-items,
 .pane-node-field-implementation-steps .field-items,
 .pane-node-field-dissemination-used .field-items,
 .pane-node-field-access-tool-link .field-items,
@@ -11970,11 +11962,11 @@ p.no-results {
   font-weight: bold;
   font-size: 1.3em;
   display: block;
-  display: -webkit-box;
   height: 60px;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 55px;
 }
 .get-involved-section .information-tailored .images-section .image-block .link a:before {
   content: "> ";
@@ -15752,48 +15744,144 @@ input#edit-field-image-und-0-upload::before {
   font-style: normal;
 }
 /*end napo film*/
+/*Page introduction tools and publications*/
+.page-publications .main-container h1 {
+  margin-top: 10px;
+  margin-bottom: 1em;
+}
+.page-publications .main-container .pane-node-body .field-type-text-with-summary {
+  font-size: 1.2em;
+}
+.page-publications .main-container.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.page-publications .view-id-publication_type {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.page-publications .view-id-publication_type .row > div {
+  padding: 15px;
+}
+.page-publications .view-id-publication_type .row > div .field-type-text-with-summary {
+  font-size: 1em !important;
+}
+.page-publications .view-id-publication_type .row > div .field-name-field-image {
+  margin-bottom: 0px;
+}
+.page-publications .view-id-publication_type .row > div .field-name-field-image img {
+  background-color: #003399;
+  width: 100%;
+  height: auto;
+}
+.page-publications .view-id-publication_type .row > div .views-field-name-field a {
+  display: block;
+  padding: .5em 0;
+  background-color: #003399;
+  min-height: 65px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  line-height: 45px;
+}
+.page-publications .view-id-publication_type .row > div .views-field-name-field a:before {
+  content: "> ";
+}
+.page-publications .view-id-publication_type .row > div .views-field-name-field a .field-name-name-field {
+  display: inline-block;
+}
+.page-publications .view-id-publication_type .row > div .field-name-description-field p {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  min-height: 50px;
+}
+/*End page introducion tools and publications*/
+/*Page introduction priority areas*/
+.page-topics .main-container.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.page-topics .main-container.container-fluid .pane-node-body .field-type-text-with-summary {
+  font-size: 1.2em;
+}
+.page-topics .view-id-topics {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+.page-topics .view-id-topics .views-row {
+  padding: 15px;
+}
+.page-topics .view-id-topics .views-row .field-type-text-with-summary {
+  font-size: 1em !important;
+}
+.page-topics .view-id-topics .views-row img {
+  background-color: #003399;
+  width: 100%;
+  height: auto;
+}
+.page-topics .view-id-topics .views-row .views-field-name-field a {
+  display: block;
+  padding: .5em 0;
+  background-color: #003399;
+  min-height: 65px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  line-height: 45px;
+}
+.page-topics .view-id-topics .views-row .views-field-name-field a:before {
+  content: "> ";
+}
+/*End page introducion priority areas*/
 /*priority areas*/
-.page-taxonomy-term.page-taxonomy-term-783 .container-fluid {
+.priority-detail .container-fluid {
   padding-left: 0px;
   padding-right: 0px;
 }
-.page-taxonomy-term.page-taxonomy-term-783 h1 {
+.priority-detail h1 {
   margin-left: 40px;
   margin-right: 40px;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
+.priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
   position: absolute;
   background: url("../images/content/image-shadow.png") repeat-x left bottom;
   width: 100%;
   height: 360px;
   z-index: 22;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field h1 {
+.priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field h1 {
   color: #ffffff;
   padding-top: 230px;
   border: none;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image {
+.priority-detail .pane-taxonomy-term-field-image {
   margin-left: -15px;
   margin-right: -15px;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image .field.field-name-field-image {
+.priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image {
   float: left;
   margin-bottom: 1em;
   width: 100%;
   height: 360px;
   overflow: hidden;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-taxonomy-term-field-image .field.field-name-field-image img {
+.priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image img {
   width: 100%;
   height: auto;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .panels-flexible-region-inside > div {
+.priority-detail .panels-flexible-region-inside > div {
   padding-right: 15px;
   padding-left: 15px;
   text-align: center;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-links-and-info {
+.priority-detail .pane-hwc-priority-areas-hwc-pa-links-and-info {
   background: url(/sites/all/themes/hwc_frontend/images/content/bg-campaign-partner.png);
   background-size: cover;
   margin-bottom: 0em;
@@ -15801,7 +15889,7 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
   margin-top: 2em;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-links-and-info .recomended-resources-for-you {
+.priority-detail .pane-hwc-priority-areas-hwc-pa-links-and-info .recomended-resources-for-you {
   color: #ffffff;
   font-size: 30px;
   font-style: italic;
@@ -15810,22 +15898,22 @@ input#edit-field-image-und-0-upload::before {
   font-weight: 100;
   text-align: center;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies,
-.page-taxonomy-term.page-taxonomy-term-783 .publications,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links {
+.priority-detail .highlights,
+.priority-detail .tools_and_guidance,
+.priority-detail .case_studies,
+.priority-detail .publications,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool,
+.priority-detail .related_links {
   margin-top: 2em;
   padding-bottom: 2em;
   border-bottom: 1px dotted #749b00;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title,
-.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title {
+.priority-detail .highlights h2.pane-title,
+.priority-detail .tools_and_guidance h2.pane-title,
+.priority-detail .case_studies h2.pane-title,
+.priority-detail .publications h2.pane-title,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title,
+.priority-detail .related_links h2.pane-title {
   color: #749b00;
   font-style: normal;
   font-weight: bold;
@@ -15833,38 +15921,38 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 1em;
   margin-top: 0;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title:before,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title:before,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title:before,
-.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title:before,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title:before {
+.priority-detail .highlights h2.pane-title:before,
+.priority-detail .tools_and_guidance h2.pane-title:before,
+.priority-detail .case_studies h2.pane-title:before,
+.priority-detail .publications h2.pane-title:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before,
+.priority-detail .related_links h2.pane-title:before {
   display: block;
   padding-bottom: 10px;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link,
-.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link {
+.priority-detail .highlights div.more-link,
+.priority-detail .tools_and_guidance div.more-link,
+.priority-detail .case_studies div.more-link,
+.priority-detail .publications div.more-link,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link,
+.priority-detail .related_links div.more-link {
   display: block;
   margin-top: 1em;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link:before,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link:before,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link:before,
-.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link:before,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link:before,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link:before {
+.priority-detail .highlights div.more-link:before,
+.priority-detail .tools_and_guidance div.more-link:before,
+.priority-detail .case_studies div.more-link:before,
+.priority-detail .publications div.more-link:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link:before,
+.priority-detail .related_links div.more-link:before {
   content: "";
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link a,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link a,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link a,
-.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link a,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link a,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link a {
+.priority-detail .highlights div.more-link a,
+.priority-detail .tools_and_guidance div.more-link a,
+.priority-detail .case_studies div.more-link a,
+.priority-detail .publications div.more-link a,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link a,
+.priority-detail .related_links div.more-link a {
   background-color: #003399;
   outline: none;
   border: none;
@@ -15875,33 +15963,33 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 10px;
   font-size: 1.1em;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights div.more-link a:before,
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance div.more-link a:before,
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies div.more-link a:before,
-.page-taxonomy-term.page-taxonomy-term-783 .publications div.more-link a:before,
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool div.more-link a:before,
-.page-taxonomy-term.page-taxonomy-term-783 .related_links div.more-link a:before {
+.priority-detail .highlights div.more-link a:before,
+.priority-detail .tools_and_guidance div.more-link a:before,
+.priority-detail .case_studies div.more-link a:before,
+.priority-detail .publications div.more-link a:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link a:before,
+.priority-detail .related_links div.more-link a:before {
   content: "> ";
 }
-.page-taxonomy-term.page-taxonomy-term-783 .panels-flexible-region-inside > div:last-child {
+.priority-detail .panels-flexible-region-inside > div:last-child {
   border-bottom: none;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .highlights h2.pane-title:before {
+.priority-detail .highlights h2.pane-title:before {
   content: url(../images/content/icono-highlights.png);
 }
-.page-taxonomy-term.page-taxonomy-term-783 .tools_and_guidance h2.pane-title:before {
+.priority-detail .tools_and_guidance h2.pane-title:before {
   content: url(../images/content/tools-and-resources.png);
 }
-.page-taxonomy-term.page-taxonomy-term-783 .case_studies h2.pane-title:before {
+.priority-detail .case_studies h2.pane-title:before {
   content: url(../images/content/icono-case-studies.png);
 }
-.page-taxonomy-term.page-taxonomy-term-783 .publications h2.pane-title:before {
+.priority-detail .publications h2.pane-title:before {
   content: url(../images/content/icono-publications.png);
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before {
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool h2.pane-title:before {
   content: url(../images/content/e-guide.png);
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool button {
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool button {
   background-color: #003399;
   outline: none;
   border: none;
@@ -15912,13 +16000,93 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 10px;
   font-size: 1.1em;
 }
-.page-taxonomy-term.page-taxonomy-term-783 .pane-hwc-priority-areas-hwc-pa-etool button:before {
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool button:before {
   content: "> ";
 }
-.page-taxonomy-term.page-taxonomy-term-783 .related_links h2.pane-title:before {
+.priority-detail .related_links h2.pane-title:before {
   content: url(../images/content/icono-related-links.png);
 }
 /*end priority areas*/
+/*Social media*/
+.page-social-dashboard .main-container h1 {
+  padding-bottom: 0px;
+  border-bottom: none;
+  margin-bottom: 0px;
+}
+.page-social-dashboard .view-id-social_dashboard .view-filters {
+  border-bottom: 1px dotted #749b00;
+  padding-bottom: 0px;
+}
+.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets {
+  margin-bottom: 0px;
+  margin-top: -20px;
+}
+.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper {
+  padding: 0px;
+}
+.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper label {
+  display: none;
+}
+.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper select {
+  padding: 0px;
+  border: none;
+  box-shadow: none;
+  appearance: none;
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  background: url(../images/content/arrow-down.png) no-repeat left 0px;
+  padding-left: 20px;
+  background-position: left;
+  background-size: 17px;
+  color: #003399;
+  font-weight: bold;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style {
+  margin-top: 30px;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style > div {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style > div > h2 {
+  margin-top: 0px;
+  padding-top: 100px;
+  margin-bottom: 40px;
+  font-style: normal;
+  background-size: 61px;
+  color: #749b00;
+  font-weight: bold;
+  text-align: center;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column > h2 {
+  background: url(../images/content/icono-facebook.png) no-repeat center 20px;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb-post.fb_iframe_widget {
+  display: flex;
+  margin-bottom: 10px;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb_iframe_widget > span {
+  width: 100% !important;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb_iframe_widget > span > iframe {
+  width: 100% !important;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column ._5pcb {
+  width: 100% !important;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column {
+  border-left: 1px dotted #749b00;
+  border-right: 1px dotted #749b00;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column > h2 {
+  background: url(../images/content/icono-linkedin.png) no-repeat center 20px;
+}
+.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .twitter-column > h2 {
+  background: url(../images/content/icono-twitter.png) no-repeat center 20px;
+}
+/*End social media*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
@@ -18341,6 +18509,9 @@ input#edit-field-image-und-0-upload::before {
   .front .panels-flexible-region-new-home_left .media-list li .pull-left {
     display: none;
   }
+  .front .panels-flexible-region-new-center {
+    border-left: none;
+  }
   .front .panels-flexible-region-new-center h2.pane-title,
   .front .panels-flexible-region-new-home_right h2.pane-title {
     border-top: 1px dotted #749b00;
@@ -20392,6 +20563,68 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
     height: 263px;
   }
+  /*Page introduction priority areas*/
+  .page-topics .view-id-topics {
+    margin-top: 15px;
+  }
+  .page-topics .view-id-topics .views-row {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  /*Endpage introducion priority areas*/
+  /*Page introduction tools and publications*/
+  .page-publications .main-container h1 {
+    margin-top: 10px;
+    margin-bottom: 1em;
+  }
+  .page-publications .main-container .pane-node-body .field-type-text-with-summary {
+    font-size: 1.2em;
+  }
+  .page-publications .main-container.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .page-publications .view-id-publication_type {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  .page-publications .view-id-publication_type .row > div {
+    padding: 0px;
+  }
+  .page-publications .view-id-publication_type .row > div .field-type-text-with-summary {
+    font-size: 1em !important;
+  }
+  .page-publications .view-id-publication_type .row > div .field-name-field-image {
+    display: none;
+  }
+  .page-publications .view-id-publication_type .row > div .views-field-name-field a {
+    display: block;
+    padding: .5em 0;
+    background-color: #003399;
+    min-height: 65px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    line-height: 45px;
+  }
+  .page-publications .view-id-publication_type .row > div .views-field-name-field a:before {
+    content: "> ";
+  }
+  .page-publications .view-id-publication_type .row > div .views-field-name-field a .field-name-name-field {
+    display: inline-block;
+  }
+  .page-publications .view-id-publication_type .row > div .field-name-description-field {
+    margin-bottom: 15px;
+  }
+  .page-publications .view-id-publication_type .row > div .field-name-description-field p {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: 50px;
+  }
+  /*End page introducion tools and publications*/
 }
 @media only screen and (max-width: 480px) {
   #colorbox {
