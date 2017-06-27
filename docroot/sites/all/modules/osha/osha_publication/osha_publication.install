@@ -64,3 +64,10 @@ function osha_publication_update_7005() {
 function osha_publication_update_7006() {
   features_revert_module('osha_publication');
 }
+
+/**
+ * publication type settings
+ */
+function osha_publication_update_7007() {
+  features_revert_module('osha_publication');
+}
