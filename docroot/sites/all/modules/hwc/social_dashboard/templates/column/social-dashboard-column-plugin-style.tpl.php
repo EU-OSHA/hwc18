@@ -9,6 +9,7 @@
  * @ingroup views_templates
  */
 ?>
+<div<?php if (@$_REQUEST['source']) { echo ' class="container"'; } ?>>
 <script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5" async></script>
 <script>window.twttr = (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -29,7 +30,7 @@
 <div id="social-dashboard-column-<?php print $id ?>" class="row <?php print $classes ?>">
 <?php
     foreach ($items as $title => $rows) { ?>
-    <div <?php if ($current_display != 'block_1') { ?>class="col-xs-12 col-sm-12 col-md-4"<?php } ?>>
+    <div <?php if ($current_display != 'block_1') { ?>class="col-xs-12 col-sm-12 col-md-4<?php echo ' ' . strtolower($title) ?>-column"<?php } ?>>
         <?php if ($current_display != 'block_1') { ?><h2><?php echo ucfirst($title) ?></h2><?php } ?>
 <?php
       foreach ($rows as $row) {
@@ -41,4 +42,5 @@
 <?php
     }
 ?>
+</div>
 </div>
