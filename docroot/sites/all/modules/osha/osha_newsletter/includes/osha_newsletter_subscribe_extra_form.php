@@ -49,7 +49,7 @@ function osha_newsletter_subscribe_extra_form() {
   if (user_is_anonymous()) {
     $form['captcha_osh'] = array(
       '#type' => 'captcha',
-      '#prefix' => '<div class="col-md-6 col-sm-12">',
+      '#prefix' => '<div class="col-md-6 col-sm-12 captcha-content-block">',
       '#suffix' => '</div>',
       '#captcha_type' => 'default',
     );
