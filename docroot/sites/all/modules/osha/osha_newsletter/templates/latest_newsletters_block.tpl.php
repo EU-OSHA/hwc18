@@ -1,7 +1,9 @@
 <div id="latest-newsletters-block">
   <?php
   if (!empty($items)) {
-     foreach($items as $item){
+     $idx = 0;
+     foreach($items as $item) {
+       echo '<div class="newsletter-item" id="newsletter-item-' . ++$idx . '">';
       ?>
       <h2><?php print l($item['title'].' - '.$item['publication_date'], url($item['url'], array('absolute' => TRUE)), array(
           'attributes' => array('style' => 'color: #003399; text-decoration: none;'),
@@ -13,6 +15,7 @@
             print(render($element));
         }
       }
+       echo '</div>';
     }
     if ($newsletters_no < count($items)) {
       $options['attributes']['class'] = 'more_newsletters';
