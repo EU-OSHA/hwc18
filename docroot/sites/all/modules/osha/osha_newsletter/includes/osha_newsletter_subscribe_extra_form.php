@@ -15,14 +15,6 @@ function osha_newsletter_subscribe_extra_form() {
       'onclick' => "jQuery(this).closest('form').find('div.captcha').show();",
     ),
   );
-  if (user_is_anonymous()) {
-    $form['captcha_osh'] = array(
-      '#type' => 'captcha',
-      '#prefix' => '<div class="col-md-6 col-sm-12">',
-      '#suffix' => '</div>',
-      '#captcha_type' => 'default',
-    );
-  }
 
   /* Remove comment for subscription on OSHA Newsletter - HCW-1005
   $form['subscribe-to-OSHMail-newsletter'] = array(
@@ -53,6 +45,15 @@ function osha_newsletter_subscribe_extra_form() {
     '#value' => t('Unsubscribe'),
     '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
   );
+
+  if (user_is_anonymous()) {
+    $form['captcha_osh'] = array(
+      '#type' => 'captcha',
+      '#prefix' => '<div class="col-md-6 col-sm-12">',
+      '#suffix' => '</div>',
+      '#captcha_type' => 'default',
+    );
+  }
 
   $form['#validate'] = array('osha_newsletter_subscribe_extra_form_validate');
 
