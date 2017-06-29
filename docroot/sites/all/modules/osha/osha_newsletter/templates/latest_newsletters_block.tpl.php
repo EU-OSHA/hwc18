@@ -21,6 +21,9 @@
       $options['attributes']['class'] = 'more_newsletters';
       $options['attributes']['onclick'] = 'return see_more_newsletters()';
       echo l(t('See more newsletters'), '', $options);
+      $options['attributes']['class'] = 'less_newsletters';
+      $options['attributes']['onclick'] = 'return see_less_newsletters()';
+      echo l(t('See less newsletters'), '', $options);
     }
   } else {
     print t('No newsletters available.');
@@ -29,6 +32,9 @@
 </div>
 <script>
 function see_more_newsletters() {
+    return false;
+}
+function see_less_newsletters() {
     return false;
 }
 </script>
