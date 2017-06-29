@@ -8,7 +8,7 @@
   max-width: 800px;
 }
 .content-container > td > table {
-  max-width: 760px;  
+  max-width: 760px;
 }
 /* Gutter */
 .content-container > td {
@@ -69,7 +69,7 @@ th {
 }
 
 .header-title > tbody > tr > td {
-  padding: 20px 20px 10px 20px;
+  padding: 17px 20px 28px 20px;
   line-height: 1.1;
 }
 
@@ -80,7 +80,7 @@ th {
 
 .header td,
 td.social {
-  padding: 10px 20px 10px 20px;
+  padding: 10px 0px 10px 0px;
 }
 .social td {
   padding:  0 10px 0 10px;

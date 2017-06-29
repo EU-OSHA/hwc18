@@ -53,7 +53,7 @@ if (!empty($campaign_id)) {
             $calendar_img = 'calendar-' . date('d', $date);
 
             $calendar_img = !empty($node->arrow_color) ? "{$calendar_img}-{$node->arrow_color}.png" : "{$calendar_img}.png";
-            $calendar_img_path = "{$base_url}/sites/all/modules/osha/osha_newsletter/images/{$calendar_img}";
+            $calendar_img_path = "{$base_url}/sites/all/modules/osha/osha_newsletter/images/calendars/{$calendar_img}";
 
               print l(theme('image', array(
               'path' => $calendar_img_path,
