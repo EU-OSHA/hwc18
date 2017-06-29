@@ -5980,34 +5980,35 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	}
 
 	h1{
-		border-bottom: none;
 		background: url("../images/content/mail-newsletter-big.jpg") no-repeat center top;
 		background-size: 61px;
-		padding-top: 65px;
-		padding-bottom: 0px;
+		padding-top: 80px;
+		padding-bottom: 20px;
 		color: @color3 !important;
 		font-weight: bold !important;
 		font-style: normal !important;
 		margin-top: 5px;
+		border-bottom: 1px dotted @color3 !important;
+		margin-bottom: 1.5em;
 	}
 	button {
 		text-align: left;
 		padding-left: 1em;
 	}
+	.panels-flexible-region-first.col-sm-6{
+		border-right: 1px dotted @color3;
+	}
 	.pane-osha-newsletter-osha-newsletter-subscribe-extra{
 		margin-right: 30px;
     	margin-left: 30px;
     	display: inline-block;
+    	
 		h2{
-			background-color: @color3;
-			background: url("../images/content/bg-campaign-partner.png") no-repeat left top;
-			background-size: cover;
-			font-style: italic;
-			font-weight: normal;
+			font-weight: bold;
 			text-align: center;
-			color: @h2-default-color;
-			padding: 30px 15px;
-			margin: 0px -15px 15px;
+			color: @color3;
+			margin-bottom: 30px;
+			font-style: normal;
 		}
 		#subscribe-extra{
 			font-weight: bold;
@@ -6017,16 +6018,12 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 			}
 			input{
 				font-weight: normal;
-				width: 255px;
+				width: 247px;
+				margin-right: 0px;
 			}
 			label, span{
 				font-weight: bold;
 				margin-right: 10px;
-			}
-			span{
-				width: 350px;
-				display:block;
-				padding-bottom: 0px;
 			}
 			span.captcha{
 				width: auto;
@@ -6064,124 +6061,68 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				font-size: 1em;
 			}
 			button#edit-unsubscribe{
-				min-width: 130px;
+				min-width: 105px;
 				font-size: 1em;
-			}
-			button#edit-submit--4{
-				min-width: 130px;
-				font-size: 1em;
-				margin-top: 1em!important;
+				padding: 0px;
+				background: inherit;
+				color: @color2;
+				font-weight: bold;
+				border-bottom: 1px solid @color2;
+				text-align: center;
 			}
 			.privacy-policy-oshmail{
 				margin-top: 0px;
 				display: block;
-				margin-bottom: -15px;
+				text-align: center;
 			}
 			hr{
 				display: none;
 			}
 			#edit-subscribe-details{
-				padding-left: 55px;
+				margin: 0 auto;
+				max-width: 380px;
+				margin-bottom: 20px;
 				span{
 					margin-top: 7px;
     				margin-bottom: 3px;
 				}
-			}
-			@media only screen and (max-width : 992px) {
-				#edit-subscribe-details{
-					margin-top: 10px;
-					padding-left: 0px;
+				.form-item-email{
+					display: inline-block;
+					input{
+						margin-right: 0px;
+					}
+				}
+				#edit-submit{
+					vertical-align: inherit;
 				}
 			}
-		}
-	}
-	#block-osha-newsletter-osha-newsletter-subscribe{
-		background: none;
-		margin-top: 0;
-		padding-top: 0;
-		h2{
-			background: url("../images/content/bg-campaign-partner.png") no-repeat left top;
-			background-size: cover;
-			padding-top: 30px;
-			padding-bottom: 30px;
-			margin-top: 0px;
-			font-style: italic;
-			font-weight: normal;
-		}
-		div{
-			color: @colorNormalText;
-			font-weight: bold;
-			&.form-item-email-osh{
-				min-width: 350px;
-				margin-right: 10px;
-				label{
-					font-weight: bold;
+			#edit-unsubscribe-details{
+				text-align: center;
+				span{
+					font-weight: normal;
+					color: @color2;
+					margin-right: 3px;
 				}
 			}
-			hr{
-				background-color: white;
-				color: white;
-				border-color: white;
-			}
-			&.form-item-security-code{
-				clear: both;
-				float: left;
-				label{
-					font-weight: bold;
-				}
-			}
-			span{
-				display:block;
-				padding-top: 0.5em;
-				margin-right: 10px;
-				min-width: 350px;
-				&.captcha{
-					clear: both;
-					float: left;
-					margin-top: 0 !important;
-					padding-top: 0;
-				}
-			}
-			button, button#edit-submit--4, button#edit-unsubscribe--2{
-				min-width: 130px;
-				font-size: 1em;
-				margin-top: 1em!important;
-			}
-		}
-		div#newsletter-subscription-form-wrapper{
-			text-align: left;
-			margin-top: 2em;
-			form{
-				div{
-					div{
-						float: left;
-						label{
-							font-weight: bold;
-						}
-						input{
-							border: 1px solid @border-color-2;
-							color: @text-color-2;
+			.col-md-6.col-sm-12{
+				width: 100% !important;
+				float: none;
+				display: block;
+				>.captcha{
+					max-width: 267px;
+					margin: 0 auto;
+					text-align: center;
+					display: none;
+					.captcha{
+						margin-bottom: 10px;
+					}
+					.form-item-security-code{
+						.help-block{
+							color: @color2;
+							font-size: 12px;
 							font-weight: normal;
-							height: 34px;
+
 						}
-					}
-					button{
-						float: left;
-						margin-top: 1.8em;
-					}
-					hr{
-						clear: both;
-						color: @body-bg;
-						border-color: @body-bg;
-					}
-					span{
-						float: left;
-						padding-top: 0.5em;
-						margin-right: 10px;
-						min-width: 350px;
-					}
-					button#edit-unsubscribe, button#edit-unsubscribe--2{
-						margin-top: 0em;
 					}
 				}
 			}
@@ -6191,14 +6132,12 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		margin-right: 30px;
     	margin-left: 30px;
 		h2.pane-title{
-			background: @color10;
-			padding-top: 30px;
-			padding-bottom: 30px;
+			margin-bottom: 30px;
 			margin-top: 0px;
-			font-style: italic;
-			font-weight: normal;
-			color: white;
-			text-align: center;
+			font-style: normal;
+			font-weight: bold;
+			color: @color3;
+			text-align: left;
 		}
 		#latest-newsletters-block{
 			h2{
@@ -6207,17 +6146,54 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				background-color: @bg-color-2;
 				line-height: 15px;
 				font-size:1.25em;
+				font-style: normal;
+				margin-bottom: 0px;
 				a{
 					color: @color1 !important;
 					padding-left: 10px;
 					padding-right: 10px;
 					width: 100%;
+					font-weight: bold;
 					line-height: normal;
 				}
 			}
-			.newsletter_items{
-				color: @color2;
-				margin-bottom: 1em;
+			div.newsletter-item{
+				margin-bottom: 15px;
+				display: none;
+				table.newsletter-item{
+					td{
+						padding-bottom: 0px !important;
+						a{
+							font-size: 1.3em !important;
+							color: @colorNormalText !important;
+							font-weight: normal !important;
+
+						}
+					}
+				}
+			}
+			div.newsletter-item:nth-child(-n+4){
+				display: block;
+			}
+			.less_newsletters,
+			.more_newsletters{
+				color: #ffffff;
+			    background-color: @color2;
+			    border-radius: 0;
+			    width: auto;
+			    padding: 0.5em;
+			    margin-top: 20px;
+			    margin-bottom: 30px;
+			    display: inline-block;
+			    &:before{
+			    	content: "> ";
+			    }
+			    &:hover{
+			    	background-color:#002266;
+			    }
+			}
+			.less_newsletters{
+				display: none;
 			}
 		}
 	}

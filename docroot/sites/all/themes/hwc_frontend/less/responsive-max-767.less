@@ -2121,99 +2121,62 @@ header.navbar-default{
 
 /*pag Newsletter*/
 .page-node-129{
-
-	#block-osha-newsletter-osha-newsletter-subscribe div.form-item-email-osh{
-		min-width: auto;
-		margin-right: 0px;
+	h1{
+		border-bottom: none !important;
+		margin-bottom: .5em;
 	}
-
-	.pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra span{
-		
-		width:auto;
+	h2.pane-title{
+		text-align: center !important;
 	}
-
-	#block-osha-newsletter-osha-newsletter-subscribe div span{
-		min-width: auto;
+	h2{
+		margin-left: 0px;
 	}
-
-	#block-osha-newsletter-osha-newsletter-subscribe{
-		h2{
-			padding: 10px;
-		}
-		> div{
-			padding-left: @margin-movil;
-			padding-right: @margin-movil;
-		}
-		div#newsletter-subscription-form-wrapper form > div{
-			padding-left: 0;
-			padding-right: 0;
-			div, button{
-				width: 100%;
-				input{
-					width: 100%;
-				}
-			}
-			button{
-				float: none;
-				margin-top: 0;
-			}
-		}
-
-		.btn{
-			white-space: initial;
-		}
+	.panels-flexible-region-first.col-sm-6{
+		border: none;
+		background-color: @color8;
+		padding-top: 2em;
+	    padding-bottom: 1em;
+	    margin-bottom: 2em;
 	}
 	.pane-osha-newsletter-osha-newsletter-subscribe-extra{
-		margin-top: 15px;
-		margin-right: 0px;
-		margin-left: 0px;
-		h2{
-			//padding: 10px;
-			margin-right: 15px;
-			margin-left: 15px;
-		}
-		div form > div{
-			padding-left: @margin-movil;
-			padding-right: @margin-movil;
-		}
-		.form-item-subscribe-to-OSHMail-newsletter{
-			min-width: 0;
-			width: 100%;
-		}
-		button{
-			width: 100%;
-		}
-		#subscribe-extra .form-item-subscribe-to-OSHMail-newsletter{
-			label{
-				width: 100%;
-				margin-right: 0;
-				a{
-					margin-top: 2.5em;
-					float: right;
+		margin-left: 15px;
+		margin-right: 15px;
+		#subscribe-extra{
+			#edit-subscribe-details{
+				text-align: center;
+				#edit-submit{
+					display: block;
+					margin-bottom: 10px;
+					margin: 15px auto;
 				}
 			}
 		}
 	}
-	 .pane-osha-newsletter-osha-newsletter-latest{
-	 	margin-top: 15px;
+	.pane-osha-newsletter-osha-newsletter-latest{
 		margin-left: 15px;
 		margin-right: 15px;
-		h2.pane-title{
-			margin-right: 0px;
-			margin-left: 0px;
-		}
 		#latest-newsletters-block{
-			width: 100%;
 			h2{
-				width: 100%;
-				margin-left: 0px;
-				margin-right: 0px;
+				font-size: 1.2em !important;
 			}
-			.newsletter_items{
-				width: 100%;
+			.less_newsletters,
+			.more_newsletters{
+				color: #ffffff;
+			    background-color: @color2;
+			    border-radius: 0;
+			    width: auto;
+			    padding: 0.5em;
+			    display: block;
+			    max-width: 200px;
+			    margin: 20px auto;
+			    text-align: center;
+			}
+			.less_newsletters{
+				display: none;
 			}
 		}
-	 }
+	}
+	    
 }
 /*End pag Newsletter*/
 

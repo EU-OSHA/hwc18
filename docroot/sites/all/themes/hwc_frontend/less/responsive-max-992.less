@@ -1224,54 +1224,6 @@ header{
 }
 /*fin plantilla employers*/
 
-/*pag Newsletter*/
-.page-node-129{
-	#block-osha-newsletter-osha-newsletter-subscribe{
-		margin-left: 0;
-		margin-right: 0;
-		h2{
-			margin-left: 0;
-			margin-right: 0;
-		}
-		div form > div{
-			padding-left: @margin-tablet;
-			padding-right: @margin-tablet;
-		}
-	}
-	#block-osha-newsletter-osha-newsletter-subscribe-extra{
-		margin-left: 0;
-		margin-right: 0;
-		h2{
-			margin-left: 0;
-			margin-right: 0;
-		}
-		div form > div{
-			padding-left: @margin-tablet;
-			padding-right: @margin-tablet;
-		}
-		.form-type-checkbox label{
-			font-size: @size4;
-		}
-		hr{
-			clear: both;
-		}
-		#subscribe-extra button#edit-submit--4{
-			margin-top: 5em;
-		}
-	}
-	 #block-osha-newsletter-osha-newsletter-latest #latest-newsletters-block{
-		width: 100%;
-		h2{
-			width: 75%;
-		}
-		.newsletter_items{
-			width: 85%;
-			margin-left: 10px;
-		}
-	 }
-}
-/*End pag Newsletter*/
-
 /*pag get-your-certificate*/
 .page-get-your-certificate{
 
@@ -1498,6 +1450,51 @@ h1{
 	}
 }
 /*End social media*/
+
+/*pag Newsletter*/
+.page-node-129{
+	.pane-osha-newsletter-osha-newsletter-subscribe-extra{
+		#subscribe-extra{
+			#edit-subscribe-details{
+				text-align: center;
+				#edit-submit{
+					display: block;
+					margin-bottom: 10px;
+					margin: 15px auto;
+				}
+			}
+		}
+	}
+	.pane-osha-newsletter-osha-newsletter-latest{
+		#latest-newsletters-block{
+			h2{
+				font-size: 1.2em !important;
+			}
+			.more_newsletters{
+				display: block;
+			}
+			.less_newsletters,
+			.more_newsletters{
+				color: #ffffff;
+			    background-color: @color2;
+			    border-radius: 0;
+			    width: auto;
+			    padding: 0.5em;
+			    display: block;
+			    max-width: 200px;
+			    margin: 20px auto;
+			    text-align: center;
+			}
+			.less_newsletters{
+				display: none;
+			}
+		}
+	}
+}
+/*End pag Newsletter*/
+
+
+
 
 }//end media
 

@@ -39,7 +39,22 @@ jQuery(document).ready(function() {
 	/*adding color to "sort by" labels when is checked*/
 	jQuery(".pane-hwc-practical-tool-hwc-practical-tool-listing #edit-content .form-type-radios.form-item-sort input:checked").parent('label').css({'color':'#749b00','font-weight':'bold'});
 	
-
+	/*show more and less newsletters*/
+	jQuery(".more_newsletters").click(function(){
+		jQuery("div.newsletter-item:gt(3)").slideDown();
+		jQuery(".more_newsletters").hide();
+		
+		if(windowWidth <= 992){
+			jQuery(".less_newsletters").show().css("display", "block");
+		}else{
+			jQuery(".less_newsletters").show().css("display", "inline-block");
+		}
+	});
+	jQuery(".less_newsletters").click(function(){
+		jQuery("div.newsletter-item:gt(3)").slideUp();
+		jQuery(".less_newsletters").hide();
+		jQuery(".more_newsletters").show();
+	});
 
 	/*specific functions for tablet and/or mobile */
 	funcionesTabletMovil();
