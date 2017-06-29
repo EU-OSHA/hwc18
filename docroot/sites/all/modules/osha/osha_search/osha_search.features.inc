@@ -164,6 +164,7 @@ function osha_search_default_search_api_index() {
             "default" : "0",
             "bundles" : {
               "article" : "article",
+              "audio_visual" : "audio_visual",
               "campaign_materials" : "campaign_materials",
               "event_speaker" : "event_speaker",
               "events" : "events",
@@ -195,6 +196,7 @@ function osha_search_default_search_api_index() {
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_url" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_metatag_alter_callback" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
