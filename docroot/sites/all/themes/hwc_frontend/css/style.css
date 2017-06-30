@@ -8666,25 +8666,73 @@ div[class*='node-'] .more-link {
 .field-name-field-country-code:after {
   content: "";
 }
-.form-item-relevant-for {
-  border-top: 1px dotted #749b00;
-  margin-top: 0;
-  padding-top: 1em;
-}
+.form-item-relevant-for,
+.form-item-field-publication-type,
+.form-item-language,
+.form-item-field-priority-area,
 .form-item-languages {
-  border-top: 1px dotted #749b00;
   margin-top: 0;
-  padding-top: 0em;
+  padding-top: 10px;
   border-bottom: 1px dotted #749b00;
-  margin-bottom: 1em;
-  padding-bottom: 2em;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+  clear: both;
+  overflow: hidden;
 }
+.form-item-relevant-for .checkbox:last-child,
+.form-item-field-publication-type .checkbox:last-child,
+.form-item-language .checkbox:last-child,
+.form-item-field-priority-area .checkbox:last-child,
+.form-item-languages .checkbox:last-child {
+  margin-bottom: 10px;
+}
+.form-item-field-publication-type > label,
+.form-item-language > label,
+.form-item-field-priority-area > label,
 .form-item-relevant-for > label,
 .form-item-languages > label,
 .form-item-publication-type > label {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 1.5em;
+  width: 100%;
+  display: block;
+  clear: both;
+  cursor: pointer;
+}
+.form-item-field-publication-type > label:after,
+.form-item-language > label:after,
+.form-item-field-priority-area > label:after,
+.form-item-relevant-for > label:after,
+.form-item-languages > label:after,
+.form-item-publication-type > label:after {
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  margin-left: 10px;
+  float: right;
+}
+.form-item-field-publication-type > label.active,
+.form-item-language > label.active,
+.form-item-field-priority-area > label.active,
+.form-item-relevant-for > label.active,
+.form-item-languages > label.active,
+.form-item-publication-type > label.active {
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  clear: both;
+  cursor: pointer;
+}
+.form-item-field-publication-type > label.active:after,
+.form-item-language > label.active:after,
+.form-item-field-priority-area > label.active:after,
+.form-item-relevant-for > label.active:after,
+.form-item-languages > label.active:after,
+.form-item-publication-type > label.active:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+  margin-left: 10px;
+  float: right;
 }
 .page-node .node-news .field.field-name-field-image .field-items {
   height: 100%;
@@ -9489,6 +9537,7 @@ div[class*='node-'] .more-link {
   border-bottom: 1px dotted #749b00;
   min-height: 260px;
   display: inline-block;
+  width: 100%;
 }
 .publication-item .field-name-title-field {
   margin-top: 3em;
@@ -16068,6 +16117,40 @@ input#edit-field-image-und-0-upload::before {
   padding: 0px 10px;
 }
 /*End social media*/
+/*Good practices, publications, case studies*/
+#edit-left-column {
+  position: relative;
+}
+#edit-left-column #search {
+  position: relative;
+  overflow: hidden;
+}
+#edit-left-column #search .form-type-textfield {
+  float: none;
+  width: 100%;
+}
+#edit-left-column #search .form-type-textfield input {
+  width: 100%;
+  padding-right: 35px;
+}
+#edit-left-column #search button {
+  position: absolute;
+  right: 0px;
+  top: 7px;
+}
+#edit-left-column > a.active {
+  display: inline-block;
+  width: 100%;
+  margin-top: 2px;
+}
+#edit-left-column > a.active:nth-child(-1) {
+  border-bottom: 1px dotted #749b00;
+}
+#edit-left-column .clear_filters {
+  font-weight: bold;
+  margin-top: 4px;
+}
+/*end good practices, publications, case studies*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
@@ -16921,7 +17004,7 @@ input#edit-field-image-und-0-upload::before {
   }
   .form-checkboxes {
     display: none;
-    margin-top: 15px;
+    margin-top: 10px;
   }
   /*FIN Practical tools*/
   /* Article */
@@ -17911,6 +17994,94 @@ input#edit-field-image-und-0-upload::before {
     display: none;
   }
   /*End pag Newsletter*/
+  /*Good practices, publications, case studies*/
+  .page-publications .main-container.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  #edit-left-column {
+    position: relative;
+  }
+  #edit-left-column .form-item-relevant-for,
+  #edit-left-column .form-item-field-publication-type,
+  #edit-left-column .form-item-language,
+  #edit-left-column .form-item-field-priority-area,
+  #edit-left-column .form-item-languages {
+    margin-top: 0;
+    padding-top: 10px;
+    border-bottom: none;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    clear: both;
+    overflow: hidden;
+  }
+  #edit-left-column .form-item-relevant-for .checkbox:last-child,
+  #edit-left-column .form-item-field-publication-type .checkbox:last-child,
+  #edit-left-column .form-item-language .checkbox:last-child,
+  #edit-left-column .form-item-field-priority-area .checkbox:last-child,
+  #edit-left-column .form-item-languages .checkbox:last-child {
+    margin-bottom: 10px;
+  }
+  #edit-left-column .form-item-field-publication-type > label,
+  #edit-left-column .form-item-language > label,
+  #edit-left-column .form-item-field-priority-area > label,
+  #edit-left-column .form-item-relevant-for > label,
+  #edit-left-column .form-item-languages > label,
+  #edit-left-column .form-item-publication-type > label {
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    clear: both;
+    cursor: pointer;
+    background-color: #e2e2e3;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    margin-bottom: 0px;
+  }
+  #edit-left-column #search {
+    position: relative;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  #edit-left-column #search .form-type-textfield {
+    float: none;
+    width: 100%;
+  }
+  #edit-left-column #search .form-type-textfield input {
+    width: 100%;
+    padding-right: 35px;
+  }
+  #edit-left-column #search button {
+    position: absolute;
+    right: 15px;
+    top: 7px;
+  }
+  #edit-left-column > a.active {
+    display: inline-block;
+    width: 100%;
+    margin-top: 2px;
+  }
+  #edit-left-column > a.active:nth-child(-1) {
+    border-bottom: 1px dotted #749b00;
+  }
+  #edit-left-column .clear_filters {
+    font-weight: bold;
+    margin-top: 4px;
+  }
+  #edit-left-column .checkbox {
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  #edit-left-column .checkbox input[type=checkbox]:checked {
+    margin-left: -19px;
+  }
+  #edit-left-column .checkbox input[type=checkbox]:checked:before {
+    height: 14px;
+  }
+  /*end good practices, publications, case studies*/
 }
 @media only screen and (max-width: 767px) {
   #sliding-popup.sliding-popup-top {
@@ -20531,17 +20702,16 @@ input#edit-field-image-und-0-upload::before {
     padding-right: 0px;
   }
   /*Endpage introducion priority areas*/
+  .pane-osha-publication-osha-publication-listing .h4-title {
+    margin-left: 15px;
+  }
   /*Page introduction tools and publications*/
   .page-publications .main-container h1 {
     margin-top: 10px;
-    margin-bottom: 1em;
+    margin-bottom: 0em;
   }
   .page-publications .main-container .pane-node-body .field-type-text-with-summary {
     font-size: 1.2em;
-  }
-  .page-publications .main-container.container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
   }
   .page-publications .view-id-publication_type {
     margin-top: 30px;
@@ -20618,6 +20788,13 @@ input#edit-field-image-und-0-upload::before {
     max-width: 500px !important;
   }
   /*End social media*/
+  /*Good practices, publications, case studies*/
+  #edit-left-column #search .form-type-textfield {
+    margin-left: 0px;
+  }
+  #edit-left-column #search .form-type-textfield input {
+    max-width: 100% !important;
+  }
 }
 @media only screen and (max-width: 480px) {
   #colorbox {
