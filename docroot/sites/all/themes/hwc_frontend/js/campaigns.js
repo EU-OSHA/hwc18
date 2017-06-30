@@ -80,6 +80,46 @@ jQuery(document).ready(function() {
 		    }
 		});
 	};
+
+	/*filters of list dropdown*/
+	jQuery(".form-item-field-publication-type > label").click(function() {
+				jQuery(this).toggleClass("active");
+	});
+	jQuery(".form-item-language > label").click(function() {
+		jQuery(this).toggleClass("active");
+	});
+	jQuery(".form-item-field-priority-area > label").click(function() {
+		jQuery(this).toggleClass("active");
+	});
+	jQuery(".form-item-relevant-for > label").click(function() {
+		jQuery(this).toggleClass("active");
+	});
+	jQuery(".form-item-languages > label").click(function() {
+		jQuery(this).toggleClass("active");
+	});
+	jQuery(".form-item-publication-type > label").click(function() {
+		jQuery(this).toggleClass("active");
+	});
+
+	/*filters of list dropdown*/
+	if(jQuery(".form-item-field-publication-type div").is(':visible')){
+		jQuery(".form-item-field-publication-type > label").addClass("active");
+	};
+	if(jQuery(".form-item-language div").is(':visible')){
+		jQuery(".form-item-language > label").addClass("active");
+	};
+	if(jQuery(".form-item-field-priority-area div").is(':visible')){
+		jQuery(".form-item-field-priority-area > label").addClass("active");
+	};
+	if(jQuery(".form-item-relevant-for div").is(':visible')){
+		jQuery(".form-item-relevant-for > label").addClass("active");
+	};
+	if(jQuery(".form-item-languages div").is(':visible')){
+		jQuery(".form-item-languages > label").addClass("active");
+	};
+	if(jQuery(".form-item-publication-type div").is(':visible')){
+		jQuery(".form-item-publication-type > label").addClass("active");
+	};
 	
 
 	/************************** FUNCTIONS *******************************/
@@ -87,18 +127,7 @@ jQuery(document).ready(function() {
 	function funcionesTabletMovil () {
 		if(windowWidth <= 992){//<-----functions for tablet and/or mobile
 			
-			jQuery(".form-item-relevant-for > label").click(function() {
-				jQuery(this).toggleClass("closeLabel");
-				jQuery("#edit-relevant-for").toggle();
-			});
-			jQuery(".form-item-languages > label").click(function() {
-				jQuery(this).toggleClass("closeLabel");
-				jQuery("#edit-languages").toggle();
-			});
-			jQuery(".form-item-publication-type > label").click(function() {
-				jQuery(this).toggleClass("closeLabel");
-				jQuery("#edit-publication-type").toggle();
-			});
+
 
 		}//<-----End: functions for tablet and/or mobile
 	}
