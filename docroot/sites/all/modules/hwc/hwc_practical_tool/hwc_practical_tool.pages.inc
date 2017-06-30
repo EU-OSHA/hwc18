@@ -31,6 +31,7 @@ function hwc_practical_tool_menu_tools_search($form_state) {
   list($server, $query) = _hwc_practical_tool_menu_tools_get_query();
   $query->condition('status', 1);
   $query->condition('type', 'practical_tool');
+  $query->condition('language', 'und', "<>");
   $query->keys($text);
   $query->fields(array('title_field', 'body:value'));
 
@@ -50,6 +51,7 @@ function hwc_practical_tool_menu_tools_search($form_state) {
 }
 
 function hwc_practical_tool_menu_tools_faceted_form($variables) {
+  global $current_page;
   drupal_set_title(t('Practical tools'));
   $form_state = $variables['form_state'];
   $action = $variables['action'];
@@ -95,9 +97,11 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
     '#type' => 'fieldset',
   );
   $form['content']['sort_fieldset']['sort'] = array(
-    '#type' => 'radios',
-    '#title' => t('Sort by'),
+    '#type' => 'select',
+    '#title' => t('Order'),
     '#default_value' => $sort,
+    '#prefix' => '<div class="sort-container col-xs-3">',
+    '#suffix' => '</div>',
     '#options' => array('date' => t('Date'), 'alphabetically' => t('Alphabetically')),
   );
   $form['content']['results-native'] = array(
@@ -119,6 +123,15 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
   }
 
   $query_params = drupal_get_query_parameters();
+
+  if (!empty($query_params)) {
+    // Clear filter link
+    // it's really just a link to current url without params.
+    $form['left-column']['link'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="clear_filters">' . l(t('Clear filters'), current_path()) . '</div>',
+    );
+  }
 
   foreach ($facets_def as $field_name => $facet_def) {
     if (!empty($facets[$field_name])) {
@@ -152,15 +165,6 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
     }
   }
 
-  if (!empty($query_params)) {
-    // Clear filter link
-    // it's really just a link to current url without params.
-    $form['left-column']['link'] = array(
-      '#type' => 'markup',
-      '#markup' => '<div class="clear_filters">' . l(t('Clear filters'), current_path()) . '</div>',
-    );
-  }
-
   $nids = array();
   if (!empty($response['results'])) {
     foreach ($response['results'] as $result) {
@@ -170,11 +174,14 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
     $nids = array_unique($nids);
   }
 
+  $shown = 0;
+  $per_page = 4;
   if ($nids) {
     if ($sort == 'alphabetically') {
       _hwc_practical_tool_sort_nodes($nids);
     }
-    $form['content']['results-native'] = hwc_practical_tool_menu_tools_search_native($form_state, $nids);
+    $form['content']['results-native'] = hwc_practical_tool_menu_tools_search_native($form_state, $nids, $per_page);
+    $shown = $form['content']['results-native']['#shown'];
   }
   $form['content']['results-related'] = hwc_practical_tool_menu_tools_search_related($form_state, $nids);
 
@@ -185,27 +192,35 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
   if (empty($form['content']['results-native']['#nids'])) {
     $form['content']['results-native']['#markup'] = '<p class="no-results">' . t('No results found to match your search.') . '</p>';
   }
+
+  $start = $current_page * $per_page;
+  $form['content']['sort_fieldset']['search_summary'] = array(
+    '#prefix' => '<span class="count-container pull-right">',
+    '#suffix' => '</span>',
+    '#type' => 'markup',
+    '#markup' => t('Showing @start - @limit from @total', array('@start' => $start + 1, '@limit' => $start + $shown, '@total' => $response['result count'])),
+  );
+
   return $form;
 }
 
-function hwc_practical_tool_menu_tools_search_native($form_state, $nids) {
-  global $language;
+function hwc_practical_tool_menu_tools_search_native($form_state, $nids, $per_page) {
+  global $language, $current_page;
 
-  $languages = hwc_req_param($form_state, 'language', array($language->language));
-  if (!$languages) {
-    $languages = array($language->language);
-  }
+  $languages = hwc_req_param($form_state, 'language', array());
   $text = hwc_req_param($form_state, 'text');
   $sort = hwc_req_param($form_state, 'sort');
 
-  $per_page = 4;
   $current_page = pager_default_initialize(count($nids), $per_page);
   $page = array_chunk($nids, $per_page, TRUE);
   $nodes = node_load_multiple($page[$current_page]);
+  $pager_params = array('language' => $languages, 'sort' => $sort);
+  if (!$languages) {
+    $languages = array($language->language);
+  }
   foreach ($nodes as $node) {
     $node->filter_languages = $languages;
   }
-  $pager_params = array('language' => $languages, 'sort' => $sort);
   if (!empty($text)) {
     $pager_params['text'] = $text;
   }
@@ -216,6 +231,7 @@ function hwc_practical_tool_menu_tools_search_native($form_state, $nids) {
   }
   $ret = array(
     '#nids' => $nids,
+    '#shown' => count($nodes),
     '#prefix' => '<h2 class="h4-title">' . t('Tools and guidance in ') . implode(', ', $language_names) . '</h2>',
     'results-native' => node_view_multiple($nodes, 'pub_teaser', 0, $language->language),
     '#suffix' => theme('pager', array(

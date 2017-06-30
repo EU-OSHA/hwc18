@@ -15,6 +15,13 @@
                 }
                 $form.submit();
             });
+            $form.find('select').change(function() {
+                $form.submit();
+            });
+            $form.find('input[type=text]').focusout(function() {
+                $form.submit();
+            });
+
         }
     }
 
