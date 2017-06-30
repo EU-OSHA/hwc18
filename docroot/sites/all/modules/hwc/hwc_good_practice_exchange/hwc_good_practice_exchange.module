@@ -1,0 +1,55 @@
+<?php
+/**
+ * @file
+ * Code for the HWC Good Practice Exchange feature.
+ */
+
+include_once 'hwc_good_practice_exchange.features.inc';
+
+/**
+ * Implements hook_block_info().
+ */
+function hwc_good_practice_exchange_block_info() {
+  $blocks = array();
+  $blocks['gpe_links'] = array(
+    'info' => t('Good Practice Exchange Links'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['gpe_tools_publications'] = array(
+    'info' => t('Good Practice Exchange Tools & Publications'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function hwc_good_practice_exchange_block_view($delta = '') {
+  $block = array();
+  if ($delta == 'gpe_links') {
+    $items = [];
+    $items[] = l(t('Become in campaign partner'),'partner/register');//or 'become-campaign-partner'
+    $items[] = l(t('Get involved in Good Practice exchange initiative'),'good-practice-exchange-initiative'); // todo ... Link to a new page where users can send an email to get involved in this initiative.
+    $items[] = l(t('Access to the private zone'),'private');
+    $block['subject'] = '';
+    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+  }
+
+  if ($delta == 'gpe_tools_publications') {
+    $block['subject'] = l(t('Tools and publications'), 'tools_and_publications');
+    $items = [];
+    $items[] = l(t('Case studies'),'case-studies', ['attributes' => ['class' => 'case-studies']]);
+    $items[] = l(t('Publications'),'publications', ['attributes' => ['class' => 'publications']]);
+    $items[] = l(t('E-guides'),'healthy-workplaces-all-ages-e-guide', ['attributes' => ['class' => 'e-guides']]);//todo Dangerous substances e-tool
+   $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+  }
+
+  return $block;
+}

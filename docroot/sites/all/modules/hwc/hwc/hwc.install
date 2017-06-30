@@ -618,3 +618,11 @@ function hwc_update_7035() {
   module_enable(['osha_admin_reports']);
   features_revert_module('hwc');
 }
+
+/**
+ * enabled good practice exchange module
+ */
+function hwc_update_7036() {
+  features_revert_module('osha_news');
+  module_enable(['hwc_good_practice_exchange']);
+}

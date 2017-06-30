@@ -27,6 +27,38 @@ function osha_news_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_fe_nodequeue_export_fields().
+ */
+function osha_news_fe_nodequeue_export_fields() {
+  $nodequeues = array();
+
+  // Exported nodequeues: good_practice_exchange
+  $nodequeues['good_practice_exchange'] = array(
+    'name' => 'good_practice_exchange',
+    'title' => 'Good Practice Exchange',
+    'subqueue_title' => '',
+    'size' => 3,
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'nodequeue',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
+    'subqueues' => 1,
+    'types' => array(
+      0 => 'news',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
+  return $nodequeues;
+}
+
+/**
  * Implements hook_node_info().
  */
 function osha_news_node_info() {

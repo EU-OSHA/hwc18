@@ -70,3 +70,19 @@ function osha_search_update_7005() {
 function osha_search_update_7006() {
   features_revert(array('osha_search' => 'views_view'));
 }
+
+/**
+ * audio visual content type
+ */
+function osha_search_update_7007() {
+  features_revert_module('osha_search');
+  search_api_index_reindex('default_multilingual_node_index');
+  features_revert_module('osha_search');
+}
+
+/**
+ * New search order style
+ */
+function osha_search_update_7008() {
+  features_revert_module('osha_search');
+}
