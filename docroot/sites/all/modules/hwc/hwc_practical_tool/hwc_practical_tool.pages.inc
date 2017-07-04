@@ -92,6 +92,12 @@ function hwc_practical_tool_menu_tools_faceted_form($variables) {
     '#value' => t('Search'),
     '#suffix' => '</div>',
   );
+  if (!empty($text)) {
+    $form['content']['search_phrase'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="results-for">' . t('Results for !text', array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
+    );
+  }
   $form['content']['sort_fieldset'] = array(
     /* Needed so that the page passes Web Accessibility test */
     '#type' => 'fieldset',

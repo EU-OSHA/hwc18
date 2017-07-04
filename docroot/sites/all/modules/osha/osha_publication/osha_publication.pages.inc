@@ -83,7 +83,12 @@ function osha_publication_menu_publications_faceted_form($variables) {
     '#value' => t('Search'),
     '#suffix' => '</div>',
   );
-
+  if (!empty($text)) {
+    $form['content']['search_phrase'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="results-for">' . t('Results for !text', array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
+    );
+  }
   $form['#token'] = FALSE;
   $form['content']['sort_fieldset'] = array(
     '#type' => 'fieldset',
@@ -458,7 +463,12 @@ function osha_publication_menu_case_studies_faceted_form($variables) {
     '#value' => t('Search'),
     '#suffix' => '</div>',
   );
-
+  if (!empty($text)) {
+    $form['content']['search_phrase'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="results-for">' . t('Results for !text', array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
+    );
+  }
   $form['#token'] = FALSE;
   $form['content']['sort_fieldset'] = array(
     '#type' => 'fieldset',
