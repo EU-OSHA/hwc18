@@ -286,7 +286,7 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $pane->uuid = '87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
   $display->content['new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952'] = $pane;
   $display->panels['center'][6] = 'new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
-  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
