@@ -1,6 +1,11 @@
 <?php
 include_once 'social_dashboard.features.inc';
 
+function social_dashboard_get_linkedin_link($social_id) {
+  $parts = explode('-', $social_id);
+  return 'https://www.linkedin.com/feed/update/urn:li:activity:' . array_pop($parts);// todo check live
+}
+
 /**
  * Implements Elysia hook_cronapi().
  */
