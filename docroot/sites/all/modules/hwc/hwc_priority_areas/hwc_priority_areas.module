@@ -207,7 +207,7 @@ function hwc_priority_areas_block_view($delta = '') {
     );
   }
   if ($delta == 'hwc_pa_etool') {
-    $block['title'] = t('Dangerous Substances e-tool');
+    $block['title'] = t('DS e-tool');
     $block['content'] = t(variable_get('hwc_pa_etool_text', ''));
     $link = url('gpa_section_in_campaign_website', ['query' => array('relevant_for[' . $relevant_for . ']' => $relevant_for)]);
     $block['content'] .= theme('priority_areas_show_more_button', ['text' => t('GPA section in campaign website'), 'link' => $link]);
