@@ -37,7 +37,7 @@ function osha_newsletter_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Newsletter',
+    'title' => '<none>',
     'visibility' => 1,
   );
 
