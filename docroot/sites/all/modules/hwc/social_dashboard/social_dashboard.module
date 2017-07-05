@@ -77,9 +77,9 @@ function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-social-dashboard-page') {
     $options = [
       '' => 'All',
-      'facebook' => 'Facebook',
-      'twitter' => 'Twitter',
-      'linkedin' => 'Linkedin'
+      'facebook' => 'Facebook world',
+      'twitter' => 'Twitter world',
+      'linkedin' => 'Linkedin world'
     ];
 
     $form['source'] = array(
