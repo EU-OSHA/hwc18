@@ -34,12 +34,14 @@ function hwc_good_practice_exchange_block_info() {
 function hwc_good_practice_exchange_block_view($delta = '') {
   $block = array();
   if ($delta == 'gpe_links') {
+    $prefix = '<div class="col-xs-12 col-sm-4">';
+    $suffix = '</div>';
     $items = [];
-    $items[] = l(t('Become in campaign partner'),'partner/register');//or 'become-campaign-partner'
-    $items[] = l(t('Get involved in Good Practice exchange initiative'),'good-practice-exchange-initiative'); // todo ... Link to a new page where users can send an email to get involved in this initiative.
-    $items[] = l(t('Access to the private zone'),'private');
+    $items[] = l(t('Become in campaign partner'),'partner/register', ['attributes' => ['class' => 'become-campaign-partner']]);//or 'become-campaign-partner'
+    $items[] = l(t('Get involved in Good Practice exchange initiative'),'good-practice-exchange-initiative', ['attributes' => ['class' => 'get-involved']]); // todo ... Link to a new page where users can send an email to get involved in this initiative.
+    $items[] = l(t('Access to the private zone'),'private', ['attributes' => ['class' => 'private-zone']]);
     $block['subject'] = '';
-    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['menu']['#markup'] = '<div class="gpe-links-block">' . $prefix . implode($suffix . $prefix, $items) . $suffix . '</div>';
   }
 
   if ($delta == 'gpe_tools_publications') {
