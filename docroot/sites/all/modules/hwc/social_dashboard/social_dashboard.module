@@ -551,7 +551,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['title'] = 'Social media centre';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'See more tweets';
+  $handler->display->display_options['use_more_text'] = 'More Tweets';
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -696,7 +696,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See more tweets';
+  $handler->display->display_options['use_more_text'] = 'More Tweets';
   $handler->display->display_options['path'] = 'social-dashboard';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Social media centre';
@@ -714,7 +714,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See more tweets';
+  $handler->display->display_options['use_more_text'] = 'More Tweets';
   $handler->display->display_options['link_url'] = 'social-dashboard?source=twitter';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -759,7 +759,7 @@ function social_dashboard_views_default_views() {
   $translatables['social_dashboard'] = array(
     t('Master'),
     t('Social media centre'),
-    t('See more tweets'),
+    t('More Tweets'),
     t('Apply'),
     t('Reset'),
     t('Sort by'),

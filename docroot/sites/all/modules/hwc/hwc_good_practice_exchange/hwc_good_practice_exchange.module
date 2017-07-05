@@ -50,7 +50,13 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $items[] = l(t('Case studies'),'case-studies', ['attributes' => ['class' => 'case-studies']]);
     $items[] = l(t('Publications'),'publications', ['attributes' => ['class' => 'publications']]);
     $items[] = l(t('DS e-tool'),'healthy-workplaces-all-ages-e-guide', ['attributes' => ['class' => 'e-guides']]);//todo DS e-tool
-   $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['link'] = array(
+      'type' => 'item',
+      '#prefix' => '<div class="more-link">',
+      '#markup' => l(t('See other Tools and Publications'), 'tools_and_publications'),
+      '#suffix' => '</div>',
+    );
   }
 
   return $block;
