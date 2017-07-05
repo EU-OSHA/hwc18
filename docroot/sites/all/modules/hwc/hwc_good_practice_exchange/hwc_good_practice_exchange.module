@@ -37,9 +37,9 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $prefix = '<div class="col-xs-12 col-sm-4">';
     $suffix = '</div>';
     $items = [];
-    $items[] = l(t('Become in campaign partner'),'partner/register', ['attributes' => ['class' => 'become-campaign-partner']]);//or 'become-campaign-partner'
-    $items[] = l(t('Get involved in Good Practice exchange initiative'),'good-practice-exchange-initiative', ['attributes' => ['class' => 'get-involved']]); // todo ... Link to a new page where users can send an email to get involved in this initiative.
-    $items[] = l(t('Access to the private zone'),'private', ['attributes' => ['class' => 'private-zone']]);
+    $items[] = l('<span class="link-img"></span><span class="title">' . t('Become in campaign partner') . '</span>','partner/register', ['html'=>TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);//or 'become-campaign-partner'
+    $items[] = l('<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>','good-practice-exchange-initiative', ['html'=>TRUE, 'attributes' => ['class' => 'get-involved']]); // todo ... Link to a new page where users can send an email to get involved in this initiative.
+    $items[] = l('<span class="link-img"></span><span class="title">' . t('Access to the private zone') . '</span>','private', ['html'=>TRUE, 'attributes' => ['class' => 'private-zone']]);
     $block['subject'] = '';
     $block['content']['menu']['#markup'] = '<div class="gpe-links-block">' . $prefix . implode($suffix . $prefix, $items) . $suffix . '</div>';
   }
