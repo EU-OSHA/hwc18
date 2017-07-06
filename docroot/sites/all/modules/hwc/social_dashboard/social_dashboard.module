@@ -11,6 +11,7 @@ include_once 'social_dashboard.features.inc';
  */
 function social_dashboard_panels_pre_render($panels_display, $renderer) {
   if (isset($_REQUEST['source']) && @$_REQUEST['source']) {
+    $panels_display->layout_settings['items']['canvas']['class'] = ' container ';
     $panels_display->layout_settings['items']['center']['class'] = str_replace('col-md-4', 'col-md-12', $panels_display->layout_settings['items']['center']['class']);
     $panels_display->layout_settings['items']['twitter']['class'] = str_replace('col-md-4', 'col-md-12', $panels_display->layout_settings['items']['twitter']['class']);
     $panels_display->layout_settings['items']['facebook']['class'] = str_replace('col-md-4', 'col-md-12', $panels_display->layout_settings['items']['facebook']['class']);
@@ -23,7 +24,15 @@ function social_dashboard_media_centre_form($form, $form_state) {
     '#method' => 'GET',
     '#token' => FALSE,
   );
-  ;
+
+  $output = "<script type=\"text/javascript\">\n";
+  $output .= "jQuery(document).ready(function() {\n";
+  $output .= "  jQuery('#edit-source').change(function() {\n";
+  $output .= "    jQuery('#edit-submit').click();\n";
+  $output .= "  });\n";
+  $output .= "});\n";
+  $output .= "</script>\n";
+
   $options = [
     '' => 'All',
     'facebook' => 'Facebook world',
@@ -34,6 +43,7 @@ function social_dashboard_media_centre_form($form, $form_state) {
     '#type' => 'select',
     '#title' => '',
     '#options' => $options,
+    '#suffix' => $output,
   );
   if (@$_REQUEST['source']) {
     $form['source']['#default_value'] = $_REQUEST['source'];

@@ -1,7 +1,19 @@
 #!/bin/bash
 
-# Go to docroot/
-cd docroot/
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+WHITE='\033[1;37m'
+
+# Get the full path to the directory containing this script.
+SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "$SCRIPT_DIR/docroot"
+
+db_en=`drush --exact --format=string vget environment`
+# Avoid dropping non-local environments
+if [ "$?" == 0 ] && [ "$db_en" != 'development' ]; then
+  echo -e "${RED}Refusing to drop non-development db instance, use «drush vset environment local»' to override${WHITE}\n";
+  exit -1
+fi
 
 drush sql-drop -y
 ecode=$?
@@ -10,22 +22,7 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-pre_update=  post_update= files=
-while getopts b:a:f opt; do
-  case $opt in
-  b)
-      pre_update=$OPTARG
-      ;;
-  a)
-      post_update=$OPTARG
-      ;;
-  f)
-      files="files"
-      ;;
-  esac
-done
-
-# Sync from edw staging
+# Sync from staging
 drush downsync_sql @staging @self -y
 ecode=$?
 if [ ${ecode} != 0 ]; then
@@ -33,18 +30,22 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-drush vset maintenance_mode 1
-
 if [ ! -z "$pre_update" ]; then
   echo "Run pre update"
   ../$pre_update
 fi
 
-# Devify - development settings
 drush devify --yes
 ecode=$?
 if [ ${ecode} != 0 ]; then
   echo "Devify has returned an error"
+  exit ${ecode};
+fi
+
+drush devify_solr
+ecode=$?
+if [ ${ecode} != 0 ]; then
+  echo "Devify Solr has returned an error"
   exit ${ecode};
 fi
 
@@ -54,19 +55,16 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
-# Build the site
-#drush osha_build -y
-#if [ ${ecode} != 0 ]; then
-#  echo "osha_build has returned an error"
-#  exit ${ecode};
-#fi
-
-drush devify_solr
 drush devify_ldap
+if [ ${ecode} != 0 ]; then
+  echo "devify_ldap has returned an error"
+  exit ${ecode};
+fi
 
-drush cc all
-
-drush vset maintenance_mode 0
+if [ ! -z "$files" ]; then
+echo "Run drush rsync"
+drush -y rsync @staging:%files @self:%files
+fi
 
 if [ ! -z "$post_update" ]; then
   echo "Run post update"
@@ -74,17 +72,5 @@ if [ ! -z "$post_update" ]; then
   drush cc all
 fi
 
-if [ ! -z "$files" ]; then
-echo "Run drush rsync"
-drush -y rsync @staging:%files @self:%files --chmod=ug+w
-fi
-
-ecode=$?
-if [ ${ecode} != 0 ]; then
-  echo "rsync has returned an error"
-  exit ${ecode};
-fi
-
-# Post-install release 3
-# drush ne-import --file=../content/internal-doc-webform.drupal
-# drush php-script ../scripts/s9/post-update.php
+# Set the environment to development
+drush vset environment development

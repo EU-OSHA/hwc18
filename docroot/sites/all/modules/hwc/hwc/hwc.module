@@ -769,11 +769,11 @@ function hwc_node_view($node, $view_mode, $langcode) {
     $know_more_about_napo = NAPO_WEBSITE . '/about-napo/the-napo-story';
 
     $node->content['title_field'][0]['#markup'] =
-      '<div class="watch-other-link"><a href="' . $watch_other_link . '">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
-      '<div class="icon napo-logo"><a href="' . $napo_logo_link . '"></a></div>' .
-      '<h2>' . l(t('About Napo'), $about_napo_link) . '</h2>';
+      '<div class="watch-other-link"><a href="' . $watch_other_link . '" target="_blank">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
+      '<div class="icon napo-logo"><a href="' . $napo_logo_link . '" target="_blank"></a></div>' .
+      '<h2>' . l(t('About Napo'), $about_napo_link, ['attributes' => ['target' => '_blank']]) . '</h2>';
 
-    $node->content['body'][0]['#markup'] .= '<div class="more-link"><a href="' . $know_more_about_napo . '">' . t('Know more about Napo') . '</a></div>';
+    $node->content['body'][0]['#markup'] .= '<div class="more-link"><a href="' . $know_more_about_napo . '" target="_blank">' . t('Know more about Napo') . '</a></div>';
   }
 }
 
