@@ -144,8 +144,15 @@ function social_dashboard_schema() {
 }
 
 /**
- * revert hwc practical tool, osha and osha publication module.
+ * revert social_dashboard module.
  */
 function social_dashboard_update_7001() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7002() {
   features_revert_module('social_dashboard');
 }

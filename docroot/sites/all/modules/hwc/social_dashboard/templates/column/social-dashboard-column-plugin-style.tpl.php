@@ -26,7 +26,7 @@ if (typeof(FB) !== 'undefined') {
 }
 </script>
 <?php } ?>
-<?php if ($view->current_display=='twitter') { ?>
+<?php if (($view->current_display=='twitter')||($view->current_display=='block_1')) { ?>
 <script>
     if (typeof(twttr) !== 'undefined') {
         twttr.widgets.load();
