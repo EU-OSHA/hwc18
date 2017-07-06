@@ -85,7 +85,7 @@ function social_dashboard_default_page_manager_pages() {
           2 => 'twitter',
         ),
         'parent' => 'main',
-        'class' => '',
+        'class' => 'social-media-row',
         'hide_empty' => 1,
       ),
       'center' => array(
