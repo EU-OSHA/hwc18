@@ -8692,7 +8692,7 @@ div[class*='node-'] .more-link {
 .form-item-relevant-for > label,
 .form-item-languages > label,
 .form-item-publication-type > label {
-  font-size: 20px;
+  font-size: 1.1em;
   font-weight: bold;
   width: 100%;
   display: block;
@@ -8709,19 +8709,6 @@ div[class*='node-'] .more-link {
   font-family: "Glyphicons Halflings";
   margin-left: 10px;
   float: right;
-}
-.form-item-field-publication-type > label.active,
-.form-item-language > label.active,
-.form-item-field-priority-area > label.active,
-.form-item-relevant-for > label.active,
-.form-item-languages > label.active,
-.form-item-publication-type > label.active {
-  font-size: 20px;
-  font-weight: bold;
-  width: 100%;
-  display: block;
-  clear: both;
-  cursor: pointer;
 }
 .form-item-field-publication-type > label.active:after,
 .form-item-language > label.active:after,
@@ -8930,6 +8917,12 @@ div[class*='node-'] .more-link {
 #block-osha-newsletter-osha-newsletter-image .captcha {
   height: 1%;
   overflow: hidden;
+}
+#block-osha-newsletter-osha-newsletter-image h2 a {
+  color: white;
+}
+#block-osha-newsletter-osha-newsletter-image h2 a:before {
+  content: "";
 }
 /* home events */
 .panels-flexible-column-new-2 .view-news .date-display-single {
@@ -16248,26 +16241,25 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end good practice exchange*/
 /*Social media*/
-.page-social-dashboard .main-container h1 {
+.page-social-media-centre .main-container h1 {
   padding-bottom: 0px;
   border-bottom: none;
   margin-bottom: 0px;
 }
-.page-social-dashboard .view-id-social_dashboard .view-filters {
+.page-social-media-centre #social-dashboard-media-centre-form {
   border-bottom: 1px dotted #749b00;
   padding-bottom: 0px;
+  overflow: hidden;
+  margin-top: -10px;
 }
-.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets {
+.page-social-media-centre #social-dashboard-media-centre-form > div {
+  float: right;
+}
+.page-social-media-centre #social-dashboard-media-centre-form > div .form-type-select {
   margin-bottom: 0px;
-  margin-top: -20px;
+  display: inline-block;
 }
-.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper {
-  padding: 0px;
-}
-.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper label {
-  display: none;
-}
-.page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets #edit-source-wrapper select {
+.page-social-media-centre #social-dashboard-media-centre-form > div .form-type-select select {
   padding: 0px;
   border: none;
   box-shadow: none;
@@ -16283,14 +16275,10 @@ input#edit-field-image-und-0-upload::before {
   color: #003399;
   font-weight: bold;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style {
-  margin-top: 30px;
+.page-social-media-centre #social-dashboard-media-centre-form > div button {
+  vertical-align: top;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style > div {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style > div > h2 {
+.page-social-media-centre .view-id-social_dashboard .view-header > h2 {
   margin-top: 0px;
   padding-top: 100px;
   margin-bottom: 40px;
@@ -16300,37 +16288,71 @@ input#edit-field-image-und-0-upload::before {
   font-weight: bold;
   text-align: center;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column > h2 {
-  background: url(../images/content/icono-facebook.png) no-repeat center 20px;
+.page-social-media-centre .view-id-social_dashboard .view-footer {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb-post.fb_iframe_widget {
+.page-social-media-centre .view-id-social_dashboard .view-footer .more-link {
+  text-align: center;
+  background-color: #003399 !important;
+  color: white !important;
+  max-width: 220px !important;
+  margin: 0 auto !important;
+  display: block;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
+.page-social-media-centre .facebook-column {
+  margin-top: 30px;
+}
+.page-social-media-centre .facebook-column .view-display-id-facebook .view-header > h2 {
+  background: url(../images/content/icono-facebook.png) no-repeat center 20px;
+  margin-bottom: 50px;
+}
+.page-social-media-centre .facebook-column > div {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-social-media-centre .facebook-column .fb-post.fb_iframe_widget {
   display: flex;
   margin-bottom: 10px;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb_iframe_widget > span {
+.page-social-media-centre .facebook-column .fb_iframe_widget > span {
   width: 100% !important;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .facebook-column .fb_iframe_widget > span > iframe {
+.page-social-media-centre .facebook-column .fb_iframe_widget > span > iframe {
   width: 100% !important;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column {
+.page-social-media-centre .linkedin-column {
   border-left: 1px dotted #749b00;
   border-right: 1px dotted #749b00;
+  margin-top: 30px;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column > h2 {
+.page-social-media-centre .linkedin-column .view-display-id-linkedin .view-header > h2 {
   background: url(../images/content/icono-linkedin.png) no-repeat center 20px;
 }
-.page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .twitter-column > h2 {
+.page-social-media-centre .linkedin-column > div {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-social-media-centre .twitter-column {
+  margin-top: 30px;
+}
+.page-social-media-centre .twitter-column .view-display-id-twitter .view-header > h2 {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
 }
-.page-social-dashboard .view-id-social_dashboard .container .linkedin-column {
+.page-social-media-centre .twitter-column > div {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-social-media-centre .container .linkedin-column {
   border-left: none !important;
   border-right: none !important;
 }
-.page-social-dashboard .view-id-social_dashboard .container .linkedin-column .feed-s-update {
+.page-social-media-centre .container .linkedin-column .feed-s-update {
   width: 100% !important;
 }
-.page-social-dashboard .view-id-social_dashboard .container .twitter-column twitterwidget {
+.page-social-media-centre .container .twitter-column twitterwidget {
   width: 50% !important;
   display: inline-block !important;
   padding: 0px 10px;
@@ -16370,6 +16392,20 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 5px;
   display: inline-block;
   width: 100%;
+}
+.results-for {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+.results-for .searched-text {
+  font-size: 1.8em;
+  color: #749b00;
+}
+.results-for .searched-text:before {
+  content: "\"";
+}
+.results-for .searched-text:after {
+  content: "\"";
 }
 #edit-sort-fieldset {
   border: none;
@@ -18196,25 +18232,23 @@ input#edit-field-image-und-0-upload::before {
     height: 424px;
   }
   /*Social media*/
-  .page-social-dashboard .main-container h1 {
+  .page-social-media-centre .main-container h1 {
     padding-left: 15px;
     padding-right: 15px;
   }
-  .page-social-dashboard .view-id-social_dashboard .view-filters {
-    margin-left: 15px;
+  .page-social-media-centre #social-dashboard-media-centre-form {
     margin-right: 15px;
-  }
-  .page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets {
+    margin-left: 15px;
     margin-top: 0px;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column {
+  .page-social-media-centre .linkedin-column {
     border-left: none;
     border-right: none;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column .feed-s-update {
+  .page-social-media-centre .linkedin-column .feed-s-update {
     width: 100% !important;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .twitter-column twitterwidget {
+  .page-social-media-centre .twitter-column twitterwidget {
     width: 50% !important;
     display: inline-block !important;
     padding: 0px 10px;
@@ -21111,32 +21145,25 @@ input#edit-field-image-und-0-upload::before {
   }
   /*End page introducion tools and publications*/
   /*Social media*/
-  .page-social-dashboard .view-id-social_dashboard .view-filters {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-  .page-social-dashboard .view-id-social_dashboard .view-filters .views-exposed-widgets {
-    margin-top: 0px;
-  }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column {
+  .page-social-media-centre .linkedin-column {
     border-left: none;
     border-right: none;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column .feed-s-update {
+  .page-social-media-centre .linkedin-column .feed-s-update {
     width: 100% !important;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .linkedin-column .feed-s-update h3 {
+  .page-social-media-centre .linkedin-column .feed-s-update h3 {
     padding-right: 15px;
     padding-left: 15px;
   }
-  .page-social-dashboard .view-id-social_dashboard .social-dashboard-column-plugin-style .twitter-column twitterwidget {
+  .page-social-media-centre .twitter-column twitterwidget {
     width: 100% !important;
     display: block !important;
     padding: 0px;
     margin: 0 auto;
     max-width: 500px !important;
   }
-  .page-social-dashboard .view-id-social_dashboard .container .twitter-column twitterwidget {
+  .page-social-media-centre .container .twitter-column twitterwidget {
     width: 100% !important;
     display: block !important;
     padding: 0px;
@@ -21155,6 +21182,9 @@ input#edit-field-image-und-0-upload::before {
   .page-good-practice-exchange .container-fluid {
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .page-good-practice-exchange .field-name-title-field {
+    left: 0px;
   }
   .page-good-practice-exchange .panels-flexible-region-inside > .pane-node-field-image .field.field-name-field-image {
     float: left;
@@ -21183,6 +21213,16 @@ input#edit-field-image-und-0-upload::before {
     font-style: normal;
     margin-top: 10px;
     padding-bottom: 10px;
+  }
+  .page-good-practice-exchange .panels-flexible-region-inside .pane-news h2.pane-title {
+    margin-bottom: 0px;
+  }
+  .page-good-practice-exchange .panels-flexible-region-inside .pane-news .view-id-news img {
+    display: none;
+  }
+  .page-good-practice-exchange .panels-flexible-region-inside .pane-news .view-id-news h2 {
+    margin-right: 0px;
+    margin-left: 0px;
   }
   .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-tools-publications {
     margin-left: 0px;
