@@ -430,6 +430,9 @@ function osha_newsletter_block_view($delta = '') {
           'subscribers_no' => drupal_render($subscribe_form),
           'end_text' => $details_link,
         ));
+        if (drupal_is_front_page()) {
+          $block['content'] = '<h2 class="block-title">' . l(t('Newsletter'), 'healthy-workplaces-newsletter') . '</h2>' . $block['content'];
+        }
         return $block;
       }
       break;

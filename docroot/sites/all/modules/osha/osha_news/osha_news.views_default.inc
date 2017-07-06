@@ -191,7 +191,7 @@ function osha_news_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'See all news';
+  $handler->display->display_options['use_more_text'] = 'More news';
   $handler->display->display_options['link_url'] = 'news';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -275,7 +275,7 @@ function osha_news_views_default_views() {
     t('All'),
     t('News list'),
     t('Latest News'),
-    t('See all news'),
+    t('More news'),
     t('Latest news'),
     t('GPE'),
   );

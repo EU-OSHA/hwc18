@@ -39,3 +39,18 @@ function hwc_homepage_update_7004() {
 function hwc_homepage_update_7005() {
   features_revert_module('hwc_homepage');
 }
+
+/**
+ * Revert hwc homepage modules.
+ */
+function hwc_homepage_update_7006() {
+  features_revert_module('hwc_homepage');
+  features_revert_module('osha_news');
+}
+
+/**
+ * Revert hwc homepage modules.
+ */
+function hwc_homepage_update_7007() {
+  features_revert_module('hwc_homepage');
+}
