@@ -92,6 +92,8 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['fields']['field_tools_publications_link']['field'] = 'field_tools_publications_link';
   $handler->display->display_options['fields']['field_tools_publications_link']['label'] = '';
   $handler->display->display_options['fields']['field_tools_publications_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_tools_publications_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_tools_publications_link']['alter']['text'] = '[field_tools_publications_link-url]';
   $handler->display->display_options['fields']['field_tools_publications_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_tools_publications_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_tools_publications_link']['type'] = 'link_plain';
@@ -157,6 +159,7 @@ function osha_publication_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Block'),
+    t('[field_tools_publications_link-url]'),
     t('.'),
   );
   $export['publication_type'] = $view;

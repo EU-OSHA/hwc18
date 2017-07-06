@@ -78,3 +78,10 @@ function osha_publication_update_7007() {
 function osha_publication_update_7008() {
   features_revert_module('osha_publication');
 }
+
+/**
+ * tools and publication type
+ */
+function osha_publication_update_7009() {
+  features_revert_module('osha_publication');
+}
