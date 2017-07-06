@@ -8,16 +8,12 @@
  *
  * @ingroup views_templates
  */
-$one_column = FALSE;
 $in_block = TRUE;
-if (@$_REQUEST['source']) {
-  $one_column = TRUE;
-}
 if ($current_display != 'block_1') {
   $in_block = FALSE;
 }
 ?>
-<div<?php if ($one_column) { echo ' class="container"'; } ?>>
+<div>
 <?php if ($view->current_display=='facebook') { ?>
 <script src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.5" async></script>
 <script>
@@ -51,15 +47,8 @@ if (typeof(FB) !== 'undefined') {
 <?php } ?>
 <div id="social-dashboard-column-<?php print $id ?>" class="row <?php print $classes ?>">
 <?php
-    foreach ($items as $title => $rows) {
-      $col_md = 4;
-      if ($one_column) {
-        $col_md = 12;
-      }
-      $class = 'class="col-xs-12 col-sm-12 col-md-' . $col_md . ' ' . strtolower($title) . '-column"';
-      $class = '';
-        ?>
-    <div <?php if (!$in_block) { echo $class; } ?>>
+    foreach ($items as $title => $rows) { ?>
+    <div>
         <?php if (!$in_block && 0) { ?><h2><?php echo ucfirst($title) ?></h2><?php } ?>
 <?php
       foreach ($rows as $row) {
