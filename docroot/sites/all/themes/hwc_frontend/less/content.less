@@ -1038,7 +1038,7 @@ ul.tabs--primary.nav.nav-tabs{
 	.form-item-relevant-for > label,
 	.form-item-languages > label,
 	.form-item-publication-type > label{
-		font-size: @size2;
+		font-size: 1.1em;
 		font-weight: bold;
 		width: 100%;
 		display: block;
@@ -1057,12 +1057,6 @@ ul.tabs--primary.nav.nav-tabs{
 	.form-item-relevant-for > label.active,
 	.form-item-languages > label.active,
 	.form-item-publication-type > label.active{
-		font-size: @size2;
-		font-weight: bold;
-		width: 100%;
-		display: block;
-		clear: both;
-		cursor: pointer;
 		&:after{
 			content: "\e252";
 			font-family: "Glyphicons Halflings";
@@ -1240,6 +1234,16 @@ ul.tabs--primary.nav.nav-tabs{
 			//margin-top: 0px !important;
 			height:1%;
 			overflow:hidden;
+		}
+	}
+	#block-osha-newsletter-osha-newsletter-image{
+		h2{
+			a{
+				color: white;
+				&:before{
+					content:"";
+				}
+			}
 		}
 	}
 	
@@ -7905,7 +7909,7 @@ input#edit-field-image-und-0-upload::before {
 /*end good practice exchange*/
 
 /*Social media*/
-.page-social-dashboard{
+.page-social-media-centre{
 	.main-container{
 		h1{
 			padding-bottom: 0px;
@@ -7913,97 +7917,141 @@ input#edit-field-image-und-0-upload::before {
 			margin-bottom: 0px;
 		}
 	}
-	.view-id-social_dashboard{
-		.view-filters{
-			border-bottom: 1px dotted @color3;
-			padding-bottom: 0px;
-			.views-exposed-widgets{
+	#social-dashboard-media-centre-form{
+		border-bottom: 1px dotted @color3;
+		padding-bottom: 0px;
+		overflow: hidden;
+		margin-top: -10px;
+		>div{
+			float: right;
+			.form-type-select{
 				margin-bottom: 0px;
-				margin-top: -20px;
-				#edit-source-wrapper{
+				display: inline-block;
+				select{
 					padding: 0px;
-					label{
-						display: none;
-					}
-					select{
-						padding: 0px;
-						border: none;
-						box-shadow: none;
-						appearance:none;
-					    -moz-appearance:none; /* Firefox */
-					    -webkit-appearance:none; /* Safari and Chrome */
-						background: url(../images/content/arrow-down.png) no-repeat left 0px;
-					    padding-left: 20px;
-					    background-position: left;
-						background-size: 17px;
-						color: @color2;
-						font-weight: bold;
-					}
+					border: none;
+					box-shadow: none;
+					appearance:none;
+				    -moz-appearance:none; /* Firefox */
+				    -webkit-appearance:none; /* Safari and Chrome */
+					background: url(../images/content/arrow-down.png) no-repeat left 0px;
+				    padding-left: 20px;
+				    background-position: left;
+					background-size: 17px;
+					color: @color2;
+					font-weight: bold;
+				}
+			}
+			button{
+				vertical-align: top;
+				//display: none;
+			}
+		}
+	}
+	.view-id-social_dashboard{
+		.view-header{
+			>h2{
+				margin-top: 0px;
+			    padding-top: 100px;
+			    margin-bottom: 40px;
+			    font-style: normal;
+			    
+			    background-size: 61px;
+			    color: #749b00;
+			    font-weight: bold;
+			    text-align: center;
+			}
+		}
+		.view-footer{
+			margin-top: 30px;
+			margin-bottom: 30px;
+			.more-link{
+				text-align: center;
+				background-color: @color2 !important;
+				color: white !important;
+				max-width: 220px !important;
+				margin: 0 auto !important;
+				display: block;
+				font-style: normal !important;
+				font-weight: normal !important;
+				a{
+		
 				}
 			}
 		}
-		.social-dashboard-column-plugin-style{
-			margin-top: 30px;
-			>div{
-				padding-right: 15px;
-				padding-left: 15px;
-				>h2{
-					margin-top: 0px;
-				    padding-top: 100px;
-				    margin-bottom: 40px;
-				    font-style: normal;
-				    
-				    background-size: 61px;
-				    color: #749b00;
-				    font-weight: bold;
-				    text-align: center;
-				}
-			}
-			.facebook-column{
+	}
+	.facebook-column{
+		margin-top: 30px;
+		.view-display-id-facebook{
+			.view-header{
 				>h2{
 					background: url(../images/content/icono-facebook.png) no-repeat center 20px;
+					margin-bottom: 50px;
 				}
-				.fb-post.fb_iframe_widget{
-					display: flex;
-					margin-bottom: 10px;
-    			}
-    			.fb_iframe_widget{
-    				>span{
-    					width: 100% !important;
-    					>iframe{
-	    					width: 100% !important;
-	    				}
-    				}
-    				
-    			}
 			}
-			.linkedin-column{
+		}
+		>div{
+			padding-right: 15px;
+			padding-left: 15px;	
+		}
+		.fb-post.fb_iframe_widget{
+			display: flex;
+			margin-bottom: 10px;
+		}
+		.fb_iframe_widget{
+			>span{
+				width: 100% !important;
+				>iframe{
+					width: 100% !important;
+				}
+			}
+			
+		}
+	}
+	.linkedin-column{
+		border-left: 1px dotted @color3;
+		border-right: 1px dotted @color3;
+		margin-top: 30px;
+		.view-display-id-linkedin{
+			.view-header{
 				>h2{
 					background: url(../images/content/icono-linkedin.png) no-repeat center 20px;
 				}
-				border-left: 1px dotted @color3;
-				border-right: 1px dotted @color3;
 			}
-			.twitter-column{
+		}
+		>div{
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+	}
+	.twitter-column{
+		margin-top: 30px;
+		.view-display-id-twitter{
+			.view-header{
 				>h2{
 					background: url(../images/content/icono-twitter.png) no-repeat center 20px;
 				}
 			}
 		}
-		.container{
-			.linkedin-column{
-				border-left: none !important;
-				border-right: none !important;
-				.feed-s-update{
-					width: 100% !important;
-				}
+		>div{
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+	}
+
+	.container{
+		.linkedin-column{
+			border-left: none !important;
+			border-right: none !important;
+			.feed-s-update{
+				width: 100% !important;
 			}
-			.twitter-column{
-				twitterwidget{
-					width: 50% !important;
-					display: inline-block !important;
-					padding: 0px 10px;
-				}
+		}
+		.twitter-column{
+			twitterwidget{
+				width: 50% !important;
+				display: inline-block !important;
+				padding: 0px 10px;
 			}
 		}
 	}
@@ -8044,6 +8092,21 @@ input#edit-field-image-und-0-upload::before {
 		margin-top: 5px;
 		display: inline-block;
 		width: 100%;
+	}
+}
+
+.results-for{
+	font-size: 1.1em;
+	margin-bottom: 5px;
+	.searched-text{
+		font-size: 1.8em;
+		color: @color3;
+		&:before{
+			content:"\"";
+		}
+		&:after{
+			content:"\"";
+		}
 	}
 }
 
