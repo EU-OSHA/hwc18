@@ -264,6 +264,40 @@ header.navbar-default{
 						background-color: @menu-bg-color;
 					}
 				}
+				
+				li.last{
+					.dropdown-menu{
+						min-width: 100%;
+						position: absolute;
+    					right: 0px;
+					}
+				}
+				li.active-trail{
+					font-weight: bold;
+					color: @menu-selected-color;
+					a, > span{
+						color: @menu-selected-color;
+						background-color: @menu-bg-color;
+					}
+					ul li a, ul li span{
+						color: white;
+					}
+					ul li.active-trail{
+						color: white;
+						a{
+							font-weight: bold;
+						}
+					}
+				}
+				>li.leaf{
+					>a{
+						margin-top: 8px;
+						margin-bottom: 8px;
+						border-right: 1px solid white;
+						padding-bottom: 2px;
+						padding-top: 2px;
+					}
+				}
 				> li.first{
 					width: 10%;
 					a{
@@ -287,30 +321,6 @@ header.navbar-default{
 						    height: 19px;
 						    margin-bottom: 39px;
 						    background-position: center;
-						}
-					}
-				}
-				li.last{
-					.dropdown-menu{
-						min-width: 100%;
-						position: absolute;
-    					right: 0px;
-					}
-				}
-				li.active-trail{
-					font-weight: bold;
-					color: @menu-selected-color;
-					a, > span{
-						color: @menu-selected-color;
-						background-color: @menu-bg-color;
-					}
-					ul li a, ul li span{
-						color: white;
-					}
-					ul li.active-trail{
-						color: white;
-						a{
-							font-weight: bold;
 						}
 					}
 				}

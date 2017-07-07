@@ -872,41 +872,59 @@ header{
 	.region-sidebar-first{
 		border-bottom: none;
 		border-top: 1px dotted @border-default-color;
-		margin-bottom: 0;
+		margin-bottom: 0px;
 		margin-left: 0;
 		padding-top: 0;
 		padding-bottom: 0;
-		h2{
-		    padding: 0.5em @margin-tablet 0;
-			float: left;
-			margin-bottom: 0;
+		#edit-search-block-form--3-wrapper{
+			margin-bottom: 10px;
+			padding-right: 15px;
+			padding-left: 15px;
+			
 		}
-		.facetapi-facetapi-checkbox-links{
-			padding-left: @margin-tablet;
-			padding-top: 0.7em;
-			margin-bottom: 0;
-			display: inline-block;
-			li{
-				float: left;
-				width: 20%;
-				width: auto;
-				white-space: nowrap;
-				margin-right: 1em;
+		.views-submit-button{
+			button{
+				right: 15px !important;
 			}
 		}
-	}
-	.views-exposed-form{
-		padding-left: @margin-tablet2;
-	}
-	#views-exposed-form-search-site{
-		padding-left: 15px;
-		padding-right: 15px;
+		#block-osha-search-osha-search-clear-filters{
+			a{
+				margin-bottom: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+		.block.block-facetapi{
+			border-bottom: none;
+			padding-top: 0px;
+			padding-bottom: 10px;
+			overflow: hidden;
+			h2{
+			    padding: 8px 15px;
+				margin-bottom: 0;
+				background-color: @color8;
+			}
+			.facetapi-facetapi-checkbox-links{
+				padding-left: 15px;
+				margin-bottom: 0;
+				display: block;
+				li{
+					width: 20%;
+					width: auto;
+					white-space: nowrap;
+					margin-right: 1em;
+				}
+			}
+		}
 	}
 	.region.region-content{
 		float: left;
 		width: 100%;
 		margin-left: 0;
 		.view-search{
+			.view-header{
+				padding: 7px 15px;
+			}
 			.view-content .views-row{
 				padding-left: @margin-tablet;
 				padding-right: @margin-tablet;
@@ -1526,7 +1544,7 @@ h1{
 		clear: both;
 		cursor: pointer;
 		background-color: @color8;
-	    padding: 5px 10px;
+	    padding: 5px 15px;
 	    font-size: 1.2em;
 	    margin-bottom: 0px;
 	}
@@ -1554,6 +1572,8 @@ h1{
 		display: inline-block;
 		width: 100%;
 		margin-top: 2px;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 	>a.active:nth-child(-1){
 		border-bottom: 1px dotted @color3;
@@ -1561,6 +1581,10 @@ h1{
 	.clear_filters{
 		font-weight: bold;
 		margin-top: 4px;
+		a{
+			padding-left: 15px;
+			padding-right: 15px;
+		}
 	}
 	.checkbox{
 		width: 100%;
