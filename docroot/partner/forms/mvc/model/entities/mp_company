@@ -197,6 +197,13 @@
       "type": "text",
       "validator": "not_null"
     },
+    "company_osh_prefixgeneralphone": {
+          "name": "company_osh_prefixgeneralphone",
+          "label": "Telephone prefix",
+          "placeholder": "+00",
+          "section": "GENERAL_INFORMATION",
+          "type": "dropdown"
+    },
     "company_osh_homepage": {
       "name": "company_osh_homepage",
       "label": "Homepage",
@@ -321,6 +328,7 @@
     "company_osh_country": "osh_country",
     "company_osh_generalemail":"osh_generalemail",
     "company_osh_generalphone":"osh_generalphone",
+    "company_osh_prefixgeneralphone":"osh_prefixgeneralphone",
     "company_osh_mainphone": "osh_mainphone",
     "company_osh_zipcode": "osh_zipcode",
     "company_osh_orgname": "osh_orgname",
@@ -368,6 +376,7 @@
     "company_osh_country": "osh_phcountryid",
     "company_osh_generalemail": "generalemailaddress1",
     "company_osh_generalphone": "osh_phone1",
+    "company_osh_prefixgeneralphone":"osh_prefixgeneralphone",
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
     "company_osh_zipcode": "osh_phcp",
     "company_osh_orgname": "osh_companyorganisationname",

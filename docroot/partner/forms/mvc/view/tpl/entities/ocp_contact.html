@@ -7,7 +7,7 @@
     <div class="separatorFieldSet">&nbsp;</div>
     
      <!--  {if !mf && $partner_type == "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}-->
- {if !$mf && $mainContactChangeCheck == true && $partner_type != "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if} 
+ {if !$mf && $mainContactChangeCheck == true && $partner_type != "current" && preg_match('/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/', $session_id)}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}
     <div class="main-contact-change">
         <div class="float-left">
             {$attributes.contact_osh_maincontactpersonfirstname}
@@ -16,6 +16,7 @@
 
         </div>
         <div class="float-right" style="margin-top: 2%">
+            {$attributes.contact_osh_prefixmaincontactphone}
             {$attributes.contact_osh_mainphone}
             {if $mf || $partner_type == "current"}
                 <div class="disabledEmailForMF">
@@ -30,7 +31,7 @@
         </div>
     </div>
   <div class="float-left">
-            {if !$mf && $partner_type != "current" && !$locked && $HelpMessage != "print"}
+            {if !$mf && $partner_type != "current" && !$locked && $HelpMessage != "print"  && !preg_match('/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/', $session_id)}
             {$attributes.contact_osh_captcha}
             {/if}
         </div>
@@ -64,7 +65,8 @@
    <div id="otherUserField1" style="margin-top: -7%;">
         {$attributes.contact_osh_otherusername1}
         {$attributes.contact_osh_otherusermail1}
-        {$attributes.contact_osh_otheruserphone1}
+       {$attributes.contact_osh_otheruserprefix1}
+       {$attributes.contact_osh_otheruserphone1}
         <div class="removeOtherUserDiv" style="margin-top: 2%;">
             <button id="removeOtherUser1" type="button">
                 Remove user
@@ -74,6 +76,7 @@
    <div id="otherUserField2" style="margin-top: 5%;">
         {$attributes.contact_osh_otherusername2}
         {$attributes.contact_osh_otherusermail2}
+       {$attributes.contact_osh_otheruserprefix2}
         {$attributes.contact_osh_otheruserphone2}
         <div class="removeOtherUserDiv" style="margin-top: 2%;">
             <button id="removeOtherUser2" type="button">
@@ -84,6 +87,7 @@
    <div id="otherUserField3" style="margin-top: 5%;">
         {$attributes.contact_osh_otherusername3}
         {$attributes.contact_osh_otherusermail3}
+       {$attributes.contact_osh_otheruserprefix3}
         {$attributes.contact_osh_otheruserphone3}
         <div class="removeOtherUserDiv" style="margin-top: 2%;">
             <button id="removeOtherUser3" type="button">
@@ -94,6 +98,7 @@
     <div id="otherUserField4" style="margin-top: 5%;">
         {$attributes.contact_osh_otherusername4}
         {$attributes.contact_osh_otherusermail4}
+        {$attributes.contact_osh_otheruserprefix4}
         {$attributes.contact_osh_otheruserphone4}
         <div class="removeOtherUserDiv" style="margin-top: 2%;">
             <button id="removeOtherUser4" type="button">
@@ -104,6 +109,7 @@
     <div id="otherUserField5" style="margin-top: 5%;">
         {$attributes.contact_osh_otherusername5}
         {$attributes.contact_osh_otherusermail5}
+        {$attributes.contact_osh_otheruserprefix5}
         {$attributes.contact_osh_otheruserphone5}
         <div class="removeOtherUserDiv" style="margin-top: 2%;">
             <button id="removeOtherUser5" type="button">
@@ -120,9 +126,9 @@
 {/if}
 {if $HelpMessage == "print"}
 <div id="footerPrintFriendly">
-    <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" align="center" bgcolor="#2d6a00" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" align="center" bgcolor="#4d8102" border="0" cellpadding="0" cellspacing="0" width="100%">
           <tbody><tr>
-             <td class="block_td percent_td" width="50%"><img src="http://hwc-crm.osha.europa.eu/footer.png" alt="" height="88" width="350"></td>    
+             <td class="block_td percent_td" width="50%"><img src="http://hwc-crm.osha.europa.eu/footer-2017.png" alt="" height="88" width="350"></td>
              <td class="block_td percent_td" align="center" valign="middle" width="50%">
 				 <p style="margin:20px 0 !important; color:#ffffff; font-weight:700; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height: 20px;mso-line-height-rule: exactly;">Follow us on: 
 					<a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="http://hwc-crm.osha.europa.eu/facebook.jpg" alt="facebook" align="absmiddle" height="20" border="0" width="20"></a> 

@@ -27,7 +27,7 @@
             <input {$disabled} type="button" id="{$fieldName}_btnCrop" value="Save Image" style="float: right; background: #003399; color: white;" data-section="{$fieldSection}">
             <input {$disabled} type="button" id="{$fieldName}_btnZoomIn" value="+" style="float: right" data-section="{$fieldSection}">
             <input {$disabled} type="button" id="{$fieldName}_btnZoomOut" value="-" style="float: right" data-section="{$fieldSection}">
-            <input {$disabled} id="{$fieldName}_file" name="{$fieldName}_file" type="file" data-section="{$fieldSection}"><br/>
+            <input {$disabled} id="{$fieldName}_file" name="{$fieldName}_file" type="file" data-section="{$fieldSection}" style="width:60%; margin-top:6px;"><br/>
         </div>
         <button id="guardarImg" class="guardarImg hidden" name="save_image" data-target="{$fieldName}_image_container" data-cropperkey="{$fieldName}_cropper">Save Image</button>
         <p><a class="{$fieldName}_popup-modal-dismiss" href="#">Close</a></p>

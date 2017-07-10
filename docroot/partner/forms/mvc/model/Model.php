@@ -175,6 +175,13 @@ class Model {
         return true;
     }
 
+    public function submitSatisfactionToCDB($id, $fields) {
+        $cdb = CDB::getInstance(null);
+        $cdb->submitSatisfaction($id, $fields);
+
+        return true;
+    }
+
     /**
      * Retrieve all the attributes
      * @return Array

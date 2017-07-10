@@ -208,6 +208,13 @@
       "section": "PRIMARY_CONTACT",
       "type": "text"
     },
+    "contact_osh_prefixmaincontactphone": {
+      "name": "contact_osh_prefixmaincontactphone",
+      "label": "Telephone prefix",
+      "placeholder": "+00",
+      "section": "PRIMARY_CONTACT",
+      "type": "dropdown"
+    },
     "contact_osh_category": {
       "name": "contact_osh_category",
       "type": "text"
@@ -226,6 +233,7 @@
     "contact_osh_maincontactpersonfirstname": "osh_firstname",
     "contact_osh_maincontactpersonlastname": "osh_lastname",
     "contact_osh_mainphone": "osh_mainphone",
+    "contact_osh_prefixmaincontactphone": "osh_prefixmaincontactphone",
     "contact_osh_mainemail": "osh_mainemail",
     "contact_osh_category": "osh_category",
     "company_osh_facebookprofile": "osh_facebookprofile",
@@ -238,23 +246,29 @@
     "contact_osh_otherusername1": "fullname1",
     "contact_osh_otherusermail1": "osh_otheruseremail1",
     "contact_osh_otheruserphone1": "osh_otheruserphone1",
+    "contact_osh_otheruserprefix1": "osh_otheruserprefix1",
     "contact_osh_otherusername2": "fullname2",
     "contact_osh_otherusermail2": "osh_otheruseremail2",
     "contact_osh_otheruserphone2": "osh_otheruserphone2",
+    "contact_osh_otheruserprefix2": "osh_otheruserprefix2",
     "contact_osh_otherusername3": "fullname3",
     "contact_osh_otherusermail3": "osh_otheruseremail3",
     "contact_osh_otheruserphone3": "osh_otheruserphone3",
+    "contact_osh_otheruserprefix3": "osh_otheruserprefix3",
     "contact_osh_otherusername4": "fullname4",
     "contact_osh_otherusermail4": "osh_otheruseremail4",
     "contact_osh_otheruserphone4": "osh_otheruserphone4",
+    "contact_osh_otheruserprefix4": "osh_otheruserprefix4",
     "contact_osh_otherusername5": "fullname5",
     "contact_osh_otherusermail5": "osh_otheruseremail5",
-    "contact_osh_otheruserphone5": "osh_otheruserphone5"
+    "contact_osh_otheruserphone5": "osh_otheruserphone5",
+    "contact_osh_otheruserprefix5": "osh_otheruserprefix5"
   },
   "map_mf": {
     "contact_osh_maincontactpersonfirstname": "firstname",
     "contact_osh_maincontactpersonlastname": "lastname",
     "contact_osh_mainphone": "telephone1",
+    "contact_osh_prefixmaincontactphone": "osh_prefixmaincontactphone",
     "contact_osh_mainemail": "emailaddress1",
     "company_osh_facebookprofile": "osh_facebookprofile",
     "company_osh_twitterprofile": "osh_twitterprofile",
@@ -265,18 +279,23 @@
     "contact_osh_otherusername1": "fullname1",
     "contact_osh_otherusermail1": "osh_otheruseremail1",
     "contact_osh_otheruserphone1": "osh_otheruserphone1",
+    "contact_osh_otheruserprefix1": "osh_otheruserprefix1",
     "contact_osh_otherusername2": "fullname2",
     "contact_osh_otherusermail2": "osh_otheruseremail2",
     "contact_osh_otheruserphone2": "osh_otheruserphone2",
+    "contact_osh_otheruserprefix2": "osh_otheruserprefix2",
     "contact_osh_otherusername3": "fullname3",
     "contact_osh_otherusermail3": "osh_otheruseremail3",
     "contact_osh_otheruserphone3": "osh_otheruserphone3",
+    "contact_osh_otheruserprefix3": "osh_otheruserprefix3",
     "contact_osh_otherusername4": "fullname4",
     "contact_osh_otherusermail4": "osh_otheruseremail4",
     "contact_osh_otheruserphone4": "osh_otheruserphone4",
+    "contact_osh_otheruserprefix4": "osh_otheruserprefix4",
     "contact_osh_otherusername5": "fullname5",
     "contact_osh_otherusermail5": "osh_otheruseremail5",
     "contact_osh_otheruserphone5": "osh_otheruserphone5",
+    "contact_osh_otheruserprefix5": "osh_otheruserprefix5",
     "contact_osh_leads": "osh_leads"
   }
 }

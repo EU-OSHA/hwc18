@@ -28,6 +28,7 @@ class Dispatcher {
         }
 
         $route = $this->setRoute();
+                error_log("EVE_JDD_1: " .  print_r($route,1));
         if (class_exists($route) || class_exists(ucfirst(($route)))) {
             try {
                 // Set the application context
@@ -36,8 +37,6 @@ class Dispatcher {
                 $controller = new $route();
                 if (method_exists($controller, 'executeAction')) {
                     $controller->executeAction();
-                    
-                    
                 }
                 $controller->execute();
             } catch (CDBException $e) {
