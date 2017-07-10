@@ -121,6 +121,13 @@
       "section": "INVOLVEMENT",
       "type": "combined_checkbox"
     },
+    "involvement_osh_involvedinsteeringcommitteegroup": {
+      "name": "involvement_osh_involvedinsteeringcommitteegroup",
+      "label": "I am interested to take part in the work of the Official Campaign Partners Steering Group.",
+      "placeholder": "http://www.google.es",
+      "section": "INVOLVEMENT",
+      "type": "combined_checkbox_link"
+    },
     "involvement_osh_otheractivities": {
       "name": "involvement_osh_otheractivities",
       "label": "Other activities",
@@ -140,6 +147,7 @@
     "involvement_osh_partnershipswithotherorganisations": "osh_partnershipswithotherorganisations",
     "involvement_osh_promotioninthemedia": "osh_promotioninthemedia",
     "involvement_osh_bestpractice": "osh_bestpractice",
+    "involvement_osh_involvedinsteeringcommitteegroup": "osh_involvedinsteeringcommitteegroup",
     "involvement_osh_otheractivities": "osh_otheractivities",
     "osh_tobecomeapartnersection": "osh_tobecomeapartnersection",
     "osh_supportforcampaignsection": "osh_supportforcampaignsection",

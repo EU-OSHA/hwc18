@@ -102,6 +102,8 @@ class Sidebar extends Controller implements IController
             $yourcampaignpledgesection = false;
             $tobecomeapartnersection = false;
             $primarycontactsection = false;
+            $startsection = isset($_SESSION['basicRequirements']) && $_SESSION['basicRequirements'];
+
 
             foreach ($attributes as $name => &$attribute) {
                 if($params->getUrlParamValue('partner_type') == 'current'){
@@ -121,6 +123,8 @@ class Sidebar extends Controller implements IController
                         $gencontactinfsection = true;
                     }elseif($name == "osh_aboutyourrepsection" && $attribute->getValue()){
                         $aboutyourrepsection = true;
+                    }elseif($name == "osh_aboutyourcomrepsection" && $attribute->getValue()){
+                        $aboutyourcomrepsection = true;
                     }
                 }
             }
@@ -131,9 +135,10 @@ class Sidebar extends Controller implements IController
                 $section = $attribute->getSection();
                 if (! empty($section) && isset($sections[$section])) {
                     $validation = $attribute->getValidator();
+
                     if (! empty($validation)) {
                         if ((is_array($validation) && array_search('not_null', $validation))
-                            || ((! is_array($validation)) && (strval($validation) === strval('not_null')))) {
+                            || ((! is_array($validation)) && (strval($validation) === strval('not_null') || strval($validation) === strval('true')))) {
                             $sections[$section] &= $model->validate($attribute->getName());
                             if($sections[$section] && $params->getUrlParamValue('partner_type') == 'current'){
                                 if($section == "ORGANISATION" && !$aboutyourorgsection){
@@ -152,6 +157,8 @@ class Sidebar extends Controller implements IController
                                     $sections[$section] = 0;
                                 }elseif($section == "OSH" && !$aboutyourrepsection){
                                     $sections[$section] = 0;
+                                }elseif($section == "START" && !$startsection){
+                                    $sections[$section] = 0;
                                 }
                             }
                         }
@@ -160,6 +167,10 @@ class Sidebar extends Controller implements IController
                     if($sections[$section] && $params->getUrlParamValue('partner_type') == 'current' && $section == "OSH" && !$aboutyourrepsection){
                                     $sections[$section] = 0;
                                 }
+
+                    if($sections[$section] && $section == "START" && !$startsection){
+                        $sections[$section] = 0;
+                    }
                 }
             }
         }

@@ -5,13 +5,15 @@
         "ORGANISATION": "About your Organisation",
         "GENERAL_INFORMATION": "General Contact Information",
         "CEO": "Information About your CEO",
-        "OSH": "Your organisation’s health and safety representative"
+        "OSH": "Your OSH representative",
+        "COMMUNICATION_REP": "Your Communication Representative"
     },
     "sections_mf": {
         "ORGANISATION": "About your Organisation",
         "GENERAL_INFORMATION": "General Contact Information",
         "CEO": "Information About your CEO",
-        "OSH": "Your organisation’s health and safety representative"
+        "OSH": "Your OSH representative",
+        "COMMUNICATION_REP": "Your Communication Representative"
     }
   },
   "attributes": {
@@ -170,6 +172,13 @@
       "type": "text",
       "validator": "not_null"
     },
+    "company_osh_prefixgeneralphone": {
+      "name": "company_osh_prefixgeneralphone",
+      "label": "Telephone prefix",
+      "placeholder": "+00",
+      "section": "GENERAL_INFORMATION",
+      "type": "dropdown"
+    },
     "company_osh_homepage": {
       "name": "company_osh_homepage",
       "label": "Homepage",
@@ -268,6 +277,13 @@
       "placeholder": "(000) 0000 0000",
       "section": "OSH",
       "type": "text"
+    },
+    "company_osh_prefixrepresentativephone": {
+      "name": "company_osh_prefixrepresentativephone",
+      "label": "Telephone prefix",
+      "placeholder": "+00",
+      "section": "OSH",
+      "type": "dropdown"
     },
     "company_osh_facebookprofile": {
       "name": "company_osh_facebookprofile",
@@ -371,7 +387,47 @@
       "name": "company_osh_quoteonhwc_clone",
       "section": "CEO",
       "type": "text"
-    }
+    },
+    "comrep_osh_mediaproshfirstname": {
+      "name": "comrep_osh_mediaproshfirstname",
+      "label": "Name",
+      "publicProfile": "publicProfile",
+      "section": "COMMUNICATION_REP",
+      "type": "text"
+    },
+    "comrep_osh_mediaproshlastname": {
+      "name": "comrep_osh_mediaproshlastname",
+      "label": "Surname",
+      "publicProfile": "publicProfile",
+      "section": "COMMUNICATION_REP",
+      "type": "text"
+    },
+    "comrep_osh_emailmediapr": {
+      "name": "comrep_osh_emailmediapr",
+      "label": "Email address",
+      "section": "COMMUNICATION_REP",
+      "type": "text",
+      "validator": "email"
+    },
+    "comrep_osh_phonemediapr": {
+      "name": "comrep_osh_phonemediapr",
+      "label": "Telephone number",
+      "placeholder": "(000) 0000 0000",
+      "section": "COMMUNICATION_REP",
+      "type": "text"
+    },
+    "comrep_osh_prefixmediaprphone": {
+      "name": "comrep_osh_prefixmediaprphone",
+      "label": "Telephone prefix",
+      "placeholder": "+00",
+      "section": "COMMUNICATION_REP",
+      "type": "dropdown"
+    },
+     "osh_aboutyourcomrepsection": {
+       "name": "osh_aboutyourcomrepsection",
+       "section": "COMMUNICATION_REP",
+       "type": "text"
+     }
   },
   "map": {
     "company_osh_address": "osh_address",
@@ -387,7 +443,9 @@
     "company_osh_emailrepresentative": "osh_emailrepresentative",
     "company_osh_generalemail":"osh_generalemail",
     "company_osh_generalphone":"osh_generalphone",
+    "company_osh_prefixgeneralphone":"osh_prefixgeneralphone",
     "company_osh_phonerepresentative": "osh_phonerepresentative",
+    "company_osh_prefixrepresentativephone": "osh_prefixrepresentativephone",
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
     "company_osh_zipcode": "osh_zipcode",
     "company_osh_orgname": "osh_orgname",
@@ -415,9 +473,15 @@
     "osh_gencontactinfsection": "osh_gencontactinfsection",
     "osh_aboutyourceosection": "osh_aboutyourceosection",
     "osh_aboutyourrepsection": "osh_aboutyourrepsection",
+    "osh_aboutyourcomrepsection": "osh_aboutyourcomrepsection",
     "contact_osh_mainemailAux": "contact_osh_mainemailAux",
     "contact_osh_maincontactpersonfirstnameAux": "contact_osh_maincontactpersonfirstnameAux",
-    "contact_osh_maincontactpersonlastnameAux": "contact_osh_maincontactpersonlastnameAux"
+    "contact_osh_maincontactpersonlastnameAux": "contact_osh_maincontactpersonlastnameAux",
+    "comrep_osh_mediaproshfirstname": "osh_mediaproshfirstname",
+    "comrep_osh_mediaproshlastname" : "osh_mediaproshlastname",
+    "comrep_osh_emailmediapr" : "osh_emailmediapr",
+    "comrep_osh_phonemediapr" : "osh_phonemediapr",
+    "comrep_osh_prefixmediaprphone": "osh_prefixmediaprphone"
   },
   "map_mf": {
     "company_osh_address": "osh_phaddress",
@@ -432,9 +496,11 @@
     "company_osh_representativeoshlastname": "osh_representativelastname",
     "company_osh_emailrepresentative": "osh_representativeemailaddress1",
     "company_osh_phonerepresentative": "osh_representativetelephone1",
+    "company_osh_prefixrepresentativephone": "osh_prefixrepresentativephone",
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
     "company_osh_zipcode": "osh_phcp",
     "company_osh_generalphone":"osh_phone1",
+    "company_osh_prefixgeneralphone":"osh_prefixgeneralphone",
     "company_osh_orgname": "osh_companyorganisationname",
     "company_osh_osh_appform_osh_country": "returnPaises",
     "company_osh_othercountries": "osh_othercountries",
@@ -456,6 +522,10 @@
     "company_osh_leads": "osh_leads",
     "company_osh_quoteonhwc": "osh_quoteonhwc",
     "company_osh_positionid": "osh_positionid",
-    "company_osh_generalemail":"generalemailaddress1"
+    "company_osh_generalemail":"generalemailaddress1",
+    "comrep_osh_mediaproshfirstname": "osh_mediaproshfirstname",
+    "comrep_osh_mediaproshlastname" : "osh_mediaproshlastname",
+    "comrep_osh_prefixmediaprphone" : "osh_prefixmediaprphone",
+    "comrep_osh_phonemediapr" : "osh_phonemediapr"
   }
 }

@@ -21,6 +21,7 @@ abstract class Controller {
      * Execute an action defined in the specific controller
      */
     public function executeAction() {
+        error_log("EVE_JDD_AQUI10");
         $params = Parameters::getInstance();
         $action = $params->get('action');
         if (method_exists($this, $action)) {
@@ -32,82 +33,90 @@ abstract class Controller {
      * Execute the controller
      */
     public function execute() {
+        error_log("EVE_JDD_AQUI11");
         // Load the entity
         $this->load();
         $params = Parameters::getInstance();
-        // Build the progressbar and the sidebar
-        $sidebar = new Sidebar(false);
-        $sidebarContent = $sidebar->execute();
-        $progressbar = new Progressbar(false);
-        $progressbarContent = $progressbar->execute();
-        // Build the form
+        //Build the form
         $route = $params->get('route');
-        $statusCode  = $params->get('statuscode');
-        $sent        = intval($params->get('cdb')['sent']);
-        if ($statusCode != $sent){
-            //Insertamos una variable para mostrar el check del main contact change.
-            $_SESSION['mainContactChangeCheck'] = true;
-        }
-        $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
-        $isPrintable = $this->isPrintable();
-        $renderer = new Renderer($this->getEntityName());
-        $renderer->setViewPath($params->get('viewEntitiesPath'));
-        $urlBase = APP_URL;
-        $cdbMap = $this->model->getCdbMap();
-        $cdb = CDB::getInstance($cdbMap);
-        // CRG - 29.10.2015
-        $attributes = $this->model->getAttributes();
-        foreach ($attributes as $kAttr => $attr) {
-            if($kAttr == 'company_osh_orgnameAux' && $attr->getValue()!=""){
-                $this->model->set($attr->getName(), $attr->getValue());
+        if ($route != 'start' && $_SESSION['basicRequirements'] != true) {
+            header('Location: ' . APP_URL . '?route=start');
+            exit;
+
+        }else{
+            // Build the progressbar and the sidebar
+            $sidebar = new Sidebar(false);
+            $sidebarContent = $sidebar->execute();
+            $progressbar = new Progressbar(false);
+            $progressbarContent = $progressbar->execute();
+            $statusCode = $params->get('statuscode');
+            $sent = intval($params->get('cdb')['sent']);
+            if ($statusCode != $sent) {
+                //Insertamos una variable para mostrar el check del main contact change.
+                $_SESSION['mainContactChangeCheck'] = true;
             }
-            $type = $attr->getType();
-            $name = $attr->getName();
-            if ($type == Attribute::TYPE_DROPDOWN || $type == Attribute::TYPE_DROPDOWN_MULTIPLE) {
-                $value = $cdb->getDropdown($name);
-                $attr->setValue($value);
+            $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
+            $isPrintable = $this->isPrintable();
+            $renderer = new Renderer($this->getEntityName());
+            $renderer->setViewPath($params->get('viewEntitiesPath'));
+            $urlBase = APP_URL;
+            $cdbMap = $this->model->getCdbMap();
+            $cdb = CDB::getInstance($cdbMap);
+            // CRG - 29.10.2015
+            $attributes = $this->model->getAttributes();
+            foreach ($attributes as $kAttr => $attr) {
+                if ($kAttr == 'company_osh_orgnameAux' && $attr->getValue() != "") {
+                    $this->model->set($attr->getName(), $attr->getValue());
+                }
+                $type = $attr->getType();
+                $name = $attr->getName();
+                if ($type == Attribute::TYPE_DROPDOWN || $type == Attribute::TYPE_DROPDOWN_MULTIPLE) {
+                    $value = $cdb->getDropdown($name);
+                    $attr->setValue($value);
+                }
             }
-        }
-        //
-        $contentArray = array(
-            'appurl' => APP_URL . '?route=' . $params->get('route'),
-            'urlBase' => APP_URL,
-            'title' => $params->get('title'),
-            'nonce' => $params->get('nonce'),
-            'sidebar' => $sidebarContent,
-            'progressbar' => $progressbarContent,
-            'attributes' => $this->transformAttributes(),
-            'session_id' => $params->getUrlParamValue('session_id'),
-            'mf' => $params->get('maintenance_mode'),
-            'partner_type' => $params->getUrlParamValue('partner_type'),
-            'mainContactChangeCheck' => $this->maincontactChange(),
-            'submit_text' => $submitText,
-            'printable' => $isPrintable,
-            'HelpMessage' => $this->helpMessage(),
-            'show_print_version' => $params->get('print'),
-            'show_pdf_version' => $params->get('pdf'),
-            'locked' => $params->getUrlParamValue('locked'),
-            'actionType' => $params->get('actionType'),
-            'disabled' => '',
-            'fieldsValidatingDialog' => $this->fieldsValidation(),
-        );
-        // PDF version
-        if ($isPrintable) {
-            $route = $params->get('route');
-            $params->set('route', 'MaintenanceForm');
-            $maintenanceForm = new MaintenanceForm(false);
-            $content = $maintenanceForm->execute();
-            $params->set('route', $route);
-        
+            //
+            $contentArray = array(
+                'appurl' => APP_URL . '?route=' . $params->get('route'),
+                'urlBase' => APP_URL,
+                'title' => $params->get('title'),
+                'nonce' => $params->get('nonce'),
+                'sidebar' => $sidebarContent,
+                'progressbar' => $progressbarContent,
+                'attributes' => $this->transformAttributes(),
+                'session_id' => $params->getUrlParamValue('session_id'),
+                'mf' => $params->get('maintenance_mode'),
+                'partner_type' => $params->getUrlParamValue('partner_type'),
+                'mainContactChangeCheck' => $this->maincontactChange(),
+                'submit_text' => $submitText,
+                'printable' => $isPrintable,
+                'HelpMessage' => $this->helpMessage(),
+                'show_print_version' => $params->get('print'),
+                'show_pdf_version' => $params->get('pdf'),
+                'locked' => $params->getUrlParamValue('locked'),
+                'actionType' => $params->get('actionType'),
+                'disabled' => '',
+                'fieldsValidatingDialog' => $this->fieldsValidation(),
+                'route' => $params->get('route')
+            );
+            // PDF version
+            if ($isPrintable) {
+                $route = $params->get('route');
+                $params->set('route', 'MaintenanceForm');
+                $maintenanceForm = new MaintenanceForm(false);
+                $content = $maintenanceForm->execute();
+                $params->set('route', $route);
+
 //            $content = $renderer->render($contentArray);
-        } else {
-            // Content rendering
-            $content = $renderer->render($contentArray);
-        }
-        if ($this->directOutput) {
-            print $content;
-        } else {
-            return $content;
+            } else {
+                // Content rendering
+                $content = $renderer->render($contentArray);
+            }
+            if ($this->directOutput) {
+                print $content;
+            } else {
+                return $content;
+            }
         }
     }
     
@@ -182,10 +191,12 @@ abstract class Controller {
                 $disabled = $params->getUrlParamValue('locked') ? 'disabled' : '';
                 if (is_array(($attribute->getValidator()))) {
                     foreach ($attribute->getValidator() as $validator) {
-                        $required = ($validator == Validator::VALIDATION_NOTNULL) ? 'required' : '';
+                        if ($validator == Validator::VALIDATION_NOTNULL || $validator == Validator::VALIDATION_TRUE) $required = 'required';
+                        else $required = '';
                     }
                 } else {
-                    $required = ($attribute->getValidator() == Validator::VALIDATION_NOTNULL) ? 'required' : '';
+                    if ($attribute->getValidator()  == Validator::VALIDATION_NOTNULL || $attribute->getValidator()  == Validator::VALIDATION_TRUE) $required = 'required';
+                    else $required = '';
                 }
                 if ($attribute->getType() == Attribute::TYPE_RADIO) {
                     $radioValue = $attribute->getValue();
@@ -346,8 +357,11 @@ abstract class Controller {
                         $mapping = array();
                         $currentRoute = $params->get('route');
                         $currentModel = $this->model;
+
                         foreach ($entities as $entity) {
                             $this->model = new Model(strtolower($params->getUrlParamValue('entity') . '_' . ucfirst($entity)));
+
+                            error_log("EVE_JDD4_" . var_export($params->getUrlParamValue('entity') . '_' . ucfirst($entity), true));
                             if ($updateMF) {
                                 $this->model->setCdbMap(true);
                             } else {
@@ -455,6 +469,7 @@ abstract class Controller {
                 }
             }
         }
+        error_log("EVE_JDD_AQUI1");
         if (!$save) {
             if(isset($_SESSION['mf']) && $_SESSION['mf']== true){
                 $_SESSION['submitted'] = true;
@@ -503,6 +518,7 @@ abstract class Controller {
         $otherUsers5 = '';
         $normalValues = array();
         foreach ($fields as $key => $value) {
+            error_log($key);
             // Envío del tipo de imagen
             if ($key == "osh_logoimage" && $value != "") {
                 $keyLogoImageType = "osh_logotype";
@@ -571,30 +587,40 @@ abstract class Controller {
                 }else if($key === 'osh_otheruseremail1'){
                     $otherUsers1 .= $value . '|';
                 }else if($key === 'osh_otheruserphone1'){
+                    $otherUsers1 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix1'){
                     $otherUsers1 .= $value . ')';
                 }else if($key === 'fullname2'){
                     $otherUsers2 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail2'){
                     $otherUsers2 .= $value . '|';
                 }else if($key === 'osh_otheruserphone2'){
+                    $otherUsers2 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix2'){
                     $otherUsers2 .= $value . ')';
                 }else if($key === 'fullname3'){
                     $otherUsers3 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail3'){
                     $otherUsers3 .= $value . '|';
                 }else if($key === 'osh_otheruserphone3'){
+                    $otherUsers3 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix3'){
                     $otherUsers3 .= $value . ')';
                 }else if($key === 'fullname4'){
                     $otherUsers4 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail4'){
                     $otherUsers4 .= $value . '|';
                 }else if($key === 'osh_otheruserphone4'){
+                    $otherUsers4 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix4'){
                     $otherUsers4 .= $value . ')';
                 }else if($key === 'fullname5'){
                     $otherUsers5 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail5'){
                     $otherUsers5 .= $value . '|';
                 }else if($key === 'osh_otheruserphone5'){
+                    $otherUsers5 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix5'){
                     $otherUsers5 .= $value . ')';
                 }
             }
