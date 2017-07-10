@@ -10,7 +10,7 @@ define('HTTP_HOST', 'https://' . $_SERVER['HTTP_HOST'] . '/');
 define('APP_PORT', intval($_SERVER['SERVER_PORT']) != 80 ? ':' . $_SERVER['SERVER_PORT'] : '');
 define('APP_CONFIG', APP_ROOT . 'config/');
 
-
+//csm test
 /* Drupal bootstrap procedure */ 
 //define('DRUPAL_ROOT', realpath(__DIR__ . '/../../')); 
 //require_once DRUPAL_ROOT . '/includes/bootstrap.inc'; 
