@@ -86,3 +86,11 @@ function osha_search_update_7007() {
 function osha_search_update_7008() {
   features_revert_module('osha_search');
 }
+
+/**
+ * Search remova active link
+ */
+function osha_search_update_7009() {
+  module_enable(['facetapi_bonus']);
+  features_revert_module('osha_search');
+}
