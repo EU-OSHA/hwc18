@@ -199,6 +199,24 @@ header.navbar-default{
 						}
 					}
 				}
+				>li.leaf{
+					>a{
+						text-align: left;
+						border-right: none;
+						&:before{
+							content:"> ";
+						}
+					}
+				}
+				> li.first{	
+					>a{
+						text-align: center;
+						border-right: none;
+						&:before{
+							content:"";
+						}
+					}
+				}
 				.open .dropdown-menu > .active > a, .open .dropdown-menu > .active > a:hover, .open .dropdown-menu > .active > a:focus, .open .dropdown-menu > li > a:hover, .open .dropdown-menu > li > a:focus{
 					color: white;
 				}
@@ -1611,10 +1629,11 @@ header.navbar-default{
 .page-search{
 	.region-sidebar-first{
 		h2{
-			margin-left: @margin-movil;
 			margin-right: 0;
 			padding-left: 0;
 			padding-right: 0;
+			margin-left: 0px;
+			font-size: 1.1em !important;
 		}
 		.facetapi-facetapi-checkbox-links{
 			padding-left: @margin-movil;

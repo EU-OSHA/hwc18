@@ -1619,52 +1619,130 @@ ul.tabs--primary.nav.nav-tabs{
 				}
 			}
 			.form-text{
-				margin-bottom: 0.3em;
+				//margin-bottom: 0.3em;
 			}
 		}
 		.region-sidebar-first{
 			background-color: transparent;
 			border-radius: 0;
-			border-right: none;
-			border-left: none;
+			border: none;
 			border-top: 1px dotted @border-default-color;
-			border-bottom: 1px dotted @border-default-color;
 			padding-left: 0px;
 			padding-right: 0px;
+			padding: 0px;
 			margin-left: @margin1;
 			-webkit-box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
 			-moz-box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
 			box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
-			h2{
-				color: @colorNormalText;
-				font-size: @size2;
-				text-align: left;
-			}
-			.facetapi-facetapi-checkbox-links li{
-				margin-bottom: 10px;
-				input[type="checkbox"]{
-					margin-right: 0.5em;
-					margin-right: 15px;
-					&:before {
-						border: 2px solid #003399;
-						content: "\2716";
-						padding: 0px 1px 0px 3px;
-						margin-right: 10px;
-						color: #ffffff;
-						width: 20px;
-						height: 20px;
-						background-color: white;
-					}
-					&:checked:before {
-						content: "\2713";
-						color: #003399;
+			.views-exposed-widgets{
+				#edit-search-block-form--3-wrapper{
+					width: 100% !important;
+					padding-bottom: 0.5em;
+					border-bottom: 1px dotted @color3;
+				}
+				.views-widget-sort-by{
+					display: none;
+				}
+				.views-widget-sort-order{
+					display: none;
+				}
+				.form-type-textfield{
+					float: none;
+					width: 100%;
+					input{
+						width: 100%;
+						padding-right: 35px;
 					}
 				}
-				#facetapi-link--all--checkbox {
-					margin-right: 11px;
+				.views-submit-button{
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					button{
+						position: absolute;
+						right: 0px;
+						top: 7px;
+						margin-left: 0px !important;
+						margin-top: 0px !important;
+						float: left;
+					    background: #003399 url(../images/content/search.png) no-repeat 6px !important;
+					    height: 34px;
+					    width: 30px;
+					    color: transparent;
+					    padding-left: 27px !important;
+					    width: 13px !important;
+					    color: #003399 !important;
+					    overflow: hidden !important;
+					}
+				}
+			}
+			#block-osha-search-osha-search-clear-filters{
+				h3{
+					display: none;
 				}
 				a{
-					font-family: @font-family-base;
+					font-weight: bold;
+					border-bottom: 1px dotted @color3;
+					display: block;
+					padding-bottom: 5px;
+					margin-top: 5px;
+				}
+			}
+			.block.block-facetapi{
+				border-bottom: 1px dotted @color3;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				h2{
+					color: @colorNormalText;
+					font-size: 1.1em;
+					text-align: left;
+					margin-bottom: 0px;
+					cursor: pointer;
+					&:after{
+						content: "\e250";
+					    font-family: "Glyphicons Halflings";
+					    margin-left: 10px;
+					    float: right;
+					}
+				}
+				h2.area-shown{
+					&:after{
+						content: "\e252";
+					    font-family: "Glyphicons Halflings";
+					    margin-left: 10px;
+					    float: right;
+					}
+				}
+				.facetapi-facetapi-checkbox-links {
+					margin-top: 10px;
+					li{
+						color: @color2;
+						margin-bottom: 10px;
+						input[type="checkbox"]{
+							margin-right: 0.5em;
+							margin-right: 15px;
+							&:before {
+								border: 2px solid #003399;
+								content: "\2716";
+								padding: 0px 1px 0px 3px;
+								margin-right: 10px;
+								color: #ffffff;
+								width: 20px;
+								height: 20px;
+								background-color: white;
+							}
+							&:checked:before {
+								content: "\2713";
+								color: #003399;
+							}
+						}
+						#facetapi-link--all--checkbox {
+							margin-right: 11px;
+						}
+						a{
+							font-family: @font-family-base;
+						}
+					}
 				}
 			}
 		}
@@ -1682,6 +1760,34 @@ ul.tabs--primary.nav.nav-tabs{
 				}
 				h3{
 					display: none;
+				}
+				.view-header{
+				    overflow: hidden;
+				    border: none;
+					border-top: 1px dotted @color3;
+					border-bottom: 1px dotted @color3;
+					border-radius: 0px;
+					padding: 7px 0px;
+						.sort-container.col-xs-3{
+							width: inherit;
+							padding-left: 0px;
+							.form-group{
+								margin-bottom: 0px;
+								label{
+									margin-right: 10px;
+									&:after{
+										content: ":";
+									}
+								}
+								#edit-sort-by{
+									display: inline-block;
+								}
+							}
+						}
+						.count-container{
+							margin-top: 7px;
+						}
+					
 				}
 				.view-content .views-row{
 					border-bottom: 1px dotted @border-default-color;
@@ -7944,7 +8050,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 			button{
 				vertical-align: top;
-				//display: none;
+				display: none;
 			}
 		}
 	}
