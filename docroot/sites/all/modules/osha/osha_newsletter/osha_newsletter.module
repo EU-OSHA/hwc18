@@ -489,8 +489,9 @@ function _osha_newsletter_latest_block_content(){
     for($i=0; $i<sizeof($collections); $i++){
       $item = $collections[$i];
 //      if ($newsletters_no - $count_newsletters > 0) {
-        $sent_date = $item->field_newsletter_sent[LANGUAGE_NONE][0]['value'];
-        $items[$item->name]['title'] = empty($sent_date)? $item->title : $item->title.' - '.format_date(strtotime($sent_date), 'custom', 'F Y');
+      $sent_date = $item->field_newsletter_sent[LANGUAGE_NONE][0]['value'];
+      $publication_date = $item->field_publication_date[LANGUAGE_NONE][0]['value'];
+      $items[$item->name]['title'] = empty($sent_date)? $item->title : $item->title.' - '.format_date(strtotime($publication_date), 'custom', 'F Y');
         $items[$item->name]['url'] = 'entity-collection/'.$item->eid;
 
         // retrive elements from collection if needed
