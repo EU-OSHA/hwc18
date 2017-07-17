@@ -30,7 +30,7 @@
     "contact": {
       "index": "4",
       "internal": "contact",
-      "label": "Contact Information",
+      "label": "About your Main Contact",
       "next": "Congrats",
       "submitText": "Submit your Application",
       "route":"route=contact",

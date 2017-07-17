@@ -10,6 +10,18 @@
 {/if}
 {/if}
 
+
+<div class="helpDialog hidden">
+    <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
+    <br>
+    <div class="error-msg hidden" id="helpError"></div>
+    <label for="email">Your email:</label>
+    <input id="email" type="text" placeholder="your@email.com"/>
+    <br>
+    <label for="message">Your message:</label>
+    <textarea id="message" placeholder="Write here your question"></textarea>
+</div>
+
 <fieldset>
     <legend id="ORGANISATION">
         About your organisation
@@ -31,6 +43,14 @@
         {$attributes.company_osh_yourmissionstatement}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="GENERAL_INFORMATION">
         General Contact Information
@@ -92,6 +112,14 @@
         {$attributes.company_osh_generalphone}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 {if !$mf}
     <fieldset>
         <legend id="CEO">
@@ -111,4 +139,12 @@
             {$attributes.company_osh_quoteonhwc}
         </div>
     </fieldset>
+    {if $HelpMessage != "print"}
+    <div class="helpDiv">
+        <div class="helpSection" style="float: right; margin-right:5%;">
+            <span class="helpIcon" name="helpIcon">?</span>
+            <a class="helpButton" name="helpButton">HELP</a>
+        </div>
+    </div>
+    {/if}
 {/if}

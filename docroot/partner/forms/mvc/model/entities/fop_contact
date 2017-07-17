@@ -1,6 +1,6 @@
 {
   "sections": {
-    "title": "3. Contact information",
+    "title": "3. About your Main Contact",
     "sections": {
         "PRIMARY_CONTACT": "Your Primary Contact"
     },
@@ -99,6 +99,13 @@
       "section": "OTHER_USERS",
       "type": "text"
     },
+     "contact_osh_otheruserprefix1": {
+           "name": "contact_osh_otheruserprefix1",
+           "label": "Telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+     },
     "contact_osh_otherusername2": {
       "name": "contact_osh_otherusername2",
       "label": "Name of the additional user",
@@ -119,6 +126,13 @@
       "section": "OTHER_USERS",
       "type": "text"
     },
+     "contact_osh_otheruserprefix2": {
+           "name": "contact_osh_otheruserprefix2",
+           "label": "Telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+         },
     "contact_osh_otherusername3": {
       "name": "contact_osh_otherusername3",
       "label": "Name of the additional user",
@@ -139,6 +153,13 @@
       "section": "OTHER_USERS",
       "type": "text"
     },
+     "contact_osh_otheruserprefix3": {
+           "name": "contact_osh_otheruserprefix3",
+           "label": "Telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+         },
     "contact_osh_otherusername4": {
       "name": "contact_osh_otherusername4",
       "label": "Name of the additional user",
@@ -159,6 +180,13 @@
       "section": "OTHER_USERS",
       "type": "text"
     },
+     "contact_osh_otheruserprefix4": {
+           "name": "contact_osh_otheruserprefix4",
+           "label": "Telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+         },
     "contact_osh_otherusername5": {
       "name": "contact_osh_otherusername5",
       "label": "Name of the additional user",
@@ -179,6 +207,13 @@
       "section": "OTHER_USERS",
       "type": "text"
     },
+     "contact_osh_otheruserprefix5": {
+           "name": "contact_osh_otheruserprefix5",
+           "label": "Telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+         },
     "company_osh_orgnameAux": {
       "name": "company_osh_orgnameAux",
       "label": "Organisation name",

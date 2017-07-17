@@ -21,7 +21,6 @@ abstract class Controller {
      * Execute an action defined in the specific controller
      */
     public function executeAction() {
-        error_log("EVE_JDD_AQUI10");
         $params = Parameters::getInstance();
         $action = $params->get('action');
         if (method_exists($this, $action)) {
@@ -33,7 +32,6 @@ abstract class Controller {
      * Execute the controller
      */
     public function execute() {
-        error_log("EVE_JDD_AQUI11");
         // Load the entity
         $this->load();
         $params = Parameters::getInstance();
@@ -55,6 +53,8 @@ abstract class Controller {
                 //Insertamos una variable para mostrar el check del main contact change.
                 $_SESSION['mainContactChangeCheck'] = true;
             }
+            error_log("EVE_JDD_1: " .  print_r($this->getEntityName(),1));
+
             $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
             $isPrintable = $this->isPrintable();
             $renderer = new Renderer($this->getEntityName());
@@ -361,7 +361,6 @@ abstract class Controller {
                         foreach ($entities as $entity) {
                             $this->model = new Model(strtolower($params->getUrlParamValue('entity') . '_' . ucfirst($entity)));
 
-                            error_log("EVE_JDD4_" . var_export($params->getUrlParamValue('entity') . '_' . ucfirst($entity), true));
                             if ($updateMF) {
                                 $this->model->setCdbMap(true);
                             } else {
@@ -469,7 +468,6 @@ abstract class Controller {
                 }
             }
         }
-        error_log("EVE_JDD_AQUI1");
         if (!$save) {
             if(isset($_SESSION['mf']) && $_SESSION['mf']== true){
                 $_SESSION['submitted'] = true;
@@ -822,6 +820,17 @@ abstract class Controller {
         }else{
             return false;
         }
+    }
+
+    public function submitQuestion() {
+        $params = Parameters::getInstance();
+        $myId = $params->getUrlParamValue('session_id');
+        $title = $_GET['title'];
+        $message = $_GET['message'];
+        $email= $_GET['email'];
+        $currentModel = new Model("");
+        $currentModel->submitQuestionToCDB($myId,$title, $message, $email);
+
     }
 
 }

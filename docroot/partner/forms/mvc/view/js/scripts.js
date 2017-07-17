@@ -251,10 +251,12 @@ function checkSectionsByCDB(dataSection){
                 'background': '#E3E3E4'
             });
         }
-    }); 
-                
+    });
+
     $('[data-section="' + dataSection + '"]*.validation').addClass("validation-pressed");
-//    $(this).addClass("validation-pressed");
+    $('#' + dataSection + '_check').removeClass("hidden");
+
+    //    $(this).addClass("validation-pressed");
 
     if(dataSection=="GENERAL_INFORMATION"){
         $("#company_osh_selectsocialnetworks").prop("disabled", "disabled");
@@ -691,6 +693,17 @@ $(document).ready(function () {
     });
 
 
+    $(".checkbox input").on({
+            click:function () {
+                //WorkAround main contact change
+                if ($(this).prop('checked')) {
+                    $(this).val('on');
+                } else {
+                    $(this).val('');
+                }
+            }
+    });
+
     $(".main-form .required input").on({
         change: function () {
             validateField(this);
@@ -876,6 +889,7 @@ $(document).ready(function () {
         submit: function (e) {
             if (buttonPressed == "next") {
 //                var enableFields = true;
+                var field = null;
                 validateConfirmEmail();
                 if ($(".main-form input[data-error='true']").length ||
                     $(".main-form textarea[data-error='true']").length ||
@@ -897,7 +911,20 @@ $(document).ready(function () {
                         if(captchaAndFieldDialog){
                             $("#captchaAndFieldDialog").removeClass('hidden');
                         }else{
+                            var first = $(".main-form [data-error='true']").first();
+                            var fillRequiredFieldName = "";
+                            if (first != null && first.hasClass(('company_osh_logoimage_popup-modal')))
+                                //fillRequiredFieldName = first.parent().find('label').text().trim();
+                                fillRequiredFieldName = "Logo";
+                            //else fillRequiredFieldName = first.parent().prev().children('label').text().trim();
+                            else
+                                fillRequiredFieldName = $('label[for="'+ first.attr('id') +'"]').text().trim();
+
+                            $('#fillRequiredFieldName').text(fillRequiredFieldName);
                             $("#fillRequiredDialog").removeClass('hidden');
+                            $('html,body').animate({scrollTop: 0}, 300, function() {
+                                $('#fillRequiredDialog').focus();
+                            });
                         }
                     }
 //                    document.location.href = "#top";
@@ -908,13 +935,26 @@ $(document).ready(function () {
                     styleChange(true);
                     e.preventDefault();
                     return false;
-                } else if (!checkRequiredFields()) {
+                } else if ((field = checkRequiredFields()) != null) {
 //                    alert("Error: You must fill all the required fields");
                     if($("#container-message").length > 0){
                         closeGreyBox();
                     }
+                    var fillRequiredFieldName = "";
+                    if (first != null && first.hasClass(('company_osh_logoimage_popup-modal')))
+                    //fillRequiredFieldName = first.parent().find('label').text().trim();
+                        fillRequiredFieldName = "Logo";
+                    //else fillRequiredFieldName = first.parent().prev().children('label').text().trim();
+                    else
+                        fillRequiredFieldName = $('label[for="'+ first.attr('id') +'"]').text().trim();
+
+                    $('#fillRequiredFieldName').text(fillRequiredFieldName);
                     $("#fillRequiredDialog").removeClass('hidden');
+                    $('html,body').animate({scrollTop: 0}, 300, function() {
+                        $('#fillRequiredDialog').focus();
+                    });
 //                    document.location.href = "#top";
+
                     document.body.scrollTop = document.documentElement.scrollTop = 0;
                     if(window.parent.document.getElementsByClassName("top_anchor").length == 1){
                         window.parent.document.getElementsByClassName("top_anchor")[0].click();
@@ -939,21 +979,19 @@ $(document).ready(function () {
                 } else if ($('#form form').hasClass("current")
                     && ($('.validation').length > $('.validation.validation-pressed').length))
                     {
-                    if (!confirm("There are fields unconfirmed. Do you want to continue?")) {
-                        e.preventDefault();
-//                        $(".validation").removeClass("validation-pressed");
-//                        enableFields = false;
-                    } else {
-//                        $("#form form :input").prop("disabled", false);
-                         styleChange(false);
-//                         saveDatanextAndSave();
-//                         $(".validation").removeClass("validation-pressed");
-                    }
-                }else{
+                        var unconfirmedSectionName = $('.validation').not('.validation-pressed').first().parent().prev().children('legend').text().trim();
+                        $('#unconfirmedSectionName').text(unconfirmedSectionName);
+                        $('#unconfirmedSectionDiv').removeClass('hidden');
+                        //$('#unconfirmedSectionDiv').focus();
+                        $('html,body').animate({scrollTop: 0}, 300, function() {
+                            $('#unconfirmedSectionDiv').focus();
+                        });
+                        try{ e.preventDefault();}
+                        catch(e) {}
+                    }else{
 //                    saveDatanextAndSave();
                 }
 
-                
             }
         }
     });
@@ -980,7 +1018,19 @@ $(document).ready(function () {
                 if(captchaAndFieldDialog){
                     $("#captchaAndFieldDialog").removeClass('hidden');
                 }else{
+                    var first = $(".main-form [data-error='true']").first();
+                    var fillRequiredFieldName = "";
+                    if (first != null && first.hasClass(('company_osh_logoimage_popup-modal')))
+                    //fillRequiredFieldName = first.parent().find('label').text().trim();
+                        fillRequiredFieldName = "Logo";
+                    //else fillRequiredFieldName = first.parent().prev().children('label').text().trim();
+                    else
+                        fillRequiredFieldName = $('label[for="'+ first.attr('id') +'"]').text().trim();
+                    $('#fillRequiredFieldName').text(fillRequiredFieldName);
                     $("#fillRequiredDialog").removeClass('hidden');
+                    $('html,body').animate({scrollTop: 0}, 300, function() {
+                        $('#fillRequiredDialog').focus();
+                    });
                 }
             }
 //                    document.location.href = "#top";
@@ -990,12 +1040,17 @@ $(document).ready(function () {
             }
             styleChange(true);
             return false;
-        } else if (!checkRequiredFields()) {
+        } else if ((field = checkRequiredFields()) != null) {
 //                    alert("Error: You must fill all the required fields");
             if($("#container-message").length > 0){
                 closeGreyBox();
             }
+            var fillRequiredFieldName = field.parent().prev().children('label').text().trim();
+            $('#fillRequiredFieldName').text(fillRequiredFieldName);
             $("#fillRequiredDialog").removeClass('hidden');
+            $('html,body').animate({scrollTop: 0}, 300, function() {
+                $('#fillRequiredDialog').focus();
+            });
 //                    document.location.href = "#top";
             document.body.scrollTop = document.documentElement.scrollTop = 0;
             if(window.parent.document.getElementsByClassName("top_anchor").length == 1){
@@ -1017,18 +1072,19 @@ $(document).ready(function () {
             styleChange(true);
             return false;
         } else if ($('#form form').hasClass("current")
-            && ($('.validation').length > $('.validation.validation-pressed').length))
-            {
-            if (!confirm("There are fields unconfirmed. Do you want to continue?")) {
+            && ($('.validation').length > $('.validation.validation-pressed').length)) {
+                var unconfirmedSectionName = $('.validation').not('.validation-pressed').first().parent().prev().children('legend').text().trim();
+                $('#unconfirmedSectionName').text(unconfirmedSectionName);
+                $('#unconfirmedSectionDiv').removeClass('hidden');
+                //$('#unconfirmedSectionDiv').focus();
+                $('html,body').animate({scrollTop: 0}, 300, function() {
+                    $('#unconfirmedSectionDiv').focus();
+                });
+
+            try{
                 e.preventDefault();
-                return false;
-            } else {
-//                        $("#form form :input").prop("disabled", false);
-                 styleChange(false);
-                 return true;
-//                         saveDatanextAndSave();
-//                         $(".validation").removeClass("validation-pressed");
-            }
+            }catch(e) {}
+            return false;
         }else{
             return true;
 //                    saveDatanextAndSave();
@@ -1093,7 +1149,7 @@ $(document).ready(function () {
      */
     function checkRequiredFields() {
         var ret = true;
-        var field;
+        var field = null;
         $("#form form .required .controls").each(function (id, item) {
             //WorkAround main contact change
 //            if($(item).find("input[type=text]").attr("data-section") == "PRIMARY_CONTACT" && $('#contact_osh_maincontactchange').prop('checked')){
@@ -1102,22 +1158,22 @@ $(document).ready(function () {
             if (field = $(item).find("input[type=text]")) {
                 if ($(field).attr("data-section") && !$(field).val()) {
                     ret = false;
-                    return false;
+                    return field;
                 }
             } else if (field = $(item).find("textarea")) {
                 if ($(field).attr("data-section") && !$(field).val()) {
                     ret = false;
-                    return false;
+                    return field;
                 }
             } else if (field = $(item).find("select")) {
                 if ($(field).attr("data-section") && !$(field).val()) {
                     ret = false;
-                    return false;
+                    return field;
                 }
             }
         });
         
-        return ret;
+        return null;
     }
     
     function checkRequiredFieldsSubmit(){
@@ -1257,7 +1313,7 @@ $(document).ready(function () {
 //            $('#form form :input[data-section="' + dataSection + '"]').prop("disabled", false);
                 $('#form form :input[data-section="' + dataSection + '"]').prop("onlyread", false);
                 $('#form form :input[data-section="' + dataSection + '"]').each(function (id, item) {
-                    if($(item).attr('id') != "contact_osh_mainemail" || $('.disabledEmailForMF').length == 0){
+                    if(($(item).attr('id') != "contact_osh_mainemail" || $('.disabledEmailForMF').length == 0) && $(item).attr('id').indexOf("clone") == -1){
                         $(item).css({
                             'pointer-events': 'inherit'
                         });
@@ -1288,8 +1344,8 @@ $(document).ready(function () {
                     if($('.select2-selection').length > 0){
                         $('.select2-selection').css({
                             'background-color': 'white'
-        });
-       } 
+                        });
+                       }
                 }
                 if(dataSection=="CEO"){
                     //Disabled the imageButtons
@@ -1420,6 +1476,7 @@ $(document).ready(function () {
             }else if(dataSection == 'PRIMARY_CONTACT'){
                 $('#osh_primarycontactsection').val("true");
             }
+            $('#' + dataSection + '_check').removeClass("hidden");
         }else{
             if(dataSection == 'ORGANISATION'){
                 $('#osh_aboutyourorgsection').val("");
@@ -1440,6 +1497,7 @@ $(document).ready(function () {
             }else if(dataSection == 'PRIMARY_CONTACT'){
                 $('#osh_primarycontactsection').val("");
             }
+            $('#' + dataSection + '_check').addClass("hidden");
         }
     }
 
@@ -1677,10 +1735,11 @@ $(document).ready(function () {
 			$(this).parents('fieldset').find(".main-contact-change :input").not(':button').each(function (id, item) {
             // $(".main-contact-change :input").not(':button').each(function (id, item) { //Issue with main contact when CEO/Editor change is checked in mf
 //                $(contactBackup).find("#" + $(item).attr("id")).val($(item).val());
-                
-                $('#'+$(item).attr("id")+'_clone').val($(item).val());
-                $('#'+$(item).attr("id")+'_clone').addClass("main-contact-change-backup");
+                var field =$('#'+$(item).attr("id")+'_clone');
+                field.val($(item).val());
+                field.addClass("main-contact-change-backup");
                 $(item).val("");
+
 //                $(item).removeClass("error");
 //                $(item).attr("data-error", "");
                 $("#"+$(item).attr("id")+"_errormsg").remove();
@@ -1696,21 +1755,30 @@ $(document).ready(function () {
                $('.company_osh_ceoimage_thumbBox img').attr('src' ,"");
             }
             $("#confirmemail_errormsg").remove();
+
+            $(".main-contact-change-clone").show();
 //            $(contactBackup).appendTo(".main-contact-change");
         } else {
 			$(this).parents('fieldset').find(".main-contact-change-backup").each(function (id, item) {
             // $(".main-contact-change-backup").each(function (id, item) { //Issue with main contact when CEO/Editor change is checked in mf
-                $("#"+$(item).attr("id").substr(0,$(item).attr("id").indexOf("_clone"))).val($(item).val());
-//                $(".main-contact-change").find("#" + $(item).attr("id")).val($(item).val());
+                var field = $("#"+$(item).attr("id").substr(0,$(item).attr("id").indexOf("_clone")));
+                field.val($(item).val());
+                $(".main-contact-change").find("#" + $(item).attr("id")).val($(item).val());
             });
             // if($(".main-contact-change-checkbox").attr("id")== "company_osh_ceochange"){
             if($(this).attr("id")== "company_osh_ceochange"){
                 // $('#company_osh_ceoimage_image_container img').attr('src' ,ceoImage);
                 $('.company_osh_ceoimage_image_container img').attr('src' ,ceoImage);
             }
+            $(".main-contact-change-clone").hide();
 //            $(".main-contact-change").remove(".main-contact-change-backup");
         }
     });
+
+    $(".main-contact-change-clone :input").attr('disabled', 'disabled');
+    $(".main-contact-change-clone").hide();
+
+
 
     /**
      * Combined checkbox event
@@ -1776,7 +1844,7 @@ $(document).ready(function () {
         $(".dialog").addClass('hidden');
         $(".helpDialog").addClass('hidden');
     });
-     
+
      if($('.disabledEmailForMF').length == 1){
          $("#contact_osh_mainemail").css({
             'pointer-events': 'none',
@@ -2333,14 +2401,15 @@ $(document).ready(function () {
         //        Evitamos que valide los campos de contact si el check maincontactchange está pulsado.
 //            if(!isMainContact($(field))){
         $.get(url, function (data, status) {
-            var response = jQuery.parseJSON(data);
+            /*var response = jQuery.parseJSON(data);
             if(!response.status){
                 $(field).addClass("error");
                 $(field).attr("data-error", "true");
             }else{
                 $(field).removeClass("error");
                 $(field).attr("data-error", "");
-            }
+            }*/
+            //TODO: ¿Process response?
         });
     });
 
@@ -2357,15 +2426,64 @@ $(document).ready(function () {
 
 
 
-    $(".helpButton").on({
+    $(".helpSection").on({
             click: function () {
+                $(this).addClass("helpPressed");
                 $(".helpDialog").removeClass("hidden");
                 $(".helpDialog").dialog({
+                        title:"Submit a question",
+                        width:"33%",
+                    modal:true,
                         buttons: [
                             {
                                 text: "SEND",
                                 click: function () {
-                                    $(this).dialog("close");
+                                    var email = $("#email").val();
+                                    var message = $("#message").val();
+                                    var section = $('.helpPressed').parent().prev().children('legend').text().trim();
+                                    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                                    if (email === '' || message === '') {
+                                        $("#helpError").html('Please, fill all fields<br>');
+                                        $("#helpError").removeClass("hidden");
+                                    } else if (!(email).match(emailReg)) {
+                                        $("#helpError").html('Invalid email<br>');
+                                        $("#helpError").removeClass("hidden");
+                                    }else {
+                                        $("#helpError").addClass("hidden");
+
+                                        var urlParamsArray = {
+                                            route: getUrlVar("route"),
+                                            ajax: true,
+                                            async: false,
+                                            action: "submitQuestion",
+                                            email: email,
+                                            title: section,
+                                            message: message
+                                        };
+                                        var urlParams = $.param(urlParamsArray);
+                                        var url = window.location.href;
+                                        if (url.indexOf("?") != -1) {
+                                            var pos = url.indexOf("?");
+                                            url = url.substr(0, pos);
+                                        }
+                                        url += "?" + urlParams;
+
+                                        $.get(url, function (data, status) {
+                                            /*var response = jQuery.parseJSON(data);
+                                             if(!response.status){
+                                             $(field).addClass("error");
+                                             $(field).attr("data-error", "true");
+                                             }else{
+                                             $(field).removeClass("error");
+                                             $(field).attr("data-error", "");
+                                             }*/
+                                            //TODO: ¿Process response?
+                                            $('.helpDialog').dialog("close");
+                                            $('.helpPressed').removeClass("helpPressed");
+                                            $("#message").val("");
+                                        });
+                                    }
+
                                 }
                             }
                         ]
@@ -2375,6 +2493,10 @@ $(document).ready(function () {
         }
     );
 
+    if(!$(".saveDialog").hasClass('hidden')) {
+        $(".saveDialog").dialog({modal: true});
+    }
 
 
- }); //Fin del document.ready
+
+}); //Fin del document.ready

@@ -1,6 +1,6 @@
 {
   "sections": {
-    "title": "3. Contact information",
+    "title": "3. About your Main Contact",
     "sections": {
         "PRIMARY_CONTACT": "Primary Contact"
     },
@@ -21,6 +21,7 @@
     "contact_osh_maincontactpersonfirstname_clone": {
       "name": "contact_osh_maincontactpersonfirstname_clone",
       "section": "PRIMARY_CONTACT",
+      "label": "Previous name of main contact person for the campaign",
       "type": "text"
     },
     "contact_osh_maincontactpersonlastname": {
@@ -34,6 +35,7 @@
     "contact_osh_maincontactpersonlastname_clone": {
       "name": "contact_osh_maincontactpersonlastname_clone",
       "section": "PRIMARY_CONTACT",
+      "label": "Previous surname",
       "type": "text"
     },
     "contact_osh_positionmaincontactperson": {
@@ -46,6 +48,7 @@
     "contact_osh_positionmaincontactperson_clone": {
       "name": "contact_osh_positionmaincontactperson_clone",
       "section": "PRIMARY_CONTACT",
+      "label": "Previous position",
       "type": "text"
     },
     "contact_osh_mainemail": {
@@ -62,6 +65,7 @@
     "contact_osh_mainemail_clone": {
       "name": "contact_osh_mainemail_clone",
       "section": "PRIMARY_CONTACT",
+      "label": "Previous e-mail",
       "type": "text"
     },
     "helpMessage": {
@@ -106,6 +110,7 @@
     "contact_osh_confirm_mainemail_clone": {
       "name": "contact_osh_confirm_mainemail_clone",
       "section": "PRIMARY_CONTACT",
+      "label": "Previous email confirmation",
       "type": "text"
     },
     "contact_osh_mainphone": {
@@ -125,9 +130,17 @@
 
     "contact_osh_mainphone_clone": {
       "name": "contact_osh_mainphone_clone",
+      "label": "Previous telephone number",
       "section": "PRIMARY_CONTACT",
       "type": "text"
     },
+     "contact_osh_prefixmaincontactphone_clone": {
+           "name": "contact_osh_prefixmaincontactphone_clone",
+           "label": "Previous telephone prefix",
+           "placeholder": "+00",
+           "section": "OTHER_USERS",
+           "type": "dropdown"
+         },
     "contact_osh_captcha": {
       "name": "contact_osh_captcha",
       "section": "PRIMARY_CONTACT",
