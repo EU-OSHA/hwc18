@@ -17,7 +17,7 @@ define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
  */
 function hwc_partner_views_query_alter(&$view, &$query) {
   if ($view->name == 'partners_list' && $view->current_display == 'een') {
-    $name = 'Enterprise Europe Network';
+    $name = 'OSH Ambassador';
     foreach($query->where[1]['conditions'] as $k => $v) {
       if ($v['field'] == 'field_data_field_partner_type.field_partner_type_tid') {
         $term = taxonomy_term_load($query->where[1]['conditions'][$k]['value']);
