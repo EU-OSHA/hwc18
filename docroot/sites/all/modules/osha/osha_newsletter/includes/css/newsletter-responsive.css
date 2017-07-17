@@ -30,8 +30,12 @@ a[x-apple-data-detectors] {
 #content .newsletter-container a {
   font-family: inherit;
 }
+.newsletter-container.web-version {
+  margin: 0 auto !important;
+}
 
 @media only screen and (max-width: 600px) {
+  // Positioning & layout
   .newsletter-container {
     max-width: 100% !important;
     width: 100% !important;
@@ -45,12 +49,31 @@ a[x-apple-data-detectors] {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  .responsive-column {
+    max-width: 100% !important;
+    width: auto !important;
+    display: block !important;
+    text-align: left !important;
+  }
   img {
     max-width: 100% !important;
     width: auto;
+    height: auto !important;
   }
   .newsletter-section {
     min-height: 0 !important;
+  }
+  .hidden-mobile {
+    display: none !important;
+  }
+  .visible-mobile {
+    display: block !important;
+  }
+  td.visible-mobile {
+    display: table-cell !important;
+  }
+  .prefix-arrow.visible-mobile {
+    display: inline !important;
   }
 /*
   .newsletter-multiple-columns,
@@ -73,6 +96,7 @@ a[x-apple-data-detectors] {
   .template-image {
     text-align: center !important;
   }
+  // Styling
   .template-column > .newsletter-item {
     background-color: transparent;
     color: #003399;
@@ -104,15 +128,98 @@ a[x-apple-data-detectors] {
   .multiple-columns-cell {
     padding-bottom: 0px !important;
   }
-}
-@media only screen and (max-width: 480px) {
+
+  table,
+  p,
+  .newsletter-item-view-link {
+    font-size: 16px !important;
+  }
+  .header {
+    table-layout: auto !important;
+  }
+  .hwc-logo.visible-mobile {
+    padding-left: 0 !important;
+    padding-right: 10px !important;
+  }
+  .hwc-logo.visible-mobile a {
+    display: table-cell !important;
+    border-right: 1px solid #039 !important;
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+  // .hwc-logo.visible-mobile a img {
+  //   width: auto !important;
+  //   max-width: 88px !important;
+  //   height: auto !important;
+  //   max-height: 83px !important;
+  // }
+  .hwc-logo.visible-mobile {
+    width: 107px !important;
+    max-width: 107px !important;
+  }
   .osha-logos {
+    text-align: right !important;
+    width: 110px !important;
+    max-width: 110px !important;
+  }
+  .eu-logo {
+    width: 57px !important;
+    max-width: 57px !important;
+    text-align: right !important;
+    padding-right: 20px !important;
+  }
+  .header-banner-container {
+    background-size: 100% 100% !important;
+  }
+  .header-title {
+    font-size: 13px !important;
+    font-weight: normal !important;
+    padding-bottom: 13px !important;
+    padding-top: 13px !important;
+    letter-spacing: 0.5px !important;
+  }
+  .header-date {
+    font-size: 23px !important;
+    padding-bottom: 20px !important;
+    padding-top: 0 !important;
+  }
+  .section-title {
+    font-size: 27px !important;
+    height: 27px !important;
+    padding-top: 30px !important;
+  }
+  .highlight-title {
+    font-size: 27px !important;
+    line-height: 27px !important;
+  }
+  .item-date {
+    font-size: 14px !important;
+    padding-bottom: 14px !important;
+  }
+  .footer-social > td {
     text-align: center !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
-  .osha-logos,
-  .osha-info {
-    display: block !important;
-    max-width: 100% !important;
+  .social-logo {
+    width: 25px !important;
+    max-width: 25px !important;
+    height: 25px !important;
+    max-height: 25px !important;
   }
+  .spacing-blog {
+    display: none !important;
+  }
+
 }
+// @media only screen and (max-width: 480px) {
+//   .eu-logo {
+//     text-align: center !important;
+//   }
+//   .eu-logo,
+//   .osha-info {
+//     display: block !important;
+//     max-width: 100% !important;
+//   }
+// }
 

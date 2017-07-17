@@ -34,11 +34,25 @@ $directory = drupal_get_path('module','osha_newsletter');
   </tbody>
 </table>
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial,sans-serif;" class="header template-container">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial,sans-serif; table-layout: fixed;" class="header template-container">
   <tbody>
     <tr>
-      <td width="219" style="max-width: 219px;">
-      <!-- @todo: replace with HWC logo -->
+      <td class="hwc-logo visible-mobile" width="0" style="width: 0px; max-width: 0px;" valign="bottom">
+        <?php
+          print l(theme('image', array(
+            'path' => $directory . '/images/healthy_workplaces.png',
+            'width' => 88,
+            'height' => 83,
+            'alt' => 'Healthy Workplaces',
+            'attributes' => array('style' => 'border: 0px; width: 88px; max-width: 88px; height: 83px; max-height: 83px;')
+            )), $base_url.'/'.$language->language, array(
+            'html' => TRUE,
+            'external' => TRUE,
+            'query' => $url_query
+          ));
+        ?>
+      </td>
+      <td class="hwc-image hidden-mobile" width="230" style="width: 230px; max-width: 230px;" valign="bottom">
         <?php
           global $base_url;
           print l(theme('image', array(
@@ -54,18 +68,18 @@ $directory = drupal_get_path('module','osha_newsletter');
           ));
         ?>
       </td>
-      <td width="121" style="width: 121px; max-width: 121px; font-family: Arial; font-size: 16px; font-weight: bold; color: #003399; vertical-align: middle;">
+      <td class="condensed-title hidden-mobile" width="140" style="width: 140px; max-width: 140px; font-family: Arial; font-size: 16px; font-weight: bold; color: #003399; vertical-align: middle;" valign="bottom">
         Healthy Workplaces MANAGE DANGEROUS SUBSTANCES
       </td>
-      <td class="osha-logos">
+      <td class="osha-logos" width="182" style="width: 182px; max-width: 182px;" valign="bottom">
         <?php
           global $base_url;
           print l(theme('image', array(
             'path' => $directory . '/images/logo-osha2.png',
-            'width' => 140,
+            'width' => 180,
             'height' => 88,
             'alt' => 'European Agency for Safety and Health at Work',
-            'attributes' => array('style' => 'border: 0px; width: 140px; max-width: 140px; height: 88px; max-height: 88px;')
+            'attributes' => array('style' => 'border: 0px; width: 180px; max-width: 180px; height: 88px; max-height: 88px;')
             )), $base_url.'/'.$language->language, array(
             'html' => TRUE,
             'external' => TRUE,
@@ -73,25 +87,25 @@ $directory = drupal_get_path('module','osha_newsletter');
           ));
           ?>
       </td>
-      <td>
+      <td class="eu-logo" width="77" style="width: 77px; max-width: 77px;" valign="bottom">
         <?php
           print theme('image', array(
             'path' => $directory . '/images/europeLogo.png',
             'width' => 57,
             'height' => 37.09,
             'alt' => 'EU',
-            'attributes' => array('style' => 'border: 0px; margin-left: 20px; width: 57px; max-width: 57px; height: 37.09px; max-height: 37.09px;')
+            'attributes' => array('style' => 'border: 0px; width: 57px; max-width: 57px; height: 37.09px; max-height: 37.09px;')
           ));
         ?>
       </td>
-      <td class="osha-info">
+      <td class="hwc-logo hidden-mobile" width="87" style="width: 87px; max-width: 87px;" valign="bottom">
         <?php
           print l(theme('image', array(
             'path' => $directory . '/images/healthy_workplaces.png',
-            'width' => 87,
-            'height' => 81.5,
+            'width' => 88,
+            'height' => 83,
             'alt' => 'Healthy Workplaces',
-            'attributes' => array('style' => 'border: 0px; width: 87px; max-width: 87px; height: 81.5px; max-height: 81.5px;')
+            'attributes' => array('style' => 'border: 0px; width: 88px; max-width: 88px; height: 83px; max-height: 83px;')
             )), $base_url.'/'.$language->language, array(
             'html' => TRUE,
             'external' => TRUE,
@@ -106,18 +120,37 @@ $directory = drupal_get_path('module','osha_newsletter');
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="template-container">
   <tbody>
     <tr>
-      <td style="padding-top: 0px; padding-bottom: 25px;">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="header-title">
-          <tbody>
-            <tr>
-              <td style="background-color: #6ca638; width: 70%; text-align: left; font-size: 24px; font-weight: 200; color: #ffffff; font-family: Arial,sans-serif;">
-                <?php print t("Healthy Workplaces Campaign Newsletter");?>
-              </td>
-              <td style="background-color: #6ca638; width: 30%; text-align: right; font-size: 14px; font-weight: 200; color: #ffffff; font-family: Arial,sans-serif;" class="hidden-print">
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <?php
+        global $base_url;
+        $bg_path = "{$base_url}/sites/all/modules/osha/osha_newsletter/images/header-banner-bg.png";
+      ?>
+      <td class="header-banner-container" background="<?php print $bg_path; ?>" bgcolor="#6ca638" valign="top" style="background-image: url(<?php print $bg_path; ?>); background-repeat: no-repeat; background-size: cover; padding-top: 0; padding-bottom: 0px;">
+        <!--[if gte mso 9]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
+          <v:fill type="frame" src="<?php print $bg_path; ?>" color="#6ca638" />
+          <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+        <![endif]-->
+        <div>
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" class="header-banner">
+            <tbody>
+              <tr>
+                <td style="width: 70%; text-align: left; font-size: 24px; font-weight: bold; color: #ffffff; font-family: Arial,sans-serif;" class="header-title responsive-column">
+                  <?php print t("Healthy Workplaces Campaign Newsletter");?>
+                </td>
+                <td style="width: 30%; text-align: right; font-size: 24px; font-weight: normal; color: #ffffff; font-family: Arial,sans-serif;" class="header-date hidden-print responsive-column">
+                  <?php
+                    // $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y');
+                    print t($newsletter_ready_date);
+                  ?>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+        <!--[if gte mso 9]>
+          </v:textbox>
+        </v:rect>
+        <![endif]-->
       </td>
     </tr>
   </tbody>

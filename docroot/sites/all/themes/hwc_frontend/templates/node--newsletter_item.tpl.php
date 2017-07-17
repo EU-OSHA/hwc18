@@ -46,7 +46,7 @@ if (!empty($campaign_id)) {
       ?>
       <tr>
         <?php if (empty($node->old_newsletter)): ?>
-          <td rowspan="2" width="40" style="width:40px; padding-right: 10px;">
+          <td rowspan="2" width="40" style="width:40px; max-width: 40px; padding-right: 5px;">
             <?php
               global $base_url;
 
@@ -60,7 +60,7 @@ if (!empty($campaign_id)) {
               'width' => 40,
               'height' => 36,
               'alt' => 'calendar',
-              'attributes' => array('style' => 'border: 0px;height:35px!important;width:40px!important;')
+              'attributes' => array('style' => 'border: 0px;height:35px!important;width:40px!important;max-height:35px!important;max-width:40px!important;display:block;')
             )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
               'html' => TRUE,
               'external' => TRUE,
@@ -68,11 +68,11 @@ if (!empty($campaign_id)) {
             ));
             ?>
           </td>
-          <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
+          <td style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0; padding-left: 5px;">
             <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
           </td>
         <?php else: ?>
-          <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
+          <td style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
             <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
           </td>
         <?php endif; ?>
@@ -80,19 +80,20 @@ if (!empty($campaign_id)) {
       <?php
     }
     ?>
-    <tr style="height: 100%;">
+    <tr>
       <?php if (!in_array($node->type, ['twitter_tweet_feed'])
                 && (empty($node->parent_section) || $node->parent_section != 13)) { ?>
-        <td align="left" width="10" style="padding-right: 0px; vertical-align: top; padding-top: 5px; font-family: Arial, sans-serif;width:10px;">
-          <span> > </span>
-        </td>
+        <!-- <td align="left" width="10" style="padding-top: 5px; padding-right: 0px; padding-left: 5px; vertical-align: top; font-family: Arial, sans-serif;width:10px;">
+
+        </td> -->
       <?php } ?>
-      <td align="right" style="text-align: left; padding-top: 5px; padding-bottom: 10px; padding-left:0px;">
+      <td align="right" style="text-align: left; padding-top: 0px; padding-bottom: 10px; padding-left: 5px;">
+        <span> > </span>
         <?php
         switch ($node->type) {
           case 'publication':
             print l($node->title, url('node/' . $node->nid . '/view', array('absolute' => TRUE)), array(
-              'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
+              'attributes' => array('class' => ['newsletter-item-view-link']),
               'query' => $url_query,
               'external' => TRUE
             ));
@@ -122,7 +123,7 @@ if (!empty($campaign_id)) {
           default:
             defaultLabel:
             print l($node->title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
-              'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
+              'attributes' => array('class' => ['newsletter-item-view-link']),
               'query' => $url_query,
               'external' => TRUE
             ));
