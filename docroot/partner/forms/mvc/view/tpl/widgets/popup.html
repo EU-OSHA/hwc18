@@ -55,6 +55,7 @@
             }
             $('#{$fieldName}_thumbBox').append('<img src="' + img + '">');
             $('#{$fieldName}').attr('value', img);
+            $('#{$fieldName}').attr('data-error', '');
         });
         $('#{$fieldName}_btnZoomIn').on('click', function () {
             cropper.zoomIn();

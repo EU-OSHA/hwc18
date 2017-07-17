@@ -10,16 +10,50 @@
 {else}
 {/if}-->
 
+<div class="helpDialog hidden">
+    <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
+    <br>
+    <div class="error-msg hidden" id="helpError"></div>
+    <label for="email">Your email:</label>
+    <input id="email" type="text" placeholder="your@email.com"/>
+    <br>
+    <label for="message">Your message:</label>
+    <textarea id="message" placeholder="Write here your question"></textarea>
+</div>
+
 <fieldset>
     <legend id="PRIMARY_CONTACT">
         Your Primary Contact
-        <div data-section="PRIMARY_CONTACT" class="validation{$locked}"></div>
+        <img id="PRIMARY_CONTACT_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
     
       <!--  {if !mf && $partner_type == "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}-->
- {if !$mf && $mainContactChangeCheck == true && $partner_type != "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if} 
+ {if !$mf && $mainContactChangeCheck == true && $partner_type != "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}
+    <div class="main-contact-change-clone main-contact-change-clone-ocp">
+        <div class="float-left">
+            {$attributes.contact_osh_maincontactpersonfirstname_clone}
+            {$attributes.contact_osh_maincontactpersonlastname_clone}
+            <!-- {$attributes.contact_osh_positionmaincontactperson} -->
+        </div>
+        <div class="float-right">
+            <!--{$attributes.contact_osh_mainphone} -->
+            {$attributes.contact_osh_positionmaincontactperson_clone}
+            {if $mf || $partner_type == "current"}
+                <div>
+            {/if}
+                {$attributes.contact_osh_mainemail_clone}
+            {if $mf || $partner_type == "current"}
+                </div>
+            {/if}
+            {if !$mf && $partner_type != "current" && !$locked}
+                {$attributes.contact_osh_confirm_mainemail_clone}
+            {/if}
+       </div>
+    </div>
+
+
     <div class="main-contact-change">
         <div class="float-left">
             {$attributes.contact_osh_maincontactpersonfirstname}
@@ -29,13 +63,7 @@
         <div class="float-right">
             <!--{$attributes.contact_osh_mainphone} -->
             {$attributes.contact_osh_positionmaincontactperson}
-            {if $mf || $partner_type == "current"}
-                <div class="disabledEmailForMF">
-            {/if}
             {$attributes.contact_osh_mainemail}
-            {if $mf}
-                </div>
-            {/if}
             {if !$mf && $partner_type != "current" && !$locked}
                 {$attributes.contact_osh_confirm_mainemail}
             {/if}
@@ -48,28 +76,31 @@
         {$attributes.contact_osh_maincontactpersonfirstnameAux}
         {$attributes.contact_osh_maincontactpersonlastnameAux}
         {$attributes.osh_primarycontactsection}
-        {$attributes.contact_osh_maincontactpersonfirstname_clone}
-        {$attributes.contact_osh_maincontactpersonlastname_clone}
-        {$attributes.contact_osh_positionmaincontactperson_clone}
         {$attributes.contact_osh_mainphone_clone}
-        {$attributes.contact_osh_mainemail_clone}
-        {if !$mf && $partner_type != "current" && !$locked}
-            {$attributes.contact_osh_confirm_mainemail_clone}
-        {/if}
+
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="PRIMARY_CONTACT" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 {if $mf}
 <fieldset id="osh_otheruser">
     <legend id="OTHER_USERS">
         Other users
-        <div data-section="OTHER_USERS" class="validation{$locked}"></div>
+        <img id="OTHER_USERS_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
     
     <p id="general-text">In this section you can add additional contacts for your own organisation. These new users will be able to make changes to your organisational profile. You will always be notified of such changes</p>
    
-   <div id="otherUserField1" style="margin-top: -7%;">
+   <div id="otherUserField1">
         {$attributes.contact_osh_otherusername1}
         {$attributes.contact_osh_otherusermail1}
        {$attributes.contact_osh_otheruserprefix1}
@@ -130,6 +161,15 @@
         Add user
     </button>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="OTHER_USERS" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 {/if}
 {if $HelpMessage == "print"}
 <div id="footerPrintFriendly">

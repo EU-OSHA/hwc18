@@ -10,10 +10,22 @@
 {/if}
 {/if}
 
+
+<div class="helpDialog hidden">
+    <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
+    <br>
+    <div class="error-msg hidden" id="helpError"></div>
+    <label for="email">Your email:</label>
+    <input id="email" type="text" placeholder="your@email.com"/>
+    <br>
+    <label for="message">Your message:</label>
+    <textarea id="message" placeholder="Write here your question"></textarea>
+</div>
+
 <fieldset>
     <legend id="ORGANISATION">
         About your organisation
-        <div data-section="ORGANISATION" class="validation{$locked}"></div>
+        <img id="ORGANISATION_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="lessSeparator separatorFieldSet"> </div>
@@ -43,10 +55,20 @@
             {$attributes.osh_aboutyourcomrepsection}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="ORGANISATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
+
 <fieldset>
     <legend id="GENERAL_INFORMATION">
         General Contact Information
-        <div data-section="GENERAL_INFORMATION" class="validation{$locked}"></div>
+        <img id="GENERAL_INFORMATION_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -106,11 +128,19 @@
     <!-- <p id="general-text">Please note that all communications related to this application will be addressed to the
         main contact person as indicated below.</p> -->
 </fieldset>
-
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="GENERAL_INFORMATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="CEO">
         Information about your CEO
-        <div data-section="CEO" class="validation{$locked}"></div>
+        <img id="CEO_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -133,10 +163,19 @@
         {$attributes.company_osh_quoteonhwc_clone}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="CEO" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="OSH">
         Your OSH representative
-        <div data-section="OSH" class="validation{$locked}"></div>
+        <img id="OSH_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -154,10 +193,19 @@
         {$attributes.company_osh_emailrepresentative}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="OSH" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="COMMUNICATION_REP">
         Your Communication Representative
-        <div data-section="COMMUNICATION_REP" class="validation{$locked}"></div>
+        <img id="COMMUNICATION_REP_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
 
     <div class="separatorFieldSet">&nbsp;</div>
@@ -174,3 +222,12 @@
         {$attributes.comrep_osh_emailmediapr}
     </div>
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="COMMUNICATION_REP" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}

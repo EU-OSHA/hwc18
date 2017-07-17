@@ -137,12 +137,10 @@ class Validator
                     }
                 break;
                 case self::VALIDATION_TRUE:
-                    error_log("EVE_JDD_TRUE" . $attribute->getName() . "[" . var_export($value, true) ."]");
                     if (!($ret = $this->validateTrue($value))) {
                         $messageBus = MessageBus::getInstance();
                         $messageBus->put($attribute->getName(), $lang->get($validationType));
                     }
-                    error_log("EVE_JDD_TRUE_RET_" . var_export($ret, true));
                     break;
             }
 

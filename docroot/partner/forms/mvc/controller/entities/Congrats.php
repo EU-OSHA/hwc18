@@ -68,23 +68,20 @@ class Congrats extends Controller implements IController, IForm {
      * @param bool $save
      */
     public function send($save = false, $updateMF = false) {
-        error_log("EVE_JDD_AQUI2");
         header('Location: ' . APP_URL);
         die;
     }
 
     /**
      * Send action
-     * @param bool $save
+     * @param
      */
     public function submitSatisfaction() {
         $params = Parameters::getInstance();
         $MyId = $params->getUrlParamValue('session_id');
         $SelectedSatisfaction = $_GET['satisfaction'];
-        error_log("EVE_JDD_AQUI4_$MyId. $SelectedSatisfaction");
         $currentModel = new Model("");
         $currentModel->submitSatisfactionToCDB($MyId, $SelectedSatisfaction);
-
     }
 
 }
