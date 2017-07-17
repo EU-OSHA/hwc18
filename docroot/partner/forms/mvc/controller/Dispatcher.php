@@ -28,7 +28,6 @@ class Dispatcher {
         }
 
         $route = $this->setRoute();
-                error_log("EVE_JDD_1: " .  print_r($route,1));
         if (class_exists($route) || class_exists(ucfirst(($route)))) {
             try {
                 // Set the application context

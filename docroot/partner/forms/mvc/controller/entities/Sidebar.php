@@ -81,7 +81,6 @@ class Sidebar extends Controller implements IController
         if (! $entities) {
             throw new OshException('bad_config', 500);
         }
-        
         $sections = $params->get('sections_validated');
         foreach ($entities as $entity) {
             $model = new Model(strtolower($params->getUrlParamValue('entity') . '_' . ucfirst($entity)));
@@ -199,8 +198,8 @@ class Sidebar extends Controller implements IController
                 $content = json_decode($content, true);
                 $content = isset($content['sections']) ? $content['sections'] : '';
                 if($partnertype == 'fop' && isset($content['title'])){
-                    if($content['title'] == "3. Contact information"){
-                        $content['title'] = "2. Contact information";
+                    if($content['title'] == "3. About your Main Contact"){
+                        $content['title'] = "2. About your Main Contact";
                     }
                 }
                 if ($content && isset($content['title']) && isset($content['sections'])) {

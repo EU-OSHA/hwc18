@@ -146,7 +146,7 @@ fieldset {
     border         : none;
 /*    border-bottom  : 0.2vw dotted #c1e000;*/
     padding-bottom : 2vw;
-    margin-bottom  : 3vw;
+    /*margin-bottom  : 3vw;*/
 }
 
 legend {
@@ -193,21 +193,27 @@ select[disabled] {
 }
 
 .validation {
-    float           : right;
-/*    width           : 1.2vw;
-    height          : 1.2vw;*/
+    float           : left;
+    /*
+    width           : 1.2vw;
+    height          : 1.2vw;
     width           : 18px;
-    height          : 18px;
+    height          : 18px;*/
     cursor          : pointer;
     margin-left     : 1vw;
     margin-top      : 0.5vw;
+    margin-bottom   : 0.5vw;
     background      : url(../img/validation-NoCheck.png);
+    background-repeat: no-repeat;
+    padding-left: 25px;
     /*background-size : 1.2vw;*/
 }
 
 .validation-pressed {
     background      : url(../img/validation-check.png);
-/*    background-position-x: -0.3vw;*/
+    background-repeat: no-repeat;
+
+    /*    background-position-x: -0.3vw;*/
 }
 
 .div-checkbox {
@@ -709,8 +715,17 @@ textarea.error {
 }
 
 .main-contact-change-backup {
-    display : none;
+    /* -display : none; */
 }
+.main-contact-change-clone{
+    margin-bottom: 450px;
+}
+
+.main-contact-change-clone{
+    margin-bottom: 600px;
+}
+
+
 .mainContactCheck label{
     display: inline;
     margin-left: 1%;
@@ -979,8 +994,8 @@ p.congrats {
     /*position: fixed;*/
     //Fixed not works into the iframe
     position: absolute;
-    left: 40%;
-    /*top: 40%;*/
+    /*left: 40%;
+    top: 40%;*/
     top: 5%;
     background-color: #F2F2F2;
     border: 1px solid red;
@@ -1024,7 +1039,7 @@ p.congrats {
     color: black !important;
 }
 .saveExplanationSave{
-    font-size: xx-small;
+    font-size: x-small;
 }
 #containerSocialNetworks{
     margin-top: 4%;
@@ -1051,13 +1066,29 @@ img.congrats_rad{ /* IMAGE STYLES */
 }
 
 
-.helpButton {
+
+
+.helpSection {
     /*float: right;
     margin-right: 20%;*/
-    background-color: darkgray;
-    border-radius: 20px;
-    color: black;
+    padding: 10px 10px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border-radius: 30px;
+    color: dimgrey;
+    border: solid black 1px;
+    box-shadow: 0px 2px 2px #888888;
+    cursor: pointer;
 }
+
+.helpIcon{
+    color: black;
+    background-color: lightgray;
+    border-radius: 50%;
+    border: solid black 2px;
+    padding: 0px 8px;
+}
+
 
 .helpDialog {
     position: absolute;
@@ -1078,10 +1109,22 @@ img.congrats_rad{ /* IMAGE STYLES */
     color: black;
 }
 
+.helpDiv{
+    margin-bottom  : 3vw;
+}
+
 .ui-dialog-titlebar-close {
     background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_888888_256x240.png") repeat scroll -93px -128px rgba(0, 0, 0, 0);
     border: medium none;
 }
 .ui-dialog-titlebar-close:hover {
     background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_222222_256x240.png") repeat scroll -93px -128px rgba(0, 0, 0, 0);
+}
+
+.ui-widget-overlay
+{
+    opacity: .50 !important; /* Make sure to change both of these, as IE only sees the second one */
+    filter: Alpha(Opacity=50) !important;
+
+    background-color: rgb(50, 50, 50) !important; /* This will make it darker */
 }

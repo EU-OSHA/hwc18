@@ -10,21 +10,21 @@
 {/if}
 {/if}
 
-<!--
 <div class="helpDialog hidden">
     <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
-    <span>Your email:</span>
-
-    <input id="email" type="text"/>
-    <span>Your message:</span>
-    <textarea id="message"></textarea>
+    <br>
+    <div class="error-msg hidden" id="helpError"></div>
+    <label for="email">Your email:</label>
+    <input id="email" type="text" placeholder="your@email.com"/>
+    <br>
+    <label for="message">Your message:</label>
+    <textarea id="message" placeholder="Write here your question"></textarea>
 </div>
--->
 
 <fieldset>
     <legend id="ORGANISATION">
         About your Media Outlet
-        <div data-section="ORGANISATION" class="validation{$locked}"></div>
+        <img id="ORGANISATION_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -67,15 +67,20 @@
             {$attributes.company_osh_readershipgeneralaudience}
         </div>
     </div>
-    <!--<div class="helpSection" style="float: right; width: 100%; ">
-        <a class="helpButton" name="helpButton">? Help</a>
-    </div>-->
-
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="ORGANISATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="GENERAL_INFORMATION">
         General Contact Information
-        <div data-section="GENERAL_INFORMATION" class="validation{$locked}"></div>
+        <img id="GENERAL_INFORMATION_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -130,14 +135,20 @@
         {$attributes.company_osh_prefixgeneralphone}
         {$attributes.company_osh_generalphone}
     </div>
-    <!--<div class="helpSection" style="float: right; width: 100%; ">
-        <a class="helpButton" name="helpButton">? Help</a>
-    </div>-->
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="GENERAL_INFORMATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
 <fieldset>
     <legend id="CHIEF">
         About your Editor
-        <div data-section="CHIEF" class="validation{$locked}"></div>
+        <img id="CHIEF_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
@@ -154,7 +165,13 @@
         {$attributes.company_osh_ceo_firstname_clone}
         {$attributes.company_osh_ceo_lastname_clone}
     </div>
-    <!--<div class="helpSection" style="float: right; width: 100%; ">
-        <a class="helpButton" name="helpButton">? Help</a>
-    </div>-->
 </fieldset>
+{if $HelpMessage != "print"}
+<div class="helpDiv">
+    <div data-section="CHIEF" class="validation{$locked}">I validate the information filled in this section</div>
+    <div class="helpSection" style="float: right; margin-right:5%;">
+        <span class="helpIcon" name="helpIcon">?</span>
+        <a class="helpButton" name="helpButton">HELP</a>
+    </div>
+</div>
+{/if}
