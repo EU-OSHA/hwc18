@@ -980,9 +980,8 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['filters']['field_partner_type_tid']['table'] = 'field_data_field_partner_type';
   $handler->display->display_options['filters']['field_partner_type_tid']['field'] = 'field_partner_type_tid';
   $handler->display->display_options['filters']['field_partner_type_tid']['value'] = array(
-    0 => '1826',
+    0 => '1804',
   );
-  $handler->display->display_options['filters']['field_partner_type_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator_id'] = 'field_partner_type_tid_op';
   $handler->display->display_options['filters']['field_partner_type_tid']['expose']['label'] = 'Type (field_partner_type)';
   $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator'] = 'field_partner_type_tid_op';
