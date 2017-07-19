@@ -11,12 +11,9 @@
             jQuery('#edit-sort-by').change(function(){
                 jQuery('#views-exposed-form-search-site #edit-sort-by--2').val(jQuery(this).val());
             });
-            form = document.getElementById('osha-search-sort-form');
-            if (form) {
-                form.onsubmit = function() {
-                    return false;
-                };
-            }
+            document.getElementById('osha-search-sort-form').onsubmit = function() {
+                return false;
+            };
         }
     }
 })(jQuery);
