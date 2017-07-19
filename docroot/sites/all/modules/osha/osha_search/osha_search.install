@@ -88,9 +88,16 @@ function osha_search_update_7008() {
 }
 
 /**
- * Search remova active link
+ * Search remove active link
  */
 function osha_search_update_7009() {
   module_enable(['facetapi_bonus']);
+  features_revert_module('osha_search');
+}
+
+/**
+ * Search exclude type fields
+ */
+function osha_search_update_7010() {
   features_revert_module('osha_search');
 }
