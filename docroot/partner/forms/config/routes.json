@@ -1,7 +1,16 @@
 {
   "routes": {
-    "company": {
+    "start": {
       "index": "1",
+      "internal": "start",
+      "label": "Basic Requirements",
+      "next": "Involvement",
+      "submitText": "Start your application",
+      "route":"route=start",
+      "subsection":"START"
+    },
+    "company": {
+      "index": "2",
       "internal": "company",
       "label": "About your Organisation",
       "next": "Involvement",
@@ -10,7 +19,7 @@
       "subsection":"ORGANISATION"
     },
     "involvement": {
-      "index": "2",
+      "index": "3",
       "internal": "involvement",
       "label": "About your Involvement",
       "next": "Contact",
@@ -19,9 +28,9 @@
       "subsection":"BECOME"
     },
     "contact": {
-      "index": "3",
+      "index": "4",
       "internal": "contact",
-      "label": "Contact Information",
+      "label": "About your Main Contact",
       "next": "Congrats",
       "submitText": "Submit your Application",
       "route":"route=contact",

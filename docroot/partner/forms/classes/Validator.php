@@ -29,6 +29,10 @@ class Validator
     const VALIDATION_URL = 'url';
     /** Constant for captcha validation */
     const VALIDATION_CAPTCHA = 'captcha';
+
+    /** Constant for checkbox validation */
+    const VALIDATION_TRUE = 'true';
+
     /**
      * @var array Validation types
      */
@@ -39,6 +43,7 @@ class Validator
         self::VALIDATION_EMAIL,
         self::VALIDATION_URL,
         self::VALIDATION_CAPTCHA,
+        self::VALIDATION_TRUE,
     );
 
     /**
@@ -80,6 +85,7 @@ class Validator
         if (in_array($validationType, $this->validationTypes)) {
             $lang = Lang::getInstance();
             $value = $attribute->getValue();
+
             switch ($validationType) {
                 case self::VALIDATION_NOTNULL:
                     if($attribute->getName()=="company_osh_orgtype" ||
@@ -130,6 +136,12 @@ class Validator
                         $messageBus->put($attribute->getName(), $lang->get($validationType));
                     }
                 break;
+                case self::VALIDATION_TRUE:
+                    if (!($ret = $this->validateTrue($value))) {
+                        $messageBus = MessageBus::getInstance();
+                        $messageBus->put($attribute->getName(), $lang->get($validationType));
+                    }
+                    break;
             }
 
         }
@@ -238,4 +250,16 @@ class Validator
     {
         return filter_var($value, FILTER_VALIDATE_URL);
     }
+    /**
+     * Validate the value is true
+     *
+     * @param $value
+     *
+     * @return mixed
+     */
+    private function validateTrue($value)
+    {
+        return ($value == true);
+    }
+
 }

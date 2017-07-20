@@ -1,6 +1,7 @@
 (function($){
     Drupal.behaviors.publication_form_submit = {
         attach: function(context, settings) {
+            jQuery('#osha-publication-menu-case-studies-form .field-files a, #osha-publication-menu-publications-form .field-files a').attr('target','_blank');
             var $form = $('#osha-publication-menu-case-studies-form, #osha-publication-menu-publications-form');
             $form.find('input[type=checkbox]').click(function(){
                 var $container = $(this).closest('.form-checkboxes');

@@ -269,7 +269,11 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_orgtype']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_orgtype']['field'] = 'field_orgtype';
   $handler->display->display_options['fields']['field_orgtype']['label'] = 'Type';
+  $handler->display->display_options['fields']['field_orgtype']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_orgtype']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_orgtype']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_orgtype']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_orgtype']['bypass_access'] = 0;
   /* Field: Indexed Multilingual Content: Publication Type */
   $handler->display->display_options['fields']['field_publication_type']['id'] = 'field_publication_type';
   $handler->display->display_options['fields']['field_publication_type']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -291,6 +295,7 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_partner_type']['id'] = 'field_partner_type';
   $handler->display->display_options['fields']['field_partner_type']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_partner_type']['field'] = 'field_partner_type';
+  $handler->display->display_options['fields']['field_partner_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_partner_type']['view_mode'] = 'full';

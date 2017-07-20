@@ -5,7 +5,7 @@
      foreach($items as $item) {
        echo '<div class="newsletter-item" id="newsletter-item-' . ++$idx . '">';
       ?>
-      <h2><?php print l($item['title'].' - '.$item['publication_date'], url($item['url'], array('absolute' => TRUE)), array(
+      <h2><?php print l($item['title'], url($item['url'], array('absolute' => TRUE)), array(
           'attributes' => array('style' => 'color: #003399; text-decoration: none;'),
           'external' => TRUE
         )); ?></h2>

@@ -12,6 +12,27 @@ define ('PARTNER_TYPE_MP', '8b662e6e-054a-4148-8495-490ac5858964');
 define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
 
 
+/**
+ * Implements hook_views_query_alter().
+ */
+function hwc_partner_views_query_alter(&$view, &$query) {
+  if ($view->name == 'partners_list' && $view->current_display == 'een') {
+    $name = 'OSH Ambassador';
+    foreach($query->where[1]['conditions'] as $k => $v) {
+      if ($v['field'] == 'field_data_field_partner_type.field_partner_type_tid') {
+        $term = taxonomy_term_load($query->where[1]['conditions'][$k]['value']);
+        if ($term && $term->name != $name) {
+          $conditions = array('name' => trim($name), 'vid' => 20);
+          $term = taxonomy_term_load_multiple(array(), $conditions);
+          if ($term) {
+            $term = current($term);
+            $query->where[1]['conditions'][$k]['value'] = $term->tid;
+          }
+        }
+      }
+    }
+  }
+}
 
 function hwc_partner_context_plugins() {
   $plugins = array();
