@@ -44,6 +44,10 @@ function hwc_priority_areas_default_page_manager_handlers() {
       ),
       'logic' => 'and',
     ),
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'Priority areas',
+    'panels_breadcrumbs_paths' => 'topics',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'flexible';
