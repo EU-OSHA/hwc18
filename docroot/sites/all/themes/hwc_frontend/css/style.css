@@ -9390,10 +9390,15 @@ div[class*='node-'] .more-link {
 }
 .page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters a {
   font-weight: bold;
-  border-bottom: 1px dotted #749b00;
   display: block;
   padding-bottom: 5px;
   margin-top: 5px;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters .clear-wrapper > a {
+  border-bottom: 1px dotted #749b00;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters #remove_filter > a:last-child {
+  border-bottom: 1px dotted #749b00;
 }
 .page-search .region-sidebar-first .block.block-facetapi {
   border-bottom: 1px dotted #749b00;
@@ -10260,6 +10265,12 @@ div[class*='node-'] .more-link {
 }
 .front .panels-flexible-region-new-center .event_day_month .code_EN {
   background: url(../images/events/England.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_AT {
+  background: url(../images/events/Austria.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_CH {
+  background: url(../images/events/Switzerland.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_BG {
   background: url(../images/events/Bulgaria.png) no-repeat center;
@@ -12642,6 +12653,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   text-align: left;
   float: none;
   font-weight: normal;
+  clear: both;
 }
 .node-type-partner .pane-node-field-country .field-item {
   padding-top: 0.5em;
@@ -13968,7 +13980,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .view-id-partners_list img {
   margin: auto;
 }
-.view-display-id-fop img {
+.view-display-id-fop img,
+.view-display-id-een img {
   width: 110px;
   height: 74px;
   border: 1px solid #CCC;
@@ -14224,6 +14237,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*End pag error*/
 /*page get-your-certificate*/
+.page-get-your-certificate .contextual-links-region.panel-pane.pane-node-content {
+  clear: both;
+}
 .page-get-your-certificate .description {
   background-color: transparent;
   color: #039;
@@ -15703,6 +15719,9 @@ input#edit-field-image-und-0-upload::before {
   height: inherit !important;
   position: relative !important;
 }
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+  height: 100%;
+}
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
   font-size: 16px;
   overflow: hidden !important;
@@ -15787,6 +15806,31 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
   display: block !important;
+  position: absolute;
+  bottom: 0px !important;
+  height: 15px !important;
+  width: 63px !important;
+  left: 0px !important;
+  margin: 0px auto;
+  margin-bottom: 25px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div {
+  background: white;
+  border: 1px solid #003399;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: relative !important;
+  left: inherit !important;
+  top: inherit !important;
+  margin: 0px 3px;
+  display: inline-block;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div:hover {
+  background: #003399;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypeav {
+  background: #003399;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l {
   display: block !important;
@@ -16540,6 +16584,53 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 7px;
 }
 /*end good practices, publications, case studies*/
+/*enterprise europe network*/
+.page-enterprise-europe-network .main-container.container-fluid,
+.page-national-focal-points .main-container.container-fluid,
+.page-campaign-media-partners .main-container.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.page-enterprise-europe-network #block-system-main h2.pane-title,
+.page-national-focal-points #block-system-main h2.pane-title,
+.page-campaign-media-partners #block-system-main h2.pane-title {
+  display: none;
+}
+.page-enterprise-europe-network #block-system-main .node-article,
+.page-national-focal-points #block-system-main .node-article,
+.page-campaign-media-partners #block-system-main .node-article {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-name-title-field,
+.page-national-focal-points #block-system-main .node-article .field-name-title-field,
+.page-campaign-media-partners #block-system-main .node-article .field-name-title-field {
+  left: 0px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary p,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary p,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary p {
+  text-align: center;
+  font-size: 1.2em;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary p:last-child,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary p:last-child,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary p:last-child {
+  margin-bottom: 10px;
+}
+/*end page enterprise europe network*/
+/*page-node-366*/
+.page-node-366 li.share-this-article {
+  display: block;
+  margin-bottom: 15px;
+}
+/*end page-node-366*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
@@ -18312,6 +18403,9 @@ input#edit-field-image-und-0-upload::before {
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films > div {
     height: inherit !important;
     position: relative !important;
+  }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 515px;
   }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;
@@ -21186,6 +21280,9 @@ input#edit-field-image-und-0-upload::before {
     height: 301px !important;
     position: relative !important;
   }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 348px;
+  }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;
     overflow: hidden !important;
@@ -21619,6 +21716,9 @@ input#edit-field-image-und-0-upload::before {
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films > div {
     height: 214px !important;
     position: relative !important;
+  }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 265px;
   }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;

@@ -27,6 +27,9 @@ jQuery(document).ready(function() {
 
 	jQuery(window).resize(function() {
 	    windowWidth= jQuery(window).width();//window size, when resizing
+	    if(jQuery("#napo_films").length > 0){
+	    	location.reload();
+	    }
 	});
 
 	
