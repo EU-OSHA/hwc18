@@ -191,7 +191,7 @@ function hwc_priority_areas_views_default_views() {
   $handler = $view->new_display('block', 'Tools and Guidance', 'tools_and_guidance');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tools and Resources';
-  $handler->display->display_options['link_url'] = 'practical-tools?relevant_for[%1]';
+  $handler->display->display_options['link_url'] = 'practical-tools?field_priority_area[!1]=!1';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
