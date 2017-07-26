@@ -9372,7 +9372,7 @@ div[class*='node-'] .more-link {
 .page-search .region-sidebar-first .views-exposed-widgets .views-submit-button button {
   position: absolute;
   right: 0px;
-  top: 7px;
+  top: 8px;
   margin-left: 0px !important;
   margin-top: 0px !important;
   float: left;
@@ -16062,8 +16062,8 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool,
 .priority-detail .related_links {
   margin-top: 2em;
-  padding-bottom: 2em;
   border-bottom: 1px dotted #749b00;
+  padding-bottom: 2em;
 }
 .priority-detail .highlights h2.pane-title,
 .priority-detail .tools_and_guidance h2.pane-title,
@@ -16086,6 +16086,35 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links h2.pane-title:before {
   display: block;
   padding-bottom: 10px;
+}
+.priority-detail .highlights .item-title,
+.priority-detail .tools_and_guidance .item-title,
+.priority-detail .case_studies .item-title,
+.priority-detail .publications .item-title,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .item-title,
+.priority-detail .related_links .item-title,
+.priority-detail .highlights .field-title a,
+.priority-detail .tools_and_guidance .field-title a,
+.priority-detail .case_studies .field-title a,
+.priority-detail .publications .field-title a,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .field-title a,
+.priority-detail .related_links .field-title a {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.priority-detail .highlights .item-title:before,
+.priority-detail .tools_and_guidance .item-title:before,
+.priority-detail .case_studies .item-title:before,
+.priority-detail .publications .item-title:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .item-title:before,
+.priority-detail .related_links .item-title:before,
+.priority-detail .highlights .field-title a:before,
+.priority-detail .tools_and_guidance .field-title a:before,
+.priority-detail .case_studies .field-title a:before,
+.priority-detail .publications .field-title a:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .field-title a:before,
+.priority-detail .related_links .field-title a:before {
+  content: "> ";
 }
 .priority-detail .highlights div.more-link,
 .priority-detail .tools_and_guidance div.more-link,
@@ -16128,6 +16157,44 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links div.more-link a:before {
   content: "> ";
 }
+.priority-detail .highlights .views-row,
+.priority-detail .tools_and_guidance .views-row,
+.priority-detail .case_studies .views-row,
+.priority-detail .publications .views-row,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row,
+.priority-detail .related_links .views-row {
+  overflow: hidden;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px dotted #749b00;
+  text-align: left;
+}
+.priority-detail .highlights .views-row:last-child,
+.priority-detail .tools_and_guidance .views-row:last-child,
+.priority-detail .case_studies .views-row:last-child,
+.priority-detail .publications .views-row:last-child,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row:last-child,
+.priority-detail .related_links .views-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0em;
+}
+.priority-detail .highlights .views-row:first-child,
+.priority-detail .tools_and_guidance .views-row:first-child,
+.priority-detail .case_studies .views-row:first-child,
+.priority-detail .publications .views-row:first-child,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row:first-child,
+.priority-detail .related_links .views-row:first-child {
+  padding-bottom: 2em;
+}
+.priority-detail .highlights .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .tools_and_guidance .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .case_studies .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .publications .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .related_links .views-row .views-field-nothing .field-content .date-display-single {
+  display: block;
+  font-size: 0.9em;
+}
 .priority-detail .panels-flexible-region-inside > div:last-child {
   border-bottom: none;
 }
@@ -16137,8 +16204,20 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .tools_and_guidance h2.pane-title:before {
   content: url(../images/content/tools-and-resources.png);
 }
+.priority-detail .tools_and_guidance .views-row {
+  text-align: center;
+}
+.priority-detail .tools_and_guidance .views-row:nth-child(odd) {
+  background-color: #e2e2e3;
+}
 .priority-detail .case_studies h2.pane-title:before {
   content: url(../images/content/icono-case-studies.png);
+}
+.priority-detail .case_studies .views-row {
+  text-align: center;
+}
+.priority-detail .case_studies .views-row:nth-child(odd) {
+  background-color: #e2e2e3;
 }
 .priority-detail .publications h2.pane-title:before {
   content: url(../images/content/icono-publications.png);
@@ -16147,6 +16226,7 @@ input#edit-field-image-und-0-upload::before {
   content: url(../images/content/e-guide.png);
 }
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool button {
+  margin-top: 2em;
   background-color: #003399;
   outline: none;
   border: none;
@@ -16545,14 +16625,18 @@ input#edit-field-image-und-0-upload::before {
   font-size: 1.1em;
   margin-bottom: 5px;
 }
-.results-for .searched-text {
+.results-for .searched-text,
+.results-for b {
   font-size: 1.8em;
   color: #749b00;
+  font-weight: normal;
 }
-.results-for .searched-text:before {
+.results-for .searched-text:before,
+.results-for b:before {
   content: "\"";
 }
-.results-for .searched-text:after {
+.results-for .searched-text:after,
+.results-for b:after {
   content: "\"";
 }
 #edit-sort-fieldset {
@@ -17053,6 +17137,15 @@ input#edit-field-image-und-0-upload::before {
     min-width: 100%;
   }
   /*end good practice exchange*/
+  .highlights [class*=col-sm-],
+  .tools_and_guidance [class*=col-sm-],
+  .case_studies [class*=col-sm-],
+  .publications [class*=col-sm-],
+  .pane-hwc-priority-areas-hwc-pa-etool [class*=col-sm-],
+  .related_links [class*=col-sm-] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 @media only screen and (max-width: 1100px) {
   .front #block-views-frontpage-slider-block #homepage_slider img {
@@ -17394,6 +17487,9 @@ input#edit-field-image-und-0-upload::before {
     padding-left: 0px;
   }
   /* End Block: recommended-articles and recommended-resources and article aditional resources*/
+  .results-for {
+    margin-left: 15px;
+  }
   /*Practical tools*/
   .page-practical-tools #edit-content {
     width: 100%;
@@ -18498,8 +18594,8 @@ input#edit-field-image-und-0-upload::before {
   /*End pag Newsletter*/
   /*Good practices, publications, case studies*/
   .page-publications .main-container.container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
   }
   #edit-left-column {
     position: relative;
@@ -21468,6 +21564,15 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
   }
   /*end good practice exchange*/
+  .highlights [class*=col-sm-],
+  .tools_and_guidance [class*=col-sm-],
+  .case_studies [class*=col-sm-],
+  .publications [class*=col-sm-],
+  .pane-hwc-priority-areas-hwc-pa-etool [class*=col-sm-],
+  .related_links [class*=col-sm-] {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 @media only screen and (max-width: 480px) {
   #colorbox {

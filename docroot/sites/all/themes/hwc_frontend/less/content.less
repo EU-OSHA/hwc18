@@ -1664,7 +1664,7 @@ ul.tabs--primary.nav.nav-tabs{
 					button{
 						position: absolute;
 						right: 0px;
-						top: 7px;
+						top: 8px;
 						margin-left: 0px !important;
 						margin-top: 0px !important;
 						float: left;
@@ -7710,8 +7710,8 @@ input#edit-field-image-und-0-upload::before {
 	.pane-hwc-priority-areas-hwc-pa-etool,
 	.related_links{
 		margin-top: 2em;
-		padding-bottom: 2em;
 		border-bottom: 1px dotted @color3;
+		padding-bottom: 2em;
 		h2.pane-title{
 			color: @color3;
 		    font-style: normal;
@@ -7723,6 +7723,14 @@ input#edit-field-image-und-0-upload::before {
 			    display: block;
 			    padding-bottom: 10px;
 		    }
+		}
+		.item-title, .field-title a{
+			font-size: 1.4em;
+			font-weight: bold;
+			&:before{
+				content: "> ";
+			}
+
 		}
 		div.more-link{
 			display: block;
@@ -7745,6 +7753,31 @@ input#edit-field-image-und-0-upload::before {
 			    }
 			}
 		}
+		.views-row{
+			overflow: hidden;
+			padding-top: 2em;
+			padding-bottom: 2em;
+			border-bottom: 1px dotted @color3;
+			text-align: left;
+			&:last-child{
+				border-bottom: none;
+				padding-bottom: 0em;
+			}
+			&:first-child{
+				padding-bottom: 2em;
+			}
+			.views-field-nothing{
+				.field-content{
+					>a{
+						//display: none;
+					}
+					.date-display-single{
+						display: block;
+						font-size: 0.9em;
+					}
+				}
+			}
+		}
 	}
 	.panels-flexible-region-inside{
 		>div:last-child{
@@ -7764,12 +7797,24 @@ input#edit-field-image-und-0-upload::before {
 		    	content: url(../images/content/tools-and-resources.png);
 		    }
 		}
+		.views-row{
+			text-align: center;
+			&:nth-child(odd){
+				background-color: @color8;
+			}
+		}
 	}
 	.case_studies{
 		h2.pane-title{
 			 &:before{
 		    	content: url(../images/content/icono-case-studies.png);
 		    }
+		}
+		.views-row{
+			text-align: center;
+			&:nth-child(odd){
+				background-color: @color8;
+			}
 		}
 	}
 	.publications{
@@ -7786,6 +7831,7 @@ input#edit-field-image-und-0-upload::before {
 		    }
 		}
 		button{
+			margin-top: 2em;
 			background-color: #003399;
 			    outline: none;
 			    border: none;
@@ -8249,9 +8295,10 @@ input#edit-field-image-und-0-upload::before {
 .results-for{
 	font-size: 1.1em;
 	margin-bottom: 5px;
-	.searched-text{
+	.searched-text, b{
 		font-size: 1.8em;
 		color: @color3;
+		font-weight: normal;
 		&:before{
 			content:"\"";
 		}
