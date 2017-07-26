@@ -2644,15 +2644,48 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 }
 /*end good practice exchange*/
 
-.highlights,
-.tools_and_guidance,
-.case_studies,
-.publications,
-.pane-hwc-priority-areas-hwc-pa-etool,
-.related_links{
-	[class*=col-sm-]{
-		padding-left: 0px;
-		padding-right: 0px;
+
+/*priority areas*/
+.priority-detail{
+	.pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field{
+		height: inherit;
+		background: white;
+		position: relative;
+		h1{
+			padding-top: 0px;
+			color: @color3;
+		}
+	}
+	.pane-taxonomy-term-field-image{
+		display: none;
+	}
+	.pane-taxonomy-term-field-introduction-text{
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.highlights,
+	.tools_and_guidance,
+	.case_studies,
+	.publications,
+	.pane-hwc-priority-areas-hwc-pa-etool,
+	.related_links{
+		margin-left: 15px;
+		margin-right: 15px;
+		.views-row{
+			text-align: center !important;
+		}
+		[class*=col-sm-]{
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+		.views-field-field-image,
+		.views-field-field-cover-image{
+			margin-bottom: 15px;
+			img{
+				margin: 0 auto;
+			}
+		}
 	}
 }
 
