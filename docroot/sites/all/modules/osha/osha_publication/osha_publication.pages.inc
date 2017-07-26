@@ -246,6 +246,7 @@ function osha_publication_menu_publications_native_results($form_state, $results
       '#nids' => '',
     );
   }
+  $restrict = array_unique($restrict);
   $languages = hwc_req_param($form_state, 'language', array($language->language));
 
   $nids = [];
@@ -277,6 +278,7 @@ function osha_publication_menu_publications_native_results($form_state, $results
     $q->orderBy('field_publication_date_value', 'DESC');
   }
   $nids = $q->execute()->fetchCol();
+  $nids = array_unique($nids);
 
   $current_page = pager_default_initialize(count($nids), $per_page);
   $page = array_chunk($nids, $per_page, TRUE);

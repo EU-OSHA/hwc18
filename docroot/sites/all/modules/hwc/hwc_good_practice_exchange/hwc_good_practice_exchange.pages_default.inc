@@ -53,6 +53,13 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
     'access' => array(
       'logic' => 'and',
     ),
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'Campaign partners
+Good practice exchange',
+    'panels_breadcrumbs_paths' => '<none>
+<none>
+',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'flexible';
