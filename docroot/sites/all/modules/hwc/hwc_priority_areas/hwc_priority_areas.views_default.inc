@@ -125,6 +125,17 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_case_studies_node']['ui_name'] = 'Case Studies';
   $handler->display->display_options['relationships']['reverse_field_case_studies_node']['label'] = 'Case Studies';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['view_node']['element_wrapper_class'] = 'more-link';
+  $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'See More';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -204,9 +215,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
-<div class="field-file">[field_file]</div>';
+<div class="field-file">[field_file]</div>
+<div class="see-more">[view_node]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Type */
@@ -260,8 +272,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'priority_areas';
+  $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
@@ -283,19 +294,49 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['date_format'] = 'raw time ago';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'year';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['relationship'] = 'reverse_field_tools_and_guidance_node';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '300',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'summary_handler' => 'full',
+    'trim_options' => array(
+      'text' => 0,
+    ),
+    'trim_preserve_tags' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'See More';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
+<div class="field-body">[body]</div>
+<div class="see-more">[view_node]</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'Topic Related - Tools and Guidance';
 
   /* Display: Publications */
@@ -325,6 +366,14 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_publications_node']['ui_name'] = 'Publications';
   $handler->display->display_options['relationships']['reverse_field_publications_node']['label'] = 'Publications';
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'See More';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -406,9 +455,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
-<div class="field-file">[field_file]</div>';
+<div class="field-file">[field_file]</div>
+<div class="see-more">[view_node]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-9';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -481,6 +531,14 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_highlights_node']['label'] = 'Highlights';
   $handler->display->display_options['relationships']['reverse_field_highlights_node']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'See More';
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -546,9 +604,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title]
-[field_publication_date]
-[field_summary]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
+<div class="item-title">[title]</div>
+<div class="field-summary">[field_summary]</div>
+<div class="see-more">[view_node]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-9';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -600,17 +659,22 @@ function hwc_priority_areas_views_default_views() {
     t('See More Case Studies'),
     t('_case_studies_intro_'),
     t('Case Studies'),
+    t('See More'),
     t('File'),
     t('<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
-<div class="field-file">[field_file]</div>'),
+<div class="field-file">[field_file]</div>
+<div class="see-more">[view_node]</div>'),
     t('Topic Related - Case studies'),
     t('Tools and Guidance'),
     t('Tools and Guidelines'),
     t('more'),
     t('_tools_and_guidance_intro_'),
     t('Topic'),
+    t('<div class="item-title">[title]</div>
+<div class="field-body">[body]</div>
+<div class="see-more">[view_node]</div>'),
     t('Topic Related - Tools and Guidance'),
     t('Publications'),
     t('See More Publications'),
@@ -618,9 +682,10 @@ function hwc_priority_areas_views_default_views() {
     t('Topic Related - Publications'),
     t('Highlights'),
     t('_highlights_intro_'),
-    t('[title]
-[field_publication_date]
-[field_summary]'),
+    t('<div class="field-publication-date">[field_publication_date]</div>
+<div class="item-title">[title]</div>
+<div class="field-summary">[field_summary]</div>
+<div class="see-more">[view_node]</div>'),
   );
   $export['topic_related'] = $view;
 
