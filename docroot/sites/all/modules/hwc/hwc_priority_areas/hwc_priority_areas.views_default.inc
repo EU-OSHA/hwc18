@@ -546,8 +546,8 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
-<div class="field-publication-date">[field_publication_date]</div>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
+<div class="item-title">[title]</div>
 <div class="field-summary">[field_summary]</div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -619,8 +619,8 @@ function hwc_priority_areas_views_default_views() {
     t('Topic Related - Publications'),
     t('Highlights'),
     t('_highlights_intro_'),
-    t('<div class="item-title">[title]</div>
-<div class="field-publication-date">[field_publication_date]</div>
+    t('<div class="field-publication-date">[field_publication_date]</div>
+<div class="item-title">[title]</div>
 <div class="field-summary">[field_summary]</div>
 '),
   );

@@ -139,3 +139,10 @@ function hwc_priority_areas_update_7013() {
 function hwc_priority_areas_update_7014() {
   features_revert_module('hwc_priority_areas');
 }
+
+/**
+ * Revert priority areas module
+ */
+function hwc_priority_areas_update_7015() {
+  features_revert_module('hwc_priority_areas');
+}
