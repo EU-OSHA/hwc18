@@ -31,6 +31,9 @@
 		}
 		iframe{
 			border: 1px solid;
+
+
+
 			max-width: 100%;
 		}
 		a{
@@ -1661,7 +1664,7 @@ ul.tabs--primary.nav.nav-tabs{
 					button{
 						position: absolute;
 						right: 0px;
-						top: 7px;
+						top: 8px;
 						margin-left: 0px !important;
 						margin-top: 0px !important;
 						float: left;
@@ -1682,10 +1685,20 @@ ul.tabs--primary.nav.nav-tabs{
 				}
 				a{
 					font-weight: bold;
-					border-bottom: 1px dotted @color3;
+					//border-bottom: 1px dotted @color3;
 					display: block;
 					padding-bottom: 5px;
 					margin-top: 5px;
+				}
+				.clear-wrapper{
+					> a{
+						border-bottom: 1px dotted @color3;
+					}
+				}
+				#remove_filter{
+					> a:last-child{
+						border-bottom: 1px dotted @color3;
+					}
 				}
 			}
 			.block.block-facetapi{
@@ -2565,6 +2578,12 @@ ul.tabs--primary.nav.nav-tabs{
 			}
 			.code_EN{
 				background: url(../images/events/England.png) no-repeat center;
+			}
+			.code_AT{
+				background: url(../images/events/Austria.png) no-repeat center;
+			}
+			.code_CH{
+				background: url(../images/events/Switzerland.png) no-repeat center;
 			}
 			.code_BG{
 				background: url(../images/events/Bulgaria.png) no-repeat center;
@@ -5077,6 +5096,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		text-align: left;
 		float: none;
 		font-weight: normal;
+		clear: both;
 		.field-item {
 			padding-top:0.5em;
 			padding-bottom: 0.5em;
@@ -6001,98 +6021,95 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		margin-top: 40px;
 	}
 }
-#block-views-partners-list-block{
-}
-	.view-id-partners_list{
-		margin: @margin1;
-		color: @color2;
-		font-size: 1.15em;
-		font-weight: bold;
-		font-style: italic;
-		.quicktabs-tabs{
-			display: inline-block;
-			li{
-				border: 1px dotted @color3;
-				float: left;
-				padding: 15px 30px;
-				margin-bottom: 5px;
-				&.active{
-					border-bottom: none;
-					a{
-						color: @color3;
-						font-style: normal;
-					}
-				}
-				&.first{
-					border-left: none;
-				}
-				&.last{
-					border-right: none;
-				}
-			}
-		}
-		.hwc-alphabet-container{
-			border-bottom: 1px dotted @color3;
-			padding-bottom: 1em;
-		}
-		//.quicktabs-tabpage{
-			.hwc-char-link{
-				padding: 0px 13px;
-				&.disabled {
-					cursor: text;
-					&:hover{
-						text-decoration: none;
-					}
-				}
-				&.active{
+.view-id-partners_list{
+	margin: @margin1;
+	color: @color2;
+	font-size: 1.15em;
+	font-weight: bold;
+	font-style: italic;
+	.quicktabs-tabs{
+		display: inline-block;
+		li{
+			border: 1px dotted @color3;
+			float: left;
+			padding: 15px 30px;
+			margin-bottom: 5px;
+			&.active{
+				border-bottom: none;
+				a{
 					color: @color3;
+					font-style: normal;
 				}
 			}
-			div[id*="hwc-char-"]{
-				margin-top: 1em;
-				margin-bottom: 0em;
-				display: inline-block;
-	    		border-bottom: 1px dotted @color3;
-	    		font-size: 1.2em;
-	    		font-style: normal;
-	    		color: @color3;
+			&.first{
+				border-left: none;
 			}
-			.quicktabs-views-group, .views-row {
-				margin: 0;
-				padding: 30px 20px 15px;
-	   	 		border-bottom: 1px dotted @color3;
-	    		border-left: 1px dotted @color3;
-				min-height: 196px;
-				.views-field-field-logo{
-					    min-height: 146px;
-					    border: 1px solid #ccc;
-					    max-width: 150px;
-					    padding: 1em;
-				}
-				.views-field-title-field, .views-field-name-field{
-					display: none;
-					text-align: center;
-					margin-top: 1em;
-				}
-				.hwc-alpha-pager-view-title-field{
-					display: block;
-					&.views-field-title-field {
-						display: none;
-					}
-				}
+			&.last{
+				border-right: none;
 			}
-		img{
-			margin: auto;
 		}
-
-
 	}
-
-	.view-display-id-fop img{
-			width:110px;
-			height:74px;
-			border:1px solid #CCC;
+	.hwc-alphabet-container{
+		border-bottom: 1px dotted @color3;
+		padding-bottom: 1em;
+	}
+	//.quicktabs-tabpage{
+	.hwc-char-link{
+		padding: 0px 13px;
+		&.disabled {
+			cursor: text;
+			&:hover{
+				text-decoration: none;
+			}
 		}
+		&.active{
+			color: @color3;
+		}
+	}
+	div[id*="hwc-char-"]{
+		margin-top: 1em;
+		margin-bottom: 0em;
+		display: inline-block;
+		border-bottom: 1px dotted @color3;
+		font-size: 1.2em;
+		font-style: normal;
+		color: @color3;
+	}
+	.quicktabs-views-group, .views-row {
+		margin: 0;
+		padding: 30px 20px 15px;
+	 		border-bottom: 1px dotted @color3;
+		border-left: 1px dotted @color3;
+		min-height: 196px;
+		.views-field-field-logo{
+			    min-height: 146px;
+			    border: 1px solid #ccc;
+			    max-width: 150px;
+			    padding: 1em;
+		}
+		.views-field-title-field, .views-field-name-field{
+			display: none;
+			text-align: center;
+			margin-top: 1em;
+		}
+		.hwc-alpha-pager-view-title-field{
+			display: block;
+			&.views-field-title-field {
+				display: none;
+			}
+		}
+	}
+	img{
+		margin: auto;
+	}
+}
+
+.view-display-id-fop img,
+.view-display-id-een img{
+	width:110px;
+	height:74px;
+	border:1px solid #CCC;
+}
 
 /*End oficial campaign partners list*/
 
@@ -6363,7 +6380,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 
 /*page get-your-certificate*/
 .page-get-your-certificate{
-
+	.contextual-links-region.panel-pane.pane-node-content{
+		clear: both;
+	}
 	.description{
 		background-color: transparent;
     	color: #039;
@@ -7309,6 +7328,7 @@ input#edit-field-image-und-0-upload::before {
 				position: relative !important;
 			}
 			.napo_films{
+				height: 100%;
 				.num_slides{
 					font-size: 16px;
 					//position: inherit !important;
@@ -7398,8 +7418,33 @@ input#edit-field-image-und-0-upload::before {
 				}
 				.jssorb03{
 					display: block !important;
-					
+				    position: absolute;
+				    bottom: 0px !important;
+				    height: 15px !important;
+				    width: 63px !important;
+				    left: 0px !important;
+    				margin: 0px auto;
+    				margin-bottom: 25px;
+    				>div{
+    					background: white;
+    					border: 1px solid @color2;
+    					border-radius: 50%;
+    					width: 15px;
+    					height: 15px;
+    					position: relative !important;
+    					left: inherit !important;
+    					top: inherit !important;
+    					margin: 0px 3px;
+    					display: inline-block;
+    					&:hover{
+    						background: @color2;
+    					}
+    				}
+    				.prototypeav{
+    					background: @color2;
+    				}
 				}
+
 				.jssora03l{
 					display: block !important;
 					background-image: url(../images/content/arrow-blue-left-napo.png) !important;
@@ -7665,8 +7710,8 @@ input#edit-field-image-und-0-upload::before {
 	.pane-hwc-priority-areas-hwc-pa-etool,
 	.related_links{
 		margin-top: 2em;
-		padding-bottom: 2em;
 		border-bottom: 1px dotted @color3;
+		padding-bottom: 2em;
 		h2.pane-title{
 			color: @color3;
 		    font-style: normal;
@@ -7678,6 +7723,14 @@ input#edit-field-image-und-0-upload::before {
 			    display: block;
 			    padding-bottom: 10px;
 		    }
+		}
+		.item-title, .field-title a{
+			font-size: 1.4em;
+			font-weight: bold;
+			&:before{
+				content: "> ";
+			}
+
 		}
 		div.more-link{
 			display: block;
@@ -7700,6 +7753,31 @@ input#edit-field-image-und-0-upload::before {
 			    }
 			}
 		}
+		.views-row{
+			overflow: hidden;
+			padding-top: 2em;
+			padding-bottom: 2em;
+			border-bottom: 1px dotted @color3;
+			text-align: left;
+			&:last-child{
+				border-bottom: none;
+				padding-bottom: 0em;
+			}
+			&:first-child{
+				padding-bottom: 2em;
+			}
+			.views-field-nothing{
+				.field-content{
+					>a{
+						//display: none;
+					}
+					.date-display-single{
+						display: block;
+						font-size: 0.9em;
+					}
+				}
+			}
+		}
 	}
 	.panels-flexible-region-inside{
 		>div:last-child{
@@ -7719,12 +7797,24 @@ input#edit-field-image-und-0-upload::before {
 		    	content: url(../images/content/tools-and-resources.png);
 		    }
 		}
+		.views-row{
+			text-align: center;
+			&:nth-child(odd){
+				background-color: @color8;
+			}
+		}
 	}
 	.case_studies{
 		h2.pane-title{
 			 &:before{
 		    	content: url(../images/content/icono-case-studies.png);
 		    }
+		}
+		.views-row{
+			text-align: center;
+			&:nth-child(odd){
+				background-color: @color8;
+			}
 		}
 	}
 	.publications{
@@ -7741,6 +7831,7 @@ input#edit-field-image-und-0-upload::before {
 		    }
 		}
 		button{
+			margin-top: 2em;
 			background-color: #003399;
 			    outline: none;
 			    border: none;
@@ -8204,9 +8295,10 @@ input#edit-field-image-und-0-upload::before {
 .results-for{
 	font-size: 1.1em;
 	margin-bottom: 5px;
-	.searched-text{
+	.searched-text, b{
 		font-size: 1.8em;
 		color: @color3;
+		font-weight: normal;
 		&:before{
 			content:"\"";
 		}
@@ -8245,6 +8337,53 @@ input#edit-field-image-und-0-upload::before {
 	}
 }
 /*end good practices, publications, case studies*/
+
+/*enterprise europe network*/
+.page-enterprise-europe-network,
+.page-national-focal-points,
+.page-campaign-media-partners{
+	.main-container.container-fluid{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	#block-system-main{
+		h2.pane-title{
+			display: none;
+		}
+		.node-article{
+			margin-right: 0px;
+			margin-left: 0px;
+			.field-type-image{
+
+			}
+			.field-name-title-field{
+				left: 0px;
+			}
+			.field-type-text-with-summary{
+				padding-right: 15px;
+				padding-left: 15px;
+				p{
+					text-align: center;
+    				font-size: 1.2em;
+				}
+				p:last-child{
+					margin-bottom: 10px;
+				}
+
+			}
+		}
+	}
+}
+/*end page enterprise europe network*/
+
+/*page-node-366*/
+.page-node-366{
+	li.share-this-article{
+		display: block;
+		margin-bottom: 15px;
+	}
+}
+/*end page-node-366*/
 
 /*Sticky menu
 ****************************************/
