@@ -204,7 +204,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
 <div class="field-file">[field_file]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -406,7 +406,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
 <div class="field-file">[field_file]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -546,9 +546,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title]
-[field_publication_date]
-[field_summary]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
+<div class="field-publication-date">[field_publication_date]</div>
+<div class="field-summary">[field_summary]</div>
+';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-9';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -602,7 +603,7 @@ function hwc_priority_areas_views_default_views() {
     t('Case Studies'),
     t('File'),
     t('<div class="field-publication-date">[field_publication_date]</div>
-<div class="field-title">[title]</div>
+<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
 <div class="field-file">[field_file]</div>'),
     t('Topic Related - Case studies'),
@@ -618,9 +619,10 @@ function hwc_priority_areas_views_default_views() {
     t('Topic Related - Publications'),
     t('Highlights'),
     t('_highlights_intro_'),
-    t('[title]
-[field_publication_date]
-[field_summary]'),
+    t('<div class="item-title">[title]</div>
+<div class="field-publication-date">[field_publication_date]</div>
+<div class="field-summary">[field_summary]</div>
+'),
   );
   $export['topic_related'] = $view;
 
