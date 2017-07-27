@@ -308,6 +308,180 @@ Good practice exchange',
   $page->default_handlers[$handler->name] = $handler;
   $pages['good_practice_exchange'] = $page;
 
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'good_practice_exchange_initiative_page';
+  $page->task = 'page';
+  $page->admin_title = 'Good practice exchange initiative page';
+  $page->admin_description = '';
+  $page->path = 'good-practice-exchange-initiative';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_good_practice_exchange_initiative_page__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'good_practice_exchange_initiative_page';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(
+      0 => array(
+        'identifier' => 'Content',
+        'keyword' => 'node',
+        'name' => 'entity:node',
+        'entity_id' => '3414',
+        'id' => 1,
+      ),
+    ),
+    'relationships' => array(),
+    'name' => 'panel',
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'Campaign Partners
+Get involved in Good Practice exchange initiative
+',
+    'panels_breadcrumbs_paths' => '<none>
+<none>',
+    'panels_breadcrumbs_home' => 1,
+  );
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array(
+    'items' => array(
+      'canvas' => array(
+        'type' => 'row',
+        'contains' => 'column',
+        'children' => array(
+          0 => 'main',
+        ),
+        'parent' => NULL,
+        'class' => 'container',
+        'column_class' => '',
+        'row_class' => '',
+        'region_class' => '',
+        'no_scale' => FALSE,
+        'fixed_width' => '',
+        'column_separation' => '0.5em',
+        'region_separation' => '0.5em',
+        'row_separation' => '0.5em',
+        'hide_empty' => 0,
+      ),
+      'main' => array(
+        'type' => 'column',
+        'width' => 100,
+        'width_type' => '%',
+        'children' => array(
+          0 => 'main-row',
+        ),
+        'parent' => 'canvas',
+      ),
+      'main-row' => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'center',
+        ),
+        'parent' => 'main',
+      ),
+      'center' => array(
+        'type' => 'region',
+        'title' => 'Center',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'main-row',
+      ),
+    ),
+  );
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+    ),
+    'center' => array(
+      'style' => '-1',
+    ),
+    'style' => 'default',
+  );
+  $display->cache = array();
+  $display->title = 'Get involved in Good Practice exchange initiative';
+  $display->uuid = '72d72c0a-0a8f-4e93-b39f-1a905949c656';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_good_practice_exchange_initiative_page__panel';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-258be0c5-d49a-4898-b207-8b1b2d5d37f3';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc-page_share_widget';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '258be0c5-d49a-4898-b207-8b1b2d5d37f3';
+  $display->content['new-258be0c5-d49a-4898-b207-8b1b2d5d37f3'] = $pane;
+  $display->panels['center'][0] = 'new-258be0c5-d49a-4898-b207-8b1b2d5d37f3';
+  $pane = new stdClass();
+  $pane->pid = 'new-d7c8c160-16f0-403a-bea5-0b0bac791b1c';
+  $pane->panel = 'center';
+  $pane->type = 'node_content';
+  $pane->subtype = 'node_content';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'links' => 0,
+    'no_extras' => 0,
+    'override_title' => 1,
+    'override_title_text' => '',
+    'identifier' => '',
+    'link' => 0,
+    'leave_node_title' => 0,
+    'build_mode' => 'full',
+    'context' => 'context_entity:node_1',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'd7c8c160-16f0-403a-bea5-0b0bac791b1c';
+  $display->content['new-d7c8c160-16f0-403a-bea5-0b0bac791b1c'] = $pane;
+  $display->panels['center'][1] = 'new-d7c8c160-16f0-403a-bea5-0b0bac791b1c';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['good_practice_exchange_initiative_page'] = $page;
+
   return $pages;
 
 }

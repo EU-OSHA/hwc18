@@ -9,3 +9,4 @@ dependencies[] = social_dashboard
 features[ctools][] = page_manager:pages_default:1
 features[features_api][] = api:2
 features[page_manager_pages][] = good_practice_exchange
+features[page_manager_pages][] = good_practice_exchange_initiative_page
