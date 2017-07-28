@@ -16006,6 +16006,14 @@ input#edit-field-image-und-0-upload::before {
   margin-left: 40px;
   margin-right: 40px;
 }
+.priority-detail .see-more a {
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+}
+.priority-detail .see-more a:before {
+  content: "> ";
+}
 .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
   position: absolute;
   background: url("../images/content/image-shadow.png") repeat-x left bottom;
@@ -16100,6 +16108,7 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links .field-title a {
   font-size: 1.4em;
   font-weight: bold;
+  color: #003399;
 }
 .priority-detail .highlights .item-title a:before,
 .priority-detail .tools_and_guidance .item-title a:before,
@@ -16123,6 +16132,7 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links div.more-link {
   display: block;
   margin-top: 1em;
+  padding: 0;
 }
 .priority-detail .highlights div.more-link:before,
 .priority-detail .tools_and_guidance div.more-link:before,
@@ -16131,6 +16141,7 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link:before,
 .priority-detail .related_links div.more-link:before {
   content: "";
+  padding-right: 0px;
 }
 .priority-detail .highlights div.more-link a,
 .priority-detail .tools_and_guidance div.more-link a,
@@ -16208,6 +16219,8 @@ input#edit-field-image-und-0-upload::before {
 }
 .priority-detail .tools_and_guidance .views-row:nth-child(odd) {
   background-color: #e2e2e3;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .priority-detail .case_studies h2.pane-title:before {
   content: url(../images/content/icono-case-studies.png);
@@ -16217,6 +16230,8 @@ input#edit-field-image-und-0-upload::before {
 }
 .priority-detail .case_studies .views-row:nth-child(odd) {
   background-color: #e2e2e3;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .priority-detail .publications h2.pane-title:before {
   content: url(../images/content/icono-publications.png);
@@ -16241,6 +16256,14 @@ input#edit-field-image-und-0-upload::before {
 }
 .priority-detail .related_links h2.pane-title:before {
   content: url(../images/content/icono-related-links.png);
+}
+.priority-detail .related_links .node-external-url a {
+  color: #003399;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.priority-detail .related_links .node-external-url a:before {
+  content: "> ";
 }
 /*end priority areas*/
 /*page good practice exchange*/
