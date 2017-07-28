@@ -1061,7 +1061,7 @@ function hwc_partner_registration_allowed() {
  * Implements hook_webform_component_render_alter().
  */
 function hwc_webform_component_render_alter(&$element, &$component) {
-  if ($component['cid'] == 9) {
+  if (($component['cid'] == 3) || ($component['cid'] == 9)) {
     // Add description link.
     $link = l(t('Privacy notice'), 'privacy-policy-certificate-participation', array('attributes'=> array('target' => '_blank')));
     $element['#description'] = str_replace('[PRIVACY_NOTICE]', $link, $element['#description']);
