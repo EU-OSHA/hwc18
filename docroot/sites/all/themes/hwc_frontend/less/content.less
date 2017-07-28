@@ -7652,12 +7652,23 @@ input#edit-field-image-und-0-upload::before {
 		margin-left: @margin;
 		margin-right: @margin;
 	}
+	.see-more{
+		a{
+			color: @color2;
+			font-weight: bold;
+			font-style: italic;
+			&:before{
+				content: "> ";
+			}
+		}
+	}
 	.pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field{
 		position: absolute;
 		background: url("../images/content/image-shadow.png") repeat-x left bottom;
 		width: 100%;
 		height: 360px;
 		z-index: 22;
+
 		h1{
 			color: @color1;
 			padding-top: 230px;
@@ -7665,13 +7676,16 @@ input#edit-field-image-und-0-upload::before {
 		}
 	}
 	.pane-taxonomy-term-field-image{
-		margin-left: -15px;
-		margin-right: -15px;
+		//margin-left: -15px;
+		//margin-right: -15px;
+		float: left;
+		height: 360px;
+		overflow: hidden;
+		margin-bottom: 1em;
 		.field.field-name-field-image{
 			float: left;
 			margin-bottom: 1em;
 			width: 100%;
-			height: 360px;
 			overflow: hidden;
 			img{
 				width: 100%;
@@ -7681,8 +7695,8 @@ input#edit-field-image-und-0-upload::before {
 	}
 	.panels-flexible-region-inside{
 		>div{
-			padding-right: 15px;
-			padding-left: 15px;
+			//padding-right: 15px;
+			//padding-left: 15px;
 			text-align: center;
 		}
 	}	
@@ -7724,9 +7738,10 @@ input#edit-field-image-und-0-upload::before {
 			    padding-bottom: 10px;
 		    }
 		}
-		.item-title, .field-title a{
+		.item-title a, .field-title a{
 			font-size: 1.4em;
 			font-weight: bold;
+			color: @color2;
 			&:before{
 				content: "> ";
 			}
@@ -7735,8 +7750,11 @@ input#edit-field-image-und-0-upload::before {
 		div.more-link{
 			display: block;
 			margin-top: 1em;
+			padding: 0;
 			&:before{
 				content:"";
+				padding-right: 0px;
+
 			}
 			a{
 				background-color: #003399;
@@ -7801,6 +7819,8 @@ input#edit-field-image-und-0-upload::before {
 			text-align: center;
 			&:nth-child(odd){
 				background-color: @color8;
+				padding-left: 15px;
+				padding-right: 15px;
 			}
 		}
 	}
@@ -7814,6 +7834,8 @@ input#edit-field-image-und-0-upload::before {
 			text-align: center;
 			&:nth-child(odd){
 				background-color: @color8;
+				padding-left: 15px;
+				padding-right: 15px;
 			}
 		}
 	}
@@ -7833,17 +7855,17 @@ input#edit-field-image-und-0-upload::before {
 		button{
 			margin-top: 2em;
 			background-color: #003399;
-			    outline: none;
-			    border: none;
-			    color: #ffffff;
-			    font-style: normal;
-			    padding: 5px 40px;
-			    font-weight: bold;
-			    margin-bottom: 10px;
-			    font-size: 1.1em;
-			    &:before{
-			    	content: "> ";
-			    }
+		    outline: none;
+		    border: none;
+		    color: #ffffff;
+		    font-style: normal;
+		    padding: 5px 40px;
+		    font-weight: bold;
+		    margin-bottom: 10px;
+		    font-size: 1.1em;
+		    &:before{
+		    	content: "> ";
+		    }
 		}
 	}
 	.related_links{
@@ -7851,6 +7873,16 @@ input#edit-field-image-und-0-upload::before {
 			 &:before{
 		    	content: url(../images/content/icono-related-links.png);
 		    }
+		}
+		.node-external-url{
+			a{
+				color: @color2;
+				font-weight: bold;
+				font-size: 1.2em;
+				&:before{
+					content: "> ";
+				}
+			}
 		}
 	}
 
