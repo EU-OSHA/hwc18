@@ -270,7 +270,7 @@ function hwc_priority_areas_get_related_links($relevant_for = NULL, $limit = NUL
     $q = $q->extend('PagerDefault')->limit($limit);
   }
   $nids = $q->execute()->fetchCol();
-  return hwc_priority_areas_render_nodes($nids, 'priority_areas');
+  return hwc_priority_areas_render_nodes($nids, 'priority_areas', FALSE);
 }
 
 function hwc_priority_areas_render_nodes($nids, $view_mode = 'priority_areas', $know_more = TRUE) {

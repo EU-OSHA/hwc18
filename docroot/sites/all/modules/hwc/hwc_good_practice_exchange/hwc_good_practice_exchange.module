@@ -40,11 +40,11 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $items[] = l(
       '<span class="link-img"></span><span class="title">' . t('Become a campaign partner') . '</span>',
       'partner/register',
-      ['html'=>TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);//or 'become-campaign-partner'
+      ['html'=>TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);
     $items[] = l(
       '<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>',
-      '/partner/forms',
-      ['absolute' => TRUE, 'html'=>TRUE, 'attributes' => ['class' => 'get-involved']]); // todo ... Link to a new page where users can send an email to get involved in this initiative.
+      '/good-practice-exchange-initiative',
+      ['absolute' => TRUE, 'html'=>TRUE, 'attributes' => ['class' => 'get-involved']]);
     $items[] = l(
       '<span class="link-img"></span><span class="title">' . t('Access to the private zone') . '</span>',
       'private',

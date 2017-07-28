@@ -76,3 +76,10 @@ function hwc_partner_update_7009() {
 function hwc_partner_update_7010() {
   features_revert_module('hwc_partner');
 }
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7011() {
+  features_revert_module('hwc_partner');
+}
