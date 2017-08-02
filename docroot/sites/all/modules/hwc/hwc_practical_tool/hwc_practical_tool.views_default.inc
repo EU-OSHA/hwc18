@@ -118,12 +118,6 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type"><span class="views-label">Country: </span><span>[field_country]</span>
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span></div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Multilingual Content: Publication date */
-  $handler->display->display_options['sorts']['field_publication_date']['id'] = 'field_publication_date';
-  $handler->display->display_options['sorts']['field_publication_date']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['sorts']['field_publication_date']['field'] = 'field_publication_date';
-  $handler->display->display_options['sorts']['field_publication_date']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_publication_date']['expose']['label'] = 'Publication date';
   /* Sort criterion: Indexed Multilingual Content: Title #2 */
   $handler->display->display_options['sorts']['title2']['id'] = 'title2';
   $handler->display->display_options['sorts']['title2']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -136,6 +130,12 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
+  /* Sort criterion: Indexed Multilingual Content: Year of publication */
+  $handler->display->display_options['sorts']['field_publication_year']['id'] = 'field_publication_year';
+  $handler->display->display_options['sorts']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['sorts']['field_publication_year']['field'] = 'field_publication_year';
+  $handler->display->display_options['sorts']['field_publication_year']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_publication_year']['expose']['label'] = 'Year of publication';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -213,9 +213,9 @@ function hwc_practical_tool_views_default_views() {
     t('Multilingual ID'),
     t('<div class="av-type"><span class="views-label">Country: </span><span>[field_country]</span>
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span></div>'),
-    t('Publication date'),
     t('Title'),
     t('Relevance'),
+    t('Year of publication'),
     t('Search'),
     t('Page'),
   );
