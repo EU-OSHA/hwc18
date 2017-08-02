@@ -111,6 +111,9 @@ function hwc_frontend_preprocess_page(&$vars) {
     drupal_set_title('');
   }
 
+  if (arg(0)=='practical-tools') {
+    $vars['classes_array'][] = 'page-search';//todo tmp solution for css classes...
+  }
   // add back to links (e.g. Back to news)
   if (isset($vars['node'])) {
     $node = $vars['node'];
@@ -338,6 +341,9 @@ function hwc_frontend_preprocess_field(&$variables) {
   }
 }
 function hwc_frontend_preprocess_node(&$vars) {
+  if ($vars['view_mode'] == 'teaser' && $vars['type'] == 'audio_visual') {
+    $vars['classes_array'][] = 'node-practical-tool';//todo tmp solution for css classes...
+  }
   if ($vars['view_mode'] == 'full' && $vars['type'] == 'events') {
     $vars['classes_array'][] = 'container';
     if (isset($vars['field_start_date'])) {

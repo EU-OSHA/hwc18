@@ -104,8 +104,8 @@ function _hwc_audio_visual_form_after_build($form, $form_state) {
   }
 
   // Country code
-  $_other = _hwc_audio_visual_get_other_tid($form, 'field_material_country');
-  $form['field_country_other']['#states'] = ['visible'=>[ '#edit-field-material-country-und' => ['value' => [$_other]] ] ];
+  $_other = _hwc_audio_visual_get_other_tid($form, 'field_country');
+  $form['field_country_other']['#states'] = ['visible'=>[ '#edit-field-country-und' => ['value' => [$_other]] ] ];
 
   // Languages other
   $_other = _hwc_audio_visual_get_other_tid($form, 'field_available_in_languages');

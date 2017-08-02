@@ -48,6 +48,12 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
       $this->addFieldMapping($taxonomy, $taxonomy);
       $unmigrated_destinations[] = $taxonomy . ':ignore_case';
     }
+
+    $this->addFieldMapping('field_country:source_type')->defaultValue('tid');
+    $this->addFieldMapping('field_country:create_term')->defaultValue(FALSE);
+    $this->addFieldMapping('field_country', 'field_material_country');
+    $unmigrated_destinations[] = 'field_country:ignore_case';
+
     $this->addUnmigratedDestinations($unmigrated_destinations);
     $this->ignoreMetatagMigration();
   }
@@ -145,6 +151,7 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
         }
       }
     }
+    $row->field_country = $row->field_material_country;
   }
 }
 
