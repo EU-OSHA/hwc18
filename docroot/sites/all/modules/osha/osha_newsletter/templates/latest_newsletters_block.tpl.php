@@ -11,9 +11,11 @@
         )); ?></h2>
       <?php
       if ($newsletter_items_no > 0) {
-        foreach($item['items'] as $element) {
-            print(render($element));
-        }
+          if (isset($item['items'])){
+            foreach($item['items'] as $element) {
+              print(render($element));
+            }
+          }
       }
        echo '</div>';
     }

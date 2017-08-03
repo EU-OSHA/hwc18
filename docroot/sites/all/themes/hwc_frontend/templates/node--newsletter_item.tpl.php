@@ -41,7 +41,7 @@ if (!empty($campaign_id)) {
       <?php
     } if ($node->type == 'events') {
       $date = (isset($field_start_date) && !empty($field_start_date)) ? strtotime($field_start_date[0]['value']) : '';
-      $country_location = (isset($field_country_code) && !empty($field_country_code)) ? $field_country_code[0]['value'] : '';
+      $country_location = (isset($field_country_code) && !empty($field_country_code)) ? $field_country_code['und'][0]['value'] : '';
       $city_location = (isset($field_city) && !empty($field_city)) ? $field_city[0]['safe_value'] : '';
       ?>
       <tr>
@@ -89,6 +89,10 @@ if (!empty($campaign_id)) {
       <?php } ?>
       <td align="right" style="text-align: left; padding-top: 5px; padding-bottom: 10px; padding-left:0px;">
         <?php
+        $link ='node/' . $node->nid;
+        if (isset($node->alt_url)) {
+          $link = $node->alt_url;
+        }
         switch ($node->type) {
           case 'publication':
             print l($node->title, url('node/' . $node->nid . '/view', array('absolute' => TRUE)), array(
@@ -121,7 +125,7 @@ if (!empty($campaign_id)) {
             break;
           default:
             defaultLabel:
-            print l($node->title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
+            print l($node->title, url($link, array('absolute' => TRUE)), array(
               'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
               'query' => $url_query,
               'external' => TRUE
