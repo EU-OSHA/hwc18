@@ -12,6 +12,37 @@ function hwc_partner_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['hwc_partner-hwc_partner_login_text'] = array(
+    'cache' => 8,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => 'hwc_partner_login_text',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'hwc_partner',
+    'node_types' => array(),
+    'pages' => 'user',
+    'roles' => array(
+      'anonymous user' => 1,
+    ),
+    'themes' => array(
+      'hwc_frontend' => array(
+        'region' => 'below_title',
+        'status' => 1,
+        'theme' => 'hwc_frontend',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
   $export['hwc_partner-hwc_partner_private_link_0'] = array(
     'cache' => 8,
     'css_class' => '',

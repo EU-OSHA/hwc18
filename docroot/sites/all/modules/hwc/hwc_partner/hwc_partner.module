@@ -80,6 +80,15 @@ function hwc_partner_block_info() {
       'cache' => DRUPAL_CACHE_GLOBAL,
     );
   }
+
+  $blocks['hwc_partner_login_text'] = array(
+    'info' => t('User login text'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
   $blocks['hwc_partner_profile_title'] = array(
     'info' => t('My public profile'),
     'status' => 1,
@@ -218,6 +227,12 @@ function hwc_partner_block_view($delta = '') {
         );
       }
     }
+  }
+  elseif ($delta == 'hwc_partner_login_text') {
+    // Did this to use it in panels.
+    $block['title'] = '<none>';
+    $block['content'] = '<div class="text-center text-info">' . t('The private zone is allowed only to Campaign Partners. 
+    Get more information on how to <a href="@link" target="_blank">become a campaign partner</a>', ['@link' => url('become-campaign-partner')]) . '</div>';
   }
   elseif ($delta == 'hwc_partner_profile_title') {
     // Did this to use it in panels.
