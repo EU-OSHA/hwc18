@@ -13407,6 +13407,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   width: 8%;
   min-width: 90px;
 }
+/*
 .page-node-add-events .node-events-form #edit-body tr.mceFirst,
 .page-node-add-news .node-events-form #edit-body tr.mceFirst,
 .page-node-edit .node-events-form #edit-body tr.mceFirst,
@@ -13431,6 +13432,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form #edit-body .wysiwyg-toggle-wrapper {
   display: none;
 }
+*/
 .page-node-add-events .node-events-form #edit-body .mceIframeContainer,
 .page-node-add-news .node-events-form #edit-body .mceIframeContainer,
 .page-node-edit .node-events-form #edit-body .mceIframeContainer,
