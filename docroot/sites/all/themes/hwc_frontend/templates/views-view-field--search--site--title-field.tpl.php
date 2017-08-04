@@ -24,9 +24,12 @@
 ?>
 <?php
 $search = explode(' ', $_REQUEST['search_block_form']);
+$link_output = $output;
+$output = $orig_output = strip_tags($output);
 foreach($search as $word) {
   $output = str_replace(strtolower($word), '<strong>' . strtolower($word) . '</strong>', $output);
   $output = str_replace(ucfirst($word), '<strong>' . ucfirst($word) . '</strong>', $output);
 }
-print $output;
+$link_output = str_replace('>' . $orig_output . '<', '>' . $output . '<', $link_output);
+print $link_output;
 ?>
