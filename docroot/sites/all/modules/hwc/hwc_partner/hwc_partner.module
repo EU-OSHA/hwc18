@@ -535,6 +535,13 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     $w = entity_metadata_wrapper('node', $node->nid);
     $session_id = $w->field_guid_main_contact->value();
     $auth = $wu->field_crm_guid->value();
+    // If current admin is masquerading another user (Act as partner feature)
+    // send the loginshell attribute of the original user.
+    if (!empty($_SESSION['masquerading'])) {
+      $masq_user = user_load($_SESSION['masquerading']);
+      $mqsq_wu = entity_metadata_wrapper('user', $masq_user);
+      $auth = $mqsq_wu->field_crm_guid->value();
+    }
     $user_is_partner = hwc_partner_match_user_partner($node);
     $show_update_profile =  $user_is_partner
       || in_array(ROLE_SUPERVISOR, $user->roles)
