@@ -101,3 +101,10 @@ function osha_search_update_7009() {
 function osha_search_update_7010() {
   features_revert_module('osha_search');
 }
+
+/**
+ * HW18-141
+ */
+function osha_search_update_7011() {
+  features_revert_module('osha_search');
+}
