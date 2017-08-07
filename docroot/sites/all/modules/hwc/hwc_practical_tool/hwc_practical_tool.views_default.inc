@@ -33,6 +33,13 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Entity: Rendered entity */
+  $handler->display->display_options['header']['entity']['id'] = 'entity';
+  $handler->display->display_options['header']['entity']['table'] = 'entity__global';
+  $handler->display->display_options['header']['entity']['field'] = 'entity';
+  $handler->display->display_options['header']['entity']['entity_id'] = '139';
+  $handler->display->display_options['header']['entity']['view_mode'] = 'body';
+  $handler->display->display_options['header']['entity']['bypass_access'] = 0;
   /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
@@ -56,11 +63,8 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['label'] = '';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_field']['type'] = 'title_linked';
+  $handler->display->display_options['fields']['title_field']['type'] = 'practical_tool_title';
   $handler->display->display_options['fields']['title_field']['settings'] = array(
-    'title_style' => '_none',
-    'title_link' => 'content',
-    'title_class' => '',
     'field_formatter_class' => '',
   );
   /* Field: Indexed Multilingual Content: The main body text */
@@ -90,6 +94,8 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['label'] = '';
   $handler->display->display_options['fields']['field_country']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['alter']['text'] = '<span class="views-label">Country: </span><span>[field_country]</span>';
   $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_country']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_country']['view_mode'] = 'full';
@@ -100,6 +106,8 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['field_available_in_languages']['field'] = 'field_available_in_languages';
   $handler->display->display_options['fields']['field_available_in_languages']['label'] = '';
   $handler->display->display_options['fields']['field_available_in_languages']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_available_in_languages']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_available_in_languages']['alter']['text'] = '<span class="views-label">Language: </span><span>[field_available_in_languages]</span>';
   $handler->display->display_options['fields']['field_available_in_languages']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_available_in_languages']['settings'] = array(
     'format' => array(
@@ -110,13 +118,44 @@ function hwc_practical_tool_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_available_in_languages']['delta_offset'] = '0';
+  /* Field: Indexed Multilingual Content: Provider */
+  $handler->display->display_options['fields']['field_provider']['id'] = 'field_provider';
+  $handler->display->display_options['fields']['field_provider']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_provider']['field'] = 'field_provider';
+  $handler->display->display_options['fields']['field_provider']['label'] = '';
+  $handler->display->display_options['fields']['field_provider']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_provider']['alter']['text'] = '<span class="views-label">Provider1:</span><span>[field_provider-value]</span>';
+  $handler->display->display_options['fields']['field_provider']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_provider']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_provider']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Indexed Multilingual Content: Provider */
+  $handler->display->display_options['fields']['field_fc_provider']['id'] = 'field_fc_provider';
+  $handler->display->display_options['fields']['field_fc_provider']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_fc_provider']['field'] = 'field_fc_provider';
+  $handler->display->display_options['fields']['field_fc_provider']['label'] = '';
+  $handler->display->display_options['fields']['field_fc_provider']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_fc_provider']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_fc_provider']['alter']['text'] = '<span class="views-label">Provider:</span><span>[field_fc_provider]</span>';
+  $handler->display->display_options['fields']['field_fc_provider']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_fc_provider']['alter']['preserve_tags'] = '<span>';
+  $handler->display->display_options['fields']['field_fc_provider']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_fc_provider']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_fc_provider']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_fc_provider']['display'] = 'view';
+  $handler->display->display_options['fields']['field_fc_provider']['view_mode'] = 'title_only';
+  $handler->display->display_options['fields']['field_fc_provider']['bypass_access'] = 0;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type"><span class="views-label">Country: </span><span>[field_country]</span>
-<span class="views-label">Language: </span><span>[field_available_in_languages]</span></div>';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type">[field_country]
+[field_available_in_languages]
+[field_provider]
+[field_fc_provider]
+</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: Indexed Multilingual Content: Title #2 */
   $handler->display->display_options['sorts']['title2']['id'] = 'title2';
@@ -136,6 +175,10 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['sorts']['field_publication_year']['field'] = 'field_publication_year';
   $handler->display->display_options['sorts']['field_publication_year']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['field_publication_year']['expose']['label'] = 'Year of publication';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -187,6 +230,22 @@ function hwc_practical_tool_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['status']['group'] = 1;
+  /* Filter criterion: Indexed Multilingual Content: Item language */
+  $handler->display->display_options['filters']['search_api_language']['id'] = 'search_api_language';
+  $handler->display->display_options['filters']['search_api_language']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['search_api_language']['field'] = 'search_api_language';
+  $handler->display->display_options['filters']['search_api_language']['value'] = array(
+    'en' => 'en',
+  );
+  $handler->display->display_options['filters']['search_api_language']['group'] = 2;
+  /* Filter criterion: Indexed Multilingual Content: Item language */
+  $handler->display->display_options['filters']['search_api_language_1']['id'] = 'search_api_language_1';
+  $handler->display->display_options['filters']['search_api_language_1']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['search_api_language_1']['field'] = 'search_api_language';
+  $handler->display->display_options['filters']['search_api_language_1']['value'] = array(
+    'current' => 'current',
+  );
+  $handler->display->display_options['filters']['search_api_language_1']['group'] = 2;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -211,8 +270,15 @@ function hwc_practical_tool_views_default_views() {
     t('@order Showing @start - @end from @total'),
     t('No results'),
     t('Multilingual ID'),
-    t('<div class="av-type"><span class="views-label">Country: </span><span>[field_country]</span>
-<span class="views-label">Language: </span><span>[field_available_in_languages]</span></div>'),
+    t('<span class="views-label">Country: </span><span>[field_country]</span>'),
+    t('<span class="views-label">Language: </span><span>[field_available_in_languages]</span>'),
+    t('<span class="views-label">Provider1:</span><span>[field_provider-value]</span>'),
+    t('<span class="views-label">Provider:</span><span>[field_fc_provider]</span>'),
+    t('<div class="av-type">[field_country]
+[field_available_in_languages]
+[field_provider]
+[field_fc_provider]
+</div>'),
     t('Title'),
     t('Relevance'),
     t('Year of publication'),

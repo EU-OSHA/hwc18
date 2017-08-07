@@ -6,6 +6,29 @@
 
 include_once 'hwc_practical_tool.features.inc';
 
+/**
+ * Implements hook_field_collection_item_view_HOOK().
+ */
+
+function hwc_practical_tool_field_collection_item_view($field_collection_item, $view_mode, $langcode) {
+  if ($view_mode == 'title_only') {
+    $item = entity_metadata_wrapper('field_collection_item', $field_collection_item);
+    $field_collection_item->content['my_additional_field'] = array(
+      '#markup' => $item->field_fc_provider_name->value(),
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter_HOOK().
+ */
+function hwc_practical_tool_entity_info_alter(&$entity_info) {
+  $entity_info['field_collection_item']['view modes']['title_only'] = array(
+    'label' => t('Title only'),
+    'custom settings' => TRUE,
+  );
+}
+
 function hwc_practical_tool_sort_form($form, $form_state) {
   $form = array(
   );
@@ -18,7 +41,7 @@ function hwc_practical_tool_sort_form($form, $form_state) {
       'field_publication_year' => t('Year of publication'),
     ]
   ];
-  $form['sort_by']['#value'] = $_REQUEST['sort_by'];
+  $form['sort_by']['#value'] = @$_REQUEST['sort_by'];
   return $form;
 }
 
@@ -28,7 +51,8 @@ function hwc_practical_tool_sort_form($form, $form_state) {
 function hwc_practical_tool_views_post_render(&$view, &$output, &$cache) {
   if ($view->name == 'practical_tools') {
     drupal_add_js(drupal_get_path('module', 'hwc_practical_tool') . '/sort.js', array('weight' => 20));
-    $order_html = '<div class="sort-container col-xs-3">' . drupal_render(drupal_get_form('hwc_practical_tool_sort_form')) . '</div><span class="count-container pull-right">';
+    $form = drupal_get_form('hwc_practical_tool_sort_form');
+    $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
     $output = trim(str_replace('@order', $order_html, $output)). '</span>';
   }
 }
@@ -47,6 +71,13 @@ function hwc_practical_tool_block_info() {
   );
   $blocks['hwc_practical_tool_language_list'] = array(
     'info' => t('Practical tool language list'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['hwc_practical_tool_back_to_list'] = array(
+    'info' => t('Practical tool Back to list'),
     'status' => 1,
     'region' => '-1',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
@@ -79,6 +110,13 @@ function hwc_practical_tool_block_view($delta = '') {
     module_load_include('inc', 'hwc_practical_tool', 'hwc_practical_tool.pages');
     $block['content'] = drupal_get_form('hwc_practical_tool_menu_tools_form');
   }
+
+  if ($delta == 'hwc_practical_tool_back_to_list') {
+    if (isset($_REQUEST['destination'])) {
+      $block['content'] = '<a href="' . $_REQUEST['destination'] . '">' . t('Back to list') . '</a>';
+    }
+  }
+
   return $block;
 }
 
@@ -101,6 +139,11 @@ function hwc_practical_tool_field_formatter_info() {
         'label_1' => t('Access tool:'),
         'label_2' => t('Available in:'),
       ),
+    ),
+    'practical_tool_title' => array(
+      'label' => 'practical_tool title link',
+      'field types' => array('text'),
+      'description' => 'Displays link with extra params.',
     ),
     'field_collection_title' => array(
       'label' => t('Fields collection title'),
@@ -246,6 +289,18 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
         '#theme' => 'access_tool_link_and_language',
         '#items' => $items,
         '#label' => $label,
+      );
+      break;
+
+    case 'practical_tool_title':
+      $output = isset($items[0]) ? $items[0]['safe_value'] : '';
+      if (!empty($output)) {
+        $output = l($output, 'node/' . $entity->nid, ['query' => ['destination' => request_uri()], 'absolute' => TRUE]);
+      }
+      $element = array(
+        array(
+          '#markup' => $output
+        )
       );
       break;
 
