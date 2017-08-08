@@ -288,7 +288,6 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_partner_type']['id'] = 'field_partner_type';
   $handler->display->display_options['fields']['field_partner_type']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_partner_type']['field'] = 'field_partner_type';
-  $handler->display->display_options['fields']['field_partner_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_partner_type']['view_mode'] = 'full';
