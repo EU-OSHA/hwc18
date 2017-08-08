@@ -895,6 +895,24 @@ class OshaWorkflowNotifications {
   }
 
   /**
+   * Notify Translation Manager and Review managers when a translation is published/merged/accepted.
+   *
+   * @param TMGMTJobItem|OshaTMGMTJobItem $tmgmt_job_item
+   *   Job created
+   */
+  public static function notifyTranslationAccepted($tmgmt_job_item) {
+    if ($tmgmt_job_item->item_type == 'node') {
+      $node = node_load($tmgmt_job_item->item_id);
+      $rmanagers = osha_workflow_get_node_rm($node);
+    } else {
+      $rmanagers = array();
+    }
+    $tmanagers = OshaWorkflowPermissions::getUsersByRole(OSHA_WORKFLOW_ROLE_TRANSLATION_MANAGER);
+    $users = array_unique(array_merge($tmanagers, $rmanagers), SORT_REGULAR);
+    OshaWorkflowNotifications::sendEmail($users, array('tmgmt_job_item' => $tmgmt_job_item), 'osha_tmgmt');
+  }
+
+  /**
    * Check user preference to receive notifications from the workflow.
    *
    * @param mixed $user
@@ -935,7 +953,10 @@ class OshaWorkflowNotifications {
       $users = array($users);
     }
     foreach ($users as $user) {
-      if (self::userAllowsEmailNotifications($user) && variable_get('osha_workflow_send_mail')) {
+      if (self::userAllowsEmailNotifications($user) &&
+        variable_get('osha_workflow_send_mail') &&
+        !isset($_SESSION['masquerading'])
+      ) {
         $params['user'] = $user;
         drupal_mail($module, $key, $user->mail, user_preferred_language($user), $params);
       }
