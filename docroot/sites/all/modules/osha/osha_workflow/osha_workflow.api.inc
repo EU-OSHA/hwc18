@@ -952,10 +952,14 @@ class OshaWorkflowNotifications {
     if (!is_array($users)) {
       $users = array($users);
     }
+    $allow_notification = TRUE;
+    if (isset($_SESSION['masquerading']) && variable_get('disable_masquerading_notifications', 0)) {
+      $allow_notification = FALSE;
+    }
     foreach ($users as $user) {
       if (self::userAllowsEmailNotifications($user) &&
         variable_get('osha_workflow_send_mail') &&
-        !isset($_SESSION['masquerading'])
+        $allow_notification
       ) {
         $params['user'] = $user;
         drupal_mail($module, $key, $user->mail, user_preferred_language($user), $params);
