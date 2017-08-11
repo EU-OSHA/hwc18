@@ -129,7 +129,8 @@ function hwc_workflow_default_rules_configuration() {
             "bundle" : { "value" : { "events" : "events", "news" : "news" } }
           }
         },
-        { "node_has_partner_section" : { "entity" : [ "node" ] } }
+        { "node_has_partner_section" : { "entity" : [ "node" ] } },
+        { "disable_masquerading_notifications" : [] }
       ],
       "DO" : [
         { "mail_to_users_of_role" : {

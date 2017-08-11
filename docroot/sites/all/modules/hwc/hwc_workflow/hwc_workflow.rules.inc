@@ -84,6 +84,11 @@ function hwc_workflow_rules_action_info() {
  */
 function hwc_workflow_rules_condition_info() {
   return array(
+    'disable_masquerading_notifications' => array(
+      'label' => t('Disable notifications when acts as a partner'),
+      'group' => t('HWC workflow'),
+      'base' => 'hwc_workflow_rules_condition_disable_masquerading_notifications',
+    ),
     'node_has_partner_section' => array(
       'label' => t('Node has a partner section'),
       'parameter' => array(
@@ -97,6 +102,17 @@ function hwc_workflow_rules_condition_info() {
       'base' => 'hwc_workflow_rules_condition_node_has_partner_section',
     ),
   );
+}
+
+/**
+ * Condition: Disable masquerading notifications.
+ */
+function hwc_workflow_rules_condition_disable_masquerading_notifications($node) {
+  $allow_notification = TRUE;
+  if (isset($_SESSION['masquerading']) && variable_get('disable_masquerading_notifications', 0)) {
+    $allow_notification = FALSE;
+  }
+  return $allow_notification;
 }
 
 /**
