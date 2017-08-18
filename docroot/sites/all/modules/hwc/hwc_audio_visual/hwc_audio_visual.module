@@ -10,7 +10,7 @@ function hwc_audio_visual_init() {
   $item = menu_get_object();
   if (
     (implode('_', arg()) == 'node_add_audio-visual') ||
-    ($item && $item->type == 'audio_visual')
+    ($item && $item->type == 'practical_tool')
   ) {
     drupal_add_css(drupal_get_path('module', 'hwc_audio_visual') .'/css/hwc_audio_visual.css');
   }
@@ -18,7 +18,7 @@ function hwc_audio_visual_init() {
 
 function hwc_audio_visual_preprocess_views_view(&$vars) {
   $view = $vars['view'];
-  if ($view->name == 'audio_visual') {
+  if ($view->name == 'practical_tool') {
     drupal_add_css(drupal_get_path('module', 'hwc_audio_visual') .'/css/hwc_audio_visual.css');
   }
 }
@@ -36,7 +36,7 @@ function hwc_audio_visual_element_info_alter(&$type) {
 // remove guidelines and help text
 function hwc_audio_visual_filter_process_format($element) {
   $element = filter_process_format($element);
-  if ($element['#bundle'] == 'audio_visual') {
+  if ($element['#bundle'] == 'practical_tool') {
     unset($element['format']['guidelines']);
     unset($element['format']['help']);
     $element['format']['format']['#options'] = [ 'audio_visual' => $element['format']['format']['#options']['audio_visual'] ];
@@ -63,7 +63,7 @@ function hwc_audio_visual_facet_items_alter(&$build, &$settings) {
  * Implements hook_form_alter().
  */
 function hwc_audio_visual_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'audio_visual_node_form') {
+  if ($form_id == 'practical_tool_node_form') {
     $form['field_available_in_languages'][LANGUAGE_NONE]['#options'] = osha_sort_language_list($form['field_available_in_languages'][LANGUAGE_NONE]['#options']);
 
     if (!isset($form['#after_build'])) {
@@ -150,19 +150,6 @@ function _hwc_audio_visual_form_after_build($form, $form_state) {
   // Target group other
   $_other = _hwc_audio_visual_get_other_tid($form, 'field_target_group');
   $form['field_target_group_other']['#states'] = ['visible'=>[ '#edit-field-target-group-und' => ['value' => [$_other]] ] ];
-
-  // Evaluation other
-  $_other = _hwc_audio_visual_get_other_tid($form, 'field_evaluation');
-  $form['field_evaluation_other']['#states'] = ['visible'=>[ '#edit-field-evaluation-und' => ['value' => [$_other]] ] ];
-
-  // Type of visualisation material other
-  $_other = _hwc_audio_visual_get_other_tid($form, 'field_visualisation_material_typ');
-  $form['field_visualisation_mat_other']['#states'] = ['visible'=>[ '#edit-field-visualisation-material-typ-und' => ['value' => [$_other]] ] ];
-
-  $form['field_rights_description']['#states'] = ['visible'=>[ '#edit-field-item-type-und' => ['value' => 'Audiovisual'] ] ];
-  $form['field_intellectual_property_righ']['#states'] = ['visible'=>[ '#edit-field-item-type-und' => ['value' => 'Audiovisual'] ] ];
-  $form['field_media_format']['#states'] = ['visible'=>[ '#edit-field-item-type-und' => ['value' => 'Audiovisual'] ] ];
-  $form['field_video_length']['#states'] = ['visible'=>[ '#edit-field-item-type-und' => ['value' => 'Audiovisual'] ] ];
 
   return $form;
 }

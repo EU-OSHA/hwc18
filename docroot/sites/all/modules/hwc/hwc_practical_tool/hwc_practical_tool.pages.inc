@@ -180,7 +180,7 @@ function hwc_practical_tool_menu_tools_search($form_state) {
   /** @var SearchApiSolrService $server */
   list($server, $query) = _hwc_practical_tool_menu_tools_get_query();
   $query->condition('status', 1);
-  $query->condition('type', ['practical_tool','audio_visual'],'IN');
+  $query->condition('type', 'practical_tool');
   $query->condition('language', 'und', "<>");
   $query->keys($text);
   $query->fields(array('title_field', 'body:value'));
