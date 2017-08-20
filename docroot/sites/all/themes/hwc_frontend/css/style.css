@@ -12816,20 +12816,20 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
 /*.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar {
-  display: none;
-}
+/*.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
+/*.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
+/*.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
+/*.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar {*/
+  /*display: none;*/
+/*}*/
 /*.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
 /*.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar {
-  display: none;
-}
+/*.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
+/*.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
+/*.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
+/*.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar {*/
+  /*display: none;*/
+/*}*/
 .page-node-add-events .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-add-news .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-edit .node-events-form .wysiwyg-toggle-wrapper,
