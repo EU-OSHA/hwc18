@@ -25,10 +25,10 @@ function hwc_practical_tool_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'hwc_frontend',
-        'weight' => -83,
+        'weight' => -79,
       ),
       'seven' => array(
         'region' => '',
@@ -86,7 +86,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -82,
+        'weight' => -85,
       ),
       'seven' => array(
         'region' => '',
@@ -173,7 +173,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -79,
+        'weight' => -82,
       ),
       'seven' => array(
         'region' => '',
@@ -202,7 +202,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -80,
+        'weight' => -83,
       ),
       'seven' => array(
         'region' => '',
@@ -231,7 +231,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -81,
+        'weight' => -84,
       ),
       'seven' => array(
         'region' => '',
@@ -260,7 +260,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -84,
+        'weight' => -86,
       ),
       'seven' => array(
         'region' => '',
@@ -289,7 +289,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -78,
+        'weight' => -80,
       ),
       'seven' => array(
         'region' => '',
