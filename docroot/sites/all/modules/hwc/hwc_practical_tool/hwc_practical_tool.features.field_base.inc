@@ -99,13 +99,13 @@ function hwc_practical_tool_field_default_field_bases() {
     'locked' => 0,
     'module' => 'languagefield',
     'settings' => array(
-      'enabled' => 2,
+      'enabled' => 3,
       'entity_translation_sync' => FALSE,
       'excluded_languages' => array(),
       'format' => array(
         'iso' => 0,
-        'name' => 'name',
-        'name_native' => 0,
+        'name' => 0,
+        'name_native' => 'name_native',
       ),
       'groups' => '',
       'languages' => array(),
