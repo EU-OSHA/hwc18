@@ -341,10 +341,10 @@ Good practice exchange',
     'css' => '',
     'contexts' => array(
       0 => array(
-        'identifier' => 'Content',
+        'identifier' => 'Get involved in Good Practice exchange initiative',
         'keyword' => 'node',
         'name' => 'entity:node',
-        'entity_id' => '3414',
+        'entity_id' => '3301',
         'id' => 1,
       ),
     ),

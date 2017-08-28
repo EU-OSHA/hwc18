@@ -1,38 +1,33 @@
 <?php
 
 /**
- * Class NCWAudioVisualMigration migrates press contacts
+ * Class NCWDangerousSubstancesMigration migrates press contacts
  *
  * Set hwc_migration_audio_visual_url variable for explicit source URL.
  */
-class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
+class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
 
   public $new_providers = array();
 
   public function __construct($arguments) {
-    parent::__construct($arguments, 'NCWAudioVisualSource', 'audio_visual');
-    $this->description = 'Import audio_visual from NCW';
+    parent::__construct($arguments, 'NCWDangerousSubstancesSource', 'practical_tool');
+    $this->description = 'Import DS from NCW';
   }
 
   function getTermReferenceFieldsMap() {
     return [
       'field_priority_area' => 'priority_area',
-      'field_provider_type' => 'provider_type',
-      'field_material_country' => 'country',
+      'field_country' => 'country',
       'field_sector_industry_covered' => 'nace_codes',
       'field_tasks_covered' => 'hazmap_categories',
-
       'field_biological_hazard' => 'biological_hazard',
       'field_hazard_physical_state' => 'hazard_physical_state',
       'field_hazard_health_effects' => 'hazard_health_effects',
       'field_exposure_route' => 'exposure_route',
       'field_worker_groups_type' => 'worker_groups',
-
       'field_prevention_measure_type' => 'prevention_measures',
       'field_material_purpose_type' => 'material_purpose',
       'field_target_group' => 'target_group',
-      'field_evaluation' => 'evaluation',
-      'field_visualisation_material_typ' => 'material_objective'
     ];
   }
 
@@ -48,6 +43,7 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
       $this->addFieldMapping($taxonomy, $taxonomy);
       $unmigrated_destinations[] = $taxonomy . ':ignore_case';
     }
+
     $this->addUnmigratedDestinations($unmigrated_destinations);
     $this->ignoreMetatagMigration();
   }
@@ -66,10 +62,6 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
       $entity->field_available_in_languages['und'] = $entity->field_available_in_languages['und'][0]['value'];
     }
 
-    if ($entity->field_video_length) { // cck_time fix
-      $hm = explode(':', $entity->field_video_length['und'][0]['value'][0]['value']);
-      $entity->field_video_length['und'][0] = ['hour' => @$hm[0], 'minute' => @$hm[1]];
-    }
     // field_collection_item - field_fc_provider
     $entity_ids = [];
     if ($entity->nid) {
@@ -132,6 +124,7 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
   }
 
   function prepareRow($row) {
+    $row->field_country = $row->field_material_country;
     parent::prepareRow($row);
     foreach($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
       if ($row->{$taxonomy}) {
@@ -149,7 +142,7 @@ class NCWAudioVisualMigration extends AbstractNCWNodeMigration {
 }
 
 
-class NCWAudioVisualSource extends AbstractNCWNodeSource {
+class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
 
   /**
    * The list of available fields to map from the source, keyed by field name.
@@ -157,22 +150,16 @@ class NCWAudioVisualSource extends AbstractNCWNodeSource {
   public function contentFields() {
     $fields = array(
       'field_priority_area' => '',
-      'field_provider_type' => '',
-      'field_material_country' => '',
       'field_sector_industry_covered' => '',
       'field_tasks_covered' => '',
-
       'field_biological_hazard' => '',
       'field_hazard_physical_state' => '',
       'field_hazard_health_effects' => '',
       'field_exposure_route' => '',
       'field_worker_groups_type' => '',
-
       'field_prevention_measure_type' => '',
       'field_material_purpose_type' => '',
       'field_target_group' => '',
-      'field_evaluation' => '',
-      'field_visualisation_material_typ' => '',
     );
 
     $text = [
@@ -181,59 +168,30 @@ class NCWAudioVisualSource extends AbstractNCWNodeSource {
       'body_format' => '',
       'body_language' => '',
       'body_summary' => '',
-      'field_advertising' => '',
       'field_biological_hazard_other' => '',
       'field_body_original' => '',
       'field_body_original_format' => '',
       'field_cas_number' => '',
-      'field_contact_address' => '',
-      'field_contact_address_format' => '',
       'field_country_other' => '',
-      'field_disclaimer' => '',
-      'field_disclaimer_format' => '',
       'field_ec_number' => '',
-      'field_evaluation_other' => '',
       'field_exposure_route_other' => '',
-      'field_external_url' => '',
       'field_hazard_health_other' => '',
       'field_hazard_physical_other' => '',
-      'field_image'=>'',
-      'field_image_language' => '',
-      'field_intellectual_property_righ' => '',
-      'field_item_type' => '',
       'field_languages_other' => '',
       'field_material_purpose_other' => '',
-      'field_measurement_method' => '',
-      'field_media_format' => '',
-      'field_notes' => '',
-      'field_notes_format' => '',
-      'field_other_information' => '',
-      'field_other_information_format' => '',
-      'field_ownership_information' => '',
-      'field_ownership_information_format' => '',
       'field_prevention_measures_other' => '',
       'field_publication_year' => '',
       'field_publication_year_value2' => '',
       'field_publication_year_timezone' => '',
-      'field_rights_description' => '',
       'field_sector_industry_other' => '',
-      'field_selected_for_analysis' => '',
       'field_summary' => '',
       'field_summary_format' => '',
       'field_summary_language' => '',
       'field_target_group_other' => '',
       'field_tasks_other' => '',
-      'field_title_original' => '',
-      'field_video_length' => '',
-      'field_video_length_hour' => '',
-      'field_video_length_minute' => '',
-      'field_visualisation_mat_other' => '',
       'field_worker_groups_other' => '',
       'title_field' => '',
       'field_fc_provider' => '',
-      'field_external_url_attributes' => '',
-      'field_external_url_language' => '',
-      'field_external_url_title' => '',
       'title_field_language' => '',
     ];
     $fields += $text;

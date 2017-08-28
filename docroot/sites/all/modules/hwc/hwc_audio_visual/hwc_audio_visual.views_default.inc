@@ -63,12 +63,10 @@ function hwc_audio_visual_views_default_views() {
   $handler->display->display_options['fields']['field_languages_other']['id'] = 'field_languages_other';
   $handler->display->display_options['fields']['field_languages_other']['table'] = 'field_data_field_languages_other';
   $handler->display->display_options['fields']['field_languages_other']['field'] = 'field_languages_other';
-  /* Field: Content: Country */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_material_country']['id'] = 'field_material_country';
   $handler->display->display_options['fields']['field_material_country']['table'] = 'field_data_field_material_country';
   $handler->display->display_options['fields']['field_material_country']['field'] = 'field_material_country';
-  $handler->display->display_options['fields']['field_material_country']['type'] = 'i18n_taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_material_country']['delta_offset'] = '0';
   /* Field: Content: Country other */
   $handler->display->display_options['fields']['field_country_other']['id'] = 'field_country_other';
   $handler->display->display_options['fields']['field_country_other']['table'] = 'field_data_field_country_other';
@@ -379,7 +377,7 @@ function hwc_audio_visual_views_default_views() {
     13 => 0,
     14 => 0,
   );
-  /* Filter criterion: Content: Country (field_material_country) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_material_country_tid']['id'] = 'field_material_country_tid';
   $handler->display->display_options['filters']['field_material_country_tid']['table'] = 'field_data_field_material_country';
   $handler->display->display_options['filters']['field_material_country_tid']['field'] = 'field_material_country_tid';
@@ -404,8 +402,6 @@ function hwc_audio_visual_views_default_views() {
     13 => 0,
     14 => 0,
   );
-  $handler->display->display_options['filters']['field_material_country_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_material_country_tid']['vocabulary'] = 'country';
   /* Filter criterion: Content: Sector / Industry covered (field_sector_industry_covered) */
   $handler->display->display_options['filters']['field_sector_industry_covered_tid']['id'] = 'field_sector_industry_covered_tid';
   $handler->display->display_options['filters']['field_sector_industry_covered_tid']['table'] = 'field_data_field_sector_industry_covered';
@@ -448,12 +444,10 @@ function hwc_audio_visual_views_default_views() {
   $handler->display->display_options['fields']['field_available_in_languages']['id'] = 'field_available_in_languages';
   $handler->display->display_options['fields']['field_available_in_languages']['table'] = 'field_data_field_available_in_languages';
   $handler->display->display_options['fields']['field_available_in_languages']['field'] = 'field_available_in_languages';
-  /* Field: Content: Country */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_material_country']['id'] = 'field_material_country';
   $handler->display->display_options['fields']['field_material_country']['table'] = 'field_data_field_material_country';
   $handler->display->display_options['fields']['field_material_country']['field'] = 'field_material_country';
-  $handler->display->display_options['fields']['field_material_country']['type'] = 'i18n_taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_material_country']['delta_offset'] = '0';
   /* Field: Content: Country other */
   $handler->display->display_options['fields']['field_country_other']['id'] = 'field_country_other';
   $handler->display->display_options['fields']['field_country_other']['table'] = 'field_data_field_country_other';
@@ -715,13 +709,11 @@ function hwc_audio_visual_views_default_views() {
   $handler->display->display_options['fields']['field_languages_other']['table'] = 'field_data_field_languages_other';
   $handler->display->display_options['fields']['field_languages_other']['field'] = 'field_languages_other';
   $handler->display->display_options['fields']['field_languages_other']['ui_name'] = 'Available in languages (other)';
-  /* Field: Country */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_material_country']['id'] = 'field_material_country';
   $handler->display->display_options['fields']['field_material_country']['table'] = 'field_data_field_material_country';
   $handler->display->display_options['fields']['field_material_country']['field'] = 'field_material_country';
   $handler->display->display_options['fields']['field_material_country']['ui_name'] = 'Country';
-  $handler->display->display_options['fields']['field_material_country']['type'] = 'i18n_taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_material_country']['delta_offset'] = '0';
   /* Field: Country other */
   $handler->display->display_options['fields']['field_country_other']['id'] = 'field_country_other';
   $handler->display->display_options['fields']['field_country_other']['table'] = 'field_data_field_country_other';
@@ -1071,7 +1063,7 @@ function hwc_audio_visual_views_default_views() {
     t('Title'),
     t('Available in languages'),
     t('Languages other'),
-    t('Country'),
+    t('Broken handler field_data_field_material_country.field_material_country'),
     t('Country other'),
     t('URL'),
     t('Broken handler field_data_field_provider_english.field_provider_english'),
@@ -1122,6 +1114,7 @@ function hwc_audio_visual_views_default_views() {
     t('Worker groups covered other'),
     t('Priority area'),
     t('Image'),
+    t('Country'),
     t('Sector / Industry covered (field_sector_industry_covered)'),
     t('Page'),
     t('Edit link'),

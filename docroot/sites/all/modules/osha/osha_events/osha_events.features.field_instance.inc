@@ -32,6 +32,12 @@ function osha_events_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 0,
       ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_talking_date',
@@ -81,6 +87,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'file_default',
         'weight' => 3,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -155,6 +167,12 @@ function osha_events_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 1,
       ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_talking_speaker',
@@ -192,6 +210,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -236,6 +260,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -2238,7 +2268,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_start_date',
-    'label' => 'Starting date and time',
+    'label' => 'Starting date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
@@ -2783,7 +2813,7 @@ function osha_events_field_default_field_instances() {
   t('Schedule');
   t('Show in NCW');
   t('Speakers');
-  t('Starting date and time');
+  t('Starting date');
   t('Tags');
   t('Talking date');
   t('Talking files');

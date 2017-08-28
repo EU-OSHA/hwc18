@@ -41,13 +41,6 @@ function osha_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = '›';
   $handler->display->display_options['pager']['options']['tags']['last'] = '»';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'type',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
@@ -295,7 +288,6 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_partner_type']['id'] = 'field_partner_type';
   $handler->display->display_options['fields']['field_partner_type']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_partner_type']['field'] = 'field_partner_type';
-  $handler->display->display_options['fields']['field_partner_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_partner_type']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_partner_type']['view_mode'] = 'full';

@@ -1,7 +1,7 @@
 name = HWC Partner
 core = 7.x
 package = HWC
-version = 7.x-0.15
+version = 7.x-0.16
 project = hwc_partner
 dependencies[] = context
 dependencies[] = ctools
@@ -32,6 +32,7 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = path_breadcrumbs:path_breadcrumbs:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
+features[fe_block_settings][] = hwc_partner-hwc_partner_login_text
 features[fe_block_settings][] = hwc_partner-hwc_partner_private_link_0
 features[fe_block_settings][] = hwc_partner-hwc_partner_private_link_1
 features[fe_block_settings][] = hwc_partner-hwc_partner_private_link_2

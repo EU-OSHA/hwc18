@@ -80,6 +80,15 @@ function hwc_partner_block_info() {
       'cache' => DRUPAL_CACHE_GLOBAL,
     );
   }
+
+  $blocks['hwc_partner_login_text'] = array(
+    'info' => t('User login text'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
   $blocks['hwc_partner_profile_title'] = array(
     'info' => t('My public profile'),
     'status' => 1,
@@ -218,6 +227,12 @@ function hwc_partner_block_view($delta = '') {
         );
       }
     }
+  }
+  elseif ($delta == 'hwc_partner_login_text') {
+    // Did this to use it in panels.
+    $block['title'] = '<none>';
+    $block['content'] = '<div class="text-center text-info">' . t('The private zone is allowed only to Campaign Partners. 
+    Get more information on how to <a href="@link" target="_blank">become a campaign partner</a>', ['@link' => url('become-campaign-partner')]) . '</div>';
   }
   elseif ($delta == 'hwc_partner_profile_title') {
     // Did this to use it in panels.
@@ -515,26 +530,26 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
   global $language;
 
   if ($node->type == 'partner' && $view_mode == 'full') {
-    $loginshell = NULL;
     $link_parameters = array('query' => array());
-    if (in_array(ROLE_SUPERVISOR, $user->roles)
-      || in_array(ROLE_ADMINISTRATOR, $user->roles)
-      || in_array(ROLE_SUPERADMINISTRATOR, $user->roles)
-    ) {
-      // In case of these roles, partner's main contact GUID instead of user's guid
-      $w = entity_metadata_wrapper('node', $node->nid);
-      $loginshell = $w->field_guid_main_contact->value();
-      $gecos = $loginshell;
+    $wu = entity_metadata_wrapper('user', $user->uid);
+    $w = entity_metadata_wrapper('node', $node->nid);
+    $session_id = $w->field_guid_main_contact->value();
+    $auth = $wu->field_crm_guid->value();
+    // If current admin is masquerading another user (Act as partner feature)
+    // send the loginshell attribute of the original user.
+    if (!empty($_SESSION['masquerading'])) {
+      $masq_user = user_load($_SESSION['masquerading']);
+      $mqsq_wu = entity_metadata_wrapper('user', $masq_user);
+      $auth = $mqsq_wu->field_crm_guid->value();
     }
     $user_is_partner = hwc_partner_match_user_partner($node);
-    if ($user_is_partner) {
-      $wu = entity_metadata_wrapper('user', $user->uid);
-      $loginshell = $wu->field_crm_guid->value();
-      $gecos = $wu->field_user_partner_guid->value();
-    }
-    if (!empty($loginshell)) {
-      $link_parameters['query']['session_id'] = $loginshell;
-      $link_parameters['query']['auth'] = $gecos;
+    $show_update_profile =  $user_is_partner
+      || in_array(ROLE_SUPERVISOR, $user->roles)
+      || in_array(ROLE_ADMINISTRATOR, $user->roles)
+      || in_array(ROLE_SUPERADMINISTRATOR, $user->roles);
+    if ($show_update_profile) {
+      $link_parameters['query']['session_id'] = $session_id;
+      $link_parameters['query']['auth'] = $auth;
       $update_title = '<div class="hwc-partner-private-link-block-title">' . l('Update profile', 'private/profile/update', $link_parameters) . '</div>';
       $update_content = '<div class="hwc-partner-private-link-block-description">'
         . strtr('Any modifications in your public profile? <a href="!link">Click here to update it.</a>', array('!link' => url('private/profile/update', $link_parameters)))
@@ -557,7 +572,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     $url = sprintf('/partner/forms/index.php?mf=TRUE&partner_nid=%s&language=%s&session_id=%s',
       $partner->nid, $lang_parameter, check_plain($_GET['session_id']));
     if (!empty($_GET['auth'])) {
-      $url .= '&gecos=' . check_plain($_GET['auth']);
+      $url .= '&auth=' . check_plain($_GET['auth']);
     }
     $c = 0;
     $node->content['body'][0]['#markup'] = str_replace('/partner/forms/index.php?mf=TRUE"', $url . '"', $node->content['body'][0]['#markup'], $c);
@@ -569,7 +584,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
   if ($node->nid == 225 && !empty($_GET['session_id']) && !empty($node->content['body'][0]['#markup'])) {
     $url = '/partner/forms/index.php?session_id=' . check_plain($_GET['session_id']);
     if (!empty($_GET['auth'])) {
-      $url .= '&gecos=' . check_plain($_GET['auth']);
+      $url .= '&auth=' . check_plain($_GET['auth']);
     }
     if (!empty($_GET['newAccess']) && $_GET['newAccess'] === 'true') {
       $url .= '&newAccess=true';

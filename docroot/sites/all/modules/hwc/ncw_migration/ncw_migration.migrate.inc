@@ -16,10 +16,10 @@ function ncw_migration_migrate_api() {
       ),
     ),
     'migrations' => array(
-      'audio_visual' => array(
+      'dangerous_substances' => array(
         'group_name' => 'ncw',
         'dependencies' => array(),
-        'class_name' => 'NCWAudioVisualMigration',
+        'class_name' => 'NCWDangerousSubstancesMigration',
       ),
       'tax_priority_area' => array(
         'group_name' => 'ncw',

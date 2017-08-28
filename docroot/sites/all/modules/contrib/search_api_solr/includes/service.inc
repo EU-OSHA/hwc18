@@ -1505,8 +1505,16 @@ class SearchApiSolrService extends SearchApiAbstractService {
     if ($value === NULL) {
       return ($operator == '=' ? '*:* AND -' : '') . "$field:[* TO *]";
     }
-    $value = trim($value);
-    $value = $this->formatFilterValue($value, search_api_extract_inner_type($field_info['type']));
+    if (!is_array($value)) {
+      $value = trim($value);
+      $value = $this->formatFilterValue($value, search_api_extract_inner_type($field_info['type']));
+    }
+    else {
+      foreach ($value as &$v) {
+        $v = trim($v);
+        $v = $this->formatFilterValue($v, search_api_extract_inner_type($field_info['type']));
+      }
+    }
     switch ($operator) {
       case '<>':
         return "*:* AND -($field:$value)";
@@ -1518,7 +1526,15 @@ class SearchApiSolrService extends SearchApiAbstractService {
         return "$field:[$value TO *]";
       case '>':
         return "$field:{{$value} TO *}";
-
+      case 'IN':
+        // Group values and use OR conjunction is basically an IN operation.
+        $conditions = implode(' OR ', $value);
+        return "*:* AND ($field:($conditions))";
+      case 'NOT IN':
+        // Group values and use OR conjunction is basically an IN operation. But
+        // negate it to get NOT IN.
+        $conditions = implode(' OR ', $value);
+        return "*:* AND -($field:($conditions))";
       default:
         return "$field:$value";
     }
