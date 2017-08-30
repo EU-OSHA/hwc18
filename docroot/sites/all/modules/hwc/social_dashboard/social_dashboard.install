@@ -177,3 +177,10 @@ function social_dashboard_update_7004() {
 function social_dashboard_update_7005() {
   features_revert_module('social_dashboard');
 }
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7006() {
+  features_revert_module('social_dashboard');
+}

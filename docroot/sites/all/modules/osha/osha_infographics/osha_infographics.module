@@ -36,6 +36,11 @@ function osha_infographics_field_formatter_info() {
       'field types' => array('file'),
       'description' => t('Download file in: EN, BG ...'),
     ),
+    'multilanguage_download_file' => array(
+      'label' => t('Multilanguage Download File'),
+      'field types' => array('file'),
+      'description' => t('Download file in: EN, BG ...'),
+    ),
     'multilanguage_image' => array(
       'label' => t('Multilanguage Image'),
       'field types' => array('image'),
@@ -55,6 +60,16 @@ function osha_infographics_field_formatter_view($entity_type, $entity, $field, $
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
           '#theme' => 'osha_infographics_multilanguage_file_format',
+          '#entity' => $entity,
+          '#file' => $item,
+          '#delta' => $delta,
+        );
+      }
+      break;
+    case 'multilanguage_download_file':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'osha_infographics_multilanguage_download_file_format',
           '#entity' => $entity,
           '#file' => $item,
           '#delta' => $delta,
@@ -83,6 +98,9 @@ function osha_infographics_theme() {
     'osha_infographics_multilanguage_file_format' => array(
       'variables' => array('entity' => NULL, 'file' => NULL, 'delta' => NULL),
     ),
+    'osha_infographics_multilanguage_download_file_format' => array(
+      'variables' => array('entity' => NULL, 'file' => NULL, 'delta' => NULL),
+    ),
     'osha_infographics_multilanguage_image_format' => array(
       'variables' => array('entity' => NULL, 'file' => NULL, 'delta' => NULL),
     ),
@@ -106,11 +124,38 @@ function theme_osha_infographics_multilanguage_file_format($element) {
     array(
       "file" => file_load($file['fid']),
       "icon_directory" => $icon_directory
-  ));
+    ));
   $output .="<span class='label_multilang_file'>in:</span>";
 
   foreach($entity->field_file as $lang => $object) {
     $output .=  '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
+  }
+  $output = substr($output, 0, -3);
+  return $output;
+}
+
+/*
+* Formats multilanguage file for download
+*/
+function theme_osha_infographics_multilanguage_download_file_format($element) {
+  $file = (object) $element['file'];
+  $entity = (object) $element['entity'];
+  $icon_directory = drupal_get_path('theme', 'hwc_frontend') . '/images/file_icons';
+
+  global $language;
+  $file = isset($entity->field_file[$language->language][0])
+    ? $entity->field_file[$language->language][0]
+    : $entity->field_file['en'][0];
+  $output = "<span class='label_multilang_file'>Download</span>";
+  $output .= theme_file_icon(
+    array(
+      "file" => file_load($file['fid']),
+      "icon_directory" => $icon_directory
+  ));
+  $output .="<span class='label_multilang_file'>in:</span>";
+  foreach($entity->field_file as $lang => $object) {
+    $url = download_file_url($object[0]['fid']);
+    $output .=  '<a href="' . $url . '" target="_blank">' . strtoupper($lang) . '</a> | ';
   }
   $output = substr($output, 0, -3);
   return $output;

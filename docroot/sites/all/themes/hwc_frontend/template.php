@@ -96,6 +96,18 @@ function hwc_frontend_preprocess_html(&$vars) {
   if (!empty($vars['is_front'])) {
     $vars['head_title'] = t('Healthy Workplaces for All Ages') . ' | ' . 'EU-OSHA';
   }
+  if (arg(0) . arg(2) == 'nodeedit') {
+    $n = menu_get_object('node');
+    if ($n->type == 'news' || $n->type == 'events') {
+      $vars['classes_array'][] = 'pz-page';
+    }
+  }
+  if (
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
+  ) {
+    $vars['classes_array'][] = 'pz-page';
+  }
 }
 
 function hwc_frontend_preprocess_page(&$vars) {

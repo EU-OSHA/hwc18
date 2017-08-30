@@ -230,7 +230,7 @@ function osha_infographics_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'multilanguage_file',
+        'type' => 'multilanguage_download_file',
         'weight' => 3,
       ),
       'highlights_item' => array(
@@ -287,7 +287,7 @@ function osha_infographics_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'multilanguage_file',
+        'type' => 'multilanguage_download_file',
         'weight' => 3,
       ),
       'title_body' => array(
