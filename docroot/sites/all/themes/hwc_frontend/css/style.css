@@ -9822,6 +9822,16 @@ div[class*='node-'] .more-link {
   padding-bottom: 0;
   margin-bottom: 0;
 }
+.node-type-practical-tool .pane-node-body {
+  clear: both;
+  padding-top: 15px;
+  display: block;
+}
+.node-type-practical-tool .pane-hwc-practical-tool-hwc-practical-tool-back-to-list a {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+}
 /*margins: practical-tools and publications*/
 #edit-left-column {
   padding-left: 25px;
@@ -9911,7 +9921,8 @@ div[class*='node-'] .more-link {
   width: 15%;
   float: left;
 }
-.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-label,
+/*FIx NO language*/
+html:lang(no) .pane-node-field-provider .field-label,
 .pane-node-field-implementation-steps .field-label,
 .pane-node-field-dissemination-used .field-label,
 .pane-node-field-access-tool-link .field-label,
@@ -9922,7 +9933,7 @@ div[class*='node-'] .more-link {
 .access-tool-languages .field-label {
   width: 22%;
 }
-.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-items,
+html:lang(no) .pane-node-field-provider .field-items,
 .pane-node-field-implementation-steps .field-items,
 .pane-node-field-dissemination-used .field-items,
 .pane-node-field-access-tool-link .field-items,
@@ -10361,6 +10372,26 @@ div[class*='node-'] .more-link {
 .a2a_kit.a2a_target.addtoany_list a {
   margin-right: 1em;
 }
+/*Login page*/
+.page-user .main-container.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text {
+  margin-bottom: 15px;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text .text-info {
+  color: #333333;
+  font-size: 1em;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text .text-info a {
+  background-color: transparent;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid #749b00;
+}
+/*End login page*/
 /* -News- */
 .view-news .views-row {
   border-bottom: 1px dotted #749b00;
@@ -12693,9 +12724,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*End partners public profile*/
 /*create event --> in public profile*/
-/*.page-node-add-events .node-events-form .field-type-datetime #edit-field-start-date-und-0-value2 .form-item-field-start-date-und-0-value2-date {*/
-  /*min-width: 283px;*/
-/*}*/
 .page-node-add-events #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label,
 .page-node-add-news #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label,
 .page-node-edit #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label {
@@ -12718,6 +12746,33 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   padding-right: 2em;
   display: block !important;
   margin-bottom: 2em !important;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data input,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data input,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data input,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data input,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data input,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data input {
+  max-width: 300px;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
+  float: left;
+  display: block !important;
+  width: inherit;
+  height: 14px;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span {
+  height: initial !important;
 }
 .page-node-add-events .node-events-form .date-no-float,
 .page-node-add-news .node-events-form .date-no-float,
@@ -12814,22 +12869,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   height: 150px;
   padding: 10px;
 }
-/*.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-/*.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-/*.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-/*.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-/*.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,*/
-/*.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar {*/
-  /*display: none;*/
-/*}*/
-/*.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-/*.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-/*.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-/*.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-/*.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,*/
-/*.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar {*/
-  /*display: none;*/
-/*}*/
 .page-node-add-events .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-add-news .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-edit .node-events-form .wysiwyg-toggle-wrapper,
@@ -12924,7 +12963,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .image-widget .image-widget-data span {
   padding-right: 10px;
   float: left;
-  height: 35px;
 }
 .page-node-add-events .node-events-form .image-widget .image-widget-data button,
 .page-node-add-news .node-events-form .image-widget .image-widget-data button,
@@ -13225,6 +13263,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   height: auto;
   display: block;
   font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
 }
 .page-node-add-events .node-events-form #edit-actions #edit-save-preview:before,
 .page-node-add-news .node-events-form #edit-actions #edit-save-preview:before,
@@ -13273,7 +13313,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-events .node-news-form table.mceLayout,
 .page-node-add-news .node-news-form table.mceLayout,
 .page-node-edit .node-news-form table.mceLayout {
-  padding-right: 2em;
+  padding-right: 0em;
   border: none;
   height: auto !important;
 }
@@ -13407,32 +13447,24 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   width: 8%;
   min-width: 90px;
 }
-/*
-.page-node-add-events .node-events-form #edit-body tr.mceFirst,
-.page-node-add-news .node-events-form #edit-body tr.mceFirst,
-.page-node-edit .node-events-form #edit-body tr.mceFirst,
-.page-node-add-events .node-news-form #edit-body tr.mceFirst,
-.page-node-add-news .node-news-form #edit-body tr.mceFirst,
-.page-node-edit .node-news-form #edit-body tr.mceFirst {
-  display: none;
+.page-node-add-events .node-events-form #edit-body,
+.page-node-add-news .node-events-form #edit-body,
+.page-node-edit .node-events-form #edit-body,
+.page-node-add-events .node-news-form #edit-body,
+.page-node-add-news .node-news-form #edit-body,
+.page-node-edit .node-news-form #edit-body {
+  /* todo check
+			tr.mceFirst{
+				display: none;
+			}
+			tr.mceLast{
+				display: none;
+			}
+			.wysiwyg-toggle-wrapper{
+				display: none;
+			}
+            */
 }
-.page-node-add-events .node-events-form #edit-body tr.mceLast,
-.page-node-add-news .node-events-form #edit-body tr.mceLast,
-.page-node-edit .node-events-form #edit-body tr.mceLast,
-.page-node-add-events .node-news-form #edit-body tr.mceLast,
-.page-node-add-news .node-news-form #edit-body tr.mceLast,
-.page-node-edit .node-news-form #edit-body tr.mceLast {
-  display: none;
-}
-.page-node-add-events .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-news .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-edit .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-events .node-news-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-news .node-news-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-edit .node-news-form #edit-body .wysiwyg-toggle-wrapper {
-  display: none;
-}
-*/
 .page-node-add-events .node-events-form #edit-body .mceIframeContainer,
 .page-node-add-news .node-events-form #edit-body .mceIframeContainer,
 .page-node-edit .node-events-form #edit-body .mceIframeContainer,
@@ -14247,6 +14279,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   color: #039;
   font-weight: 700;
   font-style: italic;
+}
+.page-get-your-certificate .pane-node-field-image {
+  padding-right: 15px;
 }
 .page-get-your-certificate .chosen-container .chosen-drop,
 .page-get-your-certificate .chosen-container .chosen-search input[type="text"] {
@@ -15758,7 +15793,7 @@ input#edit-field-image-und-0-upload::before {
   margin: 0 auto;
   width: 100%;
   height: 564px;
-  background-color: inherit !important;
+  background-color: black;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget {
   border-top: none;
@@ -16690,6 +16725,10 @@ input#edit-field-image-und-0-upload::before {
 }
 #edit-sort-fieldset .panel-body .count-container {
   margin-top: 7px;
+}
+.view-id-practical_tools .view-content .views-row {
+  padding-bottom: 15px !important;
+  padding-top: 15px !important;
 }
 /*end good practices, publications, case studies*/
 /*enterprise europe network*/
@@ -21008,6 +21047,12 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-news .node-news-form .group-footer.col-md-12 {
     width: 100%;
   }
+  .page-node-add-events .node-events-form .table-responsive,
+  .page-node-add-news .node-events-form .table-responsive,
+  .page-node-add-events .node-news-form .table-responsive,
+  .page-node-add-news .node-news-form .table-responsive {
+    border: none;
+  }
   .page-node-add-events .node-events-form #edit-field-country-code,
   .page-node-add-news .node-events-form #edit-field-country-code,
   .page-node-add-events .node-news-form #edit-field-country-code,
@@ -21827,6 +21872,34 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-events .node-news-form .field-name-field-related-documents .form-file,
   .page-node-add-news .node-news-form .field-name-field-related-documents .form-file {
     max-width: 200px !important;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data input,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data input,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data input,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data input {
+    max-width: 64%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
+    float: left;
+    display: block !important;
+    width: inherit;
+    height: 14px;
+    width: 36%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button {
+    max-width: 100%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span {
+    height: initial !important;
   }
   /*fin create events & news*/
   .view-mode-full .hwc-share-widget ul .share-this-article {
