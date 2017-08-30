@@ -62,12 +62,12 @@ function hwc_practical_tool_views_post_render(&$view, &$output, &$cache) {
  */
 function hwc_practical_tool_block_info() {
   $blocks = array();
-  $blocks['hwc_practical_tool_listing'] = array(
-    'info' => t('Practical tools listing'),
+  $blocks['hwc_practical_tool_text'] = array(
+    'info' => t('Practical tool text'),
     'status' => 1,
     'region' => '-1',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'cache' => DRUPAL_NO_CACHE,
+    'cache' => DRUPAL_CACHE_GLOBAL,
   );
   $blocks['hwc_practical_tool_language_list'] = array(
     'info' => t('Practical tool language list'),
@@ -91,6 +91,24 @@ function hwc_practical_tool_block_info() {
  */
 function hwc_practical_tool_block_view($delta = '') {
   $block = array();
+  if ($delta == 'hwc_practical_tool_text') {
+    $block['title'] = '<none>';
+    $node = node_load(139);
+    $w = entity_metadata_wrapper('node', $node->nid);
+    $block['content'] = '
+    <div class="content">
+      <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+        <div class="field-items">
+          <div class="field-item even" property="content:encoded">
+            <p class="Textfo">
+              <span lang="EN-GB" xml:lang="EN-GB">' . $w->body->value()['safe_value'] . '</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>';
+  }
+
   if ($delta == 'hwc_practical_tool_language_list') {
     if ($node = menu_get_object()) {
       $q = db_select('languages', 'l');
@@ -105,10 +123,6 @@ function hwc_practical_tool_block_view($delta = '') {
         )
       );
     }
-  }
-  if ($delta == 'hwc_practical_tool_listing') {
-    module_load_include('inc', 'hwc_practical_tool', 'hwc_practical_tool.pages');
-    $block['content'] = drupal_get_form('hwc_practical_tool_menu_tools_form');
   }
 
   if ($delta == 'hwc_practical_tool_back_to_list') {

@@ -141,6 +141,9 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
       </div>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
+      <div class="below_title">
+        <?php print render($page['below_title']); ?>
+      </div>
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
       <?php endif; ?>

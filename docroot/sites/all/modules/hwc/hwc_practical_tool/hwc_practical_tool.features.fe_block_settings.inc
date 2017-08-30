@@ -360,21 +360,21 @@ function hwc_practical_tool_default_fe_block_settings() {
     'visibility' => 0,
   );
 
-  $export['hwc_practical_tool-hwc_practical_tool_listing'] = array(
-    'cache' => -1,
+  $export['hwc_practical_tool-hwc_practical_tool_text'] = array(
+    'cache' => 8,
     'css_class' => '',
     'custom' => 0,
-    'delta' => 'hwc_practical_tool_listing',
+    'delta' => 'hwc_practical_tool_text',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'hwc_practical_tool',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'below_title',
+        'status' => 1,
         'theme' => 'hwc_frontend',
         'weight' => 0,
       ),
@@ -386,7 +386,7 @@ function hwc_practical_tool_default_fe_block_settings() {
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;
