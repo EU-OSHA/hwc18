@@ -514,6 +514,10 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See More Publications';
   $handler->display->display_options['link_url'] = 'publications?relevant_for[%1]';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -583,18 +587,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['field_summary']['label'] = '';
   $handler->display->display_options['fields']['field_summary']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_summary']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['field_summary']['settings'] = array(
-    'trim_link' => '0',
-    'trim_length' => '300',
-    'trim_type' => 'chars',
-    'trim_suffix' => '...',
-    'more_link' => '0',
-    'more_text' => 'Read more',
-    'trim_options' => array(
-      'text' => 0,
-    ),
-    'trim_preserve_tags' => '',
     'field_formatter_class' => 'col-sm-9',
   );
   /* Field: Global: Custom text */
