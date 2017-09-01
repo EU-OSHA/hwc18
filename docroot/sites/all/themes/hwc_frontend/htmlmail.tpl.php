@@ -124,10 +124,9 @@
   <br/>
   <br/>
   <?php
-    $directory = drupal_get_path('theme', 'hwc_frontend');
     global $base_url; // TODO: should link to node
     print l(theme('image', array(
-      'path' => $directory . '/images/email-footer.png',
+      'path' => $base_url . '/sites/all/themes/hwc_frontend/images/email-footer.png',
       'width' => 892,
       'height' => 154,
       'attributes' => array('style' => 'border: 0px;')
