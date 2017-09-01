@@ -20,13 +20,47 @@ $url_query = array();
 if (!empty($campaign_id)) {
   $url_query = array('pk_campaign' => $campaign_id);
 }
+// todo: move to .less
 ?>
+<style>
+    .page-node-129 table {
+        font-family: Arial, sans-serif;
+    }
+    .page-node-129 table .tr_h {
+        height: 100%;
+    }
+    .page-node-129 table tr .td_h {
+        padding-right: 0px;
+        vertical-align: top;
+        padding-top: 5px;
+        font-family: Arial, sans-serif;
+        width:10px;
+    }
+    .page-node-129 table tr .ar {
+        text-align: left;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        padding-left:0px;
+    }
+    .page-node-129 table tr .rs2 {
+        width:40px;
+        padding-right: 10px;
+    }
+    .page-node-129 table tr .pt15 {
+        padding-top: 15px;
+    }
+    .page-node-129 table tr .cs2 {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding-bottom: 0;
+    }
+</style>
 <?php if($node->title != NULL) {?>
-  <table id="node-<?php print $node->nid; ?>" border="0" cellpadding="0" cellspacing="0" width="100%" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>" style="font-family: Arial, sans-serif;" >
+  <table id="node-<?php print $node->nid; ?>" border="0" cellpadding="0" cellspacing="0" width="100%" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>">
     <tbody>
       <?php if(!empty($node->old_newsletter)): ?>
         <tr>
-          <td colspan="3" style="padding-top: 15px;"></td>
+          <td colspan="3" class="pt15"></td>
         </tr>
       <?php endif; ?>
     <?php
@@ -34,7 +68,7 @@ if (!empty($campaign_id)) {
       $date = strtotime($node->field_publication_date[LANGUAGE_NONE][0]['value']);
       ?>
       <tr>
-        <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
+        <td colspan="2" class="cs2">
           <span class="item-date"><?php print format_date($date, 'custom', 'd/m/Y');?></span>
         </td>
       </tr>
@@ -46,7 +80,7 @@ if (!empty($campaign_id)) {
       ?>
       <tr>
         <?php if (empty($node->old_newsletter)): ?>
-          <td rowspan="2" width="40" style="width:40px; padding-right: 10px;">
+          <td class="rs2" rowspan="2" width="40">
             <?php
               global $base_url;
 
@@ -68,11 +102,11 @@ if (!empty($campaign_id)) {
             ));
             ?>
           </td>
-          <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
+          <td colspan="2" class="cs2">
             <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
           </td>
         <?php else: ?>
-          <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-bottom: 0;">
+          <td colspan="2" class="cs2">
             <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
           </td>
         <?php endif; ?>
@@ -80,14 +114,14 @@ if (!empty($campaign_id)) {
       <?php
     }
     ?>
-    <tr style="height: 100%;">
+    <tr class="tr_h">
       <?php if (!in_array($node->type, ['twitter_tweet_feed'])
                 && (empty($node->parent_section) || $node->parent_section != 13)) { ?>
-        <td align="left" width="10" style="padding-right: 0px; vertical-align: top; padding-top: 5px; font-family: Arial, sans-serif;width:10px;">
+        <td class="td_h" align="left" width="10">
           <span> > </span>
         </td>
       <?php } ?>
-      <td align="right" style="text-align: left; padding-top: 5px; padding-bottom: 10px; padding-left:0px;">
+      <td class="ar" align="right">
         <?php
         $link ='node/' . $node->nid;
         if (isset($node->alt_url)) {
@@ -137,7 +171,7 @@ if (!empty($campaign_id)) {
     </tr>
     <?php if(!empty($node->old_newsletter)): ?>
       <tr>
-        <td colspan="3" style="padding-top: 15px;"></td>
+        <td colspan="3" class="pt15"></td>
       </tr>
     <?php endif; ?>
     </tbody>
