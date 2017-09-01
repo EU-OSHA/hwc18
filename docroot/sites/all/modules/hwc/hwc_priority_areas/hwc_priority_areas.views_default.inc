@@ -547,7 +547,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['label'] = '';
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['element_wrapper_class'] = 'col-sm-3';
+  $handler->display->display_options['fields']['field_image']['element_wrapper_class'] = 'col-xs-12 col-sm-2 col-lg-1';
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
     'image_style' => 'medium',
@@ -599,7 +599,7 @@ function hwc_priority_areas_views_default_views() {
 <div class="field-summary">[field_summary]</div>
 <div class="see-more">[view_node]</div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-9';
+  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-10';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Highlights (field_highlights:delta) */
   $handler->display->display_options['sorts']['delta']['id'] = 'delta';
