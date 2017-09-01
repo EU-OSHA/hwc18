@@ -25,6 +25,12 @@ if (!empty($campaign_id)) {
 <style>
     .page-node-129 table {
         font-family: Arial, sans-serif;
+        border: none;
+        width: 100%;
+        border-spacing: 0;
+    }
+    .page-node-129 table td {
+        padding: 0;
     }
     .page-node-129 table .tr_h {
         height: 100%;
@@ -35,6 +41,7 @@ if (!empty($campaign_id)) {
         padding-top: 5px;
         font-family: Arial, sans-serif;
         width:10px;
+        text-align:left;
     }
     .page-node-129 table tr .ar {
         text-align: left;
@@ -56,7 +63,7 @@ if (!empty($campaign_id)) {
     }
 </style>
 <?php if($node->title != NULL) {?>
-  <table id="node-<?php print $node->nid; ?>" border="0" cellpadding="0" cellspacing="0" width="100%" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>">
+  <table id="node-<?php print $node->nid; ?>" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>">
     <tbody>
       <?php if(!empty($node->old_newsletter)): ?>
         <tr>
@@ -80,7 +87,7 @@ if (!empty($campaign_id)) {
       ?>
       <tr>
         <?php if (empty($node->old_newsletter)): ?>
-          <td class="rs2" rowspan="2" width="40">
+          <td class="rs2" rowspan="2">
             <?php
               global $base_url;
 
@@ -117,11 +124,11 @@ if (!empty($campaign_id)) {
     <tr class="tr_h">
       <?php if (!in_array($node->type, ['twitter_tweet_feed'])
                 && (empty($node->parent_section) || $node->parent_section != 13)) { ?>
-        <td class="td_h" align="left" width="10">
+        <td class="td_h">
           <span> > </span>
         </td>
       <?php } ?>
-      <td class="ar" align="right">
+      <td class="ar">
         <?php
         $link ='node/' . $node->nid;
         if (isset($node->alt_url)) {
