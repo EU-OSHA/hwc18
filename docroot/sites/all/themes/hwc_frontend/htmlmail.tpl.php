@@ -125,7 +125,7 @@
   <br/>
   <?php
     global $base_url; // TODO: should link to node
-    print l(theme('image', array(
+    $link = l(theme('image', array(
       'path' => $base_url . '/sites/all/themes/hwc_frontend/images/email-footer.png',
       'width' => 892,
       'height' => 154,
@@ -134,6 +134,7 @@
       'html' => TRUE,
       'external' => TRUE
     ));
+    print str_replace('http://http://', 'http://', $link);
   ?>
 </div>
 
