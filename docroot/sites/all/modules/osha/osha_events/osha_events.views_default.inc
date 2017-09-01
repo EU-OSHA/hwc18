@@ -1575,6 +1575,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -1728,6 +1729,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['body']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['body']['settings'] = array(
