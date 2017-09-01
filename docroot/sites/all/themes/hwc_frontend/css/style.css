@@ -8193,7 +8193,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-top: 40px;
 }
 #homepage_slider .views-field-title {
-  font-size: 39px;
+  font-size: 2em;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -8204,14 +8204,14 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   text-align: right;
 }
 #homepage_slider .views-field-title span {
-  width: 396px !important;
+  width: 300px !important;
   float: right;
   margin-right: 25px;
   margin-top: 10px;
 }
 /*Fix to EN language 3 lines*/
 html:lang(en) #homepage_slider .views-field-title span {
-  width: 240px !important;
+  width: 300px !important;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   #homepage_slider .more-link {
@@ -10871,6 +10871,25 @@ article .hwc-share-widget ul {
 .page-practical-tools h1 {
   border-bottom: none;
   margin-bottom: 0em;
+}
+.page-practical-tools .below_title .field-type-text-with-summary {
+  padding-right: 85px;
+  padding-left: 85px;
+  margin: 0 25px;
+  padding-bottom: 1em;
+}
+.page-practical-tools .below_title .field-type-text-with-summary p {
+  text-align: center;
+  font-size: 1.2em;
+}
+.node-type-practical-tool .panel-col .field-label {
+  min-width: 192px;
+  width: 240px;
+}
+@media only screen and (max-width: 767px) {
+  .node-type-practical-tool .panel-col .field-label {
+    min-width: 100%;
+  }
 }
 p.no-results {
   padding: 1em;
@@ -16204,6 +16223,14 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links div.more-link a:before {
   content: "> ";
 }
+.priority-detail .highlights .view-header,
+.priority-detail .tools_and_guidance .view-header,
+.priority-detail .case_studies .view-header,
+.priority-detail .publications .view-header,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .view-header,
+.priority-detail .related_links .view-header {
+  margin-bottom: 15px;
+}
 .priority-detail .highlights .views-row,
 .priority-detail .tools_and_guidance .views-row,
 .priority-detail .case_studies .views-row,
@@ -16247,6 +16274,18 @@ input#edit-field-image-und-0-upload::before {
 }
 .priority-detail .highlights h2.pane-title:before {
   content: url(../images/content/icono-highlights.png);
+}
+@media (min-width: 1200px) {
+  .priority-detail .highlights .views-row .views-field-nothing {
+    padding-left: 30px;
+  }
+}
+.priority-detail .highlights .field-summary a {
+  background-color: transparent;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid #749b00;
 }
 .priority-detail .tools_and_guidance h2.pane-title:before {
   content: url(../images/content/tools-and-resources.png);
@@ -17225,7 +17264,7 @@ input#edit-field-image-und-0-upload::before {
   .front #block-views-frontpage-slider-block #homepage_slider img {
     position: absolute;
     width: initial;
-    right: -276px;
+    right: -190px;
   }
 }
 @media only screen and (max-width: 1022px) {
@@ -17398,7 +17437,7 @@ input#edit-field-image-und-0-upload::before {
     margin-bottom: 0;
   }
   .front #homepage_slider img {
-    right: -329px !important;
+    right: -238px !important;
   }
   .front #homepage_slider .views-field-title span {
     margin-right: 10px;
@@ -19932,6 +19971,12 @@ input#edit-field-image-und-0-upload::before {
   }
   .page-practical-tools .form-type-checkbox label {
     font-size: 14px;
+  }
+  .page-practical-tools .below_title .field-type-text-with-summary {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0 25px;
+    padding-bottom: 1em;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
     padding-left: 15px;
