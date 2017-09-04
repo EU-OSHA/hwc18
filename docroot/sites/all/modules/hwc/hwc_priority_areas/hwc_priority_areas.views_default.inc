@@ -151,6 +151,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -218,6 +219,7 @@ function hwc_priority_areas_views_default_views() {
 <div class="field-body">[body]</div>
 <div class="field-file">[field_file]</div>
 <div class="see-more">[view_node]</div>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Type */
@@ -303,6 +305,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -335,6 +338,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
 <div class="field-body">[body]</div>
 <div class="see-more">[view_node]</div>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'Topic Related - Tools and Guidance';
 
@@ -388,6 +392,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
   $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_type'] = 'div';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'smart_trim_format';
   $handler->display->display_options['fields']['body']['settings'] = array(
@@ -457,6 +462,7 @@ function hwc_priority_areas_views_default_views() {
 <div class="field-body">[body]</div>
 <div class="field-file">[field_file]</div>
 <div class="see-more">[view_node]</div>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-9';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -586,6 +592,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['field_summary']['field'] = 'field_summary';
   $handler->display->display_options['fields']['field_summary']['label'] = '';
   $handler->display->display_options['fields']['field_summary']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_summary']['element_type'] = 'div';
   $handler->display->display_options['fields']['field_summary']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_summary']['settings'] = array(
     'field_formatter_class' => 'col-sm-9',
@@ -598,6 +605,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
 <div class="field-summary">[field_summary]</div>
 <div class="see-more">[view_node]</div>';
+  $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-10';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
