@@ -16907,6 +16907,27 @@ input#edit-field-image-und-0-upload::before {
     padding-top: 0.9em !important;
   }
 }
+/*end sticky menu*/
+/*Newsletter mail styles*/
+.page-node-129 table {
+  font-family: Arial, sans-serif;
+  border: none;
+  width: 100%;
+  border-spacing: 0;
+}
+.page-node-129 table td {
+  padding: 0;
+}
+.page-node-129 table .tr_h {
+  height: 100%;
+  padding-top: 5px;
+  font-family: Arial, sans-serif;
+  width: 10px;
+  text-align: left;
+}
+.page-node-129 table tr .ar {
+  text-align: left;
+}
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
   border: none;
