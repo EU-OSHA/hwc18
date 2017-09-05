@@ -353,6 +353,12 @@ function hwc_frontend_preprocess_field(&$variables) {
   }
 }
 function hwc_frontend_preprocess_node(&$vars) {
+  $search_str = '<div class="col-sm-12 col-md-8 col-md-offset-2">';
+  if ((isset($vars['body'][0]['safe_value'])) && (strpos($vars['body'][0]['safe_value'], $search_str))) {
+    $search_str = '<div class="row text-center recomended-resources-for-you">' . "\n" . $search_str;
+    $vars['content']['body'][0]['#markup'] = str_replace($search_str, $search_str . '<h2 class="recomended-for-you">&nbsp;</h2>', $vars['content']['body'][0]['#markup']);
+    //todo hide h2.recomended-for-you
+  }
   if ($vars['view_mode'] == 'teaser' && $vars['type'] == 'audio_visual') {
     $vars['classes_array'][] = 'node-practical-tool';//todo tmp solution for css classes...
   }
