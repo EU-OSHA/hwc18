@@ -318,7 +318,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -88,
+        'weight' => -89,
       ),
       'seven' => array(
         'region' => '',
