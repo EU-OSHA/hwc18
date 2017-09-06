@@ -490,6 +490,13 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * post_render function to fix captcha label
+ */
+function hwc_content_post_render($content) {
+  return str_replace('for="edit-captcha-response"','for="security_code"', $content);
+}
+
+/**
  * Implements hook_form_alter().
  */
 function hwc_form_alter(&$form, &$form_state, $form_id) {
