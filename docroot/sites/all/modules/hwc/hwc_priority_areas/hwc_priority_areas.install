@@ -216,3 +216,30 @@ function hwc_priority_areas_update_7024() {
 function hwc_priority_areas_update_7025() {
   features_revert_module('hwc_priority_areas');
 }
+
+
+/**
+ * Revert priority areas module
+ */
+function hwc_priority_areas_update_7026() {
+  $tids = [778];
+  foreach ($tids as $tid) {
+    $term = taxonomy_term_load($tid);
+    $term->field_thumbnail = [];
+    $term->field_image = [];
+    taxonomy_term_save($term);
+  }
+}
+
+/**
+ * Revert priority areas module
+ */
+function hwc_priority_areas_update_7027() {
+  $tids = [779, 780, 781, 782, 783];
+  foreach ($tids as $tid) {
+    $term = taxonomy_term_load($tid);
+    $term->field_thumbnail = [];
+    $term->field_image = [];
+    taxonomy_term_save($term);
+  }
+}

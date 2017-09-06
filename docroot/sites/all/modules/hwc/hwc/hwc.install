@@ -626,3 +626,10 @@ function hwc_update_7036() {
   features_revert_module('osha_news');
   module_enable(['hwc_good_practice_exchange']);
 }
+
+/**
+ * News and events title tag
+ */
+function hwc_update_7037() {
+  features_revert_module('osha_news');
+}

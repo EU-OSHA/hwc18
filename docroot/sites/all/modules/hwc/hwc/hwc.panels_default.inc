@@ -451,7 +451,7 @@ function hwc_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-3c99908b-6432-4a3b-8b59-d78bcb842f81';
+  $pane->pid = 'new-2e8c7868-a04f-4160-89ee-67388d9c9d99';
     $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'frontpage_events';
@@ -460,7 +460,7 @@ function hwc_default_panels_mini() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 0,
-      'nodes_per_page' => '4',
+    'nodes_per_page' => '3',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -470,9 +470,9 @@ function hwc_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'block',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+    'override_title' => 1,
+    'override_title_text' => 'Events',
+    'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -482,11 +482,11 @@ function hwc_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '3c99908b-6432-4a3b-8b59-d78bcb842f81';
-    $display->content['new-3c99908b-6432-4a3b-8b59-d78bcb842f81'] = $pane;
-    $display->panels['center'][0] = 'new-3c99908b-6432-4a3b-8b59-d78bcb842f81';
+  $pane->uuid = '2e8c7868-a04f-4160-89ee-67388d9c9d99';
+  $display->content['new-2e8c7868-a04f-4160-89ee-67388d9c9d99'] = $pane;
+  $display->panels['center'][0] = 'new-2e8c7868-a04f-4160-89ee-67388d9c9d99';
     $pane = new stdClass();
-    $pane->pid = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $pane->pid = 'new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
     $pane->panel = 'content';
     $pane->type = 'views';
     $pane->subtype = 'news';
@@ -495,7 +495,7 @@ function hwc_default_panels_mini() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 0,
-      'nodes_per_page' => '4',
+    'nodes_per_page' => '3',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -505,9 +505,9 @@ function hwc_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'oshnews_latest',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+    'override_title' => 1,
+    'override_title_text' => 'News',
+    'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -517,11 +517,11 @@ function hwc_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '96773291-4162-4f6e-95b7-d86fef28b815';
-    $display->content['new-96773291-4162-4f6e-95b7-d86fef28b815'] = $pane;
-    $display->panels['content'][0] = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $pane->uuid = 'd0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
+  $display->content['new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92'] = $pane;
+  $display->panels['content'][0] = 'new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $display->title_pane = '0';
   $mini->display = $display;
   $export['news_and_events'] = $mini;
 
