@@ -4,8 +4,6 @@ use \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class OSHNewsletter {
 
-  public static $fontUrl = 'https://fonts.googleapis.com/css?family=Oswald:200,400,500';
-
   public static function getTemplatesList() {
     return [
       'newsletter_full_width_details' => 'Teaser (full width)',
@@ -315,7 +313,7 @@ class OSHNewsletter {
           $cellContent = self::getCellContent($template, $node);
           $content['#rows'][] = [
             'data' => [$cellContent],
-            'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+            'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
             'no_striping' => true,
           ];
         }
@@ -387,7 +385,7 @@ class OSHNewsletter {
           // $cellContent['height'] = '100%';
           $cellContent['align'] = 'left';
           $cellContent['valign'] = 'top';
-          $cellStyle = sprintf('max-width:%spx;background-color: #003399;', $cellWidth);
+          $cellStyle = sprintf('max-width:%spx;background-color: #749b00;', $cellWidth);
           if (empty($cellContent['style'])) {
             $cellContent['style'] = $cellStyle;
           }
@@ -399,14 +397,14 @@ class OSHNewsletter {
           if ($currentCol++ === 0) {
             $content['#rows'][$currentRow] = [
               'data' => [$cellContent],
-              'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+              'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
               'no_striping' => true,
             ];
-            $content['#rows'][$currentRow]['data'][] = ['data' => '&nbsp;', 'style' => 'padding-bottom: 4px; min-width:4px; padding-top: 0; width: 4px; margin:0;font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'class' => 'template-column' ];
+            $content['#rows'][$currentRow]['data'][] = ['data' => '&nbsp;', 'style' => 'padding-bottom: 4px; min-width:4px; padding-top: 0; width: 4px; margin:0;font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'class' => ['template-column', 'template-separator']];
           }
           else {
             $content['#rows'][$currentRow++]['data'][] = $cellContent;
-            $content['#rows'][$currentRow++]['data'][] = ['data' => '&nbsp;', 'style' => 'paddipadding-top: 0; ng: 0px; height:4px; font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'colspan' => '3', 'class' => ['template-column', 'template-separator'] ];
+            $content['#rows'][$currentRow++]['data'][] = ['data' => '&nbsp;', 'style' => 'padding: 0px; height:4px; font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'colspan' => '3', 'class' => ['template-column', 'template-separator'] ];
             $currentCol = 0;
           }
         }
@@ -450,7 +448,7 @@ class OSHNewsletter {
           if ($currentCol++ === 0) {
             $content['#rows'][$currentRow] = [
               'data' => [$cellContent],
-              'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+              'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
               'no_striping' => true,
             ];
           }
@@ -642,6 +640,11 @@ class OSHNewsletter {
 
     $footer = theme('newsletter_footer', array('campaign_id' => $campaign_id));
 
+    global $osha_newsletter_send_mail;
+    $newsletterClasses = [
+      'newsletter-container',
+      empty($osha_newsletter_send_mail) ? 'web-version' : ''
+    ];
     $fullNewsletter = [
       '#theme' => 'table',
       '#header' => [],
@@ -662,7 +665,7 @@ class OSHNewsletter {
           'class' => 'footer-container',
         ],
       ],
-      '#attributes' => ['class' => ['newsletter-container'], 'border' => '0', 'cellpadding' => '0', 'width' => '800'],
+      '#attributes' => ['class' => $newsletterClasses, 'border' => '0', 'cellpadding' => '0', 'width' => '800'],
       '#printed' => false,
       '#sticky' => false,
       '#children' => [],
@@ -740,10 +743,6 @@ class OSHNewsletter {
     $domDocument->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
     $domDocument->formatOutput = true;
 
-    $font = $domDocument->createElement('link');
-    $font->setAttribute('rel', 'stylesheet');
-    $font->setAttribute('href', self::$fontUrl);
-
     $meta = $domDocument->createElement('meta');
     $meta->setAttribute('name', 'viewport');
     $meta->setAttribute('content', 'width=device-width, initial-scale=1.0');
@@ -777,7 +776,6 @@ class OSHNewsletter {
     if (empty($head->length)) {
       $head = $domDocument->createElement('head');
       $head->appendChild($meta);
-      $head->appendChild($font);
       $head->appendChild($yahooStyle);
       $head->appendChild($outlookStyle);
       $head->appendChild($responsiveStyle);
@@ -790,7 +788,6 @@ class OSHNewsletter {
     else {
       $head = $head->item(0);
       $head->appendChild($meta);
-      $head->appendChild($font);
       $head->appendChild($yahooStyle);
       $head->appendChild($outlookStyle);
       $head->appendChild($responsiveStyle);
