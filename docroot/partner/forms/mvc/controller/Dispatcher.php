@@ -36,8 +36,6 @@ class Dispatcher {
                 $controller = new $route();
                 if (method_exists($controller, 'executeAction')) {
                     $controller->executeAction();
-                    
-                    
                 }
                 $controller->execute();
             } catch (CDBException $e) {

@@ -28,7 +28,7 @@ function osha_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -79,
+        'weight' => -87,
       ),
       'seven' => array(
         'region' => '',
@@ -50,14 +50,15 @@ function osha_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'search',
+    'pages' => 'search
+practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -80,
+        'weight' => -88,
       ),
       'seven' => array(
         'region' => '',
@@ -66,7 +67,7 @@ function osha_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => 'Priority area:',
+    'title' => 'Topic:',
     'visibility' => 1,
   );
 
@@ -86,7 +87,7 @@ function osha_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -81,
+        'weight' => -89,
       ),
       'seven' => array(
         'region' => '',
@@ -145,14 +146,15 @@ tools-and-publications/seminars
 legislation/directives/*
 safety-and-health-legislation/european-directives
 node/2544
-legislation/guidelines/*',
+legislation/guidelines/*
+practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -82,
+        'weight' => -91,
       ),
       'seven' => array(
         'region' => '',
@@ -203,14 +205,15 @@ legislation/guidelines/*',
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'search',
+    'pages' => 'search
+practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
-        'region' => 'content',
+        'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -79,
+        'weight' => -92,
       ),
       'seven' => array(
         'region' => '',

@@ -34,12 +34,23 @@ function hwc_good_practice_exchange_block_info() {
 function hwc_good_practice_exchange_block_view($delta = '') {
   $block = array();
   if ($delta == 'gpe_links') {
+    $prefix = '<div class="col-xs-12 col-sm-4">';
+    $suffix = '</div>';
     $items = [];
-    $items[] = l(t('Become in campaign partner'),'partner/register');//or 'become-campaign-partner'
-    $items[] = l(t('Get involved in Good Practice exchange initiative'),'good-practice-exchange-initiative'); // todo ... Link to a new page where users can send an email to get involved in this initiative.
-    $items[] = l(t('Access to the private zone'),'private');
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Become a campaign partner') . '</span>',
+      'partner/register',
+      ['html'=>TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>',
+      '/good-practice-exchange-initiative',
+      ['absolute' => TRUE, 'html'=>TRUE, 'attributes' => ['class' => 'get-involved']]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Access to the private zone') . '</span>',
+      'private',
+      ['html'=>TRUE, 'attributes' => ['class' => 'private-zone']]);
     $block['subject'] = '';
-    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['menu']['#markup'] = '<div class="gpe-links-block">' . $prefix . implode($suffix . $prefix, $items) . $suffix . '</div>';
   }
 
   if ($delta == 'gpe_tools_publications') {
@@ -47,8 +58,14 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $items = [];
     $items[] = l(t('Case studies'),'case-studies', ['attributes' => ['class' => 'case-studies']]);
     $items[] = l(t('Publications'),'publications', ['attributes' => ['class' => 'publications']]);
-    $items[] = l(t('E-guides'),'healthy-workplaces-all-ages-e-guide', ['attributes' => ['class' => 'e-guides']]);//todo Dangerous substances e-tool
-   $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $items[] = l(t('DS e-tool'),'e-tool', ['attributes' => ['class' => 'e-guides']]);
+    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['link'] = array(
+      'type' => 'item',
+      '#prefix' => '<div class="more-link">',
+      '#markup' => l(t('See other Tools and Publications'), 'tools_and_publications'),
+      '#suffix' => '</div>',
+    );
   }
 
   return $block;

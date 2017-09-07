@@ -490,6 +490,13 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * post_render function to fix captcha label
+ */
+function hwc_content_post_render($content) {
+  return str_replace('for="edit-captcha-response"','for="security_code"', $content);
+}
+
+/**
  * Implements hook_form_alter().
  */
 function hwc_form_alter(&$form, &$form_state, $form_id) {
@@ -634,7 +641,7 @@ function hwc_field_widget_form_alter(&$element, &$form_state, $context) {
   if ($is_events_form) {
     switch ($element['#field_name']) {
       case 'title_field':
-        $placeholder = 'Event title. Max 60 characters.';
+        $placeholder = 'Event title. Max 150 characters.';
         $element['value']['#attributes']['placeholder'] = $placeholder;
         break;
 
@@ -769,11 +776,11 @@ function hwc_node_view($node, $view_mode, $langcode) {
     $know_more_about_napo = NAPO_WEBSITE . '/about-napo/the-napo-story';
 
     $node->content['title_field'][0]['#markup'] =
-      '<div class="watch-other-link"><a href="' . $watch_other_link . '">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
-      '<div class="icon napo-logo"><a href="' . $napo_logo_link . '"></a></div>' .
-      '<h2>' . l(t('About Napo'), $about_napo_link) . '</h2>';
+      '<div class="watch-other-link"><a href="' . $watch_other_link . '" target="_blank">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
+      '<div class="icon napo-logo"><a href="' . $napo_logo_link . '" target="_blank"></a></div>' .
+      '<h2>' . l(t('About Napo'), $about_napo_link, ['attributes' => ['target' => '_blank']]) . '</h2>';
 
-    $node->content['body'][0]['#markup'] .= '<div class="more-link"><a href="' . $know_more_about_napo . '">' . t('Know more about Napo') . '</a></div>';
+    $node->content['body'][0]['#markup'] .= '<div class="more-link"><a href="' . $know_more_about_napo . '" target="_blank">' . t('Know more about Napo') . '</a></div>';
   }
 }
 
@@ -813,6 +820,9 @@ function hwc_news_share_widget($node, $options = array()) {
   // Custom label for videos related articles.
   if (!empty($node->nid) && ($node->nid == 160 || $node->nid == 108)) {
     $vars['label'] = t('Share this video');
+  }
+  if (!empty($node->nid) && ($node->nid == 366)) {
+    $vars['label'] = t('I participate in the Healthy Workplaces Manage Dangerous Substances Campaign. Join us on URL');
   }
 
   // Merge default vars with ones from options.
@@ -1058,7 +1068,7 @@ function hwc_partner_registration_allowed() {
  * Implements hook_webform_component_render_alter().
  */
 function hwc_webform_component_render_alter(&$element, &$component) {
-  if ($component['cid'] == 9) {
+  if (($component['cid'] == 3) || ($component['cid'] == 9)) {
     // Add description link.
     $link = l(t('Privacy notice'), 'privacy-policy-certificate-participation', array('attributes'=> array('target' => '_blank')));
     $element['#description'] = str_replace('[PRIVACY_NOTICE]', $link, $element['#description']);

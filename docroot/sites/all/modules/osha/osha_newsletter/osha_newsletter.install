@@ -207,3 +207,10 @@ function osha_newsletter_update_7006() {
   $allowed_bundles["youtube"] = "youtube";
   variable_set('osha_newsletter_allowed_bundles', $allowed_bundles);
 }
+
+/**
+ * Revert osha_newsletter module
+ */
+function osha_newsletter_update_7007() {
+  features_revert_module('osha_newsletter');
+}

@@ -209,7 +209,7 @@ header{
 	#homepage_slider{
 		margin-bottom: 0;
 		img{
-			right: -329px !important;
+			right: -238px !important;
 		}
 		.views-field-title span{
 			margin-right: @margin-tablet1;
@@ -383,6 +383,9 @@ header{
 }
 /* End Block: recommended-articles and recommended-resources and article aditional resources*/
 
+.results-for{
+	margin-left: 15px;
+}
 /*Practical tools*/
 .page-practical-tools{
 	#edit-content{
@@ -473,7 +476,7 @@ header{
 	}
 	.form-checkboxes{
 		display: none;
-		margin-top: 15px;
+		margin-top: 10px;
 	}
 /*FIN Practical tools*/
 	
@@ -872,41 +875,59 @@ header{
 	.region-sidebar-first{
 		border-bottom: none;
 		border-top: 1px dotted @border-default-color;
-		margin-bottom: 0;
+		margin-bottom: 0px;
 		margin-left: 0;
 		padding-top: 0;
 		padding-bottom: 0;
-		h2{
-		    padding: 0.5em @margin-tablet 0;
-			float: left;
-			margin-bottom: 0;
+		#edit-search-block-form--3-wrapper{
+			margin-bottom: 10px;
+			padding-right: 15px;
+			padding-left: 15px;
+			
 		}
-		.facetapi-facetapi-checkbox-links{
-			padding-left: @margin-tablet;
-			padding-top: 0.7em;
-			margin-bottom: 0;
-			display: inline-block;
-			li{
-				float: left;
-				width: 20%;
-				width: auto;
-				white-space: nowrap;
-				margin-right: 1em;
+		.views-submit-button{
+			button{
+				right: 15px !important;
 			}
 		}
-	}
-	.views-exposed-form{
-		padding-left: @margin-tablet2;
-	}
-	#views-exposed-form-search-site{
-		padding-left: 15px;
-		padding-right: 15px;
+		#block-osha-search-osha-search-clear-filters{
+			a{
+				margin-bottom: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+		}
+		.block.block-facetapi{
+			border-bottom: none;
+			padding-top: 0px;
+			padding-bottom: 10px;
+			overflow: hidden;
+			h2{
+			    padding: 8px 15px;
+				margin-bottom: 0;
+				background-color: @color8;
+			}
+			.facetapi-facetapi-checkbox-links{
+				padding-left: 15px;
+				margin-bottom: 0;
+				display: block;
+				li{
+					width: 20%;
+					width: auto;
+					white-space: nowrap;
+					margin-right: 1em;
+				}
+			}
+		}
 	}
 	.region.region-content{
 		float: left;
 		width: 100%;
 		margin-left: 0;
 		.view-search{
+			.view-header{
+				padding: 7px 15px;
+			}
 			.view-content .views-row{
 				padding-left: @margin-tablet;
 				padding-right: @margin-tablet;
@@ -1364,6 +1385,7 @@ h1{
 				position: relative !important;
 			}
 			.napo_films{
+				height: 515px;
 				.num_slides{
 					font-size: 16px;
 					//position: inherit !important;
@@ -1416,36 +1438,30 @@ h1{
 }
 
 /*Social media*/
-.page-social-dashboard{
+.page-social-media-centre{
 	.main-container{
 		h1{
 			padding-left: 15px;
 			padding-right: 15px;
 		}
 	}
-	.view-id-social_dashboard{
-		.view-filters{
-			margin-left: 15px;
-			margin-right: 15px;
-			.views-exposed-widgets{
-				margin-top: 0px;
-			}
+	#social-dashboard-media-centre-form{
+		margin-right: 15px;
+		margin-left: 15px;
+		margin-top: 0px;
+	}
+	.linkedin-column{
+		border-left: none;
+		border-right: none;
+		.feed-s-update{
+			width: 100% !important;
 		}
-		.social-dashboard-column-plugin-style{
-			.linkedin-column{
-				border-left: none;
-				border-right: none;
-				.feed-s-update{
-					width: 100% !important;
-				}
-			}
-			.twitter-column{
-				twitterwidget{
-					width: 50% !important;
-					display: inline-block !important;
-					padding: 0px 10px;
-				}
-			}
+	}
+	.twitter-column{
+		twitterwidget{
+			width: 50% !important;
+			display: inline-block !important;
+			padding: 0px 10px;
 		}
 	}
 }
@@ -1493,8 +1509,256 @@ h1{
 }
 /*End pag Newsletter*/
 
+/*Good practices, publications, case studies*/
+.page-publications{
+	.main-container.container-fluid{
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+}
+#edit-left-column{
+	position: relative;
+	.form-item-relevant-for,
+	.form-item-field-publication-type,
+	.form-item-language,
+	.form-item-field-priority-area,
+	.form-item-languages{
+		margin-top: 0;
+		padding-top: 10px;
+		border-bottom: none;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+		clear: both;
+		overflow: hidden;
 
+		.checkbox:last-child{
+			margin-bottom: 10px;
+		}
+	}
+	.form-item-field-publication-type > label,
+	.form-item-language > label,
+	.form-item-field-priority-area > label,
+	.form-item-relevant-for > label,
+	.form-item-languages > label,
+	.form-item-publication-type > label{
+		font-size: @size2;
+		font-weight: bold;
+		width: 100%;
+		display: block;
+		clear: both;
+		cursor: pointer;
+		background-color: @color8;
+	    padding: 5px 15px;
+	    font-size: 1.2em;
+	    margin-bottom: 0px;
+	}
 
+	#search{
+		position: relative;
+		overflow: hidden;
+		padding-left: 15px;
+		padding-right: 15px;
+		.form-type-textfield{
+			float: none;
+			width: 100%;
+			input{
+				width: 100%;
+				padding-right: 35px;
+			}
+		}
+		button{
+			position: absolute;
+			right: 15px;
+			top: 7px;
+		}
+	}
+	>a.active{
+		display: inline-block;
+		width: 100%;
+		margin-top: 2px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	>a.active:nth-child(-1){
+		border-bottom: 1px dotted @color3;
+	}
+	.clear_filters{
+		font-weight: bold;
+		margin-top: 4px;
+		a{
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+	.checkbox{
+		width: 100%;
+		margin-left: 15px;
+		margin-right: 15px;
+		input[type=checkbox]:checked{
+			margin-left: -19px;
+			&:before{
+				height: 14px;
+			}
+		}
+	}
+}
+
+#edit-sort-fieldset{
+	.panel-body{
+		padding-left: 15px;
+		padding-right: 15px;
+		.sort-container.col-xs-3{
+			width: inherit;
+			padding-left: 0px;
+			.form-group{
+				margin-bottom: 0px;
+				#edit-sort{
+					display: inline-block;
+				}
+			}
+		}
+		.count-container{
+			margin-top: 7px;
+		}
+	}
+}
+/*end good practices, publications, case studies*/
+
+/*Page introduction tools and publications*/
+.page-publications{
+	.main-container{
+		padding-right: 15px !important;
+    	padding-left: 15px !important;
+    }
+}
+/*End page introduction tools and publications*/
+
+/*page good practice exchange*/
+.page-good-practice-exchange{
+	.panels-flexible-region-inside{
+		.container{
+			margin-right: 0px;
+			margin-left: 0px;
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+		>.pane-node-field-image{
+			.field.field-name-field-image {
+			    float: left;
+			    margin-right: 1em;
+			    margin-bottom: 1em;
+			    width: 100%;
+			    height: 360px;
+			    overflow: hidden;
+			    padding-right: -15px;
+			    padding-left: -15px;
+			}
+		}
+		>.pane-node-title-field{
+			.field-name-title-field {
+			    position: absolute;
+			    background: url(../images/content/image-shadow.png) repeat-x left bottom;
+			    width: 100%;
+			    height: 360px;
+			    z-index: 22;
+			    h1 {
+				    color: #ffffff;
+				    padding-top: 230px;
+				    border: none;
+				    font-size: 2.5em;
+				    font-weight: bold;
+				    text-align: center;
+				    font-style: normal;
+				    margin-top: 10px;
+				    padding-bottom: 10px;
+				}
+			}
+		}
+		
+		.pane-news{
+			.container{
+				padding-right: 0px;
+				padding-left: 0px;
+			}
+		}
+	}
+	.pane-hwc-good-practice-exchange-gpe-tools-publications{
+		margin-left: 0px;
+		margin-right: 0px;
+		.pane-content{
+	    	ul{
+	    		margin-bottom: 40px;
+	    		li{
+					display: inline-block;
+					width: 30%;
+	    			a{
+		    			margin-top: 0px;
+					    padding-top: 85px;
+					    margin-bottom: 0px;
+					    font-style: normal;
+					    background-size: 61px;
+	    				color: white;
+	    				font-size: 1.4em;
+	    				font-weight: bold;
+	    				&:before{
+							content: "";
+	    				}
+	    			}
+	    		}
+	    		li:nth-child(1){
+	    			a{
+					    background: url(../images/content/case-studies.png) no-repeat center 20px;
+	    			}
+	    		}
+	    		li:nth-child(2){
+	    			a{
+					    background: url(../images/content/e-guide.png) no-repeat center 20px;
+	    			}
+	    		}
+	    		li:nth-child(3){
+	    			a{
+					    background: url(../images/content/tools-and-resources.png) no-repeat center 20px;
+	    			}
+	    		}
+	    	}
+	    	.text-muted{
+	    		margin-bottom: 0px;
+	    	}
+	    }
+	}
+}
+/*end good practice exchange*/
+
+/*priority areas*/
+.priority-detail{
+	.pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field{
+		height: 300px;
+		h1{
+			padding-top: 130px;
+		}
+	}
+	.pane-taxonomy-term-field-image{
+		height: 300px;	
+		.field.field-name-field-image{
+			img{
+				width: 100%;
+				height: 300px;
+			}
+		}
+	}
+
+	.highlights,
+	.tools_and_guidance,
+	.case_studies,
+	.publications,
+	.pane-hwc-priority-areas-hwc-pa-etool,
+	.related_links{
+		[class*=col-sm-]{
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+}
 
 }//end media
 

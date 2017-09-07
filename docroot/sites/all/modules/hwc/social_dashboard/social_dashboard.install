@@ -142,3 +142,45 @@ function social_dashboard_schema() {
 
   return $schema;
 }
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7001() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7002() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7003() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7004() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7005() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * revert social_dashboard module.
+ */
+function social_dashboard_update_7006() {
+  features_revert_module('social_dashboard');
+}

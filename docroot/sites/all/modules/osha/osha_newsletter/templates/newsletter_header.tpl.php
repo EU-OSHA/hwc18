@@ -74,6 +74,7 @@ $directory = drupal_get_path('module','osha_newsletter');
       <td class="osha-logos" width="182" style="width: 182px; max-width: 182px;" valign="bottom">
         <?php
           global $base_url;
+          $eu_osha_img = 180;
           print l(theme('image', array(
             'path' => $directory . '/images/logo-osha2.png',
             'width' => 180,

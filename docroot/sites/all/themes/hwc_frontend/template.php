@@ -96,9 +96,22 @@ function hwc_frontend_preprocess_html(&$vars) {
   if (!empty($vars['is_front'])) {
     $vars['head_title'] = t('Healthy Workplaces for All Ages') . ' | ' . 'EU-OSHA';
   }
+  if (arg(0) . arg(2) == 'nodeedit') {
+    $n = menu_get_object('node');
+    if ($n->type == 'news' || $n->type == 'events') {
+      $vars['classes_array'][] = 'pz-page';
+    }
+  }
+  if (
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
+  ) {
+    $vars['classes_array'][] = 'pz-page';
+  }
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
+  $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title
   if(!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'], array('page__events', 'page__past_events'))){
     $title = '<span id="block-osha-events-events-links">';
@@ -111,6 +124,9 @@ function hwc_frontend_preprocess_page(&$vars) {
     drupal_set_title('');
   }
 
+  if (arg(0)=='practical-tools') {
+    $vars['classes_array'][] = 'page-search';//todo tmp solution for css classes...
+  }
   // add back to links (e.g. Back to news)
   if (isset($vars['node'])) {
     $node = $vars['node'];
@@ -338,6 +354,14 @@ function hwc_frontend_preprocess_field(&$variables) {
   }
 }
 function hwc_frontend_preprocess_node(&$vars) {
+  $search_str = '<div class="col-sm-12 col-md-8 col-md-offset-2">';
+  if ((isset($vars['body'][0]['safe_value'])) && (strpos($vars['body'][0]['safe_value'], $search_str))) {
+    $search_str = '<div class="row text-center recomended-resources-for-you">' . "\n" . $search_str;
+    $vars['content']['body'][0]['#markup'] = str_replace($search_str, $search_str . '<h2 class="recomended-for-you element-invisible">&nbsp;</h2>', $vars['content']['body'][0]['#markup']);
+  }
+  if ($vars['view_mode'] == 'teaser' && $vars['type'] == 'audio_visual') {
+    $vars['classes_array'][] = 'node-practical-tool';//todo tmp solution for css classes...
+  }
   if ($vars['view_mode'] == 'full' && $vars['type'] == 'events') {
     $vars['classes_array'][] = 'container';
     if (isset($vars['field_start_date'])) {

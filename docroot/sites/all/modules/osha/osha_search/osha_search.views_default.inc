@@ -41,18 +41,7 @@ function osha_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = '›';
   $handler->display->display_options['pager']['options']['tags']['last'] = '»';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'type',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Footer: Global: Result summary */
-  $handler->display->display_options['footer']['result']['id'] = 'result';
-  $handler->display->display_options['footer']['result']['table'] = 'views';
-  $handler->display->display_options['footer']['result']['field'] = 'result';
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
@@ -146,6 +135,11 @@ function osha_search_views_default_views() {
   $handler = $view->new_display('page', 'Site search', 'site');
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = '@order Showing @start - @end from @total';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Multilingual Content: Publication date */
   $handler->display->display_options['fields']['field_publication_date']['id'] = 'field_publication_date';
@@ -268,7 +262,11 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_orgtype']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_orgtype']['field'] = 'field_orgtype';
   $handler->display->display_options['fields']['field_orgtype']['label'] = 'Type';
+  $handler->display->display_options['fields']['field_orgtype']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_orgtype']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_orgtype']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_orgtype']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_orgtype']['bypass_access'] = 0;
   /* Field: Indexed Multilingual Content: Publication Type */
   $handler->display->display_options['fields']['field_publication_type']['id'] = 'field_publication_type';
   $handler->display->display_options['fields']['field_publication_type']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -438,10 +436,10 @@ function osha_search_views_default_views() {
     t('‹'),
     t('›'),
     t('»'),
-    t('Displaying @start - @end of @total'),
     t('No results'),
     t('Relevance'),
     t('Site search'),
+    t('@order Showing @start - @end from @total'),
     t('[search_api_excerpt] <a href=\'[url]\'>See more</a>'),
     t('Country'),
     t('Provider'),

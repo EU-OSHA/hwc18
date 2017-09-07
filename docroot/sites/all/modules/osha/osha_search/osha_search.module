@@ -7,6 +7,30 @@
 include_once 'osha_search.features.inc';
 module_load_include('inc', 'osha_search', 'osha_search.admin');
 
+function osha_search_facet_items_alter(&$build, &$settings) {
+
+  $query_params = drupal_get_query_parameters();
+  if ($settings->facet == "field_sector_industry_covered") {
+    foreach($build as $key => $item) {
+      $build[$key]["#markup"] = drupal_ucfirst(drupal_strtolower($item["#markup"]));
+    }
+  }
+  if (in_array($settings->facet, ['field_priority_area', 'language', 'type']) ) {
+    $facet_items = [];
+    foreach($build as $key => $item) {
+      if ($item['#active']) {
+        $query = _osha_search_strip_param_value($query_params, $settings->facet, $item['#indexed_value']);
+        $filter_label = '<span class="glyphicon glyphicon-remove"></span>' . $item['#markup'];
+        $facet_items[] = l($filter_label, 'search', array('query' => $query, 'html' => TRUE));
+      }
+    }
+    if ($facet_items) {
+      drupal_add_js(array('facet_items' => [$settings->facet => $facet_items]), 'setting');
+    }
+  }
+
+}
+
 /**
  * Implements hook_menu().
  */
@@ -55,9 +79,18 @@ function osha_search_block_view($delta = '') {
   // Add header as in template.
   $content['header'] = array(
     '#type' => 'markup',
-    '#markup' => '<h3>' . t('Filter results') . '</h3>',
+    '#markup' => '<h3>' . t('Filter results') . '</h3><div class="clear-wrapper">',
   );
+
+  if (arg(0) == 'search') { // active links will be added onlink via js in facet_item
+    $content['remove_filter'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div id="remove_filter"></div>',
+    );
+  }
+
   $query_params = drupal_get_query_parameters();
+
   if (!empty($query_params)) {
     // Clear filter link
     // it's really just a link to current url without params.
@@ -66,6 +99,10 @@ function osha_search_block_view($delta = '') {
       '#markup' => l(t('Clear filter'), current_path()),
     );
   }
+  $content['footer'] = array(
+    '#type' => 'markup',
+    '#markup' => '</div>',
+  );
   return array(
     'subject' => '<none>',
     'content' => drupal_render($content),
@@ -90,6 +127,34 @@ function osha_search_search_api_solr_query_alter(array &$call_args, SearchApiQue
       break;
     }
   }
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function osha_search_views_post_render(&$view, &$output, &$cache) {
+  if ($view->name == 'search') {
+    drupal_add_js(drupal_get_path('module', 'osha_search') . '/sort.js', array('weight' => 20));
+    $order_html = '<div class="sort-container col-xs-3">' . drupal_render(drupal_get_form('osha_search_sort_form')) . '</div><span class="count-container pull-right">';
+    $output = trim(str_replace('@order', $order_html, $output)). '</span>';
+  }
+}
+
+function osha_search_sort_form($form, $form_state) {
+  $form = array(
+  );
+  $form['sort_by'] = [
+    '#type' => 'select',
+    '#title' => t('Order'),
+    '#default_value'=>'field_publication_date',
+    '#options'=>[
+      'search_api_relevance' => t('Relevance'),
+      'field_publication_date' => t('Publication date'),
+      'title2' => t('Title')
+    ]
+  ];
+  $form['sort_by']['#value'] = $_REQUEST['sort_by'];
+  return $form;
 }
 
 /**
@@ -134,7 +199,6 @@ function osha_search_form_alter(&$form, &$form_state, $form_id) {
   }
   if ($form['#id'] == 'views-exposed-form-search-site') {
     if (!empty($form['sort_by'])) {
-      $form['sort_by']['#type'] = 'radios';
       $form['sort_by']['#default_value'] = 'search_api_relevance';
       $form['sort_order']['#access'] = FALSE;
     }
@@ -431,4 +495,18 @@ function osha_search_path_breadcrumbs_view_alter(&$breadcrumbs, $path_breadcrumb
       $breadcrumbs[] = $_GET['search_block_form'];
     }
   }
+}
+
+function _osha_search_strip_param_value($params, $name, $value = NULL) {
+  if (!empty($params['f'])) {
+    foreach($params['f'] as $k => $v) {
+      if ($v == $name . ':' . $value) {
+        unset($params['f'][$k]);
+      }
+    }
+    if (!$params['f']) {
+      $params = [];
+    }
+  }
+  return $params;
 }

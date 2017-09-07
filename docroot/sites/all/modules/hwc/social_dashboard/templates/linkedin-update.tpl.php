@@ -1,4 +1,6 @@
 <?php
+$linkedin_link = social_dashboard_get_linkedin_link($content['social_id']);
+
 $update_id = $content['dashboard_item_id'];
 $entities = entity_load('dashboard_item', [$update_id]);
 $variables = unserialize($entities[$update_id]->variables);
@@ -23,7 +25,6 @@ if ($content['timestamp']) {
 }
 
 $company_name = $company['name'];
-$company_href = '/company-beta/' . $company['id'];
 $avatar_image = variable_get('social_linkedin_company_avatar_image', '');
 
 echo '
@@ -32,12 +33,12 @@ echo '
     <div class="feed-s-update__scroll">
             
       <div class="feed-s-post-meta">
-        <a href="' . $company_href . '" class="feed-s-post-meta__actor-link">    
+        <a href="' . $linkedin_link . '" class="feed-s-post-meta__actor-link" target="_blank">    
           <div class="feed-s-avatar-image">
             <img src="' . $avatar_image . '" class="avatar company" alt="' . htmlspecialchars($company_name) . '">
           </div>
         </a>
-        <a href="' . $company_href . '" class="feed-s-post-meta__profile-link">  
+        <a href="' . $linkedin_link . '" class="feed-s-post-meta__profile-link" target="_blank">  
           <h3 class="feed-s-post-meta__actor">
             <span class="feed-s-post-meta__name">' . $company_name . '</span>
             <time class="feed-s-post-meta__timestamp">' . $timestamp . '</time>
@@ -53,11 +54,11 @@ if ($main_title) {
 if ($title) {
 echo '      <div class="feed-s-update__update-content-wrapper">
         <div class="feed-s-hero-entity__image-container">
-          <a target="_blank" href="' . $submittedUrl . '">
+          <a target="_blank" href="' . $linkedin_link . '">
               <div class="feed-s-hero-entity__image" style="background-image: url(&quot;' . $background_image . '&quot;);"> </div>
           </a>
         </div>
-        <a target="_blank" href="' . $submittedUrl . '">
+        <a target="_blank" href="' . $linkedin_link . '">
           <article class="feed-s-image-description">
             <div class="feed-s-image-description">
               <h2 class="feed-s-image-description__headline">

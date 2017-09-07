@@ -44,6 +44,15 @@ function hwc_priority_areas_default_page_manager_handlers() {
       ),
       'logic' => 'and',
     ),
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'About the topic
+Topics
+%term:name-field',
+    'panels_breadcrumbs_paths' => '<none>
+topics
+<none>
+',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'flexible';
@@ -256,47 +265,6 @@ function hwc_priority_areas_default_page_manager_handlers() {
   $display->content['new-521bab7b-ff93-477c-89ab-c94f70f631e0'] = $pane;
   $display->panels['center'][4] = 'new-521bab7b-ff93-477c-89ab-c94f70f631e0';
   $pane = new stdClass();
-  $pane->pid = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
-  $pane->panel = 'center';
-  $pane->type = 'views';
-  $pane->subtype = 'topic_related';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '20',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'tools_and_guidance',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array(
-    'css_id' => '',
-    'css_class' => 'tools_and_guidance col-sm-12 col-md-10 col-md-offset-1',
-  );
-  $pane->extras = array();
-  $pane->position = 5;
-  $pane->locks = array();
-  $pane->uuid = 'cc8679eb-3fca-47b3-860e-9679e824098d';
-  $display->content['new-cc8679eb-3fca-47b3-860e-9679e824098d'] = $pane;
-  $display->panels['center'][5] = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
-  $pane = new stdClass();
   $pane->pid = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
   $pane->panel = 'center';
   $pane->type = 'views';
@@ -332,11 +300,52 @@ function hwc_priority_areas_default_page_manager_handlers() {
     'css_class' => 'case_studies col-sm-12 col-md-10 col-md-offset-1',
   );
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = 'a9d10346-b230-4170-8fee-b4a2b27fdfd8';
   $display->content['new-a9d10346-b230-4170-8fee-b4a2b27fdfd8'] = $pane;
-  $display->panels['center'][6] = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
+  $display->panels['center'][5] = 'new-a9d10346-b230-4170-8fee-b4a2b27fdfd8';
+  $pane = new stdClass();
+  $pane->pid = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
+  $pane->panel = 'center';
+  $pane->type = 'views';
+  $pane->subtype = 'topic_related';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '20',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'tools_and_guidance',
+    'context' => array(
+      0 => '',
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'tools_and_guidance col-sm-12 col-md-10 col-md-offset-1',
+  );
+  $pane->extras = array();
+  $pane->position = 6;
+  $pane->locks = array();
+  $pane->uuid = 'cc8679eb-3fca-47b3-860e-9679e824098d';
+  $display->content['new-cc8679eb-3fca-47b3-860e-9679e824098d'] = $pane;
+  $display->panels['center'][6] = 'new-cc8679eb-3fca-47b3-860e-9679e824098d';
   $pane = new stdClass();
   $pane->pid = 'new-3419489e-f8e4-4e04-ba2b-afb0f0f06544';
   $pane->panel = 'center';
@@ -484,6 +493,13 @@ function hwc_priority_areas_default_page_manager_pages() {
     ),
     'relationships' => array(),
     'name' => 'panel',
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'About the topic
+Topics',
+    'panels_breadcrumbs_paths' => '<none>
+<none>
+',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'flexible';

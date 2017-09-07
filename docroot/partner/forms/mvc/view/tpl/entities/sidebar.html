@@ -5,18 +5,21 @@
             <li class="tituloSidebar">Navigation Panel and Status</li>
             
             {foreach from=$sections key=sectionKey item=section}
-                <li class="section-title"><a data-ajax="?route={$currentRoute}&amp;action=savesessionajax" href="{$appurlsidebar}?route={$section.route}">{$section.title}</a></li>
-                {foreach from=$section.sections key=subsectionKey item=subsection}
-            {if $subsectionKey != "OTHER_USERS"}
-            <li class="section {$subsectionKey} {if $sections_validated.$subsectionKey == "0"}sidebar-error{/if}" data-section="{$subsectionKey}">
-                <a data-ajax="?route={$currentRoute}&amp;action=savesessionajax" href="{$appurlsidebar}?route={$section.route}#{$subsectionKey}">{$subsection}</a>
-            </li>
-            {elseif $subsectionKey == "OTHER_USERS" && $mf == "mf"}
-            <li class="section OTHER_USERS" data-section="OTHER_USERS">
-                <a href="{$appurlsidebar}?route=contact#OTHER_USERS">Other users</a>
-            </li>
-            {/if}
-                {/foreach}
+                {if count($section.sections) > 0}
+                    <li class="section-title"><a data-ajax="?route={$currentRoute}&amp;action=savesessionajax" href="{$appurlsidebar}?route={$section.route}">{$section.title}</a></li>
+                    {foreach from=$section.sections key=subsectionKey item=subsection}
+                        {if $subsectionKey != "OTHER_USERS"}
+                            <li class="section {$subsectionKey} {if $sections_validated.$subsectionKey == '0'}sidebar-error{/if}" data-section="{$subsectionKey}">
+                                <a data-ajax="?route={$currentRoute}&amp;action=savesessionajax" href="{$appurlsidebar}?route={$section.route}#{$subsectionKey}">{$subsection}</a>
+                            </li>
+
+                        {elseif $subsectionKey == "OTHER_USERS" && $mf == "mf"}
+                            <li class="section OTHER_USERS" data-section="OTHER_USERS">
+                                <a href="{$appurlsidebar}?route=contact#OTHER_USERS">Other users</a>
+                            </li>
+                        {/if}
+                    {/foreach}
+                {/if}
             {/foreach}
             
             
@@ -32,14 +35,14 @@
             
             {if $returnCode === "error"}
                 <div class = "saveDialog">
-                    <a class="closeDialog">[X]</a>
+                    <!--<a class="closeDialog">[X]</a>-->
                     <img src="mvc/view/img/alertIcon.png"/><br>
                     <p>An error has occurred saving the data</p>
                 </div>
             {/if}
             {if $returnCode === "ok"}
                 <div class = "saveDialog">
-                    <a class="closeDialog">[X]</a>
+                    <!--<a class="closeDialog">[X]</a>-->
                     <img src="mvc/view/img/green-tick.png"/><br>
                     <p>The information has been saved correctly</p>
                     <p class="saveExplanationSave">When saving as a draft, you will receive an automatic email with a link from which you will be able to come back to continue your application. In order to do so, the completion of the organisation's name and your primary contact's email is mandatory</p>

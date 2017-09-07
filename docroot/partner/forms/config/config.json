@@ -1,5 +1,5 @@
 {
-  "defaultRoute": "company",
+  "defaultRoute": "start",
   "defaultEntity": "ocp",
   "defaultPartnerType": "new",
   "defaultBundle": "MaintenanceForm",
@@ -20,6 +20,7 @@
     "graceperiod": "graceperiod"
   },
   "sections_validated": {
+    "START": true,
     "ORGANISATION": true,
     "GENERAL_INFORMATION": true,
     "DESCRIPTION": true,

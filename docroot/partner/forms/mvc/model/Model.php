@@ -175,6 +175,20 @@ class Model {
         return true;
     }
 
+    public function submitSatisfactionToCDB($id, $fields) {
+        $cdb = CDB::getInstance(null);
+        $cdb->submitSatisfaction($id, $fields);
+
+        return true;
+    }
+
+    public function submitQuestionToCDB($id, $title, $message, $email) {
+        $cdb = CDB::getInstance(null);
+        $cdb->submitQuestion($id, $title, $message, $email);
+
+        return true;
+    }
+
     /**
      * Retrieve all the attributes
      * @return Array

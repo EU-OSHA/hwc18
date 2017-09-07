@@ -25,21 +25,3 @@ function hwc_audio_visual_ctools_plugin_api($module = NULL, $api = NULL) {
 function hwc_audio_visual_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
-
-/**
- * Implements hook_node_info().
- */
-function hwc_audio_visual_node_info() {
-  $items = array(
-    'audio_visual' => array(
-      'name' => 'Audio Visual',
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => 'Title',
-      'help' => '',
-    ),
-  );
-  drupal_alter('node_info', $items);
-  return $items;
-}

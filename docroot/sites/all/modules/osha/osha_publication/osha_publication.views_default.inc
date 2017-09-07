@@ -80,12 +80,26 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
   $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
   $handler->display->display_options['filters']['machine_name']['value'] = array(
-    'publication_types' => 'publication_types',
+    'tools_and_publications_type' => 'tools_and_publications_type',
   );
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Link */
+  $handler->display->display_options['fields']['field_tools_publications_link']['id'] = 'field_tools_publications_link';
+  $handler->display->display_options['fields']['field_tools_publications_link']['table'] = 'field_data_field_tools_publications_link';
+  $handler->display->display_options['fields']['field_tools_publications_link']['field'] = 'field_tools_publications_link';
+  $handler->display->display_options['fields']['field_tools_publications_link']['label'] = '';
+  $handler->display->display_options['fields']['field_tools_publications_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_tools_publications_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_tools_publications_link']['alter']['text'] = '[field_tools_publications_link-url]';
+  $handler->display->display_options['fields']['field_tools_publications_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_tools_publications_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_tools_publications_link']['type'] = 'link_plain';
+  $handler->display->display_options['fields']['field_tools_publications_link']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -114,7 +128,7 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['fields']['name_field']['label'] = '';
   $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['name_field']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['name_field']['alter']['path'] = 'publication?relevant_for%5B[tid]%5D=[tid]';
+  $handler->display->display_options['fields']['name_field']['alter']['path'] = '[field_tools_publications_link]';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['type'] = 'title_linked';
   $handler->display->display_options['fields']['name_field']['settings'] = array(
@@ -145,6 +159,7 @@ function osha_publication_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Block'),
+    t('[field_tools_publications_link-url]'),
     t('.'),
   );
   $export['publication_type'] = $view;

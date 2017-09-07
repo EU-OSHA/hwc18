@@ -5,6 +5,12 @@
             $form.find('input[name=sort]').click(function(){
                 $form.submit();
             });
+            $form.find('select').change(function() {
+                $form.submit();
+            });
+            $form.find('input[type=text]').focusout(function() {
+                $form.submit();
+            });
             $form.find('input[type=checkbox]').click(function(){
                 var $container = $(this).closest('.form-checkboxes');
                 if ($(this).val() != 0) {

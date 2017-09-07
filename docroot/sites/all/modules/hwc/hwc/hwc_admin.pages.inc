@@ -18,6 +18,13 @@ function hwc_admin_config_form() {
     '#description' => 'URIs that exists in current website but you want to redirect to the previous websites. One uri per line in format  path/to/page|redirect/to/full/url',
   );
 
+  $form['disable_masquerading_notifications'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Disable notifications when acts as a partner'),
+    '#default_value' => variable_get('disable_masquerading_notifications', FALSE),
+    '#description' => t('Possibility to inactivate the notifications when Mostra / EU-OSHA acts as a partner (News and Events)'),
+  );
+
   $form['fb_app_key'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('fb_app_key', ''),
