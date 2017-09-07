@@ -57,10 +57,10 @@ global $language;
                         'path' => 'https://www.youtube.com/user/EUOSHA',
                         'alt' => t('Youtube')
                       ),
-                      // 'flickr' => array(
-                      //   'path' => 'https://www.flickr.com/photos/euosha/albums',
-                      //   'alt' => t('Flickr')
-                      // ),
+                       'flickr' => array(
+                         'path' => 'https://www.flickr.com/photos/euosha/albums',
+                         'alt' => t('Flickr')
+                       ),
                       'blog' => array(
                         'path' => url('tools-and-publications/blog', array('alias' => TRUE, 'absolute' => TRUE, 'query' => $url_query)),
                         'alt' => t('Blog')
@@ -98,41 +98,20 @@ global $language;
         <![endif]-->
       </td>
     </tr>
-    <tr class="footer-disclaimer">
+<!--    <tr class="footer-disclaimer">
       <td>
         <p>
           This is a disclaimer lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </td>
     </tr>
+-->
     <tr class="footer-unsubscribe">
       <td>
         <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>', array('@style' => 'color: #003399; text-decoration: none;', '@url' => url($base_url.'/'.$language->language.'/oshmail-newsletter', array('query' => $url_query)))); ?>
         </p>
-
-      </td>
-
-    </tr>
-    <tr>
-      <td style="text-align: center;">
-        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tbody>
-            <tr>
-              <td style="text-align: center; font-family: Arial, sans-serif; color: #333333; font-size: 13px;">
-                <p><?php
-                  print t('<a href="@url" style="@style">Unsubscribe</a>',
-                    array('@style' => 'color: #003399; text-decoration: none;', '@url' =>
-                      url($base_url.'/'.$language->language.'/oshmail-newsletter', array('query' => $url_query))));
-                  ?>
-                </p>
-
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </td>
     </tr>
-
   </tbody>
 </table>
 <div class="gmailfix" style="white-space:nowrap; font:15px courier; line-height:0;">
