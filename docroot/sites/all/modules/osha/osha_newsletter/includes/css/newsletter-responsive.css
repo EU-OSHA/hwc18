@@ -35,7 +35,7 @@ a[x-apple-data-detectors] {
 }
 
 @media only screen and (max-width: 600px) {
-  // Positioning & layout
+  /* Positioning & layout */
   .newsletter-container {
     max-width: 100% !important;
     width: 100% !important;
@@ -87,7 +87,8 @@ a[x-apple-data-detectors] {
   .item-thumbnail-and-title,
   .item-thumbnail-and-title > tbody,
   .item-thumbnail-and-title > tbody > tr,
-  .item-thumbnail-and-title > tbody > tr > td, */
+  .item-thumbnail-and-title > tbody > tr > td,
+  */
   .template-column {
     display: block !important;
     width: 100% !important;
@@ -96,7 +97,7 @@ a[x-apple-data-detectors] {
   .template-image {
     text-align: center !important;
   }
-  // Styling
+  /* Styling */
   .template-column > .newsletter-item {
     background-color: transparent;
     color: #003399;
@@ -147,12 +148,14 @@ a[x-apple-data-detectors] {
     padding-right: 20px !important;
     padding-left: 20px !important;
   }
-  // .hwc-logo.visible-mobile a img {
-  //   width: auto !important;
-  //   max-width: 88px !important;
-  //   height: auto !important;
-  //   max-height: 83px !important;
-  // }
+  /*
+  .hwc-logo.visible-mobile a img {
+    width: auto !important;
+    max-width: 88px !important;
+    height: auto !important;
+    max-height: 83px !important;
+  }
+  */
   .hwc-logo.visible-mobile {
     width: 107px !important;
     max-width: 107px !important;
@@ -212,14 +215,16 @@ a[x-apple-data-detectors] {
   }
 
 }
-// @media only screen and (max-width: 480px) {
-//   .eu-logo {
-//     text-align: center !important;
-//   }
-//   .eu-logo,
-//   .osha-info {
-//     display: block !important;
-//     max-width: 100% !important;
-//   }
-// }
+/*
+@media only screen and (max-width: 480px) {
+  .eu-logo {
+    text-align: center !important;
+  }
+  .eu-logo,
+  .osha-info {
+    display: block !important;
+    max-width: 100% !important;
+  }
+}
+*/
 

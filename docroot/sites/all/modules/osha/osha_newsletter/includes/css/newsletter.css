@@ -109,12 +109,14 @@ td.social {
   padding-bottom: 10px;
   padding-left: 20px;
 }
-// .social td {
-//   padding:  0 10px 0 10px;
-// }
-// .social td:last-child {
-//   padding-right: 0px;
-// }
+/*
+ .social td {
+   padding:  0 10px 0 10px;
+ }
+ .social td:last-child {
+   padding-right: 0px;
+ }
+*/
 .eu-logo {
   text-align: left;
 }
@@ -391,6 +393,3 @@ p.tweet-link a {
 .highlight-item .item-date {
   color: #575757;
 }
-
-
-//Specifics

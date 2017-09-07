@@ -36,12 +36,11 @@ if (!empty($campaign_id)) {
         height: 100%;
     }
     .page-node-129 table tr .td_h {
-        padding-right: 0px;
         vertical-align: top;
-        padding-top: 5px;
-        font-family: Arial, sans-serif;
-        width:10px;
         text-align:left;
+        padding-left: 5px;
+        padding-top: 7px;
+        width:10px;
     }
     .page-node-129 table tr .ar {
         text-align: left;
@@ -57,9 +56,9 @@ if (!empty($campaign_id)) {
         padding-top: 15px;
     }
     .page-node-129 table tr .cs2 {
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        padding-bottom: 0;
+        width:40px;
+        max-width:40px;
+        padding-right: 5px;
     }
 </style>
 <?php if($node->title != NULL) {?>
@@ -73,13 +72,6 @@ if (!empty($campaign_id)) {
     <?php
     if (isset($node->field_publication_date[LANGUAGE_NONE][0]['value']) && $node->type != 'newsletter_article') {
       $date = strtotime($node->field_publication_date[LANGUAGE_NONE][0]['value']);
-      ?>
-      <tr>
-        <td colspan="2" class="cs2">
-          <span class="item-date"><?php print format_date($date, 'custom', 'd/m/Y');?></span>
-        </td>
-      </tr>
-      <?php
     } if ($node->type == 'events') {
       $date = (isset($field_start_date) && !empty($field_start_date)) ? strtotime($field_start_date[0]['value']) : '';
       $country_location = (isset($field_country_code) && !empty($field_country_code)) ? $field_country_code['und'][0]['value'] : '';
@@ -110,11 +102,11 @@ if (!empty($campaign_id)) {
             ?>
           </td>
           <td colspan="2" class="cs2">
-            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
+            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} ?></span>
           </td>
         <?php else: ?>
           <td colspan="2" class="cs2">
-            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'd/m/Y');}?></span>
+            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} ?></span>
           </td>
         <?php endif; ?>
       </tr>
