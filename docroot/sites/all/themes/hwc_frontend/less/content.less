@@ -415,12 +415,16 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 	}
 	.tools-and-resources-block, .panels-flexible-column-new-main, .panels-flexible-column-first{
-		h2{
+		h2, div.pane-title{
 			padding-top: 70px;
 			background: url("../images/content/tools-and-resources.png") no-repeat center top;
 			font-style: normal;
+			margin: 20px 0;
+			color: #749b00;
+		    font-size: 30px;
+		    font-weight: bold;
 		}
-		.pane-news h2{
+		.pane-news h2, .pane-news div.pane-title{
 			background-image: url("../images/content/news.png")
 		}
 	}
@@ -880,6 +884,14 @@ ul.tabs--primary.nav.nav-tabs{
 				margin-bottom: 0em;
 				font-size:2em;
 			}
+			.field-name-body.field-type-text-with-summary{
+				h2{
+					color: @colorNormalText;
+					font-weight: normal;
+					font-size: 1.8em;
+    				margin-bottom: 15px;
+				}
+			}
 			.icon.recommended-resources ~ h2{
 				text-align: center;
 			}
@@ -1260,14 +1272,19 @@ ul.tabs--primary.nav.nav-tabs{
 	    float: left;
 		text-align: center;
 		margin-bottom: 0em;
-    	margin-top: 0em;
-		h2{
+    	margin-top: 1em;
+    	h4.media-heading{
+    		font-size: 15px;
+    	}
+		h2, div.pane-title{
 			color: @h1-default-color;
 			font-weight: bold;
 			font-style: normal;
-			margin: 20px 0 14px 0;
+			margin: 20px 0px;
 			padding-top: 70px;
+			font-size: 30px;
 			background: url("../images/content/events.png") no-repeat center top;
+		
 		}
 		a{
 			color: @href-default-color;
@@ -2147,9 +2164,22 @@ ul.tabs--primary.nav.nav-tabs{
 			padding-bottom: 0;
 			margin-bottom: 0;
 		}
-		.pane-node-body{
+		.pane-node-field-summary,
+		.pane-node-field-item-type{
+			.pane-title{
+				display: none;
+			}
+			.field-items{
+				span{
+					font-weight: normal;
+				}
+			}
+		}
+		.pane-node-field-country{
+			margin-bottom: 15px;
+		}
+		.pane-node-body, .pane-node-field-fc-provider{
 			clear: both;
-		    padding-top: 15px;
 		    display: block;
 		}
 		.pane-hwc-practical-tool-hwc-practical-tool-back-to-list{
@@ -2515,7 +2545,7 @@ ul.tabs--primary.nav.nav-tabs{
 		padding: 0px 25px !important;
 		min-height: 500px;
 		margin-top: 25px;
-		h2.pane-title{
+		div.pane-title, h2.pane-title{
 			margin-top: 15px;
 		    padding-top: 100px;
 		    margin-bottom: 40px;
@@ -2525,6 +2555,7 @@ ul.tabs--primary.nav.nav-tabs{
 		    color: @color3;
 		    font-weight: bold;
 		    text-align: center;
+		    font-size: 30px;
 		    &:before{
 		    	content: "";
 		    }
@@ -2555,14 +2586,14 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 	}
 	.panels-flexible-region-new-home_left{
-		h2.pane-title{
+		div.pane-title{
 		    background: url(../images/content/news.png) no-repeat center 20px;
 		}
 	}
 	.panels-flexible-region-new-center{
 		border-left: 1px dotted @color3;
 		border-right: 1px dotted @color3;
-		h2.pane-title{
+		div.pane-title{
 		    background: url(../images/content/icono-events-section.png) no-repeat center 20px;
 		}
 		.event_day_month{
@@ -3460,6 +3491,9 @@ p.no-results{
 	.view-filters{	
 		border-top: 1px dotted @border-default-color;
 		border-bottom: 1px dotted @border-default-color;
+	}
+	.view-footer{
+		display: none;
 	}
 	.views-exposed-widgets{
 	    margin-top: 0.5em;
@@ -8521,6 +8555,38 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end page enterprise europe network*/
 
+/*Good practice exchange initiative*/
+.page-good-practice-exchange-initiative{
+	.webform-client-form{
+		margin-top: 15px;
+		.webform-component--confirm{
+			padding-left: 0px;
+			padding-right: 0px;
+			margin-bottom: 0px;
+		}
+		.captcha.panel{
+			.panel-body{
+				padding: 0px;
+			}
+			.help-block{
+				color: @colorNormalText;
+				font-size: 1em;
+			}
+			span.captcha{
+				margin-bottom: 15px;
+				#captcha_0_refresh img{
+					width: 38px;
+					height: 38px;
+				}
+			}
+		}
+		.form-actions{
+			margin-bottom: 15px;
+		}
+	}
+}
+/*End Good practice exchange initiative*/
+
 /*page-node-366*/
 .page-node-366{
 	li.share-this-article{
@@ -8655,3 +8721,15 @@ input#edit-field-image-und-0-upload::before {
     text-align: left;
 }
 /*End newsletter mail styles*/
+
+
+/*mini panel news and events: not published (only for validation)*/
+#mini-panel-news_and_events{
+	.view-id-news{
+		.media-list{
+			.pull-left{
+				display: none;
+			}
+		}
+	}
+}
