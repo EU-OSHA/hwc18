@@ -7727,7 +7727,6 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-top: 0;
   padding-bottom: 0em;
 }
-.main-container .pane-title,
 .main-container h2 {
   color: #575757;
   font-size: 30px;
@@ -7950,12 +7949,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
 .panels-flexible-column-new-main h2,
 .panels-flexible-column-first h2,
 #block-views-news-oshnews-latest h2,
-.panels-flexible-column-new-1 h2,
-.tools-and-resources-block .pane-title,
-.panels-flexible-column-new-main .pane-title,
-.panels-flexible-column-first .pane-title,
-#block-views-news-oshnews-latest .pane-title,
-.panels-flexible-column-new-1 .pane-title {
+.panels-flexible-column-new-1 h2 {
   color: #749b00;
   font-size: 30px;
   font-weight: bold;
@@ -8092,19 +8086,23 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
 .tools-and-resources-block h2,
 .panels-flexible-column-new-main h2,
 .panels-flexible-column-first h2,
-.tools-and-resources-block .pane-title,
-.panels-flexible-column-new-main .pane-title,
-.panels-flexible-column-first .pane-title {
+.tools-and-resources-block div.pane-title,
+.panels-flexible-column-new-main div.pane-title,
+.panels-flexible-column-first div.pane-title {
   padding-top: 70px;
   background: url("../images/content/tools-and-resources.png") no-repeat center top;
   font-style: normal;
+  margin: 20px 0;
+  color: #749b00;
+  font-size: 30px;
+  font-weight: bold;
 }
 .tools-and-resources-block .pane-news h2,
 .panels-flexible-column-new-main .pane-news h2,
 .panels-flexible-column-first .pane-news h2,
-.tools-and-resources-block .pane-news .pane-title,
-.panels-flexible-column-new-main .pane-news .pane-title,
-.panels-flexible-column-first .pane-news .pane-title {
+.tools-and-resources-block .pane-news div.pane-title,
+.panels-flexible-column-new-main .pane-news div.pane-title,
+.panels-flexible-column-first .pane-news div.pane-title {
   background-image: url("../images/content/news.png");
 }
 .glyphicon-circle-arrow-down:before {
@@ -8571,6 +8569,12 @@ table tr.error.form-type-select:after {
   margin-bottom: 0em;
   font-size: 2em;
 }
+.node-type-article article .field-name-body.field-type-text-with-summary h2 {
+  color: #333333;
+  font-weight: normal;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
 .node-type-article article .icon.recommended-resources ~ h2 {
   text-align: center;
 }
@@ -8775,10 +8779,7 @@ div[class*='node-'] .more-link {
 /* home news */
 #block-views-news-oshnews-latest h2,
 .panels-flexible-column-new-1 h2,
-.panels-flexible-column-first h2,
-#block-views-news-oshnews-latest .pane-title,
-.panels-flexible-column-new-1 .pane-title,
-.panels-flexible-column-first .pane-title {
+.panels-flexible-column-first h2 {
   margin: 20px 0;
   padding-top: 70px;
   font-style: normal;
@@ -8956,19 +8957,25 @@ div[class*='node-'] .more-link {
   float: left;
   text-align: center;
   margin-bottom: 0em;
-  margin-top: 0em;
+  margin-top: 1em;
+}
+#block-views-frontpage-events-block h4.media-heading,
+.panels-flexible-column-new-2 h4.media-heading,
+.panels-flexible-column-last h4.media-heading {
+  font-size: 15px;
 }
 #block-views-frontpage-events-block h2,
 .panels-flexible-column-new-2 h2,
 .panels-flexible-column-last h2,
-#block-views-frontpage-events-block .pane-title,
-.panels-flexible-column-new-2 .pane-title,
-.panels-flexible-column-last .pane-title {
+#block-views-frontpage-events-block div.pane-title,
+.panels-flexible-column-new-2 div.pane-title,
+.panels-flexible-column-last div.pane-title {
   color: #749b00;
   font-weight: bold;
   font-style: normal;
-  margin: 20px 0 14px 0;
+  margin: 20px 0px;
   padding-top: 70px;
+  font-size: 30px;
   background: url("../images/content/events.png") no-repeat center top;
 }
 #block-views-frontpage-events-block a,
@@ -9840,9 +9847,20 @@ div[class*='node-'] .more-link {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-.node-type-practical-tool .pane-node-body {
+.node-type-practical-tool .pane-node-field-summary .pane-title,
+.node-type-practical-tool .pane-node-field-item-type .pane-title {
+  display: none;
+}
+.node-type-practical-tool .pane-node-field-summary .field-items span,
+.node-type-practical-tool .pane-node-field-item-type .field-items span {
+  font-weight: normal;
+}
+.node-type-practical-tool .pane-node-field-country {
+  margin-bottom: 15px;
+}
+.node-type-practical-tool .pane-node-body,
+.node-type-practical-tool .pane-node-field-fc-provider {
   clear: both;
-  padding-top: 15px;
   display: block;
 }
 .node-type-practical-tool .pane-hwc-practical-tool-hwc-practical-tool-back-to-list a {
@@ -10209,6 +10227,9 @@ html:lang(no) .pane-node-field-provider .field-items,
   min-height: 500px;
   margin-top: 25px;
 }
+.front .panels-flexible-region-new-home_left div.pane-title,
+.front .panels-flexible-region-new-center div.pane-title,
+.front .panels-flexible-region-new-home_right div.pane-title,
 .front .panels-flexible-region-new-home_left h2.pane-title,
 .front .panels-flexible-region-new-center h2.pane-title,
 .front .panels-flexible-region-new-home_right h2.pane-title {
@@ -10221,7 +10242,11 @@ html:lang(no) .pane-node-field-provider .field-items,
   color: #749b00;
   font-weight: bold;
   text-align: center;
+  font-size: 30px;
 }
+.front .panels-flexible-region-new-home_left div.pane-title:before,
+.front .panels-flexible-region-new-center div.pane-title:before,
+.front .panels-flexible-region-new-home_right div.pane-title:before,
 .front .panels-flexible-region-new-home_left h2.pane-title:before,
 .front .panels-flexible-region-new-center h2.pane-title:before,
 .front .panels-flexible-region-new-home_right h2.pane-title:before {
@@ -10261,14 +10286,14 @@ html:lang(no) .pane-node-field-provider .field-items,
   display: table;
   margin: 0px auto;
 }
-.front .panels-flexible-region-new-home_left h2.pane-title {
+.front .panels-flexible-region-new-home_left div.pane-title {
   background: url(../images/content/news.png) no-repeat center 20px;
 }
 .front .panels-flexible-region-new-center {
   border-left: 1px dotted #749b00;
   border-right: 1px dotted #749b00;
 }
-.front .panels-flexible-region-new-center h2.pane-title {
+.front .panels-flexible-region-new-center div.pane-title {
   background: url(../images/content/icono-events-section.png) no-repeat center 20px;
 }
 .front .panels-flexible-region-new-center .event_day_month .event_day {
@@ -11100,6 +11125,10 @@ p.no-results {
 .view-events-search .view-filters {
   border-top: 1px dotted #749b00;
   border-bottom: 1px dotted #749b00;
+}
+#block-system-main .view-events-search .view-footer,
+.view-events-search .view-footer {
+  display: none;
 }
 #block-system-main .view-events-search .views-exposed-widgets,
 .view-events-search .views-exposed-widgets {
@@ -16829,6 +16858,33 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 10px;
 }
 /*end page enterprise europe network*/
+/*Good practice exchange initiative*/
+.page-good-practice-exchange-initiative .webform-client-form {
+  margin-top: 15px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .webform-component--confirm {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 0px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel .panel-body {
+  padding: 0px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel .help-block {
+  color: #333333;
+  font-size: 1em;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel span.captcha {
+  margin-bottom: 15px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel span.captcha #captcha_0_refresh img {
+  width: 38px;
+  height: 38px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .form-actions {
+  margin-bottom: 15px;
+}
+/*End Good practice exchange initiative*/
 /*page-node-366*/
 .page-node-366 li.share-this-article {
   display: block;
@@ -16945,6 +17001,11 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-node-129 table tr .ar {
   text-align: left;
+}
+/*End newsletter mail styles*/
+/*mini panel news and events: not published (only for validation)*/
+#mini-panel-news_and_events .view-id-news .media-list .pull-left {
+  display: none;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
