@@ -163,6 +163,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
     );
 
     $text = [
+      'field_item_type' => '',
       'field_available_in_languages'=>'',
       'body' => '',
       'body_format' => '',

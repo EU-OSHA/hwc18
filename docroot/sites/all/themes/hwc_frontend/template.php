@@ -111,6 +111,7 @@ function hwc_frontend_preprocess_html(&$vars) {
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
+  $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title
   if(!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'], array('page__events', 'page__past_events'))){
     $title = '<span id="block-osha-events-events-links">';
