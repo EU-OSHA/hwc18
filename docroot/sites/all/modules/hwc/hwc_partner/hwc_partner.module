@@ -451,12 +451,32 @@ function _hwc_partner_untranslate_form_labels(&$element) {
   return;
 }
 
+function hwc_partner_form_after_build($form, $form_state) {
+  $form['field_modified_by']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
+  $form['field_modified_on']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
+  return $form;
+}
 /**
  * Implements hook_form_alter().
  */
 function hwc_partner_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   global $language;
+  if(
+    (
+      ($form_id == 'news_node_form') ||
+      ($form_id == 'events_node_form')
+    )
+    &&
+    ( isset($_SESSION['masqueraded_user']) )
+  )
+  {
+    if (!isset($form['#after_build'])) {
+      $form['#after_build'] = array();
+    }
+    $form['#after_build'][] = 'hwc_partner_form_after_build';
+  }
+
   // Un translate form labels if is a partner. (nasty solution)
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)
     && $language->language != 'en') {
@@ -665,6 +685,16 @@ function hwc_partner_node_presave($node) {
     $_SESSION['masqueraded_user'] = $user->uid;
     masquerade_switch_back();
     $user_original = user_load($_SESSION['masquerading']); /* Original user */
+
+    if ( ($node->type == 'news') || ($node->type == 'events') ) {
+      $node->field_modified_on[LANGUAGE_NONE][0] = [
+        'value' => format_date(strtotime('now'), 'custom', 'Y-m-d H:i:') . '00',
+        'timezone' => 'Europe/Madrid',
+        'timezone_db' => 'Europe/Madrid',
+      ];
+      $node->field_modified_by[LANGUAGE_NONE][0] = ['target_id' => $user_original->uid];
+    }
+
     if (!$node->nid) {
       $node->uid  = $user_original->uid;
       $node->name = $user_original->name;
