@@ -272,3 +272,10 @@ function osha_update_7014() {
 function osha_update_7015() {
   features_revert_module('osha');
 }
+
+/**
+ * HW18-199 Development: Audit actions
+ */
+function osha_update_7016() {
+  features_revert_module('osha');
+}
