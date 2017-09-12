@@ -14535,10 +14535,27 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .contact-form.container .grippie {
   display: none;
 }
+.contact-form.container #edit-unsubscribe-details {
+  text-align: center;
+}
+.contact-form.container #edit-unsubscribe-details span {
+  font-weight: normal;
+  color: #003399;
+  margin-right: 3px;
+}
+.contact-form.container #captcha_0_refresh img {
+  height: 37px;
+  width: 38px;
+}
+.contact-form.container .captcha .help-block {
+  color: inherit;
+  font-size: 1em;
+}
 .contact-form.container div.form-group {
   width: 50%;
   float: left;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
+  min-height: 64px;
 }
 .contact-form.container div.form-group label {
   font-weight: bold;
@@ -17358,6 +17375,29 @@ input#edit-field-image-und-0-upload::before {
   .priority-detail .related_links [class*=col-sm-] {
     padding-left: 15px;
     padding-right: 15px;
+  }
+  /*contact form*/
+  .contact-form.container {
+    padding: 0 30px;
+  }
+  .contact-form.container .grippie {
+    display: none;
+  }
+  .contact-form.container div.form-group {
+    width: 100% !important;
+    float: left;
+    margin-bottom: 1em !important;
+    min-height: 64px;
+  }
+  .contact-form.container div.form-group .form-control {
+    width: 100%;
+  }
+  .contact-form.container .form-type-select select {
+    width: 100%;
+  }
+  .contact-form.container .form-type-select:after {
+    left: inherit;
+    right: 0px;
   }
 }
 @media only screen and (max-width: 1100px) {
