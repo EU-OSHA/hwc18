@@ -299,6 +299,32 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 	}
 }
 
+/*contact form*/
+.contact-form.container{
+    padding: 0 @margin-tablet;
+	.grippie{
+		display: none;
+	}
+	div.form-group{
+		width: 100% !important;
+		float: left;
+		margin-bottom: 1em !important;
+		min-height: 64px;
+		.form-control{
+			width: 100%;
+		}
+	}
+	.form-type-select{
+		select{
+			width: 100%;
+		}
+		&:after{
+			left: inherit;
+			right: 0px;
+		}
+	}
+}
+
 }
 
 @media only screen and (max-width : 1100px) {
