@@ -7331,6 +7331,9 @@ header.navbar-default .campaigns-header .navbar-header #block-search-form button
 header.navbar-default .campaigns-header .navbar-header #block-search-form button:focus {
   outline: 0;
 }
+header.navbar-default .campaigns-header .navbar-header #block-search-form #edit-actions {
+  margin-bottom: 0px;
+}
 header.navbar-default .campaigns-header .row:first-of-type {
   padding: 5px 20px 0px 15px;
 }
@@ -7521,7 +7524,8 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
 .region-above-header.region {
   float: right;
   width: auto;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .region-above-header.region section,
 .region-above-header.region > div {
@@ -7595,6 +7599,28 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
 #masquerade-block-1 .btn-default.form-submit {
   margin-top: 1em;
   margin-bottom: 0.7em;
+}
+@media only screen and (min-width: 1200px) {
+  .navbar-header .xs-menu {
+    max-width: 400px;
+    float: right;
+  }
+}
+@media only screen and (max-width: 1105px) {
+  #block-hwc-partner-hwc-partner-mostra-masquerade {
+    min-width: 255px;
+  }
+}
+@media only screen and (max-width: 828px) {
+  #block-hwc-partner-hwc-partner-mostra-masquerade {
+    min-width: 197px;
+  }
+  #block-hwc-partner-hwc-partner-mostra-masquerade a {
+    float: right;
+  }
+  #block-hwc-partner-hwc-partner-mostra-masquerade .button-left {
+    margin-bottom: 7px;
+  }
 }
 body {
   /* General */
@@ -15787,8 +15813,8 @@ span.date-display-single {
 /*Modal partner*/
 #block-hwc-partner-hwc-partner-mostra-masquerade a {
   font-weight: bold;
-  font-size: 0.95em;
-  display: block;
+  font-size: 0.89em;
+  display: inline-block;
   font-style: italic;
 }
 #block-hwc-partner-hwc-partner-mostra-masquerade a::before {
@@ -17634,7 +17660,7 @@ input#edit-field-image-und-0-upload::before {
   }
   header.navbar-default .campaigns-header .navbar-header .region-header #block-hwc-partner-hwc-partner-mostra-masquerade {
     float: right;
-    margin-top: 24px;
+    margin-top: 10px;
     margin-right: -1px;
   }
   header.navbar-default .navbar-collapse nav ul.menu li a .caret,
