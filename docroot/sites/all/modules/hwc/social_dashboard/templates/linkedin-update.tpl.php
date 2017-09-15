@@ -14,6 +14,9 @@ $title = @$share['content']['title'];
 $submittedUrl = @$share['content']['submittedUrl'];
 $background_image = @$share['content']['submittedImageUrl'];
 
+// Fix https image visibility(Content Security Policy) because of http url
+$background_image = str_replace('http://image-store','https://image-store', $background_image);
+
 if ($submittedUrl) {
   $parse = parse_url($submittedUrl);
   $host = $parse['host'];
