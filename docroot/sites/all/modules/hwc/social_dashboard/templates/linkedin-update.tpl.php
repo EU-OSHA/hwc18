@@ -61,16 +61,6 @@ echo '      <div class="feed-s-update__update-content-wrapper">
               <div class="feed-s-hero-entity__image" style="background-image: url(&quot;' . $background_image . '&quot;);"> </div>
           </a>
         </div>
-        <a target="_blank" href="' . $linkedin_link . '">
-          <article class="feed-s-image-description">
-            <div class="feed-s-image-description">
-              <h2 class="feed-s-image-description__headline">
-                <div class="truncate-multiline--truncation-target"><span>' . $title . '</span></div>  
-              </h2>
-              <h3 class="feed-s-image-description__byline">' . $host . '</h3>
-            </div>
-          </article>
-        </a>
       </div>
 ';
 }
