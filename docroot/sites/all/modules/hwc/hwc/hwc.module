@@ -495,6 +495,7 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
 function hwc_content_post_render($content) {
     $content = str_replace('for="edit-submitted-confirm"', '', $content);
     $content = str_replace('for="edit-submitted-activities"','', $content);
+    $content = str_replace('for="security_code"','for="edit-search-block-form--2"', $content);
     $content = str_replace('for="edit-captcha-response"','for="security_code"', $content);
     return $content;
 }
