@@ -20,21 +20,8 @@ $url_query = array();
 if (!empty($campaign_id)) {
   $url_query = array('pk_campaign' => $campaign_id);
 }
-// todo: move to .less
 ?>
 <style>
-    .page-node-129 table {
-        font-family: Arial, sans-serif;
-        border: none;
-        width: 100%;
-        border-spacing: 0;
-    }
-    .page-node-129 table td {
-        padding: 0;
-    }
-    .page-node-129 table .tr_h {
-        height: 100%;
-    }
     .page-node-129 table tr .td_h {
         vertical-align: top;
         text-align:left;

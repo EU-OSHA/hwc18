@@ -14,6 +14,9 @@ $title = @$share['content']['title'];
 $submittedUrl = @$share['content']['submittedUrl'];
 $background_image = @$share['content']['submittedImageUrl'];
 
+// Fix https image visibility(Content Security Policy) because of http url
+$background_image = str_replace('http://image-store','https://image-store', $background_image);
+
 if ($submittedUrl) {
   $parse = parse_url($submittedUrl);
   $host = $parse['host'];
@@ -58,16 +61,6 @@ echo '      <div class="feed-s-update__update-content-wrapper">
               <div class="feed-s-hero-entity__image" style="background-image: url(&quot;' . $background_image . '&quot;);"> </div>
           </a>
         </div>
-        <a target="_blank" href="' . $linkedin_link . '">
-          <article class="feed-s-image-description">
-            <div class="feed-s-image-description">
-              <h2 class="feed-s-image-description__headline">
-                <div class="truncate-multiline--truncation-target"><span>' . $title . '</span></div>  
-              </h2>
-              <h3 class="feed-s-image-description__byline">' . $host . '</h3>
-            </div>
-          </article>
-        </a>
       </div>
 ';
 }
