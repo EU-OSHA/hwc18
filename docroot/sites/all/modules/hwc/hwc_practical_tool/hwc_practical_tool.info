@@ -1,7 +1,7 @@
 name = HWC Practical tool
 core = 7.x
 package = HWC
-version = 7.x-1.8
+version = 7.x-1.9
 project = hwc_practical_tool
 dependencies[] = ctools
 dependencies[] = date
@@ -44,6 +44,7 @@ features[fe_block_settings][] = facetapi-r1CPZ0bxJkiGazQqrYQUlYoa5mMbO8qj
 features[fe_block_settings][] = facetapi-wQIFZjkOyQ5XU931SF9uzdto5FrPfZQI
 features[fe_block_settings][] = hwc_practical_tool-hwc_practical_tool_language_list
 features[fe_block_settings][] = hwc_practical_tool-hwc_practical_tool_text
+features[fe_block_settings][] = views--exp-practical_tools-page
 features[features_api][] = api:2
 features[field_base][] = field_access_tool_link
 features[field_base][] = field_access_tool_link_fc
