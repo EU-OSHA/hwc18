@@ -33,7 +33,7 @@ function hwc_audio_visual_element_info_alter(&$type) {
   }
 }
 
-// remove guidelines and help text
+// Remove guidelines and help text.
 function hwc_audio_visual_filter_process_format($element) {
   $element = filter_process_format($element);
   if ($element['#bundle'] == 'practical_tool') {
@@ -44,19 +44,6 @@ function hwc_audio_visual_filter_process_format($element) {
     $element['#format'] = 'audio_visual';
   }
   return $element;
-}
-
-function hwc_audio_visual_facet_items_alter(&$build, &$settings) {
-  if ($settings->facet == "field_available_in_languages:value") {
-    $list = language_list();
-    foreach ($build as $lang => $item) {
-      if (isset($list[$lang])) {
-        $build[$lang]['#markup'] = $list[$lang]->name;
-      } else {
-        $build[$lang]['#markup'] = $lang;
-      }
-    }
-  }
 }
 
 /**

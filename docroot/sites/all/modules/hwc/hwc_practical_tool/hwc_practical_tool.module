@@ -9,7 +9,6 @@ include_once 'hwc_practical_tool.features.inc';
 /**
  * Implements hook_field_collection_item_view_HOOK().
  */
-
 function hwc_practical_tool_field_collection_item_view($field_collection_item, $view_mode, $langcode) {
   if ($view_mode == 'title_only') {
     $item = entity_metadata_wrapper('field_collection_item', $field_collection_item);
@@ -29,19 +28,86 @@ function hwc_practical_tool_entity_info_alter(&$entity_info) {
   );
 }
 
+/**
+ * Implements hook_search_api_solr_query_alter().
+ */
+function hwc_practical_tool_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
+  global $language;
+  if (arg(0) == 'practical-tools') {
+    $call_args['params']['sort'] = 'score desc';
+    $call_args['params']['fq'][] = 'sm_field_available_in_languages\:value:"' . $language->language . '"';
+    $sort_order = strtolower(@$_REQUEST['sort_order']);
+    $sort_by = strtolower(@$_REQUEST['sort_by']);
+    if ($sort_by) {
+      $call_args['params']['sort'] = 'ds_field_publication_year ';
+      if ($sort_by == 'search_api_relevance') {
+        $call_args['params']['sort'] = 'score  ';
+      }
+      if (!in_array($sort_order, ['asc', 'desc'])) {
+        $sort_order = 'desc';
+      }
+      $call_args['params']['sort'] .= $sort_order;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function hwc_practical_tool_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-practical-tools-page') {
+    $form['sort_by']['#default_value'] = 'search_api_relevance';
+    unset($form['#info']['filter-search_api_views_fulltext']['label']);
+  }
+
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-documents-page-1') {
+    unset($form['#info']['filter-search_api_views_fulltext']['label']);
+  }
+}
+
+/**
+ * Implements facet_items_alter().
+ */
+function hwc_practical_tool_facet_items_alter(&$build, &$settings) {
+  global $language;
+  if ($settings->facet == "field_available_in_languages:value") {
+    $build[$language->language]['#active'] = 1;
+    if ($settings->facet == "field_available_in_languages:value") {
+      $list = language_list();
+      foreach ($build as $lang => $item) {
+        if (isset($list[$lang])) {
+          $build[$lang]['#markup'] = $list[$lang]->name;
+        }
+        else {
+          $build[$lang]['#markup'] = $lang;
+        }
+      }
+    }
+  }
+}
+
 function hwc_practical_tool_sort_form($form, $form_state) {
-  $form = array(
-  );
+  $form = array();
   $form['sort_by'] = [
     '#type' => 'select',
-    '#title' => t('Order'),
-    '#default_value'=>'field_publication_date',
-    '#options'=>[
+    '#title' => t('Sort by'),
+    '#default_value' => 'search_api_relevance',
+    '#options' => [
       'search_api_relevance' => t('Relevance'),
       'field_publication_year' => t('Year of publication'),
-    ]
+    ],
+  ];
+  $form['sort_order'] = [
+    '#type' => 'select',
+    '#title' => t('Order'),
+    '#default_value' => 'DESC',
+    '#options' => [
+      'DESC' => t('DESC'),
+      'ASC' => t('ASC'),
+    ],
   ];
   $form['sort_by']['#value'] = @$_REQUEST['sort_by'];
+  $form['sort_order']['#value'] = @$_REQUEST['sort_order'];
   return $form;
 }
 
@@ -53,7 +119,7 @@ function hwc_practical_tool_views_post_render(&$view, &$output, &$cache) {
     drupal_add_js(drupal_get_path('module', 'hwc_practical_tool') . '/sort.js', array('weight' => 20));
     $form = drupal_get_form('hwc_practical_tool_sort_form');
     $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
-    $output = trim(str_replace('@order', $order_html, $output)). '</span>';
+    $output = trim(str_replace('@order', $order_html, $output)) . '</span>';
   }
 }
 
@@ -118,10 +184,7 @@ function hwc_practical_tool_block_view($delta = '') {
       $q->condition('a.entity_type', 'node');
       $languages = $q->execute()->fetchAll();
 
-      $block['content'] = theme('hwc_practical_tool_language_list', array(
-          'languages' => $languages,
-        )
-      );
+      $block['content'] = theme('hwc_practical_tool_language_list', array('languages' => $languages));
     }
   }
 
@@ -162,7 +225,7 @@ function hwc_practical_tool_field_formatter_info() {
     'field_collection_title' => array(
       'label' => t('Fields collection title'),
       'field types' => array('field_collection'),
-      'settings' =>  array(
+      'settings' => array(
         'edit' => t('Edit'),
         'delete' => t('Delete'),
         'add' => t('Add'),
@@ -215,49 +278,31 @@ function hwc_practical_tool_field_formatter_settings_form($field, $instance, $vi
   $settings = $display['settings'];
   $elements = array();
   if ($display['type'] == 'field_collection_title') {
-      $elements['edit'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Edit link title'),
-        '#default_value' => $settings['edit'],
-        '#description' => t('Leave the title empty, to hide the link.'),
-      );
-      $elements['delete'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Delete link title'),
-        '#default_value' => $settings['delete'],
-        '#description' => t('Leave the title empty, to hide the link.'),
-      );
-      $elements['add'] = array(
-        '#type' => 'textfield',
-        '#title' => t('Add link title'),
-        '#default_value' => $settings['add'],
-        '#description' => t('Leave the title empty, to hide the link.'),
-      );
-      $elements['description'] = array(
-        '#type' => 'checkbox',
-        '#title' => t('Show the field description beside the add link.'),
-        '#default_value' => $settings['description'],
-        '#description' => t('If enabled and the add link is shown, the field description is shown in front of the add link.'),
-      );
-    }
-
-  // Add a select form element for view_mode if viewing the rendered field_collection.
-  /*  if ($display['type'] !== 'field_collection_title') {
-
-    $entity_type = entity_get_info('field_collection_item');
-    $options = array();
-    foreach ($entity_type['view modes'] as $mode => $info) {
-      $options[$mode] = $info['label'];
-    }
-
-    $elements['view_mode'] = array(
-      '#type' => 'select',
-      '#title' => t('View mode'),
-      '#options' => $options,
-      '#default_value' => $settings['view_mode'],
-      '#description' => t('Select the view mode'),
+    $elements['edit'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Edit link title'),
+      '#default_value' => $settings['edit'],
+      '#description' => t('Leave the title empty, to hide the link.'),
     );
-  }*/
+    $elements['delete'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Delete link title'),
+      '#default_value' => $settings['delete'],
+      '#description' => t('Leave the title empty, to hide the link.'),
+    );
+    $elements['add'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Add link title'),
+      '#default_value' => $settings['add'],
+      '#description' => t('Leave the title empty, to hide the link.'),
+    );
+    $elements['description'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show the field description beside the add link.'),
+      '#default_value' => $settings['description'],
+      '#description' => t('If enabled and the add link is shown, the field description is shown in front of the add link.'),
+    );
+  }
 
   return $elements;
 }
@@ -270,20 +315,15 @@ function hwc_practical_tool_field_formatter_settings_summary($field, $instance, 
   $settings = $display['settings'];
   $output = array();
   if ($display['type'] == 'field_collection_title') {
-      $links = array_filter(array_intersect_key($settings, array_flip(array('add', 'edit', 'delete'))));
-      if ($links) {
-        $output[] = t('Links: @links', array('@links' => check_plain(implode(', ', $links))));
-      }
-      else {
-        $output[] = t('Links: none');
-      }
-  }
-/*  if ($display['type'] !== 'field_collection_title') {
-    $entity_type = entity_get_info('field_collection_item');
-    if (!empty($entity_type['view modes'][$settings['view_mode']]['label'])) {
-      $output[] =  t('View mode: @mode', array('@mode' => $entity_type['view modes'][$settings['view_mode']]['label']));
+    $links = array_filter(array_intersect_key($settings,
+      array_flip(array('add', 'edit', 'delete'))));
+    if ($links) {
+      $output[] = t('Links: @links', array('@links' => check_plain(implode(', ', $links))));
     }
-  }*/
+    else {
+      $output[] = t('Links: none');
+    }
+  }
 
   return implode('<br>', $output);
 }
@@ -311,11 +351,7 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
       if (!empty($output)) {
         $output = l($output, 'node/' . $entity->nid, ['query' => ['destination' => request_uri()], 'absolute' => TRUE]);
       }
-      $element = array(
-        array(
-          '#markup' => $output
-        )
-      );
+      $element = array(array('#markup' => $output));
       break;
 
     case 'access_tool_link_details':
@@ -336,17 +372,7 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
       foreach ($items as $delta => $item) {
         if ($field_collection = field_collection_field_get_entity($item)) {
           $name = $field_collection->field_fc_provider_name['und'][0]['value'];
-          $output = $name;//l($field_collection->label(), $field_collection->path());
-//          $links = array();
-//          foreach (array('edit', 'delete') as $op) {
-//            if ($settings[$op] && field_collection_item_access($op == 'edit' ? 'update' : $op, $field_collection)) {
-//              $title = entity_i18n_string("field:{$field['field_name']}:{$instance['bundle']}:setting_$op", $settings[$op]);
-//              $links[] = l($title, $field_collection->path() . '/' . $op, array('query' => drupal_get_destination()));
-//            }
-//          }
-//          if ($links) {
-//            $output .= ' (' . implode('|', $links) . ')';
-//          }
+          $output = $name;
           $element[$delta] = array('#markup' => $output);
         }
       }

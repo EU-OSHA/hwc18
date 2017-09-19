@@ -253,7 +253,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+partners-documents',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -289,7 +290,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -80,
+        'weight' => -81,
       ),
       'seven' => array(
         'region' => '',

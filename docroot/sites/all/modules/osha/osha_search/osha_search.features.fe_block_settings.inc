@@ -205,8 +205,7 @@ practical-tools',
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'search
-practical-tools',
+    'pages' => 'search',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
