@@ -6,6 +6,36 @@
 
 include_once 'hwc_practical_tool.features.inc';
 
+
+/**
+ * Implements hook_menu_alter().
+ */
+function hwc_practical_tool_menu_alter(&$items) {
+  $items['node/%node/edit']['access callback'] = 'hwc_practical_tool_node_edit_form_access';
+}
+
+/**
+ * Callback function to disable practical_tool update.
+ */
+function hwc_practical_tool_node_edit_form_access($op, $node) {
+  $type = is_string($node) ? $node : $node->type;
+  if (($type == 'practical_tool') && ($op == 'update')) {
+    return FALSE;
+  }
+  return node_access($op, $node);
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function hwc_practical_tool_form_node_form_alter(&$form, &$form_state, $form_id) {
+  $bundle = $form['#node']->type;
+
+  if ($bundle == 'practical_tool') {
+    drupal_set_message(t('This content is imported from EU-OSHA via synchronization process. <strong>Modifications made here might be lost after the next synchronization</strong>'), 'warning');
+  }
+}
+
 /**
  * Implements hook_field_collection_item_view_HOOK().
  */
