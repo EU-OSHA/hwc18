@@ -1570,8 +1570,8 @@ function osha_events_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-      'weight' => 34,
-    ),
+        'weight' => 34,
+      ),
       'highlights_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2101,6 +2101,7 @@ function osha_events_field_default_field_instances() {
           'description' => TRUE,
           'edit' => 'Edit',
           'field_formatter_class' => '',
+          'translate' => 'Translate',
         ),
         'type' => 'field_collection_list',
         'weight' => 0,
