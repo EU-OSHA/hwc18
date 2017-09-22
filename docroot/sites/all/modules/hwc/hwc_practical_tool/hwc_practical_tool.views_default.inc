@@ -22,7 +22,7 @@ function hwc_practical_tool_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Practical Tools';
+  $handler->display->display_options['title'] = 'Practical tools and guidance';
   $handler->display->display_options['css_class'] = 'view-search';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
@@ -261,7 +261,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['path'] = 'practical-tools';
   $translatables['practical_tools'] = array(
     t('Master'),
-    t('Practical Tools'),
+    t('Practical tools and guidance'),
     t('more'),
     t('Apply'),
     t('Reset'),

@@ -102,15 +102,13 @@ function hwc_practical_tool_facet_items_alter(&$build, &$settings) {
   global $language;
   if ($settings->facet == "field_available_in_languages:value") {
     $build[$language->language]['#active'] = 1;
-    if ($settings->facet == "field_available_in_languages:value") {
-      $list = language_list();
-      foreach ($build as $lang => $item) {
-        if (isset($list[$lang])) {
-          $build[$lang]['#markup'] = $list[$lang]->name;
-        }
-        else {
-          $build[$lang]['#markup'] = $lang;
-        }
+    $list = language_list();
+    foreach ($build as $lang => $item) {
+      if (isset($list[$lang])) {
+        $build[$lang]['#markup'] = $list[$lang]->name;
+      }
+      else {
+        $build[$lang]['#markup'] = $lang;
       }
     }
   }
