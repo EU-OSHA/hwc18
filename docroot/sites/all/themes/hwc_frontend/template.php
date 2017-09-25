@@ -112,8 +112,9 @@ function hwc_frontend_preprocess_html(&$vars) {
 
 function hwc_frontend_preprocess_page(&$vars) {
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
-  // Change Events page title
-  if(!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'], array('page__events', 'page__past_events'))){
+  // Change Events page title.
+  if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
+      array('page__events', 'page__past_events'))) {
     $title = '<span id="block-osha-events-events-links">';
     $title .= l(t('Upcoming events'), 'events') . ' / ' . l(t('Past events'), 'past-events');
     $title .= '</span>';
@@ -124,14 +125,15 @@ function hwc_frontend_preprocess_page(&$vars) {
     drupal_set_title('');
   }
 
-  if (arg(0)=='practical-tools') {
-    $vars['classes_array'][] = 'page-search';//todo tmp solution for css classes...
+  if (arg(0) == 'practical-tools') {
+    $vars['classes_array'][] = 'page-search';
   }
-  // add back to links (e.g. Back to news)
+
+  // Add back to links (e.g. Back to news).
   if (isset($vars['node'])) {
     $node = $vars['node'];
     $tag_vars = array(
-      'element' => array (
+      'element' => array(
         '#tag' => 'h1',
         '#attributes' => array(
           'class' => array('page-header'),
@@ -158,6 +160,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'press_release':
         $link_title = t('Back to press releases list');
         $link_href = 'press-room';
@@ -167,6 +170,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'news':
         $link_title = t('Back to news');
         $link_href = 'news';
@@ -176,6 +180,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'infographic':
         $link_title = t('Back to infographics list');
         $link_href = 'infographics';
@@ -185,6 +190,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'campaign_materials':
         $link_title = t('Back to campaign materials list');
         $link_href = 'campaign-materials';
@@ -194,22 +200,25 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'practical_tool':
         $link_title = t('Back to practical tools list');
         $link_href = 'practical-tools';
         if (isset($_REQUEST['destination'])) {
-          $vars['page']['above_title']['back-to-link'] = array(
+          $vars['page']['below_title']['back-to-link'] = array(
             '#type' => 'item',
             '#markup' => '<a class="back-to-link pull-right" href="' . $_REQUEST['destination'] . '">' . $link_title . '</a>',
           );
           unset($link_title);
         }
         $tag_vars['element']['#value'] = t('Practical tools and guidance');
-        $vars['page']['above_title']['practical-tool-page-title'] = array(
+        $vars['page']['below_title']['practical-tool-page-title'] = array(
           '#type' => 'item',
           '#markup' => theme('html_tag', $tag_vars),
         );
+        krsort($vars['page']['below_title']);
         break;
+
       case 'events':
         $date = new DateTime($node->field_start_date['und'][0]['value']);
         $now = new DateTime();
@@ -244,6 +253,7 @@ function hwc_frontend_preprocess_page(&$vars) {
         drupal_set_breadcrumb($breadcrumb);
 
         break;
+
       case 'hwc_gallery':
         $link_title = t('Back to gallery');
         $link_href = 'photo-gallery';
@@ -261,6 +271,7 @@ function hwc_frontend_preprocess_page(&$vars) {
       );
     }
   }
+
   if ($node = menu_get_object()) {
     if ($node->type == 'publication') {
       ctools_include('plugins');
@@ -289,15 +300,16 @@ function hwc_frontend_preprocess_page(&$vars) {
       drupal_set_breadcrumb($breadcrumbs);
     }
   }
-  // Add back link (e.g. 'Back to homepage') for Partners pages
+
+  // Add back link (e.g. 'Back to homepage') for Partners pages.
   $partner = hwc_partner_get_account_partner();
-  if(is_object($partner)){
-    switch(current_path()){
+  if (is_object($partner)) {
+    switch (current_path()) {
       case 'node/add/events':
       case 'node/add/news':
       case 'private':
         $link_title = t('Back to homepage');
-        $link_href = 'node/'.$partner->nid;
+        $link_href = 'node/' . $partner->nid;
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
           '#markup' => drupal_get_title(),
