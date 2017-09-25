@@ -21,33 +21,6 @@ if (!empty($campaign_id)) {
   $url_query = array('pk_campaign' => $campaign_id);
 }
 ?>
-<style>
-    .page-node-129 table tr .td_h {
-        vertical-align: top;
-        text-align:left;
-        padding-left: 5px;
-        padding-top: 7px;
-        width:10px;
-    }
-    .page-node-129 table tr .ar {
-        text-align: left;
-        padding-top: 5px;
-        padding-bottom: 10px;
-        padding-left:0px;
-    }
-    .page-node-129 table tr .rs2 {
-        width:40px;
-        padding-right: 10px;
-    }
-    .page-node-129 table tr .pt15 {
-        padding-top: 15px;
-    }
-    .page-node-129 table tr .cs2 {
-        width:40px;
-        max-width:40px;
-        padding-right: 5px;
-    }
-</style>
 <?php if($node->title != NULL) {?>
   <table id="node-<?php print $node->nid; ?>" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>">
     <tbody>

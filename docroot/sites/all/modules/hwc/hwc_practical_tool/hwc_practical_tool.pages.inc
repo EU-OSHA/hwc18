@@ -356,19 +356,6 @@ The data included for each tool will be:
 
 */
 
-function hwc_practical_tool_facet_items_alter(&$build, &$settings) {
-  if ($settings->facet == "field_available_in_languages:value") {
-    $list = language_list();
-    foreach ($build as $lang => $item) {
-      if (isset($list[$lang])) {
-        $build[$lang]['#markup'] = $list[$lang]->name;
-      } else {
-        $build[$lang]['#markup'] = $lang;
-      }
-    }
-  }
-}
-
 function _hwc_practical_tool_get_facets_def() {
   return array(
     'language' => array(

@@ -86,7 +86,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -85,
+        'weight' => -84,
       ),
       'seven' => array(
         'region' => '',
@@ -173,7 +173,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -82,
+        'weight' => -81,
       ),
       'seven' => array(
         'region' => '',
@@ -202,7 +202,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -83,
+        'weight' => -82,
       ),
       'seven' => array(
         'region' => '',
@@ -231,7 +231,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -84,
+        'weight' => -83,
       ),
       'seven' => array(
         'region' => '',
@@ -253,14 +253,15 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+partners-documents',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -86,
+        'weight' => -85,
       ),
       'seven' => array(
         'region' => '',
@@ -318,7 +319,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -89,
+        'weight' => -88,
       ),
       'seven' => array(
         'region' => '',
@@ -386,6 +387,35 @@ function hwc_practical_tool_default_fe_block_settings() {
       ),
     ),
     'title' => '',
+    'visibility' => 1,
+  );
+
+  $export['views--exp-practical_tools-page'] = array(
+    'cache' => -1,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => '-exp-practical_tools-page',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => 'practical-tools',
+    'roles' => array(),
+    'themes' => array(
+      'hwc_frontend' => array(
+        'region' => 'sidebar_first',
+        'status' => 1,
+        'theme' => 'hwc_frontend',
+        'weight' => -92,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
     'visibility' => 1,
   );
 

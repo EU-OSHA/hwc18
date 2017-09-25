@@ -445,7 +445,7 @@ function osha_events_field_default_field_bases() {
     'module' => 'file',
     'settings' => array(
       'display_default' => 1,
-      'display_field' => 0,
+      'display_field' => 1,
       'entity_translation_sync' => array(
         0 => 'fid',
       ),
@@ -466,12 +466,16 @@ function osha_events_field_default_field_bases() {
       'revision_id' => array(
         0 => 'revision_id',
       ),
+      'value' => array(
+        0 => 'value',
+      ),
     ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'hide_blank_items' => 1,
+      'hide_initial_item' => FALSE,
       'path' => '',
     ),
     'translatable' => 0,

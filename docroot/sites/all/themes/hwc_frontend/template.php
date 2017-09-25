@@ -197,6 +197,13 @@ function hwc_frontend_preprocess_page(&$vars) {
       case 'practical_tool':
         $link_title = t('Back to practical tools list');
         $link_href = 'practical-tools';
+        if (isset($_REQUEST['destination'])) {
+          $vars['page']['above_title']['back-to-link'] = array(
+            '#type' => 'item',
+            '#markup' => '<a class="back-to-link pull-right" href="' . $_REQUEST['destination'] . '">' . $link_title . '</a>',
+          );
+          unset($link_title);
+        }
         $tag_vars['element']['#value'] = t('Practical tools and guidance');
         $vars['page']['above_title']['practical-tool-page-title'] = array(
           '#type' => 'item',

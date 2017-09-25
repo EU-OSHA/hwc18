@@ -22,7 +22,7 @@ function hwc_practical_tool_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Practical Tools';
+  $handler->display->display_options['title'] = 'Practical tools and guidance';
   $handler->display->display_options['css_class'] = 'view-search';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
@@ -150,24 +150,39 @@ function hwc_practical_tool_views_default_views() {
 [field_fc_provider]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Multilingual Content: Title #2 */
-  $handler->display->display_options['sorts']['title2']['id'] = 'title2';
-  $handler->display->display_options['sorts']['title2']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['sorts']['title2']['field'] = 'title2';
-  $handler->display->display_options['sorts']['title2']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title2']['expose']['label'] = 'Title';
+  /* Field: Indexed Multilingual Content: Year of publication */
+  $handler->display->display_options['fields']['field_publication_year']['id'] = 'field_publication_year';
+  $handler->display->display_options['fields']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_publication_year']['field'] = 'field_publication_year';
+  $handler->display->display_options['fields']['field_publication_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_publication_year']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Search: Relevance */
+  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
+  /* Sort criterion: Indexed Multilingual Content: Year of publication */
+  $handler->display->display_options['sorts']['field_publication_year']['id'] = 'field_publication_year';
+  $handler->display->display_options['sorts']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['sorts']['field_publication_year']['field'] = 'field_publication_year';
+  $handler->display->display_options['sorts']['field_publication_year']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['field_publication_year']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_publication_year']['expose']['label'] = 'Year of publication';
   /* Sort criterion: Search: Relevance */
   $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
-  /* Sort criterion: Indexed Multilingual Content: Year of publication */
-  $handler->display->display_options['sorts']['field_publication_year']['id'] = 'field_publication_year';
-  $handler->display->display_options['sorts']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['sorts']['field_publication_year']['field'] = 'field_publication_year';
-  $handler->display->display_options['sorts']['field_publication_year']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_publication_year']['expose']['label'] = 'Year of publication';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
     2 => 'OR',
@@ -246,7 +261,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['path'] = 'practical-tools';
   $translatables['practical_tools'] = array(
     t('Master'),
-    t('Practical Tools'),
+    t('Practical tools and guidance'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -272,9 +287,10 @@ function hwc_practical_tool_views_default_views() {
 [field_provider]
 [field_fc_provider]
 </div>'),
-    t('Title'),
-    t('Relevance'),
     t('Year of publication'),
+    t('Relevance'),
+    t('.'),
+    t(','),
     t('Search'),
     t('Page'),
   );
