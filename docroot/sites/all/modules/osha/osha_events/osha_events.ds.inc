@@ -162,9 +162,9 @@ function osha_events_ds_layout_settings_info() {
       ),
       'footer' => array(
         20 => 'field_gallery',
+        21 => 'field_modified_on',
       ),
       'hidden' => array(
-        21 => 'field_modified_on',
         22 => 'field_modified_by',
         23 => 'group_contact',
         24 => 'field_tags',
@@ -197,7 +197,7 @@ function osha_events_ds_layout_settings_info() {
       'field_contact_email' => 'right2',
       'field_website_of_event' => 'right2',
       'field_gallery' => 'footer',
-      'field_modified_on' => 'hidden',
+      'field_modified_on' => 'footer',
       'field_modified_by' => 'hidden',
       'group_contact' => 'hidden',
       'field_tags' => 'hidden',

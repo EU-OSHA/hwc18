@@ -48,3 +48,11 @@ function osha_news_update_7006() {
 function osha_news_update_7007() {
   features_revert_module('osha_news');
 }
+
+/**
+ * Revert osha_news and osha_events.
+ */
+function osha_news_update_7008() {
+  features_revert_module('osha_news');
+  features_revert_module('osha_events');
+}
