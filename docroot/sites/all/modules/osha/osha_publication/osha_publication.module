@@ -61,7 +61,7 @@ function osha_publication_entity_info_alter(&$entity_info) {
  * Implements hook_preprocess_node().
  */
 function osha_publication_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'pub_teaser') {
+  if ($vars['view_mode'] == 'pub_teaser') {
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__pub_teaser';
   }
 }
@@ -72,81 +72,6 @@ function osha_publication_preprocess_node(&$vars) {
 function osha_publication_url_inbound_alter(&$path, $original_path, $path_language) {
   // For HWC this is no longer required.
   return;
-  // For publications, the default url should serve the file.
-  // if the path ends with /view than should serve the node.
-  // see CW-1072
-  $args = arg();
-  global $language_url;
-  $orig_path_alias = drupal_lookup_path('alias', $original_path);
-  $orig_path_source = drupal_lookup_path('source', $original_path);
-  if (end($args) == 'view') {
-    // If path exists, don't do anything.
-    if (empty($orig_path_alias) && empty($orig_path_source)) {
-      $url = preg_replace('/\/view$/', '', $original_path);
-      // If alias, get source.
-      $path_source = drupal_lookup_path('source', $url);
-      if (empty($path_source) && $language_url->language != 'en') {
-        // Alias can be from English but requested in different language.
-        $path_source = drupal_lookup_path('source', $url, 'en');
-      }
-      // If source empty, the url might be the system path, not alias.
-      if (empty($path_source) && drupal_valid_path($url)) {
-        $path_source = $url;
-      }
-      $path_alias = path_load($path_source);
-      if (empty($path_alias)) {
-        // It may be a redirect with /view appended.
-        $redirect = redirect_load_by_source($url);
-        if (!empty($redirect->redirect)) {
-          $path_alias = path_load(array('source' => $redirect->redirect));
-        }
-      }
-      if (!empty($path_alias)) {
-        if (preg_match("/node\/[\d]{1,99}$/", $path_alias['source'])) {
-          $node = menu_get_object('node', 1, $path_alias['source']);
-          if ($node->type == 'publication') {
-            // Set the path as path source to render the entity.
-            $path = $path_alias['source'];
-          }
-        }
-      }
-    }
-  }
-  else {
-    if (empty($orig_path_source)) {
-      // The url might be the system path, not alias.
-      $path_source = drupal_lookup_path('source', $orig_path_alias);
-    }
-    else {
-      $path_source = $orig_path_source;
-    }
-    $path_alias = path_load($path_source);
-    $source = '';
-    if (!empty($path_alias)
-        && preg_match("/node\/[\d]{1,99}$/", $path_alias['source'])) {
-      // Alias with source node/nid
-      $source = $path_alias['source'];
-    }
-    elseif (preg_match("/node\/[\d]{1,99}$/", $original_path)) {
-      // The requested path it is system path
-      // without alias for current language.
-      $source = $original_path;
-    }
-    if (!empty($source)) {
-      if ($node = menu_get_object('node', 1, $source)) {
-        if ($node->type == 'publication') {
-          global $language;
-          $lang = $language->language;
-          if (!empty($node->field_file[$lang][0])
-            || !empty($node->field_file['en'][0])
-          ) {
-            // Append the file_view identifier to be used in hook_node_view().
-            $path .= '/file_view';
-          }
-        }
-      }
-    }
-  }
 }
 
 /**
@@ -155,7 +80,7 @@ function osha_publication_url_inbound_alter(&$path, $original_path, $path_langua
 function osha_publication_node_view($node, $view_mode, $langcode) {
   // For publications, the default url should serve the file.
   // if the path ends with /view than should serve the node.
-  // see CW-1072
+  // See CW-1072.
   if ($node->type != 'publication') {
     return;
   }
@@ -188,30 +113,12 @@ function osha_publication_node_view($node, $view_mode, $langcode) {
 function osha_publication_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   // No longer needed for HWC.
   return;
-  // For publications, the "View" tab should point to alias/view.
-  $is_node = !empty($router_item['map'][0]) && $router_item['map'][0] == 'node'
-    && !empty($router_item['map'][1]) && is_object($router_item['map'][1]);
-  $is_publication = $is_node && $router_item['map'][1]->type == 'publication';
-  if ($is_publication && !empty($data['tabs'][0])) {
-    $tabs = $data['tabs'][0];
-    if (!empty($tabs['output'])) {
-      foreach ($tabs['output'] as $key => $tab) {
-        if ($tab['#link']['path'] == 'node/%/view') {
-          $alias = drupal_lookup_path('alias', $data['tabs'][0]['output'][$key]['#link']['href']);
-          if (!empty($alias)) {
-            $data['tabs'][0]['output'][$key]['#link']['href'] = $alias;
-          }
-          $data['tabs'][0]['output'][$key]['#link']['href'] .= '/view';
-        }
-      }
-    }
-  }
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function osha_publication_form_lang_dropdown_form_alter(&$form, &$form_state, $form_id){
+function osha_publication_form_lang_dropdown_form_alter(&$form, &$form_state, $form_id) {
   // For publications, the language switcher should get to '/view' (CW-1413)
   $node = menu_get_object();
   if (!empty($node) && $node->type == 'publication') {
@@ -232,7 +139,7 @@ function osha_publication_views_pre_render(&$view) {
 
   $jssor_path = libraries_get_path('jquery-slider-master');
   if ($view->name == 'publication_type') {
-    foreach($view->result as $k => $row) {
+    foreach ($view->result as $k => $row) {
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
         str_replace(
           'node/160', 'napo-film',
@@ -278,14 +185,6 @@ function osha_publication_post_features_enable_feature($component) {
 function osha_publication_workbench_moderation_transition($node, $old, $new) {
   // No longer needed for HWC.
   return;
-  if ($node->type == 'publication' && $new == 'published') {
-    $destination = 'node/' . $node->nid;
-    $path = path_load(array('source' => $destination));
-    if (!empty($path)) {
-      $destination = $path['alias'];
-    }
-    $_GET['destination'] = $destination . '/view';
-  }
 }
 
 /**
@@ -451,6 +350,7 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
         );
       }
       break;
+
     case 'file_publication_related_res':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
@@ -460,6 +360,7 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
         );
       }
       break;
+
     case 'publication_bookshop_id':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
@@ -469,12 +370,14 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
         );
       }
       break;
+
     case 'publication_twin_publications':
       $element[0] = array(
         '#theme' => 'item_list',
         '#items' => osha_publication_twin_publications_formatter($items),
       );
       break;
+
     case 'file_all_group_mimetype':
       $field_name = $field['field_name'];
       $element[0] = array(
@@ -482,6 +385,7 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
         '#items' => osha_publication_file_all_group_mimetype_formatter($entity->{$field_name}),
       );
       break;
+
     case 'publication_title_linked':
       $settings = $display['settings'];
       $output = isset($items[0]) ? $items[0]['safe_value'] : '';
@@ -529,8 +433,8 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
   return $element;
 }
 
-/*
- * Formats the main attachment and show links in all languages
+/**
+ * Formats the main attachment and show links in all languages.
  */
 function theme_osha_publication_file_publication_file_format($element) {
   $node = $element['entity'];
@@ -544,7 +448,7 @@ function theme_osha_publication_file_publication_file_format($element) {
   $file_fid = isset($node->field_file[$node->language][0]['fid']) ? $node->field_file[$node->language][0]['fid'] : NULL;
 
   foreach ($node->field_file as $lang => $object) {
-    if ( $lang == $node->language || $file_fid != $object[0]['fid'] ) {
+    if ($lang == $node->language || $file_fid != $object[0]['fid']) {
       $output .= '<a href="' . file_create_url($object[0]['uri']) . '">' . strtoupper($lang) . '</a> | ';
     }
   }
@@ -552,7 +456,7 @@ function theme_osha_publication_file_publication_file_format($element) {
   return $output;
 }
 
-/*
+/**
  * Formats the related resources (attached files) as icon and description/filename
  */
 function theme_osha_publication_file_publication_related_res_format($element) {
@@ -562,28 +466,28 @@ function theme_osha_publication_file_publication_related_res_format($element) {
   $name = ($file->description != NULL) ? $file->description : $file->filename;
   $output = '<a href="' . file_create_url($file->uri) . '">';
   $output .= theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
-  $output .= '<span>'.$name.'</span></a>';
+  $output .= '<span>' . $name . '</span></a>';
 
   return $output;
 }
 
-/*
- * Formats the bookshop id as link to bookshop.europa.eu
+/**
+ * Formats the bookshop id as link to bookshop.europa.eu.
  */
 function theme_osha_publication_bookshop_id_format($element) {
   $code = $element['bookshop_id']['value'];
-  $url = 'http://bookshop.europa.eu/is-bin/INTERSHOP.enfinity/WFS/EU-Bookshop-Site/en_GB/-/EUR/ViewPublication-Start?PublicationKey='.$code;
+  $url = 'http://bookshop.europa.eu/is-bin/INTERSHOP.enfinity/WFS/EU-Bookshop-Site/en_GB/-/EUR/ViewPublication-Start?PublicationKey=' . $code;
   $image_path = drupal_get_path('theme', 'hwc_frontend') . '/images/content/eu_bookshop.gif';
 
-  return empty($code)?'':'<span>'.t('Order a printed copy').
-    '<a href="'.$url.'"><img src="/'.$image_path.
-    '" alt="'.t('EU Bookshop: You can order a printed copy of this document').
-    '" title="'.t('EU Bookshop: You can order a printed copy of this document').
+  return empty($code) ? '' : '<span>' . t('Order a printed copy') .
+    '<a href="' . $url . '"><img src="/' . $image_path .
+    '" alt="' . t('EU Bookshop: You can order a printed copy of this document') .
+    '" title="' . t('EU Bookshop: You can order a printed copy of this document') .
     '"></a></span>';
 }
 
-/*
- * Formats the related resources (attached files) as icon and description/filename
+/**
+ * Formats the related resources (attached files) as icon and description/filename.
  */
 function osha_publication_twin_publications_formatter($items) {
   global $language;
@@ -592,30 +496,38 @@ function osha_publication_twin_publications_formatter($items) {
     array_unshift($languages, $language->language);
   }
   $ret = array();
-  foreach($items as $meta) {
+  foreach ($items as $meta) {
     $node = node_load($meta['target_id']);
     $w = entity_metadata_wrapper('node', $meta['target_id']);
     $title = $w->label();
     $files = array();
-    foreach($node->field_file as $lang => $value) {
-      if(in_array($lang, $languages)) {
-        foreach($value as $delta => $file) {
+    foreach ($node->field_file as $lang => $value) {
+      if (in_array($lang, $languages)) {
+        foreach ($value as $delta => $file) {
           $label = strtoupper($lang) . '<span class="glyphicon glyphicon-circle-arrow-down"></span>';
           $link = l($label, file_create_url($file['uri']), array(
-            'absolute' => TRUE, 'html' => TRUE,
+            'absolute' => TRUE,
+            'html' => TRUE,
             'attributes' => array(
               'title' => $file['filename'],
             ),
           ));
           $files[] = $link;
-          $size = round($file['filesize']/1000000,1) . 'MB';
+          $size = round($file['filesize'] / 1000000, 1) . 'MB';
           $extension = strtoupper(pathinfo($file['uri'], PATHINFO_EXTENSION));
         }
       }
     };
     $render = array(
-      'title' => array('#type' => 'item', '#markup' => l($title, 'node/' . $meta['target_id'])),
-      'files' => array('#type' => 'item', '#markup' => theme('item_list', array('items' => $files)), '#title' => t('Download ') . $extension . ' (' . $size . ') ' . t('in:')),
+      'title' => array(
+        '#type' => 'item',
+        '#markup' => l($title, 'node/' . $meta['target_id']),
+      ),
+      'files' => array(
+        '#type' => 'item',
+        '#markup' => theme('item_list', array('items' => $files)),
+        '#title' => t('Download ') . $extension . ' (' . $size . ') ' . t('in:'),
+      ),
     );
     $ret[] = drupal_render($render);
   }
@@ -631,24 +543,30 @@ function osha_publication_file_all_group_mimetype_formatter($items) {
       $mime = $file['filemime'];
       $groups[$mime][$langcode][] = $file;
     }
-    $sizes[$mime] = round($files[0]['filesize']/1000000,1) . 'MB';
+    $sizes[$mime] = round($files[0]['filesize'] / 1000000,1) . 'MB';
   }
   foreach ($groups as $mime => $value) {
     $links = array();
-    foreach($value as $langcode => $files) {
-      foreach($files as $file) {
+    foreach ($value as $langcode => $files) {
+      foreach ($files as $file) {
         $title = strtoupper($langcode) . '<span class="glyphicon glyphicon-circle-arrow-down"></span>';
-        $links[] = l($title, file_create_url($file['uri']), array(
-          'absolute' => TRUE, 'html' => TRUE,
-          'attributes' => array(
-            'title' => $file['filename'],
-          )));
+        $links[] = l($title, file_create_url($file['uri']),
+          array(
+            'absolute' => TRUE,
+            'html' => TRUE,
+            'attributes' => array(
+              'title' => $file['filename'],
+            )
+          )
+        );
       }
     }
     $title = t('Download !mime (!size) in:', array('!mime' => hwc_mime_friendly_acronym($mime), '!size' => $sizes[$mime]));
     $render = array(
       'title' => array('#type' => 'item', '#markup' => '<span>' . $title . '</span>'),
-      'files' => array('#type' => 'item', '#markup' => theme('item_list', array('items' => $links))),
+      'files' => array('#type' => 'item',
+        '#markup' => theme('item_list', array('items' => $links))
+      ),
     );
     $ret[] = drupal_render($render);
   }

@@ -11,13 +11,17 @@ function osha_search_facet_items_alter(&$build, &$settings) {
 
   $query_params = drupal_get_query_parameters();
   if ($settings->facet == "field_sector_industry_covered") {
-    foreach($build as $key => $item) {
+    foreach ($build as $key => $item) {
       $build[$key]["#markup"] = drupal_ucfirst(drupal_strtolower($item["#markup"]));
     }
   }
-  if (in_array($settings->facet, ['field_priority_area', 'language', 'type']) ) {
+
+  if (in_array($settings->facet, ['field_priority_area', 'language', 'type'])) {
     $facet_items = [];
-    foreach($build as $key => $item) {
+    foreach ($build as $key => $item) {
+      if (($settings->facet == 'field_priority_area') && ($key == '!')) {
+        $build[$key]['#markup'] = t('No specific group');
+      }
       if ($item['#active']) {
         $query = _osha_search_strip_param_value($query_params, $settings->facet, $item['#indexed_value']);
         $filter_label = '<span class="glyphicon glyphicon-remove"></span>' . $item['#markup'];

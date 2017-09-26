@@ -457,6 +457,35 @@ function hwc_frontend_on_the_web_image($variables) {
   );
   return theme('image', $variables);
 }
+
+function hwc_frontend_checkboxes($variables) {
+  $element = $variables['element'];
+  $attributes = array();
+  if (isset($element['#id'])) {
+    $attributes['id'] = $element['#id'];
+  }
+  $attributes['class'][] = 'form-checkboxes';
+  if (!empty($element['#attributes']['class'])) {
+    $attributes['class'] = array_merge($attributes['class'], $element['#attributes']['class']);
+  }
+  if (isset($element['#attributes']['title'])) {
+    $attributes['title'] = $element['#attributes']['title'];
+  }
+  $before_children = '';
+  if ($variables['element']['#id']=='edit-field-priority-area'){
+    $checked = _osha_publication_is_selected_facet() ? '' : 'checked';
+    $link = _osha_publication_generate_all_facet_link();
+    $before_children = '
+<ul class="facetapi-facetapi-checkbox-links facetapi-facet-field-priority-area facetapi-processed no-margin-bottom">
+  <li class="leaf first">
+    <input type="checkbox" class="facetapi-checkbox" id="facetapi-link--all--checkbox" ' . $checked . '>' . $link . '
+  </li>
+</ul>';
+
+  }
+  return '<div' . drupal_attributes($attributes) . '>' . $before_children . (!empty($element['#children']) ? $element['#children'] : '') . '</div>';
+}
+
 /**
  * Colorbox theme function to add support for image field caption.
  *
