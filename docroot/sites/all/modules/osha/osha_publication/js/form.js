@@ -31,6 +31,7 @@
 
             $('#osha-publication-menu-case-studies-form, #osha-publication-menu-publications-form').once('publication_toggle_facets', function(){
                 $('.form-checkboxes.search-facet-field').hide();
+                $('#edit-field-priority-area').show();
                 $('.form-checkboxes.search-facet-field').has('input:checked').show();
                 $('.form-checkboxes.search-facet-field').siblings('label').on('click', function() {
                     var $checkboxes = $(this).parent().find('.form-checkboxes.search-facet-field');
