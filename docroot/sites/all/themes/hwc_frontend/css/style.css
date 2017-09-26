@@ -13549,13 +13549,14 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .form-wrapper .panel-heading {
   display: none;
 }
-.page-node-add-events .node-events-form .form-wrapper .date-float,
-.page-node-add-news .node-events-form .form-wrapper .date-float,
-.page-node-edit .node-events-form .form-wrapper .date-float,
-.page-node-add-events .node-news-form .form-wrapper .date-float,
-.page-node-add-news .node-news-form .form-wrapper .date-float,
-.page-node-edit .node-news-form .form-wrapper .date-float {
-  display: none;
+.page-node-add-events .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-news .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-edit .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-events .node-news-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-news .node-news-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-edit .node-news-form .form-wrapper .date-float .form-checkbox:before {
+  height: 21px;
+  padding: 2px 2px 0px 0px;
 }
 .page-node-add-events .node-events-form .form-wrapper .panel-body,
 .page-node-add-news .node-events-form .form-wrapper .panel-body,
