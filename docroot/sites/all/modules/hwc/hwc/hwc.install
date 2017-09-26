@@ -633,3 +633,10 @@ function hwc_update_7036() {
 function hwc_update_7037() {
   features_revert_module('osha_news');
 }
+
+/**
+ * Additional resources infographics display
+ */
+function hwc_update_7038() {
+  features_revert_module('hwc');
+}
