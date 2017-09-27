@@ -27,3 +27,10 @@ function hwc_good_practice_exchange_update_7003() {
 function hwc_good_practice_exchange_update_7004() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * Revert hwc_good_practice_exchange module
+ */
+function hwc_good_practice_exchange_update_7005() {
+  features_revert_module('hwc_good_practice_exchange');
+}
