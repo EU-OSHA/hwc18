@@ -12,7 +12,6 @@ dependencies[] = hwc_practical_tool
 dependencies[] = node
 dependencies[] = osha
 dependencies[] = page_manager
-dependencies[] = pdf_to_image
 dependencies[] = social_dashboard
 dependencies[] = text
 dependencies[] = title
