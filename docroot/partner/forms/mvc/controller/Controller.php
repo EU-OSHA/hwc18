@@ -53,7 +53,7 @@ abstract class Controller {
                 //Insertamos una variable para mostrar el check del main contact change.
                 $_SESSION['mainContactChangeCheck'] = true;
             }
-            error_log("EVE_JDD_1: " .  print_r($this->getEntityName(),1));
+            error_log("EVE_CSM_1: " .  print_r($this->getEntityName(),1));
 
             $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
             $isPrintable = $this->isPrintable();
@@ -155,6 +155,17 @@ abstract class Controller {
         if ($mf = $params->get('maintenance_mode')) {
             $params->setUrlParamValue('maintenance_mode', $mf);
         }
+
+        if (isset($_REQUEST['auth']))
+            $_SESSION['auth'] = $_REQUEST['auth'];
+
+        //    $params->setUrlParamValue('auth', $auth);
+        /*    if (isset($_REQUEST['auth'])) {
+                $session->setAttribute(Constants::AUTH_NAME, $auth);
+            }
+        }*/
+
+        //error_log("EVE_0708" . var_export($params, true));
         $this->model->load($sessionID);
     }
 
@@ -318,6 +329,7 @@ abstract class Controller {
             foreach ($attributes as $attribute) {
                 $name = $attribute->getName();
                 if ($value = $params->get($name)) {
+                    error_log("SavedInSession: " . var_export(($name), true) . " - " . var_export(($value), true));
                     if ($attribute->getType() == Attribute::TYPE_DROPDOWN ||
                             $attribute->getType() == Attribute::TYPE_DROPDOWN_MULTIPLE
                     ) {
@@ -383,9 +395,10 @@ abstract class Controller {
 //                                }
 //                            }
                             foreach ($this->model->getAttributes() as $atributo) {
-                                if(strpos($atributo->getName(), 'otherus') !== false || strpos($atributo->getName(), 'publication') !== false ||
-                                        strpos($atributo->getName(), 'readership') !== false){
-                                        $session->setAttribute($atributo->getName(), $params->get($atributo->getName()));
+
+                                if(strpos($atributo->getName(), 'otherus') !== false || strpos($atributo->getName(), 'publication') !== false || strpos($atributo->getName(), 'readership') !== false){
+                                    error_log("CSM--- 26092017_" . $atributo->getName() . " - " . $atributo->getValue());
+                                    $session->setAttribute($atributo->getName(), $params->get($atributo->getName()));
                                 }
                                 if(isset($_SESSION['mf']) && $_SESSION['mf']){
                                     if(strpos($atributo->getName(), 'profile') !== false){
@@ -423,7 +436,8 @@ abstract class Controller {
                                             $attr->getType() == Attribute::TYPE_CHECKBOX 
                                             || $attr->getType() == Attribute::TYPE_CONTACTCHANGE
                                     ) {
-                                        $mapping[$cdbName] = (strtolower($attr->getValue()) == 'on' || strtolower($attr->getValue()) == 'yes') ? 'true' : 'false';
+                                        $mapping[$cdbName] = (strtolower($attr->getValue()) == 'true' || strtolower($attr->getValue()) == 'on' || strtolower($attr->getValue()) == 'yes') ? 'true' : 'false';
+                                        error_log("CSM 26092017_" . $attr->getName() . " - " . $attr->getValue());
                                     } elseif ($attr->getType() == Attribute::TYPE_DROPDOWN || $attr->getType() == Attribute::TYPE_DROPDOWN_MULTIPLE) {
                                         $mapping[$cdbName] = $attr->getSelectedValues();
 
@@ -587,7 +601,10 @@ abstract class Controller {
                 }else if($key === 'osh_otheruserphone1'){
                     $otherUsers1 .= $value . '|';
                 }else if($key === 'osh_otheruserprefix1'){
-                    $otherUsers1 .= $value . ')';
+                    if ($value != null)
+                        $otherUsers1 .= $value . ')';
+                    else
+                        $otherUsers1 .= ')';
                 }else if($key === 'fullname2'){
                     $otherUsers2 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail2'){
@@ -595,7 +612,10 @@ abstract class Controller {
                 }else if($key === 'osh_otheruserphone2'){
                     $otherUsers2 .= $value . '|';
                 }else if($key === 'osh_otheruserprefix2'){
-                    $otherUsers2 .= $value . ')';
+                    if ($value != null)
+                        $otherUsers2 .= $value . ')';
+                    else
+                        $otherUsers2 .= ')';
                 }else if($key === 'fullname3'){
                     $otherUsers3 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail3'){
@@ -603,7 +623,10 @@ abstract class Controller {
                 }else if($key === 'osh_otheruserphone3'){
                     $otherUsers3 .= $value . '|';
                 }else if($key === 'osh_otheruserprefix3'){
-                    $otherUsers3 .= $value . ')';
+                    if ($value != null)
+                        $otherUsers3 .= $value . ')';
+                    else
+                        $otherUsers3 .= ')';
                 }else if($key === 'fullname4'){
                     $otherUsers4 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail4'){
@@ -611,7 +634,10 @@ abstract class Controller {
                 }else if($key === 'osh_otheruserphone4'){
                     $otherUsers4 .= $value . '|';
                 }else if($key === 'osh_otheruserprefix4'){
-                    $otherUsers4 .= $value . ')';
+                    if ($value != null)
+                        $otherUsers4 .= $value . ')';
+                    else
+                        $otherUsers4 .= ')';
                 }else if($key === 'fullname5'){
                     $otherUsers5 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail5'){
@@ -619,7 +645,10 @@ abstract class Controller {
                 }else if($key === 'osh_otheruserphone5'){
                     $otherUsers5 .= $value . '|';
                 }else if($key === 'osh_otheruserprefix5'){
-                    $otherUsers5 .= $value . ')';
+                    if ($value != null)
+                        $otherUsers5 .= $value . ')';
+                    else
+                        $otherUsers5 .= ')';
                 }
             }
         }
@@ -630,11 +659,25 @@ abstract class Controller {
                 }
         // $result .= ! empty ($updatedValues) ? 'id=' . $params->get('session_id') . '&option=SUBMIT&fields=' . substr($updatedValues, 0, -1) : '';
         //        $result = ! empty ($otherUsers) ? $result . 'otherusers=' . substr($updatedValues, 0, -1) : substr($result, 0, -1);
-        $result = array(
-            'id' => $params->get('session_id'),
-            'fields' => $normalValues
-//            'fields' => substr($updatedValues, 0, -1)
-        );
+        error_log("PARAMS: " . var_export($params, true));
+        error_log("SESSION: " . var_export($_SESSION, true));
+
+
+        if (isset($_SESSION['auth'])) {
+            $result = array(
+                'id' => $params->get('session_id'),
+                'auth' => $_SESSION['auth'],
+                'fields' => $normalValues
+            );
+        } else {
+            $result = array(
+                'id' => $params->get('session_id'),
+                'auth' => $params->get('session_id'),
+                'fields' => $normalValues
+            );
+        }
+
+
 
         if ($params->getUrlParamValue('no_session_id')) {
             unset($result['id']);
@@ -740,7 +783,9 @@ abstract class Controller {
         $attributes = $this->model->getAttributes();
         foreach ($attributes as $kAttr => $attr) {
             $name = $attr->getName();
+
             if(strpos($name, 'publication') !== false || strpos($name, 'readership') !== false){
+
                 $session->setAttribute($name, $params->get($name));
                 $params->set($name, $params->get($name), true);
 //                $_POST[$name] = $params->get($name);
@@ -758,7 +803,9 @@ abstract class Controller {
             if (isset($_POST[$name])){
                 $value = $_POST[$name];
             }
+
             if (isset($value)) {
+
                 switch ($attr->getType()) {
                     case Attribute::TYPE_DROPDOWN:
                         $attr->setSelectedValues($value);
@@ -830,7 +877,20 @@ abstract class Controller {
         $email= $_GET['email'];
         $currentModel = new Model("");
         $currentModel->submitQuestionToCDB($myId,$title, $message, $email);
+    }
 
+    public function updateRequirements() {
+        $params = Parameters::getInstance();
+        $MyId = $params->getUrlParamValue('session_id');
+        if (preg_match('/^\{?[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}\}?$/', $MyId)) {
+            //error_log("EVE_CSM_TEST" . var_export(($MyId), true));
+
+            $requirements = $_GET['requirements'];
+            //error_log("EVE_CSM_TEST2" . var_export(($requirements), true));
+
+            $currentModel = new Model("");
+            $currentModel->updateRequirementsInCDB($MyId, $requirements);
+        }
     }
 
 }

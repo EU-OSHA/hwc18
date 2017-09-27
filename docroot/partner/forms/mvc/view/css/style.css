@@ -238,6 +238,14 @@ select[disabled] {
     margin-bottom: 1.5vw;
     margin-top: -2vw;
 }
+
+.separatorSection{
+    border-bottom : 0.1vw solid grey;
+    margin-top: 0.4vw;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
 .lessSeparator{
     margin-top: -0.5vw;
 }
@@ -717,14 +725,10 @@ textarea.error {
 .main-contact-change-backup {
     /* -display : none; */
 }
+
 .main-contact-change-clone{
     margin-bottom: 450px;
 }
-
-.main-contact-change-clone{
-    margin-bottom: 600px;
-}
-
 
 .mainContactCheck label{
     display: inline;
@@ -792,7 +796,7 @@ label[for="company_osh_slideshareprofile"],
 }
 button#plusSN{
 	background-color: transparent;
-        /*margin-left: 3.2em;*/
+    margin-left: 6.5vw;
 }
 button#plusSN span{
 	 color: #003399;
@@ -819,17 +823,17 @@ button.delSN img{
 select.company_osh_selectsocialnetworks{
 	width: auto;
 	float:left;
-        margin-top: 0.3em;
-        
-        /*height: 24px;*/
+    margin-top: 0.3em;
+
 }
 input#socialNetworkTextBox{
     /* width: 130%;*/
-    width: 100%;
+    width: 175%;
     vertical-align:middle;
 }
 .socialNetworks #SocialNetHidden{
     display: none;
+    width: 210%;
 }
 
 
@@ -990,12 +994,8 @@ p.congrats {
     font-size: large;
     margin-right: 1%;
 }
-.saveDialog{
-    /*position: fixed;*/
-    //Fixed not works into the iframe
+.saveDialog {
     position: absolute;
-    /*left: 40%;
-    top: 40%;*/
     top: 5%;
     background-color: #F2F2F2;
     border: 1px solid red;
@@ -1113,13 +1113,10 @@ img.congrats_rad{ /* IMAGE STYLES */
     margin-bottom  : 3vw;
 }
 
-.ui-dialog-titlebar-close {
-    background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_888888_256x240.png") repeat scroll -93px -128px rgba(0, 0, 0, 0);
-    border: medium none;
+.helpDiv .validation{
+    margin-top: -6px;
 }
-.ui-dialog-titlebar-close:hover {
-    background: url("http://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_222222_256x240.png") repeat scroll -93px -128px rgba(0, 0, 0, 0);
-}
+
 
 .ui-widget-overlay
 {
@@ -1128,3 +1125,5 @@ img.congrats_rad{ /* IMAGE STYLES */
 
     background-color: rgb(50, 50, 50) !important; /* This will make it darker */
 }
+
+::-ms-clear { display: none; }

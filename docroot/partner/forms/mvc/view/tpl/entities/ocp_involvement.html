@@ -9,6 +9,9 @@
     </div>
 {else}
 {/if}-->
+
+
+{if !$mf}
 <div class="helpDialog hidden">
     <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
     <br>
@@ -19,7 +22,6 @@
     <label for="message">Your message:</label>
     <textarea id="message" placeholder="Write here your question"></textarea>
 </div>
-{if !$mf}
 <fieldset>
     <legend id="BECOME">
         Why do you want to become a partner?
@@ -35,11 +37,14 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="BECOME" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="BECOME" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 <fieldset>
@@ -68,10 +73,14 @@
         {$attributes.involvement_osh_bestpractice}
         {$attributes.involvement_osh_otheractivities}
     </div>
+    <!--
     <br>
     <br>
 
-    {$attributes.involvement_osh_involvedinsteeringcommitteegroup}
+    <div>
+        {$attributes.involvement_osh_involvedinsteeringcommitteegroup}
+    </div>
+    -->
 
     <div class="hidden">
             {$attributes.helpMessage}
@@ -86,11 +95,14 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="INVOLVEMENT" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="INVOLVEMENT" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 {else}
@@ -98,21 +110,29 @@
 {/if}
 <fieldset>
     <legend id="PLEDGE">
-        Your campaign pledge
+        Your campaign pledge for Publication on Campaign Website
         <img id="PLEDGE_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
     <div class="separatorFieldSet">&nbsp;</div>
+
+    <div id="general-text">
+        Please, remember that your Campaign Pledge will be visible on the Campaign Website.
+    </div>
+
     <div class="marginRightForm">
         {$attributes.involvement_osh_campaignpledge}
     </div>
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="PLEDGE" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="PLEDGE" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}

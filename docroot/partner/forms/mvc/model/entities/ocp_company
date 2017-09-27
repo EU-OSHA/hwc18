@@ -3,16 +3,16 @@
     "title": "1. About your organisation",
     "sections": {
         "ORGANISATION": "About your Organisation",
-        "GENERAL_INFORMATION": "General Contact Information",
-        "CEO": "Information About your CEO",
-        "OSH": "Your OSH representative",
+        "GENERAL_INFORMATION": "About your General Contact Information",
+        "CEO": "About your CEO",
+        "OSH": "About your Health and Safety Representative",
         "COMMUNICATION_REP": "Your Communication Representative"
     },
     "sections_mf": {
         "ORGANISATION": "About your Organisation",
-        "GENERAL_INFORMATION": "General Contact Information",
-        "CEO": "Information About your CEO",
-        "OSH": "Your OSH representative",
+        "GENERAL_INFORMATION": "About your General Contact Information",
+        "CEO": "About your CEO",
+        "OSH": "About your Health and Safety Representative",
         "COMMUNICATION_REP": "Your Communication Representative"
     }
   },
@@ -57,7 +57,7 @@
     "company_osh_osh_appform_osh_country": {
       "name": "company_osh_osh_appform_osh_country",
       "label": "Countries of activity",
-      "helpText": "Please select from the list at least three European countries where your organisation is active.",
+      "helpText": "Please select from the list at least three European countries where your Organisation is active.",
       "section": "ORGANISATION",
       "type": "dropdown_multiple",
       "validator": "not_null"
@@ -65,7 +65,7 @@
     "company_osh_orgtype": {
       "name": "company_osh_orgtype",
       "label": "Organisation type",
-      "helpText": "Please note that your organisation should be an international or European organisation with representation and/or network of members in several EU Member States.",
+      "helpText": "Please note that your Organisation should be an international or European Organisation with representation and/or network of members in several EU Member States.",
       "publicProfile": "publicProfile",
       "section": "ORGANISATION",
       "type": "dropdown",
@@ -99,7 +99,7 @@
     },
     "company_osh_logoimage": {
       "name": "company_osh_logoimage",
-      "label": "Upload your organisation´s logo",
+      "label": "Organisation´s logo",
       "helpText" : "Please upload your company logo in .png or .jpg file format. The file size must not exceed 1MB",
       "helpTextImageLoaded" : "Please, if you want to change this logo, please upload a new one in png. or jpg. file format. The file must not exceed 1MB",
       "placeholder": "Please upload your company logo in .png or .jpg file format. The file size must not exceed 1MB",
@@ -111,7 +111,7 @@
     "company_osh_othercountries": {
       "name": "company_osh_othercountries",
       "label": "Other Countries",
-      "helpText" : "If your organisation is active in other countries that are not displayed in the list please indicate them in the following field.",
+      "helpText" : "If your Organisation is active in other countries that are not displayed in the list please indicate them in the following field.",
       "section": "ORGANISATION",
       "type": "text"
     },
@@ -154,7 +154,7 @@
     },
     "company_osh_generalemail": {
         "name": "company_osh_generalemail",
-        "label": "General email address",
+        "label": "General email Address",
         "publicProfile": "publicProfile",
         "section": "GENERAL_INFORMATION",
         "type": "text",
@@ -167,17 +167,20 @@
       "name": "company_osh_generalphone",
       "label": "General telephone number",
       "publicProfile": "publicProfile",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "section": "GENERAL_INFORMATION",
       "type": "text",
       "validator": "not_null"
     },
     "company_osh_prefixgeneralphone": {
       "name": "company_osh_prefixgeneralphone",
-      "label": "Telephone prefix",
+      "label": "General telephone number Prefix",
+      "helpText": "Select your prefix from the drop-down",
+      "publicProfile": "publicProfile",
       "placeholder": "+00",
       "section": "GENERAL_INFORMATION",
-      "type": "dropdown"
+      "type": "dropdown",
+      "validator": "not_null"
     },
     "company_osh_homepage": {
       "name": "company_osh_homepage",
@@ -186,8 +189,7 @@
       "placeholder": "http(s)://www.example.com",
       "publicProfile": "publicProfile",
       "section": "GENERAL_INFORMATION",
-      "type": "text",
-      "validator": "not_null"
+      "type": "text"
     },
     "company_osh_dedicatedsite": {
       "name": "company_osh_dedicatedsite",
@@ -209,7 +211,7 @@
     },
     "company_osh_ceo_firstname": {
       "name": "company_osh_ceo_firstname",
-      "label": "Your CEO's name",
+      "label": "CEO's name",
       "helpText": "Name of your CEO, President, General Director or other.",
       "publicProfile": "publicProfile",
       "section": "CEO",
@@ -218,7 +220,7 @@
     },
     "company_osh_ceo_lastname": {
       "name": "company_osh_ceo_lastname",
-      "label": "Your CEO's surname",
+      "label": "CEO's surname",
       "publicProfile": "publicProfile",
       "section": "CEO",
       "type": "text",
@@ -226,7 +228,7 @@
     },
     "company_osh_ceoimage": {
       "name": "company_osh_ceoimage",
-      "label": "Your CEO's photo",
+      "label": "CEO's photo",
       "publicProfile": "publicProfile",
       "section": "CEO",
       "type": "image",
@@ -234,7 +236,7 @@
     },
     "company_osh_positionid": {
       "name": "company_osh_positionid",
-      "label": "Your CEO's position",
+      "label": "CEO's position",
       "helpText": "Please indicate the actual position, such as President, General Director, CEO, Chairman, etc.",
       "publicProfile": "publicProfile",
       "section": "CEO",
@@ -243,7 +245,7 @@
     },
     "company_osh_quoteonhwc": {
       "name": "company_osh_quoteonhwc",
-      "label": "Your CEO's quote on the Campaign",
+      "label": "CEO's quote on the Campaign",
       "helpText": "This quote will be published together with the CEO’s photo on the campaign website.",
       "publicProfile": "publicProfile",
       "section": "CEO",
@@ -274,13 +276,14 @@
     "company_osh_phonerepresentative": {
       "name": "company_osh_phonerepresentative",
       "label": "Telephone number",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "section": "OSH",
       "type": "text"
     },
     "company_osh_prefixrepresentativephone": {
       "name": "company_osh_prefixrepresentativephone",
-      "label": "Telephone prefix",
+      "label": "General telephone number Prefix",
+      "helpText": "Select your prefix from the drop-down",
       "placeholder": "+00",
       "section": "OSH",
       "type": "dropdown"
@@ -341,17 +344,17 @@
     },
     "osh_gencontactinfsection": {
       "name": "osh_gencontactinfsection",
-      "section": "ORGANISATION",
+      "section": "COMMUNICATION_REP",
       "type": "text"
     },
     "osh_aboutyourceosection": {
       "name": "osh_aboutyourceosection",
-      "section": "ORGANISATION",
+      "section": "CEO",
       "type": "text"
     },
     "osh_aboutyourrepsection": {
       "name": "osh_aboutyourrepsection",
-      "section": "ORGANISATION",
+      "section": "OSH",
       "type": "text"
     },
     "company_osh_category": {
@@ -391,14 +394,12 @@
     "comrep_osh_mediaproshfirstname": {
       "name": "comrep_osh_mediaproshfirstname",
       "label": "Name",
-      "publicProfile": "publicProfile",
       "section": "COMMUNICATION_REP",
       "type": "text"
     },
     "comrep_osh_mediaproshlastname": {
       "name": "comrep_osh_mediaproshlastname",
       "label": "Surname",
-      "publicProfile": "publicProfile",
       "section": "COMMUNICATION_REP",
       "type": "text"
     },
@@ -412,13 +413,14 @@
     "comrep_osh_phonemediapr": {
       "name": "comrep_osh_phonemediapr",
       "label": "Telephone number",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "section": "COMMUNICATION_REP",
       "type": "text"
     },
     "comrep_osh_prefixmediaprphone": {
       "name": "comrep_osh_prefixmediaprphone",
-      "label": "Telephone prefix",
+      "label": "General telephone number Prefix",
+      "helpText": "Select your prefix from the drop-down",
       "placeholder": "+00",
       "section": "COMMUNICATION_REP",
       "type": "dropdown"
@@ -526,6 +528,7 @@
     "comrep_osh_mediaproshfirstname": "osh_mediaproshfirstname",
     "comrep_osh_mediaproshlastname" : "osh_mediaproshlastname",
     "comrep_osh_prefixmediaprphone" : "osh_prefixmediaprphone",
+    "comrep_osh_emailmediapr" : "osh_emailmediapr",
     "comrep_osh_phonemediapr" : "osh_phonemediapr"
   }
 }
