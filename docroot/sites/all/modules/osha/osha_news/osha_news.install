@@ -56,3 +56,10 @@ function osha_news_update_7008() {
   features_revert_module('osha_news');
   features_revert_module('osha_events');
 }
+
+/**
+ * New crop image style
+ */
+function osha_news_update_7009() {
+  features_revert_module('osha_news');
+}

@@ -124,11 +124,11 @@ function hwc_homepage_block_view($delta = '') {
     $voc = taxonomy_vocabulary_machine_name_load('priority_area');
     $tree = taxonomy_get_tree($voc->vid);
     $items = [];
-    foreach($tree as $i => $term) {
-      $items[$i%2][] = [
+    foreach ($tree as $i => $term) {
+      $items[$i % 2][] = [
         'data' => l($term->name, 'taxonomy/term/' . $term->tid),
         'class' => ['priority_area_' . ($i + 1)],
-        'title' => $term->name
+        'title' => $term->name,
       ];
     }
     $block['content']['message'] = array(
@@ -151,9 +151,9 @@ function hwc_homepage_block_view($delta = '') {
   }
   if ($delta == 'hwc_homepage_tools_and_resources') {
     $items = [];
-    $items[] = l(t('Case studies'),'case-studies');
-    $items[] = l(t('DS e-tool'),'healthy-workplaces-all-ages-e-guide');
-    $items[] = l(t('Practical tools'),'practical-tools');
+    $items[] = l(t('Case studies'), 'case-studies');
+    $items[] = l(t('DS e-tool'), 'healthy-workplaces-all-ages-e-guide');
+    $items[] = l(t('Practical tools'), 'practical-tools');
     $block['content']['message'] = array(
       'type' => 'item',
       '#prefix' => '<div class="text-muted">',

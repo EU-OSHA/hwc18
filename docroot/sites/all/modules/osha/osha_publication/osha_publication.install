@@ -85,3 +85,10 @@ function osha_publication_update_7008() {
 function osha_publication_update_7009() {
   features_revert_module('osha_publication');
 }
+
+/**
+ * New crop image style
+ */
+function osha_publication_update_7010() {
+  features_revert_module('osha_publication');
+}

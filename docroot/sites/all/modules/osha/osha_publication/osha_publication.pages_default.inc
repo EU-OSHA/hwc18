@@ -293,7 +293,7 @@ function osha_publication_default_page_manager_handlers() {
     'delta_offset' => '0',
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
-      'image_style' => 'large',
+      'image_style' => 'large_crop_480',
       'image_link' => '',
       'field_formatter_class' => '',
     ),

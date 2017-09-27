@@ -95,10 +95,8 @@ function hwc_practical_tool_menu_tools_form($form, $form_state) {
   }
 
   $facets_def = _hwc_practical_tool_get_facets_def();
-//  krumo($response, $facets, $facets_def);
   foreach ($facets_def as $field_name => $facet_def) {
     if (!empty($facets[$field_name])) {
-//      krumo($field_name);
       $values_list = call_user_func($facet_def['options_callback'], $facet_def['options_callback_args']);
       $options = array();
       foreach ($facets[$field_name] as $facet_value) {
