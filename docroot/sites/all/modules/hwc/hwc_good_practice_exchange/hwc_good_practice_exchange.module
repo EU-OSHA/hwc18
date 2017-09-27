@@ -19,27 +19,8 @@ function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_arg
   }
 
   if (arg(0) == 'partners-documents') {
-//    $call_args['params']['fq'][] = '{!tag=tm_partner_tid}*:* AND -(tm_partner_tid:"section")';
-//    $call_args['params']['fq'][] = '{!tag=tm_partner_tid}tm_partner_tid:"section"';
     $call_args['params']['fq'][] = 'is_partner_section:"0"';
     $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
-
-//    tm_partner_tid
-/*    $call_args['params']['sort'] = 'score desc';
-    $call_args['params']['fq'][] = 'sm_field_available_in_languages\:value:"' . $language->language . '"';
-    $sort_order = strtolower(@$_REQUEST['sort_order']);
-    $sort_by = strtolower(@$_REQUEST['sort_by']);
-    if ($sort_by) {
-      $call_args['params']['sort'] = 'ds_field_publication_year ';
-      if ($sort_by == 'search_api_relevance') {
-        $call_args['params']['sort'] = 'score  ';
-      }
-      if (!in_array($sort_order, ['asc', 'desc'])) {
-        $sort_order = 'desc';
-      }
-      $call_args['params']['sort'] .= $sort_order;
-    }
-*/
   }
 
 }
@@ -55,7 +36,6 @@ function hwc_good_practice_exchange_facet_items_alter(&$build, $settings) {
       }
     }
   }
-
 }
 
 function hwc_good_practice_exchange_node_get_workbench_section($item) {
@@ -100,18 +80,6 @@ function hwc_good_practice_exchange_entity_property_info_alter(&$info) {
     'getter callback' => 'hwc_good_practice_exchange_node_get_workbench_section',
   );
 
-/*  $info['node']['properties']['created_week_day'] = array(
-    'type' => 'text',
-    'label' => t('Week day of node creation'),
-    'sanitized' => TRUE,
-    'getter callback' => 'hwc_good_practice_exchange_property_weekday_getter_callback',
-  );
-  $info['node']['properties']['test_multiple_field'] = array(
-    'type' => 'list<text>',
-    'label' => t('Test multiple text'),
-    'sanitized' => TRUE,
-    'getter callback' => 'hwc_good_practice_exchange_property_random_text_getter_callback',
-  );*/
 }
 
 /**
@@ -136,14 +104,6 @@ function hwc_good_practice_exchange_property_random_text_getter_callback($item) 
 
   return $values;
 }
-/**
- * Implements hook_search_api_solr_documents_alter().
- */
-/*function hwc_good_practice_exchange_search_api_solr_documents_alter(array &$documents, SearchApiIndex $index, array $items) {
-  foreach ($documents as $document) {
-    $document->setField('foo', 'bar');
-  }
-}*/
 
 /**
  * Implements hook_block_info().
