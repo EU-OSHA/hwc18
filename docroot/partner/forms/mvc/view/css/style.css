@@ -687,7 +687,7 @@ visualización que en un dispositivo móvil*/
     border-color : red;
 }
 
-.requiredAsterisk{
+.requiredAsterisk {
     color: red;
     display: inline-block;
     font-weight: 800;
@@ -695,6 +695,8 @@ visualización que en un dispositivo móvil*/
     margin-top: -1vw;
     font-family: sans-serif;
 }
+
+
 #a_disclaimer {
     cursor : pointer;
 }
@@ -796,7 +798,8 @@ label[for="company_osh_slideshareprofile"],
 }
 button#plusSN{
 	background-color: transparent;
-    margin-left: 6.5vw;
+    /*margin-left: 6.5vw;*/
+    float: right;
 }
 button#plusSN span{
 	 color: #003399;
@@ -819,23 +822,23 @@ button.delSN img{
     margin-top: -2px;
 }
 
-
 select.company_osh_selectsocialnetworks{
 	width: auto;
 	float:left;
     margin-top: 0.3em;
 
 }
+
 input#socialNetworkTextBox{
-    /* width: 130%;*/
-    width: 175%;
-    vertical-align:middle;
+    width: 130%;
+    margin-top: 4px;
+    /*vertical-align: middle;*/
 }
+
 .socialNetworks #SocialNetHidden{
     display: none;
     width: 210%;
 }
-
 
 div.typeSN{
 	font-weight: bold;
@@ -843,6 +846,7 @@ div.typeSN{
 	/*font-size: 9pt;*/
 	float:left;
 }
+
 div.titleSN{
  	/*font-size: 9pt;*/ 
 	color: #003399;
@@ -856,6 +860,23 @@ div.required > div label:first-child::after{
     font-size: 2vw;
 }
 
+#divtoshow {
+    float: left;
+    position: absolute;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    width: 150px;
+    background: white;
+    color: #333333;
+    font-size: 1vw;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+/*
+div.required > div label:first-child:hover{
+    color: green;
+}*/
 
 #MESSAGE{
     padding-top: 10px;

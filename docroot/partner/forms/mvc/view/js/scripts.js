@@ -441,6 +441,9 @@ function checkSectionsforValidation(elemId) {
 
 checkSections();
 $(document).ready(function () {
+
+    $("#divtoshow").hide();
+
     var buttonPressed;
 
     $("input:checkbox.checkbox").each(function (id, item) {
@@ -463,6 +466,8 @@ $(document).ready(function () {
         }
     });
 
+
+
     /*
     $("input:checkbox.combined-checkbox-link").each(function (id, item) {
         //WorkAround main contact change
@@ -479,6 +484,16 @@ $(document).ready(function () {
 
     $('#form form .required :input').each(function (id, item) {
         validateField(item);
+    });
+
+    //EVE CSM - 27092017: Display box with tooltip for required fields
+    $("div.control-group.required label").mouseover(function() {
+        if (this.outerText.trim() != "Yes" && this.outerText.trim() != "No")
+            $("#divtoshow").css({top: event.pageY, left: event.pageX}).show();
+    });
+    $("div.control-group.required label").mouseout(function() {
+        if (this.outerText.trim() != "Yes" && this.outerText.trim() != "No")
+            $("#divtoshow").hide();
     });
 
     //disableButtons();
@@ -1027,7 +1042,7 @@ $(document).ready(function () {
     $(".main-form").on({
 
         submit: function (e) {
-            debugger;
+            //debugger;
             if (buttonPressed == "next") {
 //                var enableFields = true;
                 var field = null;
@@ -2108,7 +2123,7 @@ $(document).ready(function () {
 
 
     function scrollToTop() {
-        debugger;
+        //debugger;
         //CSM 20170922 - Scroll up when closing the dialog
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         if(window.parent.document.getElementsByClassName("top_anchor").length == 1){
