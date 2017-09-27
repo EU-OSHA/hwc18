@@ -2544,9 +2544,9 @@ ul.tabs--primary.nav.nav-tabs{
 	.panels-flexible-region-new-home_right{
 		padding: 0px 25px !important;
 		min-height: 500px;
-		margin-top: 25px;
+		//margin-top: 25px;
 		div.pane-title, h2.pane-title{
-			margin-top: 15px;
+			//margin-top: 15px;
 		    padding-top: 100px;
 		    margin-bottom: 40px;
 		    font-style: normal;
@@ -4222,13 +4222,15 @@ p.no-results{
 					font-style: italic;
 				}
 				.quottes-left{
-					height: 50px;
+					height: 25px;
 					background: url("../images/content/quottes.png") center no-repeat;
+					background-size: contain;
 				}
 				.quottes-right{
-					height: 50px;
+					height: 25px;
 					background: url("../images/content/quottes.png") center no-repeat;
 					transform: rotate(180deg);
+					background-size: contain;
 				}
 			}
 		}
@@ -5329,8 +5331,14 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		.form-control{
 			width: 100% !important;
 		}
+		.field-name-field-summary{
+			.mceIframeContainer{
+				border: 1px solid @color2;
+				padding: 15px;
+			}
+		}
 		.form-type-textfield{
-			padding-right: 2em;
+			//padding-right: 2em;
 			display: block !important;
 			margin-bottom: 2em !important;
 		}
@@ -5518,7 +5526,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				margin-top: 1em;
 			}
 			.form-textarea-wrapper{
-				padding-right: 2em;
+				//padding-right: 2em;
 				.grippie{
 					display: none;
 				}
@@ -5766,9 +5774,12 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				margin-right: 3% !important;
 			}
 			&:last-child{
-				margin-left: 3%;
+				//margin-left: 3%;
 			}
 		}
+	}
+	#edit-submit{
+		width: 100% !important;
 	}
 }
 
@@ -6813,6 +6824,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		float: left;
 		margin-bottom: 1em !important;
 		min-height: 64px;
+		height: 80px;
 		label{
 			font-weight: bold;
 		}
@@ -6832,7 +6844,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 			display: block;
 			content: '';
 			position: absolute;
-			bottom: 0px;
+			bottom: 16px;
 			left: 79%;
 			pointer-events: none;
 			background: @bg-color-2 url("../images/content/arrow-down.png") no-repeat center center;
@@ -6853,6 +6865,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 			width: 84%;
 			cursor: pointer;
 		}
+	}
+	.form-type-textarea{
+		height: inherit !important;
 	}
 	button{
 		width: 100%;
@@ -7549,14 +7564,11 @@ input#edit-field-image-und-0-upload::before {
 				height: 100%;
 				.num_slides{
 					font-size: 16px;
-					//position: inherit !important;
 					overflow: hidden !important;
 					margin: 0 auto;
 					width: 100% !important;
 					height: 600px;
 					>div{
-						//position: relative !important;
-						//height: inherit !important;
 						width: 100% !important;
 						.napo-film-title{
 						    margin: 0 auto;
@@ -7567,6 +7579,11 @@ input#edit-field-image-und-0-upload::before {
     						padding: 0px 100px;
     						bottom: 0px;
     						margin-bottom: 120px;
+    						.title-field{
+    							font-weight: bold;
+    							color: white;
+    							margin-bottom: 10px;
+    						}
 						    a{
 						    	color: white;
 						    	font-size: 1.6em;
@@ -7689,6 +7706,7 @@ input#edit-field-image-und-0-upload::before {
 	}
 	article{
 		.field-name-title-field{
+			margin-top: 40px;
 			.watch-other-link{
 				a{
 					color:@color2;
