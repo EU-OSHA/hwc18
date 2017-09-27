@@ -28,7 +28,7 @@ function osha_search_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -87,
+        'weight' => -86,
       ),
       'seven' => array(
         'region' => '',
@@ -58,7 +58,7 @@ practical-tools',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -88,
+        'weight' => -87,
       ),
       'seven' => array(
         'region' => '',
@@ -147,7 +147,9 @@ legislation/directives/*
 safety-and-health-legislation/european-directives
 node/2544
 legislation/guidelines/*
-practical-tools',
+practical-tools
+partners-documents
+communications',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -212,7 +214,7 @@ practical-tools',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -92,
+        'weight' => -93,
       ),
       'seven' => array(
         'region' => '',
