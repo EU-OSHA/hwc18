@@ -14,7 +14,7 @@ define('NAPO_WEBSITE', 'https://www.napofilm.net/');
  * Implements hook_menu_alter().
  */
 function hwc_menu_alter(&$items) {
-  $items['user/password']['title'] = t('Create / Forgot password');
+    $items['user/password']['title'] = t('Create / Forgot password');
   $items['user/password']['weight'] = 10;
 }
 
