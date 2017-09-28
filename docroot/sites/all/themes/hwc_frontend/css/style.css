@@ -7806,6 +7806,37 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   text-align: center;
   font-size: 1.2em;
 }
+.facetapi-facetapi-checkbox-links {
+  margin-top: 10px;
+}
+.facetapi-facetapi-checkbox-links li {
+  color: #003399;
+  margin-bottom: 10px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"] {
+  margin-right: 0.5em;
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:before {
+  border: 2px solid #003399;
+  content: "\2716";
+  padding: 0px 1px 0px 3px;
+  margin-right: 10px;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:checked:before {
+  content: "\2713";
+  color: #003399;
+}
+.facetapi-facetapi-checkbox-links li #facetapi-link--all--checkbox {
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li a {
+  font-family: 'Open Sans';
+}
 .checkbox input[type="checkbox"] {
   display: none;
 }
@@ -7850,6 +7881,28 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   height: 15px;
   width: 13px;
   line-height: 19px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .checkbox input[type=checkbox]:checked {
+    display: inline-block;
+    margin-left: -16px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  .checkbox input[type=checkbox]:checked:before {
+    content: "\2713";
+    color: #003399;
+    padding: 0px 2px 0px 2px;
+    margin-right: 6px;
+    font-weight: normal;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    margin-top: 0px;
+    display: block;
+    background-color: white;
+    height: 15px;
+    width: 13px;
+    line-height: 19px;
+  }
 }
 .radio {
   margin-bottom: 0.5em;
@@ -10251,7 +10304,6 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-home_right {
   padding: 0px 25px !important;
   min-height: 500px;
-  margin-top: 25px;
 }
 .front .panels-flexible-region-new-home_left div.pane-title,
 .front .panels-flexible-region-new-center div.pane-title,
@@ -10259,7 +10311,6 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-home_left h2.pane-title,
 .front .panels-flexible-region-new-center h2.pane-title,
 .front .panels-flexible-region-new-home_right h2.pane-title {
-  margin-top: 15px;
   padding-top: 100px;
   margin-bottom: 40px;
   font-style: normal;
@@ -10950,6 +11001,23 @@ article .hwc-share-widget ul {
 .page-practical-tools .below_title .field-type-text-with-summary p {
   text-align: center;
   font-size: 1.2em;
+}
+.page-practical-tools #edit-search-api-views-fulltext-wrapper {
+  float: none !important;
+}
+.page-practical-tools .sort-container.col-xs-3 {
+  width: 75% !important;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  margin-left: 15px;
 }
 .node-type-practical-tool .panel-col .field-label {
   min-width: 192px;
@@ -11933,13 +12001,15 @@ p.no-results {
   font-style: italic;
 }
 .become-partner .partners .partner .partner-opinion .quottes-left {
-  height: 50px;
+  height: 25px;
   background: url("../images/content/quottes.png") center no-repeat;
+  background-size: contain;
 }
 .become-partner .partners .partner .partner-opinion .quottes-right {
-  height: 50px;
+  height: 25px;
   background: url("../images/content/quottes.png") center no-repeat;
   transform: rotate(180deg);
+  background-size: contain;
 }
 .become-partner .description h3 {
   color: #003399;
@@ -12933,13 +13003,21 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .form-control {
   width: 100% !important;
 }
+.page-node-add-events .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-news .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-edit .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-events .node-news-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-news .node-news-form .field-name-field-summary .mceIframeContainer,
+.page-node-edit .node-news-form .field-name-field-summary .mceIframeContainer {
+  border: 1px solid #003399;
+  padding: 15px;
+}
 .page-node-add-events .node-events-form .form-type-textfield,
 .page-node-add-news .node-events-form .form-type-textfield,
 .page-node-edit .node-events-form .form-type-textfield,
 .page-node-add-events .node-news-form .form-type-textfield,
 .page-node-add-news .node-news-form .form-type-textfield,
 .page-node-edit .node-news-form .form-type-textfield {
-  padding-right: 2em;
   display: block !important;
   margin-bottom: 2em !important;
 }
@@ -12957,8 +13035,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
 .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
 .page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
-  float: left;
-  display: block !important;
+  float: none;
+  display: inherit !important;
   width: inherit;
   height: 14px;
 }
@@ -13275,14 +13353,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-news .node-news-form .group-center label,
 .page-node-edit .node-news-form .group-center label {
   margin-top: 1em;
-}
-.page-node-add-events .node-events-form .group-center .form-textarea-wrapper,
-.page-node-add-news .node-events-form .group-center .form-textarea-wrapper,
-.page-node-edit .node-events-form .group-center .form-textarea-wrapper,
-.page-node-add-events .node-news-form .group-center .form-textarea-wrapper,
-.page-node-add-news .node-news-form .group-center .form-textarea-wrapper,
-.page-node-edit .node-news-form .group-center .form-textarea-wrapper {
-  padding-right: 2em;
 }
 .page-node-add-events .node-events-form .group-center .form-textarea-wrapper .grippie,
 .page-node-add-news .node-events-form .group-center .form-textarea-wrapper .grippie,
@@ -13726,8 +13796,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit #edit-actions button:first-child {
   margin-right: 3% !important;
 }
-.page-node-edit #edit-actions button:last-child {
-  margin-left: 3%;
+.page-node-edit #edit-submit {
+  width: 100% !important;
 }
 .page-node-edit .node-news-form .btn.btn-danger.form-submit {
   margin-left: 0px!important;
@@ -14687,6 +14757,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   float: left;
   margin-bottom: 1em !important;
   min-height: 64px;
+  height: 80px;
 }
 .contact-form.container div.form-group label {
   font-weight: bold;
@@ -14707,7 +14778,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   display: block;
   content: '';
   position: absolute;
-  bottom: 0px;
+  bottom: 16px;
   left: 79%;
   pointer-events: none;
   background: #003399 url("../images/content/arrow-down.png") no-repeat center center;
@@ -14727,6 +14798,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   box-sizing: border-box;
   width: 84%;
   cursor: pointer;
+}
+.contact-form.container .form-type-textarea {
+  height: inherit !important;
 }
 .contact-form.container button {
   width: 100%;
@@ -15993,6 +16067,11 @@ input#edit-field-image-und-0-upload::before {
   bottom: 0px;
   margin-bottom: 120px;
 }
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title .title-field {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title a {
   color: white;
   font-size: 1.6em;
@@ -16102,6 +16181,9 @@ input#edit-field-image-und-0-upload::before {
   background-repeat: no-repeat;
   width: 25px;
   margin-right: 15px;
+}
+.page-node-160 article .field-name-title-field {
+  margin-top: 40px;
 }
 .page-node-160 article .field-name-title-field .watch-other-link a {
   color: #003399;
@@ -17836,6 +17918,9 @@ input#edit-field-image-und-0-upload::before {
   .front .panels-flexible-region-new-center {
     border-right: none;
   }
+  .front .panels-flexible-region-new-home_right {
+    margin-top: 2em;
+  }
   .front .panels-flexible-region-new-home_right h2.pane-title {
     border-top: 1px dotted #749b00;
   }
@@ -17907,6 +17992,20 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
     margin-right: 0;
   }
+  .page-practical-tools .form-group {
+    margin-bottom: 15px;
+  }
+  .page-practical-tools #search {
+    margin-top: 0;
+  }
+  .page-practical-tools #edit-search-api-views-fulltext-wrapper {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+  }
+  .page-practical-tools .region-sidebar-first .views-exposed-widgets .form-type-textfield input {
+    padding-right: 0px;
+    margin-left: 0px;
+  }
   .form-type-checkbox {
     float: left;
     width: 20%;
@@ -17921,12 +18020,6 @@ input#edit-field-image-und-0-upload::before {
   #edit-left-column {
     padding-right: 0px;
     padding-left: 0px;
-  }
-  .page-practical-tools .form-group {
-    margin-bottom: 15px;
-  }
-  .page-practical-tools #search {
-    margin-top: 0;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing .h4-title,
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
@@ -18677,6 +18770,20 @@ input#edit-field-image-und-0-upload::before {
   }
   /*fin partner profile*/
   /*create events & news*/
+  .node-type-news .node-events-form > div > .container,
+  .node-type-events .node-events-form > div > .container,
+  .node-type-news .node-news-form > div > .container,
+  .node-type-events .node-news-form > div > .container {
+    padding-left: 15px !important;
+    padding-right: 16px !important;
+  }
+  .page-node-add-events .node-events-form > div > .container,
+  .page-node-add-news .node-events-form > div > .container,
+  .page-node-add-events .node-news-form > div > .container,
+  .page-node-add-news .node-news-form > div > .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
   .page-node-add-events .node-events-form .hwc-2col-stacked-2col,
   .page-node-add-news .node-events-form .hwc-2col-stacked-2col,
   .page-node-add-events .node-news-form .hwc-2col-stacked-2col,
@@ -19829,10 +19936,7 @@ input#edit-field-image-und-0-upload::before {
   }
   .front .panels-flexible-region-new-center h2.pane-title,
   .front .panels-flexible-region-new-home_right h2.pane-title {
-    border-top: 1px dotted #749b00;
-  }
-  .front .panels-flexible-region-new-home_right h2.pane-title {
-    border-top: 1px dotted #749b00;
+    border-top: none;
   }
   .front .panels-flexible-region-new-home_right div.more-link {
     margin-top: 30px;
@@ -20276,6 +20380,24 @@ input#edit-field-image-und-0-upload::before {
     padding-left: 0px;
     margin: 0 25px;
     padding-bottom: 1em;
+  }
+  .page-practical-tools .sort-container.col-xs-3 {
+    width: 100% !important;
+    padding-right: 0px;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    margin-left: 0px;
+    margin-top: 10px;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
     padding-left: 15px;

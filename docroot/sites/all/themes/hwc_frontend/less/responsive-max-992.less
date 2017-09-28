@@ -318,6 +318,7 @@ header{
 		border-right: none;
 	}
 	.panels-flexible-region-new-home_right{
+		margin-top: 2em;
 		h2.pane-title{
 			border-top: 1px dotted @border-default-color;
 		}
@@ -392,6 +393,20 @@ header{
 		width: 100%;
 		margin-right: 0;
 	}
+	.form-group{
+		margin-bottom: 15px;
+	}
+	#search{
+		margin-top: 0;
+	}
+	#edit-search-api-views-fulltext-wrapper{
+	    margin-left: 15px !important;
+	    margin-right: 15px !important;
+	}
+	.region-sidebar-first .views-exposed-widgets .form-type-textfield input {
+	    padding-right: 0px;
+	    margin-left: 0px;
+	}
 }
 .form-type-checkbox{
 	float: left;
@@ -407,14 +422,6 @@ header{
 #edit-left-column{
 	padding-right: 0px;
 	padding-left: 0px;
-}
-.page-practical-tools{
-	.form-group{
-		margin-bottom: 15px;
-	}
-	#search{
-		margin-top: 0;
-	}
 }
 
 .pane-hwc-practical-tool-hwc-practical-tool-listing .h4-title, .pane-hwc-practical-tool-hwc-practical-tool-listing h4{
@@ -1179,8 +1186,21 @@ header{
 /*fin partner profile*/
 
 /*create events & news*/
+.node-type-news,
+.node-type-events{
+	.node-events-form, .node-news-form{
+		> div > .container{
+			padding-left: 15px !important;
+			padding-right: 16px !important;
+		}
+	}
+}
 .page-node-add-events, .page-node-add-news{
 	.node-events-form, .node-news-form{
+		> div > .container{
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+		}
 		.hwc-2col-stacked-2col{
 			padding: 0 30px;
 		}
