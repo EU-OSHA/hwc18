@@ -279,3 +279,10 @@ function osha_update_7015() {
 function osha_update_7016() {
   features_revert_module('osha');
 }
+
+/**
+ * New crop image style
+ */
+function osha_update_7017() {
+  features_revert_module('osha');
+}

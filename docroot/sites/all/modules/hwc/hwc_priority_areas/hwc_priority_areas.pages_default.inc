@@ -88,7 +88,7 @@ topics
     'delta_reversed' => FALSE,
     'formatter_settings' => array(
       'field_formatter_class' => '',
-      'image_style' => 'article_image',
+      'image_style' => 'article_crop_1920',
       'image_link' => '',
     ),
     'context' => 'argument_term_1',
@@ -393,7 +393,9 @@ topics
   $pane->type = 'block';
   $pane->subtype = 'hwc_priority_areas-hwc_pa_etool';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',

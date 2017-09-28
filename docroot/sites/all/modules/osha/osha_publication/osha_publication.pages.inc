@@ -257,6 +257,7 @@ function osha_publication_menu_publications_search($form_state, $sort) {
 
 function osha_publication_menu_publications_native_results($form_state, $results, $per_page, $sort) {
   global $language, $current_page;
+
   $restrict = [];
   if (!empty($results['results'])) {
     foreach ($results['results'] as $result) {
@@ -290,14 +291,15 @@ function osha_publication_menu_publications_native_results($form_state, $results
     return array();
   }
 
-  //Order publications by publication_date
+  // Order publications by publication_date.
   $q = db_select('field_data_field_publication_date', 'a');
   $q->innerJoin('field_data_title_field', 'b', 'a.entity_id = b.entity_id AND a.revision_id = b.revision_id');
   $q->fields('a', array('entity_id'));
   $q->condition('a.entity_id', $nids, 'IN');
   if ($sort == 'alphabetically') {
     $q->orderBy('title_field_value', 'ASC');
-  } else {
+  }
+  else {
     $q->orderBy('field_publication_date_value', 'DESC');
   }
   $nids = $q->execute()->fetchCol();

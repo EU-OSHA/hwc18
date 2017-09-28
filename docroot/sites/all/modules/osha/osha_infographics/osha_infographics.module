@@ -66,6 +66,7 @@ function osha_infographics_field_formatter_view($entity_type, $entity, $field, $
         );
       }
       break;
+
     case 'multilanguage_download_file':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
@@ -76,6 +77,7 @@ function osha_infographics_field_formatter_view($entity_type, $entity, $field, $
         );
       }
       break;
+
     case 'multilanguage_image':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
@@ -107,9 +109,9 @@ function osha_infographics_theme() {
   );
 }
 
-/*
-* Formats multilanguage file for download
-*/
+/**
+ * Formats multilanguage file for download.
+ */
 function theme_osha_infographics_multilanguage_file_format($element) {
   $file = (object) $element['file'];
   $entity = (object) $element['entity'];
@@ -123,20 +125,21 @@ function theme_osha_infographics_multilanguage_file_format($element) {
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
-      "icon_directory" => $icon_directory
-    ));
-  $output .="<span class='label_multilang_file'>in:</span>";
+      "icon_directory" => $icon_directory,
+    )
+  );
+  $output .= "<span class='label_multilang_file'>in:</span>";
 
-  foreach($entity->field_file as $lang => $object) {
-    $output .=  '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
+  foreach ($entity->field_file as $lang => $object) {
+    $output .= '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
   }
   $output = substr($output, 0, -3);
   return $output;
 }
 
-/*
-* Formats multilanguage file for download
-*/
+/**
+ * Formats multilanguage file for download.
+ */
 function theme_osha_infographics_multilanguage_download_file_format($element) {
   $file = (object) $element['file'];
   $entity = (object) $element['entity'];
@@ -150,20 +153,22 @@ function theme_osha_infographics_multilanguage_download_file_format($element) {
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
-      "icon_directory" => $icon_directory
-  ));
-  $output .="<span class='label_multilang_file'>in:</span>";
-  foreach($entity->field_file as $lang => $object) {
+      "icon_directory" => $icon_directory,
+    )
+  );
+  $output .= "<span class='label_multilang_file'>in:</span>";
+
+  foreach ($entity->field_file as $lang => $object) {
     $url = download_file_url($object[0]['fid']);
-    $output .=  '<a href="' . $url . '" target="_blank">' . strtoupper($lang) . '</a> | ';
+    $output .= '<a href="' . $url . '" target="_blank">' . strtoupper($lang) . '</a> | ';
   }
   $output = substr($output, 0, -3);
   return $output;
 }
 
-/*
-* Formats multilanguage image
-*/
+/**
+ * Formats multilanguage image.
+ */
 function theme_osha_infographics_multilanguage_image_format($element) {
   $file = (object) $element['file'];
   $entity = (object) $element['entity'];
@@ -177,12 +182,13 @@ function theme_osha_infographics_multilanguage_image_format($element) {
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
-      "icon_directory" => $icon_directory
-    ));
-  $output .="<span class='label_multilang_file'>in:</span>";
+      "icon_directory" => $icon_directory,
+    )
+  );
+  $output .= "<span class='label_multilang_file'>in:</span>";
 
-  foreach($entity->field_image as $lang => $object) {
-    $output .=  '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
+  foreach ($entity->field_image as $lang => $object) {
+    $output .= '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
   }
   $output = substr($output, 0, -3);
   return $output;

@@ -111,6 +111,7 @@ function hwc_frontend_preprocess_html(&$vars) {
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
+
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title.
   if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
@@ -472,7 +473,7 @@ function hwc_frontend_checkboxes($variables) {
     $attributes['title'] = $element['#attributes']['title'];
   }
   $before_children = '';
-  if ($variables['element']['#id']=='edit-field-priority-area'){
+  if ($variables['element']['#id'] == 'edit-field-priority-area') {
     $checked = _osha_publication_is_selected_facet() ? '' : 'checked';
     $link = _osha_publication_generate_all_facet_link();
     $before_children = '
