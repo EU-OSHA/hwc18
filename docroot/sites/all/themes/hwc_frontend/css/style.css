@@ -7806,6 +7806,37 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   text-align: center;
   font-size: 1.2em;
 }
+.facetapi-facetapi-checkbox-links {
+  margin-top: 10px;
+}
+.facetapi-facetapi-checkbox-links li {
+  color: #003399;
+  margin-bottom: 10px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"] {
+  margin-right: 0.5em;
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:before {
+  border: 2px solid #003399;
+  content: "\2716";
+  padding: 0px 1px 0px 3px;
+  margin-right: 10px;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:checked:before {
+  content: "\2713";
+  color: #003399;
+}
+.facetapi-facetapi-checkbox-links li #facetapi-link--all--checkbox {
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li a {
+  font-family: 'Open Sans';
+}
 .checkbox input[type="checkbox"] {
   display: none;
 }
@@ -7850,6 +7881,28 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   height: 15px;
   width: 13px;
   line-height: 19px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .checkbox input[type=checkbox]:checked {
+    display: inline-block;
+    margin-left: -16px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  .checkbox input[type=checkbox]:checked:before {
+    content: "\2713";
+    color: #003399;
+    padding: 0px 2px 0px 2px;
+    margin-right: 6px;
+    font-weight: normal;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    margin-top: 0px;
+    display: block;
+    background-color: white;
+    height: 15px;
+    width: 13px;
+    line-height: 19px;
+  }
 }
 .radio {
   margin-bottom: 0.5em;
@@ -10949,6 +11002,23 @@ article .hwc-share-widget ul {
   text-align: center;
   font-size: 1.2em;
 }
+.page-practical-tools #edit-search-api-views-fulltext-wrapper {
+  float: none !important;
+}
+.page-practical-tools .sort-container.col-xs-3 {
+  width: 75% !important;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  margin-left: 15px;
+}
 .node-type-practical-tool .panel-col .field-label {
   min-width: 192px;
   width: 240px;
@@ -12965,8 +13035,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
 .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
 .page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
-  float: left;
-  display: block !important;
+  float: none;
+  display: inherit !important;
   width: inherit;
   height: 14px;
 }
@@ -17922,6 +17992,20 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
     margin-right: 0;
   }
+  .page-practical-tools .form-group {
+    margin-bottom: 15px;
+  }
+  .page-practical-tools #search {
+    margin-top: 0;
+  }
+  .page-practical-tools #edit-search-api-views-fulltext-wrapper {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+  }
+  .page-practical-tools .region-sidebar-first .views-exposed-widgets .form-type-textfield input {
+    padding-right: 0px;
+    margin-left: 0px;
+  }
   .form-type-checkbox {
     float: left;
     width: 20%;
@@ -17936,12 +18020,6 @@ input#edit-field-image-und-0-upload::before {
   #edit-left-column {
     padding-right: 0px;
     padding-left: 0px;
-  }
-  .page-practical-tools .form-group {
-    margin-bottom: 15px;
-  }
-  .page-practical-tools #search {
-    margin-top: 0;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing .h4-title,
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
@@ -20302,6 +20380,24 @@ input#edit-field-image-und-0-upload::before {
     padding-left: 0px;
     margin: 0 25px;
     padding-bottom: 1em;
+  }
+  .page-practical-tools .sort-container.col-xs-3 {
+    width: 100% !important;
+    padding-right: 0px;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    margin-left: 0px;
+    margin-top: 10px;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
     padding-left: 15px;

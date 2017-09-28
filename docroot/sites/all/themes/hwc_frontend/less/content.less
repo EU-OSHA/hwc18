@@ -182,6 +182,37 @@ ul.tabs--primary.nav.nav-tabs{
 		text-align: center;
 		font-size: 1.2em;
 	}
+	.facetapi-facetapi-checkbox-links {
+		margin-top: 10px;
+		li{
+			color: @color2;
+			margin-bottom: 10px;
+			input[type="checkbox"]{
+				margin-right: 0.5em;
+				margin-right: 15px;
+				&:before {
+					border: 2px solid #003399;
+					content: "\2716";
+					padding: 0px 1px 0px 3px;
+					margin-right: 10px;
+					color: #ffffff;
+					width: 20px;
+					height: 20px;
+					background-color: white;
+				}
+				&:checked:before {
+					content: "\2713";
+					color: #003399;
+				}
+			}
+			#facetapi-link--all--checkbox {
+				margin-right: 15px;
+			}
+			a{
+				font-family: @font-family-base;
+			}
+		}
+	}
 	.checkbox{
 		input[type="checkbox"]{
 			display: none;
@@ -227,6 +258,29 @@ ul.tabs--primary.nav.nav-tabs{
 				height: 15px;
 				width: 13px;
     			line-height: 19px;
+			}
+		}
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		 	input[type=checkbox]:checked {
+				display: inline-block;
+				margin-left: -16px;
+				margin-top: 5px;
+				cursor: pointer;
+				
+				&:before {
+					content: "\2713";
+					color: @text-color-2;
+					padding: 0px 2px 0px 2px;
+					margin-right: 6px;
+					font-weight: normal;
+					font-family: @font-family-monospace;
+					margin-top: 0px;
+					display: block;
+					background-color: white;
+					height: 15px;
+					width: 13px;
+	    			line-height: 19px;
+				}
 			}
 		}
 	}
@@ -3285,6 +3339,22 @@ article{
 		    }
 		}
 	}
+	#edit-search-api-views-fulltext-wrapper{
+		float: none !important;
+	}
+	.sort-container.col-xs-3{
+		width: 75% !important;
+		.form-item-sort-by,
+		.form-item-sort-order{
+			display: inline-block;
+			select{
+				display: inline-block;
+			}
+		}
+		.form-item-sort-order{
+			margin-left: 15px;
+		}
+	}
 }
 
 .node-type-practical-tool{
@@ -5348,8 +5418,8 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 					max-width: 300px;
 				}
 				span.input-group-btn{
-					float: left;
-				    display: block !important;
+					float: none;
+				    display: inherit !important;
 				    width: inherit;
 				    height: 14px;
 				    button{
