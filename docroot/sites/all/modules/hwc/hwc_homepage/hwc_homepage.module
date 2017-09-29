@@ -38,7 +38,7 @@ function hwc_homepage_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   $blocks['hwc_homepage_topics'] = array(
-    'info' => t('Topics'),
+    'info' => t('Priority areas'),
     'status' => 1,
     'region' => 'content',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
@@ -141,7 +141,7 @@ function hwc_homepage_block_view($delta = '') {
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[0], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[1], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= '</div>';
-    $block['subject'] = l(t('Topics'), variable_get('hwc_homepage_topics_know_more_link'));
+    $block['subject'] = l(t('Priority areas'), variable_get('hwc_homepage_topics_know_more_link'));
   }
   if ($delta == 'hwc_homepage_tools_and_resources') {
     $items = [];
