@@ -142,6 +142,19 @@ function hwc_frontend_preprocess_page(&$vars) {
       ),
     );
     switch ($node->type) {
+      case 'document':
+        $link_href = 'partners-documents';
+        if (isset($node->workbench_access['section'])) {
+          $link_href = 'communications';
+        }
+        $link_title = t('Back to the list');
+        $tag_vars['element']['#value'] = t('Document');
+        $vars['page']['above_title']['title-alternative'] = array(
+          '#type' => 'item',
+          '#markup' => theme('html_tag', $tag_vars),
+        );
+        break;
+
       case 'publication':
         if ($node->field_publication_type[LANGUAGE_NONE][0]['tid'] == 521 /* Case Studies */) {
           $link_title = t('Back to case studies list');

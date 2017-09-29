@@ -89,8 +89,10 @@ function hwc_practical_tool_form_alter(&$form, &$form_state, $form_id) {
     $form['sort_by']['#default_value'] = 'search_api_relevance';
     unset($form['#info']['filter-search_api_views_fulltext']['label']);
   }
-
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-documents-page-1') {
+    unset($form['#info']['filter-search_api_views_fulltext']['label']);
+  }
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-documents-page-2') {
     unset($form['#info']['filter-search_api_views_fulltext']['label']);
   }
 }

@@ -73,8 +73,7 @@
  * @ingroup themeable
  */
 $theme_dir = drupal_get_path('theme', 'hwc_frontend');
-//todo add styles for practical-tolls
-?><div class="page-search">
+?><div class="page-documents">
 <?php if (!empty($page['above_header'])): ?>
 <?php endif; ?>
 <header id="navbar" class="navbar navbar-default container-fluid"><?php // print $navbar_classes; ?>

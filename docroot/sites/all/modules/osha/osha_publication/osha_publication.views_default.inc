@@ -30,7 +30,7 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'col-xs-12 col-sm-6 col-md-4';
+  $handler->display->display_options['style_options']['row_class'] = 'col-xs-12 col-sm-6 col-md-3';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
@@ -60,17 +60,6 @@ function osha_publication_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = TRUE;
-  /* Field: Taxonomy term: Description */
-  $handler->display->display_options['fields']['description_field']['id'] = 'description_field';
-  $handler->display->display_options['fields']['description_field']['table'] = 'field_data_description_field';
-  $handler->display->display_options['fields']['description_field']['field'] = 'description_field';
-  $handler->display->display_options['fields']['description_field']['label'] = '';
-  $handler->display->display_options['fields']['description_field']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['description_field']['settings'] = array(
-    'field_formatter_class' => '',
-  );
-  $handler->display->display_options['fields']['description_field']['field_api_classes'] = TRUE;
-  $handler->display->display_options['fields']['description_field']['link_to_entity'] = 0;
   /* Sort criterion: Taxonomy term: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
@@ -139,17 +128,6 @@ function osha_publication_views_default_views() {
   );
   $handler->display->display_options['fields']['name_field']['field_api_classes'] = TRUE;
   $handler->display->display_options['fields']['name_field']['link_to_entity'] = 0;
-  /* Field: Taxonomy term: Description */
-  $handler->display->display_options['fields']['description_field']['id'] = 'description_field';
-  $handler->display->display_options['fields']['description_field']['table'] = 'field_data_description_field';
-  $handler->display->display_options['fields']['description_field']['field'] = 'description_field';
-  $handler->display->display_options['fields']['description_field']['label'] = '';
-  $handler->display->display_options['fields']['description_field']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['description_field']['settings'] = array(
-    'field_formatter_class' => '',
-  );
-  $handler->display->display_options['fields']['description_field']['field_api_classes'] = TRUE;
-  $handler->display->display_options['fields']['description_field']['link_to_entity'] = 0;
   $translatables['publication_type'] = array(
     t('Master'),
     t('more'),
