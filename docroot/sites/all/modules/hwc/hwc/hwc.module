@@ -1278,3 +1278,11 @@ function hwc_export_node($node) {
   print $export;
   drupal_exit();
 }
+
+function hwc_qtip_text($content, $tooltip) {
+  return theme('qtip', array(
+    'content' => $content,
+    'instance' => 'default',
+    'tooltip' => $tooltip,
+  ));
+}

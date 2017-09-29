@@ -23,7 +23,10 @@
  */
 $parts = explode(' ', strip_tags($output));
 $country_code = $row->field_field_country_code[0]['raw']['value'];
-?>
-<div class="event_day_month">
-  <div class="event_country code_<?php print $country_code; ?>"> </div>
-</div>
+
+$content = '<div class="event_day_month">
+  <div class="event_country code_' . $country_code . '"> </div>
+</div>';
+
+$tooltip = $row->field_field_country_code[0]['rendered']['#markup'];
+echo hwc_qtip_text($content, $tooltip);

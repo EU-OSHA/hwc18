@@ -640,3 +640,10 @@ function hwc_update_7037() {
 function hwc_update_7038() {
   features_revert_module('hwc');
 }
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7039() {
+  module_enable('qtip');
+}
