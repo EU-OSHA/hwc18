@@ -229,7 +229,17 @@ topics
   $pane->type = 'views';
   $pane->subtype = 'topic_related';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'highlights',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 0,
@@ -270,7 +280,17 @@ topics
   $pane->type = 'views';
   $pane->subtype = 'topic_related';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'case_studies',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 0,
@@ -311,7 +331,17 @@ topics
   $pane->type = 'views';
   $pane->subtype = 'topic_related';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'tools_guidance',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 0,
@@ -352,7 +382,17 @@ topics
   $pane->type = 'views';
   $pane->subtype = 'topic_related';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'publications',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 0,
@@ -394,7 +434,15 @@ topics
   $pane->subtype = 'hwc_priority_areas-hwc_pa_etool';
   $pane->shown = TRUE;
   $pane->access = array(
-    'plugins' => array(),
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'e_tool',
+        ),
+        'not' => FALSE,
+      ),
+    ),
   );
   $pane->configuration = array(
     'override_title' => 0,
@@ -421,7 +469,17 @@ topics
   $pane->type = 'block';
   $pane->subtype = 'hwc_priority_areas-hwc_pa_related_links';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_priority_areas',
+        'settings' => array(
+          'checkbox' => 'related_links',
+        ),
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',

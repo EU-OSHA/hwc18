@@ -64,23 +64,81 @@ function hwc_priority_areas_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__topic_related';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'title_body' => array(
+        'custom_settings' => TRUE,
+      ),
+      'body' => array(
+        'custom_settings' => TRUE,
+      ),
+      'priority_areas' => array(
+        'custom_settings' => TRUE,
+      ),
+      'osha_slideshow' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlights_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'newsletter_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlights_item_alternative' => array(
+        'custom_settings' => TRUE,
+      ),
+      'pub_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'osha_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'revision' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '22',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '21',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '20',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '19',
         ),
         'language' => array(
-          'weight' => '1',
+          'weight' => '2',
+        ),
+        'workbench_access' => array(
+          'weight' => '0',
         ),
       ),
       'display' => array(),
