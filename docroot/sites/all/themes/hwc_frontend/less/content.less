@@ -1245,15 +1245,15 @@ ul.tabs--primary.nav.nav-tabs{
 		text-align: center;
 		color: @color1;
 		background-size: cover;
-		padding-bottom: 3em;
+		padding-bottom: 15px;
 		margin-top: 0em;
-    	padding-top: 1em;
+    	padding-top: 0em;
 		#join_subscribers img{
 			left: 0;
 		}
 		
 		h2{
-			margin-top: 15px;
+			margin-top: 0px;
 			padding-top: 100px;
 			margin-bottom: 15px;
 			font-style: normal;
@@ -1390,10 +1390,11 @@ ul.tabs--primary.nav.nav-tabs{
 	}
 
 	#block-views-partners-block-1{
-		padding-top: 1em;
+		padding-top: 0em;
 		clear: both;
 		padding-left: @margin1;
 		padding-right: @margin1;
+		padding-bottom: 40px;
 		h2{
 			text-align: center;
 			background: url("../images/content/partners.png") no-repeat center top 20px;
@@ -1535,7 +1536,7 @@ ul.tabs--primary.nav.nav-tabs{
 				width: 100% !important;
 			}
 			.publication-ext-type{ 	
-				margin-left:6em;
+				margin-left:14em;
 			}
 			#num_slides{
 				left: 5em;
@@ -1551,7 +1552,7 @@ ul.tabs--primary.nav.nav-tabs{
 					background-color: white;
 					.field-name-title-field{
 						float: left;
-						margin-left: 6em;
+						margin-left: 14em;
 						margin-top: 0em;
 						width: auto;
 						h2{
@@ -1572,7 +1573,7 @@ ul.tabs--primary.nav.nav-tabs{
 						padding-top: 0px;
 						margin-top: 0px;
 						margin-bottom: 0.2em;
-						margin-left: 6em;
+						margin-left: 14em;
 						span{
 							font-size: @size3;
 							font-weight: bold;
@@ -1580,19 +1581,19 @@ ul.tabs--primary.nav.nav-tabs{
 					}
 					.field-name-body{
 						  clear: both;
-						  margin-left: 6em;
+						  margin-left: 14em;
 					}
 					.field-name-field-cover-image{
 						position: absolute;
-						top: 1.5em;
-						width: 5em;
+						width: 200px;
+						top: 15px;
 						img{
 							width: auto;
 						}
 					}
 					ul{
 						margin-top: 0em;
-						margin-left: 6em;
+						margin-left: 14em;
 						margin-bottom: 5px;
 						list-style: none;
 						padding-bottom: 0em;
@@ -2406,14 +2407,17 @@ ul.tabs--primary.nav.nav-tabs{
 	}
 }
 .front{
+	.panel-flexible .panel-separator{
+		margin: 0px;
+	}
 	.pane-hwc-homepage-hwc-homepage-tools-and-resources{
 		margin-left: -15px;
 		margin-right: -15px;
 		text-align: center;
 		padding-left: 15px;
 	    padding-right: 15px;
-	    padding-top: 30px;
-	    padding-bottom: 60px;
+	    padding-top: 0px;
+	    padding-bottom: 30px;
 	    margin-top: 30px;
 	    margin-bottom: 0px;
 	    background: url(../images/content/bg-campaign-partner.png) no-repeat left;
@@ -2466,7 +2470,7 @@ ul.tabs--primary.nav.nav-tabs{
 	    margin-bottom: 30px;
 	    h2.pane-title{
 	    	
-	    	margin-top: 15px;
+	    	margin-top: 0px;
 		    padding-top: 100px;
 		    margin-bottom: 40px;
 		    font-style: normal;
@@ -2602,7 +2606,7 @@ ul.tabs--primary.nav.nav-tabs{
 		div.pane-title, h2.pane-title{
 			//margin-top: 15px;
 		    padding-top: 100px;
-		    margin-bottom: 40px;
+		    margin-bottom: 20px;
 		    font-style: normal;
 		    background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
 		    background-size: 61px;
@@ -5831,6 +5835,15 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	.form-actions #edit-delete{
 		margin-left: 0%!important;
 		margin-top:0em;
+	}
+
+	.group-left, .group-left2{
+		.form-item-title,
+		.form-item-field-organizer-und-0-value,
+		.field-name-field-contact-name,
+		.field-name-field-contact-phone{
+			margin-right: 30px;
+		}
 	}
 
 }
