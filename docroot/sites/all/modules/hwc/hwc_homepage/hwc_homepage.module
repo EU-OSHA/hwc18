@@ -141,12 +141,6 @@ function hwc_homepage_block_view($delta = '') {
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[0], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[1], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= '</div>';
-    $block['content']['know_more'] = array(
-      'type' => 'item',
-      '#prefix' => '<div class="more-link">',
-      '#markup' => l(t('Know more'), variable_get('hwc_homepage_topics_know_more_link')),
-      '#suffix' => '</div>',
-    );
     $block['subject'] = l(t('Topics'), variable_get('hwc_homepage_topics_know_more_link'));
   }
   if ($delta == 'hwc_homepage_tools_and_resources') {
