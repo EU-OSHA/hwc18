@@ -39,11 +39,6 @@ function hwc_priority_areas_ctools_access_settings($form, &$form_state, $conf) {
  * Check for access.
  */
 function hwc_priority_areas_ctools_access_check($conf, $context) {
-  // Return false if context is not set.
-  return TRUE;
-//  if (empty($context) || empty($context->data)) {
-//    return FALSE;
-//  }
   return hwc_priority_areas_get_topic_related_show_checkbox($conf['checkbox']);
 }
 
