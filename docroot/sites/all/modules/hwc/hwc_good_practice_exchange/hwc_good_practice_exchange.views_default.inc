@@ -49,12 +49,39 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
   $handler->display->display_options['empty']['area_text_custom']['content'] = 'No results';
+  /* Field: Indexed Multilingual Content: Cover image */
+  $handler->display->display_options['fields']['field_cover_image']['id'] = 'field_cover_image';
+  $handler->display->display_options['fields']['field_cover_image']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_cover_image']['field'] = 'field_cover_image';
+  $handler->display->display_options['fields']['field_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cover_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_cover_image']['settings'] = array(
+    'image_style' => 'medium_crop_220',
+    'image_link' => '',
+    'field_formatter_class' => '',
+  );
   /* Field: Indexed Multilingual Content: Multilingual ID */
   $handler->display->display_options['fields']['search_api_et_id']['id'] = 'search_api_et_id';
   $handler->display->display_options['fields']['search_api_et_id']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['search_api_et_id']['field'] = 'search_api_et_id';
   $handler->display->display_options['fields']['search_api_et_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_et_id']['link_to_entity'] = 0;
+  /* Field: Indexed Multilingual Content: Publication date */
+  $handler->display->display_options['fields']['field_publication_date']['id'] = 'field_publication_date';
+  $handler->display->display_options['fields']['field_publication_date']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_publication_date']['field'] = 'field_publication_date';
+  $handler->display->display_options['fields']['field_publication_date']['label'] = '';
+  $handler->display->display_options['fields']['field_publication_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_publication_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
   /* Field: Indexed Multilingual Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -65,35 +92,55 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['fields']['title_field']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Indexed Multilingual Content: Document Type */
-  $handler->display->display_options['fields']['field_document_type']['id'] = 'field_document_type';
-  $handler->display->display_options['fields']['field_document_type']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['fields']['field_document_type']['field'] = 'field_document_type';
-  $handler->display->display_options['fields']['field_document_type']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_document_type']['view_mode'] = 'full';
-  $handler->display->display_options['fields']['field_document_type']['bypass_access'] = 0;
   /* Field: Indexed Multilingual Content: Files */
   $handler->display->display_options['fields']['field_document_files']['id'] = 'field_document_files';
   $handler->display->display_options['fields']['field_document_files']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_document_files']['field'] = 'field_document_files';
+  $handler->display->display_options['fields']['field_document_files']['label'] = '';
+  $handler->display->display_options['fields']['field_document_files']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_document_files']['list']['mode'] = 'list';
   $handler->display->display_options['fields']['field_document_files']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_document_files']['display'] = 'view';
   $handler->display->display_options['fields']['field_document_files']['view_mode'] = 'full';
   $handler->display->display_options['fields']['field_document_files']['bypass_access'] = 0;
-  /* Sort criterion: Indexed Multilingual Content: Publication date */
-  $handler->display->display_options['sorts']['field_publication_date']['id'] = 'field_publication_date';
-  $handler->display->display_options['sorts']['field_publication_date']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['sorts']['field_publication_date']['field'] = 'field_publication_date';
-  $handler->display->display_options['sorts']['field_publication_date']['order'] = 'DESC';
-  $handler->display->display_options['sorts']['field_publication_date']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_publication_date']['expose']['label'] = 'Date of publication';
+  /* Field: Indexed Multilingual Content: Document Partner Organisation */
+  $handler->display->display_options['fields']['partner_organisation_1']['id'] = 'partner_organisation_1';
+  $handler->display->display_options['fields']['partner_organisation_1']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['partner_organisation_1']['field'] = 'partner_organisation';
+  $handler->display->display_options['fields']['partner_organisation_1']['label'] = '';
+  $handler->display->display_options['fields']['partner_organisation_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['partner_organisation_1']['separator'] = '';
+  $handler->display->display_options['fields']['partner_organisation_1']['link_to_entity'] = 0;
+  /* Field: Indexed Multilingual Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Search: Relevance */
+  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]\'>See more</a>';
+  $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   /* Sort criterion: Indexed Multilingual Content: Title #2 */
   $handler->display->display_options['sorts']['title2']['id'] = 'title2';
   $handler->display->display_options['sorts']['title2']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['sorts']['title2']['field'] = 'title2';
   $handler->display->display_options['sorts']['title2']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['title2']['expose']['label'] = 'Title';
+  $handler->display->display_options['sorts']['title2']['expose']['label'] = 'Alphabetically';
+  /* Sort criterion: Indexed Multilingual Content: Publication date */
+  $handler->display->display_options['sorts']['field_publication_date']['id'] = 'field_publication_date';
+  $handler->display->display_options['sorts']['field_publication_date']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['sorts']['field_publication_date']['field'] = 'field_publication_date';
+  $handler->display->display_options['sorts']['field_publication_date']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['field_publication_date']['expose']['label'] = 'Date of publication';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -155,6 +202,79 @@ function hwc_good_practice_exchange_views_default_views() {
   /* Display: EU-OSHA Communications */
   $handler = $view->new_display('page', 'EU-OSHA Communications', 'page_2');
   $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Multilingual Content: Cover image */
+  $handler->display->display_options['fields']['field_cover_image']['id'] = 'field_cover_image';
+  $handler->display->display_options['fields']['field_cover_image']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_cover_image']['field'] = 'field_cover_image';
+  $handler->display->display_options['fields']['field_cover_image']['label'] = '';
+  $handler->display->display_options['fields']['field_cover_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_cover_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_cover_image']['settings'] = array(
+    'image_style' => 'medium_crop_220',
+    'image_link' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Indexed Multilingual Content: Multilingual ID */
+  $handler->display->display_options['fields']['search_api_et_id']['id'] = 'search_api_et_id';
+  $handler->display->display_options['fields']['search_api_et_id']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['search_api_et_id']['field'] = 'search_api_et_id';
+  $handler->display->display_options['fields']['search_api_et_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['search_api_et_id']['link_to_entity'] = 0;
+  /* Field: Indexed Multilingual Content: Publication date */
+  $handler->display->display_options['fields']['field_publication_date']['id'] = 'field_publication_date';
+  $handler->display->display_options['fields']['field_publication_date']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_publication_date']['field'] = 'field_publication_date';
+  $handler->display->display_options['fields']['field_publication_date']['label'] = '';
+  $handler->display->display_options['fields']['field_publication_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_publication_date']['settings'] = array(
+    'format_type' => 'osha_day_only',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Indexed Multilingual Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'practical_tool_title';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Indexed Multilingual Content: Files */
+  $handler->display->display_options['fields']['field_document_files']['id'] = 'field_document_files';
+  $handler->display->display_options['fields']['field_document_files']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_document_files']['field'] = 'field_document_files';
+  $handler->display->display_options['fields']['field_document_files']['label'] = '';
+  $handler->display->display_options['fields']['field_document_files']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_document_files']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_document_files']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_document_files']['display'] = 'view';
+  $handler->display->display_options['fields']['field_document_files']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_document_files']['bypass_access'] = 0;
+  /* Field: Indexed Multilingual Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
+  /* Field: Search: Relevance */
+  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]\'>See more</a>';
+  $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   $handler->display->display_options['path'] = 'communications';
   $translatables['documents'] = array(
     t('Master'),
@@ -175,10 +295,11 @@ function hwc_good_practice_exchange_views_default_views() {
     t('@order Showing @start - @end from @total'),
     t('No results'),
     t('Multilingual ID'),
-    t('Document Type'),
-    t('Files'),
+    t('.'),
+    t('<a href=\'[url]\'>See more</a>'),
+    t(','),
+    t('Alphabetically'),
     t('Date of publication'),
-    t('Title'),
     t('Search'),
     t('Partners documents'),
     t('Partners Documents'),

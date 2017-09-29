@@ -19,12 +19,11 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'file_entity',
+        'module' => 'osha_publication',
         'settings' => array(
           'field_formatter_class' => '',
-          'text' => 'Download [file:name]',
         ),
-        'type' => 'file_download_link',
+        'type' => 'file_publication_related_res',
         'weight' => 0,
       ),
       'title_only' => array(
@@ -39,7 +38,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'label' => 'File',
     'required' => 0,
     'settings' => array(
-      'description_field' => 0,
+      'description_field' => 1,
       'entity_translation_sync' => FALSE,
       'file_directory' => 'documents/documents',
       'file_extensions' => 'pdf doc docx odt rtf txt csv xsl ods xslx ppt pptx epub',
@@ -50,6 +49,30 @@ function hwc_good_practice_exchange_field_default_field_instances() {
       'active' => 1,
       'module' => 'file',
       'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'image' => 'image',
+        ),
+        'browser_plugins' => array(),
+        'manualcrop_crop_info' => TRUE,
+        'manualcrop_default_crop_area' => TRUE,
+        'manualcrop_enable' => FALSE,
+        'manualcrop_inline_crop' => FALSE,
+        'manualcrop_instant_crop' => FALSE,
+        'manualcrop_instant_preview' => TRUE,
+        'manualcrop_keyboard' => TRUE,
+        'manualcrop_maximize_default_crop_area' => FALSE,
+        'manualcrop_require_cropping' => array(),
+        'manualcrop_styles_list' => array(),
+        'manualcrop_styles_mode' => 'include',
+        'manualcrop_thumblist' => FALSE,
+        'pdf_to_image' => array(
+          'density' => '25x25',
+          'extra_args' => '',
+          'target_field' => NULL,
+        ),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
@@ -72,7 +95,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 1,
       ),
       'title_only' => array(

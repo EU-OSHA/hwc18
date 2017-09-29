@@ -61,12 +61,12 @@ function osha_publication_menu_publications_faceted_form($variables) {
     '#method' => 'GET',
     'left-column' => array(
       '#type' => 'container',
-      '#attributes' => array('class' => array('col col-md-3'))
+      '#attributes' => array('class' => array('col col-md-3')),
     ),
     'content' => array(
       '#type' => 'container',
       '#attributes' => array('class' => array('col col-md-9')),
-    )
+    ),
   );
   $form['left-column']['search']['text'] = array(
     '#type' => 'textfield',
@@ -86,7 +86,8 @@ function osha_publication_menu_publications_faceted_form($variables) {
   if (!empty($text)) {
     $form['content']['search_phrase'] = array(
       '#type' => 'markup',
-      '#markup' => '<div class="results-for">' . t('Results for !text', array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
+      '#markup' => '<div class="results-for">' . t('Results for !text',
+          array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
     );
   }
   $form['#token'] = FALSE;
@@ -206,7 +207,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
       array(
         '@start' => $start + 1,
         '@limit' => $start + $shown,
-        '@total' => $response['result count']
+        '@total' => $response['result count'],
       )
     ),
   );
@@ -361,7 +362,8 @@ function osha_publication_menu_publications_search_related($form_state, $native_
   $q->condition('b.field_publication_type_tid', CASE_STUDY_TID, '!=');
   if ($sort == 'alphabetically') {
     $q->orderBy('title_field_value', 'ASC');
-  } else {
+  }
+  else {
     $q->orderBy('field_publication_date_value', 'DESC');
   }
   if (!empty($restrict)) {
