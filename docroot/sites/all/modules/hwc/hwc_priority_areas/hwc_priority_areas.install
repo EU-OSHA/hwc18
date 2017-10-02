@@ -250,3 +250,10 @@ function hwc_priority_areas_update_7027() {
 function hwc_priority_areas_update_7028() {
   features_revert_module('hwc_priority_areas');
 }
+
+/**
+ * Show checkboxes
+ */
+function hwc_priority_areas_update_7029() {
+  features_revert_module('hwc_priority_areas');
+}

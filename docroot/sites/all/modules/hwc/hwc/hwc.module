@@ -799,14 +799,15 @@ function hwc_node_view($node, $view_mode, $langcode) {
     }
   }
   if ($view_mode == 'full' && $node->nid == 160) {
-    // Todo check (or|and) search.
-    $watch_other_link = NAPO_WEBSITE . '/search?search_block_form=Dangerous+substances+Chemicals';
+    // Todo add direct link.
+    $watch_other_link = NAPO_WEBSITE . '/en';
     $napo_logo_link = NAPO_WEBSITE . '/';
     $about_napo_link = NAPO_WEBSITE . '/about-napo/the-napo-story';
-    $know_more_about_napo = NAPO_WEBSITE . '/about-napo/the-napo-story';
+    $know_more_about_napo = NAPO_WEBSITE . '/en';
 
     $node->content['title_field'][0]['#markup'] =
-      '<div class="watch-other-link"><a href="' . $watch_other_link . '" target="_blank">' . t('Watch other NAPO scenes on Dangerous substances') . '</a></div>' .
+      '<div class="watch-other-link"><a href="' . $watch_other_link . '" target="_blank">' .
+      t('Watch Napo in…lungs at work – a clip on the dangers of environmental tobacco smoke') . '</a></div>' .
       '<div class="icon napo-logo"><a href="' . $napo_logo_link . '" target="_blank"></a></div>' .
       '<h2>' . l(t('About Napo'), $about_napo_link, ['attributes' => ['target' => '_blank']]) . '</h2>';
 

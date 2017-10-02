@@ -313,7 +313,6 @@ function hwc_good_practice_exchange_block_view($delta = '') {
       }
     }
 
-    krumo($node);
     $items = ['links']; // todo
     $block['subject'] = '';
     $block['content']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';

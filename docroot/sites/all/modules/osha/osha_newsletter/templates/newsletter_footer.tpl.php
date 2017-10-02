@@ -72,14 +72,16 @@ global $language;
                     foreach ($social as $name => $options) {
                       $directory = drupal_get_path('module','osha_newsletter');
 
-                      print l(theme('image', array(
-                        'path' => $directory . '/images/' . $name . '--green.png',
-                        'width' => 20,
-                        'height' => 20,
-                        'alt' => $options['alt'],
-                        'attributes' => array('style' => 'border:0px;height:20px;max-height:20px;width: 20px;max-width:20px;', 'class' => 'social-logo')
-                      )), $options['path'], array(
-                        'attributes' => array('style' => 'color:#ffffff;text-decoration:none;'),
+                      print l(theme('image',
+                        array(
+                            'path' => $directory . '/images/' . $name . '--green.png',
+                            'width' => 20,
+                            'height' => 20,
+                            'alt' => $options['alt'],
+                            'attributes' => array('style' => 'border:0px;height:20px;max-height:20px;width: 20px;max-width:20px;', 'class' => 'social-logo')
+                        )
+                      ), $options['path'], array(
+                        'attributes' => array('style' => 'color:#ffffff;text-decoration:none;', 'target' => '_blank'),
                         'html' => TRUE,
                         'external' => TRUE
                       ));
