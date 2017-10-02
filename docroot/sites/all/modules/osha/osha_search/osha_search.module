@@ -85,8 +85,8 @@ function osha_search_block_view($delta = '') {
     '#type' => 'markup',
     '#markup' => '<h3>' . t('Filter results') . '</h3><div class="clear-wrapper">',
   );
-
-  if (arg(0) == 'search') { // active links will be added onlink via js in facet_item
+  // Active links will be added onlink via js in facet_item.
+  if (arg(0) == 'search') {
     $content['remove_filter'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="remove_filter"></div>',
@@ -154,8 +154,8 @@ function osha_search_sort_form($form, $form_state) {
     '#options' => [
       'search_api_relevance' => t('Relevance'),
       'field_publication_date' => t('Publication date'),
-      'title2' => t('Title')
-    ]
+      'title2' => t('Title'),
+    ],
   ];
   $form['sort_by']['#value'] = $_REQUEST['sort_by'];
   return $form;
@@ -479,6 +479,7 @@ class OshaSearchWidgetDropdown extends FacetapiWidgetLinks {
   public function getItemClasses() {
     return array('facetapi-dropdown');
   }
+
 }
 
 /**
@@ -503,7 +504,7 @@ function osha_search_path_breadcrumbs_view_alter(&$breadcrumbs, $path_breadcrumb
 
 function _osha_search_strip_param_value($params, $name, $value = NULL) {
   if (!empty($params['f'])) {
-    foreach($params['f'] as $k => $v) {
+    foreach ($params['f'] as $k => $v) {
       if ($v == $name . ':' . $value) {
         unset($params['f'][$k]);
       }

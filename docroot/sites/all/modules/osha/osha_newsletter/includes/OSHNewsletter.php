@@ -31,7 +31,8 @@ class OSHNewsletter {
   }
 
   public static function alterContentForm(&$form, &$form_state) {
-    // add submit button to send newsletter and send test newsletter
+    global $user;
+    // Add submit button to send newsletter and send test newsletter.
     if (isset($form['content'])) {
       $q = db_select('field_data_field_newsletter_template', 'nt');
       $q->fields('nt', ['entity_id', 'field_newsletter_template_value']);
@@ -56,7 +57,7 @@ class OSHNewsletter {
       $form['actions']['send_newsletter'] = array(
         '#type' => 'submit',
         '#value' => t('Send newsletter to subscribers'),
-        '#submit' => array('osha_newsletter_send_email_to_subscribers')
+        '#submit' => array('osha_newsletter_send_email_to_subscribers'),
       );
 
 
@@ -77,7 +78,7 @@ class OSHNewsletter {
       $form['test_newsletter_content']['send_test_newsletter'] = array(
         '#type' => 'submit',
         '#value' => t('Send test newsletter'),
-        '#submit' => array('osha_newsletter_send_test_email')
+        '#submit' => array('osha_newsletter_send_test_email'),
       );
     }
 
@@ -85,7 +86,7 @@ class OSHNewsletter {
     $form['#attached']['js'][] = "{$modulePath}/includes/js/collection_form.js";
     $form['#attached']['js'][] = [
       'data' => [
-        'osha_newsletter' => ['basepath' => $modulePath]
+        'osha_newsletter' => ['basepath' => $modulePath],
       ],
       'type' => 'setting',
     ];
@@ -103,7 +104,7 @@ class OSHNewsletter {
    */
   public static function saveConfiguration(EntityCollection $entityCollection) {
     $voc = taxonomy_vocabulary_machine_name_load('newsletter_sections');
-    $sections = taxonomy_get_tree($voc->vid, 0, null, true);
+    $sections = taxonomy_get_tree($voc->vid, 0, NULL, TRUE);
 
     $configuration = [
       'sections' => [],
@@ -133,7 +134,7 @@ class OSHNewsletter {
     }
 
     foreach ($configuration['fids'] as $fid) {
-      // We are referencing the files so they won't be deleted by the garbage collector
+      // We are referencing the files so they won't be deleted by the garbage collector.
       $entityCollection->field_images[LANGUAGE_NONE][] = ['fid' => $fid];
     }
 
@@ -219,22 +220,25 @@ class OSHNewsletter {
         'class' => [
           drupal_clean_css_identifier($template),
           'newsletter-section',
-          'template-container'
+          'template-container',
         ],
         'width' => '100%',
         'cellpadding' => '0',
         'cellspacing' => '0',
       ],
-      '#printed' => false,
-      '#sticky' => false,
+      '#printed' => FALSE,
+      '#sticky' => FALSE,
       '#children' => [],
     ];
+    if ($variables['section']->name == 'More news') {
+      $variables['section']->name = '';
+    }
     if (!empty($variables['section']->name)) {
       $icon = self::getConfiguration($entityCollection, 'field_icon', $variables['section']);
       if (!empty($icon)) {
 
         $cellContent = sprintf("<img src=\"%s\">", $icon);
-        $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-icon'] ];
+        $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-icon']];
 
         $cellContent = sprintf("<span>%s</span>", $variables['section']->name);
         $content['#header'][1]['data'][] = ['data' => $cellContent, 'class' => ['section-title']];
@@ -244,18 +248,16 @@ class OSHNewsletter {
         $cellContent = sprintf("<span>%s</span>", $variables['section']->name);
         $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-title']];
       }
-
-
       $cssClass = drupal_clean_css_identifier('section-' . strtolower($variables['section']->name));
       $content['#attributes']['class'][] = $cssClass;
     }
     if (!empty($variables['section']->field_link[LANGUAGE_NONE][0]['url'])) {
       $url = $variables['section']->field_link[LANGUAGE_NONE][0]['url'];
       $arrow = theme('image', array(
-        'path' => drupal_get_path('module','osha_newsletter') . '/images/' . 'pink-arrow.png',
+        'path' => drupal_get_path('module', 'osha_newsletter') . '/images/' . 'pink-arrow.png',
         'width' => '19',
         'height' => '11',
-        'attributes' => array('style' => 'border:0px;width:19px;height:11px;')
+        'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
       ));
       $view_all = [
         '#theme' => 'table',
@@ -266,43 +268,59 @@ class OSHNewsletter {
               'html' => true,
               'absolute' => true,
               'query' => $url_query,
-              'attributes' => ['class' => ['view-all', 'see-more']]
+              'attributes' => ['class' => ['view-all', 'see-more']],
             ]),
             'align' => 'Right',
             'style' => 'padding-top: 10px; padding-bottom: 20px; border-top: 1px dashed #dddddd;',
           ],
-        ]],
+          ],
+        ],
         '#attributes' => [
           'class' => ['view-all-table'],
           'width' => '100%',
           'cellpadding' => '0',
           'cellspacing' => '0',
         ],
-        '#printed' => false,
-        '#sticky' => false,
+        '#printed' => FALSE,
+        '#sticky' => FALSE,
         '#children' => [],
       ];
       $content['#suffix'] = render($view_all);
     }
+    if ($variables['section']->name == 'Events') {
+      $url = url('events', ['absolute' => TRUE]);
+      $content['#suffix'] .= '
+        <div class="more-link" style="background-color: #003399;display: table;margin: 0px auto;">
+        <table style="border: 0; margin: 0;">
+        <tr>
+          <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
+          <td style="border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
+          color: #ffffff; text-decoration: none;">' . t('View All') . '</a></td>
+        </tr>
+        </table>
+        </div>';
+    }
+
     switch ($template) {
       case 'newsletter_multiple_columns':
-        $columnWidth = round((760 / count($variables)), 2) - 20; // 20px padding for each column
+        // Padding 20px for each column.
+        $columnWidth = round((760 / count($variables)), 2) - 20;
         foreach ($variables as $column) {
           $content['#rows'][0]['data'][] = [
             'data' => self::renderTemplate($entityCollection, $column['#style'], $column),
             'width' => "$columnWidth",
             'class' => ['multiple-columns-cell', 'template-column'],
-            'style' => sprintf('max-width:%spx;',$columnWidth, $columnWidth),
+            'style' => sprintf('max-width:%spx;', $columnWidth, $columnWidth),
           ];
         }
         break;
       case 'newsletter_full_width_list':
       case 'newsletter_half_width_list':
       case 'newsletter_full_width_details':
-        if($template === 'newsletter_half_width_list') {
+        if ($template === 'newsletter_half_width_list') {
           $content['#attributes']['width'] = '100%';
         }
-        if($template !== 'newsletter_full_width_details') {
+        if ($template !== 'newsletter_full_width_details') {
           $content['#rows'][]['data'][] = [
             'data' => '&nbsp;',
             'colspan' => 1,
@@ -317,7 +335,7 @@ class OSHNewsletter {
             'no_striping' => true,
           ];
         }
-        if($template !== 'newsletter_full_width_details') {
+        if ($template !== 'newsletter_full_width_details') {
           $content['#rows'][]['data'][] = [
             'data' => '&nbsp;',
             'colspan' => 1,
