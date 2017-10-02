@@ -10146,6 +10146,13 @@ html:lang(no) .pane-node-field-provider .field-items,
   border-bottom: none;
   font-size: 30px;
 }
+.front .qtip-default {
+  background-color: white;
+  border-color: #003399;
+  text-align: center;
+  font-weight: bold;
+  color: #003399;
+}
 .front .panel-flexible .panel-separator {
   margin: 0px;
 }
@@ -16285,7 +16292,7 @@ input#edit-field-image-und-0-upload::before {
   min-height: 65px;
   color: white;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
@@ -17653,6 +17660,20 @@ input#edit-field-image-und-0-upload::before {
   .contact-form.container .form-type-select:after {
     left: inherit;
     right: 0px;
+  }
+  .page-publications .view-id-publication_type .views-row .views-field-name-field a {
+    display: block;
+    padding: .5em 0;
+    background-color: #003399;
+    min-height: 65px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    line-height: 16px;
+    padding-top: 20px;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -19142,10 +19163,6 @@ input#edit-field-image-und-0-upload::before {
   }
   /*End pag Newsletter*/
   /*Good practices, publications, case studies*/
-  .page-publications .main-container.container-fluid {
-    padding-right: 0px !important;
-    padding-left: 0px !important;
-  }
   #edit-left-column {
     position: relative;
   }
@@ -22033,6 +22050,10 @@ input#edit-field-image-und-0-upload::before {
   .page-publications .main-container .pane-node-body .field-type-text-with-summary {
     font-size: 1.2em;
   }
+  .page-publications .main-container.container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
   .page-publications .view-id-publication_type {
     margin-top: 30px;
     margin-bottom: 50px;
@@ -22053,11 +22074,12 @@ input#edit-field-image-und-0-upload::before {
     min-height: 65px;
     color: white;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
-    line-height: 45px;
+    line-height: 47px;
+    margin-bottom: 15px;
   }
   .page-publications .view-id-publication_type .views-row .views-field-name-field a:before {
     content: "> ";
