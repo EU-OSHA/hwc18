@@ -799,8 +799,7 @@ function hwc_node_view($node, $view_mode, $langcode) {
     }
   }
   if ($view_mode == 'full' && $node->nid == 160) {
-    // Todo add direct link.
-    $watch_other_link = NAPO_WEBSITE . '/en';
+    $watch_other_link = NAPO_WEBSITE . '/en/napos-films/napo-%E2%80%A6-lungs-work';
     $napo_logo_link = NAPO_WEBSITE . '/';
     $about_napo_link = NAPO_WEBSITE . '/about-napo/the-napo-story';
     $know_more_about_napo = NAPO_WEBSITE . '/en';
