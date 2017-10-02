@@ -21,7 +21,7 @@ if (!empty($campaign_id)) {
   $url_query = array('pk_campaign' => $campaign_id);
 }
 ?>
-<?php if($node->title != NULL) {?>
+<?php if ($node->title != NULL) {?>
   <table id="node-<?php print $node->nid; ?>" class="newsletter-item <?php print drupal_clean_css_identifier($node->type); ?>">
     <tbody>
       <?php if(!empty($node->old_newsletter)): ?>
@@ -32,106 +32,165 @@ if (!empty($campaign_id)) {
     <?php
     if (isset($node->field_publication_date[LANGUAGE_NONE][0]['value']) && $node->type != 'newsletter_article') {
       $date = strtotime($node->field_publication_date[LANGUAGE_NONE][0]['value']);
-    } if ($node->type == 'events') {
+    }
+    $link = 'node/' . $node->nid;
+    if (isset($node->alt_url)) {
+      $link = $node->alt_url;
+    }
+    if ($node->type == 'news') {
+      $w = entity_metadata_wrapper('node', $node);
+      if (!empty($node->field_image)) {
+        $field_image = $w->field_image->value();
+      }
+      $field_publication_date = '';
+      if (!empty($node->field_publication_date)) {
+        $field_publication_date = $w->field_publication_date->value();
+      }
+    ?>
+        <tr>
+            <td style="padding-bottom: 10px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+              <?php
+              print l(theme('image_style', array(
+                'style_name' => 'medium_crop_220',
+                'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
+                'width' => 220,
+                'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
+                'attributes' => array(
+                  'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
+                  'align' => 'left',
+                  'hspace' => '20',
+                  'vspace' => '20',
+                ),
+              )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                'html' => TRUE,
+                'external' => TRUE,
+              ));
+              ?>
+            </td>
+            <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                <div><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
+                <div>
+                  <?php
+                    print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                      'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
+                      'query' => $url_query,
+                      'external' => TRUE,
+                    ));
+                  ?>
+                </div>
+              <?php
+              if (!empty($elements['field_summary'])) {
+                print render($elements['field_summary']);
+              }
+              if (!empty($elements['body'])) {
+                print render($elements['body']);
+              }
+              $directory = drupal_get_path('module', 'osha_newsletter');
+              ?>
+                <table>
+                    <tr>
+                        <td style="padding-top: 10px;">
+                          <?php
+
+                          print '<div class="see-more">';
+                          $node_url = url('node/' . $node->nid, array('absolute' => TRUE));
+                          print l(t('See more'), $node_url, array(
+                            'attributes' => array('class' => ['see-more']),
+                            'query' => $url_query,
+                            'external' => TRUE,
+                          ));
+
+                          print l(theme('image', array(
+                            'path' => $directory . '/images/' . 'green-arrow.png',
+                            'width' => '19',
+                            'height' => '11',
+                            'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
+                          )), $node_url, array(
+                            'html' => TRUE,
+                            'external' => TRUE,
+                            'query' => $url_query,
+                          ));
+
+                          print '</div>';
+                          ?>
+
+                        </td>
+                        <td align="right" valign="middle" style="padding-top: 10px;">
+                          <?php
+                          print l(theme('image', array(
+                            'path' => $directory . '/images/' . 'share-icon.png',
+                            'width' => '20',
+                            'height' => '20',
+                            'attributes' => array('style' => 'border:0px;width:20px;height:20px;'),
+                          )), $node_url, array(
+                            'html' => TRUE,
+                            'external' => TRUE,
+                            'query' => $url_query + ['action' => 'share'],
+                          ));
+                          ?>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+      <?php
+    }
+    if ($node->type == 'events') {
+      global $base_url;
       $date = (isset($field_start_date) && !empty($field_start_date)) ? strtotime($field_start_date[0]['value']) : '';
-      $country_location = (isset($field_country_code) && !empty($field_country_code)) ? $field_country_code['und'][0]['value'] : '';
-      $city_location = (isset($field_city) && !empty($field_city)) ? $field_city[0]['safe_value'] : '';
       ?>
       <tr>
-        <?php if (empty($node->old_newsletter)): ?>
           <td class="rs2" rowspan="2">
             <?php
-              global $base_url;
 
             $calendar_img = 'calendar-' . date('d', $date);
-
             $calendar_img = !empty($node->arrow_color) ? "{$calendar_img}-{$node->arrow_color}.png" : "{$calendar_img}.png";
             $calendar_img_path = "{$base_url}/sites/all/modules/osha/osha_newsletter/images/calendars/{$calendar_img}";
 
-              print l(theme('image', array(
+            $style = 'border: 0px;height:35px!important;width:40px!important;max-height:35px!important;max-width:40px!important;display:block;';
+            print l(theme('image', array(
               'path' => $calendar_img_path,
               'width' => 40,
               'height' => 36,
               'alt' => 'calendar',
-              'attributes' => array('style' => 'border: 0px;height:35px!important;width:40px!important;max-height:35px!important;max-width:40px!important;display:block;')
-            )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
-              'html' => TRUE,
-              'external' => TRUE,
-              'query' => $url_query,
-            ));
-            ?>
+              'attributes' => array('style' => $style),
+            )),
+              url('node/' . $node->nid, array('absolute' => TRUE)),
+              array('html' => TRUE, 'external' => TRUE, 'query' => $url_query));
+           ?>
           </td>
           <td colspan="2" class="cs2">
-            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} ?></span>
+            <span class="item-date"><?php
+              $date = format_date($date, 'custom', 'd/m/Y');
+              print l($date, url($link, array('absolute' => TRUE)), array(
+                'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
+                'query' => $url_query,
+                'external' => TRUE,
+              ));
+           ?></span>
           </td>
-        <?php else: ?>
-          <td colspan="2" class="cs2">
-            <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} ?></span>
-          </td>
-        <?php endif; ?>
       </tr>
-      <?php
-    }
-    ?>
-    <tr class="tr_h">
-        <td class="td_h">
-          <span> > </span>
-        </td>
-      <td class="ar">
-        <?php
-        $link ='node/' . $node->nid;
-        if (isset($node->alt_url)) {
-          $link = $node->alt_url;
-        }
-        switch ($node->type) {
-          case 'publication':
-            print l($node->title, url('node/' . $node->nid . '/view', array('absolute' => TRUE)), array(
-              'attributes' => array('class' => ['newsletter-item-view-link']),
-              'query' => $url_query,
-              'external' => TRUE
-            ));
-            break;
-          case 'twitter_tweet_feed':
-            if (!empty($node->field_tweet_author[LANGUAGE_NONE][0]['value'])
-                && !empty($node->field_tweet_contents[LANGUAGE_NONE][0]['value'])
-                && !empty($node->field_link_to_tweet[LANGUAGE_NONE][0]['value'])) {
-              printf("<p class='tweet-author'><a target='_blank' href='%s'>@%s</a></p><p class='tweet-contents'>%s</p>",
-                $node->field_link_to_tweet[LANGUAGE_NONE][0]['value'],
-                $node->field_tweet_author[LANGUAGE_NONE][0]['value'],
-                $node->field_tweet_contents[LANGUAGE_NONE][0]['value']);
-            }
-            else {
-              goto defaultLabel;
-            }
-            break;
-          case 'newsletter_article':
-            if (!empty($node->parent_section) && $node->parent_section == 13) {
-              // Coming soon section
-              print render(field_view_field('node', $node, 'body', 'newsletter_item'));
-            }
-            else {
-              goto defaultLabel;
-            }
-            break;
-          default:
-            defaultLabel:
-//@todo check            print l($node->title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
-//@todo check              'attributes' => array('class' => ['newsletter-item-view-link']),
+      <tr class="tr_h">
+          <td class="td_h">
+              <span> > </span>
+          </td>
+          <td class="ar"><?php
             print l($node->title, url($link, array('absolute' => TRUE)), array(
               'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
               'query' => $url_query,
-              'external' => TRUE
+              'external' => TRUE,
             ));
-            break;
-        }
-        ?>
-      </td>
-    </tr>
-    <?php if(!empty($node->old_newsletter)): ?>
+            ?>
+          </td>
+      </tr>
+      <?php
+    }
+    if(!empty($node->old_newsletter)): ?>
       <tr>
         <td colspan="3" class="pt15"></td>
       </tr>
     <?php endif; ?>
     </tbody>
   </table>
-<?php } ?>
+<?php }

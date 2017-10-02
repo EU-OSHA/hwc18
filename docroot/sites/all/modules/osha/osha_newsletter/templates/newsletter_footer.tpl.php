@@ -43,27 +43,27 @@ global $language;
                     $social = array(
                       'twitter' => array(
                         'path' => 'https://twitter.com/eu_osha',
-                        'alt' => t('Twitter')
+                        'alt' => t('Twitter'),
                       ),
                       'face' => array(
                         'path' => 'https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork',
-                        'alt' => t('Facebook')
+                        'alt' => t('Facebook'),
                       ),
                       'linkedin' => array(
                         'path' => 'https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work',
-                        'alt' => t('LinkedIn')
+                        'alt' => t('LinkedIn'),
                       ),
                       'youtube' => array(
                         'path' => 'https://www.youtube.com/user/EUOSHA',
-                        'alt' => t('Youtube')
+                        'alt' => t('Youtube'),
                       ),
                        'flickr' => array(
                          'path' => 'https://www.flickr.com/photos/euosha/albums',
-                         'alt' => t('Flickr')
+                         'alt' => t('Flickr'),
                        ),
                       'blog' => array(
                         'path' => url('tools-and-publications/blog', array('alias' => TRUE, 'absolute' => TRUE, 'query' => $url_query)),
-                        'alt' => t('Blog')
+                        'alt' => t('Blog'),
                       ),
                     );
 
@@ -78,12 +78,12 @@ global $language;
                             'width' => 20,
                             'height' => 20,
                             'alt' => $options['alt'],
-                            'attributes' => array('style' => 'border:0px;height:20px;max-height:20px;width: 20px;max-width:20px;', 'class' => 'social-logo')
+                            'attributes' => array('style' => 'border:0px;height:20px;max-height:20px;width: 20px;max-width:20px;', 'class' => 'social-logo'),
                         )
                       ), $options['path'], array(
                         'attributes' => array('style' => 'color:#ffffff;text-decoration:none;', 'target' => '_blank'),
                         'html' => TRUE,
-                        'external' => TRUE
+                        'external' => TRUE,
                       ));
 
                       print sprintf('<span class="spacing-%s">&nbsp;&nbsp;&nbsp;&nbsp;</span>', $name);

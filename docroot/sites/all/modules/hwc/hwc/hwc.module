@@ -782,6 +782,21 @@ function hwc_node_view($node, $view_mode, $langcode) {
     ), 'setting');
   }
 
+  if (($view_mode == 'newsletter_item') && ($node->type == 'news')) {
+    $extra_fields = field_info_extra_fields('node', $node->type, 'display');
+    if (!empty($extra_fields['share_widget']['display']['default']['visible'])) {
+      $options = array();
+      if (in_array($node->type, array('article', 'hwc_gallery', 'press_release'))) {
+        $options['rss_hide'] = 1;
+      }
+      if ($node->type == 'events') {
+        $options['rss_url'] = url('rss-feeds/latest/events.xml', array('absolute' => TRUE));
+      }
+
+      $node->content['share_widget'] = array('#markup' => hwc_news_share_widget($node, $options));
+    }
+  }
+
   if ($view_mode == 'full'
     && in_array($node->type, $share_widget_content_types)
     && !in_array($node->nid, $no_share_widget)) {
