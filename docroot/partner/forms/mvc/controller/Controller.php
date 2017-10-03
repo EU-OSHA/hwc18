@@ -32,9 +32,11 @@ abstract class Controller {
      * Execute the controller
      */
     public function execute() {
+
         // Load the entity
         $this->load();
         $params = Parameters::getInstance();
+
         //Build the form
         $route = $params->get('route');
         if ($route != 'start' && $_SESSION['basicRequirements'] != true) {

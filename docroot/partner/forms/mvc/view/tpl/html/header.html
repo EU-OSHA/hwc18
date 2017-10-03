@@ -14,6 +14,13 @@
 <!--<div class="review-fields">Please make sure that you thoroughly check, whether all your information is still valid and indicate this by checking the button next to each section</div>-->
 {/if}
 <div id="content">
+    <div id="containerMobileDialog">
+        <center>
+            <div id="mobileDialog">
+                <span>Due to the nature of this visualization, we cannot ensure a satisfactory user experience for mobile and tablet screens.</span>
+            </div>
+        </center>
+    </div>
     {if $sidebar}{$sidebar}{/if}
     {if !isset($fullwidth)}<div id="form" class="main-form sidebar-border">{/if}
         {if !$locked}
@@ -84,6 +91,7 @@
     <div id="divtoshow">
         <span>Required field</span>
     </div>
+
         {/if}
         {if $fieldsValidatingDialog}
             <div id="fieldsValidatingDialog" class="dialog errorDialog">

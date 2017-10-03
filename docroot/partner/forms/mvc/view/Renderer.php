@@ -157,13 +157,18 @@ class Renderer {
 
             $content = $dwoo->get($this->basePath . $this->bodyTpl, $contentArray);
             $content = str_ireplace('&nbsp;on', ' YES', $content);
+
             $content = preg_replace("/Telephone prefix:<\/strong><\/div>\s+<div><strong><\/strong>/", "Telephone prefix:</strong>", $content);
-            //$content = str_ireplace('Telephone prefix:</strong></div><div><strong></strong>', 'Telephone prefix:</strong>', $content);
+
         }
         if ($this->includeHeaderFooter) {
             $this->setViewPath($this->htmlPath);
-            $printable = (isset($contentArray['printable']) && $contentArray['printable']) ||
-                (isset($contentArray['pdf']) && $contentArray['pdf']) ? true : false;
+            $printable = (isset($contentArray['printable']) && $contentArray['printable']) || (isset($contentArray['pdf']) && $contentArray['pdf']) ? true : false;
+
+            if ($printable) {
+                $content = str_ireplace("</strong>&nbsp;1</div>", "</strong> YES</div>", $content);
+                $content = str_ireplace("</strong>&nbsp;true</div>", "</strong> YES</div>", $content);
+            }
             $htmlHeader = $this->renderHtmlHeader($dwoo, $printable);
             $htmlFooter = $this->renderHtmlFooter($dwoo);
             $header = $this->renderPart($dwoo, $this->headerTpl, $contentArray);

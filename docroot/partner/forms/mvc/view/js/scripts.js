@@ -52,7 +52,7 @@ function addSN(args)
     var nameHiddenToChange = args["selOption"].val();
     var idTitle= nameHiddenToChange + "_title";
 
-    //CSM 20170921 - No quieren que se añada la URL de por defecto
+    //CSM 20170921 - No quieren que se aÃ±ada la URL de por defecto
     var url = /*args["selOption"].data("url") +*/ args["textBox"].val();
 
     var data = [];
@@ -153,9 +153,10 @@ function delSN(args)
 //    }
 //};
 
-/*MÃ©todo para deshabilitar las redes sociales. Nos apoyamos en un
- * campo similar, ya que los deshabilitados van por attributes de PHP y ente caso no es vÃ¡lido. */
+/*MÃƒÂ©todo para deshabilitar las redes sociales. Nos apoyamos en un
+ * campo similar, ya que los deshabilitados van por attributes de PHP y ente caso no es vÃƒÂ¡lido. */
 window.onload = function () {
+
     if(window.parent.document.getElementsByClassName("main-container").length > 0){
         if(window.parent.document.getElementsByClassName("loader").length > 0){
             window.parent.document.getElementsByClassName("loader")[0].className += " hidden";
@@ -230,8 +231,8 @@ window.onload = function () {
         $(".combined-textbox").each(function (id, item) {
             if($(item).val() == "Yes."){
                 /*$('#'+$(item).attr("id")).css({
-                    'color': 'white'
-                });*/
+                 'color': 'white'
+                 });*/
             }
         });
     }
@@ -242,6 +243,7 @@ window.onload = function () {
 
 }
 function checkSectionsByCDB(dataSection){
+    debugger;
 //    setCheckSectionAttributte(dataSection,true);
     $('#form form :input[data-section="' + dataSection + '"]').prop("onlyread", "onlyread");
 //                $('#form form :input[data-section="' + dataSection + '"]').css({
@@ -293,9 +295,9 @@ function checkSectionsByCDB(dataSection){
             'pointer-events': 'none'
         });
         //Disabled checkbox
-        $('.checkbox').css({
+        $('.checkbox input').css({
             'pointer-events': 'none'
-        });
+        }).prop("disabled", "disabled");
     }
     if(dataSection=="CEO"){
         //Disabled the imageButtons
@@ -404,13 +406,13 @@ function checkSections() {
                 if(validateElement.is(":visible"))
                 {
                     //Si tiene el check verde visible
-                    //Comprobamos que estÃ© presionado
+                    //Comprobamos que estÃƒÂ© presionado
                     if(validateElement.hasClass("validation-pressed"))
                     {
                         $("." + elemId).removeClass("sidebar-error");//Se pone en verde
                     }
                 }else
-                {//Si no estÃ¡ visible el check verde
+                {//Si no estÃƒÂ¡ visible el check verde
                     $("." + elemId).removeClass("sidebar-error");//Se pone en verde
                 }
 
@@ -419,7 +421,7 @@ function checkSections() {
             {
                 //Falla
 
-                $("." + elemId).addClass("sidebar-error");//Si estÃ¡ mal se pone con el aspa
+                $("." + elemId).addClass("sidebar-error");//Si estÃƒÂ¡ mal se pone con el aspa
 
             }
         }
@@ -440,9 +442,19 @@ function checkSectionsforValidation(elemId) {
 }
 
 checkSections();
+
 $(document).ready(function () {
 
     $("#divtoshow").hide();
+    $("#mobileDialog").hide();
+
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $("#progressbar").hide();
+        $("#menu-content").hide();
+        $("#form").hide();
+        $("#mobileDialog").show();
+    }
 
     var buttonPressed;
 
@@ -467,16 +479,15 @@ $(document).ready(function () {
     });
 
 
-
     /*
-    $("input:checkbox.combined-checkbox-link").each(function (id, item) {
-        //WorkAround main contact change
-        if($(item).prop('checked')){
-            $(item).val('on');
-        }else{
-            $(item).val('false');
-        }
-    });*/
+     $("input:checkbox.combined-checkbox-link").each(function (id, item) {
+     //WorkAround main contact change
+     if($(item).prop('checked')){
+     $(item).val('on');
+     }else{
+     $(item).val('false');
+     }
+     });*/
 
     if ($('[name=contact_osh_basicrequirements]:checked').val() == '') {
         $('[for=contact_osh_basicrequirements]').parent().append('<div id="requirements_errormsg" class="error-msg">You must accept to continue</div>');
@@ -602,7 +613,7 @@ $(document).ready(function () {
             }
             url += "?" + urlParams;
 
-            //        Evitamos que valide los campos de contact si el check maincontactchange estÃ¡ pulsado.
+            //        Evitamos que valide los campos de contact si el check maincontactchange estÃƒÂ¡ pulsado.
 //            if(!isMainContact($(field))){
             $.get(url, function (data, status) {
                 var response = jQuery.parseJSON(data);
@@ -783,7 +794,7 @@ $(document).ready(function () {
 
             });
 
-           disableButtons();
+            disableButtons();
 
         }
     });
@@ -1017,8 +1028,8 @@ $(document).ready(function () {
         if (!($("#contact_osh_mainemail").val() === "") && !validateEmail($("#contact_osh_mainemail")[0])){
 
         }else if ($("#contact_osh_mainemail").val() == "" ||
-                ($("#contact_osh_mainemail").val() != $("#contact_osh_confirm_mainemail").val() &&
-                (!$("#contact_osh_mainemail").val() == "" && $("#contact_osh_confirm_mainemail").val() != undefined))) {
+            ($("#contact_osh_mainemail").val() != $("#contact_osh_confirm_mainemail").val() &&
+            (!$("#contact_osh_mainemail").val() == "" && $("#contact_osh_confirm_mainemail").val() != undefined))) {
             $("#contact_osh_mainemail").addClass("error");
             $("#contact_osh_mainemail").attr("data-error", "true");
             $("#contact_osh_confirm_mainemail").addClass("error");
@@ -1042,6 +1053,7 @@ $(document).ready(function () {
     $(".main-form").on({
 
         submit: function (e) {
+            enableFields();
             //debugger;
             if (buttonPressed == "next") {
 //                var enableFields = true;
@@ -1268,6 +1280,7 @@ $(document).ready(function () {
     }
 
     function saveDatanextAndSave(){
+        enableFields();
         if($("#company_osh_orgnameAux").val() == '' ||
             $("#contact_osh_mainemailAux").val() == '' ||
             $("#contact_osh_maincontactpersonfirstnameAux").val() == '' ||
@@ -1380,7 +1393,7 @@ $(document).ready(function () {
             }
         }else{
             /*$("#form form .required .controls .error").parent().removeClass("postRequired");
-            $('.imagePostRequired').removeClass('imagePostRequired');*/
+             $('.imagePostRequired').removeClass('imagePostRequired');*/
         }
     }
 
@@ -1546,12 +1559,12 @@ $(document).ready(function () {
      * Validation widget
      */
     $(".validation").click(function (e) {
-        //Recorre todos los elementos que contienen la validaciÃ³n de la seccion actual
+        //Recorre todos los elementos que contienen la validaciÃƒÂ³n de la seccion actual
 
         var dataSection = $(this).attr("data-section");
 
         if ($(this).hasClass("validation-pressed")) {
-
+            debugger;
             setCheckSectionAttributte(dataSection,false);
             //               $('#form form :input[data-section="' + dataSection + '"]').prop("disabled", false);
             $('#form form :input[data-section="' + dataSection + '"][type=checkbox]').prop("disabled", false);
@@ -1610,8 +1623,13 @@ $(document).ready(function () {
                     'pointer-events': 'inherit'
                 });
             }
+            if(dataSection=="ORGANIZATION"){
+                $(".checkbox").prop("disabled", false);
+            }
+
+
         } else {
-            //Nueva PeticiÃ³n: Section check cannot be checked until the mandatory fields are filled
+            //Nueva PeticiÃƒÂ³n: Section check cannot be checked until the mandatory fields are filled
             var validateSection = true;
             if(dataSection=="PRIMARY_CONTACT"){
                 validateConfirmEmail();
@@ -1767,6 +1785,7 @@ $(document).ready(function () {
         }
         //Workaround no perder los datos que se eliminan y no generar errores
         if($("#next").length > 0){
+            enableFields();
             if($("#next").val().indexOf("involvement") != -1){
                 saveDatanextAndSave();
             }else{
@@ -1777,7 +1796,7 @@ $(document).ready(function () {
                 var newVal = "save";
                 var newAction = url.replace(tmpRegex, '$1' + newVal);
                 console.log = newAction;
-                //validamos que los campos orgname y mainemail estÃ©n relleno antes de hacer el save.
+                //validamos que los campos orgname y mainemail estÃƒÂ©n relleno antes de hacer el save.
                 if($("#company_osh_orgnameAux").val() == '' ||
                     $("#contact_osh_mainemailAux").val() == '' ||
                     $("#contact_osh_maincontactpersonfirstnameAux").val() == '' ||
@@ -1805,7 +1824,7 @@ $(document).ready(function () {
             var newVal = "save";
             var newAction = url.replace(tmpRegex, '$1' + newVal);
             console.log = newAction;
-            //validamos que los campos orgname y mainemail estÃ©n relleno antes de hacer el save.
+            //validamos que los campos orgname y mainemail estÃƒÂ©n relleno antes de hacer el save.
             if($("#company_osh_orgnameAux").val() == '' ||
                 $("#contact_osh_mainemailAux").val() == '' ||
                 $("#contact_osh_maincontactpersonfirstnameAux").val() == '' ||
@@ -1864,7 +1883,7 @@ $(document).ready(function () {
 
             //CSM Clean red boxes
             removeDataError();
-
+            enableFields();
             if($("#next").val().indexOf("Start") != -1) {
                 //            $("#progressbar-2").click();
                 var dataAjax = $('#progressbar-2 a').data("ajax");
@@ -2056,8 +2075,8 @@ $(document).ready(function () {
             if($(target).val() == ""){
                 ////$(target).val("Yes.");
                 /*$(target).css({
-                    'color': 'white'
-                });*/
+                 'color': 'white'
+                 });*/
             }
 //            $(target).css({
 //            'margin-top': '3%'
@@ -2107,11 +2126,11 @@ $(document).ready(function () {
     });
 
     /*$(".closeDialog").click(function (e) {
-        debugger;
-        $(".dialog").addClass('hidden');
+     debugger;
+     $(".dialog").addClass('hidden');
 
-        scrollToTop();
-    });*/
+     scrollToTop();
+     });*/
 
     if($('.disabledEmailForMF').length == 1){
         $("#contact_osh_mainemail").css({
@@ -2139,8 +2158,8 @@ $(document).ready(function () {
      * Comento los eventos
      */
     $(".main-form .field").each(function (id, item) {
-        $(item).focus();
-        $(item).blur();
+        //$(item).focus();
+        //$(item).blur();
     });
     //    (/CRG - #48 - 15.10.2015)
 
@@ -2182,7 +2201,7 @@ $(document).ready(function () {
             args["textBox"] = args["selector"].data("tb");
             args["textBox"] = $("#" + args["textBox"]);
             args["plusSN"] = $(this);//propio boton
-            args["target"] = $("#" + $(this).data("target"));//Donde se mostrarÃ¡n las urls
+            args["target"] = $("#" + $(this).data("target"));//Donde se mostrarÃƒÂ¡n las urls
             args["selOption"] = $("#" + args["selector"].attr("id") + " option:selected");
             if(args["textBox"].val() != "" &&  args["textBox"].val() != undefined)
             {
@@ -2408,7 +2427,7 @@ $(document).ready(function () {
             valueLogoImage = valueLogoImage.replace("\s", "+");
             serializedForm += "&company_osh_ceoimage="+valueLogoImage;
         }
-        
+
         $("body").css("cursor", "progress");
         $.ajax({
             url: dataAjax,
@@ -2482,20 +2501,20 @@ $(document).ready(function () {
         var correctFormat = false;
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //if (email!= null && email!= "") {
-            if (email != null && email.value != "") {
-                if (!re.test(email.value)) {
-                    $('#' + email.id).addClass("error");
-                    $('#' + email.id).attr("data-error", "true");
-                    if (!$('#' + email.id + '_emailformat_errormsg').length) {
-                        $('#' + email.id).parent().append('<div id="' + email.id + '_emailformat_errormsg" class="error-msg">The field must be a valid email address</div>');
-                    }
+        if (email != null && email.value != "") {
+            if (!re.test(email.value)) {
+                $('#' + email.id).addClass("error");
+                $('#' + email.id).attr("data-error", "true");
+                if (!$('#' + email.id + '_emailformat_errormsg').length) {
+                    $('#' + email.id).parent().append('<div id="' + email.id + '_emailformat_errormsg" class="error-msg">The field must be a valid email address</div>');
                 }
-            } else {
-                $('#' + email.id).removeClass("error");
-                $('#' + email.id).attr("data-error", "");
-                $('#' + email.id + '_emailformat_errormsg').remove();
-                correctFormat = true;
             }
+        } else {
+            $('#' + email.id).removeClass("error");
+            $('#' + email.id).attr("data-error", "");
+            $('#' + email.id + '_emailformat_errormsg').remove();
+            correctFormat = true;
+        }
         //}
         return correctFormat;
     }
@@ -2717,7 +2736,7 @@ $(document).ready(function () {
         }
         url += "?" + urlParams;
 
-        //        Evitamos que valide los campos de contact si el check maincontactchange estÃ¡ pulsado.
+        //        Evitamos que valide los campos de contact si el check maincontactchange estÃƒÂ¡ pulsado.
 //            if(!isMainContact($(field))){
         $.get(url, function (data, status) {
             /*var response = jQuery.parseJSON(data);
@@ -2728,7 +2747,7 @@ $(document).ready(function () {
              $(field).removeClass("error");
              $(field).attr("data-error", "");
              }*/
-            //TODO: Â¿Process response?
+            //TODO: Ã‚Â¿Process response?
         });
     });
 
@@ -2800,7 +2819,7 @@ $(document).ready(function () {
                                              $(field).removeClass("error");
                                              $(field).attr("data-error", "");
                                              }*/
-                                            //TODO: Â¿Process response?
+                                            //TODO: Ã‚Â¿Process response?
                                             $('.helpDialog').dialog("close");
                                             $('.helpPressed').removeClass("helpPressed");
                                             $("#message").val("");
