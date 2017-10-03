@@ -4,8 +4,6 @@ use \TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 
 class OSHNewsletter {
 
-  public static $fontUrl = 'https://fonts.googleapis.com/css?family=Oswald:200,400,500';
-
   public static function getTemplatesList() {
     return [
       'newsletter_full_width_details' => 'Teaser (full width)',
@@ -33,7 +31,8 @@ class OSHNewsletter {
   }
 
   public static function alterContentForm(&$form, &$form_state) {
-    // add submit button to send newsletter and send test newsletter
+    global $user;
+    // Add submit button to send newsletter and send test newsletter.
     if (isset($form['content'])) {
       $q = db_select('field_data_field_newsletter_template', 'nt');
       $q->fields('nt', ['entity_id', 'field_newsletter_template_value']);
@@ -41,6 +40,11 @@ class OSHNewsletter {
 
       foreach ($form['content'] as $k => &$v) {
         if (strpos($k, 'taxonomy_term:') !== FALSE) {
+          // Disable all Newsletter sections except More news and Events.
+          if (!in_array($v['entity_id']['#value'], [82, 86])) {
+            unset($form['content'][$k]);
+            continue;
+          }
           $v['style']['#options'] = self::getTemplatesList();
           if (empty($v['style']['#default_value']) && !empty($v['entity_id']['#value'])) {
             $tid = $v['entity_id']['#value'];
@@ -58,7 +62,7 @@ class OSHNewsletter {
       $form['actions']['send_newsletter'] = array(
         '#type' => 'submit',
         '#value' => t('Send newsletter to subscribers'),
-        '#submit' => array('osha_newsletter_send_email_to_subscribers')
+        '#submit' => array('osha_newsletter_send_email_to_subscribers'),
       );
 
 
@@ -79,7 +83,7 @@ class OSHNewsletter {
       $form['test_newsletter_content']['send_test_newsletter'] = array(
         '#type' => 'submit',
         '#value' => t('Send test newsletter'),
-        '#submit' => array('osha_newsletter_send_test_email')
+        '#submit' => array('osha_newsletter_send_test_email'),
       );
     }
 
@@ -87,7 +91,7 @@ class OSHNewsletter {
     $form['#attached']['js'][] = "{$modulePath}/includes/js/collection_form.js";
     $form['#attached']['js'][] = [
       'data' => [
-        'osha_newsletter' => ['basepath' => $modulePath]
+        'osha_newsletter' => ['basepath' => $modulePath],
       ],
       'type' => 'setting',
     ];
@@ -105,7 +109,7 @@ class OSHNewsletter {
    */
   public static function saveConfiguration(EntityCollection $entityCollection) {
     $voc = taxonomy_vocabulary_machine_name_load('newsletter_sections');
-    $sections = taxonomy_get_tree($voc->vid, 0, null, true);
+    $sections = taxonomy_get_tree($voc->vid, 0, NULL, TRUE);
 
     $configuration = [
       'sections' => [],
@@ -135,7 +139,7 @@ class OSHNewsletter {
     }
 
     foreach ($configuration['fids'] as $fid) {
-      // We are referencing the files so they won't be deleted by the garbage collector
+      // We are referencing the files so they won't be deleted by the garbage collector.
       $entityCollection->field_images[LANGUAGE_NONE][] = ['fid' => $fid];
     }
 
@@ -221,22 +225,25 @@ class OSHNewsletter {
         'class' => [
           drupal_clean_css_identifier($template),
           'newsletter-section',
-          'template-container'
+          'template-container',
         ],
         'width' => '100%',
         'cellpadding' => '0',
         'cellspacing' => '0',
       ],
-      '#printed' => false,
-      '#sticky' => false,
+      '#printed' => FALSE,
+      '#sticky' => FALSE,
       '#children' => [],
     ];
+    if ($variables['section']->name == 'More news') {
+      $variables['section']->name = '';
+    }
     if (!empty($variables['section']->name)) {
       $icon = self::getConfiguration($entityCollection, 'field_icon', $variables['section']);
       if (!empty($icon)) {
 
         $cellContent = sprintf("<img src=\"%s\">", $icon);
-        $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-icon'] ];
+        $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-icon']];
 
         $cellContent = sprintf("<span>%s</span>", $variables['section']->name);
         $content['#header'][1]['data'][] = ['data' => $cellContent, 'class' => ['section-title']];
@@ -246,18 +253,16 @@ class OSHNewsletter {
         $cellContent = sprintf("<span>%s</span>", $variables['section']->name);
         $content['#header'][0]['data'][] = ['data' => $cellContent, 'class' => ['section-title']];
       }
-
-
       $cssClass = drupal_clean_css_identifier('section-' . strtolower($variables['section']->name));
       $content['#attributes']['class'][] = $cssClass;
     }
     if (!empty($variables['section']->field_link[LANGUAGE_NONE][0]['url'])) {
       $url = $variables['section']->field_link[LANGUAGE_NONE][0]['url'];
       $arrow = theme('image', array(
-        'path' => drupal_get_path('module','osha_newsletter') . '/images/' . 'pink-arrow.png',
+        'path' => drupal_get_path('module', 'osha_newsletter') . '/images/' . 'pink-arrow.png',
         'width' => '19',
         'height' => '11',
-        'attributes' => array('style' => 'border:0px;width:19px;height:11px;')
+        'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
       ));
       $view_all = [
         '#theme' => 'table',
@@ -268,43 +273,59 @@ class OSHNewsletter {
               'html' => true,
               'absolute' => true,
               'query' => $url_query,
-              'attributes' => ['class' => ['view-all', 'see-more']]
+              'attributes' => ['class' => ['view-all', 'see-more']],
             ]),
             'align' => 'Right',
             'style' => 'padding-top: 10px; padding-bottom: 20px; border-top: 1px dashed #dddddd;',
           ],
-        ]],
+          ],
+        ],
         '#attributes' => [
           'class' => ['view-all-table'],
           'width' => '100%',
           'cellpadding' => '0',
           'cellspacing' => '0',
         ],
-        '#printed' => false,
-        '#sticky' => false,
+        '#printed' => FALSE,
+        '#sticky' => FALSE,
         '#children' => [],
       ];
       $content['#suffix'] = render($view_all);
     }
+    if ($variables['section']->name == 'Events') {
+      $url = url('events', ['absolute' => TRUE]);
+      $content['#suffix'] .= '
+        <div class="more-link" style="background-color: #003399;display: table;margin: 0px auto;">
+        <table style="border: 0; margin: 0;">
+        <tr>
+          <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
+          <td style="border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
+          color: #ffffff; text-decoration: none;">' . t('View All') . '</a></td>
+        </tr>
+        </table>
+        </div>';
+    }
+
     switch ($template) {
       case 'newsletter_multiple_columns':
-        $columnWidth = round((760 / count($variables)), 2) - 20; // 20px padding for each column
+        // Padding 20px for each column.
+        $columnWidth = round((760 / count($variables)), 2) - 20;
         foreach ($variables as $column) {
           $content['#rows'][0]['data'][] = [
             'data' => self::renderTemplate($entityCollection, $column['#style'], $column),
             'width' => "$columnWidth",
             'class' => ['multiple-columns-cell', 'template-column'],
-            'style' => sprintf('max-width:%spx;',$columnWidth, $columnWidth),
+            'style' => sprintf('max-width:%spx;', $columnWidth, $columnWidth),
           ];
         }
         break;
       case 'newsletter_full_width_list':
       case 'newsletter_half_width_list':
       case 'newsletter_full_width_details':
-        if($template === 'newsletter_half_width_list') {
+        if ($template === 'newsletter_half_width_list') {
           $content['#attributes']['width'] = '100%';
         }
-        if($template !== 'newsletter_full_width_details') {
+        if ($template !== 'newsletter_full_width_details') {
           $content['#rows'][]['data'][] = [
             'data' => '&nbsp;',
             'colspan' => 1,
@@ -315,11 +336,11 @@ class OSHNewsletter {
           $cellContent = self::getCellContent($template, $node);
           $content['#rows'][] = [
             'data' => [$cellContent],
-            'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+            'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
             'no_striping' => true,
           ];
         }
-        if($template !== 'newsletter_full_width_details') {
+        if ($template !== 'newsletter_full_width_details') {
           $content['#rows'][]['data'][] = [
             'data' => '&nbsp;',
             'colspan' => 1,
@@ -387,7 +408,7 @@ class OSHNewsletter {
           // $cellContent['height'] = '100%';
           $cellContent['align'] = 'left';
           $cellContent['valign'] = 'top';
-          $cellStyle = sprintf('max-width:%spx;background-color: #003399;', $cellWidth);
+          $cellStyle = sprintf('max-width:%spx;background-color: #749b00;', $cellWidth);
           if (empty($cellContent['style'])) {
             $cellContent['style'] = $cellStyle;
           }
@@ -399,14 +420,14 @@ class OSHNewsletter {
           if ($currentCol++ === 0) {
             $content['#rows'][$currentRow] = [
               'data' => [$cellContent],
-              'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+              'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
               'no_striping' => true,
             ];
-            $content['#rows'][$currentRow]['data'][] = ['data' => '&nbsp;', 'style' => 'padding-bottom: 4px; min-width:4px; padding-top: 0; width: 4px; margin:0;font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'class' => 'template-column' ];
+            $content['#rows'][$currentRow]['data'][] = ['data' => '&nbsp;', 'style' => 'padding-bottom: 4px; min-width:4px; padding-top: 0; width: 4px; margin:0;font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'class' => ['template-column', 'template-separator']];
           }
           else {
             $content['#rows'][$currentRow++]['data'][] = $cellContent;
-            $content['#rows'][$currentRow++]['data'][] = ['data' => '&nbsp;', 'style' => 'paddipadding-top: 0; ng: 0px; height:4px; font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'colspan' => '3', 'class' => ['template-column', 'template-separator'] ];
+            $content['#rows'][$currentRow++]['data'][] = ['data' => '&nbsp;', 'style' => 'padding: 0px; height:4px; font-size: 0px; line-height: 0px; mso-line-height-rule: exactly;', 'colspan' => '3', 'class' => ['template-column', 'template-separator'] ];
             $currentCol = 0;
           }
         }
@@ -450,7 +471,7 @@ class OSHNewsletter {
           if ($currentCol++ === 0) {
             $content['#rows'][$currentRow] = [
               'data' => [$cellContent],
-              'class' => ['row', drupal_clean_css_identifier("{$template}-row")],
+              'class' => ['newsletter-row', drupal_clean_css_identifier("{$template}-row")],
               'no_striping' => true,
             ];
           }
@@ -642,6 +663,11 @@ class OSHNewsletter {
 
     $footer = theme('newsletter_footer', array('campaign_id' => $campaign_id));
 
+    global $osha_newsletter_send_mail;
+    $newsletterClasses = [
+      'newsletter-container',
+      empty($osha_newsletter_send_mail) ? 'web-version' : ''
+    ];
     $fullNewsletter = [
       '#theme' => 'table',
       '#header' => [],
@@ -662,7 +688,7 @@ class OSHNewsletter {
           'class' => 'footer-container',
         ],
       ],
-      '#attributes' => ['class' => ['newsletter-container'], 'border' => '0', 'cellpadding' => '0', 'width' => '800'],
+      '#attributes' => ['class' => $newsletterClasses, 'border' => '0', 'cellpadding' => '0', 'width' => '800'],
       '#printed' => false,
       '#sticky' => false,
       '#children' => [],
@@ -740,10 +766,6 @@ class OSHNewsletter {
     $domDocument->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
     $domDocument->formatOutput = true;
 
-    $font = $domDocument->createElement('link');
-    $font->setAttribute('rel', 'stylesheet');
-    $font->setAttribute('href', self::$fontUrl);
-
     $meta = $domDocument->createElement('meta');
     $meta->setAttribute('name', 'viewport');
     $meta->setAttribute('content', 'width=device-width, initial-scale=1.0');
@@ -777,7 +799,6 @@ class OSHNewsletter {
     if (empty($head->length)) {
       $head = $domDocument->createElement('head');
       $head->appendChild($meta);
-      $head->appendChild($font);
       $head->appendChild($yahooStyle);
       $head->appendChild($outlookStyle);
       $head->appendChild($responsiveStyle);
@@ -790,7 +811,6 @@ class OSHNewsletter {
     else {
       $head = $head->item(0);
       $head->appendChild($meta);
-      $head->appendChild($font);
       $head->appendChild($yahooStyle);
       $head->appendChild($outlookStyle);
       $head->appendChild($responsiveStyle);

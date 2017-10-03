@@ -32,6 +32,12 @@ function osha_events_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 0,
       ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_talking_date',
@@ -81,6 +87,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'file_default',
         'weight' => 3,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -155,6 +167,12 @@ function osha_events_field_default_field_instances() {
         'type' => 'entityreference_entity_view',
         'weight' => 1,
       ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_talking_speaker',
@@ -192,6 +210,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 2,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -236,6 +260,12 @@ function osha_events_field_default_field_instances() {
         ),
         'type' => 'text_default',
         'weight' => 4,
+      ),
+      'title_only' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -1514,7 +1544,180 @@ function osha_events_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 34,
+      'weight' => 27,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_modified_by'.
+  $field_instances['node-events-field_modified_by'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 34,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_modified_by',
+    'label' => 'Modified by',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 22,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_modified_on'.
+  $field_instances['node-events-field_modified_on'] = array(
+    'bundle' => 'events',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'osha_date_theme' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 33,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_modified_on',
+    'label' => 'Modified on',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 1,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_select',
+      'weight' => 21,
     ),
     'workbench_access_field' => 0,
   );
@@ -1898,6 +2101,7 @@ function osha_events_field_default_field_instances() {
           'description' => TRUE,
           'edit' => 'Edit',
           'field_formatter_class' => '',
+          'translate' => 'Translate',
         ),
         'type' => 'field_collection_list',
         'weight' => 0,
@@ -2026,7 +2230,7 @@ function osha_events_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 37,
+      'weight' => 28,
     ),
     'workbench_access_field' => 0,
   );
@@ -2238,7 +2442,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_start_date',
-    'label' => 'Starting date and time',
+    'label' => 'Starting date',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
@@ -2356,7 +2560,7 @@ function osha_events_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 22,
+      'weight' => 24,
     ),
     'workbench_access_field' => 0,
   );
@@ -2553,7 +2757,7 @@ function osha_events_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 32,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -2656,24 +2860,33 @@ function osha_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'title_field',
     'label' => 'Title',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'hide_label' => array(
-        'entity' => FALSE,
-        'page' => FALSE,
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
       ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 150,
       ),
       'type' => 'text_textfield',
       'weight' => 0,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'taxonomy_term-organised_by-description_field'.
@@ -2765,6 +2978,8 @@ function osha_events_field_default_field_instances() {
   t('Image');
   t('Location');
   t('Migrate Source');
+  t('Modified by');
+  t('Modified on');
   t('Name');
   t('Name of the speaker');
   t('Organiser');
@@ -2774,7 +2989,7 @@ function osha_events_field_default_field_instances() {
   t('Schedule');
   t('Show in NCW');
   t('Speakers');
-  t('Starting date and time');
+  t('Starting date');
   t('Tags');
   t('Talking date');
   t('Talking files');

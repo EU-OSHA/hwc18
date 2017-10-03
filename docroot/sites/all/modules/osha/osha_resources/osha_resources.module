@@ -56,6 +56,11 @@ function osha_resources_field_formatter_info() {
       'field types' => array('link_field'),
       'description' => t('Link with new window icon'),
     ),
+    'external_url_title_link' => array(
+      'label' => t('External url link with title'),
+      'field types' => array('link_field'),
+      'description' => t('Link External url with title'),
+    ),
     'internal_link_title' => array(
       'label' => 'Internal link with node url',
       'field types' => array('link_field'),
@@ -80,6 +85,14 @@ function osha_resources_field_formatter_view($entity_type, $entity, $field, $ins
           '#delta' => $delta,
         );
       }
+      break;
+
+    case 'external_url_title_link':
+      $element = array(
+        '#theme' => 'external_url_title_link',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
       break;
 
     case 'external_url_link':
@@ -109,6 +122,16 @@ function osha_resources_theme() {
     'osha_resources_file_as_title_format' => array(
       'variables' => array('entity' => NULL, 'file' => NULL, 'delta' => NULL),
     ),
+
+    'external_url_title_link' => array(
+      'template' => 'osha_resources_external_url_title_link',
+      'variables' => array(
+        'items' => NULL,
+        'entity' => NULL,
+      ),
+      'path' => $path . '/templates',
+    ),
+
     'external_url_link' => array(
       'template' => 'osha_resources_external_url_link',
       'variables' => array(
@@ -126,7 +149,7 @@ function osha_resources_theme() {
 function theme_osha_resources_file_as_title_format($element) {
   $file = (object) $element['file'];
   $entity = (object) $element['entity'];
-  $icon_directory = drupal_get_path('theme', 'osha_frontend') . '/images/file_icons';
+  $icon_directory = drupal_get_path('theme', 'hwc_frontend') . '/images/file_icons';
 
   global $language;
   $name = isset($entity->title_field[$language->language][0])

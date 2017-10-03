@@ -38,7 +38,7 @@ if (!empty($campaign_id)) {
             ?>
               <th rowspan=<?php print($node->old_newsletter ? '1' : '2'); ?>
                   width="<?php print($highlight_img_width);?>"
-                  style="padding-bottom:10px; vertical-align: top; padding-top:0px; padding-right: 20px; text-align:center; max-width:<?php print($highlight_img_width);?>px;"
+                  style="padding-bottom:10px; vertical-align: top; padding-top:0px; padding-right: 40px; text-align:center; width: <?php print($highlight_img_width);?>px; max-width:<?php print($highlight_img_width);?>px;"
                   <?php if(!$node->old_newsletter) { ?>
                     class="template-column template-image"
                   <?php } ?> >
@@ -61,7 +61,7 @@ if (!empty($campaign_id)) {
                                     'path' => sprintf("https://img.youtube.com/vi/%s/hqdefault.jpg", $video_id),
                                     'width' => ($node->old_newsletter ? '100%' : $highlight_img_width),
                                     'alt' => $title,
-                                    'attributes' => array('style' => 'border: 0px;width: 100%;max-width: 100%;height:auto;background-color: #ffffff;vertical-align:middle;')
+                                    'attributes' => array('style' => 'border: 0px;width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';max-width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';height:auto;background-color: #ffffff;vertical-align:middle;')
                                   )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                                     'html' => TRUE,
                                     'external' => TRUE,
@@ -97,7 +97,7 @@ if (!empty($campaign_id)) {
                   </tbody>
                 </table>
               </th>
-              <th valign="top" style="color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px;font-family: Oswald, Arial, sans-serif;" class="template-column">
+              <th valign="top" style="color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px;font-family: Arial, sans-serif;" class="template-column">
                 <?php
                 if (isset($node->field_publication_date[LANGUAGE_NONE][0]['value'])) {
                   $date = strtotime($node->field_publication_date[LANGUAGE_NONE][0]['value']);
@@ -161,7 +161,7 @@ if (!empty($campaign_id)) {
                   </tr>
                   <?php if(empty($node->old_newsletter)) { ?>
                     <tr>
-                      <td style="font-family: Oswald, Arial, sans-serif; padding-top: 10px;">
+                      <td style="font-family: Arial, sans-serif; padding-top: 10px;">
                         <?php
                           $more_link_class = 'see-more';
                           if ($node->type == 'publication') {
@@ -170,17 +170,18 @@ if (!empty($campaign_id)) {
                           else {
                             $node_url = url('node/' . $node->nid, array('absolute' => TRUE));
                           }
-                          print l(t('See more'), $node_url, array(
+                          print l(t('<span class="prefix-arrow visible-mobile"> > </span> See more'), $node_url, array(
+                            'html' => TRUE,
                             'attributes' => array('class' => [$more_link_class]),
                             'query' => $url_query,
                             'external' => TRUE
                           ));
                         $directory = drupal_get_path('module','osha_newsletter');
                         print l(theme('image', array(
-                          'path' => $directory . '/images/' . 'pink-arrow.png',
+                          'path' => $directory . '/images/' . 'green-arrow.png',
                           'width' => '19',
                           'height' => '11',
-                          'attributes' => array('style' => 'border:0px;width:19px;height:11px;')
+                          'attributes' => array('style' => 'border:0px;width:19px;height:11px;', 'class' => 'hidden-mobile')
                         )), $node_url, array(
                           'html' => TRUE,
                           'external' => TRUE,
@@ -189,10 +190,10 @@ if (!empty($campaign_id)) {
                         ?>
 
                       </td>
-                      <td align="right" valign="middle" style="font-family: Oswald, Arial, sans-serif; padding-top: 10px;">
+                      <td class="highlight-share hidden-mobile" align="right" valign="middle" style="font-family: Arial, sans-serif; padding-top: 10px;">
                         <?php
                         print l(theme('image', array(
-                          'path' => $directory . '/images/' . 'share-icon.png',
+                          'path' => $directory . '/images/' . 'share-icon--green.png',
                           'width' => '20',
                           'height' => '20',
                           'attributes' => array('style' => 'border:0px;width:20px;height:20px;')

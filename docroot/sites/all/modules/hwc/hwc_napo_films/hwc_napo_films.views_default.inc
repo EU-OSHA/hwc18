@@ -130,7 +130,7 @@ function hwc_napo_films_views_default_views() {
   $handler->display->display_options['fields']['title_field']['settings'] = array(
     'field_formatter_class' => '',
   );
-  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -146,7 +146,7 @@ function hwc_napo_films_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[title_field]
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="title-field">[title_field]</div>
 <div class="homepage-video-body">[body]</div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -213,7 +213,7 @@ function hwc_napo_films_views_default_views() {
     t('<h1 class="page-header">Napo film</h1>'),
     t('Body'),
     t('Block'),
-    t('[title_field]
+    t('<div class="title-field">[title_field]</div>
 <div class="homepage-video-body">[body]</div>'),
     t('__SHARE__'),
   );

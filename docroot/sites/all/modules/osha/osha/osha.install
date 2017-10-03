@@ -258,3 +258,31 @@ function osha_update_7012() {
 function osha_update_7013() {
   features_revert_module('osha');
 }
+
+/**
+ * New external url formatter
+ */
+function osha_update_7014() {
+  features_revert_module('osha_resources');
+}
+
+/**
+ * Article Summary field format
+ */
+function osha_update_7015() {
+  features_revert_module('osha');
+}
+
+/**
+ * HW18-199 Development: Audit actions
+ */
+function osha_update_7016() {
+  features_revert_module('osha');
+}
+
+/**
+ * New crop image style
+ */
+function osha_update_7017() {
+  features_revert_module('osha');
+}

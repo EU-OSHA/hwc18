@@ -6,6 +6,219 @@
 
 include_once 'hwc_good_practice_exchange.features.inc';
 
+function hwc_good_practice_exchange_get_partner_title($nid) {
+  static $titles = [];
+  if (!isset($titles[$nid])) {
+    $node = node_load($nid);
+    $titles[$nid] = $node->title;
+  }
+  return $titles[$nid];
+}
+
+/**
+ * Implements hook_search_api_solr_query_alter().
+ */
+function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
+  global $language;
+
+  if (arg(0) == 'communications') {
+    $is_partner_section = 1;
+  }
+  if (arg(0) == 'partners-documents') {
+    $is_partner_section = 0;
+    $partner_type = hwc_good_practice_exchange_user_get_partner_type();
+    if ($partner_type) {
+      $call_args['params']['fq'][] = 'is_partner_category_type:"' . $partner_type . '"';
+    }
+  }
+  if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
+    $call_args['params']['fq'][] = 'is_partner_section:"' . $is_partner_section . '"';
+    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+
+    $call_args['params']['sort'] = 'sort_title2 asc';
+    $sort_by = strtolower(@$_REQUEST['sort_by']);
+    $sort_order = strtolower(@$_REQUEST['sort_order']);
+    if ($sort_by) {
+      $call_args['params']['sort'] = 'ds_field_publication_date ';
+      if ($sort_by == 'title2') {
+        $call_args['params']['sort'] = 'sort_title2  ';
+      }
+      if (!in_array($sort_order, ['asc', 'desc'])) {
+        $sort_order = 'desc';
+      }
+      $call_args['params']['sort'] .= $sort_order;
+    }
+  }
+}
+
+/**
+ * Implements hook_facet_items_alter().
+ */
+function hwc_good_practice_exchange_facet_items_alter(&$build, $settings) {
+  if ($settings->facet == "partner_organisation") {
+    foreach ($build as $nid => $item) {
+      if (intval($nid)) {
+        $node = node_load($nid);
+        $build[$nid]['#markup'] = $node->title;
+      }
+    }
+  }
+}
+
+/**
+ * Document partner term tid.
+ */
+function hwc_good_practice_exchange_node_get_workbench_access_tid($item) {
+  if ($item->type != 'document') {
+    return '';
+  }
+  $q = db_select('workbench_access_node', 'w');
+  $q->fields('w', ['access_id'])
+    ->condition('w.nid', $item->nid);
+  $q->condition('w.access_id', 'section', '!=');
+  return $q->execute()->fetchField();
+}
+
+/**
+ * Document partner node.
+ */
+function hwc_good_practice_exchange_node_get_workbench_partner($item) {
+  static $nodes = [];
+  $tid = hwc_good_practice_exchange_node_get_workbench_access_tid($item);
+  if (!$tid) {
+    return NULL;
+  }
+  if (isset($nodes[$tid])) {
+    return $nodes[$tid];
+  }
+  $q = db_select('workbench_access_node', 'w');
+  $q->innerJoin('node', 'n', 'w.nid = n.nid');
+  $q->fields('w', ['nid'])
+    ->condition('w.access_id', $tid)
+    ->condition('n.type', 'partner', '=');
+  $nid = $q->execute()->fetchField();
+  $nodes[$tid] = node_load($nid);
+  return $nodes[$tid];
+}
+
+/**
+ * Document partner category type tid.
+ */
+function hwc_good_practice_exchange_node_get_partner_category_type($item) {
+  $partner = hwc_good_practice_exchange_node_get_workbench_partner($item);
+  if (!$partner) {
+    return NULL;
+  }
+  $wrapper = entity_metadata_wrapper('node', $partner);
+  $partner_type = $wrapper->field_partner_type->value();
+  if (!$partner_type) {
+    return NULL;
+  }
+  return $partner_type->tid;
+}
+
+/**
+ * User partner partner type tid.
+ */
+function hwc_good_practice_exchange_user_get_partner_type() {
+  global $user;
+
+  if (empty($user->workbench_access)) {
+    workbench_access_user_load_data($user);
+  }
+  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && !empty($user->workbench_access)) {
+    $sections = array_keys($user->workbench_access);
+    foreach ($sections as $id_section) {
+      if ($partner = hwc_partner_by_section_id_load($id_section)) {
+        $wrapper = entity_metadata_wrapper('node', $partner);
+        if ($wrapper->field_partner_type->value()) {
+          return $wrapper->field_partner_type->value()->tid;
+        }
+      }
+    }
+  }
+  return NULL;
+}
+
+/**
+ * Document partner organisation nid.
+ */
+function hwc_good_practice_exchange_node_get_partner_organisation($item) {
+  $partner = hwc_good_practice_exchange_node_get_workbench_partner($item);
+  if (!$partner) {
+    return NULL;
+  }
+  return $partner->nid;
+}
+
+/**
+ * Document partner section check.
+ */
+function hwc_good_practice_exchange_node_get_workbench_section($item) {
+  if ($item->type != 'document') {
+    return '';
+  }
+  $q = db_select('workbench_access_node', 'w');
+  $q->fields('w', ['access_id'])
+    ->condition('w.nid', $item->nid);
+  $access_id = $q->execute()->fetchField();
+  return ($access_id == 'section') ? 1 : 0;
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function hwc_good_practice_exchange_views_data() {
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function hwc_good_practice_exchange_entity_property_info_alter(&$info) {
+  $info['node']['properties']['partner_category_type'] = array(
+    'type' => 'integer',
+    'label' => t('Document Partner Category Type'),
+    'sanitized' => TRUE,
+    'getter callback' => 'hwc_good_practice_exchange_node_get_partner_category_type',
+  );
+  $info['node']['properties']['partner_organisation'] = array(
+    'type' => 'integer',
+    'label' => t('Document Partner Organisation'),
+    'sanitized' => TRUE,
+    'getter callback' => 'hwc_good_practice_exchange_node_get_partner_organisation',
+  );
+  $info['node']['properties']['partner_section'] = array(
+    'type' => 'integer',
+    'label' => t('Document Partner Section'),
+    'sanitized' => TRUE,
+    'getter callback' => 'hwc_good_practice_exchange_node_get_workbench_section',
+  );
+
+}
+
+/**
+ * Getter callback for created_week_day property.
+ */
+function hwc_good_practice_exchange_property_weekday_getter_callback($item) {
+  return format_date($item->created, 'custom', 'D');
+}
+
+/**
+ * Getter callback for multiple field.
+ */
+function hwc_good_practice_exchange_property_random_text_getter_callback($item) {
+  $strings = array('one', 'two', 'three', 'four', 'five');
+  $number = rand(1, 5);
+
+  $values = array();
+  while ($number > 0) {
+    $values[] = $strings[rand(0, 4)];
+    $number--;
+  }
+
+  return $values;
+}
+
 /**
  * Implements hook_block_info().
  */
@@ -25,7 +238,65 @@ function hwc_good_practice_exchange_block_info() {
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'cache' => DRUPAL_NO_CACHE,
   );
+  $blocks['gpep_links'] = array(
+    'info' => t('Good Practice Exchange Platform'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['gpep_document_links'] = array(
+    'info' => t('Document edit/delete links'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['gpep_document_organisation'] = array(
+    'info' => t('Document Organisation'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+  );
   return $blocks;
+}
+
+function hwc_good_practice_exchange_sort_form($form, $form_state) {
+  $form = array();
+  $form['sort_by'] = [
+    '#type' => 'select',
+    '#title' => t('Sort by'),
+    '#default_value' => 'title2',
+    '#options' => [
+      'title2' => t('Alphabetically'),
+      'field_publication_date' => t('Date of publication'),
+    ],
+  ];
+  $form['sort_order'] = [
+    '#type' => 'select',
+    '#title' => t('Order'),
+    '#default_value' => 'ASC',
+    '#options' => [
+      'ASC' => t('ASC'),
+      'DESC' => t('DESC'),
+    ],
+  ];
+  $form['sort_by']['#value'] = @$_REQUEST['sort_by'];
+  $form['sort_order']['#value'] = @$_REQUEST['sort_order'];
+  return $form;
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function hwc_good_practice_exchange_views_post_render(&$view, &$output, &$cache) {
+  if ($view->name == 'documents') {
+    drupal_add_js(drupal_get_path('module', 'hwc_good_practice_exchange') . '/sort.js', array('weight' => 20));
+    $form = drupal_get_form('hwc_good_practice_exchange_sort_form');
+    $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
+    $output = trim(str_replace('@order', $order_html, $output)). '</span>';
+  }
 }
 
 /**
@@ -33,13 +304,65 @@ function hwc_good_practice_exchange_block_info() {
  */
 function hwc_good_practice_exchange_block_view($delta = '') {
   $block = array();
+
+  if ($delta == 'gpep_document_links') {
+    $node = menu_get_object('node');
+    if ($node->workbench_access) {
+      foreach ($node->workbench_access as $tid) {
+        //todo find company
+      }
+    }
+
+    $items = ['links']; // todo
+    $block['subject'] = '';
+    $block['content']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+  }
+
+  if ($delta == 'gpep_document_organisation') {
+    $items = ['organisation']; // todo
+    $block['subject'] = '';
+    $block['content']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+  }
+
+
+  if ($delta == 'gpep_links') {
+
+    $items = [];
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Partners documents') . '</span>',
+      'partners-documents',
+      ['html' => TRUE, 'attributes' => ['class' => 'partners-documents']]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('EU-OSHA communications') . '</span>',
+      'communications',
+      ['html' => TRUE, 'attributes' => ['class' => 'communications']]);
+    $block['subject'] = '';
+
+    // todo Introductory text.
+
+    $block['content']['menu']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+  }
+
   if ($delta == 'gpe_links') {
     $prefix = '<div class="col-xs-12 col-sm-4">';
     $suffix = '</div>';
     $items = [];
-    $items[] = l('<span class="link-img"></span><span class="title">' . t('Become in campaign partner') . '</span>','partner/register', ['html'=>TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);//or 'become-campaign-partner'
-    $items[] = l('<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>','good-practice-exchange-initiative', ['html'=>TRUE, 'attributes' => ['class' => 'get-involved']]); // todo ... Link to a new page where users can send an email to get involved in this initiative.
-    $items[] = l('<span class="link-img"></span><span class="title">' . t('Access to the private zone') . '</span>','private', ['html'=>TRUE, 'attributes' => ['class' => 'private-zone']]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Become a campaign partner') . '</span>',
+      'partner/register',
+      ['html' => TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>',
+      '/good-practice-exchange-initiative',
+      [
+        'absolute' => TRUE,
+        'html' => TRUE,
+        'attributes' => ['class' => 'get-involved'],
+      ]);
+    $items[] = l(
+      '<span class="link-img"></span><span class="title">' . t('Access to the private zone') . '</span>',
+      'private',
+      ['html' => TRUE, 'attributes' => ['class' => 'private-zone']]);
     $block['subject'] = '';
     $block['content']['menu']['#markup'] = '<div class="gpe-links-block">' . $prefix . implode($suffix . $prefix, $items) . $suffix . '</div>';
   }
@@ -47,9 +370,9 @@ function hwc_good_practice_exchange_block_view($delta = '') {
   if ($delta == 'gpe_tools_publications') {
     $block['subject'] = l(t('Tools and publications'), 'tools_and_publications');
     $items = [];
-    $items[] = l(t('Case studies'),'case-studies', ['attributes' => ['class' => 'case-studies']]);
-    $items[] = l(t('Publications'),'publications', ['attributes' => ['class' => 'publications']]);
-    $items[] = l(t('DS e-tool'),'healthy-workplaces-all-ages-e-guide', ['attributes' => ['class' => 'e-guides']]);//todo DS e-tool
+    $items[] = l(t('Case studies'), 'case-studies', ['attributes' => ['class' => 'case-studies']]);
+    $items[] = l(t('Publications'), 'publications', ['attributes' => ['class' => 'publications']]);
+    $items[] = l(t('DS e-tool'), 'e-tool', ['attributes' => ['class' => 'e-guides']]);
     $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
     $block['content']['link'] = array(
       'type' => 'item',

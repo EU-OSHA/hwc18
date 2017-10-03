@@ -7331,6 +7331,9 @@ header.navbar-default .campaigns-header .navbar-header #block-search-form button
 header.navbar-default .campaigns-header .navbar-header #block-search-form button:focus {
   outline: 0;
 }
+header.navbar-default .campaigns-header .navbar-header #block-search-form #edit-actions {
+  margin-bottom: 0px;
+}
 header.navbar-default .campaigns-header .row:first-of-type {
   padding: 5px 20px 0px 15px;
 }
@@ -7461,6 +7464,37 @@ header.navbar-default .navbar-collapse nav ul.menu li .dropdown-menu > .active >
 header.navbar-default .navbar-collapse nav ul.menu li .dropdown-menu > .active > span:focus {
   background-color: #003399;
 }
+header.navbar-default .navbar-collapse nav ul.menu li.last .dropdown-menu {
+  min-width: 100%;
+  position: absolute;
+  right: 0px;
+}
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail {
+  font-weight: bold;
+  color: #c1e000;
+}
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail a,
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail > span {
+  color: #c1e000;
+  background-color: #003399;
+}
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li a,
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li span {
+  color: white;
+}
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-trail {
+  color: white;
+}
+header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-trail a {
+  font-weight: bold;
+}
+header.navbar-default .navbar-collapse nav ul.menu > li.leaf > a {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-right: 1px solid white;
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
 header.navbar-default .navbar-collapse nav ul.menu > li.first {
   width: 10%;
 }
@@ -7487,34 +7521,11 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
   margin-bottom: 39px;
   background-position: center;
 }
-header.navbar-default .navbar-collapse nav ul.menu li.last .dropdown-menu {
-  min-width: 100%;
-  position: absolute;
-  right: 0px;
-}
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail {
-  font-weight: bold;
-  color: #c1e000;
-}
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail a,
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail > span {
-  color: #c1e000;
-  background-color: #003399;
-}
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li a,
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li span {
-  color: white;
-}
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-trail {
-  color: white;
-}
-header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-trail a {
-  font-weight: bold;
-}
 .region-above-header.region {
   float: right;
   width: auto;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .region-above-header.region section,
 .region-above-header.region > div {
@@ -7588,6 +7599,28 @@ header.navbar-default .navbar-collapse nav ul.menu li.active-trail ul li.active-
 #masquerade-block-1 .btn-default.form-submit {
   margin-top: 1em;
   margin-bottom: 0.7em;
+}
+@media only screen and (min-width: 1200px) {
+  .navbar-header .xs-menu {
+    max-width: 400px;
+    float: right;
+  }
+}
+@media only screen and (max-width: 1105px) {
+  #block-hwc-partner-hwc-partner-mostra-masquerade {
+    min-width: 255px;
+  }
+}
+@media only screen and (max-width: 828px) {
+  #block-hwc-partner-hwc-partner-mostra-masquerade {
+    min-width: 197px;
+  }
+  #block-hwc-partner-hwc-partner-mostra-masquerade a {
+    float: right;
+  }
+  #block-hwc-partner-hwc-partner-mostra-masquerade .button-left {
+    margin-bottom: 7px;
+  }
 }
 body {
   /* General */
@@ -7773,6 +7806,37 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   text-align: center;
   font-size: 1.2em;
 }
+.facetapi-facetapi-checkbox-links {
+  margin-top: 10px;
+}
+.facetapi-facetapi-checkbox-links li {
+  color: #003399;
+  margin-bottom: 10px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"] {
+  margin-right: 0.5em;
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:before {
+  border: 2px solid #003399;
+  content: "\2716";
+  padding: 0px 1px 0px 3px;
+  margin-right: 10px;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+}
+.facetapi-facetapi-checkbox-links li input[type="checkbox"]:checked:before {
+  content: "\2713";
+  color: #003399;
+}
+.facetapi-facetapi-checkbox-links li #facetapi-link--all--checkbox {
+  margin-right: 15px;
+}
+.facetapi-facetapi-checkbox-links li a {
+  font-family: 'Open Sans';
+}
 .checkbox input[type="checkbox"] {
   display: none;
 }
@@ -7817,6 +7881,28 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   height: 15px;
   width: 13px;
   line-height: 19px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .checkbox input[type=checkbox]:checked {
+    display: inline-block;
+    margin-left: -16px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  .checkbox input[type=checkbox]:checked:before {
+    content: "\2713";
+    color: #003399;
+    padding: 0px 2px 0px 2px;
+    margin-right: 6px;
+    font-weight: normal;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    margin-top: 0px;
+    display: block;
+    background-color: white;
+    height: 15px;
+    width: 13px;
+    line-height: 19px;
+  }
 }
 .radio {
   margin-bottom: 0.5em;
@@ -8078,14 +8164,24 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
 }
 .tools-and-resources-block h2,
 .panels-flexible-column-new-main h2,
-.panels-flexible-column-first h2 {
+.panels-flexible-column-first h2,
+.tools-and-resources-block div.pane-title,
+.panels-flexible-column-new-main div.pane-title,
+.panels-flexible-column-first div.pane-title {
   padding-top: 70px;
   background: url("../images/content/tools-and-resources.png") no-repeat center top;
   font-style: normal;
+  margin: 20px 0;
+  color: #749b00;
+  font-size: 30px;
+  font-weight: bold;
 }
 .tools-and-resources-block .pane-news h2,
 .panels-flexible-column-new-main .pane-news h2,
-.panels-flexible-column-first .pane-news h2 {
+.panels-flexible-column-first .pane-news h2,
+.tools-and-resources-block .pane-news div.pane-title,
+.panels-flexible-column-new-main .pane-news div.pane-title,
+.panels-flexible-column-first .pane-news div.pane-title {
   background-image: url("../images/content/news.png");
 }
 .glyphicon-circle-arrow-down:before {
@@ -8186,7 +8282,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-top: 40px;
 }
 #homepage_slider .views-field-title {
-  font-size: 39px;
+  font-size: 2em;
   position: absolute;
   top: 10px;
   right: 20px;
@@ -8197,14 +8293,14 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   text-align: right;
 }
 #homepage_slider .views-field-title span {
-  width: 396px !important;
+  width: 300px !important;
   float: right;
   margin-right: 25px;
   margin-top: 10px;
 }
 /*Fix to EN language 3 lines*/
 html:lang(en) #homepage_slider .views-field-title span {
-  width: 240px !important;
+  width: 300px !important;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   #homepage_slider .more-link {
@@ -8552,6 +8648,12 @@ table tr.error.form-type-select:after {
   margin-bottom: 0em;
   font-size: 2em;
 }
+.node-type-article article .field-name-body.field-type-text-with-summary h2 {
+  color: #333333;
+  font-weight: normal;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
 .node-type-article article .icon.recommended-resources ~ h2 {
   text-align: center;
 }
@@ -8851,9 +8953,9 @@ div[class*='node-'] .more-link {
   text-align: center;
   color: #ffffff;
   background-size: cover;
-  padding-bottom: 3em;
+  padding-bottom: 15px;
   margin-top: 0em;
-  padding-top: 1em;
+  padding-top: 0em;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #join_subscribers img,
 #block-osha-newsletter-osha-newsletter-image #join_subscribers img {
@@ -8861,7 +8963,7 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe h2,
 #block-osha-newsletter-osha-newsletter-image h2 {
-  margin-top: 15px;
+  margin-top: 0px;
   padding-top: 100px;
   margin-bottom: 15px;
   font-style: normal;
@@ -8934,16 +9036,25 @@ div[class*='node-'] .more-link {
   float: left;
   text-align: center;
   margin-bottom: 0em;
-  margin-top: 0em;
+  margin-top: 1em;
+}
+#block-views-frontpage-events-block h4.media-heading,
+.panels-flexible-column-new-2 h4.media-heading,
+.panels-flexible-column-last h4.media-heading {
+  font-size: 15px;
 }
 #block-views-frontpage-events-block h2,
 .panels-flexible-column-new-2 h2,
-.panels-flexible-column-last h2 {
+.panels-flexible-column-last h2,
+#block-views-frontpage-events-block div.pane-title,
+.panels-flexible-column-new-2 div.pane-title,
+.panels-flexible-column-last div.pane-title {
   color: #749b00;
   font-weight: bold;
   font-style: normal;
-  margin: 20px 0 14px 0;
+  margin: 20px 0px;
   padding-top: 70px;
+  font-size: 30px;
   background: url("../images/content/events.png") no-repeat center top;
 }
 #block-views-frontpage-events-block a,
@@ -9012,10 +9123,11 @@ div[class*='node-'] .more-link {
   padding-bottom: 1em;
 }
 #block-views-partners-block-1 {
-  padding-top: 1em;
+  padding-top: 0em;
   clear: both;
   padding-left: 25px;
   padding-right: 25px;
+  padding-bottom: 40px;
 }
 #block-views-partners-block-1 h2 {
   text-align: center;
@@ -9147,7 +9259,7 @@ div[class*='node-'] .more-link {
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow .publication-ext-type,
 #block-system-main #publications_slideshow .publication-ext-type {
-  margin-left: 6em;
+  margin-left: 14em;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides,
 #block-system-main #publications_slideshow #num_slides {
@@ -9169,7 +9281,7 @@ div[class*='node-'] .more-link {
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item .field-name-title-field,
 #block-system-main #publications_slideshow #num_slides .publication-item .field-name-title-field {
   float: left;
-  margin-left: 6em;
+  margin-left: 14em;
   margin-top: 0em;
   width: auto;
 }
@@ -9193,7 +9305,7 @@ div[class*='node-'] .more-link {
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0.2em;
-  margin-left: 6em;
+  margin-left: 14em;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item .field-name-field-publication-date span,
 #block-system-main #publications_slideshow #num_slides .publication-item .field-name-field-publication-date span {
@@ -9203,13 +9315,13 @@ div[class*='node-'] .more-link {
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item .field-name-body,
 #block-system-main #publications_slideshow #num_slides .publication-item .field-name-body {
   clear: both;
-  margin-left: 6em;
+  margin-left: 14em;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item .field-name-field-cover-image,
 #block-system-main #publications_slideshow #num_slides .publication-item .field-name-field-cover-image {
   position: absolute;
-  top: 1.5em;
-  width: 5em;
+  width: 200px;
+  top: 15px;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item .field-name-field-cover-image img,
 #block-system-main #publications_slideshow #num_slides .publication-item .field-name-field-cover-image img {
@@ -9218,7 +9330,7 @@ div[class*='node-'] .more-link {
 #block-views-publications-slideshow-slidehow #publications_slideshow #num_slides .publication-item ul,
 #block-system-main #publications_slideshow #num_slides .publication-item ul {
   margin-top: 0em;
-  margin-left: 6em;
+  margin-left: 14em;
   margin-bottom: 5px;
   list-style: none;
   padding-bottom: 0em;
@@ -9325,36 +9437,110 @@ div[class*='node-'] .more-link {
   width: auto;
   color: #ffffff;
 }
-.page-search #views-exposed-form-search-site .form-text {
-  margin-bottom: 0.3em;
-}
 .page-search .region-sidebar-first {
   background-color: transparent;
   border-radius: 0;
-  border-right: none;
-  border-left: none;
+  border: none;
   border-top: 1px dotted #749b00;
-  border-bottom: 1px dotted #749b00;
   padding-left: 0px;
   padding-right: 0px;
+  padding: 0px;
   margin-left: 25px;
   -webkit-box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
   -moz-box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
   box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0);
 }
-.page-search .region-sidebar-first h2 {
-  color: #333333;
-  font-size: 20px;
-  text-align: left;
+.page-search .region-sidebar-first .views-exposed-widgets #edit-search-block-form--3-wrapper {
+  width: 100% !important;
+  padding-bottom: 0.5em;
+  border-bottom: 1px dotted #749b00;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li {
+.page-search .region-sidebar-first .views-exposed-widgets .views-widget-sort-by {
+  display: none;
+}
+.page-search .region-sidebar-first .views-exposed-widgets .views-widget-sort-order {
+  display: none;
+}
+.page-search .region-sidebar-first .views-exposed-widgets .form-type-textfield {
+  float: none;
+  width: 100%;
+}
+.page-search .region-sidebar-first .views-exposed-widgets .form-type-textfield input {
+  width: 100%;
+  padding-right: 35px;
+}
+.page-search .region-sidebar-first .views-exposed-widgets .views-submit-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.page-search .region-sidebar-first .views-exposed-widgets .views-submit-button button {
+  position: absolute;
+  right: 0px;
+  top: 8px;
+  margin-left: 0px !important;
+  margin-top: 0px !important;
+  float: left;
+  background: #003399 url(../images/content/search.png) no-repeat 6px !important;
+  height: 34px;
+  width: 30px;
+  color: transparent;
+  padding-left: 27px !important;
+  width: 13px !important;
+  color: #003399 !important;
+  overflow: hidden !important;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters h3 {
+  display: none;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters a {
+  font-weight: bold;
+  display: block;
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters .clear-wrapper > a {
+  border-bottom: 1px dotted #749b00;
+}
+.page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters #remove_filter > a:last-child {
+  border-bottom: 1px dotted #749b00;
+}
+.page-search .region-sidebar-first .block.block-facetapi {
+  border-bottom: 1px dotted #749b00;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-search .region-sidebar-first .block.block-facetapi h2 {
+  color: #333333;
+  font-size: 1.1em;
+  text-align: left;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+.page-search .region-sidebar-first .block.block-facetapi h2:after {
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  margin-left: 10px;
+  float: right;
+}
+.page-search .region-sidebar-first .block.block-facetapi h2.area-shown:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+  margin-left: 10px;
+  float: right;
+}
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links {
+  margin-top: 10px;
+}
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li {
+  color: #003399;
   margin-bottom: 10px;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li input[type="checkbox"] {
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li input[type="checkbox"] {
   margin-right: 0.5em;
   margin-right: 15px;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li input[type="checkbox"]:before {
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li input[type="checkbox"]:before {
   border: 2px solid #003399;
   content: "\2716";
   padding: 0px 1px 0px 3px;
@@ -9364,14 +9550,14 @@ div[class*='node-'] .more-link {
   height: 20px;
   background-color: white;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li input[type="checkbox"]:checked:before {
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li input[type="checkbox"]:checked:before {
   content: "\2713";
   color: #003399;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li #facetapi-link--all--checkbox {
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li #facetapi-link--all--checkbox {
   margin-right: 11px;
 }
-.page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li a {
+.page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li a {
   font-family: 'Open Sans';
 }
 .page-search .region.region-content {
@@ -9388,6 +9574,33 @@ div[class*='node-'] .more-link {
 }
 .page-search .region.region-content .view-search h3 {
   display: none;
+}
+.page-search .region.region-content .view-search .view-header {
+  overflow: hidden;
+  border: none;
+  border-top: 1px dotted #749b00;
+  border-bottom: 1px dotted #749b00;
+  border-radius: 0px;
+  padding: 7px 0px;
+}
+.page-search .region.region-content .view-search .view-header .sort-container.col-xs-3 {
+  width: inherit;
+  padding-left: 0px;
+}
+.page-search .region.region-content .view-search .view-header .sort-container.col-xs-3 .form-group {
+  margin-bottom: 0px;
+}
+.page-search .region.region-content .view-search .view-header .sort-container.col-xs-3 .form-group label {
+  margin-right: 10px;
+}
+.page-search .region.region-content .view-search .view-header .sort-container.col-xs-3 .form-group label:after {
+  content: ":";
+}
+.page-search .region.region-content .view-search .view-header .sort-container.col-xs-3 .form-group #edit-sort-by {
+  display: inline-block;
+}
+.page-search .region.region-content .view-search .view-header .count-container {
+  margin-top: 7px;
 }
 .page-search .region.region-content .view-search .view-content .views-row {
   border-bottom: 1px dotted #749b00;
@@ -9714,6 +9927,27 @@ div[class*='node-'] .more-link {
   padding-bottom: 0;
   margin-bottom: 0;
 }
+.node-type-practical-tool .pane-node-field-summary .pane-title,
+.node-type-practical-tool .pane-node-field-item-type .pane-title {
+  display: none;
+}
+.node-type-practical-tool .pane-node-field-summary .field-items span,
+.node-type-practical-tool .pane-node-field-item-type .field-items span {
+  font-weight: normal;
+}
+.node-type-practical-tool .pane-node-field-country {
+  margin-bottom: 15px;
+}
+.node-type-practical-tool .pane-node-body,
+.node-type-practical-tool .pane-node-field-fc-provider {
+  clear: both;
+  display: block;
+}
+.node-type-practical-tool .pane-hwc-practical-tool-hwc-practical-tool-back-to-list a {
+  font-weight: bold;
+  margin-top: 15px;
+  display: block;
+}
 /*margins: practical-tools and publications*/
 #edit-left-column {
   padding-left: 25px;
@@ -9803,7 +10037,8 @@ div[class*='node-'] .more-link {
   width: 15%;
   float: left;
 }
-.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-label,
+/*FIx NO language*/
+html:lang(no) .pane-node-field-provider .field-label,
 .pane-node-field-implementation-steps .field-label,
 .pane-node-field-dissemination-used .field-label,
 .pane-node-field-access-tool-link .field-label,
@@ -9814,7 +10049,7 @@ div[class*='node-'] .more-link {
 .access-tool-languages .field-label {
   width: 22%;
 }
-.pane-node-body .field-items html:lang(no) .pane-node-field-provider .field-items,
+html:lang(no) .pane-node-field-provider .field-items,
 .pane-node-field-implementation-steps .field-items,
 .pane-node-field-dissemination-used .field-items,
 .pane-node-field-access-tool-link .field-items,
@@ -9911,14 +10146,24 @@ div[class*='node-'] .more-link {
   border-bottom: none;
   font-size: 30px;
 }
+.front .qtip-default {
+  background-color: white;
+  border-color: #003399;
+  text-align: center;
+  font-weight: bold;
+  color: #003399;
+}
+.front .panel-flexible .panel-separator {
+  margin: 0px;
+}
 .front .pane-hwc-homepage-hwc-homepage-tools-and-resources {
   margin-left: -15px;
   margin-right: -15px;
   text-align: center;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 30px;
-  padding-bottom: 60px;
+  padding-top: 0px;
+  padding-bottom: 30px;
   margin-top: 30px;
   margin-bottom: 0px;
   background: url(../images/content/bg-campaign-partner.png) no-repeat left;
@@ -9965,7 +10210,7 @@ div[class*='node-'] .more-link {
   margin-bottom: 30px;
 }
 .front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title {
-  margin-top: 15px;
+  margin-top: 0px;
   padding-top: 100px;
   margin-bottom: 40px;
   font-style: normal;
@@ -10070,21 +10315,26 @@ div[class*='node-'] .more-link {
 .front .panels-flexible-region-new-home_right {
   padding: 0px 25px !important;
   min-height: 500px;
-  margin-top: 25px;
 }
+.front .panels-flexible-region-new-home_left div.pane-title,
+.front .panels-flexible-region-new-center div.pane-title,
+.front .panels-flexible-region-new-home_right div.pane-title,
 .front .panels-flexible-region-new-home_left h2.pane-title,
 .front .panels-flexible-region-new-center h2.pane-title,
 .front .panels-flexible-region-new-home_right h2.pane-title {
-  margin-top: 15px;
   padding-top: 100px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-style: normal;
   background: url(../images/content/mail-newsletter-big.png) no-repeat center 20px;
   background-size: 61px;
   color: #749b00;
   font-weight: bold;
   text-align: center;
+  font-size: 30px;
 }
+.front .panels-flexible-region-new-home_left div.pane-title:before,
+.front .panels-flexible-region-new-center div.pane-title:before,
+.front .panels-flexible-region-new-home_right div.pane-title:before,
 .front .panels-flexible-region-new-home_left h2.pane-title:before,
 .front .panels-flexible-region-new-center h2.pane-title:before,
 .front .panels-flexible-region-new-home_right h2.pane-title:before {
@@ -10124,14 +10374,14 @@ div[class*='node-'] .more-link {
   display: table;
   margin: 0px auto;
 }
-.front .panels-flexible-region-new-home_left h2.pane-title {
+.front .panels-flexible-region-new-home_left div.pane-title {
   background: url(../images/content/news.png) no-repeat center 20px;
 }
 .front .panels-flexible-region-new-center {
   border-left: 1px dotted #749b00;
   border-right: 1px dotted #749b00;
 }
-.front .panels-flexible-region-new-center h2.pane-title {
+.front .panels-flexible-region-new-center div.pane-title {
   background: url(../images/content/icono-events-section.png) no-repeat center 20px;
 }
 .front .panels-flexible-region-new-center .event_day_month .event_day {
@@ -10157,6 +10407,12 @@ div[class*='node-'] .more-link {
 }
 .front .panels-flexible-region-new-center .event_day_month .code_EN {
   background: url(../images/events/England.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_AT {
+  background: url(../images/events/Austria.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_CH {
+  background: url(../images/events/Switzerland.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_BG {
   background: url(../images/events/Bulgaria.png) no-repeat center;
@@ -10247,6 +10503,26 @@ div[class*='node-'] .more-link {
 .a2a_kit.a2a_target.addtoany_list a {
   margin-right: 1em;
 }
+/*Login page*/
+.page-user .main-container.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text {
+  margin-bottom: 15px;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text .text-info {
+  color: #333333;
+  font-size: 1em;
+}
+.page-user #block-hwc-partner-hwc-partner-login-text .text-info a {
+  background-color: transparent;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid #749b00;
+}
+/*End login page*/
 /* -News- */
 .view-news .views-row {
   border-bottom: 1px dotted #749b00;
@@ -10727,6 +11003,42 @@ article .hwc-share-widget ul {
   border-bottom: none;
   margin-bottom: 0em;
 }
+.page-practical-tools .below_title .field-type-text-with-summary {
+  padding-right: 85px;
+  padding-left: 85px;
+  margin: 0 25px;
+  padding-bottom: 1em;
+}
+.page-practical-tools .below_title .field-type-text-with-summary p {
+  text-align: center;
+  font-size: 1.2em;
+}
+.page-practical-tools #edit-search-api-views-fulltext-wrapper {
+  float: none !important;
+}
+.page-practical-tools .sort-container.col-xs-3 {
+  width: 75% !important;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+  display: inline-block;
+}
+.page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+  margin-left: 15px;
+}
+.node-type-practical-tool .panel-col .field-label {
+  min-width: 192px;
+  width: 240px;
+}
+@media only screen and (max-width: 767px) {
+  .node-type-practical-tool .panel-col .field-label {
+    min-width: 100%;
+  }
+}
 p.no-results {
   padding: 1em;
 }
@@ -10789,25 +11101,129 @@ p.no-results {
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content {
-  background-color: #749b00;
-  color: #ffffff;
   float: left;
   width: 180px;
-  height: 170px;
+  height: 180px;
   margin-right: 50px;
   overflow: hidden;
   margin-top: 5px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 36px;
-  padding: 0px 50px;
-  font-size: 30px;
-  padding: 30px 3px 0;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .date-display-single,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .date-display-single {
   display: block;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .event_country,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .event_country {
+  width: 180px;
+  height: 180px;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EN,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EN {
+  background: url(../images/events/big/England-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_AT,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_AT {
+  background: url(../images/events/big/Austria-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CH,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CH {
+  background: url(../images/events/big/Switzerland-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_BG,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_BG {
+  background: url(../images/events/big/Bulgaria-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS {
+  background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_DA,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_DA {
+  background: url(../images/events/big/Denmark-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_DE,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_DE {
+  background: url(../images/events/big/Germany-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EL,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EL {
+  background: url(../images/events/big/Greece-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_ES,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_ES {
+  background: url(../images/events/big/Spain-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_ET,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_ET {
+  background: url(../images/events/big/Estonia-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_FI,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_FI {
+  background: url(../images/events/big/Finland-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_HR,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_HR {
+  background: url(../images/events/big/Croatia-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_FR,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_FR {
+  background: url(../images/events/big/France-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_HU,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_HU {
+  background: url(../images/events/big/Hungary-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IS,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IS {
+  background: url(../images/events/big/Icelandic-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IT,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IT {
+  background: url(../images/events/big/Italy-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LV,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LV {
+  background: url(../images/events/big/Latvia-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LT,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LT {
+  background: url(../images/events/big/Lithuania-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NL,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NL {
+  background: url(../images/events/big/Netherlands-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_MT,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_MT {
+  background: url(../images/events/big/Malta-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO {
+  background: url(../images/events/big/Norwegian-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL {
+  background: url(../images/events/big/Poland-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PT,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PT {
+  background: url(../images/events/big/Portugal-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_RO,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_RO {
+  background: url(../images/events/big/Romania-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SK,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SK {
+  background: url(../images/events/big/Slovakia-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SL,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SL {
+  background: url(../images/events/big/Slovenia-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SV,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_SV {
+  background: url(../images/events/big/Sweden-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a {
@@ -10918,6 +11334,10 @@ p.no-results {
 .view-events-search .view-filters {
   border-top: 1px dotted #749b00;
   border-bottom: 1px dotted #749b00;
+}
+#block-system-main .view-events-search .view-footer,
+.view-events-search .view-footer {
+  display: none;
 }
 #block-system-main .view-events-search .views-exposed-widgets,
 .view-events-search .views-exposed-widgets {
@@ -11592,13 +12012,15 @@ p.no-results {
   font-style: italic;
 }
 .become-partner .partners .partner .partner-opinion .quottes-left {
-  height: 50px;
+  height: 25px;
   background: url("../images/content/quottes.png") center no-repeat;
+  background-size: contain;
 }
 .become-partner .partners .partner .partner-opinion .quottes-right {
-  height: 50px;
+  height: 25px;
   background: url("../images/content/quottes.png") center no-repeat;
   transform: rotate(180deg);
+  background-size: contain;
 }
 .become-partner .description h3 {
   color: #003399;
@@ -12268,6 +12690,11 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .profile-2-cols-container-3 .profile-col-left-3 {
   padding-right: 15px;
+  text-align: center;
+}
+.profile-2-cols-container-3 .profile-col-left-3 .date-display-single {
+  display: block;
+  text-align: center;
 }
 .profile-2-cols-container-3 h2 {
   color: #749b00;
@@ -12287,6 +12714,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-weight: bold;
   color: #003399;
   font-style: italic;
+  text-align: center;
 }
 .profile-2-cols-container-3 .views-row a:before {
   content: "> ";
@@ -12539,6 +12967,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   text-align: left;
   float: none;
   font-weight: normal;
+  clear: both;
 }
 .node-type-partner .pane-node-field-country .field-item {
   padding-top: 0.5em;
@@ -12578,9 +13007,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*End partners public profile*/
 /*create event --> in public profile*/
-.page-node-add-events .node-events-form .field-type-datetime #edit-field-start-date-und-0-value2 .form-item-field-start-date-und-0-value2-date {
-  min-width: 283px;
-}
 .page-node-add-events #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label,
 .page-node-add-news #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label,
 .page-node-edit #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label {
@@ -12594,15 +13020,50 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .form-control {
   width: 100% !important;
 }
+.page-node-add-events .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-news .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-edit .node-events-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-events .node-news-form .field-name-field-summary .mceIframeContainer,
+.page-node-add-news .node-news-form .field-name-field-summary .mceIframeContainer,
+.page-node-edit .node-news-form .field-name-field-summary .mceIframeContainer {
+  border: 1px solid #003399;
+  padding: 15px;
+}
 .page-node-add-events .node-events-form .form-type-textfield,
 .page-node-add-news .node-events-form .form-type-textfield,
 .page-node-edit .node-events-form .form-type-textfield,
 .page-node-add-events .node-news-form .form-type-textfield,
 .page-node-add-news .node-news-form .form-type-textfield,
 .page-node-edit .node-news-form .form-type-textfield {
-  padding-right: 2em;
   display: block !important;
   margin-bottom: 2em !important;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data input,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data input,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data input,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data input,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data input,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data input {
+  max-width: 300px;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
+  float: none;
+  display: inherit !important;
+  width: inherit;
+  height: 14px;
+}
+.page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-edit .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+.page-node-edit .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span {
+  height: initial !important;
 }
 .page-node-add-events .node-events-form .date-no-float,
 .page-node-add-news .node-events-form .date-no-float,
@@ -12699,22 +13160,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   height: 150px;
   padding: 10px;
 }
-.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar,
-.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceFirst .mceToolbar {
-  display: none;
-}
-.page-node-add-events .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-add-news .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-edit .node-events-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-add-events .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-add-news .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar,
-.page-node-edit .node-news-form #edit-field-summary-und-0-value_tbl .mceLast .mceStatusbar {
-  display: none;
-}
 .page-node-add-events .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-add-news .node-events-form .wysiwyg-toggle-wrapper,
 .page-node-edit .node-events-form .wysiwyg-toggle-wrapper,
@@ -12809,7 +13254,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .image-widget .image-widget-data span {
   padding-right: 10px;
   float: left;
-  height: 35px;
 }
 .page-node-add-events .node-events-form .image-widget .image-widget-data button,
 .page-node-add-news .node-events-form .image-widget .image-widget-data button,
@@ -12926,14 +13370,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-news .node-news-form .group-center label,
 .page-node-edit .node-news-form .group-center label {
   margin-top: 1em;
-}
-.page-node-add-events .node-events-form .group-center .form-textarea-wrapper,
-.page-node-add-news .node-events-form .group-center .form-textarea-wrapper,
-.page-node-edit .node-events-form .group-center .form-textarea-wrapper,
-.page-node-add-events .node-news-form .group-center .form-textarea-wrapper,
-.page-node-add-news .node-news-form .group-center .form-textarea-wrapper,
-.page-node-edit .node-news-form .group-center .form-textarea-wrapper {
-  padding-right: 2em;
 }
 .page-node-add-events .node-events-form .group-center .form-textarea-wrapper .grippie,
 .page-node-add-news .node-events-form .group-center .form-textarea-wrapper .grippie,
@@ -13110,6 +13546,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   height: auto;
   display: block;
   font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
 }
 .page-node-add-events .node-events-form #edit-actions #edit-save-preview:before,
 .page-node-add-news .node-events-form #edit-actions #edit-save-preview:before,
@@ -13158,7 +13596,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-events .node-news-form table.mceLayout,
 .page-node-add-news .node-news-form table.mceLayout,
 .page-node-edit .node-news-form table.mceLayout {
-  padding-right: 2em;
+  padding-right: 0em;
   border: none;
   height: auto !important;
 }
@@ -13198,13 +13636,14 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-news-form .form-wrapper .panel-heading {
   display: none;
 }
-.page-node-add-events .node-events-form .form-wrapper .date-float,
-.page-node-add-news .node-events-form .form-wrapper .date-float,
-.page-node-edit .node-events-form .form-wrapper .date-float,
-.page-node-add-events .node-news-form .form-wrapper .date-float,
-.page-node-add-news .node-news-form .form-wrapper .date-float,
-.page-node-edit .node-news-form .form-wrapper .date-float {
-  display: none;
+.page-node-add-events .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-news .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-edit .node-events-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-events .node-news-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-add-news .node-news-form .form-wrapper .date-float .form-checkbox:before,
+.page-node-edit .node-news-form .form-wrapper .date-float .form-checkbox:before {
+  height: 21px;
+  padding: 2px 2px 0px 0px;
 }
 .page-node-add-events .node-events-form .form-wrapper .panel-body,
 .page-node-add-news .node-events-form .form-wrapper .panel-body,
@@ -13292,29 +13731,23 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   width: 8%;
   min-width: 90px;
 }
-.page-node-add-events .node-events-form #edit-body tr.mceFirst,
-.page-node-add-news .node-events-form #edit-body tr.mceFirst,
-.page-node-edit .node-events-form #edit-body tr.mceFirst,
-.page-node-add-events .node-news-form #edit-body tr.mceFirst,
-.page-node-add-news .node-news-form #edit-body tr.mceFirst,
-.page-node-edit .node-news-form #edit-body tr.mceFirst {
-  display: none;
-}
-.page-node-add-events .node-events-form #edit-body tr.mceLast,
-.page-node-add-news .node-events-form #edit-body tr.mceLast,
-.page-node-edit .node-events-form #edit-body tr.mceLast,
-.page-node-add-events .node-news-form #edit-body tr.mceLast,
-.page-node-add-news .node-news-form #edit-body tr.mceLast,
-.page-node-edit .node-news-form #edit-body tr.mceLast {
-  display: none;
-}
-.page-node-add-events .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-news .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-edit .node-events-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-events .node-news-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-add-news .node-news-form #edit-body .wysiwyg-toggle-wrapper,
-.page-node-edit .node-news-form #edit-body .wysiwyg-toggle-wrapper {
-  display: none;
+.page-node-add-events .node-events-form #edit-body,
+.page-node-add-news .node-events-form #edit-body,
+.page-node-edit .node-events-form #edit-body,
+.page-node-add-events .node-news-form #edit-body,
+.page-node-add-news .node-news-form #edit-body,
+.page-node-edit .node-news-form #edit-body {
+  /* todo check
+			tr.mceFirst{
+				display: none;
+			}
+			tr.mceLast{
+				display: none;
+			}
+			.wysiwyg-toggle-wrapper{
+				display: none;
+			}
+            */
 }
 .page-node-add-events .node-events-form #edit-body .mceIframeContainer,
 .page-node-add-news .node-events-form #edit-body .mceIframeContainer,
@@ -13372,6 +13805,16 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin-left: 0%!important;
   margin-top: 0em;
 }
+.node-events-form .group-left .form-item-title,
+.node-events-form .group-left2 .form-item-title,
+.node-events-form .group-left .form-item-field-organizer-und-0-value,
+.node-events-form .group-left2 .form-item-field-organizer-und-0-value,
+.node-events-form .group-left .field-name-field-contact-name,
+.node-events-form .group-left2 .field-name-field-contact-name,
+.node-events-form .group-left .field-name-field-contact-phone,
+.node-events-form .group-left2 .field-name-field-contact-phone {
+  margin-right: 30px;
+}
 .page-node-edit #edit-actions button {
   width: 47%;
   float: left;
@@ -13380,8 +13823,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit #edit-actions button:first-child {
   margin-right: 3% !important;
 }
-.page-node-edit #edit-actions button:last-child {
-  margin-left: 3%;
+.page-node-edit #edit-submit {
+  width: 100% !important;
 }
 .page-node-edit .node-news-form .btn.btn-danger.form-submit {
   margin-left: 0px!important;
@@ -13865,7 +14308,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .view-id-partners_list img {
   margin: auto;
 }
-.view-display-id-fop img {
+.view-display-id-fop img,
+.view-display-id-een img {
   width: 110px;
   height: 74px;
   border: 1px solid #CCC;
@@ -14121,11 +14565,17 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*End pag error*/
 /*page get-your-certificate*/
+.page-get-your-certificate .contextual-links-region.panel-pane.pane-node-content {
+  clear: both;
+}
 .page-get-your-certificate .description {
   background-color: transparent;
   color: #039;
   font-weight: 700;
   font-style: italic;
+}
+.page-get-your-certificate .pane-node-field-image {
+  padding-right: 15px;
 }
 .page-get-your-certificate .chosen-container .chosen-drop,
 .page-get-your-certificate .chosen-container .chosen-search input[type="text"] {
@@ -14313,10 +14763,28 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .contact-form.container .grippie {
   display: none;
 }
+.contact-form.container #edit-unsubscribe-details {
+  text-align: center;
+}
+.contact-form.container #edit-unsubscribe-details span {
+  font-weight: normal;
+  color: #003399;
+  margin-right: 3px;
+}
+.contact-form.container #captcha_0_refresh img {
+  height: 37px;
+  width: 38px;
+}
+.contact-form.container .captcha .help-block {
+  color: inherit;
+  font-size: 1em;
+}
 .contact-form.container div.form-group {
   width: 50%;
   float: left;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
+  min-height: 64px;
+  height: 80px;
 }
 .contact-form.container div.form-group label {
   font-weight: bold;
@@ -14337,7 +14805,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   display: block;
   content: '';
   position: absolute;
-  bottom: 0px;
+  bottom: 16px;
   left: 79%;
   pointer-events: none;
   background: #003399 url("../images/content/arrow-down.png") no-repeat center center;
@@ -14357,6 +14825,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   box-sizing: border-box;
   width: 84%;
   cursor: pointer;
+}
+.contact-form.container .form-type-textarea {
+  height: inherit !important;
 }
 .contact-form.container button {
   width: 100%;
@@ -15444,8 +15915,8 @@ span.date-display-single {
 /*Modal partner*/
 #block-hwc-partner-hwc-partner-mostra-masquerade a {
   font-weight: bold;
-  font-size: 0.95em;
-  display: block;
+  font-size: 0.89em;
+  display: inline-block;
   font-style: italic;
 }
 #block-hwc-partner-hwc-partner-mostra-masquerade a::before {
@@ -15600,6 +16071,9 @@ input#edit-field-image-und-0-upload::before {
   height: inherit !important;
   position: relative !important;
 }
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+  height: 100%;
+}
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
   font-size: 16px;
   overflow: hidden !important;
@@ -15620,6 +16094,11 @@ input#edit-field-image-und-0-upload::before {
   bottom: 0px;
   margin-bottom: 120px;
 }
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title .title-field {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title a {
   color: white;
   font-size: 1.6em;
@@ -15634,7 +16113,7 @@ input#edit-field-image-und-0-upload::before {
   margin: 0 auto;
   width: 100%;
   height: 564px;
-  background-color: inherit !important;
+  background-color: black;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .hwc-share-widget {
   border-top: none;
@@ -15684,6 +16163,31 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
   display: block !important;
+  position: absolute;
+  bottom: 0px !important;
+  height: 15px !important;
+  width: 63px !important;
+  left: 0px !important;
+  margin: 0px auto;
+  margin-bottom: 25px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div {
+  background: white;
+  border: 1px solid #003399;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  position: relative !important;
+  left: inherit !important;
+  top: inherit !important;
+  margin: 0px 3px;
+  display: inline-block;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div:hover {
+  background: #003399;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypeav {
+  background: #003399;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l {
   display: block !important;
@@ -15704,6 +16208,9 @@ input#edit-field-image-und-0-upload::before {
   background-repeat: no-repeat;
   width: 25px;
   margin-right: 15px;
+}
+.page-node-160 article .field-name-title-field {
+  margin-top: 40px;
 }
 .page-node-160 article .field-name-title-field .watch-other-link a {
   color: #003399;
@@ -15791,7 +16298,7 @@ input#edit-field-image-und-0-upload::before {
   min-height: 65px;
   color: white;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
@@ -15859,6 +16366,14 @@ input#edit-field-image-und-0-upload::before {
   margin-left: 40px;
   margin-right: 40px;
 }
+.priority-detail .see-more a {
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+}
+.priority-detail .see-more a:before {
+  content: "> ";
+}
 .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
   position: absolute;
   background: url("../images/content/image-shadow.png") repeat-x left bottom;
@@ -15872,14 +16387,15 @@ input#edit-field-image-und-0-upload::before {
   border: none;
 }
 .priority-detail .pane-taxonomy-term-field-image {
-  margin-left: -15px;
-  margin-right: -15px;
+  float: left;
+  height: 360px;
+  overflow: hidden;
+  margin-bottom: 1em;
 }
 .priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image {
   float: left;
   margin-bottom: 1em;
   width: 100%;
-  height: 360px;
   overflow: hidden;
 }
 .priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image img {
@@ -15887,8 +16403,6 @@ input#edit-field-image-und-0-upload::before {
   height: auto;
 }
 .priority-detail .panels-flexible-region-inside > div {
-  padding-right: 15px;
-  padding-left: 15px;
   text-align: center;
 }
 .priority-detail .pane-hwc-priority-areas-hwc-pa-links-and-info {
@@ -15915,8 +16429,8 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool,
 .priority-detail .related_links {
   margin-top: 2em;
-  padding-bottom: 2em;
   border-bottom: 1px dotted #749b00;
+  padding-bottom: 2em;
 }
 .priority-detail .highlights h2.pane-title,
 .priority-detail .tools_and_guidance h2.pane-title,
@@ -15940,6 +16454,36 @@ input#edit-field-image-und-0-upload::before {
   display: block;
   padding-bottom: 10px;
 }
+.priority-detail .highlights .item-title a,
+.priority-detail .tools_and_guidance .item-title a,
+.priority-detail .case_studies .item-title a,
+.priority-detail .publications .item-title a,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .item-title a,
+.priority-detail .related_links .item-title a,
+.priority-detail .highlights .field-title a,
+.priority-detail .tools_and_guidance .field-title a,
+.priority-detail .case_studies .field-title a,
+.priority-detail .publications .field-title a,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .field-title a,
+.priority-detail .related_links .field-title a {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #003399;
+}
+.priority-detail .highlights .item-title a:before,
+.priority-detail .tools_and_guidance .item-title a:before,
+.priority-detail .case_studies .item-title a:before,
+.priority-detail .publications .item-title a:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .item-title a:before,
+.priority-detail .related_links .item-title a:before,
+.priority-detail .highlights .field-title a:before,
+.priority-detail .tools_and_guidance .field-title a:before,
+.priority-detail .case_studies .field-title a:before,
+.priority-detail .publications .field-title a:before,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .field-title a:before,
+.priority-detail .related_links .field-title a:before {
+  content: "> ";
+}
 .priority-detail .highlights div.more-link,
 .priority-detail .tools_and_guidance div.more-link,
 .priority-detail .case_studies div.more-link,
@@ -15948,6 +16492,7 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links div.more-link {
   display: block;
   margin-top: 1em;
+  padding: 0;
 }
 .priority-detail .highlights div.more-link:before,
 .priority-detail .tools_and_guidance div.more-link:before,
@@ -15956,6 +16501,7 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool div.more-link:before,
 .priority-detail .related_links div.more-link:before {
   content: "";
+  padding-right: 0px;
 }
 .priority-detail .highlights div.more-link a,
 .priority-detail .tools_and_guidance div.more-link a,
@@ -15981,17 +16527,91 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links div.more-link a:before {
   content: "> ";
 }
+.priority-detail .highlights .view-header,
+.priority-detail .tools_and_guidance .view-header,
+.priority-detail .case_studies .view-header,
+.priority-detail .publications .view-header,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .view-header,
+.priority-detail .related_links .view-header {
+  margin-bottom: 15px;
+}
+.priority-detail .highlights .views-row,
+.priority-detail .tools_and_guidance .views-row,
+.priority-detail .case_studies .views-row,
+.priority-detail .publications .views-row,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row,
+.priority-detail .related_links .views-row {
+  overflow: hidden;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-bottom: 1px dotted #749b00;
+  text-align: left;
+}
+.priority-detail .highlights .views-row:last-child,
+.priority-detail .tools_and_guidance .views-row:last-child,
+.priority-detail .case_studies .views-row:last-child,
+.priority-detail .publications .views-row:last-child,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row:last-child,
+.priority-detail .related_links .views-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0em;
+}
+.priority-detail .highlights .views-row:first-child,
+.priority-detail .tools_and_guidance .views-row:first-child,
+.priority-detail .case_studies .views-row:first-child,
+.priority-detail .publications .views-row:first-child,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row:first-child,
+.priority-detail .related_links .views-row:first-child {
+  padding-bottom: 2em;
+}
+.priority-detail .highlights .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .tools_and_guidance .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .case_studies .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .publications .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row .views-field-nothing .field-content .date-display-single,
+.priority-detail .related_links .views-row .views-field-nothing .field-content .date-display-single {
+  display: block;
+  font-size: 0.9em;
+}
 .priority-detail .panels-flexible-region-inside > div:last-child {
   border-bottom: none;
 }
 .priority-detail .highlights h2.pane-title:before {
   content: url(../images/content/icono-highlights.png);
 }
+@media (min-width: 1200px) {
+  .priority-detail .highlights .views-row .views-field-nothing {
+    padding-left: 30px;
+  }
+}
+.priority-detail .highlights .field-summary a {
+  background-color: transparent;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid #749b00;
+}
 .priority-detail .tools_and_guidance h2.pane-title:before {
   content: url(../images/content/tools-and-resources.png);
 }
+.priority-detail .tools_and_guidance .views-row {
+  text-align: center;
+}
+.priority-detail .tools_and_guidance .views-row:nth-child(odd) {
+  background-color: #e2e2e3;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .priority-detail .case_studies h2.pane-title:before {
   content: url(../images/content/icono-case-studies.png);
+}
+.priority-detail .case_studies .views-row {
+  text-align: center;
+}
+.priority-detail .case_studies .views-row:nth-child(odd) {
+  background-color: #e2e2e3;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .priority-detail .publications h2.pane-title:before {
   content: url(../images/content/icono-publications.png);
@@ -16000,6 +16620,7 @@ input#edit-field-image-und-0-upload::before {
   content: url(../images/content/e-guide.png);
 }
 .priority-detail .pane-hwc-priority-areas-hwc-pa-etool button {
+  margin-top: 2em;
   background-color: #003399;
   outline: none;
   border: none;
@@ -16015,6 +16636,14 @@ input#edit-field-image-und-0-upload::before {
 }
 .priority-detail .related_links h2.pane-title:before {
   content: url(../images/content/icono-related-links.png);
+}
+.priority-detail .related_links .node-external-url a {
+  color: #003399;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.priority-detail .related_links .node-external-url a:before {
+  content: "> ";
 }
 /*end priority areas*/
 /*page good practice exchange*/
@@ -16259,6 +16888,9 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 0px;
   display: inline-block;
 }
+.page-social-media-centre #social-dashboard-media-centre-form > div .form-type-select label {
+  display: none;
+}
 .page-social-media-centre #social-dashboard-media-centre-form > div .form-type-select select {
   padding: 0px;
   border: none;
@@ -16277,6 +16909,7 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-social-media-centre #social-dashboard-media-centre-form > div button {
   vertical-align: top;
+  display: none;
 }
 .page-social-media-centre .view-id-social_dashboard .view-header > h2 {
   margin-top: 0px;
@@ -16397,14 +17030,18 @@ input#edit-field-image-und-0-upload::before {
   font-size: 1.1em;
   margin-bottom: 5px;
 }
-.results-for .searched-text {
+.results-for .searched-text,
+.results-for b {
   font-size: 1.8em;
   color: #749b00;
+  font-weight: normal;
 }
-.results-for .searched-text:before {
+.results-for .searched-text:before,
+.results-for b:before {
   content: "\"";
 }
-.results-for .searched-text:after {
+.results-for .searched-text:after,
+.results-for b:after {
   content: "\"";
 }
 #edit-sort-fieldset {
@@ -16435,7 +17072,85 @@ input#edit-field-image-und-0-upload::before {
 #edit-sort-fieldset .panel-body .count-container {
   margin-top: 7px;
 }
+.view-id-practical_tools .view-content .views-row {
+  padding-bottom: 15px !important;
+  padding-top: 15px !important;
+}
 /*end good practices, publications, case studies*/
+/*enterprise europe network*/
+.page-enterprise-europe-network .main-container.container-fluid,
+.page-national-focal-points .main-container.container-fluid,
+.page-campaign-media-partners .main-container.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.page-enterprise-europe-network #block-system-main h2.pane-title,
+.page-national-focal-points #block-system-main h2.pane-title,
+.page-campaign-media-partners #block-system-main h2.pane-title {
+  display: none;
+}
+.page-enterprise-europe-network #block-system-main .node-article,
+.page-national-focal-points #block-system-main .node-article,
+.page-campaign-media-partners #block-system-main .node-article {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-name-title-field,
+.page-national-focal-points #block-system-main .node-article .field-name-title-field,
+.page-campaign-media-partners #block-system-main .node-article .field-name-title-field {
+  left: 0px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary p,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary p,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary p {
+  text-align: center;
+  font-size: 1.2em;
+}
+.page-enterprise-europe-network #block-system-main .node-article .field-type-text-with-summary p:last-child,
+.page-national-focal-points #block-system-main .node-article .field-type-text-with-summary p:last-child,
+.page-campaign-media-partners #block-system-main .node-article .field-type-text-with-summary p:last-child {
+  margin-bottom: 10px;
+}
+/*end page enterprise europe network*/
+/*Good practice exchange initiative*/
+.page-good-practice-exchange-initiative .webform-client-form {
+  margin-top: 15px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .webform-component--confirm {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-bottom: 0px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel .panel-body {
+  padding: 0px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel .help-block {
+  color: #333333;
+  font-size: 1em;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel span.captcha {
+  margin-bottom: 15px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .captcha.panel span.captcha #captcha_0_refresh img {
+  width: 38px;
+  height: 38px;
+}
+.page-good-practice-exchange-initiative .webform-client-form .form-actions {
+  margin-bottom: 15px;
+}
+/*End Good practice exchange initiative*/
+/*page-node-366*/
+.page-node-366 li.share-this-article {
+  display: block;
+  margin-bottom: 15px;
+}
+/*end page-node-366*/
 /*Sticky menu
 ****************************************/
 @media only screen and (min-width: 768px) {
@@ -16501,7 +17216,7 @@ input#edit-field-image-und-0-upload::before {
     -o-transition: all 0.6s;
     transition: all 0.6s;
     font-size: 1.5em !important;
-    width: 330px !important;
+    width: 300px !important;
     padding-top: 0.3em !important;
     padding-left: 0em !important;
     float: right !important;
@@ -16522,9 +17237,166 @@ input#edit-field-image-und-0-upload::before {
     -o-transition: all 0.6s;
     transition: all 0.6s;
     font-size: 1.4em !important;
-    width: 292px !important;
+    width: 285px !important;
     padding-top: 0.9em !important;
   }
+}
+/*end sticky menu*/
+/*Newsletter mail styles*/
+.page-node-129 table {
+  font-family: Arial, sans-serif;
+  border: none;
+  width: 100%;
+  border-spacing: 0;
+}
+.page-node-129 table td {
+  padding: 0;
+}
+.page-node-129 table .tr_h {
+  height: 100%;
+  padding-top: 5px;
+  font-family: Arial, sans-serif;
+  width: 10px;
+  text-align: left;
+}
+.page-node-129 table tr .ar {
+  text-align: left;
+}
+.page-node-129 table tr .td_h {
+  vertical-align: top;
+  text-align: left;
+  padding-left: 5px;
+  padding-top: 7px;
+  width: 10px;
+}
+.page-node-129 table tr .ar {
+  text-align: left;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+}
+.page-node-129 table tr .rs2 {
+  width: 40px;
+  padding-right: 10px;
+}
+.page-node-129 table tr .pt15 {
+  padding-top: 15px;
+}
+.page-node-129 table tr .cs2 {
+  width: 40px;
+  max-width: 40px;
+  padding-right: 5px;
+}
+#share-popup-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000000;
+}
+#share-popup-container .close-share-popup-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+#share-popup-container .close-share-popup-container button.close-share-popup {
+  background: #fff;
+  border-radius: 100%;
+  border: none;
+  padding: 0;
+}
+#share-popup-container .close-share-popup-container .close-share-popup span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  font-size: 24px;
+}
+#share-popup-container .share-popup-title {
+  text-align: center;
+  margin-top: 20%;
+  color: #fff;
+}
+#share-popup-container .share-popup-title h3 {
+  font-size: 3em;
+  margin: 0;
+}
+#share-popup-container .share-popup-title h4 {
+  font-size: 2em;
+  margin-top: 1em;
+  color: #fff;
+}
+#share-popup-container .share-widget-container {
+  width: 100%;
+  text-align: center;
+}
+#share-popup-container .osha-share-widget ul {
+  list-style: none;
+  padding: 0;
+}
+#share-popup-container .osha-share-widget li {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 4px;
+}
+#share-popup-container .osha-share-widget li.osha-share-widget-button {
+  width: 20px;
+  height: 20px;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button {
+  width: 70px;
+  height: 70px;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button a {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  background-size: 100% 100%!important;
+  background-repeat: no-repeat !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-button a:hover {
+  width: 70px;
+  height: 70px;
+  margin: 0;
+  transition: all 0.2s ease;
+}
+#share-popup-container .osha-share-widget li.osha-share-widget-button a {
+  display: inline-block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+  background: #eee;
+  color: transparent !important;
+  border: 0 !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-facebook a {
+  background-image: url(/sites/all/themes/hwc_frontend/images/share-popup/facebook.png) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-twitter a {
+  background-image: url(/sites/all/themes/hwc_frontend/images/share-popup/twitter.png) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-linkedin a {
+  background-image: url(/sites/all/themes/hwc_frontend/images/share-popup/linkedin.png) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-google-plus a {
+  background-image: url(/sites/all/themes/hwc_frontend/images/share-popup/google-plus.png) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+#share-popup-container .share-widget-container .osha-share-widget .osha-share-widget-print a {
+  background-image: url(/sites/all/themes/hwc_frontend/images/share-popup/print_icon.png) !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+/*End newsletter mail styles*/
+/*mini panel news and events: not published (only for validation)*/
+#mini-panel-news_and_events .view-id-news .media-list .pull-left {
+  display: none;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
@@ -16858,12 +17730,69 @@ input#edit-field-image-und-0-upload::before {
     min-width: 100%;
   }
   /*end good practice exchange*/
+  /*priority areas*/
+  .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
+    height: 360px;
+  }
+  .priority-detail .pane-taxonomy-term-field-image {
+    height: 360px;
+  }
+  .priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image img {
+    width: 100%;
+    height: 360px;
+  }
+  .priority-detail .highlights [class*=col-sm-],
+  .priority-detail .tools_and_guidance [class*=col-sm-],
+  .priority-detail .case_studies [class*=col-sm-],
+  .priority-detail .publications [class*=col-sm-],
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool [class*=col-sm-],
+  .priority-detail .related_links [class*=col-sm-] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /*contact form*/
+  .contact-form.container {
+    padding: 0 30px;
+  }
+  .contact-form.container .grippie {
+    display: none;
+  }
+  .contact-form.container div.form-group {
+    width: 100% !important;
+    float: left;
+    margin-bottom: 1em !important;
+    min-height: 64px;
+  }
+  .contact-form.container div.form-group .form-control {
+    width: 100%;
+  }
+  .contact-form.container .form-type-select select {
+    width: 100%;
+  }
+  .contact-form.container .form-type-select:after {
+    left: inherit;
+    right: 0px;
+  }
+  .page-publications .view-id-publication_type .views-row .views-field-name-field a {
+    display: block;
+    padding: .5em 0;
+    background-color: #003399;
+    min-height: 65px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    line-height: 16px;
+    padding-top: 20px;
+  }
 }
 @media only screen and (max-width: 1100px) {
   .front #block-views-frontpage-slider-block #homepage_slider img {
     position: absolute;
     width: initial;
-    right: -276px;
+    right: -190px;
   }
 }
 @media only screen and (max-width: 1022px) {
@@ -16986,7 +17915,7 @@ input#edit-field-image-und-0-upload::before {
   }
   header.navbar-default .campaigns-header .navbar-header .region-header #block-hwc-partner-hwc-partner-mostra-masquerade {
     float: right;
-    margin-top: 24px;
+    margin-top: 10px;
     margin-right: -1px;
   }
   header.navbar-default .navbar-collapse nav ul.menu li a .caret,
@@ -17036,7 +17965,7 @@ input#edit-field-image-und-0-upload::before {
     margin-bottom: 0;
   }
   .front #homepage_slider img {
-    right: -329px !important;
+    right: -238px !important;
   }
   .front #homepage_slider .views-field-title span {
     margin-right: 10px;
@@ -17136,6 +18065,9 @@ input#edit-field-image-und-0-upload::before {
   .front .panels-flexible-region-new-center {
     border-right: none;
   }
+  .front .panels-flexible-region-new-home_right {
+    margin-top: 2em;
+  }
   .front .panels-flexible-region-new-home_right h2.pane-title {
     border-top: 1px dotted #749b00;
   }
@@ -17199,10 +18131,27 @@ input#edit-field-image-und-0-upload::before {
     padding-left: 0px;
   }
   /* End Block: recommended-articles and recommended-resources and article aditional resources*/
+  .results-for {
+    margin-left: 15px;
+  }
   /*Practical tools*/
   .page-practical-tools #edit-content {
     width: 100%;
     margin-right: 0;
+  }
+  .page-practical-tools .form-group {
+    margin-bottom: 15px;
+  }
+  .page-practical-tools #search {
+    margin-top: 0;
+  }
+  .page-practical-tools #edit-search-api-views-fulltext-wrapper {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+  }
+  .page-practical-tools .region-sidebar-first .views-exposed-widgets .form-type-textfield input {
+    padding-right: 0px;
+    margin-left: 0px;
   }
   .form-type-checkbox {
     float: left;
@@ -17218,12 +18167,6 @@ input#edit-field-image-und-0-upload::before {
   #edit-left-column {
     padding-right: 0px;
     padding-left: 0px;
-  }
-  .page-practical-tools .form-group {
-    margin-bottom: 15px;
-  }
-  .page-practical-tools #search {
-    margin-top: 0;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing .h4-title,
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
@@ -17654,40 +18597,53 @@ input#edit-field-image-und-0-upload::before {
   .page-search .region-sidebar-first {
     border-bottom: none;
     border-top: 1px dotted #749b00;
-    margin-bottom: 0;
+    margin-bottom: 0px;
     margin-left: 0;
     padding-top: 0;
     padding-bottom: 0;
   }
-  .page-search .region-sidebar-first h2 {
-    padding: 0.5em 30px 0;
-    float: left;
-    margin-bottom: 0;
+  .page-search .region-sidebar-first #edit-search-block-form--3-wrapper {
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
-  .page-search .region-sidebar-first .facetapi-facetapi-checkbox-links {
-    padding-left: 30px;
-    padding-top: 0.7em;
-    margin-bottom: 0;
-    display: inline-block;
+  .page-search .region-sidebar-first .views-submit-button button {
+    right: 15px !important;
   }
-  .page-search .region-sidebar-first .facetapi-facetapi-checkbox-links li {
-    float: left;
+  .page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters a {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .page-search .region-sidebar-first .block.block-facetapi {
+    border-bottom: none;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    overflow: hidden;
+  }
+  .page-search .region-sidebar-first .block.block-facetapi h2 {
+    padding: 8px 15px;
+    margin-bottom: 0;
+    background-color: #e2e2e3;
+  }
+  .page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links {
+    padding-left: 15px;
+    margin-bottom: 0;
+    display: block;
+  }
+  .page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li {
     width: 20%;
     width: auto;
     white-space: nowrap;
     margin-right: 1em;
   }
-  .page-search .views-exposed-form {
-    padding-left: 15px;
-  }
-  .page-search #views-exposed-form-search-site {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
   .page-search .region.region-content {
     float: left;
     width: 100%;
     margin-left: 0;
+  }
+  .page-search .region.region-content .view-search .view-header {
+    padding: 7px 15px;
   }
   .page-search .region.region-content .view-search .view-content .views-row {
     padding-left: 30px;
@@ -17961,6 +18917,20 @@ input#edit-field-image-und-0-upload::before {
   }
   /*fin partner profile*/
   /*create events & news*/
+  .node-type-news .node-events-form > div > .container,
+  .node-type-events .node-events-form > div > .container,
+  .node-type-news .node-news-form > div > .container,
+  .node-type-events .node-news-form > div > .container {
+    padding-left: 15px !important;
+    padding-right: 16px !important;
+  }
+  .page-node-add-events .node-events-form > div > .container,
+  .page-node-add-news .node-events-form > div > .container,
+  .page-node-add-events .node-news-form > div > .container,
+  .page-node-add-news .node-news-form > div > .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
   .page-node-add-events .node-events-form .hwc-2col-stacked-2col,
   .page-node-add-news .node-events-form .hwc-2col-stacked-2col,
   .page-node-add-events .node-news-form .hwc-2col-stacked-2col,
@@ -17972,7 +18942,7 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-events .node-news-form .form-type-textfield,
   .page-node-add-news .node-news-form .form-type-textfield {
     padding-right: 0em;
-    max-width: 416px;
+    max-width: 100%;
   }
   .page-node-add-events .node-events-form .form-select,
   .page-node-add-news .node-events-form .form-select,
@@ -18027,8 +18997,8 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-events .node-news-form .group-center .field-name-field-related-documents,
   .page-node-add-news .node-news-form .group-center .field-name-field-related-documents {
     padding-bottom: 2em;
-    margin-left: -30px;
-    margin-right: -30px;
+    margin-left: 0px;
+    margin-right: 0px;
     padding: 0 30px 2em 30px;
     border-bottom: 1px dotted #749b00;
   }
@@ -18058,6 +19028,22 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-news .node-news-form .form-type-select:after {
     bottom: 0px;
     height: 34px;
+  }
+  .node-events-form .checkbox input[type=checkbox]:checked {
+    margin-left: -18px;
+  }
+  .node-events-form .form-type-checkbox {
+    width: 100%;
+  }
+  .node-events-form .group-left .form-item-title,
+  .node-events-form .group-left2 .form-item-title,
+  .node-events-form .group-left .form-item-field-organizer-und-0-value,
+  .node-events-form .group-left2 .form-item-field-organizer-und-0-value,
+  .node-events-form .group-left .field-name-field-contact-name,
+  .node-events-form .group-left2 .field-name-field-contact-name,
+  .node-events-form .group-left .field-name-field-contact-phone,
+  .node-events-form .group-left2 .field-name-field-contact-phone {
+    margin-right: 0px;
   }
   /*fin create events & news*/
   /*Plantilla employers*/
@@ -18196,6 +19182,9 @@ input#edit-field-image-und-0-upload::before {
     height: inherit !important;
     position: relative !important;
   }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 515px;
+  }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;
     overflow: hidden !important;
@@ -18286,10 +19275,6 @@ input#edit-field-image-und-0-upload::before {
   }
   /*End pag Newsletter*/
   /*Good practices, publications, case studies*/
-  .page-publications .main-container.container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
   #edit-left-column {
     position: relative;
   }
@@ -18326,7 +19311,7 @@ input#edit-field-image-und-0-upload::before {
     clear: both;
     cursor: pointer;
     background-color: #e2e2e3;
-    padding: 5px 10px;
+    padding: 5px 15px;
     font-size: 1.2em;
     margin-bottom: 0px;
   }
@@ -18353,6 +19338,8 @@ input#edit-field-image-und-0-upload::before {
     display: inline-block;
     width: 100%;
     margin-top: 2px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   #edit-left-column > a.active:nth-child(-1) {
     border-bottom: 1px dotted #749b00;
@@ -18360,6 +19347,10 @@ input#edit-field-image-und-0-upload::before {
   #edit-left-column .clear_filters {
     font-weight: bold;
     margin-top: 4px;
+  }
+  #edit-left-column .clear_filters a {
+    padding-left: 15px;
+    padding-right: 15px;
   }
   #edit-left-column .checkbox {
     width: 100%;
@@ -18472,6 +19463,29 @@ input#edit-field-image-und-0-upload::before {
     margin-bottom: 0px;
   }
   /*end good practice exchange*/
+  /*priority areas*/
+  .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
+    height: 300px;
+  }
+  .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field h1 {
+    padding-top: 130px;
+  }
+  .priority-detail .pane-taxonomy-term-field-image {
+    height: 300px;
+  }
+  .priority-detail .pane-taxonomy-term-field-image .field.field-name-field-image img {
+    width: 100%;
+    height: 300px;
+  }
+  .priority-detail .highlights [class*=col-sm-],
+  .priority-detail .tools_and_guidance [class*=col-sm-],
+  .priority-detail .case_studies [class*=col-sm-],
+  .priority-detail .publications [class*=col-sm-],
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool [class*=col-sm-],
+  .priority-detail .related_links [class*=col-sm-] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 @media only screen and (max-width: 767px) {
   #sliding-popup.sliding-popup-top {
@@ -18644,6 +19658,20 @@ input#edit-field-image-und-0-upload::before {
   header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav li ul.dropdown-menu li:before {
     content: "";
     padding: 0;
+  }
+  header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.leaf > a {
+    text-align: left;
+    border-right: none;
+  }
+  header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.leaf > a:before {
+    content: "> ";
+  }
+  header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.first > a {
+    text-align: center;
+    border-right: none;
+  }
+  header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.first > a:before {
+    content: "";
   }
   header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav .open .dropdown-menu > .active > a,
   header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav .open .dropdown-menu > .active > a:hover,
@@ -19067,10 +20095,7 @@ input#edit-field-image-und-0-upload::before {
   }
   .front .panels-flexible-region-new-center h2.pane-title,
   .front .panels-flexible-region-new-home_right h2.pane-title {
-    border-top: 1px dotted #749b00;
-  }
-  .front .panels-flexible-region-new-home_right h2.pane-title {
-    border-top: 1px dotted #749b00;
+    border-top: none;
   }
   .front .panels-flexible-region-new-home_right div.more-link {
     margin-top: 30px;
@@ -19508,6 +20533,30 @@ input#edit-field-image-und-0-upload::before {
   }
   .page-practical-tools .form-type-checkbox label {
     font-size: 14px;
+  }
+  .page-practical-tools .below_title .field-type-text-with-summary {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0 25px;
+    padding-bottom: 1em;
+  }
+  .page-practical-tools .sort-container.col-xs-3 {
+    width: 100% !important;
+    padding-right: 0px;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order select {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-practical-tools .sort-container.col-xs-3 .form-item-sort-order {
+    margin-left: 0px;
+    margin-top: 10px;
   }
   .pane-hwc-practical-tool-hwc-practical-tool-listing h4 {
     padding-left: 15px;
@@ -20229,10 +21278,11 @@ input#edit-field-image-und-0-upload::before {
   /*fin videos*/
   /* pag Search */
   .page-search .region-sidebar-first h2 {
-    margin-left: 15px;
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    margin-left: 0px;
+    font-size: 1.1em !important;
   }
   .page-search .region-sidebar-first .facetapi-facetapi-checkbox-links {
     padding-left: 15px;
@@ -20621,6 +21671,12 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-events .node-news-form .group-footer.col-md-12,
   .page-node-add-news .node-news-form .group-footer.col-md-12 {
     width: 100%;
+  }
+  .page-node-add-events .node-events-form .table-responsive,
+  .page-node-add-news .node-events-form .table-responsive,
+  .page-node-add-events .node-news-form .table-responsive,
+  .page-node-add-news .node-news-form .table-responsive {
+    border: none;
   }
   .page-node-add-events .node-events-form #edit-field-country-code,
   .page-node-add-news .node-events-form #edit-field-country-code,
@@ -21048,6 +22104,9 @@ input#edit-field-image-und-0-upload::before {
     height: 301px !important;
     position: relative !important;
   }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 348px;
+  }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;
     overflow: hidden !important;
@@ -21103,6 +22162,10 @@ input#edit-field-image-und-0-upload::before {
   .page-publications .main-container .pane-node-body .field-type-text-with-summary {
     font-size: 1.2em;
   }
+  .page-publications .main-container.container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
   .page-publications .view-id-publication_type {
     margin-top: 30px;
     margin-bottom: 50px;
@@ -21123,11 +22186,12 @@ input#edit-field-image-und-0-upload::before {
     min-height: 65px;
     color: white;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding-left: 15px;
     padding-right: 15px;
     text-align: center;
-    line-height: 45px;
+    line-height: 47px;
+    margin-bottom: 15px;
   }
   .page-publications .view-id-publication_type .views-row .views-field-name-field a:before {
     content: "> ";
@@ -21233,6 +22297,77 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
   }
   /*end good practice exchange*/
+  /*priority areas*/
+  .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field {
+    height: inherit;
+    background: white;
+    position: relative;
+  }
+  .priority-detail .pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field h1 {
+    padding-top: 0px;
+    color: #749b00;
+  }
+  .priority-detail .pane-taxonomy-term-field-image {
+    display: none;
+  }
+  .priority-detail .pane-taxonomy-term-field-introduction-text {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .priority-detail .highlights,
+  .priority-detail .tools_and_guidance,
+  .priority-detail .case_studies,
+  .priority-detail .publications,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool,
+  .priority-detail .related_links {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .priority-detail .highlights .views-row,
+  .priority-detail .tools_and_guidance .views-row,
+  .priority-detail .case_studies .views-row,
+  .priority-detail .publications .views-row,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-row,
+  .priority-detail .related_links .views-row {
+    text-align: center !important;
+  }
+  .priority-detail .highlights [class*=col-sm-],
+  .priority-detail .tools_and_guidance [class*=col-sm-],
+  .priority-detail .case_studies [class*=col-sm-],
+  .priority-detail .publications [class*=col-sm-],
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool [class*=col-sm-],
+  .priority-detail .related_links [class*=col-sm-] {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .priority-detail .highlights .views-field-field-image,
+  .priority-detail .tools_and_guidance .views-field-field-image,
+  .priority-detail .case_studies .views-field-field-image,
+  .priority-detail .publications .views-field-field-image,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-field-field-image,
+  .priority-detail .related_links .views-field-field-image,
+  .priority-detail .highlights .views-field-field-cover-image,
+  .priority-detail .tools_and_guidance .views-field-field-cover-image,
+  .priority-detail .case_studies .views-field-field-cover-image,
+  .priority-detail .publications .views-field-field-cover-image,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-field-field-cover-image,
+  .priority-detail .related_links .views-field-field-cover-image {
+    margin-bottom: 15px;
+  }
+  .priority-detail .highlights .views-field-field-image img,
+  .priority-detail .tools_and_guidance .views-field-field-image img,
+  .priority-detail .case_studies .views-field-field-image img,
+  .priority-detail .publications .views-field-field-image img,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-field-field-image img,
+  .priority-detail .related_links .views-field-field-image img,
+  .priority-detail .highlights .views-field-field-cover-image img,
+  .priority-detail .tools_and_guidance .views-field-field-cover-image img,
+  .priority-detail .case_studies .views-field-field-cover-image img,
+  .priority-detail .publications .views-field-field-cover-image img,
+  .priority-detail .pane-hwc-priority-areas-hwc-pa-etool .views-field-field-cover-image img,
+  .priority-detail .related_links .views-field-field-cover-image img {
+    margin: 0 auto;
+  }
 }
 @media only screen and (max-width: 480px) {
   #colorbox {
@@ -21368,6 +22503,34 @@ input#edit-field-image-und-0-upload::before {
   .page-node-add-news .node-news-form .field-name-field-related-documents .form-file {
     max-width: 200px !important;
   }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data input,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data input,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data input,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data input {
+    max-width: 64%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn {
+    float: left;
+    display: block !important;
+    width: inherit;
+    height: 14px;
+    width: 36%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button {
+    max-width: 100%;
+  }
+  .page-node-add-events .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-news .node-events-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-events .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span,
+  .page-node-add-news .node-news-form .form-managed-file .image-widget-data span.input-group-btn button span {
+    height: initial !important;
+  }
   /*fin create events & news*/
   .view-mode-full .hwc-share-widget ul .share-this-article {
     top: -5px;
@@ -21481,6 +22644,9 @@ input#edit-field-image-und-0-upload::before {
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films > div {
     height: 214px !important;
     position: relative !important;
+  }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films {
+    height: 265px;
   }
   .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides {
     font-size: 16px;

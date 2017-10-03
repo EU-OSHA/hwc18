@@ -16,7 +16,7 @@ function osha_search_update_7001() {
 }
 
 /**
- * Configure new search autocomplete callback
+ * Configure new search autocomplete callback.
  */
 function osha_search_update_7002() {
   // Configure the search form.
@@ -41,7 +41,7 @@ function osha_search_update_7002() {
 }
 
 /**
- * Configure new search autocomplete callback
+ * Configure new search autocomplete callback.
  */
 function osha_search_update_7003() {
   features_revert_module('osha_search');
@@ -49,7 +49,7 @@ function osha_search_update_7003() {
 }
 
 /**
- * New search filters
+ * New search filters.
  */
 function osha_search_update_7004() {
   features_revert_module('osha_search');
@@ -58,21 +58,21 @@ function osha_search_update_7004() {
 }
 
 /**
- * New search filters blocks
+ * New search filters blocks.
  */
 function osha_search_update_7005() {
   features_revert(array('osha_search' => 'fe_block_settings'));
 }
 
 /**
- * New search filters blocks
+ * New search filters blocks.
  */
 function osha_search_update_7006() {
   features_revert(array('osha_search' => 'views_view'));
 }
 
 /**
- * audio visual content type
+ * Audio visual content type.
  */
 function osha_search_update_7007() {
   features_revert_module('osha_search');
@@ -81,8 +81,38 @@ function osha_search_update_7007() {
 }
 
 /**
- * New search order style
+ * New search order style.
  */
 function osha_search_update_7008() {
   features_revert_module('osha_search');
+}
+
+/**
+ * Search remove active link.
+ */
+function osha_search_update_7009() {
+  module_enable(['facetapi_bonus']);
+  features_revert_module('osha_search');
+}
+
+/**
+ * Search exclude type fields.
+ */
+function osha_search_update_7010() {
+  features_revert_module('osha_search');
+}
+
+/**
+ * HW18-141.
+ */
+function osha_search_update_7011() {
+  features_revert_module('osha_search');
+}
+
+/**
+ * HW18-191 - New CT Document.
+ */
+function osha_search_update_7012() {
+  features_revert_module('osha_search');
+  search_api_index_reindex('default_multilingual_node_index');
 }

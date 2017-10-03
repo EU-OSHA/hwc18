@@ -42,7 +42,7 @@ function social_dashboard_media_centre_form($form, $form_state) {
   ];
   $form['source'] = array(
     '#type' => 'select',
-    '#title' => '',
+    '#title' => 'All', // @todo hide via css
     '#options' => $options,
     '#suffix' => $output,
   );
@@ -169,7 +169,6 @@ function social_dashboard_views_plugins() {
  * Implements hook_form_alter().
  */
 function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
-  //  krumo($form['#id']);
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-social-dashboard-page') {
     $options = [
       '' => 'All',
@@ -195,7 +194,6 @@ function social_dashboard_views_query_alter(&$view, &$query) {
     $map['linkedin'] = variable_get('social_linkedin_selected_tag', '');
     $map['twitter'] = variable_get('social_twitter_selected_tag', '');
 
-//    krumo($view->current_display, $query->where);
     foreach($map as $source => $selected_tag) {
       if (isset($_REQUEST['source']) && $_REQUEST['source'] && $source != $_REQUEST['source']) {
         continue;
@@ -218,11 +216,10 @@ function social_dashboard_views_query_alter(&$view, &$query) {
         'operator' => '=',
       ];
       if ($source != $view->current_display) {
-        $query->where[1]['conditions'][0]['value']='empty';
+        $query->where[1]['conditions'][0]['value'] = 'empty';
         continue;
       }
       $query->where[] = $condition_group;
-//      krumo($query->where, $condition_group);
     }
   }
 }

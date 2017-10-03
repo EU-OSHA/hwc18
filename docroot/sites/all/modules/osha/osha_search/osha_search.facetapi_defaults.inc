@@ -125,6 +125,33 @@ function osha_search_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@default_multilingual_node_index::partner_organisation';
+  $facet->searcher = 'search_api@default_multilingual_node_index';
+  $facet->realm = '';
+  $facet->facet = 'partner_organisation';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'or',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'facets' => array(),
+      'force_deactivation' => TRUE,
+      'regex' => FALSE,
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => 0,
+    'query_type' => 'term',
+    'limit_active_items' => 0,
+    'default_true' => '1',
+    'facet_search_ids' => array(),
+    'exclude' => 0,
+  );
+  $export['search_api@default_multilingual_node_index::partner_organisation'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@default_multilingual_node_index::type';
   $facet->searcher = 'search_api@default_multilingual_node_index';
   $facet->realm = '';
@@ -634,29 +661,61 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'display' => 'display',
       'active' => 'active',
       'count' => 'count',
       'indexed' => 0,
+      'natural' => 0,
     ),
     'sort_weight' => array(
+      'display' => '-50',
       'active' => '-49',
       'count' => '-48',
-      'display' => '-50',
       'indexed' => '-47',
+      'natural' => '0',
     ),
     'sort_order' => array(
+      'display' => '4',
       'active' => '3',
       'count' => '3',
-      'display' => '4',
       'indexed' => '4',
+      'natural' => '4',
     ),
     'empty_behavior' => 'none',
     'facet_more_text' => 'Show more',
     'facet_fewer_text' => 'Show fewer',
-    'soft_limit' => '20',
+    'soft_limit' => '0',
     'nofollow' => 1,
     'show_expanded' => 0,
     'empty_text' => array(
@@ -664,6 +723,10 @@ function osha_search_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_priority_area'] = $facet;
 
@@ -982,7 +1045,32 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
     'active_sorts' => array(
       'display' => 'display',
       'active' => 'active',
@@ -1012,6 +1100,10 @@ function osha_search_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:language'] = $facet;
 
@@ -1050,6 +1142,154 @@ function osha_search_facetapi_default_facet_settings() {
     'show_expanded' => 0,
   );
   $export['search_api@default_multilingual_node_index:block:nid'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@default_multilingual_node_index:block:partner_category_type';
+  $facet->searcher = 'search_api@default_multilingual_node_index';
+  $facet->realm = 'block';
+  $facet->facet = 'partner_category_type';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'facet_more_text' => 'Show more',
+    'facet_fewer_text' => 'Show fewer',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@default_multilingual_node_index:block:partner_category_type'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@default_multilingual_node_index:block:partner_organisation';
+  $facet->searcher = 'search_api@default_multilingual_node_index';
+  $facet->realm = 'block';
+  $facet->facet = 'partner_organisation';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_checkbox_links',
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+      'natural' => 0,
+      'indexed' => 0,
+    ),
+    'sort_weight' => array(
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'natural' => '0',
+      'indexed' => '0',
+    ),
+    'sort_order' => array(
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'natural' => '4',
+      'indexed' => '4',
+    ),
+    'empty_behavior' => 'none',
+    'facet_more_text' => 'Show more',
+    'facet_fewer_text' => 'Show fewer',
+    'soft_limit' => '0',
+    'nofollow' => 1,
+    'show_expanded' => 0,
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'full_html',
+    ),
+    'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
+  );
+  $export['search_api@default_multilingual_node_index:block:partner_organisation'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@default_multilingual_node_index:block:partner_section';
+  $facet->searcher = 'search_api@default_multilingual_node_index';
+  $facet->realm = 'block';
+  $facet->facet = 'partner_section';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'facet_more_text' => 'Show more',
+    'facet_fewer_text' => 'Show fewer',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@default_multilingual_node_index:block:partner_section'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -1130,7 +1370,7 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@default_multilingual_node_index';
   $facet->realm = 'block';
   $facet->facet = 'search_api_language';
-  $facet->enabled = FALSE;
+  $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -1358,7 +1598,32 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
     'active_sorts' => array(
       'display' => 'display',
       'active' => 'active',
@@ -1388,6 +1653,10 @@ function osha_search_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:type'] = $facet;
 

@@ -197,6 +197,8 @@ function osha_views_default_views() {
     'state' => 'state',
     'created' => 'created',
     'changed' => 'changed',
+    'field_modified_on' => 'field_modified_on',
+    'field_modified_by' => 'field_modified_by',
     'edit_node' => 'edit_node',
     'delete_node' => 'delete_node',
     'nothing' => 'nothing',
@@ -258,6 +260,20 @@ function osha_views_default_views() {
     'changed' => array(
       'sortable' => 1,
       'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_modified_on' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_modified_by' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -377,6 +393,27 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'year';
+  /* Field: Content: Modified on */
+  $handler->display->display_options['fields']['field_modified_on']['id'] = 'field_modified_on';
+  $handler->display->display_options['fields']['field_modified_on']['table'] = 'field_data_field_modified_on';
+  $handler->display->display_options['fields']['field_modified_on']['field'] = 'field_modified_on';
+  $handler->display->display_options['fields']['field_modified_on']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Modified by */
+  $handler->display->display_options['fields']['field_modified_by']['id'] = 'field_modified_by';
+  $handler->display->display_options['fields']['field_modified_by']['table'] = 'field_data_field_modified_by';
+  $handler->display->display_options['fields']['field_modified_by']['field'] = 'field_modified_by';
+  $handler->display->display_options['fields']['field_modified_by']['settings'] = array(
+    'link' => 0,
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -689,6 +726,8 @@ function osha_views_default_views() {
     t('Workflow'),
     t('Created'),
     t('Updated date'),
+    t('Modified on'),
+    t('Modified by'),
     t('edit'),
     t('[edit_node] [delete_node]'),
     t('Operations'),

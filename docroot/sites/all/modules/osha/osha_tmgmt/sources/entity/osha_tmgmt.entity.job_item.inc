@@ -229,7 +229,7 @@ class OshaTMGMTJobItem extends TMGMTJobItem {
         )
       );
       $item_id = $this->target_language . '_' . $this->item_id;
-      OshaWorkflowNotifications::notifyTranslationAccepted($this);
+      // OshaWorkflowNotifications::notifyTranslationAccepted($this);
       search_api_track_item_change('search_api_et_node', array($item_id));
     }
     $this->save();

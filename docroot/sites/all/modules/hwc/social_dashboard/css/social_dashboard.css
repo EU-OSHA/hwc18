@@ -51,6 +51,10 @@
     float: left;
 }
 
+.view-social-dashboard .feed-s-post-meta {
+    margin: 0 16px;
+}
+
 .view-social-dashboard .feed-s-update__description {
     position: relative;
     max-height: 54px;

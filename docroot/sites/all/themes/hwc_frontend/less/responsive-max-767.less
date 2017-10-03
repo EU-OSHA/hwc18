@@ -199,6 +199,24 @@ header.navbar-default{
 						}
 					}
 				}
+				>li.leaf{
+					>a{
+						text-align: left;
+						border-right: none;
+						&:before{
+							content:"> ";
+						}
+					}
+				}
+				> li.first{	
+					>a{
+						text-align: center;
+						border-right: none;
+						&:before{
+							content:"";
+						}
+					}
+				}
 				.open .dropdown-menu > .active > a, .open .dropdown-menu > .active > a:hover, .open .dropdown-menu > .active > a:focus, .open .dropdown-menu > li > a:hover, .open .dropdown-menu > li > a:focus{
 					color: white;
 				}
@@ -565,12 +583,12 @@ header.navbar-default{
 		.panels-flexible-region-new-center,
 		.panels-flexible-region-new-home_right{
 			h2.pane-title{
-				border-top: 1px dotted @color3;
+				border-top: none;
 			}
 		}
 		.panels-flexible-region-new-home_right{
 			h2.pane-title{
-				border-top: 1px dotted @border-default-color;
+				//border-top: 1px dotted @border-default-color;
 			}
 			div.more-link{
 				margin-top: 30px;
@@ -918,6 +936,31 @@ header.navbar-default{
 			width: 50%;
 			label{
 				font-size: @size4;
+			}
+		}
+		.below_title{
+			.field-type-text-with-summary{
+				padding-right: 0px;
+			    padding-left: 0px;
+			    margin: 0 25px;
+			    padding-bottom: 1em;
+			}
+		}
+		.sort-container.col-xs-3{
+			width: 100% !important;
+			padding-right: 0px;
+			.form-item-sort-by,
+			.form-item-sort-order{
+				display: inline-block;
+				width: 100%;
+				select{
+					display: inline-block;
+					width: 100%;
+				}
+			}
+			.form-item-sort-order{
+				margin-left: 0px;
+				margin-top: 10px;
 			}
 		}
 	}
@@ -1611,10 +1654,11 @@ header.navbar-default{
 .page-search{
 	.region-sidebar-first{
 		h2{
-			margin-left: @margin-movil;
 			margin-right: 0;
 			padding-left: 0;
 			padding-right: 0;
+			margin-left: 0px;
+			font-size: 1.1em !important;
 		}
 		.facetapi-facetapi-checkbox-links{
 			padding-left: @margin-movil;
@@ -1939,6 +1983,9 @@ header.navbar-default{
 		}
 		.group-footer.col-md-12{
 			width: 100%;
+		}
+		.table-responsive{
+			border: none;
 		}
 		#edit-field-country-code, #edit-field-gallery{
 			width: 100%;
@@ -2378,6 +2425,7 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 				position: relative !important;
 			}
 			.napo_films{
+				height: 348px;
 				.num_slides{
 					font-size: 16px;
 					//position: inherit !important;
@@ -2460,6 +2508,10 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 			}
 		}
 	}
+	.main-container.container-fluid{
+		padding-left: 15px !important;
+		padding-right: 15px !important;
+	}
 	.view-id-publication_type{
 		margin-top: 30px;
 		margin-bottom: 50px;
@@ -2479,10 +2531,12 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 				    min-height: 65px;
 				    color: white;
 				    font-weight: bold;
-    				font-size: 1.3em;
+    				font-size: 1.1em;
     				padding-left: 15px;
     				padding-right: 15px;
-    				text-align: center;line-height: 45px;
+    				text-align: center;
+    				line-height: 47px;
+    				margin-bottom: 15px;
     				&:before{
     					content: "> ";
     				}
@@ -2625,6 +2679,49 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 /*end good practice exchange*/
 
 
+/*priority areas*/
+.priority-detail{
+	.pane-taxonomy-term-field-image + .pane-taxonomy-term-name-field{
+		height: inherit;
+		background: white;
+		position: relative;
+		h1{
+			padding-top: 0px;
+			color: @color3;
+		}
+	}
+	.pane-taxonomy-term-field-image{
+		display: none;
+	}
+	.pane-taxonomy-term-field-introduction-text{
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+
+	.highlights,
+	.tools_and_guidance,
+	.case_studies,
+	.publications,
+	.pane-hwc-priority-areas-hwc-pa-etool,
+	.related_links{
+		margin-left: 15px;
+		margin-right: 15px;
+		.views-row{
+			text-align: center !important;
+		}
+		[class*=col-sm-]{
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+		.views-field-field-image,
+		.views-field-field-cover-image{
+			margin-bottom: 15px;
+			img{
+				margin: 0 auto;
+			}
+		}
+	}
+}
 
 }
 

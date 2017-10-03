@@ -23,3 +23,9 @@
 <?php if (!empty($drupal_render_children)): ?>
   <?php print $drupal_render_children ?>
 <?php endif; ?>
+<?php
+if (!empty($elements['node_share_popup'])) {
+    print render($elements['node_share_popup']);
+?>
+  <?php
+}

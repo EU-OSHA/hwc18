@@ -133,6 +133,9 @@ header.navbar-default{
 						outline: 0;
 					}
 				}
+				#edit-actions{
+					margin-bottom: 0px;
+				}
 			}
 		}
 		.row:first-of-type{
@@ -264,6 +267,40 @@ header.navbar-default{
 						background-color: @menu-bg-color;
 					}
 				}
+				
+				li.last{
+					.dropdown-menu{
+						min-width: 100%;
+						position: absolute;
+    					right: 0px;
+					}
+				}
+				li.active-trail{
+					font-weight: bold;
+					color: @menu-selected-color;
+					a, > span{
+						color: @menu-selected-color;
+						background-color: @menu-bg-color;
+					}
+					ul li a, ul li span{
+						color: white;
+					}
+					ul li.active-trail{
+						color: white;
+						a{
+							font-weight: bold;
+						}
+					}
+				}
+				>li.leaf{
+					>a{
+						margin-top: 8px;
+						margin-bottom: 8px;
+						border-right: 1px solid white;
+						padding-bottom: 2px;
+						padding-top: 2px;
+					}
+				}
 				> li.first{
 					width: 10%;
 					a{
@@ -290,30 +327,6 @@ header.navbar-default{
 						}
 					}
 				}
-				li.last{
-					.dropdown-menu{
-						min-width: 100%;
-						position: absolute;
-    					right: 0px;
-					}
-				}
-				li.active-trail{
-					font-weight: bold;
-					color: @menu-selected-color;
-					a, > span{
-						color: @menu-selected-color;
-						background-color: @menu-bg-color;
-					}
-					ul li a, ul li span{
-						color: white;
-					}
-					ul li.active-trail{
-						color: white;
-						a{
-							font-weight: bold;
-						}
-					}
-				}
 			}
 		}
 	}
@@ -321,7 +334,8 @@ header.navbar-default{
 .region-above-header.region{
 	float: right;
 	width: auto;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	section, > div {
 		float: left;
 		margin-right: -5px;
@@ -407,4 +421,29 @@ header.navbar-default{
 #masquerade-block-1 .btn-default.form-submit{
 	margin-top:1em;
 	margin-bottom: 0.7em;
+}
+
+@media only screen and (min-width : 1200px) {
+	.navbar-header{
+		.xs-menu{
+			max-width: 400px;
+			float: right;
+		}
+	}
+}
+@media only screen and (max-width : 1105px) {
+	#block-hwc-partner-hwc-partner-mostra-masquerade{
+		min-width: 255px;
+	}
+}
+@media only screen and (max-width : 828px) {
+	#block-hwc-partner-hwc-partner-mostra-masquerade{
+		min-width: 197px;
+		a{
+			float: right;
+		}
+		.button-left{
+			margin-bottom: 7px;
+		}
+	}
 }

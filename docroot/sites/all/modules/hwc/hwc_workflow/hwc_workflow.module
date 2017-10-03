@@ -252,7 +252,7 @@ function hwc_workflow_node_access($node, $op, $account) {
   }
 
   // Workflow validations are only for Events and News.
-  if (!in_array($type, array('events', 'news'))) {
+  if (!in_array($type, array('document', 'events', 'news'))) {
     return NODE_ACCESS_IGNORE;
   }
 
@@ -296,24 +296,32 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
       '#title' => 'How many minutes can the partner still edit the node?',
       '#default_value' => variable_get('hwc_workflow_partner_content_minutes_gap_autosubmit', 30),
       '#attributes' => array('size' => 5),
-      '#description' => "After partner submits the content, he can still edit for this amount of time"
+      '#description' => "After partner submits the content, he can still edit for this amount of time",
     );
   }
   if (in_array($form_id, array('events_node_form', 'news_node_form'))) {
     $node = $form_state['node'];
-    $can_delete = user_access("delete any {$node->type} content") || user_access("delete own {$node->type} content");
+    $can_delete =
+      (
+        user_access("delete any {$node->type} content") ||
+        user_access("delete own {$node->type} content")
+      );
+    if ($node->workbench_moderation['current']->state == 'final_draft') {
+      $can_delete = $can_delete && user_access('delete any content in final_draft');
+    }
+
     if (!empty($node->nid) && $can_delete && in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['actions']['delete'] = array(
         '#type' => 'submit',
         '#value' => t('Delete'),
         '#weight' => 19,
-        '#submit' => array('node_form_delete_submit')
+        '#submit' => array('node_form_delete_submit'),
       );
     }
   }
 
   if ($form_id == 'workbench_moderation_moderate_form' && isset($form['node']['#value'])) {
-    // Append the approval buttons in workbench moderation (on node view).q
+    // Append the approval buttons in workbench moderation (on node view).
     module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
     $form['#node'] = $form['node']['#value'];
     hwc_workflow_node_cpm_actions_append($form, $form['node']['#value']);
@@ -352,6 +360,35 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['workbench_access']['workbench_access']['#options']['section'])) {
     $form['workbench_access']['workbench_access']['#title'] = 'Partner';
     $form['workbench_access']['workbench_access']['#options']['section'] = 'General Public';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
+  global $user;
+  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+        if ($user_id_section == $wb_id_section) {
+          $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
+          $form['workbench_access']['workbench_access']['#access'] = FALSE;
+          break;
+        }
+      }
+    }
+    if (empty($form['workbench_access']['workbench_access']['#default_value'])) {
+      drupal_goto('<front>');
+    }
+    $form['#after_build'][] = 'hwc_workflow_node_form_after_build_hide_hints';
+
+    _hwc_workflow_partner_node_form_alter($form, $form_state);
+  }
+  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+    if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
+      $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
+    }
   }
 }
 

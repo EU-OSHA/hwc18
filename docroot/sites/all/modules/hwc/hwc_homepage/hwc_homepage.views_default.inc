@@ -176,7 +176,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'views_bootstrap_media_plugin_style';
   $handler->display->display_options['style_options']['image_field'] = 'field_start_date_1';
   $handler->display->display_options['style_options']['heading_field'] = 'field_start_date';
-  $handler->display->display_options['style_options']['body_field'] = 'title_field';
+  $handler->display->display_options['style_options']['body_field'] = 'field_country_code';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -185,7 +185,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Starting date and time */
+  /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
@@ -213,7 +213,7 @@ function hwc_homepage_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
-  /* Field: Content: Starting date and time */
+  /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
   $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date_1']['field'] = 'field_start_date';
@@ -233,13 +233,14 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
   $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
   $handler->display->display_options['fields']['field_country_code']['label'] = '';
-  $handler->display->display_options['fields']['field_country_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_country_code']['alter']['text'] = '[title_field]
+<div class="views-country-code"><span class="field-content">[field_country_code]</span></div>';
   $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_country_code']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_country_code']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Sort criterion: Content: Starting date and time -  start date (field_start_date) */
+  /* Sort criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['sorts']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['sorts']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['sorts']['field_start_date_value']['field'] = 'field_start_date_value';
@@ -257,7 +258,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'events' => 'events',
   );
-  /* Filter criterion: Content: Starting date and time -  start date (field_start_date) */
+  /* Filter criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['filters']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
@@ -271,7 +272,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['link_url'] = 'events';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $translatables['frontpage_events'] = array(
     t('Master'),
@@ -282,6 +283,10 @@ function hwc_homepage_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('[title_field]
+[field_country_code]'),
+    t('[title_field]
+<div class="views-country-code"><span class="field-content">[field_country_code]</span></div>'),
     t('Block'),
     t('more'),
   );

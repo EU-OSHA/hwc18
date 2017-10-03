@@ -1,6 +1,7 @@
 (function($){
     Drupal.behaviors.publication_form_submit = {
         attach: function(context, settings) {
+            jQuery('#osha-publication-menu-case-studies-form .field-files a, #osha-publication-menu-publications-form .field-files a').attr('target','_blank');
             var $form = $('#osha-publication-menu-case-studies-form, #osha-publication-menu-publications-form');
             $form.find('input[type=checkbox]').click(function(){
                 var $container = $(this).closest('.form-checkboxes');
@@ -30,6 +31,7 @@
 
             $('#osha-publication-menu-case-studies-form, #osha-publication-menu-publications-form').once('publication_toggle_facets', function(){
                 $('.form-checkboxes.search-facet-field').hide();
+                $('#edit-field-priority-area').show();
                 $('.form-checkboxes.search-facet-field').has('input:checked').show();
                 $('.form-checkboxes.search-facet-field').siblings('label').on('click', function() {
                     var $checkboxes = $(this).parent().find('.form-checkboxes.search-facet-field');

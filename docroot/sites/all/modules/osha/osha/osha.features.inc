@@ -38,6 +38,29 @@ function osha_views_api($module = NULL, $api = NULL) {
 function osha_image_default_styles() {
   $styles = array();
 
+  // Exported image style: article_crop_1920.
+  $styles['article_crop_1920'] = array(
+    'label' => 'Article Crop 1920',
+    'effects' => array(
+      20 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'manual_crop',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 0,
+      ),
+      21 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 1920,
+          'height' => 595,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
   // Exported image style: article_image.
   $styles['article_image'] = array(
     'label' => 'Article image',
@@ -53,6 +76,72 @@ function osha_image_default_styles() {
           'style_name' => 'article_image',
         ),
         'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: large_crop_480.
+  $styles['large_crop_480'] = array(
+    'label' => 'Large Crop 480',
+    'effects' => array(
+      17 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'manual_crop',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 1,
+      ),
+      19 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 480,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  // Exported image style: manual_crop.
+  $styles['manual_crop'] = array(
+    'label' => 'Manual Crop',
+    'effects' => array(
+      11 => array(
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => '',
+          'height' => '',
+          'keepproportions' => 0,
+          'reuse_crop_style' => '',
+          'style_name' => 'manual_crop',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: medium_crop_220.
+  $styles['medium_crop_220'] = array(
+    'label' => 'Medium Crop 220',
+    'effects' => array(
+      18 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'manual_crop',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 1,
+      ),
+      8 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 220,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 2,
       ),
     ),
   );

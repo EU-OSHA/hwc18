@@ -27,6 +27,9 @@ jQuery(document).ready(function() {
 
 	jQuery(window).resize(function() {
 	    windowWidth= jQuery(window).width();//window size, when resizing
+	    if(jQuery("#napo_films").length > 0){
+	    	location.reload();
+	    }
 	});
 
 	
@@ -80,6 +83,16 @@ jQuery(document).ready(function() {
 		    }
 		});
 	};
+
+	//removing the sticky only for this app form page
+	if(jQuery("body").height()>=1250){
+		jQuery(window).bind('scroll', function () {
+			if (jQuery(window).scrollTop() > num) {
+		        jQuery('.page-node-225 #navbar').removeClass('sticky-menu');
+		    }
+		});
+	};
+	
 
 	/*filters of list dropdown*/
 	jQuery(".form-item-field-publication-type > label").click(function() {

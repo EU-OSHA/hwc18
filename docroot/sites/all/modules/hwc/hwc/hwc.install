@@ -626,3 +626,30 @@ function hwc_update_7036() {
   features_revert_module('osha_news');
   module_enable(['hwc_good_practice_exchange']);
 }
+
+/**
+ * News and events title tag
+ */
+function hwc_update_7037() {
+  features_revert_module('osha_news');
+}
+
+/**
+ * Additional resources infographics display
+ */
+function hwc_update_7038() {
+  features_revert_module('hwc');
+}
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7039() {
+}
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7040() {
+  module_enable(['qtip']);
+}

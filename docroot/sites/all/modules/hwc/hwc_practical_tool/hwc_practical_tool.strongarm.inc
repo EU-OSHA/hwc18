@@ -156,25 +156,25 @@ function hwc_practical_tool_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '47',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '44',
         ),
         'redirect' => array(
-          'weight' => '2',
+          'weight' => '46',
         ),
         'workbench_access' => array(
-          'weight' => '1',
+          'weight' => '43',
         ),
         'language' => array(
           'weight' => '5',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '45',
         ),
       ),
       'display' => array(),

@@ -41,13 +41,6 @@ function osha_search_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = '›';
   $handler->display->display_options['pager']['options']['tags']['last'] = '»';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'type',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Unfiltered text */
   $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
@@ -269,7 +262,11 @@ function osha_search_views_default_views() {
   $handler->display->display_options['fields']['field_orgtype']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['field_orgtype']['field'] = 'field_orgtype';
   $handler->display->display_options['fields']['field_orgtype']['label'] = 'Type';
+  $handler->display->display_options['fields']['field_orgtype']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_orgtype']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_orgtype']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_orgtype']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_orgtype']['bypass_access'] = 0;
   /* Field: Indexed Multilingual Content: Publication Type */
   $handler->display->display_options['fields']['field_publication_type']['id'] = 'field_publication_type';
   $handler->display->display_options['fields']['field_publication_type']['table'] = 'search_api_index_default_multilingual_node_index';

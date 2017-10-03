@@ -38,7 +38,7 @@ function hwc_homepage_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
   );
   $blocks['hwc_homepage_topics'] = array(
-    'info' => t('Topics'),
+    'info' => t('Priority areas'),
     'status' => 1,
     'region' => 'content',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
@@ -124,11 +124,11 @@ function hwc_homepage_block_view($delta = '') {
     $voc = taxonomy_vocabulary_machine_name_load('priority_area');
     $tree = taxonomy_get_tree($voc->vid);
     $items = [];
-    foreach($tree as $i => $term) {
-      $items[$i%2][] = [
+    foreach ($tree as $i => $term) {
+      $items[$i % 2][] = [
         'data' => l($term->name, 'taxonomy/term/' . $term->tid),
         'class' => ['priority_area_' . ($i + 1)],
-        'title' => $term->name
+        'title' => $term->name,
       ];
     }
     $block['content']['message'] = array(
@@ -141,19 +141,13 @@ function hwc_homepage_block_view($delta = '') {
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[0], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[1], 'attributes' => array('class' => 'menu nav')));
     $block['content']['menu']['#markup'] .= '</div>';
-    $block['content']['know_more'] = array(
-      'type' => 'item',
-      '#prefix' => '<div class="more-link">',
-      '#markup' => l(t('Know more'), variable_get('hwc_homepage_topics_know_more_link')),
-      '#suffix' => '</div>',
-    );
-    $block['subject'] = l(t('Topics'), variable_get('hwc_homepage_topics_know_more_link'));
+    $block['subject'] = l(t('Priority areas'), variable_get('hwc_homepage_topics_know_more_link'));
   }
   if ($delta == 'hwc_homepage_tools_and_resources') {
     $items = [];
-    $items[] = l(t('Case studies'),'case-studies');
-    $items[] = l(t('DS e-tool'),'healthy-workplaces-all-ages-e-guide');
-    $items[] = l(t('Practical tools'),'practical-tools');
+    $items[] = l(t('Case studies'), 'case-studies');
+    $items[] = l(t('DS e-tool'), 'healthy-workplaces-all-ages-e-guide');
+    $items[] = l(t('Practical tools'), 'practical-tools');
     $block['content']['message'] = array(
       'type' => 'item',
       '#prefix' => '<div class="text-muted">',

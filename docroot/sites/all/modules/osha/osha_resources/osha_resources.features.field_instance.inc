@@ -256,7 +256,7 @@ function osha_resources_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'external_url_link',
+        'type' => 'external_url_title_link',
         'weight' => 0,
       ),
       'pub_teaser' => array(
@@ -679,14 +679,8 @@ function osha_resources_field_default_field_instances() {
       ),
       'priority_areas' => array(
         'label' => 'hidden',
-        'module' => 'title',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
-        ),
-        'type' => 'title_linked',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'pub_teaser' => array(

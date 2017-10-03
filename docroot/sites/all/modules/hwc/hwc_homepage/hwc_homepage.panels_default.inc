@@ -167,9 +167,9 @@ function hwc_homepage_default_panels_mini() {
     'args' => '',
     'url' => '',
     'display' => 'oshnews_latest',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+      'override_title' => 1,
+      'override_title_text' => 'News',
+      'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -237,9 +237,9 @@ function hwc_homepage_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'block',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+      'override_title' => 1,
+      'override_title_text' => 'Events',
+      'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(

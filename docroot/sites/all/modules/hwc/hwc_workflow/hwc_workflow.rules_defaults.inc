@@ -103,7 +103,8 @@ function hwc_workflow_default_rules_configuration() {
           }
         },
         { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
-        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } }
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] }
       ],
       "DO" : [
         { "hwc_mail_to_users_of_partner" : {
