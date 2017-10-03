@@ -12690,6 +12690,11 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .profile-2-cols-container-3 .profile-col-left-3 {
   padding-right: 15px;
+  text-align: center;
+}
+.profile-2-cols-container-3 .profile-col-left-3 .date-display-single {
+  display: block;
+  text-align: center;
 }
 .profile-2-cols-container-3 h2 {
   color: #749b00;
@@ -12709,6 +12714,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-weight: bold;
   color: #003399;
   font-style: italic;
+  text-align: center;
 }
 .profile-2-cols-container-3 .views-row a:before {
   content: "> ";
