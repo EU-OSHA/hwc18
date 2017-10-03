@@ -5050,6 +5050,29 @@ official-campaign-partners
   $display->content['new-5bbbdd62-a5ac-4873-88f9-e44dca3b7ff8'] = $pane;
   $display->panels['my_title'][1] = 'new-5bbbdd62-a5ac-4873-88f9-e44dca3b7ff8';
   $pane = new stdClass();
+  $pane->pid = 'new-e324f0e6-6c8a-4253-8103-4586433b8262';
+  $pane->panel = 'my_title';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_partner-hwc_partner_private_link_3';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = 'e324f0e6-6c8a-4253-8103-4586433b8262';
+  $display->content['new-e324f0e6-6c8a-4253-8103-4586433b8262'] = $pane;
+  $display->panels['my_title'][2] = 'new-e324f0e6-6c8a-4253-8103-4586433b8262';
+  $pane = new stdClass();
   $pane->pid = 'new-b441ca28-52c6-4cff-b30f-9c6d75feccf3';
   $pane->panel = 'my_title';
   $pane->type = 'block';
@@ -5072,11 +5095,11 @@ official-campaign-partners
     'css_class' => 'col-sm-3',
   );
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = 'b441ca28-52c6-4cff-b30f-9c6d75feccf3';
   $display->content['new-b441ca28-52c6-4cff-b30f-9c6d75feccf3'] = $pane;
-  $display->panels['my_title'][2] = 'new-b441ca28-52c6-4cff-b30f-9c6d75feccf3';
+  $display->panels['my_title'][3] = 'new-b441ca28-52c6-4cff-b30f-9c6d75feccf3';
   $pane = new stdClass();
   $pane->pid = 'new-d1910e7b-4e97-4602-b684-7bf4508801fc';
   $pane->panel = 'my_title';
@@ -5100,11 +5123,11 @@ official-campaign-partners
     'css_class' => 'col-sm-3',
   );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = 'd1910e7b-4e97-4602-b684-7bf4508801fc';
   $display->content['new-d1910e7b-4e97-4602-b684-7bf4508801fc'] = $pane;
-  $display->panels['my_title'][3] = 'new-d1910e7b-4e97-4602-b684-7bf4508801fc';
+  $display->panels['my_title'][4] = 'new-d1910e7b-4e97-4602-b684-7bf4508801fc';
   $pane = new stdClass();
   $pane->pid = 'new-77d49695-6b92-49b7-8363-3f6421e99dd4';
   $pane->panel = 'my_title';
@@ -5125,11 +5148,11 @@ official-campaign-partners
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = '77d49695-6b92-49b7-8363-3f6421e99dd4';
   $display->content['new-77d49695-6b92-49b7-8363-3f6421e99dd4'] = $pane;
-  $display->panels['my_title'][4] = 'new-77d49695-6b92-49b7-8363-3f6421e99dd4';
+  $display->panels['my_title'][5] = 'new-77d49695-6b92-49b7-8363-3f6421e99dd4';
   $pane = new stdClass();
   $pane->pid = 'new-5fe8a484-311e-4b4a-bc48-1b1243b77d51';
   $pane->panel = 'my_title';
@@ -5150,11 +5173,34 @@ official-campaign-partners
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = '5fe8a484-311e-4b4a-bc48-1b1243b77d51';
   $display->content['new-5fe8a484-311e-4b4a-bc48-1b1243b77d51'] = $pane;
-  $display->panels['my_title'][5] = 'new-5fe8a484-311e-4b4a-bc48-1b1243b77d51';
+  $display->panels['my_title'][6] = 'new-5fe8a484-311e-4b4a-bc48-1b1243b77d51';
+  $pane = new stdClass();
+  $pane->pid = 'new-57e59833-3301-4c7f-a2b2-b6ba8fc7a0a5';
+  $pane->panel = 'my_title';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_good_practice_exchange-gpep_links';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 7;
+  $pane->locks = array();
+  $pane->uuid = '57e59833-3301-4c7f-a2b2-b6ba8fc7a0a5';
+  $display->content['new-57e59833-3301-4c7f-a2b2-b6ba8fc7a0a5'] = $pane;
+  $display->panels['my_title'][7] = 'new-57e59833-3301-4c7f-a2b2-b6ba8fc7a0a5';
   $pane = new stdClass();
   $pane->pid = 'new-0b4279c4-f4de-431f-9738-30d53b5790f0';
   $pane->panel = 'region';
@@ -5791,7 +5837,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $display->content['new-a41e4732-07fd-4b8a-badc-4362afc1bdf1'] = $pane;
   $display->panels['right'][0] = 'new-a41e4732-07fd-4b8a-badc-4362afc1bdf1';
   $pane = new stdClass();
-  $pane->pid = 'new-22050c50-2a04-49d6-b147-ee7e3f0b7183';
+  $pane->pid = 'new-3c743598-ec0f-420a-8447-b3a24267f026';
   $pane->panel = 'right_';
   $pane->type = 'views';
   $pane->subtype = 'partner_content';
@@ -5799,8 +5845,8 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->access = array();
   $pane->configuration = array(
     'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
+    'use_pager' => 1,
+    'nodes_per_page' => '4',
     'pager_id' => '0',
     'offset' => '0',
     'more_link' => 0,
@@ -5809,7 +5855,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
     'link_to_view' => 0,
     'args' => '',
     'url' => '',
-    'display' => 'latest_partner_events',
+    'display' => 'block_1',
     'context' => array(
       0 => '',
     ),
@@ -5825,47 +5871,9 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '22050c50-2a04-49d6-b147-ee7e3f0b7183';
-  $display->content['new-22050c50-2a04-49d6-b147-ee7e3f0b7183'] = $pane;
-  $display->panels['right_'][0] = 'new-22050c50-2a04-49d6-b147-ee7e3f0b7183';
-  $pane = new stdClass();
-  $pane->pid = 'new-152fad72-a7ac-4e0a-ad19-5c1c02d86057';
-  $pane->panel = 'right_';
-  $pane->type = 'views';
-  $pane->subtype = 'partner_content';
-  $pane->shown = TRUE;
-  $pane->access = array();
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 0,
-    'nodes_per_page' => '0',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'past_events',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = '152fad72-a7ac-4e0a-ad19-5c1c02d86057';
-  $display->content['new-152fad72-a7ac-4e0a-ad19-5c1c02d86057'] = $pane;
-  $display->panels['right_'][1] = 'new-152fad72-a7ac-4e0a-ad19-5c1c02d86057';
+  $pane->uuid = '3c743598-ec0f-420a-8447-b3a24267f026';
+  $display->content['new-3c743598-ec0f-420a-8447-b3a24267f026'] = $pane;
+  $display->panels['right_'][0] = 'new-3c743598-ec0f-420a-8447-b3a24267f026';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
