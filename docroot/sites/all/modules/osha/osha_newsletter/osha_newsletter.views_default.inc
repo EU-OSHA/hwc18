@@ -250,9 +250,6 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'events' => 'events',
     'news' => 'news',
-    'press_release' => 'press_release',
-    'publication' => 'publication',
-    'youtube' => 'youtube',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;

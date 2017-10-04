@@ -11,15 +11,16 @@ include_once 'hwc_practical_tool.features.inc';
  * Implements hook_menu_alter().
  */
 function hwc_practical_tool_menu_alter(&$items) {
-  $items['node/%node/edit']['access callback'] = 'hwc_practical_tool_node_edit_form_access';
+  $items['node/%node/edit']['access callback'] = 'hwc_practical_tool_node_edit_delete_form_access';
+  $items['node/%node/delete']['access callback'] = 'hwc_practical_tool_node_edit_delete_form_access';
 }
 
 /**
  * Callback function to disable practical_tool update.
  */
-function hwc_practical_tool_node_edit_form_access($op, $node) {
+function hwc_practical_tool_node_edit_delete_form_access($op, $node) {
   $type = is_string($node) ? $node : $node->type;
-  if (($type == 'practical_tool') && ($op == 'update')) {
+  if (($type == 'practical_tool') && (($op == 'update')||($op == 'delete'))) {
     return FALSE;
   }
   return node_access($op, $node);

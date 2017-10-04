@@ -337,6 +337,9 @@ p.tweet-link a {
   padding-left: 0;
   padding-bottom: 0;
 }
+.newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.td_h {
+  width: 12px;
+}
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.td_h,
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.ar {
   padding: 0px;
