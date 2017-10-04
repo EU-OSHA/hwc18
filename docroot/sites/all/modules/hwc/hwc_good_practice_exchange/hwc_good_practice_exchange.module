@@ -316,7 +316,6 @@ function hwc_good_practice_exchange_block_save($delta = '', $edit = []) {
  * Implements hook_block_configure().
  */
 function hwc_good_practice_exchange_block_configure($delta = '') {
-  krumo($delta);
   $form = [];
   if ($delta == 'gpep_links') {
     $form['hwc_gpep_document_intro_text'] = array(

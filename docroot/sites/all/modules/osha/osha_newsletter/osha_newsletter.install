@@ -209,8 +209,15 @@ function osha_newsletter_update_7006() {
 }
 
 /**
- * Revert osha_newsletter module
+ * Revert osha_newsletter module.
  */
 function osha_newsletter_update_7007() {
+  features_revert_module('osha_newsletter');
+}
+
+/**
+ * Revert osha_newsletter module.
+ */
+function osha_newsletter_update_7008() {
   features_revert_module('osha_newsletter');
 }
