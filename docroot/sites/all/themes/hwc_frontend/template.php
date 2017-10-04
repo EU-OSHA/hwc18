@@ -148,11 +148,6 @@ function hwc_frontend_preprocess_page(&$vars) {
           $link_href = 'communications';
         }
         $link_title = t('Back to the list');
-        $tag_vars['element']['#value'] = t('Document');
-        $vars['page']['above_title']['title-alternative'] = array(
-          '#type' => 'item',
-          '#markup' => theme('html_tag', $tag_vars),
-        );
         break;
 
       case 'publication':
@@ -318,6 +313,7 @@ function hwc_frontend_preprocess_page(&$vars) {
   // Add back link (e.g. 'Back to homepage') for Partners pages.
   $partner = hwc_partner_get_account_partner();
   if (is_object($partner)) {
+
     switch (current_path()) {
       case 'node/add/events':
       case 'node/add/news':
@@ -327,7 +323,8 @@ function hwc_frontend_preprocess_page(&$vars) {
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
           '#markup' => drupal_get_title(),
-          '#prefix' => '<strong class="title-alt">', '#suffix' => '</strong>'
+          '#prefix' => '<strong class="title-alt">',
+          '#suffix' => '</strong>',
         );
         drupal_set_title('');
         break;
@@ -336,6 +333,15 @@ function hwc_frontend_preprocess_page(&$vars) {
       $vars['page']['above_title']['back-to-link'] = array(
         '#type' => 'item',
         '#markup' => l($link_title, $link_href, array('attributes' => array('class' => array('back-to-link pull-right')))),
+      );
+    }
+
+    if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
+      $link_href = url('node/' . $partner->nid);
+      $link_title = t('Back');
+      $vars['page']['below_title']['back-to-link'] = array(
+        '#type' => 'item',
+        '#markup' => '<a class="back-to-link pull-right" href="' . $link_href . '">' . $link_title . '</a>',
       );
     }
   }
@@ -349,6 +355,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     $vars['page']['content']['system_main']['#attributes']['class'][] = 'container';
   }
 }
+
 /**
  * Theme flexible layout of panels.
  * Copied the panels function and removed the css files.
@@ -365,7 +372,7 @@ function hwc_frontend_panels_flexible($vars) {
   $output = "<div class=\"panel-flexible " . $renderer->base['canvas'] . " clearfix\" $renderer->id_str>\n";
   $output .= "<div class=\"panel-flexible-inside " . $renderer->base['canvas'] . "-inside\">\n";
   $output .= panels_flexible_render_items($renderer, $settings['items']['canvas']['children'], $renderer->base['canvas']);
-  // Wrap the whole thing up nice and snug
+  // Wrap the whole thing up nice and snug.
   $output .= "</div>\n</div>\n";
   return $output;
 }
@@ -393,7 +400,7 @@ function hwc_frontend_preprocess_node(&$vars) {
     $vars['content']['body'][0]['#markup'] = str_replace($search_str, $search_str . '<h2 class="recomended-for-you element-invisible">&nbsp;</h2>', $vars['content']['body'][0]['#markup']);
   }
   if ($vars['view_mode'] == 'teaser' && $vars['type'] == 'audio_visual') {
-    $vars['classes_array'][] = 'node-practical-tool';//todo tmp solution for css classes...
+    $vars['classes_array'][] = 'node-practical-tool';
   }
   if ($vars['view_mode'] == 'full' && $vars['type'] == 'events') {
     $vars['classes_array'][] = 'container';

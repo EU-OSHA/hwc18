@@ -295,8 +295,54 @@ function hwc_good_practice_exchange_views_post_render(&$view, &$output, &$cache)
     drupal_add_js(drupal_get_path('module', 'hwc_good_practice_exchange') . '/sort.js', array('weight' => 20));
     $form = drupal_get_form('hwc_good_practice_exchange_sort_form');
     $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
-    $output = trim(str_replace('@order', $order_html, $output)). '</span>';
+    $output = trim(str_replace('@order', $order_html, $output)) . '</span>';
+    if ($view->current_display == 'page_1') {
+      $link = l('New Document','node/add/document');
+      $output = trim(str_replace('__add_new_document_link__', $link, $output)) . '</span>';
+    }
   }
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function hwc_good_practice_exchange_block_save($delta = '', $edit = []) {
+  if ($delta == 'gpep_links') {
+    variable_set('hwc_gpep_document_intro_text', $edit['hwc_gpep_document_intro_text']);
+  }
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function hwc_good_practice_exchange_block_configure($delta = '') {
+  krumo($delta);
+  $form = [];
+  if ($delta == 'gpep_links') {
+    $form['hwc_gpep_document_intro_text'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Introductory text'),
+      '#size' => 60,
+      '#description' => 'This text will appear as an introductory text.',
+      '#default_value' => variable_get('hwc_gpep_document_intro_text', ''),
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function hwc_good_practice_exchange_theme($existing, $type, $theme, $path) {
+  $theme = array();
+  $theme['hwc_good_practice_exchange_platform'] = array(
+    'template' => 'templates/hwc_good_practice_exchange_platform',
+    'variables' => array(
+      'links' => [],
+      'intro_text' => '',
+    ),
+  );
+  return $theme;
 }
 
 /**
@@ -306,41 +352,49 @@ function hwc_good_practice_exchange_block_view($delta = '') {
   $block = array();
 
   if ($delta == 'gpep_document_links') {
+    $link = '';
     $node = menu_get_object('node');
-    if ($node->workbench_access) {
-      foreach ($node->workbench_access as $tid) {
-        //todo find company
-      }
+    if ($node && node_access('update', $node)) {
+      $link = l(t('Edit'), 'node/' . $node->nid . '/edit');
     }
-
-    $items = ['links']; // todo
     $block['subject'] = '';
-    $block['content']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+    $block['content']['#markup'] = '<div class="gpep-edit-button">' . $link . '</div>';
   }
 
   if ($delta == 'gpep_document_organisation') {
-    $items = ['organisation']; // todo
+    $title = '';
+    $node = menu_get_object('node');
+    if ($node) {
+      $partner = hwc_good_practice_exchange_node_get_workbench_partner($node);
+      $wrapper = entity_metadata_wrapper('node', $partner);
+      $title = $wrapper->title->value();
+    }
     $block['subject'] = '';
-    $block['content']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+    $block['content']['#markup'] = '<div class="gpep-organisation"><div class="col-xs-12 col-sm-12">' . $title . '</div></div>';
   }
 
 
   if ($delta == 'gpep_links') {
 
-    $items = [];
-    $items[] = l(
+    $links = [];
+    $links[] = l(
       '<span class="link-img"></span><span class="title">' . t('Partners documents') . '</span>',
       'partners-documents',
       ['html' => TRUE, 'attributes' => ['class' => 'partners-documents']]);
-    $items[] = l(
+    $links[] = l(
       '<span class="link-img"></span><span class="title">' . t('EU-OSHA communications') . '</span>',
       'communications',
       ['html' => TRUE, 'attributes' => ['class' => 'communications']]);
+
+    $intro_text = variable_get('hwc_gpep_document_intro_text');
+
     $block['subject'] = '';
-
-    // todo Introductory text.
-
-    $block['content']['menu']['#markup'] = '<div class="gpep-links-block"><div class="col-xs-12 col-sm-12">' . implode('', $items) . '</div></div>';
+    $block['content'] = theme('hwc_good_practice_exchange_platform',
+      array(
+        'links' => $links,
+        'intro_text' => $intro_text,
+      )
+    );
   }
 
   if ($delta == 'gpe_links') {
