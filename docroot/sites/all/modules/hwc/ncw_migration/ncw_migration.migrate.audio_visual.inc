@@ -34,7 +34,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
   function addFieldMappings() {
     parent::addFieldMappings();
     $unmigrated_destinations = [];
-    foreach($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
+    foreach ($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
       if ($taxonomy == 'field_provider_type') {
         continue;
       }
@@ -58,15 +58,16 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     parent::prepare($entity, $row);
     $this->new_providers = [];
 
-    if ($entity->field_available_in_languages) { // language_field fix
+    // Language_field fix.
+    if ($entity->field_available_in_languages) {
       $entity->field_available_in_languages['und'] = $entity->field_available_in_languages['und'][0]['value'];
     }
 
-    // field_collection_item - field_fc_provider
+    // field_collection_item - field_fc_provider.
     $entity_ids = [];
-    if ($entity->nid) {
+    if (!empty($entity->nid)) {
       $result = db_query("SELECT field_fc_provider_value from field_data_field_fc_provider where entity_id=" . $entity->nid);
-      foreach($result as $value) {
+      foreach ($result as $value) {
         $objects = entity_load('field_collection_item', [$value->field_fc_provider_value]);
         if ($objects) {
           $entity_ids[] = $value->field_fc_provider_value;
@@ -74,13 +75,14 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
       }
     }
     $fc_providers = [];
-    foreach($row->field_fc_provider as $idx => $provider) {
+    foreach ($row->field_fc_provider as $idx => $provider) {
       if (@$entity_ids[$idx]) {
         $objects = entity_load('field_collection_item', [$entity_ids[$idx]]);
         $field_collection = $objects[$entity_ids[$idx]];
-      } else {
+      }
+      else {
         $field_collection = entity_create('field_collection_item', array('field_name' => 'field_fc_provider'));
-        if ($entity->nid) {
+        if (!empty($entity->nid)) {
           $hostEntity = node_load($entity->nid);
           $field_collection->setHostEntity('node', $hostEntity, LANGUAGE_NONE, FALSE);
         }
@@ -90,13 +92,14 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
       $field_collection->field_fc_provider_url = $provider['field_fc_provider_url'];
       $tids = osha_migration_normalize_migrated_term_reference($provider['field_provider_type'], 'tax_provider_type');
       $field_collection->field_provider_type = [];
-      foreach($tids as $tid) {
+      foreach ($tids as $tid) {
         $field_collection->field_provider_type['und'][] = ['tid' => $tid];
       }
       $field_collection->field_type_provider_other = $provider['field_type_provider_other'];
-      if (!$entity->nid) {
+      if (empty($entity->nid)) {
         $this->new_providers[] = $field_collection;
-      } else {
+      }
+      else {
         $field_collection->save(TRUE);
         $fc_providers[] = ['value' => $field_collection->item_id, 'revision_id' => $field_collection->revision_id];
       }
@@ -114,7 +117,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
   public function complete($entity, stdClass $row) {
     parent::complete($entity, $row);
     if ($this->new_providers) {
-      foreach($this->new_providers as $field_collection) {
+      foreach ($this->new_providers as $field_collection) {
         $field_collection->setHostEntity('node', $entity, LANGUAGE_NONE, FALSE);
         $field_collection->save(TRUE);
         $entity->field_fc_provider['und'][] = ['value' => $field_collection->item_id, 'revision_id' => $field_collection->revision_id];
@@ -126,12 +129,12 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
   function prepareRow($row) {
     $row->field_country = $row->field_material_country;
     parent::prepareRow($row);
-    foreach($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
+    foreach ($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
       if ($row->{$taxonomy}) {
         $orig_taxonomies = $row->{$taxonomy};
         $row->{$taxonomy} = osha_migration_normalize_migrated_term_reference($row->{$taxonomy}, 'tax_' . $vocabulary);
         if (!$row->{$taxonomy}) {
-          foreach($orig_taxonomies as $orig_taxonomy) {
+          foreach ($orig_taxonomies as $orig_taxonomy) {
             watchdog('ncw_migration', "[BUG]Cannot find taxonomy '".serialize($orig_taxonomy)."', for $vocabulary", array(), WATCHDOG_ERROR);
           }
           // todo add log message 'not found tax value...
