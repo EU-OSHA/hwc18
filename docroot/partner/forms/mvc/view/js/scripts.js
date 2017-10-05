@@ -628,7 +628,6 @@ $(document).ready(function () {
 
         }else if($(field).attr("name") == 'contact_osh_basicrequirements'){
 
-
             var response = validateRequiredField($("[name=contact_osh_basicrequirements]:checked"));
             if (response){
                 $("[name=contact_osh_basicrequirements]").removeClass("error");
@@ -2276,7 +2275,8 @@ $(document).ready(function () {
         if( logoImage.attr("src") && (logoImage.attr("src") != null ||logoImage.attr("src") != "") )
         {
             var valueLogoImage = logoImage.attr("src");
-            valueLogoImage = valueLogoImage.replace("\s", "+");
+            //valueLogoImage = valueLogoImage.replace("\s", "+");
+            valueLogoImage = valueLogoImage.replace("data:image/png;base64,", "");
             serializedForm += "&company_osh_logoimage="+valueLogoImage;
 
         }
@@ -2284,7 +2284,8 @@ $(document).ready(function () {
         if( ceoImage.attr("src") && (ceoImage.attr("src") != null ||ceoImage.attr("src") != "") )
         {
             var valueLogoImage = ceoImage.attr("src");
-            valueLogoImage = valueLogoImage.replace("\s", "+");
+            //valueLogoImage = valueLogoImage.replace("\s", "+");
+            valueLogoImage = valueLogoImage.replace("data:image/png;base64,", "");
             serializedForm += "&company_osh_ceoimage="+valueLogoImage;
         }
         $("body").css("cursor", "progress");
@@ -2319,7 +2320,8 @@ $(document).ready(function () {
         if( ceoImage.attr("src") && (ceoImage.attr("src") != null ||ceoImage.attr("src") != "") )
         {
             var valueLogoImage = ceoImage.attr("src");
-            valueLogoImage = valueLogoImage.replace("\s", "+");
+            //valueLogoImage = valueLogoImage.replace("\s", "+");
+            valueLogoImage = valueLogoImage.replace("data:image/png;base64,", "");
             serializedForm += "&company_osh_ceoimage="+valueLogoImage;
         }
         $("body").css("cursor", "progress");
@@ -2345,7 +2347,8 @@ $(document).ready(function () {
         if( logoImage.attr("src") && (logoImage.attr("src") != null ||logoImage.attr("src") != "") )
         {
             var valueLogoImage = logoImage.attr("src");
-            valueLogoImage = valueLogoImage.replace("\s", "+");
+            //valueLogoImage = valueLogoImage.replace("\s", "+");
+            valueLogoImage = valueLogoImage.replace("data:image/png;base64,", "");
             serializedForm += "&company_osh_logoimage="+valueLogoImage;
 
         }
@@ -2353,7 +2356,8 @@ $(document).ready(function () {
         if( ceoImage.attr("src") && (ceoImage.attr("src") != null ||ceoImage.attr("src") != "") )
         {
             var valueLogoImage = ceoImage.attr("src");
-            valueLogoImage = valueLogoImage.replace("\s", "+");
+            //valueLogoImage = valueLogoImage.replace("\s", "+");
+            valueLogoImage = valueLogoImage.replace("data:image/png;base64,", "");
             serializedForm += "&company_osh_ceoimage="+valueLogoImage;
         }
 
