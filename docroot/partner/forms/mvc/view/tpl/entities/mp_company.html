@@ -70,16 +70,19 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="ORGANISATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="ORGANISATION" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 <fieldset>
     <legend id="GENERAL_INFORMATION">
-        General Contact Information
+        About your General Contact Information
         <img id="GENERAL_INFORMATION_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
     
@@ -93,9 +96,10 @@
         <div class="socialNetworks">
             <div>
                 <label for="company_osh_selectsocialnetworks" style="padding-top: 1vw; display: inline-block;">
-                        Social media profiles (Name + Profile ID)
+                    Social media profiles
                 </label>
                 <img src="{$urlBase}mvc/view/img/screen.png" style="margin-bottom: 4%;" title="Fields displayed on campaign site" class="screen-right"/>
+                <p class="help-block">Write the complete URL of the selected social network</p>
             </div>
         <div>
             <select data-tb="socialNetworkTextBox" class="company_osh_selectsocialnetworks" id="company_osh_selectsocialnetworks" name="company_osh_selectsocialnetworks" data-section="GENERAL_INFORMATION"  aria-hidden="true">
@@ -109,7 +113,7 @@
             </select>
         </div>
         <div style="display: inline-block; margin-left: 1vw;">
-            <input  id="socialNetworkTextBox" type="text" placeholder="ID" />
+            <input  id="socialNetworkTextBox" type="text" placeholder="URL" />
         </div>
 		<button type="button" data-selector="company_osh_selectsocialnetworks" data-target="containerSocialNetworks" id="plusSN" data-target="showSN"><img src="{$urlBase}mvc/view/img/add_blue.png" /><span>Add</span></button>
 		<div id="listContentSocialNetworks">
@@ -138,11 +142,14 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="GENERAL_INFORMATION" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="GENERAL_INFORMATION" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 <fieldset>
@@ -168,10 +175,13 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="CHIEF" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="CHIEF" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}

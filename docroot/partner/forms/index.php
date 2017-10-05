@@ -27,17 +27,10 @@ $ch = curl_init();
 //  string(16) "campaign partner"
 //}
 
-
-
-
 //if (isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID'])) {
 //     unset($_COOKIE['PHPSESSID']);
 //    setcookie('PHPSESSID', '', time()-3600, '/');
 //}
-
-
-
-
 
 
 // Autoloader

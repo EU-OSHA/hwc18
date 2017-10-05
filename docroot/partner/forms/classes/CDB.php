@@ -268,7 +268,7 @@ final class CDB
                 }
             }
 
-            error_log("EVE_JDD_SESSION_" . var_export($response, true));
+            error_log("EVE_CSM_SESSION_" . var_export($response, true));
             foreach ($this->cdbMap as $htmlName => $cdbName) {
                 if (isset ($response[$cdbName])) {
                     if (is_array($response[$cdbName]) && isset($response[$cdbName]['Name'])) {
@@ -324,15 +324,16 @@ final class CDB
             }
             $responseFixed[$key] = $value;
         }
-        error_log("EVE_JDD_setOtherUsersField3_" . var_export($response, true));
 
         foreach($response2 as $key => $value){
             foreach($value['Fields'] as $key2 => $value2){
                 if(isset($value['Fields']['osh_campaigncontacttype']) && $value['Fields']['osh_campaigncontacttype'] == 2){
                     $keyValue = $this->setUserRepresentativeFields($value, $key2, $value2);
-                }else if(isset($value['Fields']['osh_campaigncontacttype']) && $value['Fields']['osh_campaigncontacttype'] == 3){
+                } else if(isset($value['Fields']['osh_campaigncontacttype']) && $value['Fields']['osh_campaigncontacttype'] == 3){
                     $keyValue = $this->setCeoFields($value, $key2, $value2);
-                }else{
+                } else if(isset($value['Fields']['osh_campaigncontacttype']) && $value['Fields']['osh_campaigncontacttype'] == 4){
+                    $keyValue = $this->setUserCOMRepresentativeFields($value, $key2, $value2);
+                } else{
                     $keyValue = $this->setOtherUsersField($key, $value, $key2, $value2);
                 }
                 $responseFixed[$this->before(';',$keyValue)] = $this->after(';',$keyValue);
@@ -376,7 +377,12 @@ final class CDB
             return $key .";" . $value;
         }else if($key2 == "osh_prefixphone1") {
             $key = "osh_otheruserprefix".$otherUserId;
-            $value = $value2['Id'];
+            error_log('--- osh_prefixphone1: ');
+            if ($value2['Id'] != null && $value2['Id'] != "") {
+                $value = $value2['Id'];
+            } else {
+                $value = "";
+            }
             return $key .";" . $value;
         }
         
@@ -424,6 +430,29 @@ final class CDB
             return $key .";" . $value;
         }
         
+    }
+    public function setUserCOMRepresentativeFields($value, $key2, $value2){
+        if($key2 == "firstname"){
+            $key = "osh_mediaproshfirstname";
+            $value = $value2;
+            return $key .";" . $value;
+        }else if ($key2 == "lastname"){
+            $key = "osh_mediaproshlastname";
+            $value = $value2;
+            return $key .";" . $value;
+        }else if($key2 == "telephone1"){
+            $key = "osh_phonemediapr";
+            $value = $value2;
+            return $key .";" . $value;
+        }else if($key2 == "emailaddress1"){
+            $key = "osh_emailmediapr";
+            $value = $value2;
+            return $key .";" . $value;
+        }else if($key2 == "osh_prefixphone1") {
+            $key = "osh_prefixmediaprphone";
+            $value = $value2['Id'];
+            return $key .";" . $value;
+        }
     }
     function after ($a, $inthat)
     {
@@ -587,7 +616,8 @@ final class CDB
     {
         $params = Parameters::getInstance();
         $readMethod = null;
-        if ($key == 'update' || $keyMf == 'update_mf' ||$key == 'satisfaction' || $keyMf == 'satisfaction_mf' ||$key == 'question' || $keyMf == 'question_mf' ) {
+        if ($key == 'update' || $keyMf == 'update_mf' ||$key == 'satisfaction' || $keyMf == 'satisfaction_mf' ||$key == 'question' || $keyMf == 'question_mf'
+            || $keyMf == 'requirements'  || $keyMf == 'requirements_mf') {
             if (isset($params->get('cdb')['regular_methods'])) {
                 if ($params->getUrlParamValue('maintenance_mode')) {
                     if (isset($params->get('cdb')['regular_methods'][$keyMf])) {
@@ -626,6 +656,7 @@ final class CDB
      */
     private function buildUrl($method)
     {
+
         if ($this->debug) {
             $url = $method['name'];
         } else {
@@ -719,14 +750,14 @@ final class CDB
     private function getData($url)
     {
         $resource = $this->host . $this->port . $this->resource . $url;
-        error_log("Eve_JDD_GetData_" . var_export($resource, true));
+        error_log("Eve_CSM_GetData_" . var_export($resource, true));
         $response = null;
 //        $time_pre = microtime(true);
         if ($content = @file_get_contents($resource)) {
 //            $time_post = microtime(true);
 //            error_log("Fase1: " .($time_post - $time_pre) . " seconds");
             $response = json_decode($content, true);
-            error_log("Eve_JDD_GetData_response_" . var_export($response, true));
+            error_log("Eve_CSM_GetData_response_" . var_export($response, true));
             if (! $this->debug && intval($response['returnCode']) !== 1) {
                 if(intval($response['returnCode']) === -69){
                     $_SESSION['fieldsValidatingDialog'] = true;
@@ -754,6 +785,11 @@ final class CDB
     public function submitSatisfaction($id, $satisfaction)
     {
         $this->updateSatisfaction($id, $satisfaction);
+    }
+
+    public function updateRequirements($id, $requirements)
+    {
+        $this->submitRequirements($id, $requirements);
     }
 
     public function submitQuestion($id, $title, $message, $email)
@@ -787,6 +823,8 @@ final class CDB
      */
     private function setDataPost($parameters)
     {
+        error_log(var_export($parameters, true));
+
        if(isset($parameters['id'])){
             $id="id=" .$parameters['id'];
             unset($parameters['id']);
@@ -841,12 +879,21 @@ final class CDB
         $updateMethod = $this->getMethod('update', 'update_mf');
         
         $urlBase          = $this->host . $this->port . $this->resource . $updateMethod;
-        
+
+        //obtain gecos
+        if (isset($_SESSION['auth'])) {
+            $auth = $_SESSION['auth'];
+            error_log("EVE_CSM_SESSION: " . var_export( $_SESSION['auth'], true));
+        } else {
+            $auth = '';
+            error_log("EVE_CSM_SESSION_ID: " . var_export( $auth, true));
+        }
+
+
         if(isset($id)){
-            
-            $url = $urlBase . "?" . $id ."&" .$otherusers ."&" .$paises;
+            $url = $urlBase . "?" . $id ."&" .$otherusers . "&" . $paises . "&auth=" . $auth;
         }else{
-            $url = $urlBase . "?" . $otherusers ."&" .$paises;
+            $url = $urlBase . "?" . $otherusers . "&" . $paises . "&auth=" . $auth;
         }
         $url = $url. "&option=" .$parameters['option'];
         $ch = curl_init();
@@ -938,6 +985,32 @@ final class CDB
         error_log("Respuesta: " .  print_r($server_output,1));
     }
 
+    private function submitRequirements($id, $requirements){
+        $requirementsMethod = $this->getMethod('requirements', 'requirements_mf');
+        $urlBase          = $this->host . $this->port . $this->resource . $requirementsMethod;
+        $url = $urlBase . "?id=" . $id ."&requirements=" .$requirements;
+        $ch = curl_init();
+        error_log("URL: " .$url);
+        curl_setopt($ch, CURLOPT_URL,$url);
+        //curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec ($ch);
+        if($server_output === false)
+        {
+            error_log('Curl error: ' . curl_error($ch));
+        }
+        else
+        {
+            echo 'Operación completada sin errores';
+        }
+
+
+        curl_close($ch);
+
+        error_log("Respuesta: " .  print_r($server_output,1));
+    }
     private function updateQuestion($id, $title, $message, $email){
         $questionMethod = $this->getMethod('question', 'question_mf');
         $urlBase          = $this->host . $this->port . $this->resource . $questionMethod;

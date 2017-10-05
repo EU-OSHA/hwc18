@@ -36,6 +36,7 @@
         };
         var cropper = $('#{$fieldName}_imageBox').cropbox(options);
         $('#{$fieldName}_file').on('change', function () {
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 options.imgSrc = e.target.result;
