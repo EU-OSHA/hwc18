@@ -14,6 +14,7 @@
 class Constants
 {
    const SESSIONID_NAME ="sessionId";
+   const AUTH_NAME ="auth";
    const PHOTOS_FOLDER = "/mvc/view/photos/";
    const TYPE_IMAGE_PNG = "image/png";
    const TYPE_IMAGE_GIF = "image/gif";

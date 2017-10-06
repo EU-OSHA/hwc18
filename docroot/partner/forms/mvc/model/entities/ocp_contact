@@ -2,10 +2,10 @@
   "sections": {
     "title": "3. About your Main Contact",
     "sections": {
-        "PRIMARY_CONTACT": "Primary Contact"
+        "PRIMARY_CONTACT": "About your Main Contact Person"
     },
     "sections_mf": {
-        "PRIMARY_CONTACT": "Primary Contact",
+        "PRIMARY_CONTACT": "About your Main Contact Person",
         "OTHER_USERS": "Other users"
     }
   },
@@ -42,8 +42,7 @@
       "name": "contact_osh_positionmaincontactperson",
       "label": "Position",
       "section": "PRIMARY_CONTACT",
-      "type": "text",
-      "validator": "not_null"
+      "type": "text"
     },
     "contact_osh_positionmaincontactperson_clone": {
       "name": "contact_osh_positionmaincontactperson_clone",
@@ -54,7 +53,7 @@
     "contact_osh_mainemail": {
       "name": "contact_osh_mainemail",
       "label": "Email address",
-      "helpText": "IMPORTANT: All future communications related to this application will be sent to this address.",
+      "helpText": "IMPORTANT: All future communications related to this application will be sent to this address.<br><br>This field cannot be directly changed in the form. If you want to modify it, please, contact EU-OSHA in partners@healthy-workplaces.com",
       "section": "PRIMARY_CONTACT",
       "type": "text",
       "validator": [
@@ -116,13 +115,14 @@
     "contact_osh_mainphone": {
       "name": "contact_osh_mainphone",
       "label": "Telephone number",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "section": "PRIMARY_CONTACT",
       "type": "text"
     },
     "contact_osh_prefixmaincontactphone": {
       "name": "contact_osh_prefixmaincontactphone",
-      "label": "Telephone prefix",
+      "label": "Telephone number Prefix",
+      "helpText": "Select your prefix from the drop-down",
       "placeholder": "+00",
       "section": "PRIMARY_CONTACT",
       "type": "dropdown"
@@ -166,13 +166,13 @@
     "contact_osh_otheruserphone1": {
       "name": "contact_osh_otheruserphone1",
       "label": "Telephone of additional user",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "section": "OTHER_USERS",
       "type": "text"
     },
      "contact_osh_otheruserprefix1": {
        "name": "contact_osh_otheruserprefix1",
-       "label": "Telephone prefix",
+       "label": "Prefix of the telephone of additional user",
        "placeholder": "+00",
        "section": "OTHER_USERS",
        "type": "dropdown"
@@ -192,14 +192,14 @@
     },
     "contact_osh_otheruserphone2": {
       "name": "contact_osh_otheruserphone2",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "label": "Telephone of additional user",
       "section": "OTHER_USERS",
       "type": "text"
     },
       "contact_osh_otheruserprefix2": {
         "name": "contact_osh_otheruserprefix2",
-        "label": "Telephone prefix",
+        "label": "Prefix of the telephone of additional user",
         "placeholder": "+00",
         "section": "OTHER_USERS",
         "type": "dropdown"
@@ -219,14 +219,14 @@
     },
     "contact_osh_otheruserphone3": {
       "name": "contact_osh_otheruserphone3",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "label": "Telephone of additional user",
       "section": "OTHER_USERS",
       "type": "text"
     },
     "contact_osh_otheruserprefix3": {
         "name": "contact_osh_otheruserprefix3",
-        "label": "Telephone prefix",
+        "label": "Prefix of the telephone of additional user",
         "placeholder": "+00",
         "section": "OTHER_USERS",
         "type": "dropdown"
@@ -246,14 +246,14 @@
     },
     "contact_osh_otheruserphone4": {
       "name": "contact_osh_otheruserphone4",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "label": "Telephone of additional user",
       "section": "OTHER_USERS",
       "type": "text"
     },
     "contact_osh_otheruserprefix4": {
         "name": "contact_osh_otheruserprefix4",
-        "label": "Telephone prefix",
+        "label": "Prefix of the telephone of additional user",
         "placeholder": "+00",
         "section": "OTHER_USERS",
         "type": "dropdown"
@@ -273,14 +273,14 @@
     },
     "contact_osh_otheruserphone5": {
       "name": "contact_osh_otheruserphone5",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "label": "Telephone of additional user",
       "section": "OTHER_USERS",
       "type": "text"
     },
     "contact_osh_otheruserprefix5": {
         "name": "contact_osh_otheruserprefix5",
-        "label": "Telephone prefix",
+        "label": "Prefix of the telephone of additional user",
         "placeholder": "+00",
         "section": "OTHER_USERS",
         "type": "dropdown"
@@ -346,7 +346,7 @@
     "contact_osh_positionmaincontactperson": "osh_position",
     "contact_osh_mainemail": "emailaddress1",
     "contact_osh_mainphone": "telephone1",
-    "contact_osh_prefixmaincontactphone": "osh_prefixmaincontactphone",
+    "contact_osh_prefixmaincontactphone": "osh_prefixphone1",
     "contact_osh_otherusername1": "fullname1",
     "contact_osh_otherusermail1": "osh_otheruseremail1",
     "contact_osh_otheruserphone1": "osh_otheruserphone1",

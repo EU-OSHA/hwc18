@@ -49,11 +49,12 @@
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 <fieldset>
     <legend id="GENERAL_INFORMATION">
-        General Contact Information
+        About your General Contact Information
         <div data-section="GENERAL_INFORMATION"></div>
     </legend>
     
@@ -63,15 +64,20 @@
         {$attributes.company_osh_address}
         {$attributes.company_osh_homepage}
         {$attributes.company_osh_zipcode}
+        {if !$mf}
         {$attributes.company_osh_dedicatedsite}
+        {else}
+        {$attributes.company_osh_dedicatedcampaignsite}
+        {/if}
 
         
         <div class="socialNetworks">
             <div>
                 <label for="company_osh_selectsocialnetworks" style="padding-top: 1vw; display: inline-block;">
-                        Social media profiles (Name + Profile ID)
+                    Social media profiles
                 </label>
                 <img src="{$urlBase}mvc/view/img/screen.png" style="margin-bottom: 4%;" title="Fields displayed on campaign site" class="screen-right"/>
+                <p class="help-block">Write the complete URL of the selected social network</p>
             </div>
            
         <div>
@@ -86,7 +92,7 @@
             </select>
         </div>
         <div style="display: inline-block; margin-left: 1vw;">
-            <input  id="socialNetworkTextBox" type="text" placeholder="ID" />
+            <input  id="socialNetworkTextBox" type="text" placeholder="URL" />
         </div>
 		<button type="button" data-selector="company_osh_selectsocialnetworks" data-target="containerSocialNetworks" id="plusSN" data-target="showSN"><img src="{$urlBase}mvc/view/img/add_blue.png" /><span>Add</span></button>
 		<div id="listContentSocialNetworks">
@@ -118,12 +124,13 @@
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 {if !$mf}
     <fieldset>
         <legend id="CEO">
-            Information about your CEO
+            About your CEO
             <div data-section="CEO" class="validation{$locked}"></div>
         </legend>
 
@@ -145,6 +152,7 @@
             <span class="helpIcon" name="helpIcon">?</span>
             <a class="helpButton" name="helpButton">HELP</a>
         </div>
+        <div class="separatorSection">&nbsp;</div>
     </div>
     {/if}
 {/if}

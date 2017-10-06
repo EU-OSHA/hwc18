@@ -1,15 +1,15 @@
 <!--{if $HelpMessage != "print"}
-<div id="container-message" class="container-message">   
+<div id="container-message" class="container-message">
 
         <div id="MESSAGE">
             Please make sure you thoroughly check, whether all your information is still valid
                        and indicate <br>     this by checking the button next to the appropiate fields
                        <a class="close">[X]</a>
-        </div>            
+        </div>
     </div>
 {else}
 {/if}-->
-
+{if !$mf}
 <div class="helpDialog hidden">
     <span>If you have any doubts about how to fill in this form or if you need any assistance, you can leave us a message and we will contact you as soon as possible.</span>
     <br>
@@ -20,17 +20,22 @@
     <label for="message">Your message:</label>
     <textarea id="message" placeholder="Write here your question"></textarea>
 </div>
+{/if}
 
 <fieldset>
     <legend id="PRIMARY_CONTACT">
-        Your Primary Contact
+        About your Main Contact Person
         <img id="PRIMARY_CONTACT_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
-    
+
     <div class="separatorFieldSet">&nbsp;</div>
-    
-      <!--  {if !mf && $partner_type == "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}-->
- {if !$mf && $mainContactChangeCheck == true && $partner_type != "current"}<div>{$attributes.contact_osh_maincontactchange}</div>{/if}
+
+    {if preg_match('/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/', $session_id)}
+    <div>
+        {$attributes.contact_osh_maincontactchange}
+    </div>
+    {/if}
+
     <div class="main-contact-change-clone main-contact-change-clone-ocp">
         <div class="float-left">
             {$attributes.contact_osh_maincontactpersonfirstname_clone}
@@ -47,9 +52,9 @@
             {if $mf || $partner_type == "current"}
                 </div>
             {/if}
-            {if !$mf && $partner_type != "current" && !$locked}
+            <!--{if !$mf && $partner_type != "current" && !$locked}
                 {$attributes.contact_osh_confirm_mainemail_clone}
-            {/if}
+            {/if}-->
        </div>
     </div>
 
@@ -82,11 +87,14 @@
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="PRIMARY_CONTACT" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="PRIMARY_CONTACT" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 {if $mf}
@@ -95,11 +103,11 @@
         Other users
         <img id="OTHER_USERS_check" class="hidden" src="mvc/view/img/tick_16.png" title="You have validated this section" />
     </legend>
-    
+
     <div class="separatorFieldSet">&nbsp;</div>
-    
+
     <p id="general-text">In this section you can add additional contacts for your own organisation. These new users will be able to make changes to your organisational profile. You will always be notified of such changes</p>
-   
+
    <div id="otherUserField1">
         {$attributes.contact_osh_otherusername1}
         {$attributes.contact_osh_otherusermail1}
@@ -155,19 +163,22 @@
             </button>
         </div>
     </div>
-   
-   
+
+
    <button class="addOtherUser" style="margin-top: 1%;" type="button">
         Add user
     </button>
 </fieldset>
 {if $HelpMessage != "print"}
 <div class="helpDiv">
-    <div data-section="OTHER_USERS" class="validation{$locked}">I validate the information filled in this section</div>
+    <div data-section="OTHER_USERS" class="validation{$locked}">I validate the information filled in this section
+        <span class="helpIcon" name="helpIcon" title="Please, check this box in order to validate this section">?</span>
+    </div>
     <div class="helpSection" style="float: right; margin-right:5%;">
         <span class="helpIcon" name="helpIcon">?</span>
         <a class="helpButton" name="helpButton">HELP</a>
     </div>
+    <div class="separatorSection">&nbsp;</div>
 </div>
 {/if}
 {/if}
@@ -177,14 +188,14 @@
           <tbody><tr>
              <td class="block_td percent_td" width="50%"><img src="http://hwc-crm.osha.europa.eu/footer-2017.png" alt="" height="88" width="350"></td>
              <td class="block_td percent_td" align="center" valign="middle" width="50%">
-				 <p style="margin:20px 0 !important; color:#ffffff; font-weight:700; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height: 20px;mso-line-height-rule: exactly;">Follow us on: 
-					<a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="http://hwc-crm.osha.europa.eu/facebook.jpg" alt="facebook" align="absmiddle" height="20" border="0" width="20"></a> 
-					<a href="https://twitter.com/eu_osha" target="_blank"><img src="http://hwc-crm.osha.europa.eu/twitter.jpg" alt="twitter" align="absmiddle" height="20" border="0" width="20"></a> 
-					<a href="https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work" target="_blank"><img src="http://hwc-crm.osha.europa.eu/linkedin.jpg" alt="linkedin" align="absmiddle" height="20" border="0" width="20"></a> 
-					<a href="https://www.youtube.com/user/EUOSHA" target="_blank"><img src="http://hwc-crm.osha.europa.eu/youtube.jpg" alt="youtube" align="absmiddle" height="20" border="0" width="20"></a> 
-					<a href="https://osha.europa.eu/en/tools-and-publications/blog" target="_blank"><img src="http://hwc-crm.osha.europa.eu/blogger.jpg" alt="blogger" align="absmiddle" height="20" border="0" width="20"></a>
+				 <p style="margin:20px 0 !important; color:#ffffff; font-weight:700; font-family: Arial, Helvetica, sans-serif; font-size:16px; line-height: 20px;mso-line-height-rule: exactly;">Follow us on:
+					<a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="https://hwc-crm.osha.europa.eu/facebook.jpg" alt="facebook" align="absmiddle" height="20" border="0" width="20"></a>
+					<a href="https://twitter.com/eu_osha" target="_blank"><img src="https://hwc-crm.osha.europa.eu/twitter.jpg" alt="twitter" align="absmiddle" height="20" border="0" width="20"></a>
+					<a href="https://www.linkedin.com/company/european-agency-for-safety-and-health-at-work" target="_blank"><img src="https://hwc-crm.osha.europa.eu/linkedin.jpg" alt="linkedin" align="absmiddle" height="20" border="0" width="20"></a>
+					<a href="https://www.youtube.com/user/EUOSHA" target="_blank"><img src="https://hwc-crm.osha.europa.eu/youtube.jpg" alt="youtube" align="absmiddle" height="20" border="0" width="20"></a>
+					<a href="https://osha.europa.eu/en/tools-and-publications/blog" target="_blank"><img src="https://hwc-crm.osha.europa.eu/blogger.jpg" alt="blogger" align="absmiddle" height="20" border="0" width="20"></a>
 				</p>
-			</td>          
+			</td>
           </tr>
          </tbody></table>
 </div>
