@@ -15,7 +15,7 @@
                     }
                 }
             }
-            jQuery('.page-search .region-sidebar-first').once('publication_toggle_facets', function() {
+            jQuery('.page-search .region-sidebar-first, .page-documents .region-sidebar-first').once('publication_toggle_facets', function() {
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').hide();
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
