@@ -1957,8 +1957,12 @@ header.navbar-default{
 /*fin partner profile*/
 
 /*create events & news*/
-.page-node-add-events, .page-node-add-news{
-	.node-events-form, .node-news-form{
+.page-node-add-events,
+.page-node-add-news,
+.page-node-add-document{
+	.node-events-form,
+	.node-news-form,
+	.node-document-form{
 		h2.node-edit-form-heading{
 			margin-left: 0;
 			margin-right: 0;
@@ -2009,6 +2013,62 @@ header.navbar-default{
 	}
 }
 /*fin create events & news*/
+.page-node-add-document{
+	.node-document-form{
+		label{
+			margin-top: 10px;
+			display: block;
+		}
+		> div{
+			padding-left: 15px !important;
+			padding-right: 16px !important;
+		}
+		.form-item-language{
+			#edit_language_chosen{
+				max-width: 100% !important;
+			}
+		}
+
+		#edit-title-field{
+			width: 100% !important;
+		}
+		#edit-field-document-type{
+			width: 100% !important;
+			.form-type-select{
+				width: 100% !important;
+				.form-select{
+					max-width: 100% !important;
+				}
+			}
+		}
+		#edit-field-document-files{
+			table[id*="field-document-files-values"]{
+				label{
+					display: block;
+				}
+				.field-name-field-document-file{
+					width: 100% !important;
+					display: block !important;
+					input.form-control.form-file{
+						max-width: 100% !important;
+					}
+				}
+				.field-name-field-file-title{
+					width: 100% !important;
+					display: block !important;
+				}
+				.field-name-field-language{
+					width: 100% !important;
+					display: block !important;
+				}
+				button.btn-danger.form-submit{
+					display: block;
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+}
 
 /*pag campaign-materials*/
 .page-campaign-materials, .node-type-campaign-materials{
