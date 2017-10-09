@@ -5468,11 +5468,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 }
 /*End partners public profile*/
 
-/*Create partner document form*/
-#document-node-form{
 
-}
-/*End create document form*/
 
 /*Partner documents lists*/
 .page-partners-documents,
@@ -5481,6 +5477,13 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		border-bottom: none;
 		padding-bottom: 0;
 		margin-bottom: 0em;
+	}
+	.form-group{
+		margin-bottom: 0px;
+	}
+	.back-to-link{
+		border: none !important;
+		padding-right: 25px;
 	}
 	#views-exposed-form-documents-page-1,
 	#views-exposed-form-documents-page-2{
@@ -5651,30 +5654,54 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				display: none;
 			}
 			.view-header{
-			    overflow: hidden;
 			    border: none;
 				border-top: 1px dotted @color3;
 				border-bottom: 1px dotted @color3;
 				border-radius: 0px;
 				padding: 7px 0px;
+				position: relative;
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 25px;
 					.sort-container.col-xs-3{
-						width: inherit;
+						width: 75% !important;
 						padding-left: 0px;
-						.form-group{
+						.form-item-sort-by,
+						.form-item-sort-order{
+							display: inline-block;
 							margin-bottom: 0px;
-							label{
-								margin-right: 10px;
-								&:after{
-									content: ":";
-								}
-							}
-							#edit-sort-by{
+							select{
 								display: inline-block;
 							}
+						}
+						.form-item-sort-order{
+							margin-left: 15px;
 						}
 					}
 					.count-container{
 						margin-top: 7px;
+						p{
+							a{
+								display: block;
+							    position: absolute;
+							    height: 35px;
+							    width: 135px;
+							    top: 54px;
+							    border: 2px solid #00349a;
+							    color: #00349a;
+							    text-align: center;
+							    line-height: 32px;
+							    font-weight: bold;
+							    font-style: italic;
+							    &:hover{
+							    	background-color: #00349a;
+							    	color: white;
+							    }
+							    &:before{
+							    	content: "> ";
+							    }
+							}
+						}
 					}
 				
 			}
@@ -5682,6 +5709,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				border-bottom: 1px dotted @border-default-color;
 				padding-bottom: 0em;
 				padding-top: 0.5em;
+				overflow: hidden;
 				.views-field-title-field{
 					color: @text-color-2;
 					font-weight: bold;
@@ -5707,7 +5735,10 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 					margin-bottom: 0.5em;
 				}
 				.views-field-field-image, .views-field-field-cover-image{
-					display: none;
+					float: left;
+					margin-right: 15px;
+					margin-top: 10px;
+					margin-bottom: 15px;
 				}
 				.views-field-search-api-excerpt{
 					margin-bottom: 0.5em;
@@ -5715,6 +5746,30 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 						font-weight: bold;
 						&:before{
 							content: ">";
+						}
+					}
+				}
+				.views-field-field-document-files{
+					margin-top: 15px;
+					ul{
+						display: inline-block;
+						li{
+							.content{
+								.field{
+									display: inline-block;
+									margin-right: 15px;
+								}
+							}
+						}
+					}
+				}
+				.views-field-search-api-relevance{
+					a{
+						color: @color2;
+						font-weight: bold;
+						font-style: italic;
+						&:before{
+							content: "> ";
 						}
 					}
 				}
@@ -5797,13 +5852,14 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 //	min-width: 283px;
 //}
 
+.page-node-add-document,
 .page-node-add-events, 
 .page-node-add-news,
 .page-node-edit{
 	#views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label{
 		visibility: visible !important;
 	}
-	.node-events-form, .node-news-form{
+	.node-events-form, .node-news-form, .node-document-form{
 		.form-control{
 			width: 100% !important;
 		}
@@ -6279,6 +6335,108 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	}
 }
 /*End create event*/
+
+/*Create partner document form*/
+#document-node-form{
+	input{
+		height: inherit !important;
+	}
+	.table-responsive{
+		overflow: visible;
+	}
+	.form-item, .panel-heading{
+		label, .panel-title{
+			color: #575757;
+		    font-weight: bold;
+		    font-size: 18px;
+		}
+	}
+	#edit-title-field{
+		width: 50%;
+		display: inline-block;
+		margin-right: 15px;
+	}
+	#edit-field-document-type{
+		width: 40%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.form-item-language{
+		padding-bottom: 0px;
+		border-bottom: none;
+		overflow: visible;
+		width: 100%;
+		label{
+			&:after{
+				content: none;
+			}
+		}
+	}
+	#edit-field-document-files{
+		table[id*="field-document-files-values"]{
+			.field-name-field-document-file{
+				width: 40%;
+				display: inline-block;
+				margin-right: 15px;
+				input.form-control.form-file{
+					height: 34px !important;
+				}
+			}
+			.field-name-field-file-title{
+				width: 35%;
+				display: inline-block;
+				vertical-align: top;
+				margin-right: 15px;
+			}
+			.field-name-field-language{
+				width: 20%;
+				display: inline-block;
+				vertical-align: top;
+			}
+			button.form-submit{
+				display: block;
+			}
+		}
+		#edit-field-document-files-und-add-more{
+
+		}
+	}
+	#edit-field-publication-date{
+		margin-top: 0px;
+		.panel-default{
+			border: none;
+			>.panel-heading{
+				border: none;
+				background-color: inherit;
+				padding: 0px;
+			}
+			.panel-body{
+				.date-no-float{
+					width: 100% !important;
+					.form-type-date-popup{
+						width: 100%;
+						> div{
+							width: 100%;
+							> div[class*="-date"]{
+								max-width: 100% !important;
+								input{
+									width: auto;
+								}
+							}
+							> div[class*="-time"]{
+								margin-top: 3em;
+								input{
+									width: auto;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/*End create document form*/
 
 /*Private area for partner*/
 .private-area{
