@@ -4626,7 +4626,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_ceo_photo';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'image',
@@ -4659,7 +4667,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_ceo';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'title_linked',
@@ -4693,7 +4709,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_position_identifier';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'text_plain',
@@ -4723,7 +4747,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_quote';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'text_default',
@@ -4754,7 +4786,13 @@ official-campaign-partners
   $pane->subtype = 'node:title_field';
   $pane->shown = TRUE;
   $pane->access = array(
-    'plugins' => array(),
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
   );
   $pane->configuration = array(
     'label' => 'hidden',
@@ -4790,7 +4828,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_orgtype';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'i18n_taxonomy_term_reference_plain',
@@ -4827,7 +4873,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_bussines_sector';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'i18n_taxonomy_term_reference_plain',
@@ -4864,7 +4918,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_website';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_default',
@@ -4931,7 +4993,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_mission_statement';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'above',
     'formatter' => 'text_default',
@@ -4961,7 +5031,15 @@ official-campaign-partners
   $pane->type = 'views';
   $pane->subtype = 'partner_content';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 0,
@@ -5137,7 +5215,15 @@ official-campaign-partners
   $pane->type = 'custom_title_tag';
   $pane->subtype = 'custom_title_tag';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'buttons' => NULL,
     'custom_page_title_pattern' => '%node',
@@ -5162,7 +5248,15 @@ official-campaign-partners
   $pane->type = 'custom_title_tag';
   $pane->subtype = 'custom_title_tag';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'buttons' => NULL,
     'custom_page_title_pattern' => '%node:title',
@@ -5187,7 +5281,15 @@ official-campaign-partners
   $pane->type = 'block';
   $pane->subtype = 'hwc_good_practice_exchange-gpep_links';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_gpep_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_title' => 0,
     'override_title_text' => '',
@@ -5210,7 +5312,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_logo';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'image',
@@ -5243,7 +5353,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:title_field';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'title_linked',
@@ -5277,7 +5395,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_ph_address';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'title_linked',
@@ -5311,7 +5437,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_ph_cp';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'title_linked',
@@ -5375,7 +5509,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_country';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'i18n_taxonomy_term_reference_plain',
@@ -5405,7 +5547,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_general_email';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'email_spamspan',
@@ -5435,7 +5585,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_website';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_default',
@@ -5465,7 +5623,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_general_phone';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'inline',
     'formatter' => 'title_linked',
@@ -5499,7 +5665,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_main_contact';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'inline',
     'formatter' => 'title_linked',
@@ -5533,7 +5707,15 @@ official-campaign-partners
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_organisation_rep';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'above',
     'formatter' => 'text_plain',
@@ -5576,7 +5758,13 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
         ),
         'not' => FALSE,
       ),
+      1 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
     ),
+    'logic' => 'and',
   );
   $pane->configuration = array(
     'admin_title' => 'Social media profiles title',
@@ -5602,7 +5790,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_facebook_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5632,7 +5828,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_twitter_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5662,7 +5866,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_linkedin_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5692,7 +5904,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_youtube_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5722,7 +5942,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_slideshare_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5755,7 +5983,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_google_plus_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5785,7 +6021,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_pinterest_profile';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'hidden',
     'formatter' => 'link_url',
@@ -5815,7 +6059,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'entity_field';
   $pane->subtype = 'node:field_pledge';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'label' => 'above',
     'formatter' => 'text_default',
@@ -5845,7 +6097,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->type = 'views';
   $pane->subtype = 'partner_content';
   $pane->shown = TRUE;
-  $pane->access = array();
+  $pane->access = array(
+    'plugins' => array(
+      0 => array(
+        'name' => 'hwc_partner_detail_only',
+        'settings' => NULL,
+        'not' => FALSE,
+      ),
+    ),
+  );
   $pane->configuration = array(
     'override_pager_settings' => 0,
     'use_pager' => 1,

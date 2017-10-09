@@ -102,6 +102,12 @@ function hwc_frontend_preprocess_html(&$vars) {
       $vars['classes_array'][] = 'pz-page';
     }
   }
+  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
+    $n = menu_get_object('node');
+    if ($n->type == 'partner') {
+      $vars['classes_array'][] = 'gpep-page';
+    }
+  }
   if (
     (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
     (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
