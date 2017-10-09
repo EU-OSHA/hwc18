@@ -1020,9 +1020,11 @@ header{
 			font-size: @size8;
 		}
 	}
-	.pane-hwc-partner-hwc-partner-private-link-0, .pane-hwc-partner-hwc-partner-private-link-1,
-	.pane-hwc-partner-hwc-partner-private-link-2, .pane-node-profile-update-link{
-		
+	.pane-hwc-partner-hwc-partner-private-link-0,
+	.pane-hwc-partner-hwc-partner-private-link-1,
+	.pane-hwc-partner-hwc-partner-private-link-2,
+	.pane-hwc-partner-hwc-partner-private-link-3,
+	.pane-node-profile-update-link{
 		.pane-content{
 			min-height: 120px;
 			max-height: 120px;
@@ -1032,12 +1034,22 @@ header{
 			margin-right: 0px !important;
 			
 			.hwc-partner-private-link-block-title{
-				float: left;
 				min-width: 35%;
 				a{
 					font-size: @size8;
 				}
 			}
+		}
+	}
+	p.draft{
+	    margin-top: 1em;
+	    text-align: left;
+	    margin: 0 auto;
+	    bottom: 30px;
+	    width: 100%;
+	    display: block;
+		a{
+			color:#039!important;
 		}
 	}
 }
