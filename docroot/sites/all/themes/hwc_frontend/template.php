@@ -343,7 +343,8 @@ function hwc_frontend_preprocess_page(&$vars) {
     }
 
     if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
-      $link_href = url('node/' . $partner->nid);
+      $url_options = ['query' => ['page' => 'gpep']];
+      $link_href = url('node/' . $partner->nid, $url_options);
       $link_title = t('Back');
       $vars['page']['below_title']['back-to-link'] = array(
         '#type' => 'item',
