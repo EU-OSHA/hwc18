@@ -398,7 +398,7 @@ function drush_hwc_refresh_strings() {
     'Publish',
     'Published',
     'Recommended articles',
-    'Recommended for you',
+    'Recommended resources for you',
     'Recommended resources',
     'Related documents',
     'Related documents (titles)',
