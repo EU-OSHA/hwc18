@@ -393,7 +393,11 @@ function hwc_frontend_preprocess_field(&$variables) {
     $field_name = $variables['element']['#field_name'];
     foreach ($variables['items'] as $key => &$item) {
       foreach ($variables['element']['#object']->{$field_name} as $lang => $value) {
-        if ($variables['element']['#object']->{$field_name}[$lang][$key]['format'] == NULL) {
+        if (
+          ($variables['element']['#object']->{$field_name}[$lang][$key]['format'] == NULL)
+          &&
+          ($variables['element']['#object']->language == $lang)
+        ) {
           $item['#markup'] = nl2br($item['#markup']);
         }
       }
