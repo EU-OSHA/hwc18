@@ -12537,14 +12537,42 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   overflow: hidden;
   clear: both;
   text-align: center;
-  max-width: 1170px;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 4em;
+}
+.pane-hwc-good-practice-exchange-gpep-links h1 {
+  color: #749b00 !important;
+  font-size: 2.5em !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  margin-top: 10px !important;
+  border-bottom: none !important;
+  padding-bottom: 0px !important;
+  margin-bottom: 0px;
+}
+.pane-hwc-good-practice-exchange-gpep-links .back_link {
   margin-bottom: 2em;
+}
+.pane-hwc-good-practice-exchange-gpep-links .back_link a {
+  display: block;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 0.5em;
+  text-align: right;
+  width: 100%;
+  border-bottom: 1px dotted #749b00;
+}
+.pane-hwc-good-practice-exchange-gpep-links .back_link a:before {
+  content: ">";
+  padding-right: 5px;
 }
 .pane-hwc-good-practice-exchange-gpep-links .hwc-gpep-intro-text {
   text-align: center !important;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: block;
 }
 .pane-hwc-good-practice-exchange-gpep-links .hwc-gpep-intro-text span {
   display: block;
@@ -12593,6 +12621,13 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   background-image: url(../images/content/collaboration-osha.png);
   background-repeat: no-repeat;
   background-position: center;
+}
+.gpep-page .panels-flexible-row-new-5,
+.gpep-page .panels-flexible-row-new-4,
+.gpep-page .panels-flexible-row-new-1,
+.gpep-page .panels-flexible-row-new-7,
+.gpep-page .panels-flexible-row-new-14 {
+  display: none;
 }
 .profile-title-type-container {
   margin-bottom: 90px !important;
@@ -13297,7 +13332,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .page-partners-documents .region.region-content .view-search .view-header .sort-container.col-xs-3,
 .page-communications .region.region-content .view-search .view-header .sort-container.col-xs-3 {
-  width: 75% !important;
+  width: 75%;
   padding-left: 0px;
 }
 .page-partners-documents .region.region-content .view-search .view-header .sort-container.col-xs-3 .form-item-sort-by,
@@ -13417,6 +13452,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   color: #003399;
   font-weight: bold;
   font-style: italic;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 .page-partners-documents .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance a:before,
 .page-communications .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance a:before {
@@ -15195,24 +15232,34 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 /*End campaign materials*/
 /*Publications detail*/
+.node-type-document h1,
 .node-type-publication h1 {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
 }
+.node-type-document .pane-node-field-cover-image,
 .node-type-publication .pane-node-field-cover-image {
   margin-left: -15px;
   margin-top: 1em;
 }
+.node-type-document .pane-node-field-cover-image img,
 .node-type-publication .pane-node-field-cover-image img {
   border: 1px solid #CCC;
 }
+.node-type-document .panels-flexible-region-container-title .pane-node-field-publication-date .field.field-name-field-publication-date,
 .node-type-publication .panels-flexible-region-container-title .pane-node-field-publication-date .field.field-name-field-publication-date {
   margin-bottom: 0.5em;
 }
+.node-type-document .pane-node-field-document-type,
+.node-type-publication .pane-node-field-document-type,
+.node-type-document .pane-node-field-publication-type,
 .node-type-publication .pane-node-field-publication-type,
+.node-type-document .pane-node-field-country,
 .node-type-publication .pane-node-field-country,
+.node-type-document .pane-node-field-free,
 .node-type-publication .pane-node-field-free,
+.node-type-document .pane-node-field-tool-type,
 .node-type-publication .pane-node-field-tool-type {
   display: inline-block;
   background-color: #e2e2e3;
@@ -15222,36 +15269,53 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin-right: 2em;
   padding: 0.5em 1.5em;
 }
+.node-type-document .panels-flexible-row-container-main-row,
 .node-type-publication .panels-flexible-row-container-main-row {
   margin-top: 1em;
 }
+.node-type-document .pane-node-field-document-files,
+.node-type-publication .pane-node-field-document-files,
+.node-type-document .pane-node-field-file,
 .node-type-publication .pane-node-field-file {
   padding-top: 1em;
   clear: both;
   margin-left: 0px;
 }
+.node-type-document .pane-node-field-document-files .first.last,
+.node-type-publication .pane-node-field-document-files .first.last,
+.node-type-document .pane-node-field-file .first.last,
 .node-type-publication .pane-node-field-file .first.last {
   font-style: italic;
 }
+.node-type-document .pane-node-field-document-files .first.last > div:first-child a,
+.node-type-publication .pane-node-field-document-files .first.last > div:first-child a,
+.node-type-document .pane-node-field-file .first.last > div:first-child a,
 .node-type-publication .pane-node-field-file .first.last > div:first-child a {
   color: #333333;
 }
+.node-type-document .pane-node-field-document-files .first.last ul .first.last a,
+.node-type-publication .pane-node-field-document-files .first.last ul .first.last a,
+.node-type-document .pane-node-field-file .first.last ul .first.last a,
 .node-type-publication .pane-node-field-file .first.last ul .first.last a {
   margin-left: 1em;
   font-weight: bold;
 }
+.node-type-document .field-type-file,
 .node-type-publication .field-type-file {
   width: 90%;
 }
+.node-type-document .field-type-file ul li ul li a,
 .node-type-publication .field-type-file ul li ul li a {
   display: block;
   float: left;
   width: 55px;
   margin-right: 25px;
 }
+.node-type-document .field-type-file ul li ul li a span.glyphicon.glyphicon-circle-arrow-down,
 .node-type-publication .field-type-file ul li ul li a span.glyphicon.glyphicon-circle-arrow-down {
   float: right;
 }
+.node-type-document .pane-node-field-related-publications,
 .node-type-publication .pane-node-field-related-publications {
   padding-top: 1em;
   padding-bottom: 1em;
@@ -15259,11 +15323,13 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin-bottom: 1em;
   border-top: 1px dotted #749b00;
 }
+.node-type-document .pane-node-field-related-publications label,
 .node-type-publication .pane-node-field-related-publications label {
   float: left;
   margin-right: 0.5em;
   padding-bottom: 1em;
 }
+.node-type-document .pane-node-field-related-publications ul,
 .node-type-publication .pane-node-field-related-publications ul {
   float: left;
   margin-right: 0.5em;
@@ -15272,14 +15338,17 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   width: 100%;
   font-style: italic;
 }
+.node-type-document .pane-node-field-related-publications ul li,
 .node-type-publication .pane-node-field-related-publications ul li {
   float: left;
   margin-right: 0.5em;
   width: 100%;
 }
+.node-type-document .pane-node-field-related-publications ul li a,
 .node-type-publication .pane-node-field-related-publications ul li a {
   font-weight: bold;
 }
+.node-type-document .pane-node-field-related-publications ul li ul,
 .node-type-publication .pane-node-field-related-publications ul li ul {
   width: auto;
   border-bottom: none;
@@ -15287,6 +15356,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   padding-top: 0em;
   padding-bottom: 0em;
 }
+.node-type-document .pane-node-field-related-publications ul li ul li,
 .node-type-publication .pane-node-field-related-publications ul li ul li {
   margin-right: 0;
   width: auto;
@@ -19645,49 +19715,70 @@ input#edit-field-image-und-0-upload::before {
   .publication-item .field-name-field-cover-image ~ ul {
     margin-left: 190px;
   }
+  .node-type-document .pane-node-title-field,
   .node-type-publication .pane-node-title-field,
+  .node-type-document .pane-node-field-publication-date,
   .node-type-publication .pane-node-field-publication-date,
+  .node-type-document .pane-node-field-publication-type,
   .node-type-publication .pane-node-field-publication-type {
     margin-left: 30px;
     margin-right: 30px;
   }
+  .node-type-document .panels-flexible-region-container-center,
   .node-type-publication .panels-flexible-region-container-center {
     padding-right: 30px;
     padding-left: 30px;
   }
+  .node-type-document .pane-node-field-cover-image,
   .node-type-publication .pane-node-field-cover-image {
     display: none;
   }
+  .node-type-document .panels-flexible-row-container-main-row,
   .node-type-publication .panels-flexible-row-container-main-row {
     margin-top: 1em;
   }
+  .node-type-document .field-name-field-related-publications > .field-label,
   .node-type-publication .field-name-field-related-publications > .field-label,
+  .node-type-document .field-type-entityreference > .field-label,
   .node-type-publication .field-type-entityreference > .field-label,
+  .node-type-document .field-name-field-related-publications li,
   .node-type-publication .field-name-field-related-publications li,
+  .node-type-document .field-type-entityreference li,
   .node-type-publication .field-type-entityreference li {
     padding-right: 15px;
     padding-left: 15px;
   }
+  .node-type-document .field-name-field-related-publications > .field-label li,
   .node-type-publication .field-name-field-related-publications > .field-label li,
+  .node-type-document .field-type-entityreference > .field-label li,
   .node-type-publication .field-type-entityreference > .field-label li,
+  .node-type-document .field-name-field-related-publications li li,
   .node-type-publication .field-name-field-related-publications li li,
+  .node-type-document .field-type-entityreference li li,
   .node-type-publication .field-type-entityreference li li {
     padding-right: 0px;
     padding-left: 0px;
   }
+  .node-type-document .pane-node-body,
   .node-type-publication .pane-node-body {
     margin-left: 0;
   }
+  .node-type-document .pane-node-body .field-items,
   .node-type-publication .pane-node-body .field-items {
     width: 100%;
   }
+  .node-type-document .pane-node-field-file,
   .node-type-publication .pane-node-field-file {
     margin-left: 0;
     margin-right: 0;
   }
+  .node-type-document .field-name-field-related-publications > .field-label,
   .node-type-publication .field-name-field-related-publications > .field-label,
+  .node-type-document .field-type-entityreference > .field-label,
   .node-type-publication .field-type-entityreference > .field-label,
+  .node-type-document .field-name-field-related-publications li,
   .node-type-publication .field-name-field-related-publications li,
+  .node-type-document .field-type-entityreference li,
   .node-type-publication .field-type-entityreference li {
     padding-right: 30px;
     padding-left: 30px;
@@ -19700,6 +19791,8 @@ input#edit-field-image-und-0-upload::before {
   }
   /*Fin pag publications*/
   /* pag Search */
+  .page-communications .region-sidebar-first,
+  .page-partners-documents .region-sidebar-first,
   .page-search .region-sidebar-first {
     border-bottom: none;
     border-top: 1px dotted #749b00;
@@ -19708,56 +19801,92 @@ input#edit-field-image-und-0-upload::before {
     padding-top: 0;
     padding-bottom: 0;
   }
-  .page-search .region-sidebar-first #edit-search-block-form--3-wrapper {
+  .page-communications .region-sidebar-first #block-views-exp-documents-page-1,
+  .page-partners-documents .region-sidebar-first #block-views-exp-documents-page-1,
+  .page-search .region-sidebar-first #block-views-exp-documents-page-1,
+  .page-communications .region-sidebar-first #block-views-exp-documents-page-2,
+  .page-partners-documents .region-sidebar-first #block-views-exp-documents-page-2,
+  .page-search .region-sidebar-first #block-views-exp-documents-page-2 {
+    padding-bottom: 0px;
+    margin-bottom: 15px;
+  }
+  .page-communications .region-sidebar-first #edit-search-block-form--3-wrapper,
+  .page-partners-documents .region-sidebar-first #edit-search-block-form--3-wrapper,
+  .page-search .region-sidebar-first #edit-search-block-form--3-wrapper,
+  .page-communications .region-sidebar-first #edit-search-api-views-fulltext-wrapper,
+  .page-partners-documents .region-sidebar-first #edit-search-api-views-fulltext-wrapper,
+  .page-search .region-sidebar-first #edit-search-api-views-fulltext-wrapper {
     margin-bottom: 10px;
     padding-right: 15px;
     padding-left: 15px;
   }
+  .page-communications .region-sidebar-first .views-submit-button button,
+  .page-partners-documents .region-sidebar-first .views-submit-button button,
   .page-search .region-sidebar-first .views-submit-button button {
     right: 15px !important;
   }
+  .page-communications .region-sidebar-first #block-osha-search-osha-search-clear-filters a,
+  .page-partners-documents .region-sidebar-first #block-osha-search-osha-search-clear-filters a,
   .page-search .region-sidebar-first #block-osha-search-osha-search-clear-filters a {
     margin-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
   }
+  .page-communications .region-sidebar-first .block.block-facetapi,
+  .page-partners-documents .region-sidebar-first .block.block-facetapi,
   .page-search .region-sidebar-first .block.block-facetapi {
     border-bottom: none;
     padding-top: 0px;
     padding-bottom: 10px;
     overflow: hidden;
   }
+  .page-communications .region-sidebar-first .block.block-facetapi h2,
+  .page-partners-documents .region-sidebar-first .block.block-facetapi h2,
   .page-search .region-sidebar-first .block.block-facetapi h2 {
     padding: 8px 15px;
     margin-bottom: 0;
     background-color: #e2e2e3;
   }
+  .page-communications .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links,
+  .page-partners-documents .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links,
   .page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links {
     padding-left: 15px;
     margin-bottom: 0;
     display: block;
   }
+  .page-communications .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li,
+  .page-partners-documents .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li,
   .page-search .region-sidebar-first .block.block-facetapi .facetapi-facetapi-checkbox-links li {
     width: 20%;
     width: auto;
     white-space: nowrap;
     margin-right: 1em;
   }
+  .page-communications .region.region-content,
+  .page-partners-documents .region.region-content,
   .page-search .region.region-content {
     float: left;
     width: 100%;
     margin-left: 0;
   }
+  .page-communications .region.region-content .view-search .view-header,
+  .page-partners-documents .region.region-content .view-search .view-header,
   .page-search .region.region-content .view-search .view-header {
     padding: 7px 15px;
   }
+  .page-communications .region.region-content .view-search .view-content .views-row,
+  .page-partners-documents .region.region-content .view-search .view-content .views-row,
   .page-search .region.region-content .view-search .view-content .views-row {
     padding-left: 30px;
     padding-right: 30px;
   }
+  .page-communications .region.region-content .view-search .view-empty,
+  .page-partners-documents .region.region-content .view-search .view-empty,
   .page-search .region.region-content .view-search .view-empty {
     margin-left: 30px;
   }
+  .page-communications .region.region-content .result_summary,
+  .page-partners-documents .region.region-content .result_summary,
   .page-search .region.region-content .result_summary {
     padding-left: 15px;
   }
@@ -21911,38 +22040,53 @@ input#edit-field-image-und-0-upload::before {
     left: 15px;
     margin-left: 0;
   }
+  .node-type-document .back-to-link,
   .node-type-publication .back-to-link {
     display: none;
   }
+  .node-type-document .pane-node-title-field,
   .node-type-publication .pane-node-title-field,
+  .node-type-document .pane-node-field-publication-date,
   .node-type-publication .pane-node-field-publication-date,
+  .node-type-document .pane-node-field-publication-type,
   .node-type-publication .pane-node-field-publication-type {
     margin-left: 15px;
     margin-right: 15px;
   }
+  .node-type-document .pane-node-title-field h2,
   .node-type-publication .pane-node-title-field h2,
+  .node-type-document .pane-node-field-publication-date h2,
   .node-type-publication .pane-node-field-publication-date h2,
+  .node-type-document .pane-node-field-publication-type h2,
   .node-type-publication .pane-node-field-publication-type h2 {
     margin-left: 0;
     margin-right: 0;
   }
+  .node-type-document .panels-flexible-region-container-center,
   .node-type-publication .panels-flexible-region-container-center {
     padding-right: 15px;
     padding-left: 15px;
   }
+  .node-type-document .panels-flexible-region-container-center .field-items,
   .node-type-publication .panels-flexible-region-container-center .field-items {
     width: 100%;
   }
+  .node-type-document .field-name-field-related-publications > .field-label,
   .node-type-publication .field-name-field-related-publications > .field-label,
+  .node-type-document .field-type-entityreference > .field-label,
   .node-type-publication .field-type-entityreference > .field-label,
+  .node-type-document .field-name-field-related-publications li,
   .node-type-publication .field-name-field-related-publications li,
+  .node-type-document .field-type-entityreference li,
   .node-type-publication .field-type-entityreference li {
     padding-right: 15px;
     padding-left: 15px;
   }
+  .node-type-document .pane-node-field-publication-related-res,
   .node-type-publication .pane-node-field-publication-related-res {
     padding-left: 1em;
   }
+  .node-type-document .pane-node-field-publication-related-res .field-item,
   .node-type-publication .pane-node-field-publication-related-res .field-item {
     padding-bottom: 1em;
   }
@@ -22488,6 +22632,8 @@ input#edit-field-image-und-0-upload::before {
   }
   /*fin videos*/
   /* pag Search */
+  .page-communications .region-sidebar-first h2,
+  .page-partners-documents .region-sidebar-first h2,
   .page-search .region-sidebar-first h2 {
     margin-right: 0;
     padding-left: 0;
@@ -22495,24 +22641,101 @@ input#edit-field-image-und-0-upload::before {
     margin-left: 0px;
     font-size: 1.1em !important;
   }
+  .page-communications .region-sidebar-first .facetapi-facetapi-checkbox-links,
+  .page-partners-documents .region-sidebar-first .facetapi-facetapi-checkbox-links,
   .page-search .region-sidebar-first .facetapi-facetapi-checkbox-links {
     padding-left: 15px;
   }
+  .page-communications .region-sidebar-first #edit-search-api-views-fulltext-wrapper,
+  .page-partners-documents .region-sidebar-first #edit-search-api-views-fulltext-wrapper,
+  .page-search .region-sidebar-first #edit-search-api-views-fulltext-wrapper {
+    margin-bottom: 0px;
+  }
+  .page-communications .views-widget-sort-by,
+  .page-partners-documents .views-widget-sort-by,
   .page-search .views-widget-sort-by {
     clear: both;
   }
+  .page-communications .sort-container.col-xs-3,
+  .page-partners-documents .sort-container.col-xs-3,
+  .page-search .sort-container.col-xs-3 {
+    width: 100% !important;
+    padding-right: 0px;
+  }
+  .page-communications .sort-container.col-xs-3 .form-item-sort-by,
+  .page-partners-documents .sort-container.col-xs-3 .form-item-sort-by,
+  .page-search .sort-container.col-xs-3 .form-item-sort-by,
+  .page-communications .sort-container.col-xs-3 .form-item-sort-order,
+  .page-partners-documents .sort-container.col-xs-3 .form-item-sort-order,
+  .page-search .sort-container.col-xs-3 .form-item-sort-order {
+    display: inline-block;
+    width: 100%;
+    margin-left: 0px !important;
+  }
+  .page-communications .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-partners-documents .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-search .sort-container.col-xs-3 .form-item-sort-by select,
+  .page-communications .sort-container.col-xs-3 .form-item-sort-order select,
+  .page-partners-documents .sort-container.col-xs-3 .form-item-sort-order select,
+  .page-search .sort-container.col-xs-3 .form-item-sort-order select {
+    display: inline-block;
+    width: 100%;
+  }
+  .page-communications .sort-container.col-xs-3 .form-item-sort-order,
+  .page-partners-documents .sort-container.col-xs-3 .form-item-sort-order,
+  .page-search .sort-container.col-xs-3 .form-item-sort-order {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .page-communications .count-container,
+  .page-partners-documents .count-container,
+  .page-search .count-container {
+    margin-top: 7px;
+  }
+  .page-communications .count-container p a,
+  .page-partners-documents .count-container p a,
+  .page-search .count-container p a {
+    top: inherit !important;
+    bottom: -40px;
+  }
+  .page-communications .views-exposed-form,
+  .page-partners-documents .views-exposed-form,
   .page-search .views-exposed-form {
     padding-left: 0;
   }
+  .page-communications .views-exposed-form .views-exposed-widget,
+  .page-partners-documents .views-exposed-form .views-exposed-widget,
   .page-search .views-exposed-form .views-exposed-widget {
     padding-left: 0;
     padding-bottom: 0.5em;
   }
+  .page-communications .region.region-content .view-search .view-content .views-row,
+  .page-partners-documents .region.region-content .view-search .view-content .views-row,
   .page-search .region.region-content .view-search .view-content .views-row {
     padding-left: 15px;
+    padding-right: 15px;
   }
+  .page-communications .region.region-content .view-search .view-empty,
+  .page-partners-documents .region.region-content .view-search .view-empty,
   .page-search .region.region-content .view-search .view-empty {
     margin-left: 15px;
+  }
+  .page-communications .region.region-content .view-documents .view-content .views-row,
+  .page-partners-documents .region.region-content .view-documents .view-content .views-row,
+  .page-search .region.region-content .view-documents .view-content .views-row {
+    padding-right: 15px;
+  }
+  .page-communications .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image,
+  .page-partners-documents .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image,
+  .page-search .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image {
+    display: none;
+    margin-right: 0px;
+    width: 100%;
+  }
+  .page-communications .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image img,
+  .page-partners-documents .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image img,
+  .page-search .region.region-content .view-documents .view-content .views-row .views-field-field-cover-image img {
+    width: 100%;
   }
   /*Fin pag Search */
   /*Private area*/
