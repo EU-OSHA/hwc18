@@ -367,8 +367,10 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $node = menu_get_object('node');
     if ($node) {
       $partner = hwc_good_practice_exchange_node_get_workbench_partner($node);
-      $wrapper = entity_metadata_wrapper('node', $partner);
-      $title = $wrapper->title->value();
+      if ($partner) {
+        $wrapper = entity_metadata_wrapper('node', $partner);
+        $title = $wrapper->title->value();
+      }
     }
     $block['subject'] = '';
     $block['content']['#markup'] = '<div class="gpep-organisation"><div class="col-xs-12 col-sm-12">' . $title . '</div></div>';
