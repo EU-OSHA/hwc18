@@ -824,6 +824,7 @@ header{
 		margin-left: 190px;
 	}
 }
+.node-type-document,
 .node-type-publication{
 	.pane-node-title-field, .pane-node-field-publication-date, .pane-node-field-publication-type{
 		margin-left: @margin-tablet;
@@ -878,6 +879,8 @@ header{
 /*Fin pag publications*/
 
 /* pag Search */
+.page-communications,
+.page-partners-documents,
 .page-search{
 	.region-sidebar-first{
 		border-bottom: none;
@@ -886,11 +889,16 @@ header{
 		margin-left: 0;
 		padding-top: 0;
 		padding-bottom: 0;
-		#edit-search-block-form--3-wrapper{
+		#block-views-exp-documents-page-1,
+		#block-views-exp-documents-page-2{
+			padding-bottom: 0px;
+			margin-bottom: 15px;
+		}
+		#edit-search-block-form--3-wrapper,
+		#edit-search-api-views-fulltext-wrapper{
 			margin-bottom: 10px;
 			padding-right: 15px;
 			padding-left: 15px;
-			
 		}
 		.views-submit-button{
 			button{

@@ -4873,13 +4873,41 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
     overflow: hidden;
     clear: both;
     text-align: center;
-    max-width: 1170px;
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px;
-    margin-bottom: 2em;
+    margin-bottom: 4em;
+    h1{
+    	color: #749b00 !important;
+	    font-size: 2.5em !important;
+	    font-weight: bold !important;
+	    text-align: center !important;
+	    margin-top: 10px !important;
+	    border-bottom: none !important;
+	    padding-bottom: 0px !important;
+	    margin-bottom: 0px;
+    }
+    .back_link{
+    	margin-bottom: 2em;
+    	a{
+    		display: block;
+			font-weight: bold;
+			font-style: italic;
+			margin-bottom: 0.5em;
+			text-align: right;
+			width: 100%;
+			border-bottom: 1px dotted @border-default-color;
+			&:before{
+				content: ">";
+				padding-right: 5px;
+			}
+		}
+    }
     .hwc-gpep-intro-text{
 		text-align: center !important;
+		max-width: 1170px;
+		margin: 0 auto;
+		display: block;
 		span{
 			display: block;
 			margin-top: 1em;
@@ -4928,7 +4956,15 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		}
     }
 }
-
+.gpep-page{
+	.panels-flexible-row-new-5,
+	.panels-flexible-row-new-4,
+	.panels-flexible-row-new-1,
+	.panels-flexible-row-new-7,
+	.panels-flexible-row-new-14{
+		display: none;
+	}
+}
 .profile-title-type-container{
 	margin-bottom: 90px !important;
 	margin-bottom: 2em !important;
@@ -5664,7 +5700,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				width: 100%;
 				margin-bottom: 25px;
 					.sort-container.col-xs-3{
-						width: 75% !important;
+						width: 75%;
 						padding-left: 0px;
 						.form-item-sort-by,
 						.form-item-sort-order{
@@ -5768,6 +5804,8 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 						color: @color2;
 						font-weight: bold;
 						font-style: italic;
+						margin-bottom: 10px;
+						display: inline-block;
 						&:before{
 							content: "> ";
 						}
@@ -6752,6 +6790,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 /*End campaign materials*/
 
 /*Publications detail*/
+.node-type-document,
 .node-type-publication{
 	h1{
 		margin-bottom: 0;
@@ -6774,7 +6813,11 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 			}
 		}
 	}
-	.pane-node-field-publication-type, .pane-node-field-country, .pane-node-field-free, .pane-node-field-tool-type{
+	.pane-node-field-document-type,
+	.pane-node-field-publication-type,
+	.pane-node-field-country,
+	.pane-node-field-free,
+	.pane-node-field-tool-type{
 	    display: inline-block;
 		background-color: #e2e2e3;
 		color: #003399;
@@ -6786,6 +6829,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	.panels-flexible-row-container-main-row{
 		margin-top: 1em;
 	}
+	.pane-node-field-document-files,
 	.pane-node-field-file{
 		padding-top: 1em;
 		clear: both;
