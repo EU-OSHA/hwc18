@@ -11,6 +11,14 @@ define ('PARTNER_TYPE_OCP', '825c3b00-0dd2-4026-b292-bc76d6e49a70');
 define ('PARTNER_TYPE_MP', '8b662e6e-054a-4148-8495-490ac5858964');
 define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
 
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function hwc_partner_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
 
 /**
  * Implements hook_views_query_alter().
@@ -18,7 +26,7 @@ define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
 function hwc_partner_views_query_alter(&$view, &$query) {
   if ($view->name == 'partners_list' && $view->current_display == 'een') {
     $name = 'OSH Ambassador';
-    foreach($query->where[1]['conditions'] as $k => $v) {
+    foreach ($query->where[1]['conditions'] as $k => $v) {
       if ($v['field'] == 'field_data_field_partner_type.field_partner_type_tid') {
         $term = taxonomy_term_load($query->where[1]['conditions'][$k]['value']);
         if ($term && $term->name != $name) {
@@ -171,13 +179,15 @@ function hwc_partner_block_configure($delta = '') {
       '#description' => 'This will appear after description. (e.g. "Click here").',
       '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_link_text', ''),
     );*/
-    $form['hwc_partner_private_link_' . $it . '_url'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Link URL'),
-      '#size' => 60,
-      '#description' => 'This will be the url of the private link.',
-      '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_url', ''),
-    );
+    if ($it != 3) {
+      $form['hwc_partner_private_link_' . $it . '_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link URL'),
+        '#size' => 60,
+        '#description' => 'This will be the url of the private link.',
+        '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_url', ''),
+      );
+    }
   }
   return $form;
 }
@@ -191,7 +201,9 @@ function hwc_partner_block_save($delta = '', $edit = array()) {
   variable_set('hwc_partner_private_link_' . $it . '_title', $edit['hwc_partner_private_link_' . $it . '_title']);
 //  variable_set('hwc_partner_private_link_' . $it . '_description', $edit['hwc_partner_private_link_' . $it . '_description']);
 //  variable_set('hwc_partner_private_link_' . $it . '_link_text', $edit['hwc_partner_private_link_' . $it . '_link_text']);
-  variable_set('hwc_partner_private_link_' . $it . '_url', $edit['hwc_partner_private_link_' . $it . '_url']);
+  if ($it != 3) {
+    variable_set('hwc_partner_private_link_' . $it . '_url', $edit['hwc_partner_private_link_' . $it . '_url']);
+  }
 }
 
 /**
@@ -221,6 +233,10 @@ function hwc_partner_block_view($delta = '') {
           reset($node->workbench_access);
           $id_section = current($node->workbench_access);
           $url_options = array('query' => array('workbench_access' => $id_section));
+        }
+        if ($it == 3) {
+          $url = 'node/' . $node->nid;
+          $url_options = ['query' => ['page' => 'gpep']];
         }
         $block['content'] = theme('hwc_partner_private_link_' . $it,
           array(

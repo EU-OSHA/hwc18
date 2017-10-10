@@ -297,7 +297,7 @@ function hwc_good_practice_exchange_views_post_render(&$view, &$output, &$cache)
     $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
     $output = trim(str_replace('@order', $order_html, $output)) . '</span>';
     if ($view->current_display == 'page_1') {
-      $link = l('New Document','node/add/document');
+      $link = l(t('New Document'), 'node/add/document');
       $output = trim(str_replace('__add_new_document_link__', $link, $output)) . '</span>';
     }
   }
@@ -338,6 +338,8 @@ function hwc_good_practice_exchange_theme($existing, $type, $theme, $path) {
     'template' => 'templates/hwc_good_practice_exchange_platform',
     'variables' => array(
       'links' => [],
+      'title' => '',
+      'back_link' => '',
       'intro_text' => '',
     ),
   );
@@ -385,12 +387,17 @@ function hwc_good_practice_exchange_block_view($delta = '') {
       'communications',
       ['html' => TRUE, 'attributes' => ['class' => 'communications']]);
 
-    $intro_text = variable_get('hwc_gpep_document_intro_text');
+    $node = menu_get_object('node');
+    $intro_text = variable_get('hwc_gpep_document_intro_text', '');
+    $title = t('Good practice exchange platform');
+    $back_link = l(t('Back'), 'node/' . $node->nid);
 
     $block['subject'] = '';
     $block['content'] = theme('hwc_good_practice_exchange_platform',
       array(
         'links' => $links,
+        'title' => $title,
+        'back_link' => $back_link,
         'intro_text' => $intro_text,
       )
     );

@@ -102,6 +102,12 @@ function hwc_frontend_preprocess_html(&$vars) {
       $vars['classes_array'][] = 'pz-page';
     }
   }
+  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
+    $n = menu_get_object('node');
+    if ($n->type == 'partner') {
+      $vars['classes_array'][] = 'gpep-page';
+    }
+  }
   if (
     (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
     (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
@@ -337,7 +343,8 @@ function hwc_frontend_preprocess_page(&$vars) {
     }
 
     if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
-      $link_href = url('node/' . $partner->nid);
+      $url_options = ['query' => ['page' => 'gpep']];
+      $link_href = url('node/' . $partner->nid, $url_options);
       $link_title = t('Back');
       $vars['page']['below_title']['back-to-link'] = array(
         '#type' => 'item',
