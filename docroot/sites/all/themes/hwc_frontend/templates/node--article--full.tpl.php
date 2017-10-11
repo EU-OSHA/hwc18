@@ -34,7 +34,7 @@
     print render($content['share_widget']);
     // Additional resources
     if (!empty($content['field_recommended_resources']) || !empty($content['field_recommended_articles'])) {
-      print '<div class="dot-separator green"></div><div class="icon recommended-resources"></div>' . '<h2>' . t('Recommended for you') . '</h2>';
+      print '<div class="dot-separator green"></div><div class="icon recommended-resources"></div>' . '<h2>' . t('Recommended resources for you') . '</h2>';
       print render($content['field_recommended_resources']);
       print render($content['field_recommended_articles']);
     }

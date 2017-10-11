@@ -207,6 +207,11 @@ function osha_publication_field_formatter_info() {
       'field types' => array('file'),
       'description' => 'Displays default icon per file type and file description.',
     ),
+    'file_document_files' => array(
+      'label' => 'Document files',
+      'field types' => array('file'),
+      'description' => 'Displays document files.',
+    ),
     'publication_bookshop_id' => array(
       'label' => 'Publication bookshop link',
       'field types' => array('text'),
@@ -217,11 +222,6 @@ function osha_publication_field_formatter_info() {
       'field types' => array('entityreference'),
       'description' => 'Displays twin publications as title and link to file in all languages.',
     ),
-//    'publication_title_linked' => array(
-//      'label' => t('Publication Linked and wrapped'),
-//      'field types' => array('text'),
-//      'settings' => array('title_style' => '', 'title_link' => '', 'title_class' => ''),
-//    ),
   );
   return $info;
 }
@@ -306,9 +306,19 @@ function osha_publication_field_formatter_settings_summary($field, $instance, $v
  * Implements hook_theme().
  */
 function osha_publication_theme() {
+  $path = drupal_get_path('module', 'osha_publication');
+
   return array(
     'osha_publication_file_publication_file_format' => array(
       'variables' => array('entity' => NULL, 'file' => NULL, 'delta' => NULL),
+    ),
+    'osha_publication_file_document_files' => array(
+      'template' => 'osha_publication_file_document_files',
+      'variables' => array(
+        'files' => NULL,
+        'entity' => NULL,
+      ),
+      'path' => $path . '/templates',
     ),
     'osha_publication_file_publication_related_res_format' => array(
       'variables' => array('file' => NULL, 'delta' => NULL),
@@ -318,7 +328,6 @@ function osha_publication_theme() {
     ),
   );
 }
-
 
 /**
  * Implements hook_ctools_plugin_directory().
@@ -349,6 +358,15 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
           '#delta' => $delta,
         );
       }
+      break;
+
+    case 'file_document_files':
+      $element = array(
+        '#theme' => 'osha_publication_file_document_files',
+        '#files' => $items,
+        '#entity' => $entity,
+      );
+
       break;
 
     case 'file_publication_related_res':
@@ -457,7 +475,7 @@ function theme_osha_publication_file_publication_file_format($element) {
 }
 
 /**
- * Formats the related resources (attached files) as icon and description/filename
+ * Formats the related resources (attached files) as icon and description/filename.
  */
 function theme_osha_publication_file_publication_related_res_format($element) {
   $file = (object) $element['file'];
@@ -556,16 +574,20 @@ function osha_publication_file_all_group_mimetype_formatter($items) {
             'html' => TRUE,
             'attributes' => array(
               'title' => $file['filename'],
-            )
+            ),
           )
         );
       }
     }
     $title = t('Download !mime (!size) in:', array('!mime' => hwc_mime_friendly_acronym($mime), '!size' => $sizes[$mime]));
     $render = array(
-      'title' => array('#type' => 'item', '#markup' => '<span>' . $title . '</span>'),
-      'files' => array('#type' => 'item',
-        '#markup' => theme('item_list', array('items' => $links))
+      'title' => array(
+        '#type' => 'item',
+        '#markup' => '<span>' . $title . '</span>',
+      ),
+      'files' => array(
+        '#type' => 'item',
+        '#markup' => theme('item_list', array('items' => $links)),
       ),
     );
     $ret[] = drupal_render($render);

@@ -116,3 +116,10 @@ function osha_search_update_7012() {
   features_revert_module('osha_search');
   search_api_index_reindex('default_multilingual_node_index');
 }
+
+/**
+ * HW18-278 Possible to display different types of practical tools at the same time
+ */
+function osha_search_update_7013() {
+  features_revert_module('osha_search');
+}

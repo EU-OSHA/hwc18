@@ -23,7 +23,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'file_publication_related_res',
+        'type' => 'file_document_files',
         'weight' => 0,
       ),
       'title_only' => array(
@@ -91,11 +91,8 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'field_formatter_class' => '',
-        ),
-        'type' => 'text_plain',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'title_only' => array(
@@ -143,14 +140,8 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'languagefield',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'format' => array(
-            'name' => 'name',
-          ),
-        ),
-        'type' => 'language_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'title_only' => array(
