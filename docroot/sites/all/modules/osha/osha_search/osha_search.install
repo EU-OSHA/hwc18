@@ -123,3 +123,10 @@ function osha_search_update_7012() {
 function osha_search_update_7013() {
   features_revert_module('osha_search');
 }
+
+/**
+ * MDR-1457 Add URL field to Practical tools and resources.
+ */
+function osha_search_update_7014() {
+  features_revert_module('osha_search');
+}

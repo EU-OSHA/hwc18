@@ -51,6 +51,11 @@ function osha_resources_field_formatter_info() {
       'field types' => array('file'),
       'description' => t('Link to file using node title as link title.'),
     ),
+    'external_url' => array(
+      'label' => t('External url link'),
+      'field types' => array('link_field'),
+      'description' => t('External url Link'),
+    ),
     'external_url_link' => array(
       'label' => t('External url link with icon'),
       'field types' => array('link_field'),
@@ -87,6 +92,16 @@ function osha_resources_field_formatter_view($entity_type, $entity, $field, $ins
       }
       break;
 
+    case 'external_url':
+      foreach ($items as $delta => $item) {
+        $link_options = $item;
+        unset($link_options['title']);
+        unset($link_options['url']);
+        $link_options['attributes']['target'] = '_blank';
+        $element[$delta]['#markup'] = $item['url'] ? l($item['url'], $item['url'], $link_options) : '';
+      }
+      break;
+
     case 'external_url_title_link':
       $element = array(
         '#theme' => 'external_url_title_link',
@@ -104,7 +119,7 @@ function osha_resources_field_formatter_view($entity_type, $entity, $field, $ins
       break;
 
     case 'internal_link_title':
-      foreach($items as $delta => $item) {
+      foreach ($items as $delta => $item) {
         $link = l($entity->title, $item['url']);
         $element[$delta]['#markup'] = $link;
       }

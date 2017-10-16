@@ -86,7 +86,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -84,
+        'weight' => -87,
       ),
       'seven' => array(
         'region' => '',
@@ -173,7 +173,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -81,
+        'weight' => -82,
       ),
       'seven' => array(
         'region' => '',
@@ -202,7 +202,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -82,
+        'weight' => -83,
       ),
       'seven' => array(
         'region' => '',
@@ -231,7 +231,7 @@ function hwc_practical_tool_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -83,
+        'weight' => -84,
       ),
       'seven' => array(
         'region' => '',
@@ -299,7 +299,7 @@ partners-documents',
         'weight' => 0,
       ),
     ),
-    'title' => 'Target group:',
+    'title' => 'Target groups:',
     'visibility' => 1,
   );
 
@@ -406,7 +406,7 @@ partners-documents',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -92,
+        'weight' => -93,
       ),
       'seven' => array(
         'region' => '',

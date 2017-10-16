@@ -152,3 +152,17 @@ function hwc_practical_tool_update_7018() {
 function hwc_practical_tool_update_7019() {
   features_revert_module('hwc_practical_tool');
 }
+
+/**
+ * Revert hwc practical tool.
+ */
+function hwc_practical_tool_update_7020() {
+  features_revert_module('hwc_practical_tool');
+}
+
+/**
+ * Revert hwc practical tool.
+ */
+function hwc_practical_tool_update_7021() {
+  features_revert_module('hwc_practical_tool');
+}
