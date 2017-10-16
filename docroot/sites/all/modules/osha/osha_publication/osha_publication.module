@@ -30,6 +30,11 @@ function osha_publication_block_info() {
   );
   return $blocks;
 }
+function osha_publication_result_count($add = 0) {
+  static $total = 0;
+  $total += $add;
+  return $total;
+}
 
 /**
  * Implements hook_block_view().
@@ -151,6 +156,7 @@ function osha_publication_views_pre_render(&$view) {
     }
   }
   if ($view->name == 'publications_slideshow') {
+    osha_publication_result_count(count($view->result));
     drupal_add_js($jssor_path . '/jssor.slider.mini.js');
     drupal_add_css($jssor_path . '/jssor.css');
   }
