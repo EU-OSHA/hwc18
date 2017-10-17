@@ -83,3 +83,10 @@ function hwc_good_practice_exchange_update_7011() {
 function hwc_good_practice_exchange_update_7012() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * Revert hwc_good_practice_exchange module.
+ */
+function hwc_good_practice_exchange_update_7013() {
+  features_revert_module('hwc_good_practice_exchange');
+}

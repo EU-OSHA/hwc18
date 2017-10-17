@@ -176,7 +176,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'bundle' => 'document',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Write the general description of your document. This will appear in the body of your document\'s page.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -735,7 +735,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     'bundle' => 'document',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Write the summary of your document. This will appear in the body of your document\'s page.',
     'display' => array(
       'body' => array(
         'label' => 'above',

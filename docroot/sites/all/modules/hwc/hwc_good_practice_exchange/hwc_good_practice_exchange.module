@@ -358,6 +358,9 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     if ($node && node_access('update', $node)) {
       $link = l(t('Edit'), 'node/' . $node->nid . '/edit');
     }
+    if ($node && node_access('delete', $node)) {
+      $link .= ' ' . l(t('Delete'), 'node/' . $node->nid . '/delete');
+    }
     $block['subject'] = '';
     $block['content']['#markup'] = '<div class="gpep-edit-button">' . $link . '</div>';
   }
