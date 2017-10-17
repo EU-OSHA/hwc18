@@ -40,7 +40,7 @@ function hwc_napo_films_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<h1 class="page-header">Napo film</h1>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<h1 class="page-header">Napo films</h1>';
   /* Field: Field: Publication date */
   $handler->display->display_options['fields']['field_publication_date']['id'] = 'field_publication_date';
   $handler->display->display_options['fields']['field_publication_date']['table'] = 'field_data_field_publication_date';
@@ -112,7 +112,7 @@ function hwc_napo_films_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'slidehow');
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class'] = 'item';
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
@@ -210,7 +210,7 @@ function hwc_napo_films_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('<h1 class="page-header">Napo film</h1>'),
+    t('<h1 class="page-header">Napo films</h1>'),
     t('Body'),
     t('Block'),
     t('<div class="title-field">[title_field]</div>
