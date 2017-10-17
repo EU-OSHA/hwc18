@@ -150,10 +150,11 @@ function hwc_frontend_preprocess_page(&$vars) {
     switch ($node->type) {
       case 'document':
         $link_href = 'partners-documents';
+        $link_title = t('Back to the partners’ document list');
         if (isset($node->workbench_access['section'])) {
           $link_href = 'communications';
+          $link_title = t('Back to the EU-OSHA communications list');
         }
-        $link_title = t('Back to the list');
         break;
 
       case 'publication':
@@ -345,7 +346,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
       $url_options = ['query' => ['page' => 'gpep']];
       $link_href = url('node/' . $partner->nid, $url_options);
-      $link_title = t('Back');
+      $link_title = t('Back to the Good practice exchange platform');
       $vars['page']['below_title']['back-to-link'] = array(
         '#type' => 'item',
         '#markup' => '<a class="back-to-link pull-right" href="' . $link_href . '">' . $link_title . '</a>',
