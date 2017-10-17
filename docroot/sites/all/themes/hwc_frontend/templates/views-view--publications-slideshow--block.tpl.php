@@ -1,4 +1,4 @@
-<div id="publications_slideshow" class="carousel slide" data-ride="carousel">
+<div id="publications_slideshow" class="carousel slide" data-ride="carousel" data-interval="false">
     <!-- Indicators -->
     <ol class="carousel-indicators jssorb03"><?php
       $total = osha_publication_result_count();
