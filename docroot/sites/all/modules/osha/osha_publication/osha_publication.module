@@ -157,8 +157,6 @@ function osha_publication_views_pre_render(&$view) {
   }
   if ($view->name == 'publications_slideshow') {
     osha_publication_result_count(count($view->result));
-    drupal_add_js($jssor_path . '/jssor.slider.mini.js');
-    drupal_add_css($jssor_path . '/jssor.css');
   }
 }
 
