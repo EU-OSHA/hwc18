@@ -355,11 +355,16 @@ function hwc_good_practice_exchange_block_view($delta = '') {
   if ($delta == 'gpep_document_links') {
     $link = '';
     $node = menu_get_object('node');
+
+    $destination = 'partners-documents';
+    if (isset($node->workbench_access['section'])) {
+      $destination = 'communications';
+    }
     if ($node && node_access('update', $node)) {
-      $link = l(t('Edit'), 'node/' . $node->nid . '/edit');
+      $link = l(t('Edit'), 'node/' . $node->nid . '/edit', ['query' => ['destination' => $destination], 'absolute' => TRUE]);
     }
     if ($node && node_access('delete', $node)) {
-      $link .= ' ' . l(t('Delete'), 'node/' . $node->nid . '/delete');
+      $link .= ' ' . l(t('Delete'), 'node/' . $node->nid . '/delete', ['query' => ['destination' => $destination], 'absolute' => TRUE]);
     }
     $block['subject'] = '';
     $block['content']['#markup'] = '<div class="gpep-edit-button">' . $link . '</div>';
