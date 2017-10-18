@@ -1,5 +1,13 @@
 //rewrite styles for responsive design
+@media only screen and (max-width : 1195px) {
 
+
+header.navbar-default .navbar-collapse nav ul.menu li{
+	//min-height: 62px;
+	font-size:0.90em;
+}
+
+}
 @media only screen and (max-width : 1022px) {
 
 /*Menu*/
@@ -1501,11 +1509,8 @@ h1{
 						}
 					}
 				}
-				.jssora03l{
-
-				}
-				.jssora03r{
-
+				.jssora03l, .jssora03r{
+					top: 170px;
 				}
 			}
 		}
@@ -1833,6 +1838,10 @@ h1{
 			padding-right: 15px;
 		}
 	}
+}
+
+.checkbox input[type=checkbox]:checked{
+	margin-left: -18px;
 }
 
 }//end media
