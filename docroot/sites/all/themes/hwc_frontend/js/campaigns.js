@@ -25,13 +25,14 @@ jQuery(document).ready(function() {
 
 	var windowWidth= jQuery(window).width();//window size
 
+	/*
 	jQuery(window).resize(function() {
 	    windowWidth= jQuery(window).width();//window size, when resizing
 	    if(jQuery("#napo_films").length > 0){
 	    	location.reload();
 	    }
 	});
-
+	*/
 	
 	/*View newsletter captcha*/
 
