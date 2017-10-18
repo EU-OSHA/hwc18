@@ -45,7 +45,15 @@ function hwc_audio_visual_user_default_permissions() {
     'name' => 'use text format audio_visual',
     'roles' => array(
       'Audio Visual' => 'Audio Visual',
+      'Content Validator' => 'Content Validator',
+      'Layout Validator' => 'Layout Validator',
+      'Review Manager' => 'Review Manager',
+      'Superadministrators' => 'Superadministrators',
+      'Translation Liaison' => 'Translation Liaison',
+      'Translation Manager' => 'Translation Manager',
       'administrator' => 'administrator',
+      'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'filter',
   );
