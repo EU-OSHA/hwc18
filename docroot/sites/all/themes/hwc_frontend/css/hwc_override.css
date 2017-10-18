@@ -243,8 +243,8 @@ div.workbench-info-block {
     font-weight: normal;
     font-size: 30px;
     font-style: italic;
-    margin-bottom: 0;
-    margin-top: 2em;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 .no-margin-bottom {
     margin-bottom: 0px;

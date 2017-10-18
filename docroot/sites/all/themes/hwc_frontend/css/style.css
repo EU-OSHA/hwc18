@@ -7443,6 +7443,7 @@ header.navbar-default .navbar-collapse nav ul.menu li .dropdown-menu li a {
   font-style: italic;
   padding: 0;
   white-space: normal;
+  text-transform: none;
 }
 header.navbar-default .navbar-collapse nav ul.menu li .dropdown-menu li a:hover {
   font-weight: bold;
@@ -8645,7 +8646,7 @@ table tr.error.form-type-select:after {
   color: #749b00;
   font-style: normal;
   font-weight: bold;
-  margin-bottom: 0em;
+  margin-bottom: 1em;
   font-size: 2em;
 }
 .node-type-article article .field-name-body.field-type-text-with-summary h2 {
@@ -9349,6 +9350,17 @@ div[class*='node-'] .more-link {
   top: 0 !important;
   min-height: 250px;
   background-color: #003399;
+  opacity: 1;
+}
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssora03l .glyphicon-chevron-left,
+#block-system-main #publications_slideshow .jssora03l .glyphicon-chevron-left,
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssora03r .glyphicon-chevron-left,
+#block-system-main #publications_slideshow .jssora03r .glyphicon-chevron-left,
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssora03l .glyphicon-chevron-right,
+#block-system-main #publications_slideshow .jssora03l .glyphicon-chevron-right,
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssora03r .glyphicon-chevron-right,
+#block-system-main #publications_slideshow .jssora03r .glyphicon-chevron-right {
+  visibility: hidden;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow .jssora03l,
 #block-system-main #publications_slideshow .jssora03l {
@@ -9366,11 +9378,17 @@ div[class*='node-'] .more-link {
   display: block !important;
   left: 45% !important;
 }
-#block-views-publications-slideshow-slidehow #publications_slideshow .jssorb03 div,
-#block-system-main #publications_slideshow .jssorb03 div {
-  background: url("../images/content/navigation.png") no-repeat;
-  height: 20px;
-  width: 20px;
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssorb03 li,
+#block-system-main #publications_slideshow .jssorb03 li {
+  vertical-align: middle;
+  border: 1px solid #003399;
+  height: 10px;
+  width: 10px;
+  margin: 0px 2px;
+}
+#block-views-publications-slideshow-slidehow #publications_slideshow .jssorb03 li.active,
+#block-system-main #publications_slideshow .jssorb03 li.active {
+  background: #003399;
 }
 #block-views-publications-slideshow-slidehow #publications_slideshow .jssorb03 .prototypeav,
 #block-system-main #publications_slideshow .jssorb03 .prototypeav,
@@ -9633,6 +9651,9 @@ div[class*='node-'] .more-link {
 .page-search .region.region-content .view-search .view-content .views-row .views-field-field-cover-image {
   display: none;
 }
+.page-search .region.region-content .view-search .view-content .views-row .views-field-body {
+  margin-bottom: 10px;
+}
 .page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-excerpt {
   margin-bottom: 0.5em;
 }
@@ -9641,6 +9662,18 @@ div[class*='node-'] .more-link {
 }
 .page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-excerpt a:before {
   content: ">";
+}
+.page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance {
+  margin-top: 15px;
+  text-align: right;
+}
+.page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance a {
+  font-weight: bold;
+  font-style: italic;
+}
+.page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance a:before {
+  content: ">";
+  margin-right: 5px;
 }
 .page-search .region.region-content .view-search .view-content .views-row strong {
   color: #749b00;
@@ -17390,31 +17423,38 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
   display: block !important;
-  position: absolute;
-  bottom: 0px !important;
-  height: 15px !important;
-  width: 63px !important;
-  left: 0px !important;
-  margin: 0px auto;
-  margin-bottom: 25px;
+  left: 50% !important;
 }
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div {
-  background: white;
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 li {
+  vertical-align: middle;
   border: 1px solid #003399;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  position: relative !important;
-  left: inherit !important;
-  top: inherit !important;
-  margin: 0px 3px;
-  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin: 0px 2px;
 }
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 > div:hover {
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 li.active {
   background: #003399;
 }
-.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypeav {
-  background: #003399;
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypeav,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypeav:hover,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypedn,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototypedn:hover {
+  background-position: 3px center;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototype,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 .prototype:hover {
+  background-position: -20px center;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r {
+  opacity: 1;
+  top: 225px;
+}
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l .glyphicon-chevron-left,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r .glyphicon-chevron-left,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l .glyphicon-chevron-right,
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r .glyphicon-chevron-right {
+  visibility: hidden;
 }
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l {
   display: block !important;
@@ -18734,7 +18774,6 @@ input#edit-field-image-und-0-upload::before {
     width: 234px!important;
   }
   #block-system-main #publications_slideshow .jssorb03 {
-    top: 7px;
     left: 46%!important;
   }
   .become-partner .coments .col h2 {
@@ -19042,6 +19081,11 @@ input#edit-field-image-und-0-upload::before {
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
   .page-publications .view-id-publication_type .views-row .views-field-name-field a {
     font-size: 0.84em;
+  }
+}
+@media only screen and (max-width: 1195px) {
+  header.navbar-default .navbar-collapse nav ul.menu li {
+    font-size: 0.90em;
   }
 }
 @media only screen and (max-width: 1022px) {
@@ -20635,6 +20679,10 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
     height: 424px;
   }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l,
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r {
+    top: 170px;
+  }
   /*Social media*/
   .page-social-media-centre .main-container h1 {
     padding-left: 15px;
@@ -20901,6 +20949,9 @@ input#edit-field-image-und-0-upload::before {
     padding-left: 15px;
     padding-right: 15px;
   }
+  .checkbox input[type=checkbox]:checked {
+    margin-left: -18px;
+  }
 }
 @media only screen and (max-width: 767px) {
   #sliding-popup.sliding-popup-top {
@@ -20986,6 +21037,22 @@ input#edit-field-image-und-0-upload::before {
   header.navbar-default .campaigns-header .navbar-header .region-header #block-hwc-partner-hwc-partner-back-to-profile {
     top: -30px;
     right: 15px;
+  }
+  .page-get-your-certificate .hwc-share-widget ul {
+    overflow: hidden;
+    padding: 5px 0px;
+    left: 0px;
+  }
+  .page-get-your-certificate .hwc-share-widget li {
+    float: none !important;
+    display: inline-block;
+    vertical-align: initial;
+  }
+  .page-get-your-certificate .hwc-share-widget li[class="pull-right"] {
+    margin-left: 0px;
+  }
+  .page-get-your-certificate .pane-node-field-image {
+    padding-right: 0px;
   }
   .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-view-node,
   .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-view-node {
@@ -23793,6 +23860,13 @@ input#edit-field-image-und-0-upload::before {
     width: 100%;
     height: 263px;
   }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l,
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r {
+    top: 100px;
+  }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssorb03 {
+    bottom: -45px;
+  }
   /*Page introduction priority areas*/
   .page-topics .view-id-topics {
     margin-top: 15px;
@@ -24019,6 +24093,9 @@ input#edit-field-image-und-0-upload::before {
   .priority-detail .related_links .views-field-field-cover-image img {
     margin: 0 auto;
   }
+  .checkbox input[type=checkbox]:checked {
+    margin-left: -20px;
+  }
 }
 @media only screen and (max-width: 480px) {
   #colorbox {
@@ -24039,10 +24116,15 @@ input#edit-field-image-und-0-upload::before {
     margin: 0 auto;
   }
   .page-get-your-certificate .hwc-share-widget ul {
-    padding-bottom: 2.2em;
+    overflow: hidden;
   }
   .page-get-your-certificate .hwc-share-widget li {
-    display: flex;
+    float: none !important;
+    display: inline-block;
+    vertical-align: initial;
+  }
+  .page-get-your-certificate .hwc-share-widget li[class="pull-right"] {
+    margin-left: 0px;
   }
   .become-partner .partners .partner .partner-name h3 {
     font-size: 27px;
@@ -24317,6 +24399,10 @@ input#edit-field-image-und-0-upload::before {
     margin: 0 auto;
     width: 100%;
     height: 171px;
+  }
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03l,
+  .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .jssora03r {
+    top: 50px;
   }
 }
 @media only screen and (max-width: 500px) {
