@@ -14,11 +14,11 @@ function ncw_migration_drush_command() {
     'hwc-migrate-node' => array(
       'description' => 'Import single node',
       'arguments' => array(
-        'nid' => 'Node ID in NCW'
+        'nid' => 'Node ID in NCW',
       ),
       'required-arguments' => TRUE,
       'options' => array(
-        'update' => 'Update existing migrated node'
+        'update' => 'Update existing migrated node',
       )
     ),
   );

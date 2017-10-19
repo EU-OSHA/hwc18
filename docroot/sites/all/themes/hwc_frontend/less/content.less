@@ -935,7 +935,7 @@ ul.tabs--primary.nav.nav-tabs{
 				color: @color3;
 				font-style: normal;
 				font-weight: bold;
-				margin-bottom: 0em;
+				margin-bottom: 1em;
 				font-size:2em;
 			}
 			.field-name-body.field-type-text-with-summary{
@@ -1610,6 +1610,11 @@ ul.tabs--primary.nav.nav-tabs{
 				top: 0 !important;
 				min-height: 250px;
 				background-color: @bg-color-2;
+				opacity: 1;
+				.glyphicon-chevron-left,
+				.glyphicon-chevron-right{
+					visibility: hidden;
+				}
 			}
 			.jssora03l{
 				left: 0;
@@ -1623,10 +1628,15 @@ ul.tabs--primary.nav.nav-tabs{
 				top: 200px;
 				display: block !important;
 				left: 45% !important;
-				div{
-					background: url("../images/content/navigation.png") no-repeat;
-					height: 20px;
-					width: 20px;
+				li{
+					vertical-align: middle;
+					border: 1px solid @bg-color-2;
+					height: 10px;
+					width: 10px;
+					margin: 0px 2px;
+				}
+				li.active{
+					background: @bg-color-2;
 				}
 				.prototypeav, .prototypeav:hover, .prototypedn, .prototypedn:hover{
 					background-position: 3px center;
@@ -1905,12 +1915,27 @@ ul.tabs--primary.nav.nav-tabs{
 					.views-field-field-image, .views-field-field-cover-image{
 						display: none;
 					}
+					.views-field-body{
+						margin-bottom: 10px;
+					}
 					.views-field-search-api-excerpt{
 						margin-bottom: 0.5em;
 						a{
 							font-weight: bold;
 							&:before{
 								content: ">";
+							}
+						}
+					}
+					.views-field-search-api-relevance{
+						margin-top: 15px;
+						text-align: right;
+						a{
+							font-weight: bold;
+							font-style: italic;
+							&:before{
+								content: ">";
+								margin-right: 5px;
 							}
 						}
 					}
@@ -3409,6 +3434,13 @@ article{
 		@media only screen and (max-width : 767px) {
 			.field-label{
 				min-width: 100%;
+			}
+		}
+		.pane-node-field-external-url{
+			.field-item{
+				a{
+					
+				}
 			}
 		}
 	}
@@ -8424,33 +8456,32 @@ input#edit-field-image-und-0-upload::before {
 				}
 				.jssorb03{
 					display: block !important;
-				    position: absolute;
-				    bottom: 0px !important;
-				    height: 15px !important;
-				    width: 63px !important;
-				    left: 0px !important;
-    				margin: 0px auto;
-    				margin-bottom: 25px;
-    				>div{
-    					background: white;
-    					border: 1px solid @color2;
-    					border-radius: 50%;
-    					width: 15px;
-    					height: 15px;
-    					position: relative !important;
-    					left: inherit !important;
-    					top: inherit !important;
-    					margin: 0px 3px;
-    					display: inline-block;
-    					&:hover{
-    						background: @color2;
-    					}
-    				}
-    				.prototypeav{
-    					background: @color2;
-    				}
+					left: 50% !important;
+					li{
+						vertical-align: middle;
+						border: 1px solid @bg-color-2;
+						height: 10px;
+						width: 10px;
+						margin: 0px 2px;
+					}
+					li.active{
+						background: @bg-color-2;
+					}
+					.prototypeav, .prototypeav:hover, .prototypedn, .prototypedn:hover{
+						background-position: 3px center;
+					}
+					.prototype, .prototype:hover{
+						background-position: -20px center;
+					}
 				}
-
+				.jssora03l, .jssora03r{
+					opacity: 1;
+					top: 225px;
+					.glyphicon-chevron-left,
+					.glyphicon-chevron-right{
+						visibility: hidden;
+					}
+				}
 				.jssora03l{
 					display: block !important;
 					background-image: url(../images/content/arrow-blue-left-napo.png) !important;

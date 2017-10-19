@@ -21,41 +21,34 @@
     </div>
 <?php endif; ?>
 
-<script>
-jQuery(document).ready(function ($) {
-  var options = {
-    $AutoPlay: false,
-    $AutoPlaySteps: 1,
-    $SlideDuration: 160,
-//    $SlideWidth: 800,
-    $SlideHeight: 625,
-    $SlideSpacing: 1,
-    $DisplayPieces: 1,
-    $HWA: false,
-    $BulletNavigatorOptions: {
-      $Class: $JssorBulletNavigator$,
-      $ChanceToShow: 1,
-      $AutoCenter: 1
-    },
-    $ArrowNavigatorOptions: {
-      $Class: $JssorArrowNavigator$,
-      $ChanceToShow: 2,
-      $AutoCenter: 2,
-      $Steps: 1
-    }
-  };
-  new $JssorSlider$("napo_films", options);
-});
-</script>
-<div id="napo_films" class="napo_films">
-    <div class="num_slides" data-u="slides">
-      <?php print $rows; ?>
+<div id="napo_films" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="napo_films">
+    <!-- Indicators -->
+    <ol class="carousel-indicators jssorb03"><?php
+      $total = hwc_napo_films_result_count();
+      $class = "active";
+      for ($i = 0; $i < $total; $i++) {
+        echo '<li data-target="#napo_films" data-slide-to="' . $i . '" class="' . $class . '"></li>';
+        $class = '';
+      }
+      ?>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner num_slides">
+      <?php print str_replace('row-1', 'row-1 active', $rows); ?>
     </div>
-    <div data-u="navigator" class="jssorb03">
-        <div class="prototype" data-u="prototype"></div>
-    </div>	
-    <span data-u="arrowleft" class="jssora03l publications"></span>
-    <span data-u="arrowright" class="jssora03r publications"></span>
+
+    <!-- Left and right controls -->
+    <a class="jssora03l left carousel-control" href="#napo_films" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only"><?php echo t('Previous'); ?></span>
+    </a>
+    <a class="jssora03r right carousel-control" href="#napo_films" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only"><?php echo t('Next'); ?></span>
+    </a>
+    </div>
 </div>
 
 <?php if ($attachment_after): ?>

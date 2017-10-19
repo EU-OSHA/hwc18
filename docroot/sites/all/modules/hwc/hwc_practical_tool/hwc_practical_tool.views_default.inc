@@ -100,7 +100,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['field_available_in_languages']['label'] = '';
   $handler->display->display_options['fields']['field_available_in_languages']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_available_in_languages']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_available_in_languages']['alter']['text'] = '<span class="views-label">Language: </span><span>[field_available_in_languages]</span>';
+  $handler->display->display_options['fields']['field_available_in_languages']['alter']['text'] = '[field_available_in_languages]';
   $handler->display->display_options['fields']['field_available_in_languages']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_available_in_languages']['settings'] = array(
     'format' => array(
@@ -139,17 +139,27 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['field_fc_provider']['display'] = 'view';
   $handler->display->display_options['fields']['field_fc_provider']['view_mode'] = 'title_only';
   $handler->display->display_options['fields']['field_fc_provider']['bypass_access'] = 0;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type">[field_country]
-[field_available_in_languages]
-[field_provider]
-[field_fc_provider]
-</div>';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Indexed Multilingual Content: Type of visualisation material */
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['id'] = 'field_visualisation_material_typ';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['field'] = 'field_visualisation_material_typ';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['label'] = '';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['alter']['text'] = '<span class="views-label">Type: </span><span>[field_visualisation_material_typ]</span>';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_visualisation_material_typ']['bypass_access'] = 0;
+  /* Field: Indexed Multilingual Content: URL */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['display_as_link'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Field: Indexed Multilingual Content: Year of publication */
   $handler->display->display_options['fields']['field_publication_year']['id'] = 'field_publication_year';
   $handler->display->display_options['fields']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -164,11 +174,27 @@ function hwc_practical_tool_views_default_views() {
     'osha_date_theme' => '',
     'field_formatter_class' => '',
   );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type">
+[field_provider]
+[field_fc_provider]
+[field_visualisation_material_typ]
+[field_country]
+<span class="views-label">Language: </span><span>[field_available_in_languages]</span>
+</div>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Search: Relevance */
   $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
   $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
-  $handler->display->display_options['fields']['search_api_relevance']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/practical-tools\'>See more</a>';
+  $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   /* Sort criterion: Indexed Multilingual Content: Year of publication */
   $handler->display->display_options['sorts']['field_publication_year']['id'] = 'field_publication_year';
@@ -279,18 +305,22 @@ function hwc_practical_tool_views_default_views() {
     t('No results'),
     t('Multilingual ID'),
     t('<span class="views-label">Country: </span><span>[field_country]</span>'),
-    t('<span class="views-label">Language: </span><span>[field_available_in_languages]</span>'),
+    t('[field_available_in_languages]'),
     t('<span class="views-label">Provider1:</span><span>[field_provider-value]</span>'),
     t('<span class="views-label">Provider:</span><span>[field_fc_provider]</span>'),
-    t('<div class="av-type">[field_country]
-[field_available_in_languages]
+    t('<span class="views-label">Type: </span><span>[field_visualisation_material_typ]</span>'),
+    t('Year of publication'),
+    t('<div class="av-type">
 [field_provider]
 [field_fc_provider]
+[field_visualisation_material_typ]
+[field_country]
+<span class="views-label">Language: </span><span>[field_available_in_languages]</span>
 </div>'),
-    t('Year of publication'),
-    t('Relevance'),
+    t('<a href=\'[url]?destination=/en/practical-tools\'>See more</a>'),
     t('.'),
     t(','),
+    t('Relevance'),
     t('Search'),
     t('Page'),
   );

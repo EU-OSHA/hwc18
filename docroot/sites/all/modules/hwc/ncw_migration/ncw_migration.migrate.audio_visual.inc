@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class NCWDangerousSubstancesMigration migrates press contacts
+ * Class NCWDangerousSubstancesMigration migrates press contacts.
  *
  * Set hwc_migration_audio_visual_url variable for explicit source URL.
  */
@@ -28,6 +28,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
       'field_prevention_measure_type' => 'prevention_measures',
       'field_material_purpose_type' => 'material_purpose',
       'field_target_group' => 'target_group',
+      'field_visualisation_material_typ' => 'material_objective',
     ];
   }
 
@@ -137,7 +138,6 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
           foreach ($orig_taxonomies as $orig_taxonomy) {
             watchdog('ncw_migration', "[BUG]Cannot find taxonomy '".serialize($orig_taxonomy)."', for $vocabulary", array(), WATCHDOG_ERROR);
           }
-          // todo add log message 'not found tax value...
         }
       }
     }
@@ -163,11 +163,12 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
       'field_prevention_measure_type' => '',
       'field_material_purpose_type' => '',
       'field_target_group' => '',
+      'field_visualisation_material_typ' => '',
     );
 
     $text = [
       'field_item_type' => '',
-      'field_available_in_languages'=>'',
+      'field_available_in_languages' => '',
       'body' => '',
       'body_format' => '',
       'body_language' => '',
@@ -179,6 +180,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
       'field_country_other' => '',
       'field_ec_number' => '',
       'field_exposure_route_other' => '',
+      'field_external_url' => '',
       'field_hazard_health_other' => '',
       'field_hazard_physical_other' => '',
       'field_languages_other' => '',
@@ -193,6 +195,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
       'field_summary_language' => '',
       'field_target_group_other' => '',
       'field_tasks_other' => '',
+      'field_visualisation_mat_other' => '',
       'field_worker_groups_other' => '',
       'title_field' => '',
       'field_fc_provider' => '',

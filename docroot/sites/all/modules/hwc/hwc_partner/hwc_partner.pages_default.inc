@@ -8099,7 +8099,7 @@ foreach( $contexts[\'argument_entity_id:node_1\']->data->field_users[\'und\'] as
     ),
   );
   $display->cache = array();
-  $display->title = 'Partner Resources';
+  $display->title = 'Partner resources';
   $display->uuid = 'cbebf880-65eb-4460-bd57-29469e70c90f';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'page_private_area_for_partners__panel_context_b00e43ca-0583-41d3-8091-8c71bb42ee77';

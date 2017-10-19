@@ -31,6 +31,12 @@ function osha_publication_block_info() {
   return $blocks;
 }
 
+function osha_publication_result_count($add = 0) {
+  static $total = 0;
+  $total += $add;
+  return $total;
+}
+
 /**
  * Implements hook_block_view().
  */
@@ -137,7 +143,6 @@ function osha_publication_form_lang_dropdown_form_alter(&$form, &$form_state, $f
 function osha_publication_views_pre_render(&$view) {
   global $language;
 
-  $jssor_path = libraries_get_path('jquery-slider-master');
   if ($view->name == 'publication_type') {
     foreach ($view->result as $k => $row) {
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
@@ -151,8 +156,7 @@ function osha_publication_views_pre_render(&$view) {
     }
   }
   if ($view->name == 'publications_slideshow') {
-    drupal_add_js($jssor_path . '/jssor.slider.mini.js');
-    drupal_add_css($jssor_path . '/jssor.css');
+    osha_publication_result_count(count($view->result));
   }
 }
 

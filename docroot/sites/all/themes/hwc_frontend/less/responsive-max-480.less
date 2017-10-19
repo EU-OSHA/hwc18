@@ -27,11 +27,16 @@
 
 .page-get-your-certificate .hwc-share-widget {
 	ul{
-		padding-bottom: 2.2em;
+		overflow: hidden;
 	} 
 	
 	li{
-		display: flex;
+		float: none !important;
+		display: inline-block;
+		vertical-align: initial;
+	}
+	li[class="pull-right"]{
+		margin-left: 0px;
 	}
 }
 
@@ -371,11 +376,8 @@ header.navbar-default .campaigns-header .navbar-header .region-header #block-lan
 						}
 					}
 				}
-				.jssora03l{
-
-				}
-				.jssora03r{
-
+				.jssora03l, .jssora03r{
+					top: 50px;
 				}
 			}
 		}
