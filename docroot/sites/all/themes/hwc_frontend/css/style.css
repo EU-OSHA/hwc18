@@ -17980,6 +17980,16 @@ input#edit-field-image-und-0-upload::before {
 .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a {
   display: block;
 }
+
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.get-involved .link-img {
+  background-image: url(../images/content/get_involved.jpg);
+}
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.private-zone .link-img {
+  background-image: url(../images/content/private_zone.jpg);
+}
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.become-campaign-partner .link-img {
+  background-image: url(../images/content/become_campaign_partner.jpg);
+}
 .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a .link-img {
   background-image: url(../images/content/Tulips1.jpg);
   background-size: cover;
