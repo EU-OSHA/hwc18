@@ -17,6 +17,66 @@ jQuery(document).ready(function() {
         setTimeout(ipad_fix_iframe_width, 5000);
     }
 
+	// Hide Header on on scroll down
+	var didScroll;
+	var lastScrollTop = 0;
+	var delta = 5;
+	var navbarHeight = jQuery('header').outerHeight()-70;
+
+	jQuery(window).scroll(function(event){
+	    didScroll = true;
+	});
+
+	setInterval(function() {
+	    if (didScroll) {
+	        hasScrolled();
+	        didScroll = false;
+	    }
+	}, 110);
+
+	function hasScrolled() {
+	    var st = jQuery(this).scrollTop();
+	    
+	    // Make sure they scroll more than delta
+	    if(Math.abs(lastScrollTop - st) <= delta)
+	        return;
+	    
+	    // If they scrolled down and are past the navbar, add class .nav-up.
+	    // This is necessary so you never see what is "behind" the navbar.
+	    if (st > lastScrollTop && st > navbarHeight){
+	        // Scroll Down
+	        jQuery('header').removeClass('nav-down').addClass('nav-up');
+	    } else {
+	        // Scroll Up
+	        if(st + jQuery(window).height() < jQuery(document).height()) {
+	            jQuery('header').removeClass('nav-up').addClass('nav-down');
+	        }
+	    }
+	    
+	    lastScrollTop = st;
+	}
+
+	//fixing sticky menu
+	var num = 150; //number of pixels before modifying styles
+	if(jQuery("body").height()>=550){
+		jQuery(window).bind('scroll', function () {
+		    if (jQuery(window).scrollTop() > num) {
+		        jQuery("#navbar").addClass("sticky-menu");
+		    } else {
+		        jQuery('#navbar').removeClass('sticky-menu');
+		    }
+		});
+	};
+
+	//removing the sticky only for this app form page
+	/*if(jQuery("body").height()>=1250){
+		jQuery(window).bind('scroll', function () {
+			if (jQuery(window).scrollTop() > num) {
+		        jQuery('.page-node-225 #navbar').removeClass('sticky-menu');
+		    }
+		});
+	};*/
+
 	/*Fix the target _blank when we import the content of CORPORATE*/
 
 	jQuery('.node-news a[href^="https://osha.europa.eu"]').attr('target','_blank');
@@ -89,26 +149,7 @@ jQuery(document).ready(function() {
 		document.addEventListener("touchstart", function() {},false);
 	});
 
-	//fixing sticky menu
-	var num = 210; //number of pixels before modifying styles
-	if(jQuery("body").height()>=1250){
-		jQuery(window).bind('scroll', function () {
-		    if (jQuery(window).scrollTop() > num) {
-		        jQuery("#navbar").addClass("sticky-menu");
-		    } else {
-		        jQuery('#navbar').removeClass('sticky-menu');
-		    }
-		});
-	};
-
-	//removing the sticky only for this app form page
-	if(jQuery("body").height()>=1250){
-		jQuery(window).bind('scroll', function () {
-			if (jQuery(window).scrollTop() > num) {
-		        jQuery('.page-node-225 #navbar').removeClass('sticky-menu');
-		    }
-		});
-	};
+	
 	
 
 	/*filters of list dropdown*/

@@ -11,6 +11,10 @@ header.navbar-default{
 	padding-right: 0;
 	margin-bottom: 0;
 	top: 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	transition: top 0.3s ease-in-out;
 	/* header */
 
 	.campaigns-header{
@@ -332,6 +336,9 @@ header.navbar-default{
 		}
 	}
 }
+.nav-up {
+    top: -210px !important;
+}
 .region-above-header.region{
 	float: right;
 	width: auto;
@@ -448,3 +455,106 @@ header.navbar-default{
 		}
 	}
 }
+
+/*Sticky menu
+****************************************/
+@media only screen and (min-width : 768px){
+	
+	.sticky-menu{
+		position: fixed;
+		z-index: 9999;
+		width: 100%;
+		.col-sm-9{
+			width: 100% !important;
+			a.pull-left{
+				img{
+					-webkit-transition: all 0.3s;
+				    -moz-transition: all 0.3s;
+				    -ms-transition: all 0.3s;
+				    -o-transition: all 0.3s;
+				    transition: all 0.3s;
+				    width: 100px !important;
+				    height: 77px !important;
+				}
+			}
+			a[title*="EU-OSHA"]{
+				-webkit-transition: all 0.3s;
+				    -moz-transition: all 0.3s;
+				    -ms-transition: all 0.3s;
+				    -o-transition: all 0.3s;
+				    transition: all 0.3s;
+			    	background-image: url("/sites/all/themes/hwc_frontend/images/header/EU-OSHA-en.png");
+			    	display: inline-block;
+				    width: 220px;
+				    height: 70px;
+				    float: left;
+				    background-repeat: no-repeat;
+				    background-size: 206px;
+				    margin-top: 6px;
+				img.pull-left{
+					-webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    -ms-transition: all 0.3s;
+					    -o-transition: all 0.3s;
+					    transition: all 0.3s;
+					    width: 160px !important;
+    					height: 95px !important;
+					    margin-top: 0px !important;
+					    display: none;
+					   
+				}
+			}
+			img[alt*="EU logo"]{
+				-webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    -ms-transition: all 0.3s;
+					    -o-transition: all 0.3s;
+					    transition: all 0.3s;
+				padding-top: 42px !important;
+			    padding-bottom: 0px !important;
+			    padding-right: 0em !important;
+			    border-right: none !important;
+			    width: 50px !important;
+
+			}
+			.header-text{
+				-webkit-transition: all 0.6s;
+					    -moz-transition: all 0.6s;
+					    -ms-transition: all 0.6s;
+					    -o-transition: all 0.6s;
+					    transition: all 0.6s;
+				font-size: 1.5em !important;
+			    width: 300px !important;
+			    padding-top: 0.3em !important;
+			    padding-left: 0em !important;
+			    float: right !important;
+			    text-align: right !important;
+			}
+
+		}
+		.xs-menu{
+			display: none;
+		}
+	}
+}
+
+@media only screen and (max-width : 993px){
+	.sticky-menu{
+		.col-sm-9{
+			img[alt*="EU logo"]{
+				padding-top: 50px !important;
+			}
+			.header-text{
+				-webkit-transition: all 0.6s;
+					    -moz-transition: all 0.6s;
+					    -ms-transition: all 0.6s;
+					    -o-transition: all 0.6s;
+					    transition: all 0.6s;
+				font-size: 1.4em !important;
+			    width: 285px !important;
+			    padding-top: 0.9em !important;
+			}
+		}
+	}
+}
+/*end sticky menu*/
