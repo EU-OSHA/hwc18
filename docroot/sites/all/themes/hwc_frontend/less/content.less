@@ -2,7 +2,13 @@
 
 	body{
 	/* General */
-
+		padding-top: 210px;
+		@media only screen and (min-width : 768px) and (max-width : 1130px){
+			padding-top: 230px;
+		}
+		@media only screen and (max-width : 480px){
+			padding-top: 170px;
+		}
 		.form-type-password.form-item-pass{
 			padding-bottom: 1em;
 		}
@@ -9020,7 +9026,6 @@ input#edit-field-image-und-0-upload::before {
 				a{
 					display: block;
 					.link-img{
-						background-image: url(../images/content/Tulips1.jpg);
 						background-size: cover;
 						display: block;
 						width: 100%;
@@ -9036,6 +9041,15 @@ input#edit-field-image-und-0-upload::before {
 						padding-left: 15px;
 						padding-right: 15px;
 					}
+				}
+				a.get-involved .link-img {
+				  background-image: url(../images/content/get_involved.jpg);
+				}
+				a.private-zone .link-img {
+				  background-image: url(../images/content/private_zone.jpg);
+				}
+				a.become-campaign-partner .link-img {
+				  background-image: url(../images/content/become_campaign_partner.jpg);
 				}
 			}
 		}
@@ -9273,6 +9287,7 @@ input#edit-field-image-und-0-upload::before {
 	}
 	.facebook-column{
 		margin-top: 30px;
+		overflow: hidden;
 		.view-display-id-facebook{
 			.view-header{
 				>h2{
@@ -9295,8 +9310,10 @@ input#edit-field-image-und-0-upload::before {
 				>iframe{
 					width: 100% !important;
 				}
-			}
-			
+			}	
+		}
+		.fb-post.fb_iframe_widget.ipad_fix_width iframe {
+		 width: 301px !important;
 		}
 	}
 	.linkedin-column{
@@ -9519,108 +9536,7 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end page-node-366*/
 
-/*Sticky menu
-****************************************/
-@media only screen and (min-width : 768px){
-	
-	.sticky-menu{
-		position: fixed;
-		z-index: 9999;
-		width: 100%;
-		.col-sm-9{
-			width: 100% !important;
-			a.pull-left{
-				img{
-					-webkit-transition: all 0.3s;
-				    -moz-transition: all 0.3s;
-				    -ms-transition: all 0.3s;
-				    -o-transition: all 0.3s;
-				    transition: all 0.3s;
-				    width: 100px !important;
-				    height: 77px !important;
-				}
-			}
-			a[title*="EU-OSHA"]{
-				-webkit-transition: all 0.3s;
-				    -moz-transition: all 0.3s;
-				    -ms-transition: all 0.3s;
-				    -o-transition: all 0.3s;
-				    transition: all 0.3s;
-			    	background-image: url("/sites/all/themes/hwc_frontend/images/header/EU-OSHA-en.png");
-			    	display: inline-block;
-				    width: 220px;
-				    height: 70px;
-				    float: left;
-				    background-repeat: no-repeat;
-				    background-size: 206px;
-				    margin-top: 6px;
-				img.pull-left{
-					-webkit-transition: all 0.3s;
-					    -moz-transition: all 0.3s;
-					    -ms-transition: all 0.3s;
-					    -o-transition: all 0.3s;
-					    transition: all 0.3s;
-					    width: 160px !important;
-    					height: 95px !important;
-					    margin-top: 0px !important;
-					    display: none;
-					   
-				}
-			}
-			img[alt*="EU logo"]{
-				-webkit-transition: all 0.3s;
-					    -moz-transition: all 0.3s;
-					    -ms-transition: all 0.3s;
-					    -o-transition: all 0.3s;
-					    transition: all 0.3s;
-				padding-top: 42px !important;
-			    padding-bottom: 0px !important;
-			    padding-right: 0em !important;
-			    border-right: none !important;
-			    width: 50px !important;
 
-			}
-			.header-text{
-				-webkit-transition: all 0.6s;
-					    -moz-transition: all 0.6s;
-					    -ms-transition: all 0.6s;
-					    -o-transition: all 0.6s;
-					    transition: all 0.6s;
-				font-size: 1.5em !important;
-			    width: 300px !important;
-			    padding-top: 0.3em !important;
-			    padding-left: 0em !important;
-			    float: right !important;
-			    text-align: right !important;
-			}
-
-		}
-		.xs-menu{
-			display: none;
-		}
-	}
-}
-
-@media only screen and (max-width : 993px){
-	.sticky-menu{
-		.col-sm-9{
-			img[alt*="EU logo"]{
-				padding-top: 50px !important;
-			}
-			.header-text{
-				-webkit-transition: all 0.6s;
-					    -moz-transition: all 0.6s;
-					    -ms-transition: all 0.6s;
-					    -o-transition: all 0.6s;
-					    transition: all 0.6s;
-				font-size: 1.4em !important;
-			    width: 285px !important;
-			    padding-top: 0.9em !important;
-			}
-		}
-	}
-}
-/*end sticky menu*/
 
 /*Newsletter mail styles*/
 .page-node-129 table {

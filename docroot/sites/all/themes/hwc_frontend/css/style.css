@@ -7209,6 +7209,10 @@ header.navbar-default {
   padding-right: 0;
   margin-bottom: 0;
   top: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s ease-in-out;
   /* header */
   /* menu */
 }
@@ -7522,6 +7526,9 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
   margin-bottom: 39px;
   background-position: center;
 }
+.nav-up {
+  top: -210px !important;
+}
 .region-above-header.region {
   float: right;
   width: auto;
@@ -7623,9 +7630,110 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
     margin-bottom: 7px;
   }
 }
+/*Sticky menu
+****************************************/
+@media only screen and (min-width: 768px) {
+  .sticky-menu {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+  }
+  .sticky-menu .col-sm-9 {
+    width: 100% !important;
+  }
+  .sticky-menu .col-sm-9 a.pull-left img {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100px !important;
+    height: 77px !important;
+  }
+  .sticky-menu .col-sm-9 a[title*="EU-OSHA"] {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    background-image: url("/sites/all/themes/hwc_frontend/images/header/EU-OSHA-en.png");
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 206px;
+    margin-top: 6px;
+  }
+  .sticky-menu .col-sm-9 a[title*="EU-OSHA"] img.pull-left {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 160px !important;
+    height: 95px !important;
+    margin-top: 0px !important;
+    display: none;
+  }
+  .sticky-menu .col-sm-9 img[alt*="EU logo"] {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    padding-top: 42px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0em !important;
+    border-right: none !important;
+    width: 50px !important;
+  }
+  .sticky-menu .col-sm-9 .header-text {
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s;
+    font-size: 1.5em !important;
+    width: 300px !important;
+    padding-top: 0.3em !important;
+    padding-left: 0em !important;
+    float: right !important;
+    text-align: right !important;
+  }
+  .sticky-menu .xs-menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 993px) {
+  .sticky-menu .col-sm-9 img[alt*="EU logo"] {
+    padding-top: 50px !important;
+  }
+  .sticky-menu .col-sm-9 .header-text {
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s;
+    font-size: 1.4em !important;
+    width: 285px !important;
+    padding-top: 0.9em !important;
+  }
+}
 body {
   /* General */
+  padding-top: 210px;
   font-family: 'Open Sans';
+}
+@media only screen and (min-width: 768px) and (max-width: 1130px) {
+  body {
+    padding-top: 230px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  body {
+    padding-top: 170px;
+  }
 }
 body .form-type-password.form-item-pass {
   padding-bottom: 1em;
@@ -17980,18 +18088,7 @@ input#edit-field-image-und-0-upload::before {
 .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a {
   display: block;
 }
-
-.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.get-involved .link-img {
-  background-image: url(../images/content/get_involved.jpg);
-}
-.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.private-zone .link-img {
-  background-image: url(../images/content/private_zone.jpg);
-}
-.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.become-campaign-partner .link-img {
-  background-image: url(../images/content/become_campaign_partner.jpg);
-}
 .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a .link-img {
-  background-image: url(../images/content/Tulips1.jpg);
   background-size: cover;
   display: block;
   width: 100%;
@@ -18006,6 +18103,15 @@ input#edit-field-image-und-0-upload::before {
   font-weight: bold;
   padding-left: 15px;
   padding-right: 15px;
+}
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.get-involved .link-img {
+  background-image: url(../images/content/get_involved.jpg);
+}
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.private-zone .link-img {
+  background-image: url(../images/content/private_zone.jpg);
+}
+.page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-links .gpe-links-block > div a.become-campaign-partner .link-img {
+  background-image: url(../images/content/become_campaign_partner.jpg);
 }
 .page-good-practice-exchange .pane-hwc-good-practice-exchange-gpe-tools-publications {
   text-align: center;
@@ -18217,6 +18323,7 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-social-media-centre .facebook-column {
   margin-top: 30px;
+  overflow: hidden;
 }
 .page-social-media-centre .facebook-column .view-display-id-facebook .view-header > h2 {
   background: url(../images/content/icono-facebook.png) no-repeat center 20px;
@@ -18235,6 +18342,9 @@ input#edit-field-image-und-0-upload::before {
 }
 .page-social-media-centre .facebook-column .fb_iframe_widget > span > iframe {
   width: 100% !important;
+}
+.page-social-media-centre .facebook-column .fb-post.fb_iframe_widget.ipad_fix_width iframe {
+  width: 301px !important;
 }
 .page-social-media-centre .linkedin-column {
   border-left: 1px dotted #749b00;
@@ -18431,97 +18541,6 @@ input#edit-field-image-und-0-upload::before {
   margin-bottom: 15px;
 }
 /*end page-node-366*/
-/*Sticky menu
-****************************************/
-@media only screen and (min-width: 768px) {
-  .sticky-menu {
-    position: fixed;
-    z-index: 9999;
-    width: 100%;
-  }
-  .sticky-menu .col-sm-9 {
-    width: 100% !important;
-  }
-  .sticky-menu .col-sm-9 a.pull-left img {
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    width: 100px !important;
-    height: 77px !important;
-  }
-  .sticky-menu .col-sm-9 a[title*="EU-OSHA"] {
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    background-image: url("/sites/all/themes/hwc_frontend/images/header/EU-OSHA-en.png");
-    display: inline-block;
-    width: 220px;
-    height: 70px;
-    float: left;
-    background-repeat: no-repeat;
-    background-size: 206px;
-    margin-top: 6px;
-  }
-  .sticky-menu .col-sm-9 a[title*="EU-OSHA"] img.pull-left {
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    width: 160px !important;
-    height: 95px !important;
-    margin-top: 0px !important;
-    display: none;
-  }
-  .sticky-menu .col-sm-9 img[alt*="EU logo"] {
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    padding-top: 42px !important;
-    padding-bottom: 0px !important;
-    padding-right: 0em !important;
-    border-right: none !important;
-    width: 50px !important;
-  }
-  .sticky-menu .col-sm-9 .header-text {
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -ms-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    transition: all 0.6s;
-    font-size: 1.5em !important;
-    width: 300px !important;
-    padding-top: 0.3em !important;
-    padding-left: 0em !important;
-    float: right !important;
-    text-align: right !important;
-  }
-  .sticky-menu .xs-menu {
-    display: none;
-  }
-}
-@media only screen and (max-width: 993px) {
-  .sticky-menu .col-sm-9 img[alt*="EU logo"] {
-    padding-top: 50px !important;
-  }
-  .sticky-menu .col-sm-9 .header-text {
-    -webkit-transition: all 0.6s;
-    -moz-transition: all 0.6s;
-    -ms-transition: all 0.6s;
-    -o-transition: all 0.6s;
-    transition: all 0.6s;
-    font-size: 1.4em !important;
-    width: 285px !important;
-    padding-top: 0.9em !important;
-  }
-}
-/*end sticky menu*/
 /*Newsletter mail styles*/
 .page-node-129 table {
   font-family: Arial, sans-serif;
@@ -21089,7 +21108,7 @@ input#edit-field-image-und-0-upload::before {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 5px;
-    width: auto;
+    width: 100%;
   }
   header.navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #FFF;
