@@ -1,5 +1,21 @@
+function ipad_fix_iframe_width() {
+	if (jQuery(window).width() > jQuery(window).height()) {
+        jQuery('.fb-post').addClass('ipad_fix_width');
+	} else {
+        jQuery('.fb-post').removeClass('ipad_fix_width');
+	}
+    setTimeout(ipad_fix_iframe_width, 5000);
+}
+
+window.onorientationchange = function() {
+    ipad_fix_iframe_width();
+}
+
 jQuery(document).ready(function() {
 
+    if ((jQuery('.fb-post').length) && (jQuery(window).width()<=1024)) {
+        setTimeout(ipad_fix_iframe_width, 5000);
+    }
 
 	/*Fix the target _blank when we import the content of CORPORATE*/
 
