@@ -14,7 +14,7 @@ define('NAPO_WEBSITE', 'https://www.napofilm.net/');
  * Implements hook_menu_alter().
  */
 function hwc_menu_alter(&$items) {
-    $items['user/password']['title'] = t('Create / Forgot password');
+  $items['user/password']['title'] = t('Create / Forgot password');
   $items['user/password']['weight'] = 10;
 }
 
@@ -89,6 +89,12 @@ function hwc_block_info() {
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'region' => 'above_header',
   );
+  $blocks['hwc_footer_data'] = array(
+    'info' => t('HWC Footer data'),
+    'status' => 1,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'region' => 'footer',
+  );
   return $blocks;
 }
 
@@ -117,6 +123,17 @@ function hwc_block_view($delta = '') {
   if ($delta == 'hwc_print_friendly') {
     $block['subject'] = "<none>";
     $block['content'] = theme('hwc_print_friendly_block');
+  }
+  if ($delta == 'hwc_footer_data') {
+    $block['title'] = '<none>';
+    $block['subject'] = "<none>";
+    $block['content'] = NULL;
+    if (isset($_SESSION['masquerading'])) {
+    }
+    elseif (user_access('masquerade as any user')) {
+      $form = drupal_get_form('masquerade_block_1');
+      $block['content'] = theme('hwc_partner_act_as_partner_block_footer', array('content' => drupal_render($form)));
+    }
   }
   return $block;
 }
