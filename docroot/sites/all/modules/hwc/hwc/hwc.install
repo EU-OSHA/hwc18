@@ -653,3 +653,10 @@ function hwc_update_7039() {
 function hwc_update_7040() {
   module_enable(['qtip']);
 }
+
+/**
+ * Act as partner block in footer.
+ */
+function hwc_update_7041() {
+  features_revert_module('hwc');
+}
