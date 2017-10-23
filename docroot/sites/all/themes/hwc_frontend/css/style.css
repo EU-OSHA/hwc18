@@ -6569,23 +6569,8 @@ body.navbar-is-fixed-top {
 body.navbar-is-fixed-bottom {
   padding-bottom: 64px !important;
 }
-body.toolbar {
-  padding-top: 30px !important;
-}
 body.toolbar .navbar-fixed-top {
   top: 30px;
-}
-body.toolbar.navbar-is-fixed-top {
-  padding-top: 94px !important;
-}
-body.toolbar-drawer {
-  padding-top: 64px !important;
-}
-body.toolbar-drawer .navbar-fixed-top {
-  top: 64px;
-}
-body.toolbar-drawer.navbar-is-fixed-top {
-  padding-top: 128px !important;
 }
 body.admin-menu .navbar-fixed-top {
   top: 29px;
@@ -7726,14 +7711,47 @@ body {
   padding-top: 210px;
   font-family: 'Open Sans';
 }
-@media only screen and (min-width: 768px) and (max-width: 1130px) {
+body.toolbar-drawer,
+body.toolbar {
+  padding-top: 245px !important;
+}
+@media only screen and (min-width: 1131px) and (max-width: 1200px) {
+  body.toolbar-drawer,
+  body.toolbar {
+    padding-top: 280px !important;
+  }
+}
+@media only screen and (min-width: 829px) and (max-width: 1130px) {
   body {
     padding-top: 230px;
+  }
+  body.toolbar-drawer,
+  body.toolbar {
+    padding-top: 280px !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 828px) {
+  body {
+    padding-top: 230px;
+  }
+  body.toolbar-drawer,
+  body.toolbar {
+    padding-top: 300px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  body.toolbar-drawer,
+  body.toolbar {
+    padding-top: 200px !important;
   }
 }
 @media only screen and (max-width: 480px) {
   body {
     padding-top: 170px;
+  }
+  body.toolbar-drawer,
+  body.toolbar {
+    padding-top: 170px !important;
   }
 }
 body .form-type-password.form-item-pass {
@@ -21765,6 +21783,7 @@ input#edit-field-image-und-0-upload::before {
     height: auto;
     position: relative;
     margin-bottom: 1em;
+    left: 0px !important;
   }
   .node-article .field-name-field-image + .field-name-title-field .field-items .field-item h1 {
     width: 100%;
