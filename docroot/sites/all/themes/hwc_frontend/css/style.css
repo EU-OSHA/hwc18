@@ -7833,6 +7833,9 @@ body.private-area #private ul a.inline-href:before {
   content: "";
 }
 /* End General */
+body#tinymce {
+  padding: 0 !important;
+}
 ul.tabs--primary.nav.nav-tabs {
   margin-left: 25px;
   margin-right: 25px;
