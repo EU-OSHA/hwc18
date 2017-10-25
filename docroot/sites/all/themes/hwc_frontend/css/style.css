@@ -7833,6 +7833,9 @@ body.private-area #private ul a.inline-href:before {
   content: "";
 }
 /* End General */
+body#tinymce {
+  padding: 0 !important;
+}
 ul.tabs--primary.nav.nav-tabs {
   margin-left: 25px;
   margin-right: 25px;
@@ -14797,6 +14800,64 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-edit .node-document-form .form-wrapper .date-float .form-checkbox:before {
   height: 21px;
   padding: 2px 2px 0px 0px;
+}
+.page-node-add-document .node-events-form .form-wrapper .image-widget-data,
+.page-node-add-events .node-events-form .form-wrapper .image-widget-data,
+.page-node-add-news .node-events-form .form-wrapper .image-widget-data,
+.page-node-edit .node-events-form .form-wrapper .image-widget-data,
+.page-node-add-document .node-news-form .form-wrapper .image-widget-data,
+.page-node-add-events .node-news-form .form-wrapper .image-widget-data,
+.page-node-add-news .node-news-form .form-wrapper .image-widget-data,
+.page-node-edit .node-news-form .form-wrapper .image-widget-data,
+.page-node-add-document .node-document-form .form-wrapper .image-widget-data,
+.page-node-add-events .node-document-form .form-wrapper .image-widget-data,
+.page-node-add-news .node-document-form .form-wrapper .image-widget-data,
+.page-node-edit .node-document-form .form-wrapper .image-widget-data {
+  clear: inherit;
+  display: block;
+}
+.page-node-add-document .node-events-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-events .node-events-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-news .node-events-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-edit .node-events-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-document .node-news-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-events .node-news-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-news .node-news-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-edit .node-news-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-document .node-document-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-events .node-document-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-add-news .node-document-form .form-wrapper .image-widget-data button.btn-danger,
+.page-node-edit .node-document-form .form-wrapper .image-widget-data button.btn-danger {
+  margin-top: 9px;
+  margin-right: 8px;
+}
+.page-node-add-document .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-events .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-news .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-edit .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-document .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-events .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-news .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-edit .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-document .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-events .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-add-news .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder,
+.page-node-edit .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder {
+  padding-top: 0px;
+}
+.page-node-add-document .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-events .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-news .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-edit .node-events-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-document .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-events .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-news .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-edit .node-news-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-document .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-events .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-add-news .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button,
+.page-node-edit .node-document-form .form-wrapper .image-widget-data .manualcrop-style-button-holder button.manualcrop-style-button {
+  margin-top: 9px;
 }
 .page-node-add-document .node-events-form .form-wrapper .panel-body,
 .page-node-add-events .node-events-form .form-wrapper .panel-body,
