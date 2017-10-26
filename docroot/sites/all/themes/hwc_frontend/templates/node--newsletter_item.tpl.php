@@ -44,96 +44,122 @@ if (!empty($campaign_id)) {
       }
       $field_publication_date = '';
       if (!empty($node->field_publication_date)) {
+        if (isset($node->field_publication_date[0])) {
+            $node->field_publication_date = [LANGUAGE_NONE => $node->field_publication_date];
+        }
         $field_publication_date = $w->field_publication_date->value();
       }
-    ?>
-        <tr>
-            <td style="padding-bottom: 10px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
-              <?php
-              print l(theme('image_style', array(
-                'style_name' => 'medium_crop_220',
-                'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
-                'width' => 220,
-                'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
-                'attributes' => array(
-                  'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
-                  'align' => 'left',
-                  'hspace' => '20',
-                  'vspace' => '20',
-                ),
-              )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
-                'html' => TRUE,
-                'external' => TRUE,
-              ));
-              ?>
-            </td>
-            <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
-                <div><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
-                <div>
-                  <?php
-                    print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
+      // Url healthy-workplaces-newsletter.
+      if (129 == arg(1)) {
+          ?>
+          <tr>
+              <td style="padding-left: 10px;padding-top: 10px; width: 100%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                  <div><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
+                  <div>
+                    <?php
+                    print l($title, url($node->url, array('absolute' => TRUE)), array(
                       'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
                       'query' => $url_query,
                       'external' => TRUE,
                     ));
+                    ?>
+                  </div>
+              </td>
+          </tr>
+          <?php
+      }
+        else {
+          ?>
+            <tr>
+                <td style="padding-bottom: 10px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                  <?php
+                  print l(theme('image_style', array(
+                    'style_name' => 'medium_crop_220',
+                    'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
+                    'width' => 220,
+                    'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
+                    'attributes' => array(
+                      'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
+                      'align' => 'left',
+                      'hspace' => '20',
+                      'vspace' => '20',
+                    ),
+                  )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                    'html' => TRUE,
+                    'external' => TRUE,
+                  ));
                   ?>
-                </div>
-              <?php
-              if (!empty($elements['field_summary'])) {
-                print render($elements['field_summary']);
-              }
-              if (!empty($elements['body'])) {
-                print render($elements['body']);
-              }
-              $directory = drupal_get_path('module', 'osha_newsletter');
-              ?>
-                <table>
-                    <tr>
-                        <td style="padding-top: 10px;">
-                          <?php
+                </td>
+                <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                    <div><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
+                    <div>
+                      <?php
+                      print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                        'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
+                        'query' => $url_query,
+                        'external' => TRUE,
+                      ));
+                      ?>
+                    </div>
+                  <?php
+                  if (!empty($elements['field_summary'])) {
+                    print render($elements['field_summary']);
+                  }
+                  if (!empty($elements['body'])) {
+                    print render($elements['body']);
+                  }
+                  $directory = drupal_get_path('module', 'osha_newsletter');
+                  ?>
+                    <table>
+                        <tr>
+                            <td style="padding-top: 10px;">
+                              <?php
 
-                          print '<div class="see-more">';
-                          $node_url = url('node/' . $node->nid, array('absolute' => TRUE));
-                          print l(t('See more'), $node_url, array(
-                            'attributes' => array('class' => ['see-more']),
-                            'query' => $url_query,
-                            'external' => TRUE,
-                          ));
+                              print '<div class="see-more">';
+                              $node_url = url('node/' . $node->nid, array('absolute' => TRUE));
+                              print l(t('See more'), $node_url, array(
+                                'attributes' => array('class' => ['see-more']),
+                                'query' => $url_query,
+                                'external' => TRUE,
+                              ));
 
-                          print l(theme('image', array(
-                            'path' => $directory . '/images/' . 'green-arrow.png',
-                            'width' => '19',
-                            'height' => '11',
-                            'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
-                          )), $node_url, array(
-                            'html' => TRUE,
-                            'external' => TRUE,
-                            'query' => $url_query,
-                          ));
+                              print l(theme('image', array(
+                                'path' => $directory . '/images/' . 'green-arrow.png',
+                                'width' => '19',
+                                'height' => '11',
+                                'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
+                              )), $node_url, array(
+                                'html' => TRUE,
+                                'external' => TRUE,
+                                'query' => $url_query,
+                              ));
 
-                          print '</div>';
-                          ?>
+                              print '</div>';
+                              ?>
 
-                        </td>
-                        <td align="right" valign="middle" style="padding-top: 10px;">
-                          <?php
-                          print l(theme('image', array(
-                            'path' => $directory . '/images/' . 'share-icon.png',
-                            'width' => '20',
-                            'height' => '20',
-                            'attributes' => array('style' => 'border:0px;width:20px;height:20px;'),
-                          )), $node_url, array(
-                            'html' => TRUE,
-                            'external' => TRUE,
-                            'query' => $url_query + ['action' => 'share'],
-                          ));
-                          ?>
+                            </td>
+                            <td align="right" valign="middle" style="padding-top: 10px;">
+                              <?php
+                              print l(theme('image', array(
+                                'path' => $directory . '/images/' . 'share-icon.png',
+                                'width' => '20',
+                                'height' => '20',
+                                'attributes' => array('style' => 'border:0px;width:20px;height:20px;'),
+                              )), $node_url, array(
+                                'html' => TRUE,
+                                'external' => TRUE,
+                                'query' => $url_query + ['action' => 'share'],
+                              ));
+                              ?>
 
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+          <?php
+      }
+      ?>
       <?php
     }
     if ($node->type == 'events') {
