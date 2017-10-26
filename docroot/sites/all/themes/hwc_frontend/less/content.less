@@ -545,7 +545,7 @@ ul.tabs--primary.nav.nav-tabs{
 			width: 100% !important;
 			height: 356px !important;
 			> div{ /* .views-field.views-field-field-image */
-				background-color: #7dad35;
+				background-color: #a6bf2d;
 				width: 1139px;
 				width: 100% !important;
 				height: 356px !important;
@@ -608,6 +608,44 @@ ul.tabs--primary.nav.nav-tabs{
 							height: auto;
 							max-height: 356px;
 							max-width: inherit;
+							position: absolute;
+							left: 10%;
+							
+						}
+						@media (min-width: 1321px) and (max-width: 1550px){
+							img{
+								left: 2%;
+							}
+						}
+						@media (min-width: 1200px) and (max-width: 1320px){
+							img{
+								left: -5%;
+							}
+						}
+						@media (min-width: 1050px) and (max-width: 1199px){
+							img{
+								left: -10%;
+							}
+						}
+						@media (min-width: 996px) and (max-width: 1049px){
+							img{
+								left: -15%;
+							}
+						}
+						@media (min-width: 910px) and (max-width: 995px){
+							img{
+								left: -20%;
+							}
+						}
+						@media (min-width: 820px) and (max-width: 909px){
+							img{
+								left: -35%;
+							}
+						}
+						@media (min-width: 768px) and (max-width: 819px){
+							img{
+								left: -45%;
+							}
 						}
 					}
 					p{
@@ -623,25 +661,35 @@ ul.tabs--primary.nav.nav-tabs{
 			font-size: 2em;
 			position: absolute;
 			top: 10px;
-			right: 20px;
 			color: @slider-color;
 			z-index: 2;
 			float: right;
 			font-weight: bold;
 			text-align: right;
-			span{
-			    width: 300px !important;
+			>span{
+			    width: 340px !important;
 			    float: right;
-			    margin-right: @margin1;
+			}
+			.line-1{
+				font-size: .9em;
+			    display: block;
+			    line-height: 35px;
 			    margin-top: 10px;
+			}
+			.line-2{
+				color:#003399;
+				line-height: 36px !important;
+			    font-size: 1.25em;
+			    margin-top: 5px;
+			    display: block;
 			}
 		}
 	}
 
 	/*Fix to EN language 3 lines*/
 
-	html:lang(en) #homepage_slider .views-field-title span{
-		width: 300px !important;
+	html:lang(en) #homepage_slider .views-field-title >span{
+		width: 340px !important;
 	}
 
 	@media screen and (-webkit-min-device-pixel-ratio:0) {

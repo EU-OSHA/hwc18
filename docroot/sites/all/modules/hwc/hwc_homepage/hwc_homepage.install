@@ -61,3 +61,10 @@ function hwc_homepage_update_7007() {
 function hwc_homepage_update_7008() {
   features_revert_module('hwc_homepage');
 }
+
+/**
+ * Revert hwc homepage module.
+ */
+function hwc_homepage_update_7009() {
+  features_revert_module('hwc_homepage');
+}
