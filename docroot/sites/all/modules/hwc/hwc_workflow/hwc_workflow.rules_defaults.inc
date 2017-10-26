@@ -9,6 +9,31 @@
  */
 function hwc_workflow_default_rules_configuration() {
   $items = array();
+  $items['hwc_workflow_notification_partner_document_created'] = entity_import('rules_config', '{ "hwc_workflow_notification_partner_document_created" : {
+      "LABEL" : "Notification partner document created",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow" ],
+      "ON" : { "node_insert" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "document" : "document" } }
+          }
+        },
+        { "disable_masquerading_notifications" : [] }
+      ],
+      "DO" : [
+        { "hwc_mail_to_users_of_partner" : {
+            "node" : [ "node" ],
+            "subject" : "HWC Workflow: New document added for your company",
+            "message" : "\\u003Cp\\u003EDear partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EYour [node:type] is currently in the \\u201cpublish\\u201d status\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces Campaign 2018-2019 Manage Dangerous Substances campaign.\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_hwc_workflow_notif_his_content_published'] = entity_import('rules_config', '{ "rules_hwc_workflow_notif_his_content_published" : {
       "LABEL" : "Notifi partner when his content published",
       "PLUGIN" : "reaction rule",

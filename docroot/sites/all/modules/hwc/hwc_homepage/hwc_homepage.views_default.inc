@@ -364,7 +364,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_field']['element_class'] = 'banner_title';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title_field']['type'] = 'split_rows_title';
+  $handler->display->display_options['fields']['title_field']['type'] = 'homepage_slider_title';
   $handler->display->display_options['fields']['title_field']['settings'] = array(
     'field_formatter_class' => '',
   );
