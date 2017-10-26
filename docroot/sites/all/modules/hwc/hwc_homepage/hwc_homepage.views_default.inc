@@ -284,8 +284,6 @@ function hwc_homepage_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('[title_field]
-[field_country_code]'),
-    t('[title_field]
 <div class="views-country-code"><span class="field-content">[field_country_code]</span></div>'),
     t('Block'),
     t('more'),
@@ -366,6 +364,10 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_field']['element_class'] = 'banner_title';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'split_rows_title';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';

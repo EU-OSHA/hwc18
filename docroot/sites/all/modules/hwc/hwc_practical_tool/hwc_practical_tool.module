@@ -253,6 +253,11 @@ function hwc_practical_tool_field_formatter_info() {
       'field types' => array('text'),
       'description' => 'Displays link with extra params.',
     ),
+    'homepage_slider_title' => array(
+      'label' => 'Homepage slider title',
+      'field types' => array('text'),
+      'description' => 'Displays homepage slider title in 2 rows.',
+    ),
     'field_collection_title' => array(
       'label' => t('Fields collection title'),
       'field types' => array('field_collection'),
@@ -375,6 +380,17 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
         '#items' => $items,
         '#label' => $label,
       );
+      break;
+
+    case 'homepage_slider_title':
+      $output = isset($items[0]) ? $items[0]['safe_value'] : '';
+      if (!empty($output)) {
+        $needle = 'Campaign 2018-2019';
+        if (strpos($output, $needle)) {
+          $output = '<span class="line-1">' . str_replace($needle, $needle . '</span><span class="line-2">', $output) . '</span>';
+        }
+      }
+      $element = array(array('#markup' => $output));
       break;
 
     case 'practical_tool_title':
