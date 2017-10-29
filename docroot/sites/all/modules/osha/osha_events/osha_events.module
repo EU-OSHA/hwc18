@@ -115,6 +115,7 @@ function osha_events_form_validate($form, $form_state) {
       else {
         $end_date = str_replace('00:00:00', '23:59:59', $end_date);
       }
+      $end = strtotime($end_date);
     }
     else {
       $end = 9999999999;
