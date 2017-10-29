@@ -108,7 +108,17 @@ function osha_events_form_validate($form, $form_state) {
     // Accept talking date.
     $start = (!empty($start_date) && !is_array($start_date)) ? strtotime($start_date) : -9999999999;
     // Accept talking date. Fix talking date and end date.
-    $end = (!empty($end_date) && !is_array($end_date)) ? strtotime($end_date . ' 23:59') : 9999999999;
+    if (!empty($end_date) && !is_array($end_date)) {
+      if (strlen($end_date) == 10) {
+        $end_date .= ' 23:59:59';
+      }
+      else {
+        $end_date = str_replace('00:00:00', '23:59:59', $end_date);
+      }
+    }
+    else {
+      $end = 9999999999;
+    }
     if ($end_date == $start_date) {
       // End is empty ...
       $end = 9999999999;
