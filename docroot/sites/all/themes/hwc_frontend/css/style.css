@@ -13045,6 +13045,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 
 .node-type-partner .view-id-partner_content .date-display-single {
   text-align: center;
+  display: block;
 }
 
 .profile-2-cols-container-3 .profile-col-left-3 .date-display-single {
