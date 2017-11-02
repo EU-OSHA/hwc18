@@ -1133,8 +1133,13 @@ function osha_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'image_link' => '',
+          'image_style' => 'article_image',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'highlights_item' => array(
