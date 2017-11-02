@@ -24,7 +24,8 @@
     </header>
   <?php endif; ?>
   <?php
-    print render($content['field_cover_image']);
+    $image = render($content['field_cover_image']);
+    print str_replace('field-cover-image', 'field-image', $image);
     print render($content['title_field']);
   ?>
   <div class="container">
