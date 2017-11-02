@@ -288,7 +288,7 @@ function osha_update_7017() {
 }
 
 /**
- * New crop image style
+ * HW18-334 cover image
  */
 function osha_update_7018() {
   features_revert_module('osha');
