@@ -4,39 +4,45 @@
 	/* General */
 		padding-top: 210px;
 		&.toolbar-drawer,
-		&.toolbar{
+		&.toolbar,
+		&.logged-in{
 			padding-top: 245px !important;
 		}
 		@media only screen and (min-width : 1131px) and (max-width : 1200px){
 			&.toolbar-drawer,
-			&.toolbar{
+			&.toolbar,
+			&.logged-in{
 				padding-top: 280px !important;
 			}
 		}
 		@media only screen and (min-width : 829px) and (max-width : 1130px){
 			padding-top: 230px;
 			&.toolbar-drawer,
-			&.toolbar{
+			&.toolbar,
+			&.logged-in{
 				padding-top: 280px !important;
 			}
 		}
 		@media only screen and (min-width : 768px) and (max-width : 828px){
 			padding-top: 230px;
 			&.toolbar-drawer,
-			&.toolbar{
+			&.toolbar,
+			&.logged-in{
 				padding-top: 300px !important;
 			}
 		}
 		@media only screen and (max-width : 767px){
 			&.toolbar-drawer,
-			&.toolbar{
+			&.toolbar,
+			&.logged-in{
 				padding-top: 200px !important;
 			}
 		}
 		@media only screen and (max-width : 480px){
 			padding-top: 170px;
 			&.toolbar-drawer,
-			&.toolbar{
+			&.toolbar,
+			&.logged-in{
 				padding-top: 170px !important;
 			}
 		}
@@ -2798,114 +2804,94 @@ ul.tabs--primary.nav.nav-tabs{
 				line-height: 50px;
 				font-weight: bold;
 				font-size: 1.4em;
+				background-size: contain !important;
 			}
 			.code_EN{
 				background: url(../images/events/big/England-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_AT{
 				background: url(../images/events/big/Austria-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_CH{
 				background: url(../images/events/big/Switzerland-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_BG{
 				background: url(../images/events/big/Bulgaria-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_CS{
 				background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_DA{
 				background: url(../images/events/big/Denmark-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_DE{
 				background: url(../images/events/big/Germany-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_EL{
 				background: url(../images/events/big/Greece-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_ES{
 				background: url(../images/events/big/Spain-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_ET{
 				background: url(../images/events/big/Estonia-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_FI{
 				background: url(../images/events/big/Finland-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_HR{
 				background: url(../images/events/big/Croatia-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_FR{
 				background: url(../images/events/big/France-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_HU{
 				background: url(../images/events/big/Hungary-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_IS{
 				background: url(../images/events/big/Icelandic-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_IT{
 				background: url(../images/events/big/Itali-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_LV{
 				background: url(../images/events/big/Latvia-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_LT{
 				background: url(../images/events/big/Lithuania-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_NL{
 				background: url(../images/events/big/Netherlands-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_MT{
 				background: url(../images/events/big/Malta-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_NO{
 				background: url(../images/events/big/Norwegian-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_PL{
 				background: url(../images/events/big/Poland-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_PT{
 				background: url(../images/events/big/Portugal-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_RO{
 				background: url(../images/events/big/Romania-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_SK{
 				background: url(../images/events/big/Slovakia-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_SL{
 				background: url(../images/events/big/Slovenia-180x180.png) no-repeat center;
-				background-size: contain;
 			}
 			.code_SV{
 				background: url(../images/events/big/Sweden-180x180.png) no-repeat center;
-				background-size: contain;
+			}
+			.code_IE{
+				background: url(../images/events/big/Ireland-180x180.png) no-repeat center;
+			}
+			.code_UK{
+				background: url(../images/events/big/United-Kingdom-180x180.png) no-repeat center;
 			}
 		}
 	}
@@ -3702,6 +3688,12 @@ p.no-results{
 						}
 						.code_SV{
 							background: url(../images/events/big/Sweden-180x180.png) no-repeat center;
+						}
+						.code_IE{
+							background: url(../images/events/big/Ireland-180x180.png) no-repeat center;
+						}
+						.code_UK{
+							background: url(../images/events/big/United-Kingdom-180x180.png) no-repeat center;
 						}
 					}
 				}
@@ -5357,6 +5349,11 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		}
 	}
 .node-type-partner{
+
+	.view-id-partner_content .date-display-single{ 
+		text-align: center; 
+		display: block;
+	}
 
 	.profile-2-cols-container-1{
 		padding-top:0.5em;
