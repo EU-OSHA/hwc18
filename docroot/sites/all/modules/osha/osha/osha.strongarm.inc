@@ -876,25 +876,28 @@ el.remove();
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'language' => array(
           'weight' => '2',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '12',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '13',
         ),
         'workbench_access' => array(
           'weight' => '1',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(
         'share_widget' => array(
           'default' => array(
-            'weight' => '3',
+            'weight' => '4',
             'visible' => TRUE,
           ),
           'body' => array(

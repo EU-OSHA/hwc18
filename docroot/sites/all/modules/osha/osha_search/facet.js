@@ -22,7 +22,9 @@
                     jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
                 }
                 else {
-                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-item-type').show();
+                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
+                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                    // jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-item-type').show();
                 }
 
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').siblings('h2').on('click', function() {

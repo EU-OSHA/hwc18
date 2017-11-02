@@ -431,8 +431,8 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
   global $user;
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
-    foreach($user->workbench_access as $user_id_section => $value) {
-      foreach($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
           $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
           $form['workbench_access']['workbench_access']['#access'] = FALSE;
