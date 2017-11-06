@@ -313,6 +313,11 @@ function hwc_field_formatter_info() {
       'field types' => array('file'),
       'description' => 'Display file name or description if the last one is not empty',
     ),
+    'hwc_see_more_ext_link' => array(
+      'label' => 'See more extenal link',
+      'field types' => array('link_field'),
+      'description' => 'See more external or node link',
+    ),
   );
   return $info;
 }
@@ -423,6 +428,23 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
           $element[$delta] = array(
             '#markup' => theme('image_style', $vars),
             '#term' => $item,
+            '#delta' => $delta,
+          );
+        }
+      }
+      break;
+
+    case 'hwc_see_more_ext_link':
+      if (!$items) {
+        $element[0] = array(
+          '#markup' => l(t('See More'), 'node/' . $entity->nid),
+          '#delta' => 0,
+        );
+      }
+      else {
+        foreach ($items as $delta => $item) {
+          $element[$delta] = array(
+            '#markup' => l(t('See More'), $item['url'], array('attributes' => array('class' => array('external_url'), 'target' => '_blank'))),
             '#delta' => $delta,
           );
         }
