@@ -98,13 +98,34 @@ function hwc_practical_tool_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
+function hwc_practical_tool_add_lang_param() {
+  $query_params = drupal_get_query_parameters();
+  if ((empty($query_params))&&empty($query_params['f'])) {
+    return TRUE;
+  }
+  foreach ($query_params['f'] as $param) {
+    if (strpos($param, 'field_available_in_languages') === 0) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
+
 /**
  * Implements facet_items_alter().
  */
 function hwc_practical_tool_facet_items_alter(&$build, &$settings) {
   global $language;
+  $add_lang = hwc_practical_tool_add_lang_param();
+  if ($add_lang) {
+    foreach ($build as $lang => $item) {
+      $build[$lang]['#query']['f'][] = 'field_available_in_languages%3Avalue:' . $language->language;
+    }
+  }
   if ($settings->facet == "field_available_in_languages:value") {
-    $build[$language->language]['#active'] = 1;
+    if ($add_lang) {
+      $build[$language->language]['#active'] = 1;
+    }
     $list = language_list();
     foreach ($build as $lang => $item) {
       if (isset($list[$lang])) {
