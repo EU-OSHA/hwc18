@@ -318,10 +318,46 @@ function hwc_field_formatter_info() {
       'field types' => array('link_field'),
       'description' => 'See more external or node link',
     ),
+    'hwc_custom_title_link' => array(
+      'label' => 'Custom title link',
+      'field types' => array('link_field'),
+      'description' => 'Custom title link',
+      'settings' => array(
+        'custom_title' => '',
+      ),
+    ),
   );
   return $info;
 }
 
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function hwc_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  if ($display['type'] == 'hwc_custom_title_link') {
+    $element['custom_title'] = array(
+      '#title' => t('Title'),
+      '#type' => 'textfield',
+      '#default_value' => $settings['custom_title'],
+    );
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function hwc_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  if ($display['type'] == 'hwc_custom_title_link') {
+    return 'Title ' . t($settings['custom_title']);
+  }
+  return '';
+}
 
 /**
  * Implements hook_theme().
@@ -431,6 +467,15 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
             '#delta' => $delta,
           );
         }
+      }
+      break;
+
+    case 'hwc_custom_title_link':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#markup' => l(t($display['settings']['custom_title']), $item['url']),
+          '#delta' => $delta,
+        );
       }
       break;
 

@@ -1564,12 +1564,8 @@ function osha_events_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 34,
       ),
       'highlights_item' => array(
@@ -1643,17 +1639,8 @@ function osha_events_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'date',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-          'osha_date_theme' => '',
-        ),
-        'type' => 'date_default',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 33,
       ),
       'highlights_item' => array(
@@ -2579,12 +2566,13 @@ function osha_events_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'inline',
-        'module' => 'link',
+        'label' => 'hidden',
+        'module' => 'hwc',
         'settings' => array(
+          'custom_title' => 'Website of event',
           'field_formatter_class' => '',
         ),
-        'type' => 'link_url',
+        'type' => 'hwc_custom_title_link',
         'weight' => 6,
       ),
       'highlights_item' => array(

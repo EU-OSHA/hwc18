@@ -178,6 +178,17 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['style_options']['heading_field'] = 'field_start_date';
   $handler->display->display_options['style_options']['body_field'] = 'field_country_code';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['label'] = '';
+  $handler->display->display_options['fields']['field_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_city']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_city']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -235,7 +246,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_country_code']['label'] = '';
   $handler->display->display_options['fields']['field_country_code']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_country_code']['alter']['text'] = '[title_field]
-<div class="views-country-code"><span class="field-content">[field_country_code]</span></div>';
+<div class="views-country-code"><span class="field-content">[field_country_code], [field_city]</span></div>';
   $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_country_code']['settings'] = array(
     'field_formatter_class' => '',
@@ -284,7 +295,7 @@ function hwc_homepage_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('[title_field]
-<div class="views-country-code"><span class="field-content">[field_country_code]</span></div>'),
+<div class="views-country-code"><span class="field-content">[field_country_code], [field_city]</span></div>'),
     t('Block'),
     t('more'),
   );
