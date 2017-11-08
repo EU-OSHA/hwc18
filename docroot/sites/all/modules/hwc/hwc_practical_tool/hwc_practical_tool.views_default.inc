@@ -81,6 +81,15 @@ function hwc_practical_tool_views_default_views() {
     'trim_preserve_tags' => '',
     'field_formatter_class' => '',
   );
+  /* Field: Search: Relevance */
+  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/practical-tools\'>See more</a>';
+  $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   /* Field: Indexed Multilingual Content: Country */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -187,15 +196,6 @@ function hwc_practical_tool_views_default_views() {
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Search: Relevance */
-  $handler->display->display_options['fields']['search_api_relevance']['id'] = 'search_api_relevance';
-  $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
-  $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
-  $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
-  $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/practical-tools\'>See more</a>';
-  $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   /* Sort criterion: Indexed Multilingual Content: Year of publication */
   $handler->display->display_options['sorts']['field_publication_year']['id'] = 'field_publication_year';
   $handler->display->display_options['sorts']['field_publication_year']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -304,6 +304,9 @@ function hwc_practical_tool_views_default_views() {
     t('@order Showing @start - @end from @total'),
     t('No results'),
     t('Multilingual ID'),
+    t('<a href=\'[url]?destination=/en/practical-tools\'>See more</a>'),
+    t('.'),
+    t(','),
     t('<span class="views-label">Country: </span><span>[field_country]</span>'),
     t('[field_available_in_languages]'),
     t('<span class="views-label">Provider1:</span><span>[field_provider-value]</span>'),
@@ -317,9 +320,6 @@ function hwc_practical_tool_views_default_views() {
 [field_country]
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span>
 </div>'),
-    t('<a href=\'[url]?destination=/en/practical-tools\'>See more</a>'),
-    t('.'),
-    t(','),
     t('Relevance'),
     t('Search'),
     t('Page'),
