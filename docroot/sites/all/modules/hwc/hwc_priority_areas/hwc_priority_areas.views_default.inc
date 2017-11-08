@@ -547,6 +547,19 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'See More';
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_external_url']['id'] = 'field_external_url';
+  $handler->display->display_options['fields']['field_external_url']['table'] = 'field_data_field_external_url';
+  $handler->display->display_options['fields']['field_external_url']['field'] = 'field_external_url';
+  $handler->display->display_options['fields']['field_external_url']['label'] = '';
+  $handler->display->display_options['fields']['field_external_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_external_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_external_url']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_external_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_external_url']['type'] = 'hwc_see_more_ext_link';
+  $handler->display->display_options['fields']['field_external_url']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -604,7 +617,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="item-title">[title]</div>
 <div class="field-summary">[field_summary]</div>
-<div class="see-more">[view_node]</div>';
+<div class="see-more">[field_external_url]</div>';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'col-sm-10';
@@ -681,7 +694,7 @@ function hwc_priority_areas_views_default_views() {
     t('_highlights_intro_'),
     t('<div class="item-title">[title]</div>
 <div class="field-summary">[field_summary]</div>
-<div class="see-more">[view_node]</div>'),
+<div class="see-more">[field_external_url]</div>'),
   );
   $export['topic_related'] = $view;
 

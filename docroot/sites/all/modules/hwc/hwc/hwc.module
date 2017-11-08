@@ -313,10 +313,51 @@ function hwc_field_formatter_info() {
       'field types' => array('file'),
       'description' => 'Display file name or description if the last one is not empty',
     ),
+    'hwc_see_more_ext_link' => array(
+      'label' => 'See more extenal link',
+      'field types' => array('link_field'),
+      'description' => 'See more external or node link',
+    ),
+    'hwc_custom_title_link' => array(
+      'label' => 'Custom title link',
+      'field types' => array('link_field'),
+      'description' => 'Custom title link',
+      'settings' => array(
+        'custom_title' => '',
+      ),
+    ),
   );
   return $info;
 }
 
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function hwc_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  if ($display['type'] == 'hwc_custom_title_link') {
+    $element['custom_title'] = array(
+      '#title' => t('Title'),
+      '#type' => 'textfield',
+      '#default_value' => $settings['custom_title'],
+    );
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function hwc_field_formatter_settings_summary($field, $instance, $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  if ($display['type'] == 'hwc_custom_title_link') {
+    return 'Title ' . t($settings['custom_title']);
+  }
+  return '';
+}
 
 /**
  * Implements hook_theme().
@@ -423,6 +464,32 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
           $element[$delta] = array(
             '#markup' => theme('image_style', $vars),
             '#term' => $item,
+            '#delta' => $delta,
+          );
+        }
+      }
+      break;
+
+    case 'hwc_custom_title_link':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#markup' => l(t($display['settings']['custom_title']), $item['url']),
+          '#delta' => $delta,
+        );
+      }
+      break;
+
+    case 'hwc_see_more_ext_link':
+      if (!$items) {
+        $element[0] = array(
+          '#markup' => l(t('See More'), 'node/' . $entity->nid),
+          '#delta' => 0,
+        );
+      }
+      else {
+        foreach ($items as $delta => $item) {
+          $element[$delta] = array(
+            '#markup' => l(t('See More'), $item['url'], array('attributes' => array('class' => array('external_url'), 'target' => '_blank'))),
             '#delta' => $delta,
           );
         }

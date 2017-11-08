@@ -1,7 +1,7 @@
 name = osha
 core = 7.x
 package = OSHA
-version = 7.x-1.38
+version = 7.x-1.39
 project = osha
 dependencies[] = aggregator
 dependencies[] = better_exposed_filters
@@ -95,6 +95,7 @@ features[field_instance][] = node-article-field_article_type
 features[field_instance][] = node-article-field_character_count
 features[field_instance][] = node-article-field_cover_image
 features[field_instance][] = node-article-field_expiration_date
+features[field_instance][] = node-article-field_external_url
 features[field_instance][] = node-article-field_image
 features[field_instance][] = node-article-field_page_count
 features[field_instance][] = node-article-field_publication_date

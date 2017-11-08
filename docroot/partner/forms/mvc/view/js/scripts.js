@@ -470,10 +470,12 @@ $(document).ready(function () {
     //EVE CSM 27092017 - Issue checks of media partner
     $("input:checkbox").on({
         click:function () {
-            if ($(this).prop('checked')) {
-                document.getElementById($(this)[0].id).value = 'true';
-            } else {
-                document.getElementById($(this)[0].id).value = 'false';
+            if ($(this) != null && $(this)[0] != null && $(this)[0].id != null && $(this)[0].id != "") {
+                if ($(this).prop('checked')) {
+                    document.getElementById($(this)[0].id).value = 'true';
+                } else {
+                    document.getElementById($(this)[0].id).value = 'false';
+                }
             }
         }
     });
