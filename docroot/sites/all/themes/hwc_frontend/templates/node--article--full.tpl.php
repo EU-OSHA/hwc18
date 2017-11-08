@@ -29,7 +29,7 @@
       print str_replace('field-cover-image', 'field-image', $image);
       hide($content['field_image']);
     }
-    else{
+    else {
       print render($content['field_image']);
     }
     print render($content['title_field']);

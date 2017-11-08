@@ -405,7 +405,13 @@ function hwc_frontend_preprocess_field(&$variables) {
     }
   }
 }
+
 function hwc_frontend_preprocess_node(&$vars) {
+  // Remove napo film image.
+  if ($vars['view_mode'] == 'full' && $vars['nid'] == 160) {
+    unset($vars['content']['field_image']);
+    $vars['field_image'] = [];
+  }
   $search_str = '<div class="col-sm-12 col-md-8 col-md-offset-2">';
   if ((isset($vars['body'][0]['safe_value'])) && (strpos($vars['body'][0]['safe_value'], $search_str))) {
     $search_str = '<div class="row text-center recomended-resources-for-you">' . "\n" . $search_str;
