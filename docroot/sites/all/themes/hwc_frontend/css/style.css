@@ -9842,7 +9842,8 @@ div[class*='node-'] .more-link {
   content: ">";
 }
 .page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance {
-  margin-top: 15px;
+  margin-top: 0px;
+  margin-bottom: 10px;
   text-align: right;
 }
 .page-search .region.region-content .view-search .view-content .views-row .views-field-search-api-relevance a {
