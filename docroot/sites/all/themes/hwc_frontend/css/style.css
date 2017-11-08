@@ -13031,12 +13031,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   padding-right: 15px;
   text-align: center;
 }
-
-.node-type-partner .view-id-partner_content .date-display-single {
-  text-align: center;
-  display: block;
-}
-
 .profile-2-cols-container-3 .profile-col-left-3 .date-display-single {
   display: block;
   text-align: center;
@@ -13799,6 +13793,20 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-node-add-news #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label,
 .page-node-edit #views-form-aditional-resources-entityreference-view-widget-1 .form-type-checkbox label {
   visibility: visible !important;
+}
+.page-node-add-document .node-events-form .required-custom,
+.page-node-add-events .node-events-form .required-custom,
+.page-node-add-news .node-events-form .required-custom,
+.page-node-edit .node-events-form .required-custom,
+.page-node-add-document .node-news-form .required-custom,
+.page-node-add-events .node-news-form .required-custom,
+.page-node-add-news .node-news-form .required-custom,
+.page-node-edit .node-news-form .required-custom,
+.page-node-add-document .node-document-form .required-custom,
+.page-node-add-events .node-document-form .required-custom,
+.page-node-add-news .node-document-form .required-custom,
+.page-node-edit .node-document-form .required-custom {
+  color: #a94442;
 }
 .page-node-add-document .node-events-form .form-control,
 .page-node-add-events .node-events-form .form-control,
