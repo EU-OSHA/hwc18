@@ -7224,18 +7224,19 @@ header.navbar-default .campaigns-header .navbar-header img:nth-child(1) {
   margin-left: 30px;
 }
 header.navbar-default .campaigns-header .navbar-header a img.pull-left {
-  width: 160px;
+  width: 190px;
   height: auto;
-  margin-top: 15px;
+  margin-top: 44px;
   margin-left: 0px;
 }
 header.navbar-default .campaigns-header .navbar-header img:nth-child(3) {
-  padding-top: 85px;
-  padding-bottom: 15px;
-  padding-right: 3em;
+  padding-top: 69px;
+  padding-bottom: 32px;
+  padding-right: 15px;
   border-right: 1px solid #003399;
-  width: 120px;
+  width: 80px;
   height: auto;
+  margin-left: 10px;
 }
 header.navbar-default .campaigns-header .navbar-header .header-text {
   color: #003399;
@@ -19339,7 +19340,7 @@ input#edit-field-image-und-0-upload::before {
     margin-right: 1em;
   }
   header.navbar-default .campaigns-header .navbar-header a.pull-left img {
-    width: 130px;
+    width: 110px;
     margin-left: 0px;
   }
   header.navbar-default .campaigns-header .navbar-header a img.pull-left {
@@ -21169,7 +21170,7 @@ input#edit-field-image-und-0-upload::before {
     width: 130px;
   }
   header.navbar-default .campaigns-header .navbar-header a img.pull-left {
-    margin-top: 10px;
+    margin-top: 52px;
   }
   header.navbar-default .campaigns-header .navbar-header img:nth-child(3) {
     width: 55px;
@@ -24329,7 +24330,7 @@ input#edit-field-image-und-0-upload::before {
   }
   header.navbar-default .campaigns-header .navbar-header a img.pull-left {
     width: 125px;
-    margin-top: 0px;
+    margin-top: 45px;
   }
   header.navbar-default .campaigns-header .navbar-header img:nth-child(3) {
     width: 40px;
