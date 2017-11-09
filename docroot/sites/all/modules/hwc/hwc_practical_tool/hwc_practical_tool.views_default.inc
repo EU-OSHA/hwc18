@@ -72,8 +72,8 @@ function hwc_practical_tool_views_default_views() {
     'trim_length' => '300',
     'trim_type' => 'chars',
     'trim_suffix' => '...',
-    'more_link' => '0',
-    'more_text' => 'Read more',
+    'more_link' => '1',
+    'more_text' => 'See more',
     'summary_handler' => 'full',
     'trim_options' => array(
       'text' => 0,
@@ -86,6 +86,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['fields']['search_api_relevance']['field'] = 'search_api_relevance';
   $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
+  $handler->display->display_options['fields']['search_api_relevance']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/practical-tools\'>See more</a>';
   $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
