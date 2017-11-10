@@ -244,7 +244,7 @@ function hwc_frontend_preprocess_page(&$vars) {
         $breadcrumb[] = t('Media centre');
 
         if ($date < $now) {
-          $breadcrumb[] = t('Past events');
+          $breadcrumb[] = l(t('Past events'), 'past-events');
 
           $link_title = t('Back to past events list');
           $link_href = 'past-events';
@@ -255,7 +255,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           );
         }
         else {
-          $breadcrumb[] = t('Upcoming events');
+          $breadcrumb[] = l(t('Upcoming events'), 'events');
 
           $link_title = t('Back to events list');
           $link_href = 'events';
