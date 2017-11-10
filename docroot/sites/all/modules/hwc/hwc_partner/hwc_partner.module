@@ -10,6 +10,7 @@ include_once 'hwc_partner.inc';
 define ('PARTNER_TYPE_OCP', '825c3b00-0dd2-4026-b292-bc76d6e49a70');
 define ('PARTNER_TYPE_MP', '8b662e6e-054a-4148-8495-490ac5858964');
 define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
+define ('PARTNER_TYPE_OA', 'a636c498-dd38-414f-ba12-397ec857ca85');
 
 /**
  * Implements hook_ctools_plugin_directory().
