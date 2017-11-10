@@ -63,10 +63,10 @@ function hwc_partner_default_page_manager_handlers() {
     'name' => 'een-profile',
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'Campaign partners
-National focal points
+Enterprise Europe Network
 %node:title-field',
     'panels_breadcrumbs_paths' => '<none>
-national-focal-points
+enterprise-europe-network
 <none>',
     'panels_breadcrumbs_home' => 1,
   );
