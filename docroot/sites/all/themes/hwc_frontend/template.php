@@ -244,7 +244,7 @@ function hwc_frontend_preprocess_page(&$vars) {
         $breadcrumb[] = t('Media centre');
 
         if ($date < $now) {
-          $breadcrumb[] = t('Past events');
+          $breadcrumb[] = l(t('Past events'), 'past-events');
 
           $link_title = t('Back to past events list');
           $link_href = 'past-events';
@@ -255,7 +255,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           );
         }
         else {
-          $breadcrumb[] = t('Upcoming events');
+          $breadcrumb[] = l(t('Upcoming events'), 'events');
 
           $link_title = t('Back to events list');
           $link_href = 'events';
@@ -405,7 +405,13 @@ function hwc_frontend_preprocess_field(&$variables) {
     }
   }
 }
+
 function hwc_frontend_preprocess_node(&$vars) {
+  // Remove napo film image.
+  if ($vars['view_mode'] == 'full' && $vars['nid'] == 160) {
+    unset($vars['content']['field_image']);
+    $vars['field_image'] = [];
+  }
   $search_str = '<div class="col-sm-12 col-md-8 col-md-offset-2">';
   if ((isset($vars['body'][0]['safe_value'])) && (strpos($vars['body'][0]['safe_value'], $search_str))) {
     $search_str = '<div class="row text-center recomended-resources-for-you">' . "\n" . $search_str;

@@ -56,23 +56,24 @@ class HwcCrmMigration extends Migration {
   }
 
   /**
-   * Configure field mappings, reads bundle field information
+   * Configure field mappings, reads bundle field information.
    */
   protected function addFieldMappings() {
-    // Node base fields
+    // Node base fields.
     $this->addFieldMapping('uid')->defaultValue(0);
     $this->addFieldMapping('comment')->defaultValue(0);
     $this->addFieldMapping('title', 'title');
-    $this->addFieldMapping('workbench_access', 'workbench_access')->defaultValue('section'); // Assign default section
+    // Assign default section.
+    $this->addFieldMapping('workbench_access', 'workbench_access')->defaultValue('section');
 
-    // Handle field migration in a generic way
+    // Handle field migration in a generic way.
     $fields = field_info_instances('node', $this->bundle);
     $exposed = $this->source->fields();
-    foreach($fields as $field_name => $field_info) {
+    foreach ($fields as $field_name => $field_info) {
       if (in_array($field_name, $exposed) && !in_array($field_name, $this->getManuallyMigratedFields())) {
         $this->addFieldMapping($field_name, $field_name);
 
-        // Extra mappings depending on field type
+        // Extra mappings depending on field type.
         $fi = field_info_field($field_name);
         if ($fi['type'] == 'taxonomy_term_reference') {
           $this->addFieldMapping("$field_name:create_term")->defaultValue(TRUE);

@@ -70,3 +70,10 @@ function osha_news_update_7009() {
 function osha_news_update_7010() {
   features_revert_module('osha_news');
 }
+
+/**
+ * News path breadcrumbs.
+ */
+function osha_news_update_7011() {
+  features_revert(array('osha_news' => 'path_breadcrumbs'));
+}

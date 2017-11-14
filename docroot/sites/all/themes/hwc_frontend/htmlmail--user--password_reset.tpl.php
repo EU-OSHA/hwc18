@@ -62,8 +62,8 @@
   global $base_url; // TODO: should link to node
   print l(theme('image', array(
     'path' => $directory . '/images/email-footer.png',
-    'width' => 892,
-    'height' => 154,
+    'width' => 700,
+    'height' => 112,
     'attributes' => array('style' => 'border: 0px;')
     )), $base_url, array(
     'html' => TRUE,
