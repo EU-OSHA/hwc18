@@ -10156,6 +10156,9 @@ div[class*='node-'] .more-link {
   clear: both;
   display: block;
 }
+.node-type-practical-tool .pane-node-body {
+  margin-bottom: 45px;
+}
 .node-type-practical-tool .pane-hwc-practical-tool-hwc-practical-tool-back-to-list a {
   font-weight: bold;
   margin-top: 15px;
