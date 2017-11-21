@@ -155,6 +155,13 @@ function hwc_audio_visual_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'hwc_migration_gallery_url';
+  $strongarm->value = '/export/gallery';
+  $export['hwc_migration_gallery_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'hwc_migration_tax_biological_hazard_url';
   $strongarm->value = '/export/taxonomy/biological_hazard';
   $export['hwc_migration_tax_biological_hazard_url'] = $strongarm;

@@ -12,7 +12,7 @@ function ncw_migration_migrate_api() {
     'api' => 2,
     'groups' => array(
       'ncw' => array(
-        'title' => 'Import data from NCW'
+        'title' => 'Import data from NCW',
       ),
     ),
     'migrations' => array(
@@ -20,6 +20,11 @@ function ncw_migration_migrate_api() {
         'group_name' => 'ncw',
         'dependencies' => array(),
         'class_name' => 'NCWDangerousSubstancesMigration',
+      ),
+      'gallery' => array(
+        'group_name' => 'ncw',
+        'dependencies' => array(),
+        'class_name' => 'NCWGalleryMigration',
       ),
       'tax_priority_area' => array(
         'group_name' => 'ncw',
@@ -115,7 +120,7 @@ function ncw_migration_migrate_api() {
         'dependencies' => array(
           'tax_tags', 'publications_add_res', 'news_add_res',
           'press_releases_add_res',
-          'highlights_add_res'
+          'highlights_add_res',
         ),
         'class_name' => 'NCWNewsMigration',
       ),
@@ -134,7 +139,8 @@ function ncw_migration_migrate_api() {
         'dependencies' => array(
           'tax_tags', 'publications_add_res', 'news_add_res',
           'press_releases_add_res',
-          'highlights_add_res', 'notes_to_editor'
+          'highlights_add_res',
+          'notes_to_editor',
         ),
         'class_name' => 'NCWPressMigration',
       ),
@@ -148,7 +154,7 @@ function ncw_migration_migrate_api() {
         'dependencies' => array(
           'tax_tags', 'publications_add_res', 'news_add_res',
           'press_releases_add_res',
-          'highlights_add_res'
+          'highlights_add_res',
         ),
         'class_name' => 'NCWHighlightMigration',
       ),
@@ -187,9 +193,9 @@ function ncw_migration_migrate_api() {
         'dependencies' => array(),
         'class_name' => 'NCWTaxonomyNewsletterSectionsMigration',
       ),
-      // Don't migrate some types
-      // Magazine, Annual reports and other corporate publications, Promotional Material
-      // Evaluation reports, Corporate strategies and annual management plans
+      // Don't migrate some types.
+      // Magazine, Annual reports and other corporate publications, Promotional Material.
+      // Evaluation reports, Corporate strategies and annual management plans.
       'tax_publication_types' => array(
         'group_name' => 'ncw',
         'dependencies' => array(),
@@ -229,7 +235,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
   public function __construct($arguments, $source_klass, $bundle) {
     parent::__construct($arguments);
 
-    /** Disable linkchecker globally to avoid failures during migration */
+    // Disable linkchecker globally to avoid failures during migration.
     global $linkchecker_disable_scan;
     $linkchecker_disable_scan = TRUE;
 
@@ -271,7 +277,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
    * Configure field mappings, reads bundle field information
    */
   protected function addFieldMappings() {
-    // Node base fields
+    // Node base fields.
     $this->addFieldMapping('uid')->defaultValue(0);
     $this->addFieldMapping('comment')->defaultValue(0);
     $this->addFieldMapping('status', 'status');
@@ -316,6 +322,10 @@ abstract class AbstractNCWNodeMigration extends Migration {
           $this->addFieldMapping("$field_name:to", $field_name . '_value2');
           $this->addFieldMapping("$field_name:timezone", $field_name . '_timezone');
         }
+        if ($fi['type'] == 'flickrfield') {
+          $this->addFieldMapping("$field_name:type", $field_name . '_type');
+          $this->addFieldMapping("$field_name:nsid", $field_name . '_nsid');
+        }
         if ($fi['type'] == 'file' || $fi['type'] == 'image') {
           $this->addFieldMapping("$field_name:file_replace")->defaultValue(TRUE);
         }
@@ -323,7 +333,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
     }
     $this->addUnmigratedDestinations(
       array(
-        'revision', 'tnid', 'translate', 'revision_uid', 'is_new'
+        'revision', 'tnid', 'translate', 'revision_uid', 'is_new',
       )
     );
   }
@@ -377,10 +387,10 @@ abstract class AbstractNCWNodeMigration extends Migration {
     try {
       ncw_migration_debug('!klass:      * Preparing source node: !id', array(
         '!klass' => get_class($this),
-        '!id' => $row->nid
+        '!id' => $row->nid,
       ));
       $row->path = !empty($row->path['alias']) ? $row->path['alias'] : NULL;
-      // Normalize JSON structure, to match migrate expectations for field data
+      // Normalize JSON structure, to match migrate expectations for field data.
       $fields = field_info_instances('node', $this->bundle);
       foreach ($fields as $field_name => $field_info) {
         if (in_array($field_name, $this->getManuallyMigratedFields())) {
@@ -388,7 +398,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
         }
         $fi = field_info_field($field_name);
         if ($fi['type'] == 'entityreference') {
-          // Entity references will be manually handled by each migration
+          // Entity references will be manually handled by each migration.
           continue;
         }
         $normalizer = 'osha_migration_normalize_field_' . $fi['type'];
@@ -406,7 +416,8 @@ abstract class AbstractNCWNodeMigration extends Migration {
         }
       }
       $row->field_migration_source = 'ncw';
-    } catch(Exception $e) {
+    }
+    catch (Exception $e) {
       ncw_migration_debug("Exception while preparing the row: {$row->nid}", 'error');
       return FALSE;
     }
@@ -420,19 +431,19 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $entity->workbench_moderation_state_new = OSHA_WORKFLOW_STATE_PUBLISHED;
   }
 
-  // News should be imported only in EN - MH-19
+  // News should be imported only in EN - MH-19.
   public function allowMigrateTranslation() {
     return !in_array($this->bundle, array('news'));
   }
 
   /**
-   * Implements Migration::complete() to configure translations
+   * Implements Migration::complete() to configure translations.
    */
   public function complete($entity, stdClass $row) {
     unset($row->translations['data']['en']);
     if (!empty($row->translations['data']) && $this->allowMigrateTranslation()) {
       $handler = entity_translation_get_handler('node', $entity);
-      foreach($row->translations['data'] as $language => $data) {
+      foreach ($row->translations['data'] as $language => $data) {
         $handler->setTranslation(array(
           'language' => $data['language'],
           'source' => $data['source'],
@@ -456,7 +467,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
   }
 
   public function validateEndpointURL() {
-    if(empty($this->endpoint_url)) {
+    if (empty($this->endpoint_url)) {
       return FALSE;
     }
     return TRUE;
@@ -501,13 +512,13 @@ abstract class AbstractNCWNodeMigration extends Migration {
           $url = $source->itemURL($to_remove->sourceid1);
           $curl = curl_init();
           curl_setopt($curl, CURLOPT_URL, $url);
-          curl_setopt($curl, CURLOPT_NOBODY, true);
+          curl_setopt($curl, CURLOPT_NOBODY, TRUE);
           curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-          curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+          curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
           $result = curl_exec($curl);
           $info = curl_getinfo($curl);
           curl_close($curl);
-          // Remove only if 404
+          // Remove only if 404.
           if (!empty($info['http_code']) && $info['http_code'] == 404) {
             node_delete($to_remove->destid1);
             $this->getMap()->delete(array($to_remove->sourceid1));
@@ -619,7 +630,7 @@ abstract class AbstractNCWNodeSource extends MigrateSource {
         if ($rowd = $this->fileGetContents($node_url)) {
           if ($row_ob = json_decode($rowd, TRUE)) {
             $row = new stdClass();
-            foreach($row_ob as $k => $v) {
+            foreach ($row_ob as $k => $v) {
               $row->$k = $v;
             }
             $this->rows[$id] = $row;
@@ -642,7 +653,7 @@ abstract class AbstractNCWNodeSource extends MigrateSource {
   }
 
   public function fileGetContents($url) {
-    //@todo replace all instances of fileGetContents
+    //@todo replace all instances of fileGetContents.
     return ncw_migration_file_get_contents($url);
   }
 
@@ -727,16 +738,16 @@ abstract class AbstractNCWTaxonomyTermMigration extends AbstractNCWNodeMigration
    *   Ignore these fields during mapping (or handle manually in derived class).
    */
   protected function addFieldMappings() {
-    // Taxnomy term base fields
+    // Taxnomy term base fields.
     $this->addSimpleMappings(array('name', 'description', 'format', 'weight'));
 
-    // Handle field migration in a generic way
+    // Handle field migration in a generic way.
     $fields = field_info_instances('taxonomy_term', $this->bundle);
     $exposed = $this->source->fields();
     foreach($fields as $field_name => $field_info) {
       if (array_key_exists($field_name, $exposed) && !in_array($field_name, $this->getManuallyMigratedFields())) {
         $this->addFieldMapping($field_name, $field_name);
-        // Extra mappings depending on field type
+        // Extra mappings depending on field type.
         $fi = field_info_field($field_name);
         if ($fi['translatable'] == 1 && $fi['type'] != 'taxonomy_term_reference' /* field_organised_by */) {
           $this->addFieldMapping("$field_name:language", $field_name . '_language');
@@ -774,15 +785,15 @@ abstract class AbstractNCWTaxonomyTermMigration extends AbstractNCWNodeMigration
       ncw_migration_debug('!klass:      * Preparing source term: !id', array('!klass' => get_class($this), '!id' => $row->tid));
       $row->language = 'en';
       $row->path = !empty($row->path['alias']) ? $row->path['alias']:  NULL;
-      // Normalize JSON structure, to match migrate expectations for field data
+      // Normalize JSON structure, to match migrate expectations for field data.
       $fields = field_info_instances('taxonomy_term', $this->bundle);
-      foreach($fields as $field_name => $field_info) {
+      foreach ($fields as $field_name => $field_info) {
         if (in_array($field_name, $this->getManuallyMigratedFields())) {
           continue;
         }
         $fi = field_info_field($field_name);
         $normalizer = 'osha_migration_normalize_field_' . $fi['type'];
-        if(function_exists($normalizer)) {
+        if (function_exists($normalizer)) {
           $filter_languages = array();
           if (!$this->allowMigrateTranslation()) {
             $filter_languages = array('en');
@@ -805,16 +816,16 @@ abstract class AbstractNCWTaxonomyTermMigration extends AbstractNCWNodeMigration
           'news',
           'press_release',
           'publication',
-          'infographic'
+          'infographic',
         );
-        foreach($row->field_excluded_from as $k => $v) {
+        foreach ($row->field_excluded_from as $k => $v) {
           if (!in_array($v, $whitelist)) {
             unset($row->field_excluded_from[$k]);
           }
         }
       }
     }
-    catch(Exception $e) {
+    catch (Exception $e) {
       ncw_migration_debug("Exception while preparing the row: {$row->tid}", 'error');
       return FALSE;
     }
@@ -822,13 +833,13 @@ abstract class AbstractNCWTaxonomyTermMigration extends AbstractNCWNodeMigration
   }
 
   /**
-   * Implements Migration::complete() to configure translations
+   * Implements Migration::complete() to configure translations.
    */
   public function complete($entity, stdClass $row) {
     unset($row->translations['data']['en']);
     if (!empty($row->translations['data'])) {
       $handler = entity_translation_get_handler('taxonomy_term', $entity);
-      foreach($row->translations['data'] as $language => $data) {
+      foreach ($row->translations['data'] as $language => $data) {
         $handler->setTranslation(array(
           'language' => $data['language'],
           'source' => $data['source'],
@@ -921,7 +932,7 @@ function osha_migration_normalize_field_list_text($row, $field_name, $field_info
       if (!empty($filter_languages) && !in_array($language, $filter_languages)) {
         continue;
       }
-      foreach($values as $v) {
+      foreach ($values as $v) {
         $field[] = $v['value'];
       }
     }
@@ -950,10 +961,10 @@ function osha_migration_normalize_field_text_long($row, $field_name, $field_info
       if (!empty($filter_languages) && !in_array($language, $filter_languages)) {
         continue;
       }
-      foreach($values as $v) {
+      foreach ($values as $v) {
         $field[] = $v['value'];
         $languages[] = $language;
-        $format[] = str_replace('dangerous_substances','audio_visual', $v['format']);
+        $format[] = str_replace('dangerous_substances', 'audio_visual', $v['format']);
       }
     }
   }
@@ -994,7 +1005,8 @@ function osha_migration_normalize_field_link_field($row, $field_name, $field_inf
   }
   $row->{$field_name} = $field['url'];
   $row->{$field_name . '_title'} = $field['title'];
-  $row->{$field_name . '_attributes'} = $field['attributes'];//@todo not tested
+  // @todo not tested.
+  $row->{$field_name . '_attributes'} = $field['attributes'];
   $row->{$field_name . '_language'} = $field['language'];
 }
 
@@ -1041,6 +1053,25 @@ function osha_migration_normalize_field_email($row, $field_name, $field_info, $f
   }
   $row->{$field_name} = $field;
   $row->{$field_name . '_language'} = $languages;
+}
+
+
+function osha_migration_normalize_field_flickrfield($row, $field_name, $field_info, $filter_languages) {
+  $ids = array();
+  $types = array();
+  $nsids = array();
+  if (!empty($row->{$field_name}) && is_array($row->{$field_name})) {
+    foreach ($row->{$field_name} as $language => $values) {
+      foreach($values as $field) {
+        $ids[] = !empty($field['id']) ? $field['id'] : NULL;
+        $types[] = !empty($field['type']) ? $field['type'] : NULL;
+        $nsids[] = !empty($field['nsid']) ? $field['nsid'] : NULL;
+      }
+    }
+  }
+  $row->{$field_name} = $ids;
+  $row->{$field_name . '_type'} = $types;
+  $row->{$field_name . '_nsid'} = $nsids;
 }
 
 function osha_migration_normalize_field_datetime($row, $field_name, $field_info, $filter_languages) {
@@ -1151,7 +1182,6 @@ function osha_migration_normalize_migrated_term_reference(&$original, $source_mi
   }
   return $ret;
 }
-
 
 function ncw_migration_find_additional_resource($source_nid) {
   $migrations = array(

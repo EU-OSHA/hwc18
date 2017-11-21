@@ -123,6 +123,10 @@ function osha_events_views_default_views() {
   $handler->display->display_options['sorts']['field_talking_date_value']['id'] = 'field_talking_date_value';
   $handler->display->display_options['sorts']['field_talking_date_value']['table'] = 'field_data_field_talking_date';
   $handler->display->display_options['sorts']['field_talking_date_value']['field'] = 'field_talking_date_value';
+  /* Sort criterion: Field collection item: Speech title (field_talking_title) */
+  $handler->display->display_options['sorts']['field_talking_title_value']['id'] = 'field_talking_title_value';
+  $handler->display->display_options['sorts']['field_talking_title_value']['table'] = 'field_data_field_talking_title';
+  $handler->display->display_options['sorts']['field_talking_title_value']['field'] = 'field_talking_title_value';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';

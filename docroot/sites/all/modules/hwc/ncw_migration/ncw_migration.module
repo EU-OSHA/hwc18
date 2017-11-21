@@ -1,14 +1,15 @@
 <?php
 
-
 /**
  * Implements Elysia hook_cronapi().
  */
 function ncw_migration_cronapi() {
-  return array('ncw_migration_cron' => array(
-    'description' => 'Migrate NCW content',
-    'rule' => '0 3 * * *',
-  ));
+  return array(
+    'ncw_migration_cron' => array(
+      'description' => 'Migrate NCW content',
+      'rule' => '0 3 * * *',
+    ),
+  );
 }
 
 /**
@@ -27,7 +28,7 @@ function ncw_migration_cron() {
 function ncw_migration_get_migrated_bundles() {
   return array(
     'publication', 'events', 'news', 'note_to_editor', 'press_contact',
-    'press_release', 'infographics', 'practical_tool',
+    'press_release', 'infographics', 'practical_tool', 'flickr-gallery',
   );
 }
 
@@ -60,8 +61,8 @@ function ncw_migration_run_single($machine_name) {
 }
 
 function ncw_migration_debug($message, $message_args = array(), $level = 'notice') {
-  if(function_exists('drush_get_option')) {
-    // Message appear when running 'drush -d migrate-import events'
+  if (function_exists('drush_get_option')) {
+    // Message appear when running 'drush -d migrate-import events'.
     if ($debug = drush_get_option('debug')) {
       $str = format_string($message, $message_args);
       drush_log($str, $level);

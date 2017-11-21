@@ -44,9 +44,13 @@ function hwc_audio_visual_user_default_permissions() {
   $permissions['use text format audio_visual'] = array(
     'name' => 'use text format audio_visual',
     'roles' => array(
+      'Approver' => 'Approver',
       'Audio Visual' => 'Audio Visual',
+      'Campaign Project Manager' => 'Campaign Project Manager',
       'Content Validator' => 'Content Validator',
+      'Editor' => 'Editor',
       'Layout Validator' => 'Layout Validator',
+      'Project Manager' => 'Project Manager',
       'Review Manager' => 'Review Manager',
       'Superadministrators' => 'Superadministrators',
       'Translation Liaison' => 'Translation Liaison',

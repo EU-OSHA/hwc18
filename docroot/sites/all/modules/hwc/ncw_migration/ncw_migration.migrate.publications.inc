@@ -68,7 +68,7 @@ class NCWPublicationsMigration extends AbstractNCWNodeMigration {
   function prepareRow($row) {
     parent::prepareRow($row);
 
-    // field_related_publications
+    // field_related_publications.
     $fi = field_info_field('field_related_publications');
     osha_migration_normalize_field_entityreference($row, 'field_related_publications', $fi);
     $related_publications = $row->field_related_publications;
@@ -90,7 +90,7 @@ class NCWPublicationsMigration extends AbstractNCWNodeMigration {
 
     $row->field_relevant_for = osha_migration_normalize_migrated_term_reference($row->field_relevant_for, 'tax_segment');
 
-    // field_aditional_resources
+    // field_aditional_resources.
     $fi = field_info_field('field_aditional_resources');
     osha_migration_normalize_field_entityreference($row, 'field_aditional_resources', $fi);
     $additional_resources = $row->field_aditional_resources;
@@ -124,9 +124,9 @@ class NCWPublicationsMigration extends AbstractNCWNodeMigration {
     if (!empty($row->path) && !empty($entity->nid)) {
       $existing_alias = path_load(array('source' => 'node/' . $entity->nid));
       if (!empty($existing_alias) && $existing_alias['alias'] != $row->path) {
-        // Remove old alias
+        // Remove old alias.
         path_delete(array('alias' => $existing_alias['alias']));
-        // Redirect old alias
+        // Redirect old alias.
         $redirect = new stdClass();
         redirect_object_prepare($redirect);
         $redirect->source = $existing_alias['alias'];
