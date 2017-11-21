@@ -15807,7 +15807,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin: auto;
 }
 .view-display-id-fop img,
-.view-display-id-een img {
+.view-display-id-een img,
+.view-display-id-block_1 img {
   width: 110px;
   height: 74px;
   border: 1px solid #CCC;
