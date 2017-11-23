@@ -29,7 +29,7 @@ function osha_flickr_views_api($module = NULL, $api = NULL) {
 function osha_flickr_node_info() {
   $items = array(
     'flickr_gallery' => array(
-      'name' => 'Gallery',
+      'name' => 'Flickr Gallery',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

@@ -46,6 +46,19 @@ function osha_flickr_views_default_views() {
   $handler->display->display_options['fields']['field_cover_flickr']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_cover_flickr']['click_sort_column'] = 'id';
   $handler->display->display_options['fields']['field_cover_flickr']['type'] = 'album_detail';
+  /* Field: Field: Images */
+  $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
+  $handler->display->display_options['fields']['field_images']['table'] = 'field_data_field_images';
+  $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
+  $handler->display->display_options['fields']['field_images']['label'] = '';
+  $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_images']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_images']['settings'] = array(
+    'image_style' => 'medium_thumbnail_mc_340',
+    'image_link' => 'content',
+    'field_formatter_class' => '',
+  );
+  $handler->display->display_options['fields']['field_images']['delta_offset'] = '0';
   /* Field: Content: Flickr */
   $handler->display->display_options['fields']['field_flickr']['id'] = 'field_flickr';
   $handler->display->display_options['fields']['field_flickr']['table'] = 'field_data_field_flickr';
@@ -95,6 +108,11 @@ function osha_flickr_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'AND',
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -109,11 +127,27 @@ function osha_flickr_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'flickr_gallery' => 'flickr_gallery',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Flickr (field_flickr:type) */
   $handler->display->display_options['filters']['field_flickr_type']['id'] = 'field_flickr_type';
   $handler->display->display_options['filters']['field_flickr_type']['table'] = 'field_data_field_flickr';
   $handler->display->display_options['filters']['field_flickr_type']['field'] = 'field_flickr_type';
   $handler->display->display_options['filters']['field_flickr_type']['value'] = 'id';
+  $handler->display->display_options['filters']['field_flickr_type']['group'] = 1;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'node';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
+  $handler->display->display_options['filters']['status_1']['group'] = 2;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type_1']['id'] = 'type_1';
+  $handler->display->display_options['filters']['type_1']['table'] = 'node';
+  $handler->display->display_options['filters']['type_1']['field'] = 'type';
+  $handler->display->display_options['filters']['type_1']['value'] = array(
+    'hwc_gallery' => 'hwc_gallery',
+  );
+  $handler->display->display_options['filters']['type_1']['group'] = 2;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

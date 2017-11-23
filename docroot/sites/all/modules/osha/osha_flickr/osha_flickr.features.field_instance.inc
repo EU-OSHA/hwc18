@@ -20,11 +20,19 @@ function osha_flickr_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'osha_flickr',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'album_cover',
         'weight' => 2,
       ),
       'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -49,6 +57,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 0,
       ),
       'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -89,11 +103,19 @@ function osha_flickr_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'osha_flickr',
-        'settings' => array(),
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
         'type' => 'album_detail',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -118,6 +140,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 0,
       ),
       'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -158,18 +186,24 @@ function osha_flickr_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'field_formatter_class' => '',
           'format_type' => 'osha_day_only',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
           'osha_date_theme' => '',
-          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 0,
       ),
       'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -194,6 +228,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 0,
       ),
       'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -222,6 +262,7 @@ function osha_flickr_field_default_field_instances() {
       'active' => 1,
       'module' => 'date',
       'settings' => array(
+        'date_single_day' => array(),
         'increment' => 15,
         'input_format' => 'd/m/Y - H:i:s',
         'input_format_custom' => '',
@@ -244,13 +285,18 @@ function osha_flickr_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'i18n_taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'i18n_taxonomy_term_reference_link',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -275,6 +321,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 0,
       ),
       'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -318,6 +370,7 @@ function osha_flickr_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'title',
         'settings' => array(
+          'field_formatter_class' => '',
           'title_class' => '',
           'title_link' => '',
           'title_style' => 'h2',
@@ -326,6 +379,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 1,
       ),
       'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -350,6 +409,12 @@ function osha_flickr_field_default_field_instances() {
         'weight' => 0,
       ),
       'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
