@@ -30,11 +30,6 @@ function hwc_admin_config_form() {
     '#default_value' => variable_get('hwc_mail_bottom_text', ''),
     '#title' => 'Mail bottom text',
   );
-  $form['hwc_mail_signature'] = array(
-    '#type' => 'textarea',
-    '#default_value' => variable_get('hwc_mail_signature', ''),
-    '#title' => 'Mail signature',
-  );
 
   $form['fb_app_key'] = array(
     '#type' => 'textfield',

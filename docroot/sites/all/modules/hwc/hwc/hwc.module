@@ -1410,7 +1410,6 @@ function hwc_get_htmlmail_content($body) {
 
   $content = [];
 
-  $signature = variable_get('hwc_mail_signature', '');
   $bottom_text = variable_get('hwc_mail_bottom_text', '');
   $image = l(theme('image', array(
     'path' => $directory . '/images/email-footer.png',
@@ -1426,6 +1425,6 @@ function hwc_get_htmlmail_content($body) {
   $content['footer'] = theme('html_mail_footer', ['bottom_text' => $bottom_text]);
 
   $content = hwc_attach_inline_css($content);
-  $content['body'] = str_replace('__SIGNATURE__', $signature, $body);
+  $content['body'] = str_replace('__SIGNATURE__', '', $body);
   return $content;
 }
