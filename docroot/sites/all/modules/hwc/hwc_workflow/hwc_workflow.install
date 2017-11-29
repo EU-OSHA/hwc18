@@ -146,3 +146,10 @@ function hwc_workflow_update_7008() {
 function hwc_workflow_update_7009() {
   features_revert_module('hwc_workflow');
 }
+
+/**
+ * MDR-1524 The layout of the notifications of the CMW should be improved.
+ */
+function hwc_workflow_update_7010() {
+  features_revert_module('hwc_workflow');
+}
