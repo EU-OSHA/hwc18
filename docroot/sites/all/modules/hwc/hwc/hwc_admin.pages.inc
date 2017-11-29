@@ -25,14 +25,25 @@ function hwc_admin_config_form() {
     '#description' => t('Possibility to inactivate the notifications when Mostra / EU-OSHA acts as a partner (News and Events)'),
   );
 
+  $form['hwc_mail_bottom_text'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_mail_bottom_text', ''),
+    '#title' => 'Mail bottom text',
+  );
+  $form['hwc_mail_signature'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_mail_signature', ''),
+    '#title' => 'Mail signature',
+  );
+
   $form['fb_app_key'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('fb_app_key', ''),
     '#title' => 'Facebook application key',
   );
   // By default, render the form using theme_system_settings_form().
-  if (!isset($form ['#theme'])) {
-    $form ['#theme'] = 'system_settings_form';
+  if (!isset($form['#theme'])) {
+    $form['#theme'] = 'system_settings_form';
   }
 
   $tags_voc = taxonomy_vocabulary_machine_name_load(OSHA_TAXONOMIES_TAGS);

@@ -191,7 +191,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="av-type">
 [field_provider]
-[field_fc_provider]
+[field_fc_provider]<br />
 [field_visualisation_material_typ]
 [field_country]
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span>
@@ -316,7 +316,7 @@ function hwc_practical_tool_views_default_views() {
     t('Year of publication'),
     t('<div class="av-type">
 [field_provider]
-[field_fc_provider]
+[field_fc_provider]<br />
 [field_visualisation_material_typ]
 [field_country]
 <span class="views-label">Language: </span><span>[field_available_in_languages]</span>

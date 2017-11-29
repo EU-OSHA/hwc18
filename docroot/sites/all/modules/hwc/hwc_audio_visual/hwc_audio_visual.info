@@ -1,7 +1,7 @@
 name = HWC audio visual
 core = 7.x
 package = HWC
-version = 7.x-1.0
+version = 7.x-1.1
 dependencies[] = cck_time
 dependencies[] = ctools
 dependencies[] = facetapi
@@ -94,6 +94,7 @@ features[variable][] = comment_preview_audio_visual
 features[variable][] = comment_subject_field_audio_visual
 features[variable][] = field_bundle_settings_node__audio_visual
 features[variable][] = hwc_migration_audio_visual_url
+features[variable][] = hwc_migration_gallery_url
 features[variable][] = hwc_migration_tax_biological_hazard_url
 features[variable][] = hwc_migration_tax_evaluation_url
 features[variable][] = hwc_migration_tax_exposure_route_url

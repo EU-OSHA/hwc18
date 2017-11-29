@@ -19,7 +19,7 @@ function ncw_migration_drush_command() {
       'required-arguments' => TRUE,
       'options' => array(
         'update' => 'Update existing migrated node',
-      )
+      ),
     ),
   );
 }

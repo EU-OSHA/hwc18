@@ -171,3 +171,10 @@ function hwc_partner_update_7021() {
     }
   }
 }
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7022() {
+  features_revert_module('hwc_partner');
+}

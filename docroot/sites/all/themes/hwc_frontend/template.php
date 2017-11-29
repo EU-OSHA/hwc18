@@ -270,6 +270,8 @@ function hwc_frontend_preprocess_page(&$vars) {
 
         break;
 
+      case 'flickr_gallery':
+        drupal_set_title('');
       case 'hwc_gallery':
         $link_title = t('Back to gallery');
         $link_href = 'photo-gallery';

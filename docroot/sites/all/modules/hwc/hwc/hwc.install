@@ -660,3 +660,10 @@ function hwc_update_7040() {
 function hwc_update_7041() {
   features_revert_module('hwc');
 }
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7042() {
+  module_enable(['osha_flickr']);
+}
