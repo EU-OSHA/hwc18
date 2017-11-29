@@ -58,6 +58,7 @@ function osha_flickr_views_default_views() {
     'image_link' => 'content',
     'field_formatter_class' => '',
   );
+  $handler->display->display_options['fields']['field_images']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_images']['delta_offset'] = '0';
   /* Field: Content: Flickr */
   $handler->display->display_options['fields']['field_flickr']['id'] = 'field_flickr';
