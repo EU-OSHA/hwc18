@@ -13,6 +13,13 @@ function osha_flickr_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_flickr_gallery';
+  $strongarm->value = 'edit-workflow';
+  $export['additional_settings__active_tab_flickr_gallery'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_flickr_gallery';
   $strongarm->value = '-1';
   $export['comment_anonymous_flickr_gallery'] = $strongarm;
