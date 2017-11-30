@@ -10,22 +10,21 @@
 .photo-gallery .views-field-nothing {
     background-color: #003399;
     color: #ffffff;
-    padding: 1em;
     display: block;
 }
 
 .photo-gallery .gallery-row[class*="col-"]:nth-child(3n+1) {
-    padding-right: 15px;
+    //padding-right: 15px;
     clear: both;
 }
 
 .photo-gallery .gallery-row[class*="col-"]:nth-child(3n+2) {
-    padding-right: 7px;
-    padding-left: 8px;
+    //padding-right: 7px;
+    //padding-left: 8px;
 }
 
 .photo-gallery .gallery-row[class*="col-"]:nth-child(3n) {
-    padding-left: 15px;
+    //padding-left: 15px;
 }
 
 #content .field-name-field-cover-flickr a,

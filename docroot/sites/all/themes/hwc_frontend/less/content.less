@@ -3209,7 +3209,7 @@ article{
 /* End news*/
 
 /*gallery*/
-.page-media-center-photo-gallery, .view-photo-gallery{
+.page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
 	.views-field-title-field, .gallery_list_detail_container, .attachment.attachment-before .views-field-nothing{
 		background-color: @bg-color-2;
 		display: block;
@@ -3220,11 +3220,15 @@ article{
 			color: @color1;
 			font-weight: bold;
 			display: block;
+			margin-top: 5px;
 			&:before{
 				content: ">";
 				padding-right: 5px;
 			}
 		}
+	}
+	.view-flickr-albums{
+		//width: 100%;
 	}
 	.views-field-field-images{
 		img{
@@ -3253,6 +3257,10 @@ article{
 		blockquote.image-field-caption{
 			display: none;
 		}
+	}
+	.views-field-field-images img, .views-field-field-flickr img {
+	    /* max-height: 235px; */
+	    min-height: 242px;
 	}
 	.attachment.attachment-before{
 	    padding-bottom: 2em;
@@ -3284,10 +3292,12 @@ article{
 /*End gallery*/
 
 /*gallery Detail*/
+.node-type-flickr-gallery,
 .node-type-hwc-gallery{
 	h1{
 		border-bottom: none;
 	}
+	.node-flickr-gallery,
 	.node-hwc-gallery{
 		img{
 			margin-left: auto;
@@ -3296,18 +3306,35 @@ article{
 		.field-name-body{
 			padding-top: 0.5em;
 		}
-		.field-name-field-images.field-type-image{
+		.field-name-field-cover-flickr img{
+			display: block !important;
+		}
+		.field-name-field-images.field-type-image,
+		.field-name-field-flickr.field-type-flickrfield,
+		.photo-gallery{
 			display: inline-table;
 			border-bottom: 1px dotted @border-default-color;
 			margin-top: 2em;
-			.field-item {
+			width: 100%;
+			padding-right: 0px;
+			padding-left: 0px;
+			.field-item,
+			.gallery-row {
 				margin-bottom: 2em;
 				img{
 					margin-left: 0;
+					
 				}
 			}
+			.gallery-row {
+				a{
+					display: block;
+					//width: 365px!important;
+	    			height: 243px!important;
+    			}
+    		}
 		}
-		
+		.photo-gallery .gallery-row[class*="col-"],
 		.field-items .field-item[class*="col-"]{
 			margin-bottom: 1em;
 			&:nth-child(3n+1){
