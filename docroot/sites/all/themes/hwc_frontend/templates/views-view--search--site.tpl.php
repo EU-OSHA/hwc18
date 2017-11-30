@@ -27,7 +27,7 @@
  * @ingroup views_templates
  */
 if (@$_GET['search_block_form']) {
-  echo sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), checck_plain(@$_GET['search_block_form']));
+  echo sprintf('<div class="results-for">%s: <b>%s</b></div>', t('Results for'), check_plain(@$_GET['search_block_form']));
 }
 ?>
 <div class="<?php print $classes; ?>">
