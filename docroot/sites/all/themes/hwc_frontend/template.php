@@ -271,7 +271,47 @@ function hwc_frontend_preprocess_page(&$vars) {
         break;
 
       case 'flickr_gallery':
-        drupal_set_title('');
+
+        if (!@$vars['page']['content']['system_main']['nodes'][$vars['node']->nid]['field_cover_flickr']) {
+          $primary = osha_flickr_album_primary();
+          $formatter = 'h';
+          $markup = theme('osha_flickr_photo', array(
+            'format' => NULL,
+            'attribs' => NULL,
+            'size' => $formatter,
+            'photo' => flickr_photos_getinfo($primary),
+            'settings' => [],
+            'wrapper_class' => !empty($element['#settings']['image_class']) ? $element['#settings']['image_class'] : '',
+          ));
+          $cover_flickr = [
+            '#theme' => 'field',
+            '#weight' => 2,
+            '#field_name' => 'field_cover_flickr',
+            '#formatter' => 'album_cover',
+            '#field_type' => 'flickrfield',
+            '#label_display' => 'hidden',
+            '#object' => $vars['node'],
+            '#items' => [
+              [
+                'id' => $primary,
+              ],
+            ],
+            ['#markup' => $markup],
+          ];
+          $vars['page']['content']['system_main']['nodes'][$vars['node']->nid]['field_cover_flickr'] = $cover_flickr;
+        }
+
+        drupal_set_title(t('Photo gallery'));
+        $link_title = t('Back to gallery');
+        $link_href = 'photo-gallery';
+        $vars['page']['below_title']['back-to-link'] = array(
+          '#type' => 'item',
+          '#markup' => l($link_title, $link_href, array('attributes' => array('class' => array('back-to-link pull-right')))),
+        );
+        unset($link_title);
+        unset($vars['page']['above_title']);
+        break;
+
       case 'hwc_gallery':
         $link_title = t('Back to gallery');
         $link_href = 'photo-gallery';
