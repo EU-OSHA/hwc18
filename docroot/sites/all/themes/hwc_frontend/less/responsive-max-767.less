@@ -1445,7 +1445,7 @@ header.navbar-default{
 /*FIn container*/
 
 /*gallery*/
-.page-media-center-photo-gallery, .view-photo-gallery{
+.page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
 	.attachment.attachment-before{
 		margin-top: 25px;
 	}
@@ -1463,11 +1463,13 @@ header.navbar-default{
 /*End gallery*/
 
 /*gallery Detail*/
+.node-type-flickr-gallery,
 .node-type-hwc-gallery{
+	.node-flickr-gallery,
 	.node-hwc-gallery{
-		>div{
-			margin-left: @margin-movil;
-			margin-right: @margin-movil;
+		h2{
+			margin-left: 0px;
+			margin-right: 0px;
 		}
 		>img{
 			padding-left: @margin-movil;
@@ -1486,6 +1488,10 @@ header.navbar-default{
 					}
 				}
 			}
+		}
+		.gallery-row[class*="col-"]{
+			padding-left: 0px !important;
+			padding-right: 0px !important;
 		}
 	}
 }
