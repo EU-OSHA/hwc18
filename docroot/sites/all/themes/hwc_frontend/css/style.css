@@ -7188,6 +7188,7 @@ table .checkbox input[type="checkbox"] {
   top: -210px !important;
 }
 header.navbar-default {
+  font-size: 14px;
   border: none;
   background-color: #ffffff;
   border-radius: 0px;
@@ -11135,10 +11136,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery,
@@ -11154,10 +11151,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image .field-item,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image .field-item,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image .field-item,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .field-item,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .field-item,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .field-item,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .field-item,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery .field-item,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery .field-item,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery .field-item,
@@ -11166,10 +11159,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image .gallery-row,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery .gallery-row,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery .gallery-row,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery .gallery-row,
@@ -11180,10 +11169,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image .field-item img,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image .field-item img,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image .field-item img,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .field-item img,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .field-item img,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .field-item img,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .field-item img,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery .field-item img,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery .field-item img,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery .field-item img,
@@ -11192,10 +11177,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image .gallery-row img,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row img,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row img,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row img,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row img,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row img,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row img,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery .gallery-row img,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery .gallery-row img,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery .gallery-row img,
@@ -11206,10 +11187,6 @@ article .hwc-share-widget ul {
 .node-type-hwc-gallery .node-flickr-gallery .field-name-field-images.field-type-image .gallery-row a,
 .node-type-flickr-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row a,
 .node-type-hwc-gallery .node-hwc-gallery .field-name-field-images.field-type-image .gallery-row a,
-.node-type-flickr-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row a,
-.node-type-hwc-gallery .node-flickr-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row a,
-.node-type-flickr-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row a,
-.node-type-hwc-gallery .node-hwc-gallery .field-name-field-flickr.field-type-flickrfield .gallery-row a,
 .node-type-flickr-gallery .node-flickr-gallery .photo-gallery .gallery-row a,
 .node-type-hwc-gallery .node-flickr-gallery .photo-gallery .gallery-row a,
 .node-type-flickr-gallery .node-hwc-gallery .photo-gallery .gallery-row a,
@@ -22998,6 +22975,13 @@ input#edit-field-image-und-0-upload::before {
   }
   /*End gallery*/
   /*gallery Detail*/
+  .node-type-flickr-gallery .node-flickr-gallery h2,
+  .node-type-hwc-gallery .node-flickr-gallery h2,
+  .node-type-flickr-gallery .node-hwc-gallery h2,
+  .node-type-hwc-gallery .node-hwc-gallery h2 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .node-type-flickr-gallery .node-flickr-gallery > img,
   .node-type-hwc-gallery .node-flickr-gallery > img,
   .node-type-flickr-gallery .node-hwc-gallery > img,
