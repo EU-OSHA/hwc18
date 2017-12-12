@@ -498,7 +498,7 @@ function hwc_homepage_views_default_views() {
     'more_text' => 'Read more',
     'summary_handler' => 'ignore',
     'trim_options' => array(
-      'text' => 0,
+      'text' => 'text',
     ),
     'trim_preserve_tags' => '',
     'field_formatter_class' => '',
