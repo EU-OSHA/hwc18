@@ -15,6 +15,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
     'name' => 'create document content',
     'roles' => array(
       'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'node',
   );
@@ -24,6 +25,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
     'name' => 'delete any document content',
     'roles' => array(
       'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'node',
   );
@@ -33,6 +35,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
     'name' => 'delete own document content',
     'roles' => array(
       'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'node',
   );
@@ -49,6 +52,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
     'name' => 'edit any document content',
     'roles' => array(
       'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'node',
   );
@@ -58,6 +62,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
     'name' => 'edit own document content',
     'roles' => array(
       'campaign partner' => 'campaign partner',
+      'supervisor' => 'supervisor',
     ),
     'module' => 'node',
   );

@@ -106,3 +106,10 @@ function osha_publication_update_7011() {
 function osha_publication_update_7012() {
   features_revert_module('osha_publication');
 }
+
+/**
+ * HW18-273 Implementation after usability recommendations.
+ */
+function osha_publication_update_7013() {
+  features_revert_module('osha_publication');
+}

@@ -613,7 +613,7 @@ function osha_publication_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'field_formatter_class' => '',
-          'image_link' => '',
+          'image_link' => 'content',
           'image_style' => 'medium_crop_220',
         ),
         'type' => 'image',

@@ -144,43 +144,50 @@ function social_dashboard_schema() {
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7001() {
   features_revert_module('social_dashboard');
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7002() {
   features_revert_module('social_dashboard');
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7003() {
   features_revert_module('social_dashboard');
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7004() {
   features_revert_module('social_dashboard');
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7005() {
   features_revert_module('social_dashboard');
 }
 
 /**
- * revert social_dashboard module.
+ * Revert social_dashboard module.
  */
 function social_dashboard_update_7006() {
+  features_revert_module('social_dashboard');
+}
+
+/**
+ * HW18-273 Implementation after usability recommendations.
+ */
+function social_dashboard_update_7007() {
   features_revert_module('social_dashboard');
 }

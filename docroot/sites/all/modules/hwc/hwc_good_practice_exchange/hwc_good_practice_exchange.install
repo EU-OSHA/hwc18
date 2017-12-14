@@ -90,3 +90,10 @@ function hwc_good_practice_exchange_update_7012() {
 function hwc_good_practice_exchange_update_7013() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * HW18-273 Implementation after usability recommendations.
+ */
+function hwc_good_practice_exchange_update_7014() {
+  features_revert_module('hwc_good_practice_exchange');
+}
