@@ -97,3 +97,10 @@ function hwc_good_practice_exchange_update_7013() {
 function hwc_good_practice_exchange_update_7014() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * HW18-371 Only Superadmins can create Document items.
+ */
+function hwc_good_practice_exchange_update_7015() {
+  features_revert_module('hwc_good_practice_exchange');
+}
