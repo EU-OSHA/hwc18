@@ -163,7 +163,7 @@ function osha_newsletter_block_info() {
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'node/129',
     'cache' => DRUPAL_NO_CACHE,
-    'weight' => -30
+    'weight' => -30,
   );
   $blocks['osha_newsletter_subscribe_extra'] = array(
     'info' => t('Subscribe to Campaigns Newsletter block - with extra link to unsubscribe'),
@@ -246,6 +246,7 @@ function osha_newsletter_block_configure($delta = '') {
         '#default_value' => variable_get('subscribe_block_details_link_url', OSHA_PRIVACY_PAGE_URL),
       );
       break;
+
     case 'osha_newsletter_image':
       $form['osha_newsletter_image_block_background_img'] = array(
         '#type' => 'managed_file',
@@ -254,7 +255,7 @@ function osha_newsletter_block_configure($delta = '') {
         '#default_value' => variable_get('osha_newsletter_image_block_background_img', ''),
         '#upload_location' => 'public://block_backgroundimage/',
         '#upload_validators' => array(
-          'file_validate_extensions' => array('jpg jpeg png gif')
+          'file_validate_extensions' => array('jpg jpeg png gif'),
         ),
       );
       $form['osha_newsletter_image_block_intro_text'] = array(
@@ -353,17 +354,20 @@ function osha_newsletter_block_save($delta = '', $edit = array()) {
       variable_set('subscribe_block_details_link_label', $edit['subscribe_block_details_link_label']);
       variable_set('subscribe_block_details_link_url', $edit['subscribe_block_details_link_url']);
       break;
+
     case 'osha_newsletter_image':
       variable_set('osha_newsletter_image_block_background_img', $edit['osha_newsletter_image_block_background_img']);
       variable_set('osha_newsletter_image_block_intro_text', $edit['osha_newsletter_image_block_intro_text']);
       variable_set('osha_newsletter_image_block_details_link_label', $edit['osha_newsletter_image_block_details_link_label']);
       variable_set('osha_newsletter_image_block_details_link_url', $edit['osha_newsletter_image_block_details_link_url']);
       break;
+
     case 'osha_newsletter_subscribe_extra':
       variable_set('subscribe_extra_block_intro_text', $edit['subscribe_extra_block_intro_text']);
       variable_set('subscribe_extra_block_details_link_label', $edit['subscribe_extra_block_details_link_label']);
       variable_set('subscribe_extra_block_details_link_url', $edit['subscribe_extra_block_details_link_url']);
       break;
+
     case 'osha_newsletter_latest':
       variable_set('newsletters_no', $edit['newsletters_no']);
       variable_set('newsletter_items_no', $edit['newsletter_items_no']);
@@ -404,7 +408,7 @@ function osha_newsletter_block_view($delta = '') {
       }
       break;
     case 'osha_newsletter_image':
-      if(user_access('access content')) {
+      if (user_access('access content')) {
         $block['subject'] = t('Newsletter');
 
         $image_fid = variable_get('osha_newsletter_image_block_background_img');
@@ -436,6 +440,7 @@ function osha_newsletter_block_view($delta = '') {
         return $block;
       }
       break;
+
     case 'osha_newsletter_subscribe_extra':
       if(user_access('access content')) {
         $block['subject'] = t('Campaign newsletter');

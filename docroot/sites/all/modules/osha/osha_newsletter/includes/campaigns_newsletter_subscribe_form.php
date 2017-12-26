@@ -59,14 +59,15 @@ function campaigns_newsletter_subscribe_captcha_form() {
     '#attributes' => array('placeholder' => t('E-mail address'), 'title' => t('E-mail address')),
   );
 
+  $form['captcha'] = array(
+    '#type' => 'captcha',
+    '#captcha_type' => 'default',
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign up!'),
     '#submit' => array('campaigns_newsletter_subscribe_captcha_form_submit'),
-  );
-  $form['captcha'] = array(
-    '#type' => 'captcha',
-    '#captcha_type' => 'default',
   );
   return $form;
 }
