@@ -1,7 +1,7 @@
 name = HWC Good Practice Exchange
 core = 7.x
 package = HWC
-version = 7.x-1.8
+version = 7.x-1.9
 dependencies[] = better_exposed_filters
 dependencies[] = ctools
 dependencies[] = entity
@@ -65,6 +65,7 @@ features[variable][] = node_preview_document
 features[variable][] = node_submitted_document
 features[variable][] = xmlsitemap_settings_node_document
 features[views_view][] = documents
+features[views_view][] = good_practice_exchange_introduction
 features_exclude[dependencies][date] = date
 features_exclude[dependencies][features] = features
 features_exclude[dependencies][file] = file

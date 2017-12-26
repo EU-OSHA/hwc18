@@ -184,6 +184,13 @@ function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
+function social_dashboard_views_post_render(&$view, &$output, &$cache) {
+  if ($view->name == 'social_dashboard' && $view->current_display != 'block_1') {
+    $social_link = url('social_media_centre', ['query' => ['source' => $view->current_display]]);
+    $output = str_replace('__social_link__', $social_link, $output);
+  }
+}
+
 /**
  * Implements hook_views_query_alter().
  */

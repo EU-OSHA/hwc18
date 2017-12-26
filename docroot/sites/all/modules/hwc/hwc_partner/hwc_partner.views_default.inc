@@ -979,6 +979,10 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['sorts']['field_country_tid']['id'] = 'field_country_tid';
   $handler->display->display_options['sorts']['field_country_tid']['table'] = 'field_data_field_country';
   $handler->display->display_options['sorts']['field_country_tid']['field'] = 'field_country_tid';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

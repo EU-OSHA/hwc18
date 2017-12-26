@@ -1,0 +1,26 @@
+.view-publication-type .views-row .views-field-description-field {
+    display: none;
+    position: absolute;
+    left:0;
+    width: 100%;
+    height:auto;
+    top:0;
+}
+
+.view-publication-type .views-row:hover .views-field-description-field {
+    display: block;
+}
+
+.view-publication-type .views-row .views-field-description-field {
+    padding: 15px;
+}
+
+.view-publication-type .views-row .views-field-description-field .field-content {
+    background-color: #003399;
+}
+
+.view-publication-type .views-row .views-field-description-field p {
+    color: white;
+    padding: 3px 12px;
+    font-weight: 700;
+}

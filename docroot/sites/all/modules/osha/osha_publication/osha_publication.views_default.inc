@@ -75,6 +75,17 @@ function osha_publication_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Taxonomy term: Description */
+  $handler->display->display_options['fields']['description_field']['id'] = 'description_field';
+  $handler->display->display_options['fields']['description_field']['table'] = 'field_data_description_field';
+  $handler->display->display_options['fields']['description_field']['field'] = 'description_field';
+  $handler->display->display_options['fields']['description_field']['label'] = '';
+  $handler->display->display_options['fields']['description_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['description_field']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['description_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  $handler->display->display_options['fields']['description_field']['link_to_entity'] = 0;
   /* Field: Taxonomy term: Link */
   $handler->display->display_options['fields']['field_tools_publications_link']['id'] = 'field_tools_publications_link';
   $handler->display->display_options['fields']['field_tools_publications_link']['table'] = 'field_data_field_tools_publications_link';
@@ -94,6 +105,9 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['path'] = '[field_tools_publications_link]';
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(

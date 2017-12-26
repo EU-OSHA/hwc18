@@ -952,6 +952,8 @@ function hwc_good_practice_exchange_field_default_field_instances() {
   t('Publication date');
   t('Summary');
   t('Title');
+  t('Write the general description of your document. This will appear in the body of your document\'s page.');
+  t('Write the summary of your document. This will appear in the body of your document\'s page.');
 
   return $field_instances;
 }

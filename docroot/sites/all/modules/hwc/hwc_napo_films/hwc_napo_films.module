@@ -12,6 +12,7 @@ include_once 'hwc_napo_films.features.inc';
 function hwc_napo_films_views_pre_render(&$view) {
   if ($view->name == 'napo_film_carousel') {
     hwc_napo_films_result_count(count($view->result));
+    drupal_add_js(drupal_get_path('module', 'hwc_napo_films') . '/video.js', array('weight' => 20));
   }
 }
 

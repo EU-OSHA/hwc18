@@ -715,6 +715,29 @@ function osha_publication_default_page_manager_pages() {
   $display->content['new-e7a9ab38-c830-4b2e-9e23-f49f161509c1'] = $pane;
   $display->panels['middle'][0] = 'new-e7a9ab38-c830-4b2e-9e23-f49f161509c1';
   $pane = new stdClass();
+  $pane->pid = 'new-0982669a-0bb3-4fb4-ac9b-818d02386d48';
+  $pane->panel = 'middle';
+  $pane->type = 'block';
+  $pane->subtype = 'osha_publication-osha_publicatio_slideshow';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '0982669a-0bb3-4fb4-ac9b-818d02386d48';
+  $display->content['new-0982669a-0bb3-4fb4-ac9b-818d02386d48'] = $pane;
+  $display->panels['middle'][1] = 'new-0982669a-0bb3-4fb4-ac9b-818d02386d48';
+  $pane = new stdClass();
   $pane->pid = 'new-f5de493b-9610-4004-94cd-4bdb77aebd96';
   $pane->panel = 'middle';
   $pane->type = 'block';
@@ -732,11 +755,11 @@ function osha_publication_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'f5de493b-9610-4004-94cd-4bdb77aebd96';
   $display->content['new-f5de493b-9610-4004-94cd-4bdb77aebd96'] = $pane;
-  $display->panels['middle'][1] = 'new-f5de493b-9610-4004-94cd-4bdb77aebd96';
+  $display->panels['middle'][2] = 'new-f5de493b-9610-4004-94cd-4bdb77aebd96';
   $display->hide_title = PANELS_TITLE_PANE;
   $display->title_pane = 'new-e7a9ab38-c830-4b2e-9e23-f49f161509c1';
   $handler->conf['display'] = $display;

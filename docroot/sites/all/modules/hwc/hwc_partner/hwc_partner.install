@@ -178,3 +178,10 @@ function hwc_partner_update_7021() {
 function hwc_partner_update_7022() {
   features_revert_module('hwc_partner');
 }
+
+/**
+ * HW18-253 MPs order in the HWC.
+ */
+function hwc_partner_update_7023() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}

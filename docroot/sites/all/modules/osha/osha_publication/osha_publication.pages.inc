@@ -87,7 +87,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
     $form['content']['search_phrase'] = array(
       '#type' => 'markup',
       '#markup' => '<div class="results-for">' . t('Results for !text',
-          array('!text' => '<span class="searched-text"> ' . check_plain($text) .'</span>')) . '</div>',
+          array('!text' => '<span class="searched-text"> ' . check_plain($text) . '</span>')) . '</div>',
     );
   }
   $form['#token'] = FALSE;
@@ -103,10 +103,6 @@ function osha_publication_menu_publications_faceted_form($variables) {
     '#options' => array('alphabetically' => t('Alphabetically'), 'date' => t('Latest first')),
   );
 
-  $form['content']['slideshow'] = array(
-    '#type' => 'markup',
-    '#markup' => views_embed_view('publications_slideshow', 'slidehow'),
-  );
   $form['#attached']['js'] = array(
     drupal_get_path('module', 'osha_publication') . '/js/form.js',
   );
@@ -152,7 +148,6 @@ function osha_publication_menu_publications_faceted_form($variables) {
           if ($facet_value['filter'] == CASE_STUDY_TID) {
             continue;
           }
-          // . ' ' . strtr('(@no)', array('@no' => $facet_value['count']));
           $options[$facet_value['filter']] = $values_list[$facet_value['filter']];
           $form['left-column'][$field_name] = array(
             '#type' => 'checkboxes',
@@ -196,7 +191,13 @@ function osha_publication_menu_publications_faceted_form($variables) {
     $form['content']['results-related'] = $form_state['#results-related'];
   }
   if (empty($form['content']['results-native']['#nids'])) {
-    $form['content']['results-native']['#markup'] = '<p class="no-results">' . t('No results found to match your search.') . '</p>';
+    $form['content']['results-native']['#markup'] =
+      '<h3 class="no-results">' .
+      t('Sorry, we couldn\'t find any results.') .
+      '</h3>' .
+      '<p class="no-results">' .
+      t('You can try using some different keywords or filters to try to get better results.') .
+      '</p>';
   }
 
   $form['content']['sort_fieldset']['search_summary'] = array(

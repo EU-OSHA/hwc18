@@ -7,25 +7,29 @@ function osha_newsletter_subscribe_extra_form() {
     '#markup' => t(variable_get('subscribe_extra_block_intro_text', 'Once a month, OSHmail keeps you updated on ocupational safety and health.<br/> You can sign up below:')),
   );
 
-  /* Remove comment for subscription on OSHA Newsletter - HCW-1005
-  $form['subscribe-to-OSHMail-newsletter'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Subscribe to !link as well', array('!link' => l(t('OSHMail Newsletter'), 'https://osha.europa.eu/oshmail-newsletter'))),
-  );
-  */
   $form['subscribe_details'] = array(
     '#type' => 'container',
   );
+
   $form['subscribe_details']['email'] = array(
-//    '#prefix' => '<div>',
     '#type' => 'textfield',
     '#size' => 30,
     '#attributes' => array(
       'placeholder' => t('E-mail address'),
       'title' => t('E-mail address'),
-      'onclick' => "jQuery(this).closest('form').find('div.captcha').show();",
+      'onclick' => "jQuery('.captcha-content-block').show();jQuery(this).closest('form').find('div.captcha').show();",
     ),
   );
+
+  if (user_is_anonymous()) {
+    $form['subscribe_details']['captcha_osh'] = array(
+      '#type' => 'captcha',
+      '#prefix' => '<div class="col-md-6 col-sm-12 captcha-content-block" style="display: none;">',
+      '#suffix' => '</div>',
+      '#captcha_type' => 'default',
+    );
+  }
+
   $form['subscribe_details']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Subscribe'),
@@ -45,15 +49,6 @@ function osha_newsletter_subscribe_extra_form() {
     '#value' => t('Unsubscribe'),
     '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
   );
-
-  if (user_is_anonymous()) {
-    $form['captcha_osh'] = array(
-      '#type' => 'captcha',
-      '#prefix' => '<div class="col-md-6 col-sm-12 captcha-content-block">',
-      '#suffix' => '</div>',
-      '#captcha_type' => 'default',
-    );
-  }
 
   $form['details_link'] = array(
     '#markup' => '<a class="privacy-policy-oshmail" title="Subscribe to newsletter" href=' . url($link_url) . '>' . $link_label . '</a><br/>',

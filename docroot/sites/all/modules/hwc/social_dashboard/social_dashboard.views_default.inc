@@ -199,7 +199,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'More Tweets';
+  $handler->display->display_options['use_more_text'] = 'More social media';
   $handler->display->display_options['link_url'] = 'social_media_centre';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -261,7 +261,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2>Facebook</h2>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2><a href="__social_link__">Facebook</a></h2>';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
@@ -321,7 +321,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2>Twitter</h2>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2><a href="__social_link__">Twitter</a></h2>';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
@@ -382,7 +382,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['empty'] = TRUE;
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2>Linkedin</h2>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<h2><a href="__social_link__">Linkedin</a></h2>';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   /* Footer: Global: Unfiltered text */
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
@@ -457,22 +457,23 @@ function social_dashboard_views_default_views() {
     t(','),
     t('Page'),
     t('Latest Tweets'),
+    t('More social media'),
     t('Facebook world'),
-    t('<h2>Facebook</h2>'),
+    t('<h2><a href="__social_link__">Facebook</a></h2>'),
     t('<div class="more-link">
   <a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank">
     See more on Facebook  </a>
 </div>
 '),
     t('Twitter world'),
-    t('<h2>Twitter</h2>'),
+    t('<h2><a href="__social_link__">Twitter</a></h2>'),
     t('<div class="more-link">
   <a href="https://twitter.com/eu_osha" target="_blank">
     See more on Twitter  </a>
 </div>
 '),
     t('Linkedin world'),
-    t('<h2>Linkedin</h2>'),
+    t('<h2><a href="__social_link__">Linkedin</a></h2>'),
     t('<div class="more-link">
   <a href="https://www.linkedin.com/company-beta/73952/" target="_blank">
     See more on Linkedin  </a>

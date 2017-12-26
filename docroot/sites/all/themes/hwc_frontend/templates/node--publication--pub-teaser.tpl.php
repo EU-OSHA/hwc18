@@ -19,7 +19,7 @@ if (!empty($node->field_file)) {
       $ext = strtoupper(pathinfo($f['uri'], PATHINFO_EXTENSION));
       $file_uri = file_create_url($f['uri']);
       $lang;
-      $items[] = '<a href="' . $file_uri . '">' . strtoupper($lang) . '</a><span class="glyphicon glyphicon-circle-arrow-down"></span>';
+      $items[] = '<a href="' . $file_uri . '">' . strtoupper($lang) . '<span class="glyphicon glyphicon-circle-arrow-down"></span></a>';
     }
   }
   $file_items = theme('item_list', array('items' => $items));
