@@ -7797,10 +7797,6 @@ body iframe {
 body a {
   text-decoration: none;
 }
-body a:hover,
-body a:focus {
-  text-decoration: none !important;
-}
 body .top_anchor {
   display: none;
 }
@@ -9208,6 +9204,9 @@ div[class*='node-'] .more-link {
 #block-osha-newsletter-osha-newsletter-image h2 a:before {
   content: "";
 }
+#block-osha-newsletter-osha-newsletter-image h2 a:hover {
+  text-decoration: underline;
+}
 /* home events */
 .panels-flexible-column-new-2 .view-news .date-display-single {
   display: block;
@@ -10402,6 +10401,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title a:before {
   content: "";
 }
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources h2.pane-title a:hover {
+  text-decoration: underline;
+}
 .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content .text-muted {
   color: white;
   margin: 0 auto;
@@ -10417,6 +10419,9 @@ html:lang(no) .pane-node-field-provider .field-items,
   color: white;
   font-size: 1.4em;
   font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a:hover {
+  text-decoration: underline;
 }
 .front .pane-hwc-homepage-hwc-homepage-tools-and-resources .pane-content ul li a:before {
   content: "> ";
@@ -10441,6 +10446,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 }
 .front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title a:before {
   content: "";
+}
+.front .pane-hwc-homepage-hwc-homepage-topics h2.pane-title a:hover {
+  text-decoration: underline;
 }
 .front .pane-hwc-homepage-hwc-homepage-topics .pane-content .text-muted {
   color: #333333;
@@ -10467,6 +10475,9 @@ html:lang(no) .pane-node-field-provider .field-items,
   font-size: 1.4em;
   color: #003399;
   font-weight: bold;
+}
+.front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li a:hover {
+  text-decoration: underline;
 }
 .front .pane-hwc-homepage-hwc-homepage-topics .pane-content .priority_area ul li.priority_area_1 a:before {
   content: "";
@@ -10573,7 +10584,7 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-home_left .media-list,
 .front .panels-flexible-region-new-center .media-list,
 .front .panels-flexible-region-new-home_right .media-list {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 .front .panels-flexible-region-new-home_left .media-body a,
 .front .panels-flexible-region-new-center .media-body a,
@@ -10591,19 +10602,40 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-home_right .more-link {
   display: table;
   margin: 0px auto;
+  margin-top: 7px;
 }
-.front .panels-flexible-region-new-home_left div.pane-title {
-  background: url(../images/content/news.png) no-repeat center 20px;
+.front .pane-homepage-about-topics h2.pane-title {
+  background: url(../images/content/about-4.png) no-repeat center 20px;
+}
+.front .pane-homepage-about-topics .view-homepage-about-topics .views-row {
+  margin-bottom: 40px;
+}
+.front .pane-homepage-about-topics .view-homepage-about-topics .views-row .views-field-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 10px;
 }
 .front .panels-flexible-region-new-center {
   border-left: 1px dotted #749b00;
   border-right: 1px dotted #749b00;
 }
-.front .panels-flexible-region-new-center div.pane-title {
-  background: url(../images/content/icono-events-section.png) no-repeat center 20px;
+.front .panels-flexible-region-new-center .pane-news div.pane-title {
+  background: url(../images/content/news.png) no-repeat center 20px;
+}
+.front .panels-flexible-region-new-center .pane-news .view-id-news .media-list .media {
+  margin-top: 5px;
+}
+.front .panels-flexible-region-new-center .pane-news .view-id-news .media-list .media .pull-left img {
+  max-width: 80px;
+}
+.front .panels-flexible-region-new-center .pane-frontpage-events div.pane-title {
+  background: inherit;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
 .front .panels-flexible-region-new-center .view-frontpage-events .media:not(:first-child) {
-  margin-top: 35px;
+  margin-top: 5px;
 }
 .front .panels-flexible-region-new-center .event_day_month .event_day {
   background-color: #003399;
@@ -10716,6 +10748,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 }
 .front .panels-flexible-region-new-home_right h2.pane-title {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
+}
+.front .panels-flexible-region-new-home_right .more-link {
+  margin-top: 15px;
 }
 /*End Home*/
 /*share line*/
@@ -11401,9 +11436,6 @@ article .hwc-share-widget ul {
   .node-type-practical-tool .panel-col .field-label {
     min-width: 100%;
   }
-}
-p.no-results {
-  padding: 1em;
 }
 .page-press-room .section-introduction .field-type-text-with-summary,
 .page-campaign-materials .section-introduction .field-type-text-with-summary {
@@ -12833,14 +12865,6 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   text-align: center;
   padding: 20px 10px !important;
   margin: 10px;
-  cursor: pointer;
-}
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content:hover,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content:hover,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2 .pane-content:hover,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content:hover,
-.profile-edit-links-container .pane-node-profile-update-link .pane-content:hover {
-  background-color: #e2e2e3;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title,
@@ -12858,6 +12882,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-weight: bold;
   font-style: italic;
   font-size: 1.4em;
+  cursor: pointer;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a:before,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a:before,
@@ -16149,6 +16174,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   width: 100%;
   font-weight: bold;
   line-height: normal;
+  display: block;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item {
   margin-bottom: 15px;
@@ -17745,6 +17771,11 @@ input#edit-field-image-und-0-upload::before {
   bottom: 0px;
   margin-bottom: 120px;
 }
+.page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title .field-content {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px 0px;
+  border-radius: 5px;
+}
 .page-node-160 #block-views-napo-film-carousel-slidehow #napo_films .napo_films .num_slides > div .napo-film-title .title-field {
   font-weight: bold;
   color: white;
@@ -17931,6 +17962,42 @@ input#edit-field-image-und-0-upload::before {
   padding-left: 15px;
   padding-right: 15px;
 }
+.page-publications .view-publication-type .views-row {
+  overflow: hidden;
+}
+.page-publications .view-publication-type .views-row .views-field-description-field {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: -100%;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.page-publications .view-publication-type .views-row .views-field-description-field .field-content {
+  background-color: inherit;
+  background-color: rgba(0, 51, 153, 0.75) !important;
+  display: none;
+}
+.page-publications .view-publication-type .views-row:hover .views-field-description-field {
+  top: 0%;
+}
+.page-publications .view-publication-type .views-row:hover .views-field-description-field .field-content {
+  display: block;
+  filter: scale(1000);
+}
+.page-publications .view-publication-type .views-row .views-field-description-field {
+  padding: 15px;
+}
+.page-publications .view-publication-type .views-row .views-field-description-field .field-content {
+  background-color: #003399;
+}
+.page-publications .view-publication-type .views-row .views-field-description-field p {
+  color: white;
+  padding: 3px 12px;
+  font-weight: 600;
+}
 .page-publications .view-id-publication_type {
   margin-top: 30px;
   margin-bottom: 50px;
@@ -17965,6 +18032,9 @@ input#edit-field-image-und-0-upload::before {
 .page-publications .view-id-publication_type .views-row .views-field-name-field a:before {
   content: "> ";
 }
+.page-publications .view-id-publication_type .views-row .views-field-name-field a:hover {
+  text-decoration: none;
+}
 .page-publications .view-id-publication_type .views-row .views-field-name-field a .field-name-name-field {
   display: inline-block;
 }
@@ -17972,6 +18042,9 @@ input#edit-field-image-und-0-upload::before {
   padding-top: 15px;
   padding-bottom: 15px;
   min-height: 50px;
+}
+.page-publications .view-id-publication_type .views-row:hover .field-item {
+  text-decoration: underline;
 }
 /*End page introducion tools and publications*/
 /*Page introduction priority areas*/
@@ -18349,11 +18422,10 @@ input#edit-field-image-und-0-upload::before {
   padding-right: 0px;
 }
 .page-good-practice-exchange .panels-flexible-region-inside .pane-news h2.pane-title {
-  margin-top: 15px;
-  padding-top: 100px;
+  padding-top: 80px;
   margin-bottom: 40px;
   font-style: normal;
-  background: url(../images/content/news.png) no-repeat center 20px;
+  background: url(../images/content/news.png) no-repeat center 0px;
   background-size: 61px;
   color: #749b00;
   font-weight: bold;
@@ -18537,6 +18609,34 @@ input#edit-field-image-und-0-upload::before {
   height: 37px;
   width: 38px;
 }
+.pane-good-practice-exchange-introduction {
+  overflow: hidden;
+  padding-top: 30px;
+  border-bottom: 1px dotted #749b00;
+  margin-bottom: 30px;
+}
+.pane-good-practice-exchange-introduction .views-row {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+.pane-good-practice-exchange-introduction .views-row img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+}
+.pane-good-practice-exchange-introduction .views-row .title {
+  font-size: 2.3em;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.pane-good-practice-exchange-introduction .views-row .body a {
+  background-color: transparent;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  border-bottom: 1px solid #749b00;
+}
 /*end good practice exchange*/
 /*Social media*/
 .page-social-media-centre .main-container h1 {
@@ -18570,11 +18670,13 @@ input#edit-field-image-und-0-upload::before {
   -webkit-appearance: none;
   /* Safari and Chrome */
   background: url(../images/content/arrow-down.png) no-repeat left 0px;
-  padding-left: 20px;
+  padding-left: 25px;
   background-position: left;
-  background-size: 17px;
+  background-size: 22px;
   color: #003399;
   font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
 }
 .page-social-media-centre #social-dashboard-media-centre-form > div button {
   vertical-align: top;
@@ -18590,6 +18692,15 @@ input#edit-field-image-und-0-upload::before {
   font-weight: bold;
   text-align: center;
 }
+.page-social-media-centre .view-id-social_dashboard .view-header > h2 a {
+  color: #749b00;
+}
+.page-social-media-centre .view-id-social_dashboard .view-header > h2 a:hover {
+  text-decoration: underline;
+}
+.page-social-media-centre .view-id-social_dashboard .view-header > h2 a:before {
+  content: "";
+}
 .page-social-media-centre .view-id-social_dashboard .view-footer {
   margin-top: 30px;
   margin-bottom: 30px;
@@ -18603,6 +18714,16 @@ input#edit-field-image-und-0-upload::before {
   display: block;
   font-style: normal !important;
   font-weight: normal !important;
+}
+.page-social-media-centre .view-id-social_dashboard .view-footer .more-link:before {
+  content: "" !important;
+}
+.page-social-media-centre .view-id-social_dashboard .view-footer .more-link:after {
+  content: "\e164";
+  font-family: "Glyphicons Halflings";
+  font-weight: lighter;
+  margin-left: 3px;
+  vertical-align: text-bottom;
 }
 .page-social-media-centre .facebook-column {
   margin-top: 30px;
@@ -24487,6 +24608,9 @@ input#edit-field-image-und-0-upload::before {
   }
   .checkbox input[type=checkbox]:checked {
     margin-left: -20px;
+  }
+  .pane-good-practice-exchange-introduction .views-row .title {
+    font-size: 1.4em;
   }
 }
 @media only screen and (max-width: 480px) {

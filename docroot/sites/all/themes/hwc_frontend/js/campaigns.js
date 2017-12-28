@@ -143,6 +143,13 @@ jQuery(document).ready(function() {
   		jQuery('#block-osha-newsletter-osha-newsletter-subscribe div.captcha').show();
 	});
 
+	/*changing capcha on click*/
+	jQuery("#edit-email").click(function(){
+		jQuery("#edit-submit").css({'margin-left':'auto', 'margin-right':'auto', 'display':'block'});
+		jQuery(this).css("margin-right", "22px");
+		jQuery(".form-item-email").css({"margin-right":"auto", "margin-left":"auto", "display":"table"});
+	});
+
 	/*adding color to "sort by" labels when is checked*/
 	jQuery(".pane-hwc-practical-tool-hwc-practical-tool-listing #edit-content .form-type-radios.form-item-sort input:checked").parent('label').css({'color':'#749b00','font-weight':'bold'});
 	
@@ -219,6 +226,16 @@ jQuery(document).ready(function() {
 		jQuery(".form-item-publication-type > label").addClass("active");
 	};
 	
+	/*Private zone hover effect menu*/
+	jQuery(".profile-edit-links-container .hwc-partner-private-link-block-title a").hover(function(){
+		jQuery(".profile-edit-links-container .pane-content").css("background", "inherit");
+		jQuery(this).parent().parent().css("background", "#e2e2e3");
+	});
+	jQuery(".profile-edit-links-container .hwc-partner-private-link-block-title a").mouseleave(function(){
+		jQuery(".profile-edit-links-container .pane-content").css("background", "inherit");
+		//jQuery(this).parent().parent().css("background", "#e2e2e3");
+	});
+
 
 	/************************** FUNCTIONS *******************************/
 
