@@ -237,6 +237,20 @@ jQuery(document).ready(function() {
 	});
 
 
+	/**
+	 * Clearable text inputs
+	
+	function tog(v){return v?'addClass':'removeClass';} 
+	jQuery(document).on('input', '.clearable', function(){
+	    jQuery(this)[tog(this.value)]('x');
+	}).on('mousemove', '.x', function( e ){
+	    jQuery(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+	}).on('touchstart click', '.onX', function( ev ){
+	    ev.preventDefault();
+	    jQuery(this).removeClass('x onX').val('').change();
+	});
+	 */
+	 jQuery("#edit-search-block-form--2 ,#osha-publication-menu-publications-form input, #osha-publication-menu-case-studies-form input, #edit-search-api-views-fulltext-wrapper input").addClear();
 	/************************** FUNCTIONS *******************************/
 
 	function funcionesTabletMovil () {
