@@ -112,3 +112,9 @@ function hwc_good_practice_exchange_update_7016() {
   features_revert_module('hwc_good_practice_exchange');
 }
 
+/**
+ * MDR-1572 - Private Zone´s usability recommendations.
+ */
+function hwc_good_practice_exchange_update_7017() {
+  features_revert_module('hwc_good_practice_exchange');
+}

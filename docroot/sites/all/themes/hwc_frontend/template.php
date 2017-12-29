@@ -118,6 +118,7 @@ function hwc_frontend_preprocess_html(&$vars) {
 
 function hwc_frontend_preprocess_page(&$vars) {
 
+  $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title.
   if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
@@ -500,6 +501,11 @@ function hwc_frontend_preprocess_node(&$vars) {
   }
   hwc_frontend_top_anchor($vars);
 }
+
+function hwc_frontend_file_upload_help($variables) {
+  return theme_file_upload_help($variables);
+}
+
 function hwc_frontend_preprocess_image_style(&$variables) {
   $variables['attributes']['class'][] = 'img-responsive';
   if (empty($variables['alt'])) {

@@ -385,7 +385,7 @@ function osha_field_default_field_bases() {
       'granularity' => array(
         'day' => 'day',
         'hour' => 'hour',
-        'minute' => 'minute',
+        'minute' => 0,
         'month' => 'month',
         'second' => 0,
         'year' => 'year',

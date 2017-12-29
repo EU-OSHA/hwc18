@@ -207,6 +207,14 @@ function hwc_partner_block_save($delta = '', $edit = array()) {
   }
 }
 
+function hwc_partner_back_to_private_zone($link = '') {
+  static $content;
+  if ($link) {
+    $content = '<div class="breadcrumb"><span class="inline odd first">' . $link . '</span></div>';
+  }
+  return $content;
+}
+
 /**
  * Implements hook_block_view().
  */
@@ -285,8 +293,8 @@ function hwc_partner_block_view($delta = '') {
       foreach ($sections as $id_section) {
         if ($partner = hwc_partner_by_section_id_load($id_section)) {
           // Did this to use it in panels.
-          $block['title'] = '<none>';
-          $block['content'] = l(t('Back to Private Zone'), 'node/' . $partner->nid);
+          hwc_partner_back_to_private_zone(l(t('Back to Private Zone'), 'node/' . $partner->nid));
+          $block = [];
           break;
         }
       }
