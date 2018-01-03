@@ -120,6 +120,7 @@ header.navbar-default{
 				float: right;
 			    margin-top: 3px;
     			margin-bottom: 3px;
+    			clear: both;
 			}
 
 			/* search */
@@ -127,6 +128,14 @@ header.navbar-default{
 				clear:both;
 				//margin-bottom:15px;
 				.input-group-btn{
+				}
+				.input-group{
+					.add-clear-span{
+						display: block !important;
+						a[href*="#clear"]{
+							right: 10px !important;
+						}
+					}
 				}
 				button{
 					color: @color0;

@@ -143,6 +143,13 @@ jQuery(document).ready(function() {
   		jQuery('#block-osha-newsletter-osha-newsletter-subscribe div.captcha').show();
 	});
 
+	/*changing capcha on click*/
+	jQuery("#edit-email").click(function(){
+		jQuery("#edit-submit").css({'margin-left':'auto', 'margin-right':'auto', 'display':'block'});
+		jQuery(this).css("margin-right", "22px");
+		jQuery(".form-item-email").css({"margin-right":"auto", "margin-left":"auto", "display":"table"});
+	});
+
 	/*adding color to "sort by" labels when is checked*/
 	jQuery(".pane-hwc-practical-tool-hwc-practical-tool-listing #edit-content .form-type-radios.form-item-sort input:checked").parent('label').css({'color':'#749b00','font-weight':'bold'});
 	
@@ -219,7 +226,31 @@ jQuery(document).ready(function() {
 		jQuery(".form-item-publication-type > label").addClass("active");
 	};
 	
+	/*Private zone hover effect menu*/
+	jQuery(".profile-edit-links-container .hwc-partner-private-link-block-title a").hover(function(){
+		jQuery(".profile-edit-links-container .pane-content").css("background", "inherit");
+		jQuery(this).parent().parent().css("background", "#e2e2e3");
+	});
+	jQuery(".profile-edit-links-container .hwc-partner-private-link-block-title a").mouseleave(function(){
+		jQuery(".profile-edit-links-container .pane-content").css("background", "inherit");
+		//jQuery(this).parent().parent().css("background", "#e2e2e3");
+	});
 
+
+	/**
+	 * Clearable text inputs
+	
+	function tog(v){return v?'addClass':'removeClass';} 
+	jQuery(document).on('input', '.clearable', function(){
+	    jQuery(this)[tog(this.value)]('x');
+	}).on('mousemove', '.x', function( e ){
+	    jQuery(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+	}).on('touchstart click', '.onX', function( ev ){
+	    ev.preventDefault();
+	    jQuery(this).removeClass('x onX').val('').change();
+	});
+	 */
+	 jQuery("#edit-search-block-form--2 ,#osha-publication-menu-publications-form input, #osha-publication-menu-case-studies-form input, #edit-search-api-views-fulltext-wrapper input").addClear();
 	/************************** FUNCTIONS *******************************/
 
 	function funcionesTabletMovil () {

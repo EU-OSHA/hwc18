@@ -64,8 +64,14 @@ header{
 					#block-search-form{
 						margin-top:0.5em;
 						margin-bottom: 0.5em;
+					
 						.input-group{
 							width: inherit;
+							.add-clear-span{
+								a[href*="#clear"]{
+									line-height: 24px !important;
+								}
+							}
 							input{
 								width: 150px;
 								float: right;
@@ -1014,7 +1020,7 @@ header.navbar-default{
 		margin-top: 0em;
 		margin-bottom: 0em;
 		div{
-			margin-left: @margin-movil;
+			//margin-left: @margin-movil;
 		}
 	}
 		/*detail*/
@@ -1072,6 +1078,9 @@ header.navbar-default{
 		h4{
 			padding-left: @margin-movil;
 			padding-right: @margin-movil;
+		}
+		.view-publication-type .views-row .views-field-description-field{
+			display: none;
 		}
 	}
 	#edit-relevant-for, #edit-languages, #edit-publication-type{
@@ -2866,6 +2875,19 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 .checkbox input[type=checkbox]:checked{
 	margin-left: -20px;
 }
+
+
+//exchange page
+.pane-good-practice-exchange-introduction{
+	.views-row{
+		.title{
+			font-size: 1.4em;
+		}
+	}
+}
+
+
+
 
 }
 
