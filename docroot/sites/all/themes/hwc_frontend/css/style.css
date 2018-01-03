@@ -7307,6 +7307,7 @@ header.navbar-default .campaigns-header .navbar-header #block-hwc-partner-hwc-pa
   float: right;
   margin-top: 3px;
   margin-bottom: 3px;
+  clear: both;
 }
 header.navbar-default .campaigns-header .navbar-header #block-search-form {
   clear: both;
@@ -8694,30 +8695,30 @@ table tr.error.form-type-select:after {
 .node-article .hwc-share-widget {
   border: none;
 }
-.node-article .field-name-field-recommended-resources .field-item,
-.node-article .field-name-field-recommended-articles .field-item {
+.node-article .field-name-field-recommended-resources .field-name-title-field .field-item,
+.node-article .field-name-field-recommended-articles .field-name-title-field .field-item {
   margin: 1em 0;
   padding: .5em 0;
   margin: 0.5em 0 0;
   padding: 0;
 }
-.node-article .field-name-field-recommended-resources .field-item a,
-.node-article .field-name-field-recommended-articles .field-item a {
+.node-article .field-name-field-recommended-resources .field-name-title-field .field-item a,
+.node-article .field-name-field-recommended-articles .field-name-title-field .field-item a {
   color: #003399;
   font-weight: bold;
   margin-bottom: 2em;
   font-size: 1.35em;
 }
-.node-article .field-name-field-recommended-resources .field-item a:before,
-.node-article .field-name-field-recommended-articles .field-item a:before {
+.node-article .field-name-field-recommended-resources .field-name-title-field .field-item a:before,
+.node-article .field-name-field-recommended-articles .field-name-title-field .field-item a:before {
   content: "> ";
 }
-.node-article .field-name-field-recommended-resources .field-item a.more-link,
-.node-article .field-name-field-recommended-articles .field-item a.more-link {
+.node-article .field-name-field-recommended-resources .field-name-title-field .field-item a.more-link,
+.node-article .field-name-field-recommended-articles .field-name-title-field .field-item a.more-link {
   font-size: 14px;
 }
-.node-article .field-name-field-recommended-resources .field-item .field-name-field-start-date.field-type-datetime .field-item,
-.node-article .field-name-field-recommended-articles .field-item .field-name-field-start-date.field-type-datetime .field-item {
+.node-article .field-name-field-recommended-resources .field-name-title-field .field-item .field-name-field-start-date.field-type-datetime .field-item,
+.node-article .field-name-field-recommended-articles .field-name-title-field .field-item .field-name-field-start-date.field-type-datetime .field-item {
   margin-top: 0;
 }
 .node-article .field-name-field-recommended-resources .node-article .field-name-field-image + .field-name-title-field,
@@ -8874,6 +8875,24 @@ table tr.error.form-type-select:after {
 }
 .node-infographic .group-left {
   padding-right: 1em;
+}
+.node-infographic .group-left img {
+  width: inherit;
+  height: inherit;
+  border: none;
+}
+.node-infographic .group-right .field-type-file,
+.node-infographic .group-right .field-type-image {
+  margin-top: 15px;
+}
+.node-infographic .group-right .field-type-file img,
+.node-infographic .group-right .field-type-image img {
+  width: inherit;
+  height: inherit;
+  border: none;
+}
+.node-infographic .group-right .field-type-text-with-summary h1 {
+  display: none;
 }
 .node-infographic .field-name-title-field h2 {
   text-align: left;
@@ -16112,7 +16131,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details {
   margin: 0 auto;
-  max-width: 380px;
+  max-width: 390px;
   margin-bottom: 20px;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details span {
@@ -16537,35 +16556,35 @@ fieldset.captcha div {
 .panels-flexible-region-container-additional_resources h4.pane-title {
   font-weight: bold;
 }
-.field-name-field-recommended-resources .field-item,
-.field-name-field-recommended-articles .field-item,
-.field.field-name-field-aditional-resources .field-item,
-.panels-flexible-region-container-additional_resources .field-item {
+.field-name-field-recommended-resources .field-name-title-field .field-item,
+.field-name-field-recommended-articles .field-name-title-field .field-item,
+.field.field-name-field-aditional-resources .field-name-title-field .field-item,
+.panels-flexible-region-container-additional_resources .field-name-title-field .field-item {
   margin: 1em 0;
   padding: .5em 0;
   margin: 0.5em 0 0;
   padding: 0;
 }
-.field-name-field-recommended-resources .field-item a,
-.field-name-field-recommended-articles .field-item a,
-.field.field-name-field-aditional-resources .field-item a,
-.panels-flexible-region-container-additional_resources .field-item a {
+.field-name-field-recommended-resources .field-name-title-field .field-item a,
+.field-name-field-recommended-articles .field-name-title-field .field-item a,
+.field.field-name-field-aditional-resources .field-name-title-field .field-item a,
+.panels-flexible-region-container-additional_resources .field-name-title-field .field-item a {
   color: #003399;
   font-weight: bold;
   margin-bottom: 2em;
   font-size: 20px;
   font-style: normal;
 }
-.field-name-field-recommended-resources .field-item a:before,
-.field-name-field-recommended-articles .field-item a:before,
-.field.field-name-field-aditional-resources .field-item a:before,
-.panels-flexible-region-container-additional_resources .field-item a:before {
+.field-name-field-recommended-resources .field-name-title-field .field-item a:before,
+.field-name-field-recommended-articles .field-name-title-field .field-item a:before,
+.field.field-name-field-aditional-resources .field-name-title-field .field-item a:before,
+.panels-flexible-region-container-additional_resources .field-name-title-field .field-item a:before {
   content: "> ";
 }
-.field-name-field-recommended-resources .field-item a.external-link,
-.field-name-field-recommended-articles .field-item a.external-link,
-.field.field-name-field-aditional-resources .field-item a.external-link,
-.panels-flexible-region-container-additional_resources .field-item a.external-link {
+.field-name-field-recommended-resources .field-name-title-field .field-item a.external-link,
+.field-name-field-recommended-articles .field-name-title-field .field-item a.external-link,
+.field.field-name-field-aditional-resources .field-name-title-field .field-item a.external-link,
+.panels-flexible-region-container-additional_resources .field-name-title-field .field-item a.external-link {
   font-style: normal;
 }
 .field-name-field-recommended-resources > .field-label,
@@ -18029,7 +18048,7 @@ input#edit-field-image-und-0-upload::before {
   display: block;
   padding: .5em 0;
   background-color: #003399;
-  min-height: 65px;
+  min-height: 75px;
   color: white;
   font-weight: bold;
   font-size: 1em;
@@ -18038,14 +18057,18 @@ input#edit-field-image-und-0-upload::before {
   text-align: center;
   line-height: 45px;
 }
-.page-publications .view-id-publication_type .views-row .views-field-name-field a:before {
-  content: "> ";
-}
-.page-publications .view-id-publication_type .views-row .views-field-name-field a:hover {
-  text-decoration: none;
-}
 .page-publications .view-id-publication_type .views-row .views-field-name-field a .field-name-name-field {
   display: inline-block;
+}
+.page-publications .view-id-publication_type .views-row .views-field-name-field a .field-name-name-field .field-item {
+  line-height: 18px;
+  margin-top: 10px;
+}
+.page-publications .view-id-publication_type .views-row .views-field-name-field a .field-name-name-field .field-item:before {
+  content: "> ";
+}
+.page-publications .view-id-publication_type .views-row .views-field-name-field a .field-name-name-field .field-item:hover {
+  text-decoration: none;
 }
 .page-publications .view-id-publication_type .views-row .field-name-description-field p {
   padding-top: 15px;
@@ -19504,7 +19527,7 @@ input#edit-field-image-und-0-upload::before {
     display: block;
     padding: .5em 0;
     background-color: #003399;
-    min-height: 65px;
+    min-height: 75px;
     color: white;
     font-weight: bold;
     font-size: 0.9em;
@@ -19512,7 +19535,6 @@ input#edit-field-image-und-0-upload::before {
     padding-right: 15px;
     text-align: center;
     line-height: 16px;
-    padding-top: 20px;
   }
   .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content,
   .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content,

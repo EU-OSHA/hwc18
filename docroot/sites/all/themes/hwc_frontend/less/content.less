@@ -889,26 +889,28 @@ ul.tabs--primary.nav.nav-tabs{
 			border: none;
 		}
 		.field-name-field-recommended-resources, .field-name-field-recommended-articles{
-			.field-item{
-				margin: 1em 0;
-				padding: .5em 0;
-				margin: 0.5em 0 0;
-				padding: 0;
-				a{
-					color: @color2;
-					font-weight: bold;
-					margin-bottom: 2em;
-					font-size: 1.35em;
-					&:before{
-						content: "> ";
+			.field-name-title-field{
+				.field-item{
+					margin: 1em 0;
+					padding: .5em 0;
+					margin: 0.5em 0 0;
+					padding: 0;
+					a{
+						color: @color2;
+						font-weight: bold;
+						margin-bottom: 2em;
+						font-size: 1.35em;
+						&:before{
+							content: "> ";
+						}
+						&.more-link{
+							font-size: @size4;
+						}
 					}
-					&.more-link{
-						font-size: @size4;
-					}
-				}
-				.field-name-field-start-date.field-type-datetime{
-					.field-item{
-						margin-top: 0;
+					.field-name-field-start-date.field-type-datetime{
+						.field-item{
+							margin-top: 0;
+						}
 					}
 				}
 			}
@@ -1084,6 +1086,27 @@ ul.tabs--primary.nav.nav-tabs{
 	.node-infographic {
 		.group-left{
 			padding-right: 1em;
+			img{
+				width: inherit;
+				height: inherit;
+				border: none;
+			}
+		}
+		.group-right{
+			.field-type-file,
+			.field-type-image{
+				margin-top: 15px;
+				img{
+					width: inherit;
+					height: inherit;
+					border: none;
+				}
+			}
+			.field-type-text-with-summary{
+				h1{
+					display: none;
+				}
+			}
 		}
 		.field-name-title-field{
 			h2{
@@ -7431,7 +7454,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 			}
 			#edit-subscribe-details{
 				margin: 0 auto;
-				max-width: 380px;
+				max-width: 390px;
 				margin-bottom: 20px;
 				span{
 					margin-top: 7px;
@@ -7876,22 +7899,24 @@ fieldset.captcha {
 		h4.pane-title{
 			font-weight: bold;
 		}
-		.field-item{
-			margin: 1em 0;
-			padding: .5em 0;
-			margin: 0.5em 0 0;
-			padding: 0;
-			a{
-				color: @color2;
-				font-weight: bold;
-				margin-bottom: 2em;
-				font-size: @size2;
-				font-style: normal;
-				&:before{
-					content: "> ";
-				}
-				&.external-link{
+		.field-name-title-field{
+			.field-item{
+				margin: 1em 0;
+				padding: .5em 0;
+				margin: 0.5em 0 0;
+				padding: 0;
+				a{
+					color: @color2;
+					font-weight: bold;
+					margin-bottom: 2em;
+					font-size: @size2;
 					font-style: normal;
+					&:before{
+						content: "> ";
+					}
+					&.external-link{
+						font-style: normal;
+					}
 				}
 			}
 		}
@@ -8843,23 +8868,25 @@ input#edit-field-image-und-0-upload::before {
 					display: block;
 					padding: .5em 0;
 				    background-color: #003399;
-				    min-height: 65px;
+				    min-height: 75px;
 				    color: white;
 				    font-weight: bold;
     				font-size: 1em;
     				padding-left: 15px;
     				padding-right: 15px;
     				text-align: center;line-height: 45px;
-    				&:before{
-    					content: "> ";
-    				}
-    				&:hover{
-    					text-decoration: none;
-    				}
+    				
     				.field-name-name-field{
     					display: inline-block;
     					.field-item{
-
+    						line-height: 18px;
+    						margin-top: 10px;
+							&:before{
+		    					content: "> ";
+		    				}
+		    				&:hover{
+		    					text-decoration: none;
+		    				}
     					}
     				}
 				}
