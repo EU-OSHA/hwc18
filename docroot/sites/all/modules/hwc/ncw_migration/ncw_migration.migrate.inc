@@ -500,7 +500,6 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $map = $this->getMap();
     $source = $this->getSource();
     $removed = $map->getRowsNeedingUpdate(10000);
-    $to_be_removed = array();
     if (!empty($removed)) {
       if (strpos($this->arguments['machine_name'], 'tax_') === 0) {
         // TODO ?! Removing terms that don't exists anymore
@@ -524,6 +523,25 @@ abstract class AbstractNCWNodeMigration extends Migration {
             $this->getMap()->delete(array($to_remove->sourceid1));
             watchdog('osha_sites_migration', 'Deleting NODE that are not in the source anymore (@migration): !nids.',
               array('!nids' => $to_remove->destid1, '@migration' => $this->arguments['machine_name']), WATCHDOG_INFO);
+          }
+          else {
+            $nid = $to_remove->destid1;
+            if ($node = node_load($nid)) {
+              if ($node->status == 1) {
+                $node->status = 0;
+                node_save($node);
+                $this->currentMigration()->displayMessage(
+                  strtr('Unpublishing @type @title - not found in source anymore.', array('@type'=>$node->type, '@title' => $node->title)),
+                  'warning'
+                );
+              }
+            } else {
+              $this->currentMigration()->displayMessage(
+                strtr('Node @nid not found! Deleted from migrate map.', array('@nid' => $nid)),
+                'warning'
+              );
+              $this->getMap()->delete(array($to_remove->sourceid1));
+            }
           }
         }
       }
