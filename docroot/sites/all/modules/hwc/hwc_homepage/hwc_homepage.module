@@ -23,6 +23,13 @@ function hwc_homepage_views_pre_render(&$view){
       }
     }
   }
+
+  if (($view->name == 'frontpage_events') && ($view->current_display == 'block')) {
+    _hwc_trim_view_results_titles($view->result);
+  }
+  if (($view->current_display == 'oshnews_latest') && ($view->name == 'news')) {
+    _hwc_trim_view_results_titles($view->result);
+  }
 }
 
 /**
@@ -170,5 +177,15 @@ function hwc_homepage_panels_pane_content_alter($content, $pane, $args, $context
   if (!empty($pane->subtype) && $pane->subtype == 'menu-menu-information-tailored') {
     $intro_text = t(variable_get('menu_information_tailored_intro_text', 'We provide information specifically for the following groups, to enable everyone to get involved in the campaign in a way that makes sense for them'));
     $content->content['#prefix'] = '<p>' . $intro_text . '</p>';
+  }
+}
+
+function _hwc_trim_view_results_titles(&$result, $max = 80) {
+  foreach ($result as &$row) {
+    $safe_value = $row->field_title_field[0]['raw']['safe_value'];
+    if (drupal_strlen($safe_value) > $max) {
+      $trimmed = drupal_substr($safe_value, 0, $max) . '...';
+      $row->field_title_field[0]['rendered']['#markup'] = str_replace($safe_value, $trimmed, $row->field_title_field[0]['rendered']['#markup']);
+    }
   }
 }
