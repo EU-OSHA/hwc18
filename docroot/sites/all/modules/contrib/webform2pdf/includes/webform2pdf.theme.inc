@@ -234,6 +234,9 @@ function theme_webform2pdf_mail2pdf($vars) {
   $submission = webform_menu_submission_load($vars['sid'], $vars['nid']);
 
   $template = _webform2pdf_get_template($node->nid);
+
+  drupal_alter('webform2pdf_submission_template', $submission, $template);
+
   $pdf = theme('webform2pdf_pdf_init', array('node' => $node, 'template' => $template));
   if ( !empty($pdf) ) {
     $pdf = theme('webform2pdf_pdf_header', array('pdf' => $pdf, 'node' => $node, 'template' => $template));
