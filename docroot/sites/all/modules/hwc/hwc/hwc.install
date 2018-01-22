@@ -667,3 +667,10 @@ function hwc_update_7041() {
 function hwc_update_7042() {
   module_enable(['osha_flickr']);
 }
+
+/**
+ * MDR-1614 Flicker galleries can not be imported from NCW.
+ */
+function hwc_update_7043() {
+  migrate_static_registration();
+}

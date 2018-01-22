@@ -18,13 +18,17 @@
             jQuery('.page-search .region-sidebar-first, .page-documents .region-sidebar-first').once('publication_toggle_facets', function() {
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').hide();
                 if (!jQuery('.page-practical-tools').length) {
-                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
-                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                    if (jQuery(window).width() > 992) {
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                    }
                 }
                 else {
-                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
-                    jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
-                    // jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-item-type').show();
+                    if (jQuery(window).width() > 992) {
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                        // jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-item-type').show();
+                    }
                 }
 
                 jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').siblings('h2').on('click', function() {

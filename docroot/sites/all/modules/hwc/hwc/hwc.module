@@ -789,7 +789,7 @@ function hwc_field_widget_form_alter(&$element, &$form_state, $context) {
         break;
 
       case 'field_location':
-        $placeholder = 'Location of the event';
+        $placeholder = 'Location of the event, e.g. name of venue, hall, hotel.';
         $element['value']['#attributes']['placeholder'] = $placeholder;
         break;
 
