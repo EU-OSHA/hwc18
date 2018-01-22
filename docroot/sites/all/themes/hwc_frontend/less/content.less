@@ -3094,8 +3094,10 @@ ul.tabs--primary.nav.nav-tabs{
 /* News-detail */
 article{
 	.hwc-share-widget{
+		overflow: hidden;
 		ul{
 			text-align: center;
+			overflow: hidden;
 		}
 	}
 }
@@ -3110,6 +3112,7 @@ article{
 		margin-bottom: 0px;
 		position: relative;
 		text-align: left;
+		overflow: hidden;
 		.share-this-article {
 		    color: @color2;
 		    font-weight: bold;
@@ -5503,7 +5506,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	.profile-4-cols-container-2{
 		border-bottom: 1px dotted @color3;
 		padding-bottom: 0em !important;
-		margin-bottom: 15px !important;
+		margin-bottom: 15px;
 		.profile-col-left-2, .profile-col-left-middle-2{
 			img{
 				margin-left: 0px;
@@ -6688,6 +6691,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 		border-bottom: none;
 		overflow: visible;
 		width: 100%;
+		margin-bottom: 15px;
 		label{
 			&:after{
 				content: none;
@@ -7138,6 +7142,18 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
     				}
     			}
     		}
+		}
+	}
+	.gpep-edit-button{
+		a{
+			background-color: @color2;
+			color: white;
+			padding: 8px 10px;
+			min-width: 70px;
+			text-align: center;
+			margin-right: 10px;
+			display: inline-block;
+			font-weight: 500;
 		}
 	}
 	.field-type-file{
@@ -7917,7 +7933,21 @@ fieldset.captcha {
 					&.external-link{
 						font-style: normal;
 					}
+
 				}
+			}
+		}
+		.external_url{
+			color: @color2;
+			font-weight: bold;
+			margin-bottom: 2em;
+			font-size: @size2;
+			font-style: normal;
+			&:before{
+				content: "> ";
+			}
+			&.external-link{
+				font-style: normal;
 			}
 		}
 		> .field-label{
@@ -8864,23 +8894,28 @@ input#edit-field-image-und-0-upload::before {
 				}
 			}
 			.views-field-name-field{
+				overflow: hidden;
+				height: 90px;
 				a{
-					display: block;
-					padding: .5em 0;
+					display: table;
+					overflow: hidden;
+					padding: 15px 0px;
 				    background-color: #003399;
-				    min-height: 75px;
+				    height: 90px;
 				    color: white;
 				    font-weight: bold;
     				font-size: 1em;
-    				padding-left: 15px;
-    				padding-right: 15px;
-    				text-align: center;line-height: 45px;
+    				padding-left: 5px;
+    				padding-right: 5px;
+    				text-align: center;
+    				line-height: 45px;
+    				width: 100%;
     				
     				.field-name-name-field{
-    					display: inline-block;
+    					display: table-cell;
+    					vertical-align: middle;
     					.field-item{
     						line-height: 18px;
-    						margin-top: 10px;
 							&:before{
 		    					content: "> ";
 		    				}

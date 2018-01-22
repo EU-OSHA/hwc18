@@ -251,13 +251,15 @@ header.navbar-default{
 						border: none;
 						background-color: @menu-bg-color;
 						text-transform: initial;
-						padding: 6px 8px 6px 0;
+						padding: 6px 8px 6px 8px;
 						border-radius: 0px;
 						font-size:1em;
 						li{
 							width: 100%;
 							padding: 6px 0;
 							clear:both;
+							padding-left: 15px;
+							position: relative;
 							a{
 								text-align: left;
 								display: inline;
@@ -272,11 +274,12 @@ header.navbar-default{
 							}
 							&:before{
 								content: ">";
-								padding-left: 26px;
 								padding-right: 5px;
 								display: block;
 							    float: left;
 							    height: 22px;
+							    position: absolute;
+							    left: 2px;
 							}
 						}
 					}
@@ -317,6 +320,14 @@ header.navbar-default{
 						border-right: 1px solid white;
 						padding-bottom: 2px;
 						padding-top: 2px;
+						overflow: hidden;
+						padding-left: 3px;
+						padding-right: 3px;
+					}
+					@media only screen and (min-width : 767px) and (max-width : 900px){
+						>a{
+							font-size: 11px;
+						}
 					}
 				}
 				> li.first{

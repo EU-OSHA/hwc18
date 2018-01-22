@@ -212,32 +212,40 @@ header{
 	
 .view-mode-full .hwc-share-widget{
 	ul{
+		overflow: hidden;
 		.share-this-article{
 			top: -5px;
 		}
 
 		li[id*="facebook-share-button-"]{
-		    display: block; 
+		    //display: block; 
 		}
 		li[id*="facebook-like-button-"]{
-		    display: block; 
+		    //display: block; 
 		}
 		li[id*="twitter-share-button-"]{	
-		   display: block; 
+		   //display: block; 
 		   margin-top: 5px;
 		}
 		li[id*="linked-in-"]{
-		  display: block; 
+		  //display: block; 
 		  margin-top: 5px;
 		}
 		li[class="pull-right"]{
-		   display: block;
-		   margin-top:-25px;
+		   display: inline-block;
+		   //margin-top:-25px;
+		   margin-top: 5px;
+		   vertical-align: bottom;
 		}
 		.label.label-rss.pull-right{
-			display: block;
-			margin-left: -34px;
-    		margin-top: -2px !important;
+			display: inline-block;
+			//margin-left: -34px;
+    		//margin-top: -2px !important;
+    		float: none !important;
+    		margin-top: 0px;
+		}
+		.pull-right{
+			float: none !important;
 		}
 	}
 }
