@@ -312,6 +312,15 @@ function hwc_partner_block_view($delta = '') {
   return $block;
 }
 
+function hwc_partner_hide_name($name) {
+  static $prev_name = '';
+  if (($prev_name) && ($prev_name == $name)) {
+    return TRUE;
+  }
+  $prev_name = $name;
+  return FALSE;
+}
+
 /**
  * Implements hook_views_pre_render().
  */
@@ -342,6 +351,18 @@ function hwc_partner_views_pre_render(&$view) {
         return strcmp($str1, $str2);
       }
     });
+  }
+  if ($view->name == 'partners_list' && (($view->current_display == 'block_1') || ($view->current_display == 'een'))) {
+    $prev_name = '';
+    foreach ($view->result as &$row) {
+      if (( $prev_name) && ($prev_name == $row->field_name_field[0]['raw']['value']) ) {
+        $prev_name = $row->field_name_field[0]['raw']['value'];
+        $row->field_field_flag = [];
+      }
+      else {
+        $prev_name = $row->field_name_field[0]['raw']['value'];
+      }
+    }
   }
 }
 

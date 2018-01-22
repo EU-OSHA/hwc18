@@ -185,3 +185,10 @@ function hwc_partner_update_7022() {
 function hwc_partner_update_7023() {
   features_revert(array('hwc_partner' => 'views_view'));
 }
+
+/**
+ * MDR-1641 Dev - Apply the new layout (MDR-1640) not the EEN page.
+ */
+function hwc_partner_update_7024() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}
