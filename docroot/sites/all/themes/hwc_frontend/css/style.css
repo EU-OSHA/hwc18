@@ -19192,6 +19192,9 @@ input#edit-field-image-und-0-upload::before {
 #mini-panel-news_and_events .view-id-news .media-list .pull-left {
   display: none;
 }
+.validation_reminder .ui-dialog-titlebar-close {
+  display: none !important;
+}
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
   border: none;
