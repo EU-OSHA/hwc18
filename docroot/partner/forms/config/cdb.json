@@ -66,7 +66,8 @@
       "official": "ocp",
       "media": "mp",
       "focal": "fop",
-      "potential": "pcp"
+      "potential": "pcp",
+      "ambassador": "fop"
     },
     "statusCodesTemplate": {
       "863680000": "Invitation sent",
