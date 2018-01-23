@@ -201,3 +201,10 @@ function hwc_practical_tool_update_7025() {
 function hwc_practical_tool_update_7026() {
   features_revert(array('hwc_practical_tool' => 'views_view'));
 }
+
+/**
+ * HW18-406 Practical tools: Change audiovisuals by Visual resources.
+ */
+function hwc_practical_tool_update_7027() {
+  features_revert(array('hwc_practical_tool' => 'field_base'));
+}
