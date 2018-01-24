@@ -616,7 +616,7 @@ function hwc_practical_tool_field_default_field_bases() {
       'allowed_values' => array(
         'MS material' => 'MS information',
         'EU material' => 'EU & international information',
-        'Audiovisual' => 'Audiovisual',
+        'Audiovisual' => 'Visual resources',
         'Case study' => 'Case study',
       ),
       'allowed_values_function' => '',

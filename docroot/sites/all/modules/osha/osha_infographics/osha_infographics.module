@@ -121,14 +121,14 @@ function theme_osha_infographics_multilanguage_file_format($element) {
   $file = isset($entity->field_file[$language->language][0])
     ? $entity->field_file[$language->language][0]
     : $entity->field_file['en'][0];
-  $output = "<span class='label_multilang_file'>Download</span>";
+  $output = "<span class='label_multilang_file'>" . t('Download') . "</span>";
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
       "icon_directory" => $icon_directory,
     )
   );
-  $output .= "<span class='label_multilang_file'>in:</span>";
+  $output .= "<span class='label_multilang_file'>" . t('in:') . "</span>";
 
   foreach ($entity->field_file as $lang => $object) {
     $output .= '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';
@@ -149,14 +149,14 @@ function theme_osha_infographics_multilanguage_download_file_format($element) {
   $file = isset($entity->field_file[$language->language][0])
     ? $entity->field_file[$language->language][0]
     : $entity->field_file['en'][0];
-  $output = "<span class='label_multilang_file'>Download</span>";
+  $output = "<span class='label_multilang_file'>" . t('Download') . "</span>";
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
       "icon_directory" => $icon_directory,
     )
   );
-  $output .= "<span class='label_multilang_file'>in:</span>";
+  $output .= "<span class='label_multilang_file'>" . t('in:') . "</span>";
 
   foreach ($entity->field_file as $lang => $object) {
     $url = download_file_url($object[0]['fid']);
@@ -178,14 +178,14 @@ function theme_osha_infographics_multilanguage_image_format($element) {
   $file = isset($entity->field_image[$language->language][0])
     ? $entity->field_image[$language->language][0]
     : $entity->field_image['en'][0];
-  $output = "<span class='label_multilang_file'>Open</span>";
+  $output = "<span class='label_multilang_file'>" . t('Open') . "</span>";
   $output .= theme_file_icon(
     array(
       "file" => file_load($file['fid']),
       "icon_directory" => $icon_directory,
     )
   );
-  $output .= "<span class='label_multilang_file'>in:</span>";
+  $output .= "<span class='label_multilang_file'>" . t('in:') . "</span>";
 
   foreach ($entity->field_image as $lang => $object) {
     $output .= '<a href="' . file_create_url($object[0]['uri']) . '" target="_blank">' . strtoupper($lang) . '</a> | ';

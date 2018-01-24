@@ -215,6 +215,7 @@ function hwc_practical_tool_block_info() {
  * Implements hook_block_view().
  */
 function hwc_practical_tool_block_view($delta = '') {
+  global $language;
   $block = array();
   if ($delta == 'hwc_practical_tool_text') {
     $block['title'] = '<none>';
@@ -226,7 +227,7 @@ function hwc_practical_tool_block_view($delta = '') {
         <div class="field-items">
           <div class="field-item even" property="content:encoded">
             <p class="Textfo">
-              <span lang="EN-GB" xml:lang="EN-GB">' . $w->body->value()['safe_value'] . '</span>
+              <span lang="EN-GB" xml:lang="EN-GB">' . $w->language($language->language)->body->value()['safe_value'] . '</span>
             </p>
           </div>
         </div>
@@ -424,7 +425,7 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
     case 'practical_tool_title':
       $output = isset($items[0]) ? $items[0]['safe_value'] : '';
       if (!empty($output)) {
-        $output = l($output, 'node/' . $entity->nid, ['query' => ['destination' => request_uri()], 'absolute' => TRUE]);
+        $output = l($output, 'node/' . $entity->nid, ['query' => ['destination' => request_uri()], 'absolute' => TRUE, 'html' => TRUE]);
       }
       $element = array(array('#markup' => $output));
       break;
