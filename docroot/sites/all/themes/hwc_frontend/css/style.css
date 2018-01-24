@@ -7426,7 +7426,6 @@ header.navbar-default .navbar-collapse nav ul.menu li .dropdown-toggle:hover {
 header.navbar-default .navbar-collapse nav ul.menu li .dropdown-menu {
   padding: 0;
   min-width: 100%;
-  min-width: 160px;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   border: none;
   background-color: #003399;
@@ -10652,7 +10651,7 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .pane-homepage-about-topics .view-homepage-about-topics .views-row {
   margin-bottom: 40px;
 }
-.front .pane-homepage-about-topics .view-homepage-about-topics .views-row .views-field-title {
+.front .pane-homepage-about-topics .view-homepage-about-topics .views-row .views-field-title-field {
   font-size: 1.3em;
   font-weight: bold;
   font-style: italic;
@@ -21729,6 +21728,8 @@ input#edit-field-image-und-0-upload::before {
   header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.leaf > a {
     text-align: left;
     border-right: none;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   header.navbar-default .navbar-collapse nav ul.menu.nav.navbar-nav > li.leaf > a:before {
     content: "> ";
@@ -24955,7 +24956,6 @@ input#edit-field-image-und-0-upload::before {
     bottom: -1px;
     position: relative;
     float: left;
-    padding-left: 1em;
   }
   .node-type-article .hwc-share-widget li {
     display: inline-block !important;
