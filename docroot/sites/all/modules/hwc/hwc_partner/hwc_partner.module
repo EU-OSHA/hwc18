@@ -358,15 +358,26 @@ function hwc_partner_views_pre_render(&$view) {
   }
   if ($view->name == 'partners_list' && (($view->current_display == 'block_1') || ($view->current_display == 'een'))) {
     $prev_name = '';
-    foreach ($view->result as &$row) {
+    $new_rows = [];
+    foreach ($view->result as $row) {
+      unset($row->_field_data);
       if (( $prev_name) && ($prev_name == $row->field_name_field[0]['raw']['value']) ) {
-        $prev_name = $row->field_name_field[0]['raw']['value'];
         $row->field_field_flag = [];
+        $new_rows[] = $row;
       }
       else {
-        $prev_name = $row->field_name_field[0]['raw']['value'];
+        $first_row = clone $row;
+        $first_row->field_field_logo = [];
+        $new_rows[] = $first_row;
+
+        $second_row = $row;
+        $second_row->field_field_flag = [];
+        $new_rows[] = $second_row;
+
       }
+      $prev_name = $row->field_name_field[0]['raw']['value'];
     }
+    $view->result = $new_rows;
   }
 }
 
