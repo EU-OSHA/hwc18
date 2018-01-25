@@ -16024,6 +16024,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .view-id-partners_list .views-row .hwc-alpha-pager-view-title-field.views-field-title-field {
   display: none;
 }
+.view-id-partners_list .views-row .views-field-field-logo {
+  border: none;
+}
 .view-id-partners_list img {
   margin: auto;
 }
