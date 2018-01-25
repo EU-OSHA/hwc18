@@ -94,7 +94,7 @@ function hwc_frontend_menu_link(array $variables) {
  */
 function hwc_frontend_preprocess_html(&$vars) {
   if (!empty($vars['is_front'])) {
-    $vars['head_title'] = t('Healthy Workplaces for All Ages') . ' | ' . 'EU-OSHA';
+    $vars['head_title'] = t('Healthy Workplaces MANAGE DANGEROUS SUBSTANCES 2018-19');
   }
   if (arg(0) . arg(2) == 'nodeedit') {
     $n = menu_get_object('node');

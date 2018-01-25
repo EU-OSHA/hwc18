@@ -414,10 +414,13 @@ function hwc_practical_tool_field_formatter_view($entity_type, $entity, $field, 
     case 'homepage_slider_title':
       $output = isset($items[0]) ? $items[0]['safe_value'] : '';
       if (!empty($output)) {
-        $needle = 'Campaign 2018-2019';
-        if (strpos($output, $needle)) {
-          $output = '<span class="line-1">' . str_replace($needle, $needle . '</span><span class="line-2">', $output) . '</span>';
-        }
+//        $needle = 'Campaign 2018-2019';
+//        if (strpos($output, $needle)) {
+//          $output = '<span class="line-1">' . str_replace($needle, $needle . '<span class="line-2">', $output) . '</span></span>';
+//        }
+//        else {
+//        }
+        $output = '<span class="line-1">' . $output . '</span>';
       }
       $element = array(array('#markup' => $output));
       break;

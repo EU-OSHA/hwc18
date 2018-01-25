@@ -775,6 +775,31 @@ Good practice exchange',
   $pane->uuid = '87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
   $display->content['new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952'] = $pane;
   $display->panels['center'][6] = 'new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
+  $pane = new stdClass();
+  $pane->pid = 'new-6f2d5de0-abcf-44df-8036-37876ebd1e87';
+  $pane->panel = 'center';
+  $pane->type = 'custom_title_tag';
+  $pane->subtype = 'custom_title_tag';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'buttons' => NULL,
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-Q-f8jwe87PXcMSZ8ZDIviGvIj1ssEH83jYXkbWDYu9U',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
+    'form_id' => 'panels_custom_title_tag_edit_form',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 7;
+  $pane->locks = array();
+  $pane->uuid = '6f2d5de0-abcf-44df-8036-37876ebd1e87';
+  $display->content['new-6f2d5de0-abcf-44df-8036-37876ebd1e87'] = $pane;
+  $display->panels['center'][7] = 'new-6f2d5de0-abcf-44df-8036-37876ebd1e87';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

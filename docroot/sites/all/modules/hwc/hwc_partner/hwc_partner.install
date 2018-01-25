@@ -192,3 +192,19 @@ function hwc_partner_update_7023() {
 function hwc_partner_update_7024() {
   features_revert(array('hwc_partner' => 'views_view'));
 }
+
+/**
+ * MDR-1641 Dev - Apply the new layout (MDR-1640) not the EEN page.
+ */
+function hwc_partner_update_7025() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}
+
+/**
+ * HW18-377 Do SEO improvements.
+ */
+function hwc_partner_update_7026() {
+  features_revert_module('hwc_good_practice_exchange');
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+}
