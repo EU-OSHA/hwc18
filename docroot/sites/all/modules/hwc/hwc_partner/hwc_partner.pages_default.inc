@@ -1267,9 +1267,9 @@ enterprise-europe-network
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title',
-    'form_build_id' => 'form-mmmHtrOO-yfYIsLIcNw-2P7wGT2ZFSu2g6eN8FSKTK8',
-    'form_token' => 'E28-HqZOY91Hovvo90xKds8wBypNCBej7fXVPqyo1qA',
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-gBLGroD0Dq66xB3cP00EJYbIZektcDtJRmS6wAnoiro',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
@@ -7046,9 +7046,9 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title',
-    'form_build_id' => 'form-MXJJi0BT_6GVNk-AG7VynyMyTYW79QuXufvDiluTxIo',
-    'form_token' => 'jkJefHliZ2ii9MLZy9P1zanyYSO8wVF1CqK0_Jx64rQ',
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-H2hk6rekiaoFhCCM8kZN9oaPe4hveVCZVgn9Q5m19ig',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
@@ -7211,9 +7211,9 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title',
-    'form_build_id' => 'form-slidqZo2NxmB4JitHzto3MND_sp6boRYCc8D40Ywv4c',
-    'form_token' => 'ZbBYL1j24ApA7wrPsMGYHWVGppvtWwlf0afDvG03t0c',
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-mEfAlOQHzFM90xPdWQcI7h93eTk9VON7QzXsE85tCpE',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
@@ -7376,9 +7376,9 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title',
-    'form_build_id' => 'form-PnhuJgzAquw1WhKIAR-1bmiORls4fGlPgMT2-BKRr-Y',
-    'form_token' => 'ZbBYL1j24ApA7wrPsMGYHWVGppvtWwlf0afDvG03t0c',
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-f80y8RcRYRzSpj3beDSxh5cocWzydjQAFWkRSaGjKEM',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
@@ -7870,9 +7870,9 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title',
-    'form_build_id' => 'form-QNyjzXzeG_bGO83zyYa_-SA5u797GuA5M2t9ARQkwD4',
-    'form_token' => 'ZbBYL1j24ApA7wrPsMGYHWVGppvtWwlf0afDvG03t0c',
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-tn8XXFVisd0hWALdxlINatk5TBlnE9lYfG2hJ1l8UFI',
+    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();

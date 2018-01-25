@@ -199,3 +199,12 @@ function hwc_partner_update_7024() {
 function hwc_partner_update_7025() {
   features_revert(array('hwc_partner' => 'views_view'));
 }
+
+/**
+ * HW18-377 Do SEO improvements.
+ */
+function hwc_partner_update_7026() {
+  features_revert_module('hwc_good_practice_exchange');
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+}
