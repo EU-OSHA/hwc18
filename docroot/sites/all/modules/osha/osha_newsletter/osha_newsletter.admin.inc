@@ -87,8 +87,7 @@ function osha_newsletter_admin_form() {
   $allowed_bundles = variable_get(
     'osha_newsletter_allowed_bundles',
     array(
-      // TODO:EDW: check 'event' - non existing for now.
-      'publication', 'blog', 'news', 'press_release', 'highlight', 'newsletter_article'
+      'publication', 'event', 'blog', 'news', 'press_release', 'highlight', 'newsletter_article',
     )
   );
   $entity_info = entity_get_info();

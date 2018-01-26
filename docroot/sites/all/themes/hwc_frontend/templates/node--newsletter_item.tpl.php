@@ -162,6 +162,37 @@ if (!empty($campaign_id)) {
       ?>
       <?php
     }
+    if ($node->type == 'twitter_tweet_feed') {
+?>
+        <tr style="height: 100%;">
+          <?php if (!in_array($node->type, ['twitter_tweet_feed'])
+            && (empty($node->parent_section) || $node->parent_section != 13)) { ?>
+              <td align="left" width="10" style="padding-right: 0px; vertical-align: top; padding-top: 5px; font-family: Arial, sans-serif;width:10px;">
+                  <span> > </span>
+              </td>
+          <?php } ?>
+            <td align="right" style="text-align: left; padding-top: 5px; padding-bottom: 10px; padding-left:0px;">
+              <?php
+                  if (!empty($node->field_tweet_author[LANGUAGE_NONE][0]['value'])
+                    && !empty($node->field_tweet_contents[LANGUAGE_NONE][0]['value'])
+                    && !empty($node->field_link_to_tweet[LANGUAGE_NONE][0]['value'])) {
+                    printf("<p class='tweet-author'><a target='_blank' href='%s'>@%s</a></p><p class='tweet-contents'>%s</p>",
+                      $node->field_link_to_tweet[LANGUAGE_NONE][0]['value'],
+                      $node->field_tweet_author[LANGUAGE_NONE][0]['value'],
+                      $node->field_tweet_contents[LANGUAGE_NONE][0]['value']);
+                  }
+                  else {
+                    print l($node->title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                      'attributes' => array('style' => 'text-decoration: none; font-family:Arial, sans-serif; font-size: 13px; font-weight: bold;'),
+                      'query' => $url_query,
+                      'external' => TRUE,
+                    ));
+                  }
+              ?>
+            </td>
+        </tr>
+      <?php
+    }
     if ($node->type == 'events') {
       global $base_url;
       $date = (isset($field_start_date) && !empty($field_start_date)) ? strtotime($field_start_date[0]['value']) : '';
