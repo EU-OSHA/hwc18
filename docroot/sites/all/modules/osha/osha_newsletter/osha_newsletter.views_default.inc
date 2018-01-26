@@ -250,6 +250,7 @@ function osha_newsletter_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'events' => 'events',
     'news' => 'news',
+    'twitter_tweet_feed' => 'twitter_tweet_feed',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
