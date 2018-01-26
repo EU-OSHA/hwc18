@@ -168,6 +168,13 @@ function hwc_priority_areas_get_intro_map() {
   return $intro_map;
 }
 
+/*
+ * Implements hook_panels_pre_render().
+ */
+function hwc_priority_areas_panels_pre_render($panels_display, $renderer) {
+  $panels_display->title = t('Tools and publications');
+}
+
 /**
  * Implements hook_views_pre_render().
  */
