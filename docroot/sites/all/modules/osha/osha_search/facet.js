@@ -6,6 +6,46 @@
 
 (function ($) {
 
+    Drupal.behaviors.search_facets = {
+        attach: function(context, settings) {
+            if (Drupal.settings.facet_items != 'undefined') {
+                for (var i in Drupal.settings.facet_items) {
+                    for (var j = 0; j < Drupal.settings.facet_items[i].length; j++) {
+                        jQuery('#remove_filter').append(Drupal.settings.facet_items[i][j]);
+                    }
+                }
+            }
+            jQuery('.page-search .region-sidebar-first, .page-documents .region-sidebar-first').once('publication_toggle_facets', function() {
+                jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').hide();
+                if (!jQuery('.page-practical-tools').length) {
+                    if (jQuery(window).width() > 992) {
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                    }
+                }
+                else {
+                    if (jQuery(window).width() > 992) {
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-priority-area').show();
+                        jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').has('input:checked').show();
+                        // jQuery('.block-facetapi .facetapi-facetapi-checkbox-links.facetapi-facet-field-item-type').show();
+                    }
+                }
+
+                jQuery('.block-facetapi .facetapi-facetapi-checkbox-links').siblings('h2').on('click', function() {
+                    var $checkboxes = jQuery(this).parent().find('.facetapi-facetapi-checkbox-links');
+                    if ($checkboxes.is(':visible')) {
+                        $checkboxes.slideUp();
+                        jQuery(this).removeClass('area-shown');
+                    }
+                    else {
+                        jQuery(this).addClass('area-shown');
+                        $checkboxes.slideDown();
+                    }
+                });
+            });
+        }
+    }
+
     Drupal.behaviors.dropdownfacetapi = {
         attach: function(context, settings) {
             if (settings.facetapi) {

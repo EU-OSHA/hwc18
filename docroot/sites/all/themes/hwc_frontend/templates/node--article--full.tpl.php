@@ -24,7 +24,14 @@
     </header>
   <?php endif; ?>
   <?php
-    print render($content['field_image']);
+    if (isset($content['field_cover_image'])) {
+      $image = render($content['field_cover_image']);
+      print str_replace('field-cover-image', 'field-image', $image);
+      hide($content['field_image']);
+    }
+    else {
+      print render($content['field_image']);
+    }
     print render($content['title_field']);
   ?>
   <div class="container">
@@ -34,7 +41,7 @@
     print render($content['share_widget']);
     // Additional resources
     if (!empty($content['field_recommended_resources']) || !empty($content['field_recommended_articles'])) {
-      print '<div class="dot-separator green"></div><div class="icon recommended-resources"></div>' . '<h2>' . t('Recommended for you') . '</h2>';
+      print '<div class="dot-separator green"></div><div class="icon recommended-resources"></div>' . '<h2>' . t('Recommended resources for you') . '</h2>';
       print render($content['field_recommended_resources']);
       print render($content['field_recommended_articles']);
     }

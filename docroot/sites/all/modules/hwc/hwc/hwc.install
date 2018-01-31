@@ -596,3 +596,81 @@ function hwc_update_7032() {
   ncw_migration_run_single('news');
   ncw_migration_run_single('events');
 }
+
+/**
+ * enabled hwc priority areas module
+ */
+function hwc_update_7033() {
+  module_enable(['hwc_priority_areas']);
+}
+
+/**
+ * enabled napo films module
+ */
+function hwc_update_7034() {
+  module_enable(['hwc_napo_films']);
+}
+
+/**
+ * enabled get_your_certificate view and enable module osha_admin_reports
+ */
+function hwc_update_7035() {
+  module_enable(['osha_admin_reports']);
+  features_revert_module('hwc');
+}
+
+/**
+ * enabled good practice exchange module
+ */
+function hwc_update_7036() {
+  features_revert_module('osha_news');
+  module_enable(['hwc_good_practice_exchange']);
+}
+
+/**
+ * News and events title tag
+ */
+function hwc_update_7037() {
+  features_revert_module('osha_news');
+}
+
+/**
+ * Additional resources infographics display
+ */
+function hwc_update_7038() {
+  features_revert_module('hwc');
+}
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7039() {
+}
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7040() {
+  module_enable(['qtip']);
+}
+
+/**
+ * Act as partner block in footer.
+ */
+function hwc_update_7041() {
+  features_revert_module('hwc');
+}
+
+/**
+ * Enable qtip module.
+ */
+function hwc_update_7042() {
+  module_enable(['osha_flickr']);
+}
+
+/**
+ * MDR-1614 Flicker galleries can not be imported from NCW.
+ */
+function hwc_update_7043() {
+  migrate_static_registration();
+}

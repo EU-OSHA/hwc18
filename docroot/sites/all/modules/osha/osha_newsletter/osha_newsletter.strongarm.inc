@@ -98,16 +98,21 @@ function osha_newsletter_strongarm() {
   $strongarm->value = array(
     'events' => 'events',
     'news' => 'news',
+    'twitter_tweet_feed' => 'twitter_tweet_feed',
     'article' => 0,
+    'audio_visual' => 0,
     'campaign_materials' => 0,
+    'document' => 0,
     'event_speaker' => 0,
     'external_url' => 0,
     'file' => 0,
     'flickr' => 0,
+    'flickr_gallery' => 0,
     'frontpage_slider' => 0,
     'hwc_gallery' => 0,
     'infographic' => 0,
     'internal_url' => 0,
+    'napo_film' => 0,
     'note_to_editor' => 0,
     'partner' => 0,
     'practical_tool' => 0,
@@ -116,6 +121,8 @@ function osha_newsletter_strongarm() {
     'private_aria_article' => 0,
     'publication' => 0,
     'slideshare' => 0,
+    'topic_related' => 0,
+    'twitter_user_profile' => 0,
     'webform' => 0,
     'youtube' => 0,
   );
@@ -191,8 +198,12 @@ function osha_newsletter_strongarm() {
   $strongarm->value = array(
     'article' => '',
     'view_mode_article' => 'newsletter_item',
+    'audio_visual' => '',
+    'view_mode_audio_visual' => 'newsletter_item',
     'campaign_materials' => '',
     'view_mode_campaign_materials' => 'newsletter_item',
+    'document' => '',
+    'view_mode_document' => 'newsletter_item',
     'event_speaker' => '',
     'view_mode_event_speaker' => 'newsletter_item',
     'events' => '184c62a6-3f57-4551-9e82-5308affcd5c3',
@@ -203,6 +214,8 @@ function osha_newsletter_strongarm() {
     'view_mode_file' => 'newsletter_item',
     'flickr' => '',
     'view_mode_flickr' => 'newsletter_item',
+    'flickr_gallery' => '',
+    'view_mode_flickr_gallery' => 'newsletter_item',
     'frontpage_slider' => '',
     'view_mode_frontpage_slider' => 'newsletter_item',
     'hwc_gallery' => '',
@@ -211,7 +224,9 @@ function osha_newsletter_strongarm() {
     'view_mode_infographic' => 'newsletter_item',
     'internal_url' => '',
     'view_mode_internal_url' => 'newsletter_item',
-    'news' => 'b6dd4495-169b-4d48-86ae-78e217906a95',
+    'napo_film' => '',
+    'view_mode_napo_film' => 'newsletter_item',
+    'news' => '4f57cadd-a3dd-406d-981a-dfea0853c54e',
     'view_mode_news' => 'highlights_item',
     'note_to_editor' => '',
     'view_mode_note_to_editor' => 'newsletter_item',
@@ -229,10 +244,16 @@ function osha_newsletter_strongarm() {
     'view_mode_publication' => 'newsletter_item',
     'slideshare' => '',
     'view_mode_slideshare' => 'newsletter_item',
+    'topic_related' => '',
+    'view_mode_topic_related' => 'newsletter_item',
+    'twitter_tweet_feed' => 'a6a6367d-5b41-441e-9006-492e818020c2',
+    'view_mode_twitter_tweet_feed' => 'newsletter_item',
+    'twitter_user_profile' => '',
+    'view_mode_twitter_user_profile' => 'newsletter_item',
     'webform' => '',
     'view_mode_webform' => 'newsletter_item',
     'youtube' => '',
-    'view_mode_youtube' => 'newsletter_item',
+    'view_mode_youtube' => '',
   );
   $export['osha_newsletter_term_ct_map'] = $strongarm;
 
@@ -303,7 +324,7 @@ function osha_newsletter_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'subscribe_extra_block_intro_text';
-  $strongarm->value = 'To get the latest news from the Healthy Workplaces Campaign 2016–17 direct to your inbox, sign up for our bimonthly newsletter. We’ll cover all the big events and key issues to keep you up to date.';
+  $strongarm->value = 'To get the latest news from the Healthy Workplaces Campaign 2018–19 direct to your inbox, sign up for our bimonthly newsletter. We’ll cover all the big events and key issues to keep you up to date.';
   $export['subscribe_extra_block_intro_text'] = $strongarm;
 
   return $export;

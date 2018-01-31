@@ -36,6 +36,7 @@
         };
         var cropper = $('#{$fieldName}_imageBox').cropbox(options);
         $('#{$fieldName}_file').on('change', function () {
+
             var reader = new FileReader();
             reader.onload = function (e) {
                 options.imgSrc = e.target.result;
@@ -55,6 +56,7 @@
             }
             $('#{$fieldName}_thumbBox').append('<img src="' + img + '">');
             $('#{$fieldName}').attr('value', img);
+            $('#{$fieldName}').attr('data-error', '');
         });
         $('#{$fieldName}_btnZoomIn').on('click', function () {
             cropper.zoomIn();

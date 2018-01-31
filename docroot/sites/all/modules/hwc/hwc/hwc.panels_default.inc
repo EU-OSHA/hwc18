@@ -32,6 +32,8 @@ function hwc_default_panels_mini() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = 'c494b9a0-a840-455b-86f4-ac9aec9dfe8e';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'additional_resources';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -338,6 +340,41 @@ function hwc_default_panels_mini() {
     $pane->uuid = '7f84e0b0-0e99-4073-95cb-4c425534cf32';
     $display->content['new-7f84e0b0-0e99-4073-95cb-4c425534cf32'] = $pane;
     $display->panels['center'][7] = 'new-7f84e0b0-0e99-4073-95cb-4c425534cf32';
+  $pane = new stdClass();
+  $pane->pid = 'new-1a1d0c33-5a64-4226-ad18-e5e2bb89d366';
+  $pane->panel = 'center';
+  $pane->type = 'views';
+  $pane->subtype = 'additional_resources';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '%1/infographic',
+    'url' => '',
+    'display' => 'block',
+    'override_title' => 1,
+    'override_title_text' => 'Infographics',
+    'override_title_heading' => 'h4',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 8;
+  $pane->locks = array();
+  $pane->uuid = '1a1d0c33-5a64-4226-ad18-e5e2bb89d366';
+  $display->content['new-1a1d0c33-5a64-4226-ad18-e5e2bb89d366'] = $pane;
+  $display->panels['center'][8] = 'new-1a1d0c33-5a64-4226-ad18-e5e2bb89d366';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
@@ -444,10 +481,12 @@ function hwc_default_panels_mini() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = 'ae6050ef-5127-4bae-8469-6f6cbbeea21f';
+  $display->storage_type = 'panels_mini';
+  $display->storage_id = 'news_and_events';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-3c99908b-6432-4a3b-8b59-d78bcb842f81';
+  $pane->pid = 'new-2e8c7868-a04f-4160-89ee-67388d9c9d99';
     $pane->panel = 'center';
     $pane->type = 'views';
     $pane->subtype = 'frontpage_events';
@@ -456,7 +495,7 @@ function hwc_default_panels_mini() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 0,
-      'nodes_per_page' => '4',
+    'nodes_per_page' => '3',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -466,9 +505,9 @@ function hwc_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'block',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+    'override_title' => 1,
+    'override_title_text' => 'Events',
+    'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -478,11 +517,11 @@ function hwc_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '3c99908b-6432-4a3b-8b59-d78bcb842f81';
-    $display->content['new-3c99908b-6432-4a3b-8b59-d78bcb842f81'] = $pane;
-    $display->panels['center'][0] = 'new-3c99908b-6432-4a3b-8b59-d78bcb842f81';
+  $pane->uuid = '2e8c7868-a04f-4160-89ee-67388d9c9d99';
+  $display->content['new-2e8c7868-a04f-4160-89ee-67388d9c9d99'] = $pane;
+  $display->panels['center'][0] = 'new-2e8c7868-a04f-4160-89ee-67388d9c9d99';
     $pane = new stdClass();
-    $pane->pid = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $pane->pid = 'new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
     $pane->panel = 'content';
     $pane->type = 'views';
     $pane->subtype = 'news';
@@ -491,7 +530,7 @@ function hwc_default_panels_mini() {
     $pane->configuration = array(
       'override_pager_settings' => 0,
       'use_pager' => 0,
-      'nodes_per_page' => '4',
+    'nodes_per_page' => '3',
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
@@ -501,9 +540,9 @@ function hwc_default_panels_mini() {
       'args' => '',
       'url' => '',
       'display' => 'oshnews_latest',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
+    'override_title' => 1,
+    'override_title_text' => 'News',
+    'override_title_heading' => 'div',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -513,11 +552,11 @@ function hwc_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '96773291-4162-4f6e-95b7-d86fef28b815';
-    $display->content['new-96773291-4162-4f6e-95b7-d86fef28b815'] = $pane;
-    $display->panels['content'][0] = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $pane->uuid = 'd0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
+  $display->content['new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92'] = $pane;
+  $display->panels['content'][0] = 'new-d0d065b2-5f33-4ffa-9e6a-a17b67c04c92';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-96773291-4162-4f6e-95b7-d86fef28b815';
+  $display->title_pane = '0';
   $mini->display = $display;
   $export['news_and_events'] = $mini;
 

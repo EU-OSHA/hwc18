@@ -203,7 +203,7 @@ function osha_update_7009() {
 }
 
 /**
- * Add all EU cookies strings into translation management workflow
+ * Add all EU cookies strings into translation management workflow.
  */
 function osha_update_7010() {
   locale('<p><span style="font-size: small;"><strong>The EU-OSHA website uses cookies to gather information necessary for browsing the website, in accordance with the EU-OSHA privacy notice.</strong></span></p><p>By clicking on any link in the EU-OSHA web pages you are giving your consent for the use of cookies.</p>');
@@ -215,7 +215,7 @@ function osha_update_7010() {
 
 /**
  * HCW-932
- * Change "Tools and Resources" sentence by "Tools and Publications" in the whole website
+ * Change "Tools and Resources" sentence by "Tools and Publications" in the whole website.
  */
 function osha_update_7011() {
   db_update('block')
@@ -256,5 +256,54 @@ function osha_update_7012() {
  * MDR-952 - feature revert.
  */
 function osha_update_7013() {
+  features_revert_module('osha');
+}
+
+/**
+ * New external url formatter.
+ */
+function osha_update_7014() {
+  features_revert_module('osha_resources');
+}
+
+/**
+ * Article Summary field format
+ */
+function osha_update_7015() {
+  features_revert_module('osha');
+}
+
+/**
+ * HW18-199 Development: Audit actions.
+ */
+function osha_update_7016() {
+  features_revert_module('osha');
+}
+
+/**
+ * New crop image style
+ */
+function osha_update_7017() {
+  features_revert_module('osha');
+}
+
+/**
+ * HW18-334 cover image.
+ */
+function osha_update_7018() {
+  features_revert_module('osha');
+}
+
+/**
+ * MDR-1489 - external url.
+ */
+function osha_update_7019() {
+  features_revert_module('osha');
+}
+
+/**
+ * MDR-1572 - Private Zone´s usability recommendations.
+ */
+function osha_update_7020() {
   features_revert_module('osha');
 }

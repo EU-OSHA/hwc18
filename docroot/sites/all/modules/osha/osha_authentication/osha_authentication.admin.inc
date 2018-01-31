@@ -37,35 +37,36 @@ function osha_authentication_extract_user_roles($proposed_roles) {
 function osha_authentication_get_role_from_dn($group_dn) {
   $role = NULL;
   $language = NULL;
-  if ($group_dn == 'cn=ADMIN,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  if ($group_dn == 'cn=ADMIN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_ADMINISTRATOR;
   }
-  else if ($group_dn == 'cn=LAYVAL,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=LAYVAL,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_LAYOUT_VALIDATOR;
   }
-  else if ($group_dn == 'cn=NEWS_EVEN_EDT,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=NEWS_EVEN_EDT,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = HWC_ROLE_CAMPAIGN_PROJECT_MANAGER;
   }
-  else if ($group_dn == 'cn=NEWS_EVEN_SUP,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=NEWS_EVEN_SUP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = ROLE_SUPERVISOR;
   }
   else if (
     in_array($group_dn,
       array(
-        'cn=OCP,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu',
-        'cn=FOP,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu',
-        'cn=OMP,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu',
+        'cn=OCP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
+        'cn=FOP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
+        'cn=OMP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
+        'cn=OSHAMB,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
       )
     )) {
     $role = ROLE_CAMPAIGN_PARTNER;
   }
-  else if ($group_dn == 'cn=RVMN,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_REVIEW_MANAGER;
   }
-  else if ($group_dn == 'cn=TRLIAS,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=TRLIAS,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_TRANSLATION_LIAISON;
   }
-  else if ($group_dn == 'cn=TRLMN,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  else if ($group_dn == 'cn=TRLMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_TRANSLATION_MANAGER;
   }
   // Handle content validators (CV) & unknown values
@@ -78,7 +79,7 @@ function osha_authentication_get_role_from_dn($group_dn) {
       $language = str_replace('cn=', '', $language);
       $role = OSHA_WORKFLOW_ROLE_CONTENT_VALIDATOR;
     }
-    else if ($group_dn == 'cn=READ,ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    else if ($group_dn == 'cn=READ,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
       // Do nothing ...
     }
     else {
@@ -91,7 +92,7 @@ function osha_authentication_get_role_from_dn($group_dn) {
 function osha_authentication_ldap_fetch_user_groups($username, $ldap_server) {
   $ret = array();
   /** @var LDAPServer $ldap_server */
-  $ldap_groups = $ldap_server->search('ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu', 'memberUid=' . $username);
+  $ldap_groups = $ldap_server->search('ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu', 'memberUid=' . $username);
   if (!$ldap_groups) {
     return $ret;
   }
@@ -163,7 +164,7 @@ function osha_authentication_block_disabled_ldap_accounts($ldap_server, $ldap_ac
 function osha_authentication_ldap_get_site_users($ldap_server) {
   $ret = array();
   /** @var LDAPServer $ldap_server */
-  $ldap_groups = $ldap_server->search('ou=HWC,ou=Sites,dc=osha,dc=europa,dc=eu', 'cn=*', array('dn', 'memberUid', 'cn'));
+  $ldap_groups = $ldap_server->search('ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu', 'cn=*', array('dn', 'memberUid', 'cn'));
   if (!$ldap_groups) {
     return $ret;
   }

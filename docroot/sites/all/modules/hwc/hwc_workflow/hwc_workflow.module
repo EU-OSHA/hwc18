@@ -142,9 +142,33 @@ function hwc_workflow_mail_alter(&$message) {
 function hwc_workflow_node_view($node, $view_mode, $langcode) {
   global $user;
   if ($view_mode == 'full' && in_array($node->type, array('events', 'news'))) {
+    $reminder_text = hwc_workflow_set_validation_reminder();
+    if ($reminder_text) {
+      $_SESSION['validation_reminder'] = array();
+      drupal_add_library('system', 'ui.dialog');
+      drupal_add_js('  
+(function ($) {
+		Drupal.behaviors.validation_reminder = { 
+		  attach: function(context, settings) {
+				$( "#validation_reminder" ).dialog({
+          dialogClass: "validation_reminder",
+					modal: true,
+					buttons: {
+						' . t('Accept') . ': function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}
+		};
+})(jQuery);
+', 'inline');
+      echo '<div style="visibility: hidden;display: none"><div id="validation_reminder" title="' . t('Reminder') . '"><p>' . $reminder_text[0] . '</p></div></div>';
+    }
+
     $is_draft = !empty($node->workbench_moderation['current']) && $node->workbench_moderation['current']->state == 'draft';
     $is_content_partner = hwc_worklow_node_belongs_to_partner_user($node);
-    if ($is_draft && $is_content_partner ) {
+    if ($is_draft && $is_content_partner) {
       $form = drupal_get_form('hwc_workflow_node_submit_form', $node);
       $node->content['submit_content_form'] = $form;
     }
@@ -252,7 +276,7 @@ function hwc_workflow_node_access($node, $op, $account) {
   }
 
   // Workflow validations are only for Events and News.
-  if (!in_array($type, array('events', 'news'))) {
+  if (!in_array($type, array('document', 'events', 'news'))) {
     return NODE_ACCESS_IGNORE;
   }
 
@@ -296,24 +320,32 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
       '#title' => 'How many minutes can the partner still edit the node?',
       '#default_value' => variable_get('hwc_workflow_partner_content_minutes_gap_autosubmit', 30),
       '#attributes' => array('size' => 5),
-      '#description' => "After partner submits the content, he can still edit for this amount of time"
+      '#description' => "After partner submits the content, he can still edit for this amount of time",
     );
   }
   if (in_array($form_id, array('events_node_form', 'news_node_form'))) {
     $node = $form_state['node'];
-    $can_delete = user_access("delete any {$node->type} content") || user_access("delete own {$node->type} content");
+    $can_delete =
+      (
+        user_access("delete any {$node->type} content") ||
+        user_access("delete own {$node->type} content")
+      );
+    if ($node->workbench_moderation['current']->state == 'final_draft') {
+      $can_delete = $can_delete && user_access('delete any content in final_draft');
+    }
+
     if (!empty($node->nid) && $can_delete && in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['actions']['delete'] = array(
         '#type' => 'submit',
         '#value' => t('Delete'),
         '#weight' => 19,
-        '#submit' => array('node_form_delete_submit')
+        '#submit' => array('node_form_delete_submit'),
       );
     }
   }
 
   if ($form_id == 'workbench_moderation_moderate_form' && isset($form['node']['#value'])) {
-    // Append the approval buttons in workbench moderation (on node view).q
+    // Append the approval buttons in workbench moderation (on node view).
     module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
     $form['#node'] = $form['node']['#value'];
     hwc_workflow_node_cpm_actions_append($form, $form['node']['#value']);
@@ -358,6 +390,35 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
+  global $user;
+  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+        if ($user_id_section == $wb_id_section) {
+          $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
+          $form['workbench_access']['workbench_access']['#access'] = FALSE;
+          break;
+        }
+      }
+    }
+    if (empty($form['workbench_access']['workbench_access']['#default_value'])) {
+      drupal_goto('<front>');
+    }
+    $form['#after_build'][] = 'hwc_workflow_node_form_after_build_hide_hints';
+
+    _hwc_workflow_partner_node_form_alter($form, $form_state);
+  }
+  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+    if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
+      $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
   global $user;
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
@@ -394,8 +455,8 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
   global $user;
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
-    foreach($user->workbench_access as $user_id_section => $value) {
-      foreach($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
           $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
           $form['workbench_access']['workbench_access']['#access'] = FALSE;
@@ -495,7 +556,28 @@ function _hwc_workflow_partner_node_form_alter(&$form, &$form_state) {
 function hwc_workflow_node_form_submit_preview($form, &$form_state) {
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['input']['workbench_moderation_state_new'] = 'draft';
+
+  $reminder_text = t('Please, be aware that you are just saving your work. Please, if you want to continue the approval workflow don\'t forget to submit the item for validation.');
+  hwc_workflow_set_validation_reminder($reminder_text);
   node_form_submit($form, $form_state);
+}
+
+function hwc_workflow_set_validation_reminder($message = NULL) {
+  if ($message || $message === '0' || $message === 0) {
+    if (!isset($_SESSION['validation_reminder'])) {
+      $_SESSION['validation_reminder'] = array();
+    }
+
+    if (!in_array($message, $_SESSION['validation_reminder'])) {
+      $_SESSION['validation_reminder'][] = $message;
+    }
+
+    // Mark this page as being uncacheable.
+    drupal_page_is_cacheable(FALSE);
+  }
+
+  // Messages not set when DB connection fails.
+  return isset($_SESSION['validation_reminder']) ? $_SESSION['validation_reminder'] : NULL;
 }
 
 /**

@@ -10,14 +10,44 @@ include_once 'hwc_partner.inc';
 define ('PARTNER_TYPE_OCP', '825c3b00-0dd2-4026-b292-bc76d6e49a70');
 define ('PARTNER_TYPE_MP', '8b662e6e-054a-4148-8495-490ac5858964');
 define ('PARTNER_TYPE_FOP', '1dca3546-7c11-49b5-b74f-a77f87f60d96');
+define ('PARTNER_TYPE_OA', 'a636c498-dd38-414f-ba12-397ec857ca85');
 
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function hwc_partner_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' && !empty($plugin)) {
+    return "plugins/$plugin";
+  }
+}
 
+/**
+ * Implements hook_views_query_alter().
+ */
+function hwc_partner_views_query_alter(&$view, &$query) {
+  if ($view->name == 'partners_list' && $view->current_display == 'een') {
+    $name = 'OSH Ambassador';
+    foreach ($query->where[1]['conditions'] as $k => $v) {
+      if ($v['field'] == 'field_data_field_partner_type.field_partner_type_tid') {
+        $term = taxonomy_term_load($query->where[1]['conditions'][$k]['value']);
+        if ($term && $term->name != $name) {
+          $conditions = array('name' => trim($name), 'vid' => 20);
+          $term = taxonomy_term_load_multiple(array(), $conditions);
+          if ($term) {
+            $term = current($term);
+            $query->where[1]['conditions'][$k]['value'] = $term->tid;
+          }
+        }
+      }
+    }
+  }
+}
 
 function hwc_partner_context_plugins() {
   $plugins = array();
   $plugins['hwc_context_condition_partner_page'] = array(
     'handler' => array(
-      'path' => drupal_get_path('module', 'hwc_partner') .'/context',
+      'path' => drupal_get_path('module', 'hwc_partner') . '/context',
       'file' => 'hwc_context_condition_partner_page.inc',
       'class' => 'hwc_context_condition_partner_page',
       'parent' => 'context_condition',
@@ -49,7 +79,12 @@ function hwc_partner_context_page_condition() {
  */
 function hwc_partner_block_info() {
   $blocks = array();
-  $blocks_infos = array('Create an event', 'Create News', 'Private Area');
+  $blocks_infos = array(
+    'Create an event',
+    'Create News',
+    'Private Area',
+    'Good practice exchange platform',
+  );
   foreach ($blocks_infos as $i => $title) {
     $blocks['hwc_partner_private_link_' . $i] = array(
       'info' => t('Private link block - ' . $title),
@@ -59,6 +94,15 @@ function hwc_partner_block_info() {
       'cache' => DRUPAL_CACHE_GLOBAL,
     );
   }
+
+  $blocks['hwc_partner_login_text'] = array(
+    'info' => t('User login text'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+
   $blocks['hwc_partner_profile_title'] = array(
     'info' => t('My public profile'),
     'status' => 1,
@@ -112,7 +156,7 @@ function hwc_partner_field_extra_fields() {
  */
 function hwc_partner_block_configure($delta = '') {
   $form = array();
-  if (preg_match('/hwc_partner_private_link_[0-2]/', $delta)) {
+  if (preg_match('/hwc_partner_private_link_[0-3]/', $delta)) {
     // Get the number of the block (0,1,2)
     $it = substr($delta, -1);
     $form['hwc_partner_private_link_' . $it . '_title'] = array(
@@ -122,27 +166,29 @@ function hwc_partner_block_configure($delta = '') {
       '#description' => 'This text will appear at the top of the block.',
       '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_title', ''),
     );
-    $form['hwc_partner_private_link_' . $it . '_description'] = array(
+/*    $form['hwc_partner_private_link_' . $it . '_description'] = array(
       '#type' => 'textarea',
       '#title' => t('Description'),
       '#size' => 60,
       '#description' => 'This text will appear as a description under the title.',
       '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_description', ''),
-    );
-    $form['hwc_partner_private_link_' . $it . '_link_text'] = array(
+    );*/
+/*    $form['hwc_partner_private_link_' . $it . '_link_text'] = array(
       '#type' => 'textfield',
       '#title' => t('Link text'),
       '#size' => 60,
       '#description' => 'This will appear after description. (e.g. "Click here").',
       '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_link_text', ''),
-    );
-    $form['hwc_partner_private_link_' . $it . '_url'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Link URL'),
-      '#size' => 60,
-      '#description' => 'This will be the url of the private link.',
-      '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_url', ''),
-    );
+    );*/
+    if ($it != 3) {
+      $form['hwc_partner_private_link_' . $it . '_url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Link URL'),
+        '#size' => 60,
+        '#description' => 'This will be the url of the private link.',
+        '#default_value' => variable_get('hwc_partner_private_link_' . $it . '_url', ''),
+      );
+    }
   }
   return $form;
 }
@@ -154,9 +200,19 @@ function hwc_partner_block_save($delta = '', $edit = array()) {
   // Get the number of the block (0,1,2)
   $it = substr($delta, -1);
   variable_set('hwc_partner_private_link_' . $it . '_title', $edit['hwc_partner_private_link_' . $it . '_title']);
-  variable_set('hwc_partner_private_link_' . $it . '_description', $edit['hwc_partner_private_link_' . $it . '_description']);
-  variable_set('hwc_partner_private_link_' . $it . '_link_text', $edit['hwc_partner_private_link_' . $it . '_link_text']);
-  variable_set('hwc_partner_private_link_' . $it . '_url', $edit['hwc_partner_private_link_' . $it . '_url']);
+//  variable_set('hwc_partner_private_link_' . $it . '_description', $edit['hwc_partner_private_link_' . $it . '_description']);
+//  variable_set('hwc_partner_private_link_' . $it . '_link_text', $edit['hwc_partner_private_link_' . $it . '_link_text']);
+  if ($it != 3) {
+    variable_set('hwc_partner_private_link_' . $it . '_url', $edit['hwc_partner_private_link_' . $it . '_url']);
+  }
+}
+
+function hwc_partner_back_to_private_zone($link = '') {
+  static $content;
+  if ($link) {
+    $content = '<div class="breadcrumb"><span class="inline odd first">' . $link . '</span></div>';
+  }
+  return $content;
 }
 
 /**
@@ -165,7 +221,7 @@ function hwc_partner_block_save($delta = '', $edit = array()) {
 function hwc_partner_block_view($delta = '') {
   $block = array();
   global $user;
-  if (preg_match('/hwc_partner_private_link_[0-2]/', $delta)) {
+  if (preg_match('/hwc_partner_private_link_[0-3]/', $delta)) {
     $it = substr($delta, -1);
     $url = variable_get('hwc_partner_private_link_' . $it . '_url', '');
     $block['subject'] = '<none>';
@@ -187,16 +243,27 @@ function hwc_partner_block_view($delta = '') {
           $id_section = current($node->workbench_access);
           $url_options = array('query' => array('workbench_access' => $id_section));
         }
-        $block['content'] = theme('hwc_partner_private_link_' . $it, array(
+        if ($it == 3) {
+          $url = 'node/' . $node->nid;
+          $url_options = ['query' => ['page' => 'gpep']];
+        }
+        $block['content'] = theme('hwc_partner_private_link_' . $it,
+          array(
             'hwc_partner_private_link_title' => l(variable_get('hwc_partner_private_link_' . $it . '_title'), $url, $url_options),
-            'hwc_partner_private_link_description' => variable_get('hwc_partner_private_link_' . $it . '_description'),
-            'hwc_partner_private_link_link_text' => l(variable_get('hwc_partner_private_link_' . $it . '_link_text'), $url),
+//            'hwc_partner_private_link_description' => variable_get('hwc_partner_private_link_' . $it . '_description'),
+//            'hwc_partner_private_link_link_text' => l(variable_get('hwc_partner_private_link_' . $it . '_link_text'), $url),
             'node' => $node,
             'delta' => $delta,
           )
         );
       }
     }
+  }
+  elseif ($delta == 'hwc_partner_login_text') {
+    // Did this to use it in panels.
+    $block['title'] = '<none>';
+    $block['content'] = '<div class="text-center text-info">' . t('The private zone is allowed only to Campaign Partners. 
+    Get more information on how to <a href="@link" target="_blank">become a campaign partner</a>', ['@link' => url('become-campaign-partner')]) . '</div>';
   }
   elseif ($delta == 'hwc_partner_profile_title') {
     // Did this to use it in panels.
@@ -226,8 +293,8 @@ function hwc_partner_block_view($delta = '') {
       foreach ($sections as $id_section) {
         if ($partner = hwc_partner_by_section_id_load($id_section)) {
           // Did this to use it in panels.
-          $block['title'] = '<none>';
-          $block['content'] = l(t('Back to Private Zone'), 'node/' . $partner->nid);
+          hwc_partner_back_to_private_zone(l(t('Back to Private Zone'), 'node/' . $partner->nid));
+          $block = [];
           break;
         }
       }
@@ -239,11 +306,19 @@ function hwc_partner_block_view($delta = '') {
       $block['content'] = l(t('Switch back to your user'), 'masquerade/unswitch', array('query' => array('token' => drupal_get_token('masquerade/unswitch'))));
     }
     elseif (user_access('masquerade as any user')) {
-      $form = drupal_get_form('masquerade_block_1');
-      $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => drupal_render($form)));
+      $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => ''));
     }
   }
   return $block;
+}
+
+function hwc_partner_hide_name($name) {
+  static $prev_name = '';
+  if (($prev_name) && ($prev_name == $name)) {
+    return TRUE;
+  }
+  $prev_name = $name;
+  return FALSE;
 }
 
 /**
@@ -261,21 +336,69 @@ function hwc_partner_views_pre_render(&$view) {
       $view->display_handler->set_option('link_url', 'events');
     }
   }
-  if ($view->name == 'partners_list' && $view->current_display == 'fop') {
+  if ($view->name == 'partners_list' && (
+      ($view->current_display == 'fop') ||
+      ($view->current_display == 'block_1') ||
+      ($view->current_display == 'een')
+    )) {
     global $language;
+    $sort_title_field = TRUE;
+    if ($view->current_display == 'fop') {
+      $sort_title_field = FALSE;
+    }
+    $current_display = $view->current_display;
     $results = &$view->result;
     // Sort the results by country name (using UTF-8).
-    uasort($results, function($a, $b) use ($language) {
-      if(class_exists('Collator')) { // requires php-intl extension
+    uasort($results, function ($a, $b) use ($language, $sort_title_field) {
+      // Requires php-intl extension.
+      if (class_exists('Collator')) {
         $collator = new \Collator($language->language);
-        return $collator->compare($a->field_name_field[0]['rendered']['#markup'], $b->field_name_field[0]['rendered']['#markup']);
+        $str1 = $a->field_name_field[0]['rendered']['#markup'];
+        $str2 = $b->field_name_field[0]['rendered']['#markup'];
+        $res = $collator->compare($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = $a->field_title_field[0]['rendered']['#markup'];
+          $str2 = $b->field_title_field[0]['rendered']['#markup'];
+          $res = $collator->compare($str1, $str2);
+        }
+        return $res;
       }
-      else { // sorting in some languages (greek) are wrong
+      // Sorting in some languages (greek) are wrong.
+      else {
         $str1 = htmlspecialchars($a->field_name_field[0]['rendered']['#markup']);
         $str2 = htmlspecialchars($b->field_name_field[0]['rendered']['#markup']);
-        return strcmp($str1, $str2);
+        $res = strcmp($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = htmlspecialchars($a->field_title_field[0]['rendered']['#markup']);
+          $str2 = htmlspecialchars($b->field_title_field[0]['rendered']['#markup']);
+          $res = strcmp($str1, $str2);
+        }
+        return $res;
       }
     });
+  }
+  if ($view->name == 'partners_list' && (($view->current_display == 'block_1') || ($view->current_display == 'een'))) {
+    $prev_name = '';
+    $new_rows = [];
+    foreach ($view->result as $row) {
+      unset($row->_field_data);
+      if ($prev_name && ($prev_name == $row->field_name_field[0]['raw']['value'])) {
+        $row->field_field_flag = [];
+        $new_rows[] = $row;
+      }
+      else {
+        $first_row = clone $row;
+        $first_row->field_field_logo = [];
+        $new_rows[] = $first_row;
+
+        $second_row = $row;
+        $second_row->field_field_flag = [];
+        $new_rows[] = $second_row;
+
+      }
+      $prev_name = $row->field_name_field[0]['raw']['value'];
+    }
+    $view->result = $new_rows;
   }
 }
 
@@ -285,12 +408,12 @@ function hwc_partner_views_pre_render(&$view) {
 function hwc_partner_theme() {
   $theme = array();
   $path = drupal_get_path('module', 'hwc_partner');
-  for ($it = 0; $it < 3; $it++) {
+  for ($it = 0; $it < 4; $it++) {
     $theme['hwc_partner_private_link_' . $it] = array(
       'template' => 'hwc_partner_private_link',
       'variables' => array(
         'hwc_partner_private_link_title' => NULL,
-        'hwc_partner_private_link_description' => NULL,
+//        'hwc_partner_private_link_description' => NULL,
         'hwc_partner_private_link_url' => NULL,
         'node' => NULL,
         'delta' => NULL,
@@ -300,6 +423,12 @@ function hwc_partner_theme() {
   }
   $theme['hwc_partner_act_as_partner_block'] = array(
     'template' => 'templates/hwc_partner_act_as_partner_block',
+    'variables' => array(
+      'content' => '',
+    ),
+  );
+  $theme['hwc_partner_act_as_partner_block_footer'] = array(
+    'template' => 'templates/hwc_partner_act_as_partner_block_footer',
     'variables' => array(
       'content' => '',
     ),
@@ -415,12 +544,32 @@ function _hwc_partner_untranslate_form_labels(&$element) {
   return;
 }
 
+function hwc_partner_form_after_build($form, $form_state) {
+  $form['field_modified_by']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
+  $form['field_modified_on']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
+  return $form;
+}
 /**
  * Implements hook_form_alter().
  */
 function hwc_partner_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   global $language;
+  if(
+    (
+      ($form_id == 'news_node_form') ||
+      ($form_id == 'events_node_form')
+    )
+    &&
+    ( isset($_SESSION['masqueraded_user']) )
+  )
+  {
+    if (!isset($form['#after_build'])) {
+      $form['#after_build'] = array();
+    }
+    $form['#after_build'][] = 'hwc_partner_form_after_build';
+  }
+
   // Un translate form labels if is a partner. (nasty solution)
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)
     && $language->language != 'en') {
@@ -436,6 +585,10 @@ function hwc_partner_form_alter(&$form, &$form_state, $form_id) {
         $form['field_website_of_event'][LANGUAGE_NONE]['#title'] = 'Website of event';
       }
     }
+  }
+
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-partner-draft-content-default') {
+    $form['#action'] = '';
   }
 }
 
@@ -494,30 +647,33 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
   global $language;
 
   if ($node->type == 'partner' && $view_mode == 'full') {
-    $loginshell = NULL;
     $link_parameters = array('query' => array());
-    if (in_array(ROLE_SUPERVISOR, $user->roles)
-      || in_array(ROLE_ADMINISTRATOR, $user->roles)
-      || in_array(ROLE_SUPERADMINISTRATOR, $user->roles)
-    ) {
-      // In case of these roles, partner's main contact GUID instead of user's guid
-      $w = entity_metadata_wrapper('node', $node->nid);
-      $loginshell = $w->field_guid_main_contact->value();
+    $wu = entity_metadata_wrapper('user', $user->uid);
+    $w = entity_metadata_wrapper('node', $node->nid);
+    $session_id = $w->field_guid_main_contact->value();
+    $auth = $wu->field_crm_guid->value();
+    // If current admin is masquerading another user (Act as partner feature)
+    // send the loginshell attribute of the original user.
+    if (!empty($_SESSION['masquerading'])) {
+      $masq_user = user_load($_SESSION['masquerading']);
+      $mqsq_wu = entity_metadata_wrapper('user', $masq_user);
+      $auth = $mqsq_wu->field_crm_guid->value();
     }
     $user_is_partner = hwc_partner_match_user_partner($node);
-    if ($user_is_partner) {
-      $wu = entity_metadata_wrapper('user', $user->uid);
-      $loginshell = $wu->field_crm_guid->value();
-    }
-    if (!empty($loginshell)) {
-      $link_parameters['query']['session_id'] = $loginshell;
+    $show_update_profile =  $user_is_partner
+      || in_array(ROLE_SUPERVISOR, $user->roles)
+      || in_array(ROLE_ADMINISTRATOR, $user->roles)
+      || in_array(ROLE_SUPERADMINISTRATOR, $user->roles);
+    if ($show_update_profile) {
+      $link_parameters['query']['session_id'] = $session_id;
+      $link_parameters['query']['auth'] = $auth;
       $update_title = '<div class="hwc-partner-private-link-block-title">' . l('Update profile', 'private/profile/update', $link_parameters) . '</div>';
-      $update_content = '<div class="hwc-partner-private-link-block-description">'
+/*      $update_content = '<div class="hwc-partner-private-link-block-description">'
         . strtr('Any modifications in your public profile? <a href="!link">Click here to update it.</a>', array('!link' => url('private/profile/update', $link_parameters)))
-        . '</div>';
+        . '</div>';*/
       $node->content['profile_update_link'] = array(
         '#type' => 'markup',
-        '#markup' => $update_title . $update_content,
+        '#markup' => $update_title,// . $update_content,
       );
 
     }
@@ -531,7 +687,10 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     $partner = hwc_partner_get_account_partner();
     $lang_parameter = !empty($language->language) ? $language->language : 'en';
     $url = sprintf('/partner/forms/index.php?mf=TRUE&partner_nid=%s&language=%s&session_id=%s',
-      $partner->nid, $lang_parameter, $_GET['session_id']);
+      $partner->nid, $lang_parameter, check_plain($_GET['session_id']));
+    if (!empty($_GET['auth'])) {
+      $url .= '&auth=' . check_plain($_GET['auth']);
+    }
     $c = 0;
     $node->content['body'][0]['#markup'] = str_replace('/partner/forms/index.php?mf=TRUE"', $url . '"', $node->content['body'][0]['#markup'], $c);
     if ($c != 1) {
@@ -540,7 +699,10 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
   }
   // node 225 - /partner/register
   if ($node->nid == 225 && !empty($_GET['session_id']) && !empty($node->content['body'][0]['#markup'])) {
-    $url = '/partner/forms/index.php?session_id=' . $_GET['session_id'];
+    $url = '/partner/forms/index.php?session_id=' . check_plain($_GET['session_id']);
+    if (!empty($_GET['auth'])) {
+      $url .= '&auth=' . check_plain($_GET['auth']);
+    }
     if (!empty($_GET['newAccess']) && $_GET['newAccess'] === 'true') {
       $url .= '&newAccess=true';
     }
@@ -558,9 +720,13 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
  *
  * Some links such as FOP, are starting with fop/ and do need to be "fixed"
  * due to HTTP server redirects.
+ * Skip direct links to sites/default/files.
  */
 function hwc_partner_pathologic_alter(&$url_params, $parts, $settings) {
   if (preg_match('/^\/partner\/forms\//m', $url_params['path'])) {
+    $url_params['options']['use_original'] = TRUE;
+  }
+  if (preg_match('/^sites\/default\/files\//m', $url_params['path'])) {
     $url_params['options']['use_original'] = TRUE;
   }
 }
@@ -620,6 +786,16 @@ function hwc_partner_node_presave($node) {
     $_SESSION['masqueraded_user'] = $user->uid;
     masquerade_switch_back();
     $user_original = user_load($_SESSION['masquerading']); /* Original user */
+
+    if ( ($node->type == 'news') || ($node->type == 'events') ) {
+      $node->field_modified_on[LANGUAGE_NONE][0] = [
+        'value' => format_date(strtotime('now'), 'custom', 'Y-m-d H:i:') . '00',
+        'timezone' => 'Europe/Madrid',
+        'timezone_db' => 'Europe/Madrid',
+      ];
+      $node->field_modified_by[LANGUAGE_NONE][0] = ['target_id' => $user_original->uid];
+    }
+
     if (!$node->nid) {
       $node->uid  = $user_original->uid;
       $node->name = $user_original->name;

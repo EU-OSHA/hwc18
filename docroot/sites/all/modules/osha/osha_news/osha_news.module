@@ -32,6 +32,14 @@ function osha_news_post_features_enable_feature($component) {
   }
 }
 
+function _osha_news_form_after_build($form, $form_state) {
+  // always hide via states
+  $form['field_modified_on']['#states'] = [
+    'visible' => ['#edit-field-modified-on-und-0-value-day' => ['value' => [-1]]]
+  ];
+  return $form;
+}
+
 /**
  * Implements hook_osha_tmgmt_i18n_string_list().
  */
@@ -43,8 +51,20 @@ function osha_news_osha_tmgmt_i18n_string_list() {
 function osha_news_form_alter(&$form, &$form_state, $form_id) {
   global $theme;
 
-  if($theme != 'osha_admin' && $form_id == 'news_node_form'){
+  if ($theme != 'osha_admin' && $form_id == 'news_node_form') {
     $form['actions']['#attributes']['class'] = array('container');
     $form['field_aditional_resources']['#access'] = FALSE;
+
+    if (!isset($form['#after_build'])) {
+      $form['#after_build'] = array();
+    }
+    $form['#after_build'][] = '_osha_news_form_after_build';
+  }
+
+  if ($form_id == 'events_node_form') {
+    if (!isset($form['#after_build'])) {
+      $form['#after_build'] = array();
+    }
+    $form['#after_build'][] = '_osha_news_form_after_build';
   }
 }

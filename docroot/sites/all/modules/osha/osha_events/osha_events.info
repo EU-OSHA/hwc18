@@ -1,7 +1,7 @@
 name = OSHA Events
 core = 7.x
 package = OSHA
-version = 7.x-1.15
+version = 7.x-1.18
 project = osha_events
 dependencies[] = campaign_materials
 dependencies[] = context
@@ -95,6 +95,8 @@ features[field_instance][] = node-events-field_country_code
 features[field_instance][] = node-events-field_gallery
 features[field_instance][] = node-events-field_location
 features[field_instance][] = node-events-field_migration_source
+features[field_instance][] = node-events-field_modified_by
+features[field_instance][] = node-events-field_modified_on
 features[field_instance][] = node-events-field_organizer
 features[field_instance][] = node-events-field_partner_id
 features[field_instance][] = node-events-field_related_documents

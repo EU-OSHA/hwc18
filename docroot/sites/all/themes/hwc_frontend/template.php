@@ -94,13 +94,35 @@ function hwc_frontend_menu_link(array $variables) {
  */
 function hwc_frontend_preprocess_html(&$vars) {
   if (!empty($vars['is_front'])) {
-    $vars['head_title'] = t('Healthy Workplaces for All Ages') . ' | ' . 'EU-OSHA';
+    $vars['head_title'] = t('Healthy Workplaces MANAGE DANGEROUS SUBSTANCES 2018-19');
+  }
+  if (arg(0) . arg(2) == 'nodeedit') {
+    $n = menu_get_object('node');
+    if ($n->type == 'news' || $n->type == 'events') {
+      $vars['classes_array'][] = 'pz-page';
+    }
+  }
+  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
+    $n = menu_get_object('node');
+    if ($n->type == 'partner') {
+      $vars['classes_array'][] = 'gpep-page';
+    }
+  }
+  if (
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
+    (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
+  ) {
+    $vars['classes_array'][] = 'pz-page';
   }
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
-  // Change Events page title
-  if(!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'], array('page__events', 'page__past_events'))){
+
+  $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
+  $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
+  // Change Events page title.
+  if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
+      array('page__events', 'page__past_events'))) {
     $title = '<span id="block-osha-events-events-links">';
     $title .= l(t('Upcoming events'), 'events') . ' / ' . l(t('Past events'), 'past-events');
     $title .= '</span>';
@@ -110,11 +132,16 @@ function hwc_frontend_preprocess_page(&$vars) {
     unset($vars['page']['content']['system_main']['default_message']);
     drupal_set_title('');
   }
-  // add back to links (e.g. Back to news)
+
+  if (arg(0) == 'practical-tools') {
+    $vars['classes_array'][] = 'page-search';
+  }
+
+  // Add back to links (e.g. Back to news).
   if (isset($vars['node'])) {
     $node = $vars['node'];
     $tag_vars = array(
-      'element' => array (
+      'element' => array(
         '#tag' => 'h1',
         '#attributes' => array(
           'class' => array('page-header'),
@@ -122,6 +149,15 @@ function hwc_frontend_preprocess_page(&$vars) {
       ),
     );
     switch ($node->type) {
+      case 'document':
+        $link_href = 'partners-documents';
+        $link_title = t('Back to the partners’ document list');
+        if (isset($node->workbench_access['section'])) {
+          $link_href = 'communications';
+          $link_title = t('Back to the EU-OSHA communications list');
+        }
+        break;
+
       case 'publication':
         if ($node->field_publication_type[LANGUAGE_NONE][0]['tid'] == 521 /* Case Studies */) {
           $link_title = t('Back to case studies list');
@@ -141,6 +177,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'press_release':
         $link_title = t('Back to press releases list');
         $link_href = 'press-room';
@@ -150,6 +187,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'news':
         $link_title = t('Back to news');
         $link_href = 'news';
@@ -159,6 +197,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'infographic':
         $link_title = t('Back to infographics list');
         $link_href = 'infographics';
@@ -168,6 +207,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'campaign_materials':
         $link_title = t('Back to campaign materials list');
         $link_href = 'campaign-materials';
@@ -177,15 +217,25 @@ function hwc_frontend_preprocess_page(&$vars) {
           '#markup' => theme('html_tag', $tag_vars),
         );
         break;
+
       case 'practical_tool':
         $link_title = t('Back to practical tools list');
         $link_href = 'practical-tools';
+        if (isset($_REQUEST['destination'])) {
+          $vars['page']['below_title']['back-to-link'] = array(
+            '#type' => 'item',
+            '#markup' => '<a class="back-to-link pull-right" href="' . $_REQUEST['destination'] . '">' . $link_title . '</a>',
+          );
+          unset($link_title);
+        }
         $tag_vars['element']['#value'] = t('Practical tools and guidance');
-        $vars['page']['above_title']['practical-tool-page-title'] = array(
+        $vars['page']['below_title']['practical-tool-page-title'] = array(
           '#type' => 'item',
           '#markup' => theme('html_tag', $tag_vars),
         );
+        krsort($vars['page']['below_title']);
         break;
+
       case 'events':
         $date = new DateTime($node->field_start_date['und'][0]['value']);
         $now = new DateTime();
@@ -195,7 +245,7 @@ function hwc_frontend_preprocess_page(&$vars) {
         $breadcrumb[] = t('Media centre');
 
         if ($date < $now) {
-          $breadcrumb[] = t('Past events');
+          $breadcrumb[] = l(t('Past events'), 'past-events');
 
           $link_title = t('Back to past events list');
           $link_href = 'past-events';
@@ -206,7 +256,7 @@ function hwc_frontend_preprocess_page(&$vars) {
           );
         }
         else {
-          $breadcrumb[] = t('Upcoming events');
+          $breadcrumb[] = l(t('Upcoming events'), 'events');
 
           $link_title = t('Back to events list');
           $link_href = 'events';
@@ -220,6 +270,49 @@ function hwc_frontend_preprocess_page(&$vars) {
         drupal_set_breadcrumb($breadcrumb);
 
         break;
+
+      case 'flickr_gallery':
+
+        if (!@$vars['page']['content']['system_main']['nodes'][$vars['node']->nid]['field_cover_flickr']) {
+          $primary = osha_flickr_album_primary();
+          $formatter = 'h';
+          $markup = theme('osha_flickr_photo', array(
+            'format' => NULL,
+            'attribs' => NULL,
+            'size' => $formatter,
+            'photo' => flickr_photos_getinfo($primary),
+            'settings' => [],
+            'wrapper_class' => !empty($element['#settings']['image_class']) ? $element['#settings']['image_class'] : '',
+          ));
+          $cover_flickr = [
+            '#theme' => 'field',
+            '#weight' => 2,
+            '#field_name' => 'field_cover_flickr',
+            '#formatter' => 'album_cover',
+            '#field_type' => 'flickrfield',
+            '#label_display' => 'hidden',
+            '#object' => $vars['node'],
+            '#items' => [
+              [
+                'id' => $primary,
+              ],
+            ],
+            ['#markup' => $markup],
+          ];
+          $vars['page']['content']['system_main']['nodes'][$vars['node']->nid]['field_cover_flickr'] = $cover_flickr;
+        }
+
+        drupal_set_title(t('Photo gallery'));
+        $link_title = t('Back to gallery');
+        $link_href = 'photo-gallery';
+        $vars['page']['below_title']['back-to-link'] = array(
+          '#type' => 'item',
+          '#markup' => l($link_title, $link_href, array('attributes' => array('class' => array('back-to-link pull-right')))),
+        );
+        unset($link_title);
+        unset($vars['page']['above_title']);
+        break;
+
       case 'hwc_gallery':
         $link_title = t('Back to gallery');
         $link_href = 'photo-gallery';
@@ -237,6 +330,7 @@ function hwc_frontend_preprocess_page(&$vars) {
       );
     }
   }
+
   if ($node = menu_get_object()) {
     if ($node->type == 'publication') {
       ctools_include('plugins');
@@ -265,19 +359,22 @@ function hwc_frontend_preprocess_page(&$vars) {
       drupal_set_breadcrumb($breadcrumbs);
     }
   }
-  // Add back link (e.g. 'Back to homepage') for Partners pages
+
+  // Add back link (e.g. 'Back to homepage') for Partners pages.
   $partner = hwc_partner_get_account_partner();
-  if(is_object($partner)){
-    switch(current_path()){
+  if (is_object($partner)) {
+
+    switch (current_path()) {
       case 'node/add/events':
       case 'node/add/news':
       case 'private':
         $link_title = t('Back to homepage');
-        $link_href = 'node/'.$partner->nid;
+        $link_href = 'node/' . $partner->nid;
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
           '#markup' => drupal_get_title(),
-          '#prefix' => '<strong class="title-alt">', '#suffix' => '</strong>'
+          '#prefix' => '<strong class="title-alt">',
+          '#suffix' => '</strong>',
         );
         drupal_set_title('');
         break;
@@ -286,6 +383,16 @@ function hwc_frontend_preprocess_page(&$vars) {
       $vars['page']['above_title']['back-to-link'] = array(
         '#type' => 'item',
         '#markup' => l($link_title, $link_href, array('attributes' => array('class' => array('back-to-link pull-right')))),
+      );
+    }
+
+    if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
+      $url_options = ['query' => ['page' => 'gpep']];
+      $link_href = url('node/' . $partner->nid, $url_options);
+      $link_title = t('Back to the Good practice exchange platform');
+      $vars['page']['below_title']['back-to-link'] = array(
+        '#type' => 'item',
+        '#markup' => '<a class="back-to-link pull-right" href="' . $link_href . '">' . $link_title . '</a>',
       );
     }
   }
@@ -299,6 +406,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     $vars['page']['content']['system_main']['#attributes']['class'][] = 'container';
   }
 }
+
 /**
  * Theme flexible layout of panels.
  * Copied the panels function and removed the css files.
@@ -315,7 +423,7 @@ function hwc_frontend_panels_flexible($vars) {
   $output = "<div class=\"panel-flexible " . $renderer->base['canvas'] . " clearfix\" $renderer->id_str>\n";
   $output .= "<div class=\"panel-flexible-inside " . $renderer->base['canvas'] . "-inside\">\n";
   $output .= panels_flexible_render_items($renderer, $settings['items']['canvas']['children'], $renderer->base['canvas']);
-  // Wrap the whole thing up nice and snug
+  // Wrap the whole thing up nice and snug.
   $output .= "</div>\n</div>\n";
   return $output;
 }
@@ -329,14 +437,32 @@ function hwc_frontend_preprocess_field(&$variables) {
     $field_name = $variables['element']['#field_name'];
     foreach ($variables['items'] as $key => &$item) {
       foreach ($variables['element']['#object']->{$field_name} as $lang => $value) {
-        if ($variables['element']['#object']->{$field_name}[$lang][$key]['format'] == NULL) {
+        if (
+          ($variables['element']['#object']->{$field_name}[$lang][$key]['format'] == NULL)
+          &&
+          ($variables['element']['#object']->language == $lang)
+        ) {
           $item['#markup'] = nl2br($item['#markup']);
         }
       }
     }
   }
 }
+
 function hwc_frontend_preprocess_node(&$vars) {
+  // Remove napo film image.
+  if ($vars['view_mode'] == 'full' && $vars['nid'] == 160) {
+    unset($vars['content']['field_image']);
+    $vars['field_image'] = [];
+  }
+  $search_str = '<div class="col-sm-12 col-md-8 col-md-offset-2">';
+  if ((isset($vars['body'][0]['safe_value'])) && (strpos($vars['body'][0]['safe_value'], $search_str))) {
+    $search_str = '<div class="row text-center recomended-resources-for-you">' . "\n" . $search_str;
+    $vars['content']['body'][0]['#markup'] = str_replace($search_str, $search_str . '<h2 class="recomended-for-you element-invisible">&nbsp;</h2>', $vars['content']['body'][0]['#markup']);
+  }
+  if ($vars['view_mode'] == 'teaser' && $vars['type'] == 'audio_visual') {
+    $vars['classes_array'][] = 'node-practical-tool';
+  }
   if ($vars['view_mode'] == 'full' && $vars['type'] == 'events') {
     $vars['classes_array'][] = 'container';
     if (isset($vars['field_start_date'])) {
@@ -375,6 +501,11 @@ function hwc_frontend_preprocess_node(&$vars) {
   }
   hwc_frontend_top_anchor($vars);
 }
+
+function hwc_frontend_file_upload_help($variables) {
+  return theme_file_upload_help($variables);
+}
+
 function hwc_frontend_preprocess_image_style(&$variables) {
   $variables['attributes']['class'][] = 'img-responsive';
   if (empty($variables['alt'])) {
@@ -413,6 +544,35 @@ function hwc_frontend_on_the_web_image($variables) {
   );
   return theme('image', $variables);
 }
+
+function hwc_frontend_checkboxes($variables) {
+  $element = $variables['element'];
+  $attributes = array();
+  if (isset($element['#id'])) {
+    $attributes['id'] = $element['#id'];
+  }
+  $attributes['class'][] = 'form-checkboxes';
+  if (!empty($element['#attributes']['class'])) {
+    $attributes['class'] = array_merge($attributes['class'], $element['#attributes']['class']);
+  }
+  if (isset($element['#attributes']['title'])) {
+    $attributes['title'] = $element['#attributes']['title'];
+  }
+  $before_children = '';
+  if ($variables['element']['#id'] == 'edit-field-priority-area') {
+    $checked = _osha_publication_is_selected_facet() ? '' : 'checked';
+    $link = _osha_publication_generate_all_facet_link();
+    $before_children = '
+<ul class="facetapi-facetapi-checkbox-links facetapi-facet-field-priority-area facetapi-processed no-margin-bottom">
+  <li class="leaf first">
+    <input type="checkbox" class="facetapi-checkbox" id="facetapi-link--all--checkbox" ' . $checked . '>' . $link . '
+  </li>
+</ul>';
+
+  }
+  return '<div' . drupal_attributes($attributes) . '>' . $before_children . (!empty($element['#children']) ? $element['#children'] : '') . '</div>';
+}
+
 /**
  * Colorbox theme function to add support for image field caption.
  *

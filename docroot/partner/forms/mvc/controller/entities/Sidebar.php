@@ -81,8 +81,8 @@ class Sidebar extends Controller implements IController
         if (! $entities) {
             throw new OshException('bad_config', 500);
         }
-        
         $sections = $params->get('sections_validated');
+
         foreach ($entities as $entity) {
             $model = new Model(strtolower($params->getUrlParamValue('entity') . '_' . ucfirst($entity)));
             $params->set('route', $entity);
@@ -101,7 +101,10 @@ class Sidebar extends Controller implements IController
             $supportforcampaignsection = false;
             $yourcampaignpledgesection = false;
             $tobecomeapartnersection = false;
+            $aboutyourcomrepsection = false;
             $primarycontactsection = false;
+            $startsection = isset($_SESSION['basicRequirements']) && $_SESSION['basicRequirements'];
+
 
             foreach ($attributes as $name => &$attribute) {
                 if($params->getUrlParamValue('partner_type') == 'current'){
@@ -121,9 +124,38 @@ class Sidebar extends Controller implements IController
                         $gencontactinfsection = true;
                     }elseif($name == "osh_aboutyourrepsection" && $attribute->getValue()){
                         $aboutyourrepsection = true;
+                    }elseif($name == "osh_aboutyourcomrepsection" && $attribute->getValue()){
+                        $aboutyourcomrepsection = true;
                     }
                 }
             }
+
+
+
+            /*foreach ($sections as $section => $value) {
+                   if($section == "ORGANISATION" && !$aboutyourorgsection){
+                    $sections[$section] = 0;
+                }elseif($section == "GENERAL_INFORMATION" && !$gencontactinfsection){
+                    $sections[$section] = 0;
+                }elseif(($section == "CEO" || $section == "CHIEF") && !$aboutyourceosection){
+                    $sections[$section] = 0;
+                }elseif($section == "BECOME" && !$tobecomeapartnersection){
+                    $sections[$section] = 0;
+                }elseif($section == "INVOLVEMENT" && !$supportforcampaignsection){
+                    $sections[$section] = 0;
+                }elseif($section == "PLEDGE" && !$yourcampaignpledgesection){
+                    $sections[$section] = 0;
+                }elseif($section == "PRIMARY_CONTACT" && !$primarycontactsection){
+                    $sections[$section] = 0;
+                }elseif($section == "OSH" && !$aboutyourrepsection) {
+                    $sections[$section] = 0;
+                }elseif($section == "COMMUNICATION_REP" && !$aboutyourcomrepsection){
+                    $sections[$section] = 0;
+                }elseif($section == "START" && !$startsection){
+                    $sections[$section] = 0;
+                }
+            }*/
+
             foreach ($attributes as $name => &$attribute) {
                 if($params->getUrlParamValue('partner_type') == 'current' && $name == 'contact_osh_confirm_mainemail'){
                     continue;
@@ -131,11 +163,14 @@ class Sidebar extends Controller implements IController
                 $section = $attribute->getSection();
                 if (! empty($section) && isset($sections[$section])) {
                     $validation = $attribute->getValidator();
+
                     if (! empty($validation)) {
-                        if ((is_array($validation) && array_search('not_null', $validation))
-                            || ((! is_array($validation)) && (strval($validation) === strval('not_null')))) {
+                        if ((is_array($validation) && (array_search('not_null', $validation)|| array_search('true', $validation)))
+                            || ((! is_array($validation)) && (strval($validation) === strval('not_null') || strval($validation) === strval('true')))) {
                             $sections[$section] &= $model->validate($attribute->getName());
                             if($sections[$section] && $params->getUrlParamValue('partner_type') == 'current'){
+                                error_log("EVE_CSM_6_" . var_export($section, true));
+
                                 if($section == "ORGANISATION" && !$aboutyourorgsection){
                                     $sections[$section] = 0;
                                 }elseif($section == "GENERAL_INFORMATION" && !$gencontactinfsection){
@@ -150,7 +185,11 @@ class Sidebar extends Controller implements IController
                                     $sections[$section] = 0;
                                 }elseif($section == "PRIMARY_CONTACT" && !$primarycontactsection){
                                     $sections[$section] = 0;
-                                }elseif($section == "OSH" && !$aboutyourrepsection){
+                                }elseif($section == "OSH" && !$aboutyourrepsection) {
+                                    $sections[$section] = 0;
+                                }elseif($section == "COMMUNICATION_REP" && !$aboutyourcomrepsection){
+                                    $sections[$section] = 0;
+                                }elseif($section == "START" && !$startsection && $params->getUrlParamValue('partner_type') != 'current'){
                                     $sections[$section] = 0;
                                 }
                             }
@@ -160,11 +199,19 @@ class Sidebar extends Controller implements IController
                     if($sections[$section] && $params->getUrlParamValue('partner_type') == 'current' && $section == "OSH" && !$aboutyourrepsection){
                                     $sections[$section] = 0;
                                 }
+                    //Workaround COMREP section -> Not have required fields
+                    if($sections[$section] && $params->getUrlParamValue('partner_type') == 'current' && $section == "COMMUNICATION_REP" && !$aboutyourcomrepsection){
+                        $sections[$section] = 0;
+                    }
+
+                    if($sections[$section] && $section == "START" && !$startsection && $params->getUrlParamValue('partner_type') != 'current'){
+                        $sections[$section] = 0;
+                    }
                 }
             }
         }
         $params->set('route', $originalRoute);
-
+        error_log("EVE_CSM_5_" . var_export($sections, true));
         return $sections;
     }
 
@@ -188,8 +235,8 @@ class Sidebar extends Controller implements IController
                 $content = json_decode($content, true);
                 $content = isset($content['sections']) ? $content['sections'] : '';
                 if($partnertype == 'fop' && isset($content['title'])){
-                    if($content['title'] == "3. Contact information"){
-                        $content['title'] = "2. Contact information";
+                    if($content['title'] == "3. About your Main Contact"){
+                        $content['title'] = "2. About your Main Contact";
                     }
                 }
                 if ($content && isset($content['title']) && isset($content['sections'])) {

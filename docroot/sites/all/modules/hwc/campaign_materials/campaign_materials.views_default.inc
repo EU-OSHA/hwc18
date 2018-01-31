@@ -37,7 +37,7 @@ function campaign_materials_views_default_views() {
   $handler->display->display_options['style_options']['row_class'] = 'row';
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -94,7 +94,7 @@ function campaign_materials_views_default_views() {
     ),
     'trim_preserve_tags' => '',
   );
-  /* Field: Content: Related documents */
+  /* Field: Content: Files */
   $handler->display->display_options['fields']['field_related_documents']['id'] = 'field_related_documents';
   $handler->display->display_options['fields']['field_related_documents']['table'] = 'field_data_field_related_documents';
   $handler->display->display_options['fields']['field_related_documents']['field'] = 'field_related_documents';

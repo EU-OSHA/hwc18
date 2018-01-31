@@ -38,6 +38,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -55,6 +61,12 @@ function hwc_gallery_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'pub_teaser' => array(
         'label' => 'above',
@@ -136,6 +148,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -162,6 +180,12 @@ function hwc_gallery_field_default_field_instances() {
           'thumb_style' => 'small_thumb_from_medium_crop',
         ),
         'type' => 'galleryformatter_default',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'pub_teaser' => array(
@@ -249,7 +273,19 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'date_default',
         'weight' => 0,
       ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'osha_slideshow' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -323,6 +359,12 @@ function hwc_gallery_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -340,6 +382,12 @@ function hwc_gallery_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 1,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'pub_teaser' => array(
         'label' => 'above',

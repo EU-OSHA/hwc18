@@ -146,7 +146,7 @@ fieldset {
     border         : none;
 /*    border-bottom  : 0.2vw dotted #c1e000;*/
     padding-bottom : 2vw;
-    margin-bottom  : 3vw;
+    /*margin-bottom  : 3vw;*/
 }
 
 legend {
@@ -193,21 +193,27 @@ select[disabled] {
 }
 
 .validation {
-    float           : right;
-/*    width           : 1.2vw;
-    height          : 1.2vw;*/
+    float           : left;
+    /*
+    width           : 1.2vw;
+    height          : 1.2vw;
     width           : 18px;
-    height          : 18px;
+    height          : 18px;*/
     cursor          : pointer;
     margin-left     : 1vw;
     margin-top      : 0.5vw;
+    margin-bottom   : 0.5vw;
     background      : url(../img/validation-NoCheck.png);
+    background-repeat: no-repeat;
+    padding-left: 25px;
     /*background-size : 1.2vw;*/
 }
 
 .validation-pressed {
     background      : url(../img/validation-check.png);
-/*    background-position-x: -0.3vw;*/
+    background-repeat: no-repeat;
+
+    /*    background-position-x: -0.3vw;*/
 }
 
 .div-checkbox {
@@ -232,6 +238,14 @@ select[disabled] {
     margin-bottom: 1.5vw;
     margin-top: -2vw;
 }
+
+.separatorSection{
+    border-bottom : 0.1vw solid grey;
+    margin-top: 0.4vw;
+    margin-left: 14px;
+    margin-right: 14px;
+}
+
 .lessSeparator{
     margin-top: -0.5vw;
 }
@@ -288,7 +302,7 @@ select[disabled] {
 .progressbar-text {
     background-repeat : no-repeat;
     background-size   : 100%;
-    width             : 33%;
+    width             : 25%;
     float             : left;
     line-height       : 350%;
     color             : #ffffff;
@@ -316,6 +330,10 @@ select[disabled] {
     background-image : url(../img/green-section.png);
 }
 
+.progressbar-disabled {
+    background-image : url(../img/grey-section.png);
+}
+
 .progressbar-first {
     background-image : url(../img/blue-section-first.png);
 }
@@ -330,6 +348,10 @@ select[disabled] {
 
 .progressbar-last-active {
     background-image : url(../img/green-section-last.png);
+}
+
+.progressbar-last-disabled {
+    background-image : url(../img/grey-section-last.png);
 }
 
 .review-fields {
@@ -665,7 +687,7 @@ visualización que en un dispositivo móvil*/
     border-color : red;
 }
 
-.requiredAsterisk{
+.requiredAsterisk {
     color: red;
     display: inline-block;
     font-weight: 800;
@@ -673,6 +695,8 @@ visualización que en un dispositivo móvil*/
     margin-top: -1vw;
     font-family: sans-serif;
 }
+
+
 #a_disclaimer {
     cursor : pointer;
 }
@@ -701,8 +725,13 @@ textarea.error {
 }
 
 .main-contact-change-backup {
-    display : none;
+    /* -display : none; */
 }
+
+.main-contact-change-clone{
+    margin-bottom: 450px;
+}
+
 .mainContactCheck label{
     display: inline;
     margin-left: 1%;
@@ -769,7 +798,8 @@ label[for="company_osh_slideshareprofile"],
 }
 button#plusSN{
 	background-color: transparent;
-        /*margin-left: 3.2em;*/
+    /*margin-left: 6.5vw;*/
+    float: right;
 }
 button#plusSN span{
 	 color: #003399;
@@ -792,23 +822,23 @@ button.delSN img{
     margin-top: -2px;
 }
 
-
 select.company_osh_selectsocialnetworks{
 	width: auto;
 	float:left;
-        margin-top: 0.3em;
-        
-        /*height: 24px;*/
-}
-input#socialNetworkTextBox{
-    /* width: 130%;*/
-    width: 100%;
-    vertical-align:middle;
-}
-.socialNetworks #SocialNetHidden{
-    display: none;
+    margin-top: 0.3em;
+
 }
 
+input#socialNetworkTextBox{
+    width: 130%;
+    margin-top: 4px;
+    /*vertical-align: middle;*/
+}
+
+.socialNetworks #SocialNetHidden{
+    display: none;
+    width: 210%;
+}
 
 div.typeSN{
 	font-weight: bold;
@@ -816,6 +846,7 @@ div.typeSN{
 	/*font-size: 9pt;*/
 	float:left;
 }
+
 div.titleSN{
  	/*font-size: 9pt;*/ 
 	color: #003399;
@@ -823,12 +854,29 @@ div.titleSN{
         margin-bottom: 2%;
 }
 
-div.required > div label::after{
+div.required > div label:first-child::after{
     content: " *";
     color: red;
     font-size: 2vw;
 }
 
+#divtoshow {
+    float: left;
+    position: absolute;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    width: 150px;
+    background: white;
+    color: #333333;
+    font-size: 1vw;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+/*
+div.required > div label:first-child:hover{
+    color: green;
+}*/
 
 #MESSAGE{
     padding-top: 10px;
@@ -967,12 +1015,8 @@ p.congrats {
     font-size: large;
     margin-right: 1%;
 }
-.saveDialog{
-    /*position: fixed;*/
-    //Fixed not works into the iframe
+.saveDialog {
     position: absolute;
-    left: 40%;
-    /*top: 40%;*/
     top: 5%;
     background-color: #F2F2F2;
     border: 1px solid red;
@@ -1016,7 +1060,7 @@ p.congrats {
     color: black !important;
 }
 .saveExplanationSave{
-    font-size: xx-small;
+    font-size: x-small;
 }
 #containerSocialNetworks{
     margin-top: 4%;
@@ -1028,3 +1072,97 @@ p.congrats {
 }
 
 input[type="radio"]{border:0 !important;}
+
+label.congrats_rad > input{
+    visibility: hidden;
+    position: absolute;
+}
+img.congrats_rad{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+
+
+
+.helpSection {
+    /*float: right;
+    margin-right: 20%;*/
+    padding: 10px 10px;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border-radius: 30px;
+    color: dimgrey;
+    border: solid black 1px;
+    box-shadow: 0px 2px 2px #888888;
+    cursor: pointer;
+}
+
+.helpIcon{
+    color: black;
+    background-color: lightgray;
+    border-radius: 50%;
+    border: solid black 2px;
+    padding: 0px 8px;
+}
+
+
+.helpDialog {
+    position: absolute;
+    top: 5%;
+    background-color: #F2F2F2;
+    border: 1px solid red;
+    height: auto;
+    font-size: 80%;
+}
+.helpDialog p {
+    color: black;
+    text-align: left;
+}
+.helpDialog button {
+    float:left;
+    width: 100%;
+    background-color: darkgrey;
+    color: black;
+}
+
+.helpDiv{
+    margin-bottom  : 3vw;
+}
+
+.helpDiv .validation{
+    margin-top: -6px;
+}
+
+
+.ui-widget-overlay
+{
+    opacity: .50 !important; /* Make sure to change both of these, as IE only sees the second one */
+    filter: Alpha(Opacity=50) !important;
+
+    background-color: rgb(50, 50, 50) !important; /* This will make it darker */
+}
+
+::-ms-clear { display: none; }
+
+#containerMobileDialog {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+#mobileDialog {
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background: white;
+    color: #333333;
+    font-size: 1vw;
+    border: 1px solid grey;
+    border-radius: 5px;
+}

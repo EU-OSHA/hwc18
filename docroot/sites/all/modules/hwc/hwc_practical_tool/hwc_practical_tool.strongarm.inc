@@ -146,26 +146,35 @@ function hwc_practical_tool_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'priority_areas' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlights_item_alternative' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '4',
+          'weight' => '50',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '47',
         ),
         'redirect' => array(
-          'weight' => '2',
+          'weight' => '49',
         ),
         'workbench_access' => array(
-          'weight' => '1',
+          'weight' => '46',
         ),
         'language' => array(
           'weight' => '5',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '48',
         ),
       ),
       'display' => array(),

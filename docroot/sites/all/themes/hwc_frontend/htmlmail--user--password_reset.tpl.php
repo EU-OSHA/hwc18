@@ -49,25 +49,17 @@
     $template_path = substr($template_path, $current_len + 1);
   }
   $template_url = url($template_path, array('absolute' => TRUE));
+
+  $content = hwc_get_htmlmail_content($body);
+  echo $content['header'];
 ?>
 <div class="htmlmail-user-password-reset-body htmlmail-user-body htmlmail-body">
-<?php echo $body; ?>
+<?php echo $content['body']; ?>
 <br/>
 <br/>
 <br/>
 <br/>
 <br/>
-<?php
-  $directory = drupal_get_path('theme', 'hwc_frontend');
-  global $base_url; // TODO: should link to node
-  print l(theme('image', array(
-    'path' => $directory . '/images/email-footer.png',
-    'width' => 892,
-    'height' => 154,
-    'attributes' => array('style' => 'border: 0px;')
-    )), $base_url, array(
-    'html' => TRUE,
-    'external' => TRUE
-  ));
-?>
 </div>
+<?php
+echo $content['footer'];

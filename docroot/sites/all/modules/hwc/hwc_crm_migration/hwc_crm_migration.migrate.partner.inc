@@ -144,13 +144,17 @@ class PartnerMigration extends HwcCrmMigration {
     // Unpublish partner if status is not 863680005 (MH-129) - except fop.
     $term = taxonomy_get_term_by_name($row->field_partner_type, 'partner_types');
     $is_fop = FALSE;
+    $is_oa = FALSE;
     if (!empty($term)) {
       $term = current($term);
       if ($term->uuid == PARTNER_TYPE_FOP) {
         $is_fop = TRUE;
       }
+      if ($term->uuid == PARTNER_TYPE_OA) {
+        $is_oa = TRUE;
+      }
     }
-    if (!$is_fop && $row->field_appform_status != 863680005) {
+    if ((!$is_fop && !$is_oa) && $row->field_appform_status != 863680005) {
       $this->currentMigration()->displayMessage(
         strtr('The partner profile "@partner" does not have app form status published; unpublishing...',
           array('@partner' => $row->title)
@@ -162,9 +166,9 @@ class PartnerMigration extends HwcCrmMigration {
     $entity->path['pathauto'] = TRUE;
     if (!empty($row->regenerate_alias) && !empty($entity->nid)) {
       if ($existing_alias = _pathauto_existing_alias_data('node/' . $entity->nid, 'en')) {
-        // Remove old alias
+        // Remove old alias.
         path_delete($existing_alias['pid']);
-        // Redirect old alias
+        // Redirect old alias.
         $redirect = new stdClass();
         redirect_object_prepare($redirect);
         $redirect->source = $existing_alias['alias'];
@@ -203,6 +207,7 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
 
 
   protected function parseSourceFile() {
+    global $user;
     self::$data = array();
     if (!is_readable($this->file)) {
       watchdog('hwc_crm_migration', 'Cannot find migration files: @file (set `hwc_crm_data_dir` properly)', array('@file' => $this->file), WATCHDOG_WARNING);
@@ -210,7 +215,10 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
     }
     if ($xml = simplexml_load_file($this->file, 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       // Contact fields are attributes of Detail.
+      $total = 0;
+      $ready_to_import = 0;
       foreach ($xml->xpath('//Details') as $item) {
+        $total++;
         $data = new stdClass();
         $attributes = $item->attributes();
         $data->title = trim((string) $attributes['Textbox1']);
@@ -259,7 +267,7 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
           $data->field_ceo_photo_file = file_munge_filename($filename . '.' . $ceo_image_ext, '');
         }
 
-        // Try to assign a valid partner type term
+        // Try to assign a valid partner type term.
         $partner_type = (string) $attributes['Textbox28'];
         $term = taxonomy_get_term_by_name($partner_type, 'partner_types');
         if (!empty($term)) {
@@ -269,7 +277,7 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
           watchdog('hwc_crm_migration', 'Ignoring partner with type @type in the vocabulary for organisation @organisation',
             array(
               '@type' => $partner_type,
-              '@organisation' => $data->title
+              '@organisation' => $data->title,
             ), WATCHDOG_WARNING);
           continue;
         }
@@ -290,6 +298,12 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
         if (empty(self::$data[$data->field_guid_organisation])) {
           self::$data[$data->field_guid_organisation] = $data;
         }
+        $ready_to_import++;
+      }
+      if (($user->uid == 1) && (arg(2) == 'migrate')) {
+        drupal_set_message(strtr('File: @file', array('@file' => $this->file)));
+        drupal_set_message(strtr('Total: @total', array('@total' => $total)));
+        drupal_set_message(strtr('Ready to import: @ready_to_import', array('@ready_to_import' => $ready_to_import)));
       }
     }
   }

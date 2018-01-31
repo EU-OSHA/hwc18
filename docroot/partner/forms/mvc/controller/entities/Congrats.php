@@ -5,6 +5,7 @@
  * @version 1.0
  */
 class Congrats extends Controller implements IController, IForm {
+
     /**
      * Class constructor
      * @param bool $directOutput
@@ -28,8 +29,8 @@ class Congrats extends Controller implements IController, IForm {
         $params = Parameters::getInstance();
         $renderer = new Renderer(__CLASS__);
         $renderer->setViewPath($params->get('viewEntitiesPath'));
-        $progressbar = new Progressbar(false);
-        $progressbarContent = $progressbar->execute();
+        //$progressbar = new Progressbar(false);
+        //$progressbarContent = $progressbar->execute();
         $contentArray = array(
             'appurl' => APP_URL . '?route=' . $params->get('route'),
             'homeurl' => APP_URL,
@@ -38,8 +39,9 @@ class Congrats extends Controller implements IController, IForm {
             'fullwidth' => true,
             'printable' => false,
             'HelpMessage' => "print",
-            'progressbar' => $progressbarContent,
+           // 'progressbar' => $progressbarContent,
             'category' => $params->getUrlParamValue('entity')
+
         );
         $content = $renderer->render($contentArray);
          //Vaciamos la variable returnCode para mostrar el dialog una núnica vez.
@@ -68,6 +70,18 @@ class Congrats extends Controller implements IController, IForm {
     public function send($save = false, $updateMF = false) {
         header('Location: ' . APP_URL);
         die;
+    }
+
+    /**
+     * Send action
+     * @param
+     */
+    public function submitSatisfaction() {
+        $params = Parameters::getInstance();
+        $MyId = $params->getUrlParamValue('session_id');
+        $SelectedSatisfaction = $_GET['satisfaction'];
+        $currentModel = new Model("");
+        $currentModel->submitSatisfactionToCDB($MyId, $SelectedSatisfaction);
     }
 
 }

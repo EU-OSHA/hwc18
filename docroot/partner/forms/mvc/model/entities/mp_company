@@ -3,12 +3,12 @@
     "title": "1. About your Media Outlet",
     "sections": {
         "ORGANISATION": "About your Media Outlet",
-        "GENERAL_INFORMATION": "General Contact Information",
+        "GENERAL_INFORMATION": "About your General Contact Information",
         "CHIEF": "Editor in Chief"
     },
     "sections_mf": {
         "ORGANISATION": "About your Media Outlet",
-        "GENERAL_INFORMATION": "General Contact Information",
+        "GENERAL_INFORMATION": "About your General Contact Information",
         "CHIEF": "Editor in Chief"
     }
   },
@@ -130,7 +130,7 @@
     },
     "company_osh_logoimage": {
       "name": "company_osh_logoimage",
-      "label": "Upload your organisation’s logo",
+      "label": "Organisation’s logo",
       "helpText" : "Please upload your company logo in .png or .jpg file format. The file size must not exceed 1MB",
       "helpTextImageLoaded" : "Please, if you want to change this logo, please upload a new one in png. or jpg. file format. The file must not exceed 1MB",
       "publicProfile": "publicProfile",
@@ -179,7 +179,7 @@
     },
     "company_osh_generalemail": {
       "name": "company_osh_generalemail",
-      "label": "General email address",
+      "label": "General email Address",
       "publicProfile": "publicProfile",
       "section": "GENERAL_INFORMATION",
       "type": "text",
@@ -191,11 +191,21 @@
     "company_osh_generalphone": {
       "name": "company_osh_generalphone",
       "label": "General telephone number",
-      "placeholder": "(000) 0000 0000",
+      "placeholder": "0000 0000",
       "publicProfile": "publicProfile",
       "section": "GENERAL_INFORMATION",
       "type": "text",
       "validator": "not_null"
+    },
+    "company_osh_prefixgeneralphone": {
+          "name": "company_osh_prefixgeneralphone",
+          "label": "General telephone number Prefix",
+          "helpText": "Select your prefix from the drop-down",
+          "publicProfile": "publicProfile",
+          "placeholder": "+00",
+          "section": "GENERAL_INFORMATION",
+          "type": "dropdown",
+          "validator": "not_null"
     },
     "company_osh_homepage": {
       "name": "company_osh_homepage",
@@ -203,8 +213,7 @@
       "publicProfile": "publicProfile",
       "placeholder": "http(s)://www.example.com",
       "section": "GENERAL_INFORMATION",
-      "type": "text",
-      "validator": "not_null"
+      "type": "text"
     },
     "company_osh_ceo_firstname": {
       "name": "company_osh_ceo_firstname",
@@ -321,6 +330,7 @@
     "company_osh_country": "osh_country",
     "company_osh_generalemail":"osh_generalemail",
     "company_osh_generalphone":"osh_generalphone",
+    "company_osh_prefixgeneralphone":"osh_prefixgeneralphone",
     "company_osh_mainphone": "osh_mainphone",
     "company_osh_zipcode": "osh_zipcode",
     "company_osh_orgname": "osh_orgname",
@@ -342,7 +352,6 @@
     "company_osh_publicationnewsletter": "osh_publicationnewsletter",
     "company_osh_publicationradio": "osh_publicationradio",
     "company_osh_readershiposhcommunity": "osh_readershiposhcommunity",
-    "company_osh_readershipspecialist": "osh_readershipspecialist",
     "company_osh_readershipsmes": "osh_readershipsmes",
     "company_osh_readershipeuinstitutions": "osh_readershipeuinstitutions",
     "company_osh_readershiptrade": "osh_readershiptrade",
@@ -368,6 +377,7 @@
     "company_osh_country": "osh_phcountryid",
     "company_osh_generalemail": "generalemailaddress1",
     "company_osh_generalphone": "osh_phone1",
+    "company_osh_prefixgeneralphone":"osh_prefixphone1",
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
     "company_osh_zipcode": "osh_phcp",
     "company_osh_orgname": "osh_companyorganisationname",
@@ -395,9 +405,8 @@
     "company_osh_publicationnewsletter": "osh_publicationnewsletter",
     "company_osh_publicationradio": "osh_publicationradio",
     "company_osh_readershiposhcommunity": "osh_readershiposhcommunity",
-    "company_osh_readershipspecialist": "osh_readershipspecialist",
     "company_osh_readershipsmes": "osh_readershipsmes",
-    "company_osh_dedicatedcampaignsite": "osh_dedicatedsite",
+    "osh_dedicatedsite": "osh_dedicatedsite",
     "company_osh_readershipeuinstitutions": "osh_readershipeuinstitutions",
     "company_osh_readershiptrade": "osh_readershiptrade",
     "company_osh_readershipacademics": "osh_readershipacademics",

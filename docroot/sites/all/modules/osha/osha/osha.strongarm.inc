@@ -720,7 +720,7 @@ el.remove();
       'value' => '<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>',
       'format' => 'full_html',
     ),
-    'popup_link' => 'node/5436',
+    'popup_link' => 'node/102',
     'popup_link_new_window' => 1,
     'popup_height' => '120',
     'popup_width' => '100%',
@@ -866,29 +866,38 @@ el.remove();
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'priority_areas' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlights_item_alternative' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'language' => array(
           'weight' => '2',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'workbench_access' => array(
           'weight' => '1',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(
         'share_widget' => array(
           'default' => array(
-            'weight' => '3',
+            'weight' => '4',
             'visible' => TRUE,
           ),
           'body' => array(
@@ -902,6 +911,10 @@ el.remove();
           'osha_resources' => array(
             'weight' => '0',
             'visible' => TRUE,
+          ),
+          'priority_areas' => array(
+            'weight' => '6',
+            'visible' => FALSE,
           ),
         ),
       ),

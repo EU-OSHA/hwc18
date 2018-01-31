@@ -1,3 +1,7 @@
+body {
+    font-size: 19px;
+}
+
 button,
 input[type=submit],
 input[type=file],
@@ -9,6 +13,7 @@ input[type=file],
 .validation,
 .screen-right,
 #general-text,
+#general-text-comrep,
 .promoteText3,
 #a_disclaimer{
     display: none !important;
@@ -44,31 +49,31 @@ textarea {
 }
 #promoteText{
     margin-top: 0 !important;
+}
+@media print{
+    body{
+        width: 100%;
     }
-    @media print{
-        body{
-            width: 100%;
-        }
-        
-    }
+
+}
 #otherUserField1{
     margin-top: 0px !important;
 }
 #otherUserField2{
     display:  inherit !important;
-     margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 #otherUserField3{
     display:  inherit !important;
-     margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 #otherUserField4{
     display:  inherit !important;
-     margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 #otherUserField5{
     display:  inherit !important;
-     margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 .multipleLabelMP{
     display: none !important;

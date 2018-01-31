@@ -2,8 +2,10 @@
 #sliding-popup{
 	height: auto !important;
 	overflow: hidden;
+	top: -210px !important;
 }
 header.navbar-default{
+	font-size: 14px;
 	border: none;
 	background-color: @bg-default-color;
 	border-radius: 0px;
@@ -11,6 +13,10 @@ header.navbar-default{
 	padding-right: 0;
 	margin-bottom: 0;
 	top: 0px;
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	transition: top 0.3s ease-in-out;
 	/* header */
 
 	.campaigns-header{
@@ -29,28 +35,29 @@ header.navbar-default{
 				margin-left: 30px;
 			}
 			a img.pull-left{
-				width: 160px;
-				height: auto;
-				margin-top: 15px;
-				margin-left: 0px;
+				width: 190px;
+			    height: auto;
+			    margin-top: 44px;
+			    margin-left: 0px;
 			}
 			img:nth-child(3){
-				padding-top: 85px;
-				padding-bottom: 15px;
-				padding-right: 3em;
+				padding-top: 69px;
+			    padding-bottom: 32px;
+			    padding-right: 15px;
 				border-right: 1px solid @border-header-color;
-				width: 120px;
-				height: auto;
+				width: 80px;
+			    height: auto;
+			    margin-left: 10px;
 			}
 			
 			.header-text{
 				color: @text-color-2;
-				font-size: 1.65em;
-				font-weight: bold;
-				width: 250px;
-				padding-top: 1.2em;
-				padding-left: 2em;
-				float: left;
+				font-size: 1.6em;
+			    font-weight: bold;
+			    max-width: 315px;
+			    padding-top: 1em;
+			    padding-left: 1.5em;
+			    float: left;
 			}
 			
 			/* languages */
@@ -62,13 +69,36 @@ header.navbar-default{
 				position: absolute;
 				bottom: -4px;
 				right: 0;
-				select{
+				#lang_dropdown_select_language_chosen > .chosen-single, select{
+					background: none !important;
 					background-color: @input-language-default-bg;
 					color: @input-language-default-color;
 					border: none;
 					height: 25px;
 					padding: 0px;
 					cursor: pointer;
+					box-shadow: none !important;
+					span{
+						padding: 0px 4px;
+					}
+				}
+				#lang_dropdown_select_language_chosen{
+					background-color: @input-language-default-bg;
+					color: @input-language-default-color;
+					border: none;
+					height: 25px;
+					padding: 0px;
+					cursor: pointer;
+					margin: 0px;
+
+				}
+				.chosen-drop{
+					background-color: @input-language-default-bg;
+					ul{
+						padding: 0px;
+						margin: 0px;
+						margin-bottom: 0px;
+					}
 				}
 				&:after{
 					width: 30px;
@@ -88,8 +118,9 @@ header.navbar-default{
 
 			#block-hwc-partner-hwc-partner-mostra-masquerade{
 				float: right;
-			    margin-top: 7px;
+			    margin-top: 3px;
     			margin-bottom: 3px;
+    			clear: both;
 			}
 
 			/* search */
@@ -97,6 +128,14 @@ header.navbar-default{
 				clear:both;
 				//margin-bottom:15px;
 				.input-group-btn{
+				}
+				.input-group{
+					.add-clear-span{
+						display: block !important;
+						a[href*="#clear"]{
+							right: 10px !important;
+						}
+					}
 				}
 				button{
 					color: @color0;
@@ -109,6 +148,9 @@ header.navbar-default{
 					&:focus{
 						outline: 0;
 					}
+				}
+				#edit-actions{
+					margin-bottom: 0px;
 				}
 			}
 		}
@@ -149,10 +191,10 @@ header.navbar-default{
 			    font-weight: 700;
 			    font-style: italic;
 			    float: right;
-			    font-size: .95em;
-			    padding-top: 6px;
-			    padding-bottom: 6px;
-			    padding-right: 1em;
+			    font-size: .89em;
+			    padding-top: 5px;
+			    padding-bottom: 0px;
+			    padding-right: 10px;
 			a:before{
 				content: ">";
 				padding-right: 5px;
@@ -204,23 +246,27 @@ header.navbar-default{
 					.dropdown-menu{
 						padding: 0;
 						min-width: 100%;
+						//min-width: 160px;
 						box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 						border: none;
 						background-color: @menu-bg-color;
 						text-transform: initial;
-						padding: 6px 8px 6px 0;
+						padding: 6px 8px 6px 8px;
 						border-radius: 0px;
 						font-size:1em;
 						li{
 							width: 100%;
 							padding: 6px 0;
 							clear:both;
+							padding-left: 15px;
+							position: relative;
 							a{
 								text-align: left;
 								display: inline;
 								font-style: italic;
 								padding:0;
 								white-space: normal;
+								text-transform: none;
 								&:hover{
 									font-weight: bold;
 									background-color: @menu-bg-color;
@@ -228,17 +274,60 @@ header.navbar-default{
 							}
 							&:before{
 								content: ">";
-								padding-left: 26px;
 								padding-right: 5px;
 								display: block;
 							    float: left;
 							    height: 22px;
+							    position: absolute;
+							    left: 2px;
 							}
 						}
 					}
 					.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus,
 						.dropdown-menu > .active > span, .dropdown-menu > .active > span:hover, .dropdown-menu > .active > span:focus{
 						background-color: @menu-bg-color;
+					}
+				}
+				
+				li.last{
+					.dropdown-menu{
+						min-width: 100%;
+						position: absolute;
+    					right: 0px;
+					}
+				}
+				li.active-trail{
+					font-weight: bold;
+					color: @menu-selected-color;
+					a, > span{
+						color: @menu-selected-color;
+						background-color: @menu-bg-color;
+					}
+					ul li a, ul li span{
+						color: white;
+					}
+					ul li.active-trail{
+						color: white;
+						a{
+							font-weight: bold;
+						}
+					}
+				}
+				>li.leaf{
+					>a{
+						margin-top: 8px;
+						margin-bottom: 8px;
+						border-right: 1px solid white;
+						padding-bottom: 2px;
+						padding-top: 2px;
+						overflow: hidden;
+						padding-left: 3px;
+						padding-right: 3px;
+					}
+					@media only screen and (min-width : 767px) and (max-width : 900px){
+						>a{
+							font-size: 11px;
+						}
 					}
 				}
 				> li.first{
@@ -267,38 +356,18 @@ header.navbar-default{
 						}
 					}
 				}
-				li.last{
-					.dropdown-menu{
-						min-width: 100%;
-						position: absolute;
-    					right: 0px;
-					}
-				}
-				li.active-trail{
-					font-weight: bold;
-					color: @menu-selected-color;
-					a, > span{
-						color: @menu-selected-color;
-						background-color: @menu-bg-color;
-					}
-					ul li a, ul li span{
-						color: white;
-					}
-					ul li.active-trail{
-						color: white;
-						a{
-							font-weight: bold;
-						}
-					}
-				}
 			}
 		}
 	}
 }
+.nav-up {
+    top: -210px !important;
+}
 .region-above-header.region{
 	float: right;
 	width: auto;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	section, > div {
 		float: left;
 		margin-right: -5px;
@@ -359,7 +428,13 @@ header.navbar-default{
 			padding: 18px 0 8px 32px
 			}
 		}
-		
+		.otw-blogger{
+			a{
+				background: url('../images/header/blogger.png') no-repeat center bottom;
+				padding: 18px 0 8px 32px
+			}
+		}
+
 		a{
 			img{
 				display: none;
@@ -379,3 +454,131 @@ header.navbar-default{
 	margin-top:1em;
 	margin-bottom: 0.7em;
 }
+
+@media only screen and (min-width : 1200px) {
+	.navbar-header{
+		.xs-menu{
+			max-width: 400px;
+			float: right;
+		}
+	}
+}
+@media only screen and (max-width : 1105px) {
+	#block-hwc-partner-hwc-partner-mostra-masquerade{
+		//min-width: 255px;
+	}
+}
+@media only screen and (max-width : 828px) {
+	#block-hwc-partner-hwc-partner-mostra-masquerade{
+		min-width: 197px;
+		a{
+			float: right;
+		}
+		.button-left{
+			margin-bottom: 7px;
+		}
+	}
+}
+
+/*Sticky menu
+****************************************/
+@media only screen and (min-width : 768px){
+	
+	.sticky-menu{
+		position: fixed;
+		z-index: 9999;
+		width: 100%;
+		.col-sm-9{
+			width: 100% !important;
+			a.pull-left{
+				img{
+					-webkit-transition: all 0.3s;
+				    -moz-transition: all 0.3s;
+				    -ms-transition: all 0.3s;
+				    -o-transition: all 0.3s;
+				    transition: all 0.3s;
+				    width: 100px !important;
+				    height: 77px !important;
+				}
+			}
+			a[title*="EU-OSHA"]{
+				-webkit-transition: all 0.3s;
+				    -moz-transition: all 0.3s;
+				    -ms-transition: all 0.3s;
+				    -o-transition: all 0.3s;
+				    transition: all 0.3s;
+			    	background-image: url("/sites/all/themes/hwc_frontend/images/header/EU-OSHA-en.png");
+			    	display: inline-block;
+				    width: 220px;
+				    height: 70px;
+				    float: left;
+				    background-repeat: no-repeat;
+				    background-size: 206px;
+				    margin-top: 6px;
+				img.pull-left{
+					-webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    -ms-transition: all 0.3s;
+					    -o-transition: all 0.3s;
+					    transition: all 0.3s;
+					    width: 160px !important;
+    					height: 95px !important;
+					    margin-top: 0px !important;
+					    display: none;
+					   
+				}
+			}
+			img[alt*="EU logo"]{
+				-webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    -ms-transition: all 0.3s;
+					    -o-transition: all 0.3s;
+					    transition: all 0.3s;
+				padding-top: 42px !important;
+			    padding-bottom: 0px !important;
+			    padding-right: 0em !important;
+			    border-right: none !important;
+			    width: 50px !important;
+
+			}
+			.header-text{
+				-webkit-transition: all 0.6s;
+					    -moz-transition: all 0.6s;
+					    -ms-transition: all 0.6s;
+					    -o-transition: all 0.6s;
+					    transition: all 0.6s;
+				font-size: 1.5em !important;
+			    width: 300px !important;
+			    padding-top: 0.3em !important;
+			    padding-left: 0em !important;
+			    float: right !important;
+			    text-align: right !important;
+			}
+
+		}
+		.xs-menu{
+			display: none;
+		}
+	}
+}
+
+@media only screen and (max-width : 993px){
+	.sticky-menu{
+		.col-sm-9{
+			img[alt*="EU logo"]{
+				padding-top: 50px !important;
+			}
+			.header-text{
+				-webkit-transition: all 0.6s;
+					    -moz-transition: all 0.6s;
+					    -ms-transition: all 0.6s;
+					    -o-transition: all 0.6s;
+					    transition: all 0.6s;
+				font-size: 1.4em !important;
+			    width: 285px !important;
+			    padding-top: 0.9em !important;
+			}
+		}
+	}
+}
+/*end sticky menu*/

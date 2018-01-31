@@ -32,23 +32,12 @@ function osha_newsletter_admin_form() {
 
   $form['osha_newsletter_list_name'] = array(
     '#type' => 'textfield',
-    '#title' => t('OSHMail Newsletter Listname'),
+    '#title' => t('List name'),
     '#default_value' => variable_get('osha_newsletter_list_name', 'OSHMail-Test'),
     '#attributes' => array('tabindex' => 2),
     '#size' => 40,
     '#maxlength' => 40,
-    '#description' => t('The OSH newsletter list name'),
-    '#required' => TRUE,
-  );
-
-  $form['campaigns_newsletter_list_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Campaigns Newsletter Listname'),
-    '#default_value' => variable_get('campaigns_newsletter_list_name', 'CAMPAIGN-NEWS-TEST'),
-    '#attributes' => array('tabindex' => 2),
-    '#size' => 40,
-    '#maxlength' => 40,
-    '#description' => t('The Campaigns newsletter list name'),
+    '#description' => t('The newsletter list name'),
     '#required' => TRUE,
   );
 
@@ -80,10 +69,25 @@ function osha_newsletter_admin_form() {
     '#required' => TRUE,
   );
 
+  $active_sections = variable_get('osha_newsletter_active_sections', []);
+  $options = array();
+
+  $voc = taxonomy_vocabulary_machine_name_load('newsletter_sections');
+  $term_tree = taxonomy_get_tree($voc->vid);
+  foreach ($term_tree as $term) {
+    $options[$term->tid] = $term->name . ' ' . l(t('(edit)'), "taxonomy/term/{$term->tid}/edit");
+  }
+  $form['osha_newsletter_active_sections'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Active newsletter sections'),
+    '#options' => $options,
+    '#default_value' => $active_sections,
+  );
+
   $allowed_bundles = variable_get(
     'osha_newsletter_allowed_bundles',
     array(
-      'news', 'events'
+      'publication', 'event', 'blog', 'news', 'press_release', 'highlight', 'newsletter_article',
     )
   );
   $entity_info = entity_get_info();
@@ -109,8 +113,6 @@ function osha_newsletter_admin_form() {
   );
 
   $term_ct_map = variable_get('osha_newsletter_term_ct_map', array());
-
-  $voc = taxonomy_vocabulary_machine_name_load('newsletter_sections');
   $tax = taxonomy_get_tree($voc->vid);
   $options_tax = array('' => '-- Please select --');
   foreach ($tax as $term) {

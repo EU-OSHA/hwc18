@@ -32,85 +32,96 @@ abstract class Controller {
      * Execute the controller
      */
     public function execute() {
+
         // Load the entity
         $this->load();
         $params = Parameters::getInstance();
-        // Build the progressbar and the sidebar
-        $sidebar = new Sidebar(false);
-        $sidebarContent = $sidebar->execute();
-        $progressbar = new Progressbar(false);
-        $progressbarContent = $progressbar->execute();
-        // Build the form
+
+        //Build the form
         $route = $params->get('route');
-        $statusCode  = $params->get('statuscode');
-        $sent        = intval($params->get('cdb')['sent']);
-        if ($statusCode != $sent){
-            //Insertamos una variable para mostrar el check del main contact change.
-            $_SESSION['mainContactChangeCheck'] = true;
-        }
-        $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
-        $isPrintable = $this->isPrintable();
-        $renderer = new Renderer($this->getEntityName());
-        $renderer->setViewPath($params->get('viewEntitiesPath'));
-        $urlBase = APP_URL;
-        $cdbMap = $this->model->getCdbMap();
-        $cdb = CDB::getInstance($cdbMap);
-        // CRG - 29.10.2015
-        $attributes = $this->model->getAttributes();
-        foreach ($attributes as $kAttr => $attr) {
-            if($kAttr == 'company_osh_orgnameAux' && $attr->getValue()!=""){
-                $this->model->set($attr->getName(), $attr->getValue());
+        if ($route != 'start' && $_SESSION['basicRequirements'] != true) {
+            header('Location: ' . APP_URL . '?route=start');
+            exit;
+
+        }else{
+            // Build the progressbar and the sidebar
+            $sidebar = new Sidebar(false);
+            $sidebarContent = $sidebar->execute();
+            $progressbar = new Progressbar(false);
+            $progressbarContent = $progressbar->execute();
+            $statusCode = $params->get('statuscode');
+            $sent = intval($params->get('cdb')['sent']);
+            if ($statusCode != $sent) {
+                //Insertamos una variable para mostrar el check del main contact change.
+                $_SESSION['mainContactChangeCheck'] = true;
             }
-            $type = $attr->getType();
-            $name = $attr->getName();
-            if ($type == Attribute::TYPE_DROPDOWN || $type == Attribute::TYPE_DROPDOWN_MULTIPLE) {
-                $value = $cdb->getDropdown($name);
-                $attr->setValue($value);
+            error_log("EVE_CSM_1: " .  print_r($this->getEntityName(),1));
+
+            $submitText = isset($params->get('routes')[$route]['submitText']) ? $params->get('routes')[$route]['submitText'] : 'Next';
+            $isPrintable = $this->isPrintable();
+            $renderer = new Renderer($this->getEntityName());
+            $renderer->setViewPath($params->get('viewEntitiesPath'));
+            $urlBase = APP_URL;
+            $cdbMap = $this->model->getCdbMap();
+            $cdb = CDB::getInstance($cdbMap);
+            // CRG - 29.10.2015
+            $attributes = $this->model->getAttributes();
+            foreach ($attributes as $kAttr => $attr) {
+                if ($kAttr == 'company_osh_orgnameAux' && $attr->getValue() != "") {
+                    $this->model->set($attr->getName(), $attr->getValue());
+                }
+                $type = $attr->getType();
+                $name = $attr->getName();
+                if ($type == Attribute::TYPE_DROPDOWN || $type == Attribute::TYPE_DROPDOWN_MULTIPLE) {
+                    $value = $cdb->getDropdown($name);
+                    $attr->setValue($value);
+                }
             }
-        }
-        //
-        $contentArray = array(
-            'appurl' => APP_URL . '?route=' . $params->get('route'),
-            'urlBase' => APP_URL,
-            'title' => $params->get('title'),
-            'nonce' => $params->get('nonce'),
-            'sidebar' => $sidebarContent,
-            'progressbar' => $progressbarContent,
-            'attributes' => $this->transformAttributes(),
-            'session_id' => $params->getUrlParamValue('session_id'),
-            'mf' => $params->get('maintenance_mode'),
-            'partner_type' => $params->getUrlParamValue('partner_type'),
-            'mainContactChangeCheck' => $this->maincontactChange(),
-            'submit_text' => $submitText,
-            'printable' => $isPrintable,
-            'HelpMessage' => $this->helpMessage(),
-            'show_print_version' => $params->get('print'),
-            'show_pdf_version' => $params->get('pdf'),
-            'locked' => $params->getUrlParamValue('locked'),
-            'actionType' => $params->get('actionType'),
-            'disabled' => '',
-            'fieldsValidatingDialog' => $this->fieldsValidation(),
-        );
-        // PDF version
-        if ($isPrintable) {
-            $route = $params->get('route');
-            $params->set('route', 'MaintenanceForm');
-            $maintenanceForm = new MaintenanceForm(false);
-            $content = $maintenanceForm->execute();
-            $params->set('route', $route);
-        
+            //
+            $contentArray = array(
+                'appurl' => APP_URL . '?route=' . $params->get('route'),
+                'urlBase' => APP_URL,
+                'title' => $params->get('title'),
+                'nonce' => $params->get('nonce'),
+                'sidebar' => $sidebarContent,
+                'progressbar' => $progressbarContent,
+                'attributes' => $this->transformAttributes(),
+                'session_id' => $params->getUrlParamValue('session_id'),
+                'mf' => $params->get('maintenance_mode'),
+                'partner_type' => $params->getUrlParamValue('partner_type'),
+                'mainContactChangeCheck' => $this->maincontactChange(),
+                'submit_text' => $submitText,
+                'printable' => $isPrintable,
+                'HelpMessage' => $this->helpMessage(),
+                'show_print_version' => $params->get('print'),
+                'show_pdf_version' => $params->get('pdf'),
+                'locked' => $params->getUrlParamValue('locked'),
+                'actionType' => $params->get('actionType'),
+                'disabled' => '',
+                'fieldsValidatingDialog' => $this->fieldsValidation(),
+                'route' => $params->get('route')
+            );
+            // PDF version
+            if ($isPrintable) {
+                $route = $params->get('route');
+                $params->set('route', 'MaintenanceForm');
+                $maintenanceForm = new MaintenanceForm(false);
+                $content = $maintenanceForm->execute();
+                $params->set('route', $route);
+
 //            $content = $renderer->render($contentArray);
-        } else {
-            // Content rendering
-            $content = $renderer->render($contentArray);
-        }
-        if ($this->directOutput) {
-            print $content;
-        } else {
-            return $content;
+            } else {
+                // Content rendering
+                $content = $renderer->render($contentArray);
+            }
+            if ($this->directOutput) {
+                print $content;
+            } else {
+                return $content;
+            }
         }
     }
-    
+
     public function helpMessage() {
         $params = Parameters::getInstance();
         if($params->get('action') == 'printable'){
@@ -128,7 +139,7 @@ abstract class Controller {
             return false;
         }
     }
-    
+
 
     /**
      * Load an entity
@@ -146,6 +157,17 @@ abstract class Controller {
         if ($mf = $params->get('maintenance_mode')) {
             $params->setUrlParamValue('maintenance_mode', $mf);
         }
+
+        if (isset($_REQUEST['auth']))
+            $_SESSION['auth'] = $_REQUEST['auth'];
+
+        //    $params->setUrlParamValue('auth', $auth);
+        /*    if (isset($_REQUEST['auth'])) {
+                $session->setAttribute(Constants::AUTH_NAME, $auth);
+            }
+        }*/
+
+        //error_log("EVE_0708" . var_export($params, true));
         $this->model->load($sessionID);
     }
 
@@ -182,10 +204,12 @@ abstract class Controller {
                 $disabled = $params->getUrlParamValue('locked') ? 'disabled' : '';
                 if (is_array(($attribute->getValidator()))) {
                     foreach ($attribute->getValidator() as $validator) {
-                        $required = ($validator == Validator::VALIDATION_NOTNULL) ? 'required' : '';
+                        if ($validator == Validator::VALIDATION_NOTNULL || $validator == Validator::VALIDATION_TRUE) $required = 'required';
+                        else $required = '';
                     }
                 } else {
-                    $required = ($attribute->getValidator() == Validator::VALIDATION_NOTNULL) ? 'required' : '';
+                    if ($attribute->getValidator()  == Validator::VALIDATION_NOTNULL || $attribute->getValidator()  == Validator::VALIDATION_TRUE) $required = 'required';
+                    else $required = '';
                 }
                 if ($attribute->getType() == Attribute::TYPE_RADIO) {
                     $radioValue = $attribute->getValue();
@@ -307,8 +331,9 @@ abstract class Controller {
             foreach ($attributes as $attribute) {
                 $name = $attribute->getName();
                 if ($value = $params->get($name)) {
+                    error_log("SavedInSession: " . var_export(($name), true) . " - " . var_export(($value), true));
                     if ($attribute->getType() == Attribute::TYPE_DROPDOWN ||
-                            $attribute->getType() == Attribute::TYPE_DROPDOWN_MULTIPLE
+                        $attribute->getType() == Attribute::TYPE_DROPDOWN_MULTIPLE
                     ) {
                         if (intval($attribute->getSelectedValues()) === -1) {
                             $attribute->setSelectedValues(null);
@@ -346,8 +371,10 @@ abstract class Controller {
                         $mapping = array();
                         $currentRoute = $params->get('route');
                         $currentModel = $this->model;
+
                         foreach ($entities as $entity) {
                             $this->model = new Model(strtolower($params->getUrlParamValue('entity') . '_' . ucfirst($entity)));
+
                             if ($updateMF) {
                                 $this->model->setCdbMap(true);
                             } else {
@@ -360,8 +387,8 @@ abstract class Controller {
                              * POngo el if porque en el NEW pasa por el load carga los attributes de la sesi�n
                              *  y pone los datos en la sesi�n,eso esta mal)
                              */
-//                            
-//                            
+//
+//
                             //Resolución incidencia redes sociales. Al ser campos dinámicos, forzamos su almacenamiento en sesión, ya que el load pisaba los cambios.
 //                            foreach ($this->model->getAttributes() as $atributo) {
 //                                if($atributo->getName()=="company_osh_facebookprofile" || $atributo->getName()=="company_osh_twitterprofile"  || $atributo->getName()=="company_osh_pinterestprofile"  ||
@@ -370,9 +397,10 @@ abstract class Controller {
 //                                }
 //                            }
                             foreach ($this->model->getAttributes() as $atributo) {
-                                if(strpos($atributo->getName(), 'otherus') !== false || strpos($atributo->getName(), 'publication') !== false ||
-                                        strpos($atributo->getName(), 'readership') !== false){
-                                        $session->setAttribute($atributo->getName(), $params->get($atributo->getName()));
+
+                                if(strpos($atributo->getName(), 'otherus') !== false || strpos($atributo->getName(), 'publication') !== false || strpos($atributo->getName(), 'readership') !== false){
+                                    error_log("CSM--- 26092017_" . $atributo->getName() . " - " . $atributo->getValue());
+                                    $session->setAttribute($atributo->getName(), $params->get($atributo->getName()));
                                 }
                                 if(isset($_SESSION['mf']) && $_SESSION['mf']){
                                     if(strpos($atributo->getName(), 'profile') !== false){
@@ -387,7 +415,7 @@ abstract class Controller {
                                     }
                                 }
                             }
-                            
+
                             $this->saveToSession();
                             $attributes = $this->model->getAttributes();
                             foreach ($attributes as $attr) {
@@ -397,9 +425,9 @@ abstract class Controller {
                                         $attr->setValue($session->getAttribute($attr->getName()));
                                         //(CRG - # Envio de imagenes )
                                         $image = $attr->getValue();
-                                        
+
                                         if (isset($image["content"]) && ($image["content"] != null || $image["content"] != "")) {
-                                           // $routeImage = Model::uploadPhoto($image["content"]); //Las subimos
+                                            // $routeImage = Model::uploadPhoto($image["content"]); //Las subimos
                                             $mapping[$cdbName] = $image["content"];
                                         } else {
                                             $mapping[$cdbName] = "";
@@ -407,10 +435,11 @@ abstract class Controller {
                                         unset($image);
                                         //(/CRG - # Envio de imagenes)
                                     } else if ($attr->getType() == Attribute::TYPE_RADIO ||
-                                            $attr->getType() == Attribute::TYPE_CHECKBOX 
-                                            || $attr->getType() == Attribute::TYPE_CONTACTCHANGE
+                                        $attr->getType() == Attribute::TYPE_CHECKBOX
+                                        || $attr->getType() == Attribute::TYPE_CONTACTCHANGE
                                     ) {
-                                        $mapping[$cdbName] = (strtolower($attr->getValue()) == 'on' || strtolower($attr->getValue()) == 'yes') ? 'true' : 'false';
+                                        $mapping[$cdbName] = (strtolower($attr->getValue()) == 'true' || strtolower($attr->getValue()) == 'on' || strtolower($attr->getValue()) == 'yes') ? 'true' : 'false';
+                                        error_log("CSM 26092017_" . $attr->getName() . " - " . $attr->getValue());
                                     } elseif ($attr->getType() == Attribute::TYPE_DROPDOWN || $attr->getType() == Attribute::TYPE_DROPDOWN_MULTIPLE) {
                                         $mapping[$cdbName] = $attr->getSelectedValues();
 
@@ -436,7 +465,7 @@ abstract class Controller {
                                             }
                                         }else{
                                             $mapping[$cdbName] = $attr->getValue();
-                                            
+
                                         }
                                     }
                                 }
@@ -462,11 +491,11 @@ abstract class Controller {
             $route = $params->get('route');
             $nextRoute = isset($params->get('routes')[$route]['next']) ? $params->get('routes')[$route]['next'] : '';
             if(isset($_SESSION['mf']) && $_SESSION['mf']== true){
-                 header('Location: ' . APP_URL . '?route=' . $nextRoute . "&mf=true");
+                header('Location: ' . APP_URL . '?route=' . $nextRoute . "&mf=true");
             }else{
-                 header('Location: ' . APP_URL . '?route=' . $nextRoute);
+                header('Location: ' . APP_URL . '?route=' . $nextRoute);
             }
-           
+
             exit;
         } else {
             $url = "$_SERVER[REQUEST_URI]";
@@ -503,6 +532,7 @@ abstract class Controller {
         $otherUsers5 = '';
         $normalValues = array();
         foreach ($fields as $key => $value) {
+            error_log($key);
             // Envío del tipo de imagen
             if ($key == "osh_logoimage" && $value != "") {
                 $keyLogoImageType = "osh_logotype";
@@ -512,32 +542,32 @@ abstract class Controller {
                 $keyCeoImageType = "osh_ceoimagetype";
                 $valueCeoImageType = "png";
             }
-            //Validamos si se han modificado las variqbles pledge o quote, dado que si estas variables han sido modificadas el mensaje en el 
+            //Validamos si se han modificado las variqbles pledge o quote, dado que si estas variables han sido modificadas el mensaje en el
             //congrats será diferente para los maintenance forms.
-                if ($key == "osh_campaignpledge") {
-                    if(isset($_SESSION['pledgeOld'])){
-                        if($_SESSION['pledgeOld']!=$value){
-                            $_SESSION['alertFieldModified'] = true;
-                        }
-                    }else if($value != ""){
+            if ($key == "osh_campaignpledge") {
+                if(isset($_SESSION['pledgeOld'])){
+                    if($_SESSION['pledgeOld']!=$value){
                         $_SESSION['alertFieldModified'] = true;
                     }
+                }else if($value != ""){
+                    $_SESSION['alertFieldModified'] = true;
                 }
-                if ($key == "osh_quoteonhwc") {
-                    if(isset($_SESSION['quoteOld'])){
-                        if($_SESSION['quoteOld']!=$value){
-                            $_SESSION['alertFieldModified'] = true;
-                        }
-                    }else if($value != ""){
+            }
+            if ($key == "osh_quoteonhwc") {
+                if(isset($_SESSION['quoteOld'])){
+                    if($_SESSION['quoteOld']!=$value){
                         $_SESSION['alertFieldModified'] = true;
                     }
+                }else if($value != ""){
+                    $_SESSION['alertFieldModified'] = true;
                 }
+            }
 
-                
+
             if (strpos($key, 'category') !== false || strpos($key, 'leads') !== false || $key == "contact_osh_mainemailAux" || $key == "company_osh_orgnameAux" || $key == "contact_osh_maincontactpersonfirstnameAux" || $key == "contact_osh_maincontactpersonlastnameAux") {
                 // Don't send neither category and osh_leads field.
                 continue;
-                
+
             } elseif ($key == "returnPaises") {
                 //          (/CRG - #157)
                 // Countries of Activities dropdown
@@ -558,59 +588,103 @@ abstract class Controller {
                         $normalValues[$keyCeoImageType]  = $valueCeoImageType;
 //                        $updatedValues .= '(' . $keyCeoImageType . '|' . $valueCeoImageType . '),';
                     }
-                    
+
                     $value = str_replace("\"", "''", $value);
                     $normalValues[$key]  = $value ;
 //                    $updatedValues .= '(' . $key . '|' . $value . '),';
                 }
             } else {
                 // Other Users
-                 
+
                 if($key === 'fullname1'){
                     $otherUsers1 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail1'){
                     $otherUsers1 .= $value . '|';
                 }else if($key === 'osh_otheruserphone1'){
-                    $otherUsers1 .= $value . ')';
+                    $value = str_replace(" ", "%20", $value);
+                    $otherUsers1 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix1'){
+                    if ($value != null)
+                        $otherUsers1 .= $value . ')';
+                    else
+                        $otherUsers1 .= ')';
                 }else if($key === 'fullname2'){
                     $otherUsers2 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail2'){
                     $otherUsers2 .= $value . '|';
                 }else if($key === 'osh_otheruserphone2'){
-                    $otherUsers2 .= $value . ')';
+                    $value = str_replace(" ", "%20", $value);
+                    $otherUsers2 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix2'){
+                    if ($value != null)
+                        $otherUsers2 .= $value . ')';
+                    else
+                        $otherUsers2 .= ')';
                 }else if($key === 'fullname3'){
                     $otherUsers3 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail3'){
                     $otherUsers3 .= $value . '|';
                 }else if($key === 'osh_otheruserphone3'){
-                    $otherUsers3 .= $value . ')';
+                    $value = str_replace(" ", "%20", $value);
+                    $otherUsers3 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix3'){
+                    if ($value != null)
+                        $otherUsers3 .= $value . ')';
+                    else
+                        $otherUsers3 .= ')';
                 }else if($key === 'fullname4'){
                     $otherUsers4 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail4'){
                     $otherUsers4 .= $value . '|';
                 }else if($key === 'osh_otheruserphone4'){
-                    $otherUsers4 .= $value . ')';
+                    $value = str_replace(" ", "%20", $value);
+                    $otherUsers4 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix4'){
+                    if ($value != null)
+                        $otherUsers4 .= $value . ')';
+                    else
+                        $otherUsers4 .= ')';
                 }else if($key === 'fullname5'){
                     $otherUsers5 .= '(' . str_replace(" ","+",$value) . '|';
                 }else if($key === 'osh_otheruseremail5'){
                     $otherUsers5 .= $value . '|';
                 }else if($key === 'osh_otheruserphone5'){
-                    $otherUsers5 .= $value . ')';
+                    $value = str_replace(" ", "%20", $value);
+                    $otherUsers5 .= $value . '|';
+                }else if($key === 'osh_otheruserprefix5'){
+                    if ($value != null)
+                        $otherUsers5 .= $value . ')';
+                    else
+                        $otherUsers5 .= ')';
                 }
             }
         }
         //Desseteamos los valores antiguos de pledge y quote
         if(isset($_SESSION['alertFieldModified']) && $_SESSION['alertFieldModified']){
-                    unset($_SESSION['quoteOld']);
-                    unset($_SESSION['pledgeOld']);
-                }
+            unset($_SESSION['quoteOld']);
+            unset($_SESSION['pledgeOld']);
+        }
         // $result .= ! empty ($updatedValues) ? 'id=' . $params->get('session_id') . '&option=SUBMIT&fields=' . substr($updatedValues, 0, -1) : '';
         //        $result = ! empty ($otherUsers) ? $result . 'otherusers=' . substr($updatedValues, 0, -1) : substr($result, 0, -1);
-        $result = array(
-            'id' => $params->get('session_id'),
-            'fields' => $normalValues
-//            'fields' => substr($updatedValues, 0, -1)
-        );
+        error_log("PARAMS: " . var_export($params, true));
+        error_log("SESSION: " . var_export($_SESSION, true));
+
+
+        if (isset($_SESSION['auth'])) {
+            $result = array(
+                'id' => $params->get('session_id'),
+                'auth' => $_SESSION['auth'],
+                'fields' => $normalValues
+            );
+        } else {
+            $result = array(
+                'id' => $params->get('session_id'),
+                'auth' => $params->get('session_id'),
+                'fields' => $normalValues
+            );
+        }
+
+
 
         if ($params->getUrlParamValue('no_session_id')) {
             unset($result['id']);
@@ -710,13 +784,15 @@ abstract class Controller {
         if($params->getUrlParamValue('locked')){
             return false;
         }
-        
+
         $session = Session::getInstance();
         $this->load();
         $attributes = $this->model->getAttributes();
         foreach ($attributes as $kAttr => $attr) {
             $name = $attr->getName();
+
             if(strpos($name, 'publication') !== false || strpos($name, 'readership') !== false){
+
                 $session->setAttribute($name, $params->get($name));
                 $params->set($name, $params->get($name), true);
 //                $_POST[$name] = $params->get($name);
@@ -734,7 +810,9 @@ abstract class Controller {
             if (isset($_POST[$name])){
                 $value = $_POST[$name];
             }
+
             if (isset($value)) {
+
                 switch ($attr->getType()) {
                     case Attribute::TYPE_DROPDOWN:
                         $attr->setSelectedValues($value);
@@ -795,6 +873,30 @@ abstract class Controller {
             return true;
         }else{
             return false;
+        }
+    }
+
+    public function submitQuestion() {
+        $params = Parameters::getInstance();
+        $myId = $params->getUrlParamValue('session_id');
+        $title = $_GET['title'];
+        $message = $_GET['message'];
+        $email= $_GET['email'];
+        $currentModel = new Model("");
+        $currentModel->submitQuestionToCDB($myId,$title, $message, $email);
+    }
+
+    public function updateRequirements() {
+        $params = Parameters::getInstance();
+        $MyId = $params->getUrlParamValue('session_id');
+        if (preg_match('/^\{?[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}\}?$/', $MyId)) {
+            //error_log("EVE_CSM_TEST" . var_export(($MyId), true));
+
+            $requirements = $_GET['requirements'];
+            //error_log("EVE_CSM_TEST2" . var_export(($requirements), true));
+
+            $currentModel = new Model("");
+            $currentModel->updateRequirementsInCDB($MyId, $requirements);
         }
     }
 

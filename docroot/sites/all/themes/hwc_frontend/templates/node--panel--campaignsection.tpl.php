@@ -31,7 +31,7 @@
     print render($content['title_field']);
     
     if(!isset($parameters['page'])) {
-      $content['field_recommended_articles']['#title'] = t('Recommended for you');
+      $content['field_recommended_articles']['#title'] = t('Recommended resources for you');
 
       print render($content['field_summary']);
       print render($content['body']);

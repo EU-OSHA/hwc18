@@ -6,52 +6,52 @@ function osha_newsletter_subscribe_extra_form() {
   $form['intro'] = array(
     '#markup' => t(variable_get('subscribe_extra_block_intro_text', 'Once a month, OSHmail keeps you updated on ocupational safety and health.<br/> You can sign up below:')),
   );
-  $form['email'] = array(
+
+  $form['subscribe_details'] = array(
+    '#type' => 'container',
+  );
+
+  $form['subscribe_details']['email'] = array(
     '#type' => 'textfield',
     '#size' => 30,
     '#attributes' => array(
       'placeholder' => t('E-mail address'),
       'title' => t('E-mail address'),
-      'onclick' => "jQuery(this).closest('form').find('div.captcha').show();",
+      'onclick' => "jQuery('.captcha-content-block').show();jQuery(this).closest('form').find('div.captcha').show();",
     ),
   );
+
   if (user_is_anonymous()) {
-    $form['captcha_osh'] = array(
+    $form['subscribe_details']['captcha_osh'] = array(
       '#type' => 'captcha',
-      '#prefix' => '<div class="col-md-6 col-sm-12">',
+      '#prefix' => '<div class="col-md-6 col-sm-12 captcha-content-block" style="display: none;">',
       '#suffix' => '</div>',
       '#captcha_type' => 'default',
     );
   }
 
-  /* Remove comment for subscription on OSHA Newsletter - HCW-1005
-  $form['subscribe-to-OSHMail-newsletter'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Subscribe to !link as well', array('!link' => l(t('OSHMail Newsletter'), 'https://osha.europa.eu/oshmail-newsletter'))),
-  );
-  */
-  $form['subscribe_details'] = array(
-    '#type' => 'container',
-    '#prefix' => '<div class="col-md-6 col-sm-12">',
-    '#suffix' => '</div>',
-  );
-  $link_label = t(variable_get('subscribe_extra_block_details_link_label', 'How will EU-OSHA use my details?'));
-  $link_url = variable_get('subscribe_extra_block_details_link_url', OSHA_PRIVACY_PAGE_URL);
-  $form['subscribe_details']['details_link'] = array(
-    '#markup' => '<a class="privacy-policy-oshmail" title="Subscribe to newsletter" href=' . url($link_url) . '>' . $link_label . '</a><br/>',
-  );
   $form['subscribe_details']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Subscribe'),
     '#submit' => array('osha_newsletter_subscribe_extra_form_submit'),
   );
-  $form['subscribe_details']['unsubscribe_text'] = array(
-    '#markup' => '<hr><span>' . t('Not interested any more?') . '</span>',
+
+  $link_label = t(variable_get('subscribe_extra_block_details_link_label', 'How will EU-OSHA use my details?'));
+  $link_url = variable_get('subscribe_extra_block_details_link_url', OSHA_PRIVACY_PAGE_URL);
+  $form['unsubscribe_details'] = array(
+    '#type' => 'container',
   );
-  $form['subscribe_details']['unsubscribe'] = array(
+  $form['unsubscribe_details']['unsubscribe_text'] = array(
+    '#markup' => '<span>' . t('Not interested any more?') . '</span>',
+  );
+  $form['unsubscribe_details']['unsubscribe'] = array(
     '#type' => 'submit',
     '#value' => t('Unsubscribe'),
     '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
+  );
+
+  $form['details_link'] = array(
+    '#markup' => '<a class="privacy-policy-oshmail" title="Subscribe to newsletter" href=' . url($link_url) . '>' . $link_label . '</a><br/>',
   );
 
   $form['#validate'] = array('osha_newsletter_subscribe_extra_form_validate');

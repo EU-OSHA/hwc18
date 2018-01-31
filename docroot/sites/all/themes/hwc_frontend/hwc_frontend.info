@@ -11,6 +11,7 @@ base theme = bootstrap
 
 regions[above_header]   = 'Above header'
 regions[above_title]    = 'Above title'
+regions[below_title]    = 'Below title'
 regions[menu]           = 'Menu'
 regions[slider]         = 'Slider'
 regions[header]         = 'Header'
@@ -25,8 +26,10 @@ regions[page_bottom]    = 'Page bottom'
 regions[contact_form_widget]   = 'Contact form widget'
 
 stylesheets[all][] = css/style.css
+scripts[] = js/addclear.js
 scripts[] = js/campaigns.js
 scripts[] = js/back_button.js
+scripts[] = js/napo-video.js
 files[] = theme/menu/menu.inc
 
 ;;;;;;;;;;;;;;;;;;;;;

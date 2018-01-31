@@ -165,7 +165,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['title'] = 'Events';
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = TRUE;
-  $handler->display->display_options['use_more_text'] = 'See all events';
+  $handler->display->display_options['use_more_text'] = 'More events';
   $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -173,8 +173,22 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'views_bootstrap_media_plugin_style';
+  $handler->display->display_options['style_options']['image_field'] = 'field_start_date_1';
+  $handler->display->display_options['style_options']['heading_field'] = 'field_start_date';
+  $handler->display->display_options['style_options']['body_field'] = 'field_country_code';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['label'] = '';
+  $handler->display->display_options['fields']['field_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_city']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_city']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -182,12 +196,11 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Content: Starting date and time */
+  /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['label'] = '';
-  $handler->display->display_options['fields']['field_start_date']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_start_date']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_start_date']['element_class'] = 'featured_event';
   $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
@@ -210,8 +223,35 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_field']['settings'] = array(
     'field_formatter_class' => '',
   );
-  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Sort criterion: Content: Starting date and time -  start date (field_start_date) */
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Field: Content: Starting date */
+  $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
+  $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['label'] = '';
+  $handler->display->display_options['fields']['field_start_date_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_date_1']['settings'] = array(
+    'format_type' => 'day_month_year',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['label'] = '';
+  $handler->display->display_options['fields']['field_country_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_country_code']['alter']['text'] = '[title_field]
+<div class="views-country-code"><span class="field-content">[field_country_code], [field_city]</span></div>';
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_code']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Sort criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['sorts']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['sorts']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['sorts']['field_start_date_value']['field'] = 'field_start_date_value';
@@ -229,7 +269,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'events' => 'events',
   );
-  /* Filter criterion: Content: Starting date and time -  start date (field_start_date) */
+  /* Filter criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['filters']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
@@ -248,12 +288,14 @@ function hwc_homepage_views_default_views() {
   $translatables['frontpage_events'] = array(
     t('Master'),
     t('Events'),
-    t('See all events'),
+    t('More events'),
     t('Apply'),
     t('Reset'),
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('[title_field]
+<div class="views-country-code"><span class="field-content">[field_country_code], [field_city]</span></div>'),
     t('Block'),
     t('more'),
   );
@@ -333,6 +375,10 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title_field']['element_class'] = 'banner_title';
   $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'homepage_slider_title';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
@@ -344,7 +390,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -393,6 +439,103 @@ function hwc_homepage_views_default_views() {
   $export['frontpage_slider'] = $view;
 
   $view = new view();
+  $view->name = 'homepage_about_topics';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'homepage_about_topics';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'About the topic';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'homepage_about_the_topic' => 'homepage_about_the_topic',
+    'publication_queue' => 0,
+    'featured_press_release' => 0,
+    'press_contacts_queue' => 0,
+    'featured_partner_frontpage' => 0,
+    'featured_gallery' => 0,
+    'good_practice_exchange' => 0,
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'field_formatter_class' => 'views-field-title',
+  );
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 1;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['body']['type'] = 'smart_trim_format';
+  $handler->display->display_options['fields']['body']['settings'] = array(
+    'trim_link' => '0',
+    'trim_length' => '128',
+    'trim_type' => 'chars',
+    'trim_suffix' => '...',
+    'more_link' => '0',
+    'more_text' => 'Read more',
+    'summary_handler' => 'ignore',
+    'trim_options' => array(
+      'text' => 'text',
+    ),
+    'trim_preserve_tags' => '',
+    'field_formatter_class' => '',
+  );
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['homepage_about_topics'] = array(
+    t('Master'),
+    t('About the topic'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('queue'),
+    t('Block'),
+  );
+  $export['homepage_about_topics'] = $view;
+
+  $view = new view();
   $view->name = 'partners';
   $view->description = '';
   $view->tag = 'default';
@@ -407,6 +550,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See all';
+  $handler->display->display_options['link_display'] = 'custom_url';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -461,11 +605,13 @@ function hwc_homepage_views_default_views() {
   /* Display: Partner Logo List */
   $handler = $view->new_display('block', 'Partner Logo List', 'block_1');
   $handler->display->display_options['defaults']['use_more'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['defaults']['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See all partners';
+  $handler->display->display_options['link_url'] = 'official-campaign-partners';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';

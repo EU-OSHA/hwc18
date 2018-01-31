@@ -1,7 +1,7 @@
 {
   "cdb": {
     "host": "https://jira.osha.europa.eu",
-    "port": ":8082",
+    "port": ":8081",
     "resource": "/OshaService/ServiceApp.svc/",
     "debug": "false",
     "debug_folder": "mvc/model/cdb/",
@@ -23,6 +23,22 @@
         "fields": [
           "company_osh_osh_appform_osh_country"
         ]
+      },
+      "getPrefixes": {
+        "method": "getPrefixes",
+        "data": "getPrefixesResult",
+        "fields": [
+          "comrep_osh_prefixmediaprphone",
+          "contact_osh_prefixmaincontactphone",
+          "contact_osh_prefixmaincontactphone_clone",
+          "company_osh_prefixgeneralphone",
+          "company_osh_prefixrepresentativephone",
+          "contact_osh_otheruserprefix1",
+          "contact_osh_otheruserprefix2",
+          "contact_osh_otheruserprefix3",
+          "contact_osh_otheruserprefix4",
+          "contact_osh_otheruserprefix5"
+        ]
       }
     },
     "regular_methods": {
@@ -38,13 +54,20 @@
         "response": "getMantenainceProfileResult"
       },
       "update": "UpdateAppForm",
-      "update_mf": "UpdateMantenainceProfile"
+      "update_mf": "UpdateMantenainceProfile",
+      "satisfaction": "SubmitSatisfaction",
+      "satisfaction_mf": "SubmitSatisfaction",
+      "question": "SubmitQuestion",
+      "question_mf": "SubmitQuestion",
+      "requirements": "UpdateRequirements",
+      "requirements_mf": "UpdateRequirements"
     },
     "category": {
       "official": "ocp",
       "media": "mp",
       "focal": "fop",
-      "potential": "pcp"
+      "potential": "pcp",
+      "ambassador": "fop"
     },
     "statusCodesTemplate": {
       "863680000": "Invitation sent",

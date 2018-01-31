@@ -4,16 +4,16 @@
     "sections": {
         "BECOME": "Why do you want to become a partner?",
         "INVOLVEMENT": "Your support for the campaign",
-        "PLEDGE": "Your campaign Pledge"
+        "PLEDGE": "Your campaign pledge for Publication on Campaign Website"
     },
     "sections_mf": {
-        "PLEDGE": "Your campaign Pledge"
+        "PLEDGE": "Your campaign pledge for Publication on Campaign Website"
     }
   },
   "attributes": {
     "involvement_osh_tobeanocponhwc": {
       "name": "involvement_osh_tobeanocponhwc",
-      "label": "Why do you want to be an Official Campaign Partner of the 'Healthy Workplaces for All Ages' Campaign 2016-2017",
+      "label": "Why do you want to be an Official Campaign Partner of the 'Healthy Workplaces Manage Dangerous Substances'?",
       "placeholder": "Please explain briefly what motivates you to become a partner of the campaign",
       "section": "BECOME",
       "type": "textarea",
@@ -57,7 +57,7 @@
     },
     "involvement_osh_campaignpledge": {
       "name": "involvement_osh_campaignpledge",
-      "label": "How does your organisation plan to contribute to making this campaign a joint success?",
+      "label": "How does your Organisation plan to contribute to making this campaign a joint success?",
       "publicProfile": "publicProfile",
       "section": "PLEDGE",
       "type": "textarea",
@@ -121,6 +121,13 @@
       "section": "INVOLVEMENT",
       "type": "combined_checkbox"
     },
+    "involvement_osh_involvedinsteeringcommitteegroup": {
+      "name": "involvement_osh_involvedinsteeringcommitteegroup",
+      "label": "I am interested to take part in the work of the Official Campaign Partners Steering Group.",
+      "placeholder": "http://www.google.es",
+      "section": "INVOLVEMENT",
+      "type": "combined_checkbox_link"
+    },
     "involvement_osh_otheractivities": {
       "name": "involvement_osh_otheractivities",
       "label": "Other activities",
@@ -140,6 +147,7 @@
     "involvement_osh_partnershipswithotherorganisations": "osh_partnershipswithotherorganisations",
     "involvement_osh_promotioninthemedia": "osh_promotioninthemedia",
     "involvement_osh_bestpractice": "osh_bestpractice",
+    "involvement_osh_involvedinsteeringcommitteegroup": "osh_involvedinsteeringcommitteegroup",
     "involvement_osh_otheractivities": "osh_otheractivities",
     "osh_tobecomeapartnersection": "osh_tobecomeapartnersection",
     "osh_supportforcampaignsection": "osh_supportforcampaignsection",

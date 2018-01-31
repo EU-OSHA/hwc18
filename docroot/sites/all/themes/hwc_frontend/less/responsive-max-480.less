@@ -27,11 +27,16 @@
 
 .page-get-your-certificate .hwc-share-widget {
 	ul{
-		padding-bottom: 2.2em;
+		overflow: hidden;
 	} 
 	
 	li{
-		display: flex;
+		float: none !important;
+		display: inline-block;
+		vertical-align: initial;
+	}
+	li[class="pull-right"]{
+		margin-left: 0px;
 	}
 }
 
@@ -57,7 +62,7 @@ header{
 				}
 				a img.pull-left{
 					width: 125px;
-					margin-top: 0px; 
+					margin-top: 45px; 
 				}
 				img:nth-child(3){
 					width: 40px;
@@ -123,6 +128,26 @@ header{
     		-moz-transform: scale(1.5) !important;
 		}
 	}
+	#homepage_slider{
+		margin-bottom: 0;
+		height: 356px !important;
+		img{
+			display: none !important;
+		}
+		#num_slides{
+			> div{
+				background: url(../images/content/mobile-top-background.png) no-repeat -200px 0px !important;
+			}
+		}
+		.views-field-title{
+			> span{
+				font-size: 22px !important;
+			}
+			.line-1{
+				line-height: 27px;
+			}
+		}
+	}
 }
 
 /*container*/	
@@ -169,38 +194,66 @@ header{
 				max-width: 200px !important;
 			}
 		}
+		.form-managed-file{
+			.image-widget-data{
+				input{
+					max-width: 64%;
+				}
+				span.input-group-btn{
+					float: left;
+				    display: block !important;
+				    width: inherit;
+				    height: 14px;
+					width: 36%;
+				    button{
+				    	max-width: 100%;
+				    	span{
+				    		height: initial !important;
+				    	}
+				    }
+				}
+			}
+		}
 	}
 }
 /*fin create events & news*/
 	
 .view-mode-full .hwc-share-widget{
 	ul{
+		overflow: hidden;
 		.share-this-article{
 			top: -5px;
 		}
 
 		li[id*="facebook-share-button-"]{
-		    display: block; 
+		    //display: block; 
 		}
 		li[id*="facebook-like-button-"]{
-		    display: block; 
+		    //display: block; 
 		}
 		li[id*="twitter-share-button-"]{	
-		   display: block; 
+		   //display: block; 
 		   margin-top: 5px;
 		}
 		li[id*="linked-in-"]{
-		  display: block; 
+		  //display: block; 
 		  margin-top: 5px;
 		}
 		li[class="pull-right"]{
-		   display: block;
-		   margin-top:-25px;
+		   display: inline-block;
+		   //margin-top:-25px;
+		   margin-top: 5px;
+		   vertical-align: bottom;
 		}
 		.label.label-rss.pull-right{
-			display: block;
-			margin-left: -34px;
-    		margin-top: -2px !important;
+			display: inline-block;
+			//margin-left: -34px;
+    		//margin-top: -2px !important;
+    		float: none !important;
+    		margin-top: 0px;
+		}
+		.pull-right{
+			float: none !important;
 		}
 	}
 }
@@ -211,6 +264,25 @@ header{
 			top: -5px;
 			display: block;
 			clear: both;
+		}
+	}
+}
+.node-type-flickr-gallery,
+.node-type-hwc-gallery{
+	.hwc-share-widget{
+		ul{
+			left: 0px;
+			li{
+				display: inline-block !important;
+				margin-top: 0px !important;
+				margin-bottom: 5px;
+				margin-left: 0px !important;
+			}
+			li.label{
+				display: inline-block !important;
+				margin-bottom: 0px;
+				vertical-align: top;
+			}
 		}
 	}
 }
@@ -242,6 +314,10 @@ header{
 	float:none;
 	width: 100%;
 	border-right: 1px dotted #749b00;
+	.views-field-field-logo{
+		margin: 0 auto;
+	}
+
 }
 
 button.navbar-toggle.active{
@@ -251,10 +327,10 @@ button.navbar-toggle.active{
 }
 
 header.navbar-default .campaigns-header .navbar-header .region-header #block-lang-dropdown-language, header.navbar-default .campaigns-header .navbar-header .region-header #block-menu-menu-header-login ~ #block-lang-dropdown-language{
-	bottom: -4px;
+	bottom: -1px;
 	position: relative;
 	float: left;
-    padding-left: 1em;
+    //padding-left: 1em;
 }
 
 .node-type-article .hwc-share-widget {
@@ -296,6 +372,73 @@ header.navbar-default .campaigns-header .navbar-header .region-header #block-lan
 
 .get-involved-section .information-tailored h3{
 	font-size:1.95em;
+}
+
+/*napo film*/
+.page-node-160{
+	#block-views-napo-film-carousel-slidehow{
+		margin-bottom: 40px;
+		height: 249px;
+		#napo_films{
+			width: 100%;
+			max-width: 1170px;
+			margin: 0 auto;
+			height: 214px !important;
+			> div{
+				height: 214px !important;
+				position: relative !important;
+			}
+			.napo_films{
+				height: 265px;
+
+				.num_slides{
+					font-size: 16px;
+					//position: inherit !important;
+					overflow: hidden !important;
+					margin: 0 auto;
+					width: 100%;
+					height: 301px;
+					>div{
+						//position: relative !important;
+						height: auto !important;
+						.napo-film-title{
+						    display: none;
+						}
+						.video-js{
+							max-width: 1000px;
+						    margin: 0 auto;
+						    width: 100%;
+						    height: 171px;
+						}
+						.hwc-share-widget{
+
+						}
+					}
+				}
+				.jssora03l, .jssora03r{
+					top: 50px;
+				}
+			}
+		}
+	}
+}
+
+}
+
+@media only screen and (max-width : 500px) {
+
+.pane-hwc-good-practice-exchange-gpep-links{
+	.hwc-gpep-links{
+		.partners-documents{
+			margin-right: 0px;
+			margin-bottom: 2em;
+			width: 100% !important;
+		}
+		.communications{
+			margin-left: 0px;
+			width: 100% !important;
+		}
+	}
 }
 
 }

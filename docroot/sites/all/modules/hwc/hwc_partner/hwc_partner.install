@@ -62,3 +62,149 @@ function hwc_partner_update_7007() {
 function hwc_partner_update_7008() {
   features_revert_module('hwc_partner');
 }
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7009() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7010() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7011() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7012() {
+  cache_clear_all();
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7013() {
+  cache_clear_all();
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7014() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7015() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7016() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7017() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7018() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7019() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7020() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * Remove delete partners from migration table.
+ */
+function hwc_partner_update_7021() {
+  $migrations = ['partner'];
+  foreach ($migrations as $migration) {
+    $table = 'migrate_map_' . strtolower($migration);
+    $query = db_select($table, 'm')->fields('m', ['destid1']);
+    $query->leftJoin('node', 'n', 'n.nid = m.destid1');
+    $query->condition('m.destid1', NULL, 'IS NOT');
+    $query->condition('n.nid', NULL);
+    $dest_ids = $query->execute()->fetchCol();
+    if ($dest_ids) {
+      db_delete($table)
+        ->condition('destid1', $dest_ids, 'IN')
+        ->execute();
+      if (function_exists('drush_log')) {
+        drush_log('Removed from ' . $table . ', ' . implode(', ', $dest_ids), 'status');
+      }
+    }
+  }
+}
+
+/**
+ * Revert partner module.
+ */
+function hwc_partner_update_7022() {
+  features_revert_module('hwc_partner');
+}
+
+/**
+ * HW18-253 MPs order in the HWC.
+ */
+function hwc_partner_update_7023() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}
+
+/**
+ * MDR-1641 Dev - Apply the new layout (MDR-1640) not the EEN page.
+ */
+function hwc_partner_update_7024() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}
+
+/**
+ * MDR-1641 Dev - Apply the new layout (MDR-1640) not the EEN page.
+ */
+function hwc_partner_update_7025() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}
+
+/**
+ * HW18-377 Do SEO improvements.
+ */
+function hwc_partner_update_7026() {
+  features_revert_module('hwc_good_practice_exchange');
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+}

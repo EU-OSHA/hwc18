@@ -87,7 +87,7 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
             </a>
             <a href="http://osha.europa.eu" title="EU-OSHA" target="_blank"><img class="pull-left" src="/<?php print $theme_dir . '/logo-osha.png'; ?>" alt="<?php print t('EU-OSHA logo'); ?>" /></a>
             <img class="pull-left" src="/<?php print $theme_dir . '/logo-eu.png'; ?>" alt="<?php print t('EU logo'); ?>" />
-			<div class="header-text"><?php echo t('Healthy Workplaces for All Ages') . ' 2016-17'; ?></div>
+			<div class="header-text"><?php echo t('Healthy Workplaces MANAGE DANGEROUS SUBSTANCES 2018-19'); ?></div>
           </div>
           <div class="col-xs-12 col-sm-3 xs-menu">
             <div class="header_top_bar">
@@ -128,6 +128,7 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
         <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
       <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+      <?php if (!empty($back_to_pz)): print $back_to_pz; endif;?>
       <a id="main-content"></a>
 		<?php print render($title_prefix); ?>
       <div class="above_title">
@@ -140,6 +141,9 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
       </div>
       <?php print render($title_suffix); ?>
       <?php print $messages; ?>
+      <div class="below_title">
+        <?php print render($page['below_title']); ?>
+      </div>
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
       <?php endif; ?>

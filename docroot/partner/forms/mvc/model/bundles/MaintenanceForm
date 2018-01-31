@@ -1,3 +1,3 @@
 {
-    "entities": ["company", "involvement", "contact"]
+    "entities": ["start", "company", "involvement", "contact"]
 }

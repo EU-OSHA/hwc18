@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Implements hook_form_alter
+ * Implements hook_form_alter.
  */
-function osha_contact_form_contact_site_form_alter(&$form, &$form_state){
+function osha_contact_form_contact_site_form_alter(&$form, &$form_state) {
 
-  //change default title
+  // Change default title.
   drupal_set_title(t('Contact us'));
 
-  //disable fields
+  // Disable fields.
   $form['subject']['#default_value'] = FALSE;
   $form['subject']['#access'] = FALSE;
   $form['copy']['#default_value'] = FALSE;
@@ -63,11 +63,11 @@ function osha_contact_form_contact_site_form_alter(&$form, &$form_state){
 }
 
 /**
- * Get taxonomy terms in form of dropdown options
+ * Get taxonomy terms in form of dropdown options.
  * @param $machine_name
  * @return array
  */
-function osha_contact_get_taxonomy_term_options($machine_name){
+function osha_contact_get_taxonomy_term_options($machine_name) {
   global $language;
   $options = array();
 
@@ -85,13 +85,13 @@ function osha_contact_get_taxonomy_term_options($machine_name){
 }
 
 /**
- * Submit callback function
- * Delete default confirmation message and set a new one
+ * Submit callback function.
+ * Delete default confirmation message and set a new one.
  */
-function contact_form_send($form, &$form_state){
+function contact_form_send($form, &$form_state) {
   global $base_url;
 
-  //remove default status message
+  // Remove default status message.
   if (!empty($_SESSION['messages']['status'])) {
     $message_text_to_remove = t('Your message has been sent.');
     $key = array_search($message_text_to_remove, $_SESSION['messages']['status']);
@@ -104,7 +104,7 @@ function contact_form_send($form, &$form_state){
     }
   }
 
-  //set new status message
+  // Set new status message.
   drupal_set_message(t('Thank you for your feedback. We appreciate your comments about the
   European Agency for Safety and Health at Work and we try, wherever possible, to answer your emails.
   Unfortunately, due to the large volume of correspondence we receive, we are unable to offer a personal reply
@@ -112,11 +112,12 @@ function contact_form_send($form, &$form_state){
   <br /><br />
   You can stay up to date with new developments to our website by visiting our
   “<a href="@link1">What’s new</a>” pages
-  and subscribing to our electronic newsletter
-  <a href="@link2">OSHmail</a>.',
+  and subscribing to our electronic
+  <a href="@link2">Healthy Workplaces Newsletter</a> newsletter.',
     array(
-      '@link1' => $base_url.'/news-events',
-      '@link2' => $base_url.'/oshmail-newsletter')));
+      '@link1' => $base_url . '/news-events',
+      '@link2' => $base_url . '/healthy-workplaces-newsletter',
+    )));
 }
 
 /**
@@ -127,13 +128,13 @@ function osha_contact_mail_alter(&$message) {
 
   if ($message['id'] == 'contact_page_mail') {
     $message['body'] = array();
-    //translated taxonomy terms
+    // Translated taxonomy terms.
     //$sender = entity_load_single('taxonomy_term', $message['params']['contact_type_of_sender']);
     //$topic = entity_load_single('taxonomy_term', $message['params']['contact_topic']);
     $sender = taxonomy_term_load($message['params']['contact_type_of_sender']);
-    //message subject
+    // Message subject.
     $message['subject'] = 'HWC Contact: ' . $message['params']['contact_topic'];
-    //message from
+    // Message from.
     $from = $message['params']['category']['from_email'];
     $message['from'] = $from;
     $message['headers']['From'] = $from;
@@ -159,14 +160,14 @@ function osha_contact_mail_alter(&$message) {
         $message['params']['mail'],
         $message['params']['country'],
         $message['params']['message'],
-        $language->language
+        $language->language,
       ),
       $message['params']['category']['body']);
   }
 }
 
 /**
- * Implements hook_form_FORM_ID_alter
+ * Implements hook_form_FORM_ID_alter.
  */
 function osha_contact_form_contact_category_edit_form_alter(&$form, &$form_state){
   $form['reply']['#default_value'] = FALSE;
@@ -197,7 +198,7 @@ function osha_contact_form_contact_category_edit_form_alter(&$form, &$form_state
 }
 
 /**
- * Validate email address
+ * Validate email address.
  */
 function osha_contact_email_validate($form, &$form_state){
   $mail = $form_state['values']['from_email'];

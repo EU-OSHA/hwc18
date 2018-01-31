@@ -10,6 +10,8 @@ define('HTTP_HOST', 'https://' . $_SERVER['HTTP_HOST'] . '/');
 define('APP_PORT', intval($_SERVER['SERVER_PORT']) != 80 ? ':' . $_SERVER['SERVER_PORT'] : '');
 define('APP_CONFIG', APP_ROOT . 'config/');
 
+$ch = curl_init();
+
 
 /* Drupal bootstrap procedure */ 
 //define('DRUPAL_ROOT', realpath(__DIR__ . '/../../')); 
@@ -25,17 +27,10 @@ define('APP_CONFIG', APP_ROOT . 'config/');
 //  string(16) "campaign partner"
 //}
 
-
-
-
 //if (isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID'])) {
 //     unset($_COOKIE['PHPSESSID']);
 //    setcookie('PHPSESSID', '', time()-3600, '/');
 //}
-
-
-
-
 
 
 // Autoloader

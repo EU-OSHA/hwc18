@@ -52,6 +52,29 @@ function hwc_homepage_fe_nodequeue_export_fields() {
     'count' => 0,
   );
 
+  // Exported nodequeues: homepage_about_the_topic
+  $nodequeues['homepage_about_the_topic'] = array(
+    'name' => 'homepage_about_the_topic',
+    'title' => 'Homepage about the topic',
+    'subqueue_title' => '',
+    'size' => 0,
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'nodequeue',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
+    'subqueues' => 1,
+    'types' => array(
+      0 => 'article',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
   return $nodequeues;
 }
 

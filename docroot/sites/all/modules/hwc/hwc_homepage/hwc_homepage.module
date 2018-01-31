@@ -23,6 +23,13 @@ function hwc_homepage_views_pre_render(&$view){
       }
     }
   }
+
+  if (($view->name == 'frontpage_events') && ($view->current_display == 'block')) {
+    _hwc_trim_view_results_titles($view->result);
+  }
+  if (($view->current_display == 'oshnews_latest') && ($view->name == 'news')) {
+    _hwc_trim_view_results_titles($view->result);
+  }
 }
 
 /**
@@ -32,6 +39,13 @@ function hwc_homepage_block_info() {
   $blocks = array();
   $blocks['hwc_homepage_tools_and_resources'] = array(
     'info' => t('Tools and publications'),
+    'status' => 1,
+    'region' => 'content',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+  );
+  $blocks['hwc_homepage_topics'] = array(
+    'info' => t('Priority areas'),
     'status' => 1,
     'region' => 'content',
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
@@ -52,6 +66,20 @@ function hwc_homepage_block_configure($delta = '') {
       '#title' => t('Message'),
       '#description' => 'The message shown underneath',
       '#default_value' => variable_get('hwc_homepage_tools_and_resources_message'),
+    );
+  }
+  if ($delta == 'hwc_homepage_topics') {
+    $form['hwc_homepage_topics_message'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Message'),
+      '#description' => 'Introductory text',
+      '#default_value' => variable_get('hwc_homepage_topics_message'),
+    );
+    $form['hwc_homepage_topics_know_more_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Know more link'),
+      '#description' => '“Know more” link to the main page of topics (Priority areas)',
+      '#default_value' => variable_get('hwc_homepage_topics_know_more_link'),
     );
   }
   return $form;
@@ -87,6 +115,10 @@ function hwc_homepage_block_save($delta = '', $edit = array()) {
   if ($delta == 'hwc_homepage_tools_and_resources') {
     variable_set('hwc_homepage_tools_and_resources_message', $edit['hwc_homepage_tools_and_resources_message']);
   }
+  if ($delta == 'hwc_homepage_topics') {
+    variable_set('hwc_homepage_topics_message', $edit['hwc_homepage_topics_message']);
+    variable_set('hwc_homepage_topics_know_more_link', $edit['hwc_homepage_topics_know_more_link']);
+  }
 }
 
 
@@ -95,15 +127,48 @@ function hwc_homepage_block_save($delta = '', $edit = array()) {
  */
 function hwc_homepage_block_view($delta = '') {
   $block = array();
+  if ($delta == 'hwc_homepage_topics') {
+    $voc = taxonomy_vocabulary_machine_name_load('priority_area');
+    $tree = taxonomy_get_tree($voc->vid);
+    $items = [];
+    foreach ($tree as $i => $term) {
+      $items[$i % 2][] = [
+        'data' => l($term->name, 'taxonomy/term/' . $term->tid),
+        'class' => ['priority_area_' . ($i + 1)],
+        'title' => $term->name,
+      ];
+    }
+    $block['content']['message'] = array(
+      'type' => 'item',
+      '#prefix' => '<div class="text-muted">',
+      '#markup' => t(variable_get('hwc_homepage_topics_message')),
+      '#suffix' => '</div>',
+    );
+    $block['content']['menu']['#markup'] = '<div class="priority_area">';
+    $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[0], 'attributes' => array('class' => 'menu nav')));
+    $block['content']['menu']['#markup'] .= theme('item_list', array('items' => $items[1], 'attributes' => array('class' => 'menu nav')));
+    $block['content']['menu']['#markup'] .= '</div>';
+    $block['subject'] = l(t('Priority areas'), variable_get('hwc_homepage_topics_know_more_link'));
+  }
   if ($delta == 'hwc_homepage_tools_and_resources') {
+    $items = [];
+    $items[] = l(t('Case studies'), 'case-studies');
+    $items[] = l(t('DS e-tool'), 'healthy-workplaces-all-ages-e-guide');
+    $items[] = l(t('Practical tools'), 'practical-tools');
     $block['content']['message'] = array(
       'type' => 'item',
       '#prefix' => '<div class="text-muted">',
       '#markup' => t(variable_get('hwc_homepage_tools_and_resources_message')),
       '#suffix' => '</div>',
     );
-    $links = menu_tree('main-menu');
-    $block['content']['menu'] = $links[1372]['#below'];
+    $block['content']['menu']['#markup'] = theme('item_list', array('items' => $items, 'attributes' => array('class' => 'menu nav')));
+    $block['content']['link'] = array(
+      'type' => 'item',
+      '#prefix' => '<div class="more-link">',
+      '#markup' => l(t('See other Tools and Publications'), 'tools_and_publications'),
+      '#suffix' => '</div>',
+    );
+    $block['subject'] = l(t('Tools and publications'), 'tools_and_publications');
   }
   return $block;
 }
@@ -115,11 +180,12 @@ function hwc_homepage_panels_pane_content_alter($content, $pane, $args, $context
   }
 }
 
-/**
- * Implements hook_block_view_alter().
- */
-function hwc_homepage_block_view_alter(&$data, $block) {
-  if ($block->delta == 'partners-block_1') {
-    $data['content']['#markup'] .= '<div class="more-link">' . l(t('See all partners'), 'official-campaign-partners') . '</div>';
+function _hwc_trim_view_results_titles(&$result, $max = 80) {
+  foreach ($result as &$row) {
+    $safe_value = $row->field_title_field[0]['raw']['safe_value'];
+    if (drupal_strlen($safe_value) > $max) {
+      $trimmed = drupal_substr($safe_value, 0, $max) . '...';
+      $row->field_title_field[0]['rendered']['#markup'] = str_replace($safe_value, $trimmed, $row->field_title_field[0]['rendered']['#markup']);
+    }
   }
 }

@@ -20,3 +20,16 @@ function osha_infographics_add_menu_position_rules() {
 function osha_infographics_update_7002() {
   features_revert_module('osha_infographics');
 }
+
+function osha_infographics_update_7003() {
+  cache_clear_all();
+  features_revert_module('osha_infographics');
+  module_enable(array('download_file'));
+}
+
+/**
+ * New crop image style
+ */
+function osha_infographics_update_7004() {
+  features_revert_module('osha_infographics');
+}
