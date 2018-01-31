@@ -99,6 +99,9 @@ function hwc_practical_tool_form_alter(&$form, &$form_state, $form_id) {
 }
 
 function hwc_practical_tool_add_lang_param() {
+  if (arg(0) == 'partners-documents') {
+    return FALSE;
+  }
   $query_params = drupal_get_query_parameters();
   if ((empty($query_params))&&empty($query_params['f'])) {
     return TRUE;
