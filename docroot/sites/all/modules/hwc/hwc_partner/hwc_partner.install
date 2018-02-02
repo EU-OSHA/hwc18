@@ -208,3 +208,11 @@ function hwc_partner_update_7026() {
   features_revert(array('hwc_partner' => 'page_manager_pages'));
   features_revert(array('hwc_partner' => 'page_manager_handlers'));
 }
+
+/**
+ * HW18-404 Private zone: My news/ My events filters.
+ */
+function hwc_partner_update_7027() {
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+}

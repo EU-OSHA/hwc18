@@ -7212,7 +7212,7 @@ function hwc_partner_default_page_manager_pages() {
   $pane->configuration = array(
     'buttons' => NULL,
     'custom_page_title_pattern' => '%node:title | [site:name]',
-    'form_build_id' => 'form-mEfAlOQHzFM90xPdWQcI7h93eTk9VON7QzXsE85tCpE',
+    'form_build_id' => 'form-NTCUI--7sA-Wov7RwqO_W1kUzHO99P0QsuiBdYopQWo',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
@@ -7681,7 +7681,7 @@ function hwc_partner_default_page_manager_pages() {
   $display->content['new-43dc0335-e792-4884-9be8-0fe5bc86180d'] = $pane;
   $display->panels['center'][0] = 'new-43dc0335-e792-4884-9be8-0fe5bc86180d';
   $pane = new stdClass();
-  $pane->pid = 'new-70d232a3-c541-48ba-a043-2b591b8bfb71';
+  $pane->pid = 'new-6c0d4e94-c202-45f8-a4ff-ed3c80e83647';
   $pane->panel = 'center';
   $pane->type = 'views';
   $pane->subtype = 'partner_draft_content';
@@ -7699,7 +7699,7 @@ function hwc_partner_default_page_manager_pages() {
     'link_to_view' => 0,
     'args' => '%1',
     'url' => '',
-    'display' => 'page_1',
+    'display' => 'default',
     'context' => array(
       0 => '',
     ),
