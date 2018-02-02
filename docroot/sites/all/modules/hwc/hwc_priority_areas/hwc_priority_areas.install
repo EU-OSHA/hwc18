@@ -271,3 +271,32 @@ function hwc_priority_areas_update_7030() {
 function hwc_priority_areas_update_7031() {
   features_revert_module('hwc_priority_areas');
 }
+
+/**
+ * Fix priority areas und language.
+ */
+function hwc_priority_areas_update_7032() {
+  $priority_area_vid = db_select('taxonomy_vocabulary', 'tv')
+    ->fields('tv', array('vid'))
+    ->condition('machine_name', 'priority_area')
+    ->execute()
+    ->fetchField();
+
+  if ($priority_area_vid) {
+
+    db_update('taxonomy_term_data')
+      ->fields(array(
+        'language' => 'en',
+      ))
+      ->condition('vid', $priority_area_vid, '=')
+      ->condition('language', 'und', '=')
+      ->execute();
+
+    db_update('field_data_field_introduction_text')
+      ->fields(array(
+        'language' => 'en',
+      ))
+      ->condition('language', 'und', '=')
+      ->execute();
+  }
+}
