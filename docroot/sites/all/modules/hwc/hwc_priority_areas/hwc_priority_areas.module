@@ -172,7 +172,9 @@ function hwc_priority_areas_get_intro_map() {
  * Implements hook_panels_pre_render().
  */
 function hwc_priority_areas_panels_pre_render($panels_display, $renderer) {
-  $panels_display->title = t('Tools and publications');
+  if ($panels_display->storage_id == 'page_tools_publications__panel') {
+    $panels_display->title = t('Tools and publications');
+  }
 }
 
 /**
