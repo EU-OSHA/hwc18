@@ -124,6 +124,16 @@ function hwc_glossary_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'lexicon_introduction_48';
+  $strongarm->value = array(
+    'value' => '',
+    'format' => 'full_html',
+  );
+  $export['lexicon_introduction_48'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'lexicon_link';
   $strongarm->value = 'absolute';
   $export['lexicon_link'] = $strongarm;
@@ -169,6 +179,13 @@ function hwc_glossary_strongarm() {
   $strongarm->name = 'lexicon_page_per_letter';
   $strongarm->value = 1;
   $export['lexicon_page_per_letter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'lexicon_path_48';
+  $strongarm->value = 'glossary';
+  $export['lexicon_path_48'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -232,6 +249,13 @@ function hwc_glossary_strongarm() {
   $strongarm->name = 'lexicon_term_class';
   $strongarm->value = 'lexicon-term';
   $export['lexicon_term_class'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'lexicon_title_48';
+  $strongarm->value = 'Glossary';
+  $export['lexicon_title_48'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

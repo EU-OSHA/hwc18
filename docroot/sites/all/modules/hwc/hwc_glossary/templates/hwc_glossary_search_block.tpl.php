@@ -5,7 +5,7 @@
     <div class="containerSmall">
         <div class="textGlossary"><?php echo t("Find all terms:"); ?> </div>
         <div class="searchGlossary selected"><?php echo t("Search"); ?> <div class="arrow"></div></div>
-        <div class="filterGlossary"><?php l(t("A-Z Filter"), 'glossary') ?></div>
+        <div class="filterGlossary"><?php echo l(t("A-Z Filter"), 'glossary') ?></div>
     </div>
 </div>
 <script>

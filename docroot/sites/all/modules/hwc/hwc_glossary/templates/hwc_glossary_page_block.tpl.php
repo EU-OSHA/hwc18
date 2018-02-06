@@ -7,14 +7,30 @@
 </div>
 <script>
     function glossaryLetters() {
-        if (jQuery(".lexicon-links").length>0) {
+        if (jQuery(".lexicon-links").length > 0) {
             var letterSelected=jQuery(".lexicon-item.active").text();
             var html="<div class='letterSelected'>"+letterSelected+"</div>";
             jQuery(".lexicon-list dl").before(html);
         }
     }
+    function glossaryClick() {
+        if (jQuery(".lexicon-list dt").length > 0) {
+            jQuery(".lexicon-list dt").each(function() {
+                jQuery(this).click(function () {
+                    jQuery(this).next().slideToggle();
+                    if(jQuery(this).hasClass("selected")) {
+                        jQuery(this).removeClass("selected");
+                    }
+                    else {
+                        jQuery(this).addClass("selected");
+                    }
+                });
+            });
+        }
+    }
     (function ($) {
         $(document).ready(function(){
+            glossaryClick();
             glossaryLetters();
         });
     })(jQuery);
