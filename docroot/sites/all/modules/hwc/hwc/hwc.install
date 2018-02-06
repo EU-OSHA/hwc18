@@ -674,3 +674,10 @@ function hwc_update_7042() {
 function hwc_update_7043() {
   migrate_static_registration();
 }
+
+/**
+ * MDR-1647 HW18:Add a glossary to the campaign website.
+ */
+function hwc_update_7044() {
+  module_enable(['lexicon', 'hwc_glossary']);
+}
