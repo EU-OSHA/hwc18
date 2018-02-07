@@ -312,13 +312,19 @@ function hwc_partner_block_view($delta = '') {
   return $block;
 }
 
-function hwc_partner_hide_name($name) {
-  static $prev_name = '';
+function hwc_partner_hide_name($name, $flag) {
+  static $prev_name = '', $prev_flag = '';
+
+  $classes = [];
   if (($prev_name) && ($prev_name == $name)) {
-    return TRUE;
+    $classes[] = 'hidden';
+  }
+  if (($prev_flag) && ($prev_flag != $flag)) {
+    $classes[] = 'new_line';
   }
   $prev_name = $name;
-  return FALSE;
+  $prev_flag = $flag;
+  return implode(' ', $classes);
 }
 
 /**

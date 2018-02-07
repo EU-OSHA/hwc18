@@ -24,8 +24,8 @@
  * @ingroup views_templates
  */
 
-if (hwc_partner_hide_name($fields['name_field']->content)) {
-  $fields['name_field']->wrapper_prefix = str_replace('views-field-name-field ', 'views-field-name-field hidden ', $fields['name_field']->wrapper_prefix);
+if ($replace = hwc_partner_hide_name($fields['name_field']->content, $fields['field_flag']->raw)) {
+  $fields['name_field']->wrapper_prefix = str_replace('views-field-name-field ', 'views-field-name-field ' . $replace . ' ', $fields['name_field']->wrapper_prefix);
 }
 ?>
 <?php foreach ($fields as $id => $field): ?>
