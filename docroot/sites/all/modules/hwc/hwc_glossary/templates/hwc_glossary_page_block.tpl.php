@@ -1,7 +1,7 @@
 <div class="selectCountry">
     <div class="containerSmall">
         <div class="textGlossary"><?php echo t("Find all terms:"); ?> </div>
-        <div class="searchGlossary"><?php echo l(t('Search'),'glossary-search') ?></div>
+<!--        <div class="searchGlossary">--><?php //echo l(t('Search'),'glossary-search') ?><!--</div>-->
         <div class="filterGlossary selected"><?php echo t("A-Z Filter"); ?> <div class="arrow"></div></div>
     </div>
 </div>
