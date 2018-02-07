@@ -524,7 +524,7 @@ $(document).ready(function () {
         return result && decodeURI(result[1]) || "";
     }
 
-    function validateActivitiesTextArea () {
+    function validateActivitiesTextArea() {
         $('.validate').each(function (ind,item) {
             var response = validateRequiredField($(item));
             if (response){
@@ -1892,7 +1892,7 @@ $(document).ready(function () {
 
         buttonPressed = "next";
         checkSections();
-
+        validateActivitiesTextArea();
         if(validateNextButtonFieldsAndSections()){
 
             //CSM Clean red boxes
