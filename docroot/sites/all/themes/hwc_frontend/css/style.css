@@ -5,6 +5,15 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
+
+.node-366 .field-name-body .field-item p {
+  display: block;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
 body {
   margin: 0;
 }
