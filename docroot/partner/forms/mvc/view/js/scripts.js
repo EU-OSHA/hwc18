@@ -528,11 +528,13 @@ $(document).ready(function () {
         $('.validate').each(function (ind,item) {
             var response = validateRequiredField($(item));
             if (response){
-                $(item).removeClass("error");
-                $(item).attr("data-error", "");
+                $(this).removeClass("error");
+                $(this).parent().removeClass('postRequired');
+                $(this).attr("data-error", "");
             }else{
-                $(item).addClass("error");
-                $(item).attr("data-error", "true");
+                $(this).addClass("error");
+                $(this).parent().addClass('postRequired');
+                $(this).attr("data-error", "true");
             }
         });
     }
@@ -2082,15 +2084,19 @@ $(document).ready(function () {
      */
     $(".combined-checkbox").click(function () {
         var target = "#" + $(this).attr("data-target");
+
         if($(this).is(':checked')){
-            $(this).closest('control-group').addClass('required');
-            $(this).next().addClass('validate').append('<span class="required-icon" style="color:red;font-size:2vw;margin-left:5px;position: absolute"> *</span>');
+            $(this).closest('.control-group').addClass('required');
+            $(this).next().addClass('validate').after('<span class="required-icon" style="color:red;font-size:2vw;margin-left:5px;position: absolute"> *</span>');
         } else{
-            $(this).parent().removeClass('postRequired')
-            $(this).closest('control-group').removeClass('required');
-            $(this).next().removeClass('validate');
+            $(this).closest('.control-group').removeClass('required');
+            $(this).next().val(null).removeClass('validate');
+            if($(this).next().hasClass('error')){
+                $(this).next().removeClass('error').attr('data-error',"");
+            }
             if($(this).next().next().hasClass('required-icon')) $(this).next().next().remove();
         }
+
         $(target).toggle();
         if ($(target).is(":hidden")) {
             ////$(target).val("");
