@@ -37,7 +37,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['relationships']['field_schedule_node']['table'] = 'field_collection_item';
   $handler->display->display_options['relationships']['field_schedule_node']['field'] = 'field_schedule_node';
   $handler->display->display_options['relationships']['field_schedule_node']['required'] = TRUE;
-  /* Field: Field collection item: Talking date */
+  /* Field: Field collection item: Speech date */
   $handler->display->display_options['fields']['field_talking_date']['id'] = 'field_talking_date';
   $handler->display->display_options['fields']['field_talking_date']['table'] = 'field_data_field_talking_date';
   $handler->display->display_options['fields']['field_talking_date']['field'] = 'field_talking_date';
@@ -54,7 +54,7 @@ function osha_events_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_talking_date']['field_api_classes'] = TRUE;
-  /* Field: Field collection item: Talking title */
+  /* Field: Field collection item: Speech title */
   $handler->display->display_options['fields']['field_talking_title']['id'] = 'field_talking_title';
   $handler->display->display_options['fields']['field_talking_title']['table'] = 'field_data_field_talking_title';
   $handler->display->display_options['fields']['field_talking_title']['field'] = 'field_talking_title';
@@ -66,7 +66,7 @@ function osha_events_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_talking_title']['field_api_classes'] = TRUE;
-  /* Field: Field collection item: Talking files */
+  /* Field: Field collection item: Presentation */
   $handler->display->display_options['fields']['field_talking_files']['id'] = 'field_talking_files';
   $handler->display->display_options['fields']['field_talking_files']['table'] = 'field_data_field_talking_files';
   $handler->display->display_options['fields']['field_talking_files']['field'] = 'field_talking_files';
@@ -80,7 +80,7 @@ function osha_events_views_default_views() {
   );
   $handler->display->display_options['fields']['field_talking_files']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_talking_files']['field_api_classes'] = TRUE;
-  /* Field: Field collection item: Talking speaker */
+  /* Field: Field collection item: Speaker */
   $handler->display->display_options['fields']['field_talking_speaker']['id'] = 'field_talking_speaker';
   $handler->display->display_options['fields']['field_talking_speaker']['table'] = 'field_data_field_talking_speaker';
   $handler->display->display_options['fields']['field_talking_speaker']['field'] = 'field_talking_speaker';
@@ -92,7 +92,7 @@ function osha_events_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_talking_speaker']['field_api_classes'] = TRUE;
-  /* Field: Field collection item: Venue */
+  /* Field: Field collection item: Conference Room */
   $handler->display->display_options['fields']['field_venue']['id'] = 'field_venue';
   $handler->display->display_options['fields']['field_venue']['table'] = 'field_data_field_venue';
   $handler->display->display_options['fields']['field_venue']['field'] = 'field_venue';
@@ -119,7 +119,7 @@ function osha_events_views_default_views() {
 [field_talking_files]
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Sort criterion: Field collection item: Talking date -  start date (field_talking_date) */
+  /* Sort criterion: Field collection item: Speech date -  start date (field_talking_date) */
   $handler->display->display_options['sorts']['field_talking_date_value']['id'] = 'field_talking_date_value';
   $handler->display->display_options['sorts']['field_talking_date_value']['table'] = 'field_data_field_talking_date';
   $handler->display->display_options['sorts']['field_talking_date_value']['field'] = 'field_talking_date_value';
