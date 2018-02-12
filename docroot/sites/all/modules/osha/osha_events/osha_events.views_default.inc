@@ -11,6 +11,1628 @@ function osha_events_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'admin_events';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Events';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Events';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    10 => '10',
+    7 => '7',
+    9 => '9',
+    8 => '8',
+    14 => '14',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: For the web / Public */
+  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['label'] = 'Country code';
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  /* Field: Content: Starting date */
+  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+  );
+  /* Field: Content: Website of event */
+  $handler->display->display_options['fields']['field_website_of_event']['id'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['table'] = 'field_data_field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['field'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
+  /* Field: Content: Adonis */
+  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
+  /* Field: Content: Unit Ref */
+  $handler->display->display_options['fields']['field_unit_ref']['id'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['table'] = 'field_data_field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['field'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['element_label_colon'] = FALSE;
+  /* Field: Content: Agency Role */
+  $handler->display->display_options['fields']['field_agency_role']['id'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['field'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_role']['delta_offset'] = '0';
+  /* Field: Content: Agency Initial Contact */
+  $handler->display->display_options['fields']['field_agency_initial_contact']['id'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['table'] = 'field_data_field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['field'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['element_label_colon'] = FALSE;
+  /* Field: Content: Agency Rep confirmed */
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['id'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['table'] = 'field_data_field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['field'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['element_label_colon'] = FALSE;
+  /* Field: Content: Event in AMP */
+  $handler->display->display_options['fields']['field_event_in_amp']['id'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
+  /* Field: Content: Agency contact / Reply / Comments */
+  $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['element_label_colon'] = FALSE;
+  /* Field: Content: Number of attendees */
+  $handler->display->display_options['fields']['field_number_of_attendees']['id'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['table'] = 'field_data_field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['field'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_number_of_attendees']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Satisfaction rate */
+  $handler->display->display_options['fields']['field_satisfaction_rate']['id'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['table'] = 'field_data_field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['field'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_satisfaction_rate']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Sort criterion: Content: Starting date -  start date (field_start_date) */
+  $handler->display->display_options['sorts']['field_start_date_value']['id'] = 'field_start_date_value';
+  $handler->display->display_options['sorts']['field_start_date_value']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['sorts']['field_start_date_value']['field'] = 'field_start_date_value';
+  $handler->display->display_options['sorts']['field_start_date_value']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'events' => 'events',
+  );
+
+  /* Display: Events */
+  $handler = $view->new_display('page', 'Events', 'page');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '10, 50, 100';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = TRUE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_color' => 'field_color',
+    'title_field' => 'title_field',
+    'field_for_the_web' => 'field_for_the_web',
+    'field_organization' => 'field_organization',
+    'field_country_code' => 'field_country_code',
+    'field_city' => 'field_city',
+    'field_start_date' => 'field_start_date',
+    'field_start_date_1' => 'field_start_date_1',
+    'field_website_of_event' => 'field_website_of_event',
+    'field_adonis' => 'field_adonis',
+    'field_unit_ref' => 'field_unit_ref',
+    'field_activity' => 'field_activity',
+    'field_agency_role' => 'field_agency_role',
+    'field_agency_initial_contact' => 'field_agency_initial_contact',
+    'field_agency_rep_confirmed' => 'field_agency_rep_confirmed',
+    'field_organised_by' => 'field_organised_by',
+    'field_event_in_amp' => 'field_event_in_amp',
+    'field_agency_contact_reply' => 'field_agency_contact_reply',
+    'field_comments_summary_after_eve' => 'field_comments_summary_after_eve',
+    'field_number_of_attendees' => 'field_number_of_attendees',
+    'field_satisfaction_rate' => 'field_satisfaction_rate',
+    'edit_node' => 'edit_node',
+    'delete_node' => 'delete_node',
+    'nothing' => 'nothing',
+    'name' => 'name',
+    'field_agency_rep_confirmed_1' => 'field_agency_rep_confirmed_1',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_color' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title_field' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_for_the_web' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_organization' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_country_code' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_city' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_start_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_start_date_1' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_website_of_event' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_adonis' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_unit_ref' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_activity' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_role' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_initial_contact' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_rep_confirmed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_organised_by' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_event_in_amp' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_contact_reply' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_comments_summary_after_eve' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_number_of_attendees' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_satisfaction_rate' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_agency_rep_confirmed_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['sticky'] = TRUE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<p>
+<a href="/en/node/add/events">Add event</a>
+</p>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['content'] = 'Total: @total';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['header']['area_1']['table'] = 'views';
+  $handler->display->display_options['header']['area_1']['field'] = 'area';
+  $handler->display->display_options['header']['area_1']['label'] = 'Colours';
+  $handler->display->display_options['header']['area_1']['empty'] = TRUE;
+  $handler->display->display_options['header']['area_1']['content'] = '<div class="colours">
+<div class="red"></div><p">TBD - TBC<p>
+<div class="black"></div><p>Confirmed<p>
+<div class="grey"></div><p>Only web or not attendance<p>
+</div>';
+  $handler->display->display_options['header']['area_1']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Result summary */
+  $handler->display->display_options['footer']['result']['id'] = 'result';
+  $handler->display->display_options['footer']['result']['table'] = 'views';
+  $handler->display->display_options['footer']['result']['field'] = 'result';
+  $handler->display->display_options['footer']['result']['content'] = '<span class="result_summary">Displaying @start - @end of @total</span>';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Color */
+  $handler->display->display_options['fields']['field_color']['id'] = 'field_color';
+  $handler->display->display_options['fields']['field_color']['table'] = 'field_data_field_color';
+  $handler->display->display_options['fields']['field_color']['field'] = 'field_color';
+  $handler->display->display_options['fields']['field_color']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_color']['alter']['text'] = '[field_color]';
+  $handler->display->display_options['fields']['field_color']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'title_linked';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => 'content',
+    'title_class' => '',
+  );
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: For the web / Public */
+  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['label'] = 'Country code';
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  /* Field: Content: Starting date */
+  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+  );
+  /* Field: Content: Starting date */
+  $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
+  $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['label'] = 'End date';
+  $handler->display->display_options['fields']['field_start_date_1']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+  );
+  /* Field: Content: Website of event */
+  $handler->display->display_options['fields']['field_website_of_event']['id'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['table'] = 'field_data_field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['field'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
+  /* Field: Content: Adonis */
+  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
+  /* Field: Content: Unit Ref */
+  $handler->display->display_options['fields']['field_unit_ref']['id'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['table'] = 'field_data_field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['field'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['element_label_colon'] = FALSE;
+  /* Field: Content: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['element_label_colon'] = FALSE;
+  /* Field: Field: Tags */
+  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['label'] = 'Category';
+  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  /* Field: Content: Agency Role */
+  $handler->display->display_options['fields']['field_agency_role']['id'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['field'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_role']['delta_offset'] = '0';
+  /* Field: Content: Agency Initial Contact */
+  $handler->display->display_options['fields']['field_agency_initial_contact']['id'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['table'] = 'field_data_field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['field'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['element_label_colon'] = FALSE;
+  /* Field: Content: Agency Rep confirmed */
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['id'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['table'] = 'field_data_field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['field'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['element_label_colon'] = FALSE;
+  /* Field: Content: Event in AMP */
+  $handler->display->display_options['fields']['field_event_in_amp']['id'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
+  /* Field: Content: Agency contact / Reply / Comments */
+  $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['element_label_colon'] = FALSE;
+  /* Field: Content: Number of attendees */
+  $handler->display->display_options['fields']['field_number_of_attendees']['id'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['table'] = 'field_data_field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['field'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_number_of_attendees']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Satisfaction rate */
+  $handler->display->display_options['fields']['field_satisfaction_rate']['id'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['table'] = 'field_data_field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['field'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_satisfaction_rate']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['label'] = '';
+  $handler->display->display_options['fields']['delete_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['delete_node']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<ul class="links inline">
+<li>[edit_node]</li>
+<li>[delete_node]</li>
+</ul>';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Color (field_color) */
+  $handler->display->display_options['filters']['field_color_value']['id'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['table'] = 'field_data_field_color';
+  $handler->display->display_options['filters']['field_color_value']['field'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_color_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator_id'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['label'] = 'Color';
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['identifier'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'events' => 'events',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Content: Country (field_country_code) */
+  $handler->display->display_options['filters']['field_country_code_value']['id'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['filters']['field_country_code_value']['field'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_country_code_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator_id'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['identifier'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: City (field_city) */
+  $handler->display->display_options['filters']['field_city_value']['id'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['table'] = 'field_data_field_city';
+  $handler->display->display_options['filters']['field_city_value']['field'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_city_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_city_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator_id'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['label'] = 'City';
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['identifier'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Starting date -  start date (field_start_date) */
+  $handler->display->display_options['filters']['field_start_date_value']['id'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_start_date_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_start_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['operator_id'] = 'field_start_date_value_op';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['label'] = 'Start date';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['operator'] = 'field_start_date_value_op';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['identifier'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_start_date_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Starting date - end date (field_start_date:value2) */
+  $handler->display->display_options['filters']['field_start_date_value2']['id'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['filters']['field_start_date_value2']['field'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_start_date_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_start_date_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['operator_id'] = 'field_start_date_value2_op';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['operator'] = 'field_start_date_value2_op';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['identifier'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_start_date_value2']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Adonis (field_adonis) */
+  $handler->display->display_options['filters']['field_adonis_value']['id'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['field'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['operator'] = 'starts';
+  $handler->display->display_options['filters']['field_adonis_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_adonis_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator_id'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['identifier'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Activity (field_activity) */
+  $handler->display->display_options['filters']['field_activity_tid']['id'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['filters']['field_activity_tid']['field'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_activity_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator_id'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['label'] = 'Activity';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['identifier'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+  );
+  $handler->display->display_options['filters']['field_activity_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_activity_tid']['vocabulary'] = 'activity';
+  $handler->display->display_options['filters']['field_activity_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: Agency Role (field_agency_role) */
+  $handler->display->display_options['filters']['field_agency_role_value']['id'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['filters']['field_agency_role_value']['field'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_agency_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator_id'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['label'] = 'Agency role';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['identifier'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Content: Unit Ref (field_unit_ref) */
+  $handler->display->display_options['filters']['field_unit_ref_value']['id'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['table'] = 'field_data_field_unit_ref';
+  $handler->display->display_options['filters']['field_unit_ref_value']['field'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_unit_ref_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator_id'] = 'field_unit_ref_value_op';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['label'] = 'Unit Ref';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator'] = 'field_unit_ref_value_op';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['identifier'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Content: Event in AMP (field_event_in_amp) */
+  $handler->display->display_options['filters']['field_event_in_amp_value']['id'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['table'] = 'field_data_field_event_in_amp';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['field'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_event_in_amp_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator_id'] = 'field_event_in_amp_value_op';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['label'] = 'Event in AMP';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator'] = 'field_event_in_amp_value_op';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['identifier'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+  );
+  /* Filter criterion: Content: Agency Rep confirmed (field_agency_rep_confirmed) */
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['id'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['table'] = 'field_data_field_agency_rep_confirmed';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['field'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['operator_id'] = 'field_agency_rep_confirmed_value_op';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['label'] = 'Agency rep confirmed';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['operator'] = 'field_agency_rep_confirmed_value_op';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['identifier'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Migrate Source (field_migration_source) */
+  $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['table'] = 'field_data_field_migration_source';
+  $handler->display->display_options['filters']['field_migration_source_value']['field'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
+    'hwc' => 'hwc',
+  );
+  $handler->display->display_options['filters']['field_migration_source_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator_id'] = 'field_migration_source_value_op';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['label'] = 'Not from';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator'] = 'field_migration_source_value_op';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['identifier'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    14 => 0,
+  );
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['label'] = 'Source';
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['identifier'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'HWC',
+      'operator' => 'or',
+      'value' => array(
+        'hwc' => 'hwc',
+      ),
+    ),
+    2 => array(
+      'title' => 'Osha',
+      'operator' => 'empty',
+      'value' => array(
+        'hwc' => 'hwc',
+      ),
+    ),
+  );
+  /* Filter criterion: Content: For the web / Public (field_for_the_web) */
+  $handler->display->display_options['filters']['field_for_the_web_value']['id'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['filters']['field_for_the_web_value']['field'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['operator_id'] = 'field_for_the_web_value_op';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['label'] = 'For the web';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['operator'] = 'field_for_the_web_value_op';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['identifier'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    14 => 0,
+  );
+  $handler->display->display_options['filters']['field_for_the_web_value']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['path'] = 'admin/content/events';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Events';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = 'events.xls';
+  $handler->display->display_options['style_options']['parent_sort'] = 1;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Color */
+  $handler->display->display_options['fields']['field_color']['id'] = 'field_color';
+  $handler->display->display_options['fields']['field_color']['table'] = 'field_data_field_color';
+  $handler->display->display_options['fields']['field_color']['field'] = 'field_color';
+  $handler->display->display_options['fields']['field_color']['ui_name'] = 'Color';
+  $handler->display->display_options['fields']['field_color']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_color']['alter']['text'] = '[field_color]';
+  /* Field: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['ui_name'] = 'Title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: For the web */
+  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['ui_name'] = 'For the web';
+  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Country */
+  $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
+  $handler->display->display_options['fields']['field_country_code']['ui_name'] = 'Country';
+  $handler->display->display_options['fields']['field_country_code']['label'] = 'Country code';
+  $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  /* Field: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['ui_name'] = 'City';
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  /* Field: Event date */
+  $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['ui_name'] = 'Event date';
+  $handler->display->display_options['fields']['field_start_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_start_date']['type'] = 'date_plain';
+  $handler->display->display_options['fields']['field_start_date']['settings'] = array(
+    'format_type' => 'osha_day_only',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Website of event */
+  $handler->display->display_options['fields']['field_website_of_event']['id'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['table'] = 'field_data_field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['field'] = 'field_website_of_event';
+  $handler->display->display_options['fields']['field_website_of_event']['ui_name'] = 'Website of event';
+  $handler->display->display_options['fields']['field_website_of_event']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_website_of_event']['type'] = 'link_plain';
+  $handler->display->display_options['fields']['field_website_of_event']['delta_offset'] = '0';
+  /* Field: Adonis */
+  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['ui_name'] = 'Adonis';
+  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
+  /* Field: Unit Ref */
+  $handler->display->display_options['fields']['field_unit_ref']['id'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['table'] = 'field_data_field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['field'] = 'field_unit_ref';
+  $handler->display->display_options['fields']['field_unit_ref']['ui_name'] = 'Unit Ref';
+  $handler->display->display_options['fields']['field_unit_ref']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_unit_ref']['delta_offset'] = '0';
+  /* Field: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['ui_name'] = 'Activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_activity']['delta_offset'] = '0';
+  /* Field: Category */
+  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
+  $handler->display->display_options['fields']['field_tags']['ui_name'] = 'Category';
+  $handler->display->display_options['fields']['field_tags']['label'] = 'Category';
+  $handler->display->display_options['fields']['field_tags']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  /* Field: Agency role */
+  $handler->display->display_options['fields']['field_agency_role']['id'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['field'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['ui_name'] = 'Agency role';
+  $handler->display->display_options['fields']['field_agency_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_role']['delta_offset'] = '0';
+  /* Field: Agency initial contact */
+  $handler->display->display_options['fields']['field_agency_initial_contact']['id'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['table'] = 'field_data_field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['field'] = 'field_agency_initial_contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['ui_name'] = 'Agency initial contact';
+  $handler->display->display_options['fields']['field_agency_initial_contact']['element_label_colon'] = FALSE;
+  /* Field: Agency rep confirmed */
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['id'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['table'] = 'field_data_field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['field'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['ui_name'] = 'Agency rep confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['element_label_colon'] = FALSE;
+  /* Field: Event in AMP */
+  $handler->display->display_options['fields']['field_event_in_amp']['id'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
+  $handler->display->display_options['fields']['field_event_in_amp']['ui_name'] = 'Event in AMP';
+  $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
+  /* Field: Agency contact / reply */
+  $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['ui_name'] = 'Agency contact / reply';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['element_label_colon'] = FALSE;
+  /* Field: Number of attendees */
+  $handler->display->display_options['fields']['field_number_of_attendees']['id'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['table'] = 'field_data_field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['field'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['ui_name'] = 'Number of attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_number_of_attendees']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Satisfaction rate */
+  $handler->display->display_options['fields']['field_satisfaction_rate']['id'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['table'] = 'field_data_field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['field'] = 'field_satisfaction_rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['ui_name'] = 'Satisfaction rate';
+  $handler->display->display_options['fields']['field_satisfaction_rate']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_satisfaction_rate']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Username */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['ui_name'] = 'Username';
+  $handler->display->display_options['fields']['name']['label'] = 'Username';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['ui_name'] = 'Published';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'events' => 'events',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Color (field_color) */
+  $handler->display->display_options['filters']['field_color_value']['id'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['table'] = 'field_data_field_color';
+  $handler->display->display_options['filters']['field_color_value']['field'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_color_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator_id'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['label'] = 'Color (field_color)';
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['identifier'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Title (title_field) */
+  $handler->display->display_options['filters']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['filters']['title_field_value']['field'] = 'title_field_value';
+  $handler->display->display_options['filters']['title_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_field_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator_id'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title_field_value']['expose']['operator'] = 'title_field_value_op';
+  $handler->display->display_options['filters']['title_field_value']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title_field_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Starting date -  start date (field_start_date) */
+  $handler->display->display_options['filters']['field_start_date_value']['id'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_start_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['operator_id'] = 'field_start_date_value_op';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['label'] = 'Start date';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['operator'] = 'field_start_date_value_op';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['identifier'] = 'field_start_date_value';
+  $handler->display->display_options['filters']['field_start_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  $handler->display->display_options['filters']['field_start_date_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Starting date - end date (field_start_date:value2) */
+  $handler->display->display_options['filters']['field_start_date_value2']['id'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['filters']['field_start_date_value2']['field'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_start_date_value2']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['operator_id'] = 'field_start_date_value2_op';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['label'] = 'End date';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['operator'] = 'field_start_date_value2_op';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['identifier'] = 'field_start_date_value2';
+  $handler->display->display_options['filters']['field_start_date_value2']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  $handler->display->display_options['filters']['field_start_date_value2']['form_type'] = 'date_popup';
+  /* Filter criterion: Content: Agency Role (field_agency_role) */
+  $handler->display->display_options['filters']['field_agency_role_value']['id'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['filters']['field_agency_role_value']['field'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator_id'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['label'] = 'Agency role';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['identifier'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Unit Ref (field_unit_ref) */
+  $handler->display->display_options['filters']['field_unit_ref_value']['id'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['table'] = 'field_data_field_unit_ref';
+  $handler->display->display_options['filters']['field_unit_ref_value']['field'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator_id'] = 'field_unit_ref_value_op';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['label'] = 'Unit Ref (field_unit_ref)';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator'] = 'field_unit_ref_value_op';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['identifier'] = 'field_unit_ref_value';
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Event in AMP (field_event_in_amp) */
+  $handler->display->display_options['filters']['field_event_in_amp_value']['id'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['table'] = 'field_data_field_event_in_amp';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['field'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator_id'] = 'field_event_in_amp_value_op';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['label'] = 'Event in AMP';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator'] = 'field_event_in_amp_value_op';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['identifier'] = 'field_event_in_amp_value';
+  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Activity (field_activity) */
+  $handler->display->display_options['filters']['field_activity_tid']['id'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['filters']['field_activity_tid']['field'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator_id'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['label'] = 'Activity';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['operator'] = 'field_activity_tid_op';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['identifier'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  $handler->display->display_options['filters']['field_activity_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_activity_tid']['vocabulary'] = 'activity';
+  $handler->display->display_options['filters']['field_activity_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: Agency Rep confirmed (field_agency_rep_confirmed) */
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['id'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['table'] = 'field_data_field_agency_rep_confirmed';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['field'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['operator_id'] = 'field_agency_rep_confirmed_value_op';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['label'] = 'Agency rep confirmed';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['operator'] = 'field_agency_rep_confirmed_value_op';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['identifier'] = 'field_agency_rep_confirmed_value';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: City (field_city) */
+  $handler->display->display_options['filters']['field_city_value']['id'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['table'] = 'field_data_field_city';
+  $handler->display->display_options['filters']['field_city_value']['field'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_city_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator_id'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['label'] = 'City';
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['identifier'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Country (field_country_code) */
+  $handler->display->display_options['filters']['field_country_code_value']['id'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['filters']['field_country_code_value']['field'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator_id'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['identifier'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Adonis (field_adonis) */
+  $handler->display->display_options['filters']['field_adonis_value']['id'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['field'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['operator'] = 'starts';
+  $handler->display->display_options['filters']['field_adonis_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator_id'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['identifier'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Migrate Source (field_migration_source) */
+  $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['table'] = 'field_data_field_migration_source';
+  $handler->display->display_options['filters']['field_migration_source_value']['field'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
+    'hwc' => 'hwc',
+    'oira' => 'oira',
+    'napo' => 'napo',
+  );
+  $handler->display->display_options['filters']['field_migration_source_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator_id'] = 'field_migration_source_value_op';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['label'] = 'Source not in';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator'] = 'field_migration_source_value_op';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['identifier'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    14 => 0,
+  );
+  $handler->display->display_options['filters']['field_migration_source_value']['expose']['reduce'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['label'] = 'Source';
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['identifier'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => 'HWC',
+      'operator' => 'or',
+      'value' => array(
+        'hwc' => 'hwc',
+      ),
+    ),
+    2 => array(
+      'title' => 'Osha',
+      'operator' => 'empty',
+      'value' => array(
+        'hwc' => 'hwc',
+        'oira' => 'oira',
+        'napo' => 'napo',
+      ),
+    ),
+  );
+  $handler->display->display_options['path'] = 'admin/content/events-export';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+    'block_1' => 0,
+  );
+  $translatables['admin_events'] = array(
+    t('Master'),
+    t('Events'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('author'),
+    t('For the web / Public'),
+    t('Country code'),
+    t('City'),
+    t('Starting date'),
+    t('Website of event'),
+    t('Adonis'),
+    t('Unit Ref'),
+    t('Agency Role'),
+    t('Agency Initial Contact'),
+    t('Agency Rep confirmed'),
+    t('Event in AMP'),
+    t('Agency contact / Reply / Comments'),
+    t('Number of attendees'),
+    t('Satisfaction rate'),
+    t('Published'),
+    t('<p>
+<a href="/en/node/add/events">Add event</a>
+</p>'),
+    t('Total: @total'),
+    t('Colours'),
+    t('<div class="colours">
+<div class="red"></div><p">TBD - TBC<p>
+<div class="black"></div><p>Confirmed<p>
+<div class="grey"></div><p>Only web or not attendance<p>
+</div>'),
+    t('<span class="result_summary">Displaying @start - @end of @total</span>'),
+    t('Color'),
+    t('[field_color]'),
+    t('Title'),
+    t('End date'),
+    t('Activity'),
+    t('Category'),
+    t('Operations'),
+    t('<ul class="links inline">
+<li>[edit_node]</li>
+<li>[delete_node]</li>
+</ul>'),
+    t('Name'),
+    t('Country'),
+    t('Start date'),
+    t('Agency role'),
+    t('Agency rep confirmed'),
+    t('Not from'),
+    t('Source'),
+    t('For the web'),
+    t('Data export'),
+    t('Username'),
+    t('Color (field_color)'),
+    t('Unit Ref (field_unit_ref)'),
+    t('Source not in'),
+  );
+  $export['admin_events'] = $view;
+
+  $view = new view();
   $view->name = 'event_schedule';
   $view->description = '';
   $view->tag = 'default';
