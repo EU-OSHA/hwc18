@@ -525,6 +525,24 @@ $(document).ready(function () {
     }
 
     /**
+     * JA - Workaround for make activities required on submit
+     */
+    function validateActivitiesTextArea () {
+        $('.validate').each(function (ind,item) {
+            var response = validateRequiredField($(item));
+            if (response){
+                $(this).removeClass("error");
+                $(this).parent().removeClass('postRequired');
+                //$(this).attr("data-error", "");
+            }else{
+                $(this).addClass("error");
+                $(this).parent().addClass('postRequired');
+                //$(this).attr("data-error", "true");
+            }
+        });
+    }
+
+    /**
      * Validate a field via AJAX
      * @param field
      */
@@ -877,6 +895,18 @@ $(document).ready(function () {
 //        , blur: function () {
 //            validateField(this);
 //        }
+    });
+
+
+    //JA- 12/02/2018 -Workaround for make activities required on validate
+    $('input[type="checkbox"] + textarea[data-section="INVOLVEMENT"]').on('change',function(){
+        if($(this).val()){
+            $(this).removeClass("error");
+            $(this).attr("data-error", "");
+        }else{
+            if(!$(this).hasClass('error')) $(this).addClass("error");
+            $(this).attr("data-error", "true");
+        }
     });
 
     $("#contact_osh_mainemail").on({
@@ -1612,6 +1642,15 @@ $(document).ready(function () {
                 });
             }
 
+            if(dataSection=="INVOLVEMENT"){
+                //JA - 12/02/2018 - Workaround for make checkboxes clickables
+                $('input[data-section="INVOLVEMENT"][type="checkbox"]').each(function (id, item) {
+                    $(item).css({
+                        'pointer-events':'inherit'
+                    })
+                });
+            }
+
             $(this).removeClass("validation-pressed");
             if(dataSection=="GENERAL_INFORMATION"){
                 $("#company_osh_selectsocialnetworks").prop("disabled", false);
@@ -1879,7 +1918,7 @@ $(document).ready(function () {
 
         buttonPressed = "next";
         checkSections();
-
+        validateActivitiesTextArea();
         if(validateNextButtonFieldsAndSections()){
 
             //CSM Clean red boxes
@@ -2069,6 +2108,21 @@ $(document).ready(function () {
      */
     $(".combined-checkbox").click(function () {
         var target = "#" + $(this).attr("data-target");
+
+        //JA - Workaround for make activities required
+        if($(this).is(':checked')){
+            $(this).closest('.control-group').addClass('required');
+            $(this).next().addClass('validate').after('<span class="required-icon" style="color:red;font-size:2vw;margin-left:5px;position: absolute"> *</span>');
+            $(this).next().addClass('error').attr('data-error',"true");
+        } else{
+            $(this).closest('.control-group').removeClass('required');
+            $(this).next().val(null).removeClass('validate');
+            if($(this).next().hasClass('error')){
+                $(this).next().removeClass('error').attr('data-error',"");
+            }
+            if($(this).next().next().hasClass('required-icon')) $(this).next().next().remove();
+        }
+
         $(target).toggle();
         if ($(target).is(":hidden")) {
             ////$(target).val("");

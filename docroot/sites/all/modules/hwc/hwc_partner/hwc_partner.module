@@ -312,13 +312,19 @@ function hwc_partner_block_view($delta = '') {
   return $block;
 }
 
-function hwc_partner_hide_name($name) {
-  static $prev_name = '';
+function hwc_partner_hide_name($name, $flag) {
+  static $prev_name = '', $prev_flag = '';
+
+  $classes = [];
   if (($prev_name) && ($prev_name == $name)) {
-    return TRUE;
+    $classes[] = 'hidden';
+  }
+  if (($prev_flag) && ($prev_flag != $flag)) {
+    $classes[] = 'new_line';
   }
   $prev_name = $name;
-  return FALSE;
+  $prev_flag = $flag;
+  return implode(' ', $classes);
 }
 
 /**
@@ -342,17 +348,38 @@ function hwc_partner_views_pre_render(&$view) {
       ($view->current_display == 'een')
     )) {
     global $language;
+    $sort_title_field = TRUE;
+    if ($view->current_display == 'fop') {
+      $sort_title_field = FALSE;
+    }
+    $current_display = $view->current_display;
     $results = &$view->result;
     // Sort the results by country name (using UTF-8).
-    uasort($results, function($a, $b) use ($language) {
-      if (class_exists('Collator')) { // requires php-intl extension
+    uasort($results, function ($a, $b) use ($language, $sort_title_field) {
+      // Requires php-intl extension.
+      if (class_exists('Collator')) {
         $collator = new \Collator($language->language);
-        return $collator->compare($a->field_name_field[0]['rendered']['#markup'], $b->field_name_field[0]['rendered']['#markup']);
+        $str1 = $a->field_name_field[0]['rendered']['#markup'];
+        $str2 = $b->field_name_field[0]['rendered']['#markup'];
+        $res = $collator->compare($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = $a->field_title_field[0]['rendered']['#markup'];
+          $str2 = $b->field_title_field[0]['rendered']['#markup'];
+          $res = $collator->compare($str1, $str2);
+        }
+        return $res;
       }
-      else { // sorting in some languages (greek) are wrong
+      // Sorting in some languages (greek) are wrong.
+      else {
         $str1 = htmlspecialchars($a->field_name_field[0]['rendered']['#markup']);
         $str2 = htmlspecialchars($b->field_name_field[0]['rendered']['#markup']);
-        return strcmp($str1, $str2);
+        $res = strcmp($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = htmlspecialchars($a->field_title_field[0]['rendered']['#markup']);
+          $str2 = htmlspecialchars($b->field_title_field[0]['rendered']['#markup']);
+          $res = strcmp($str1, $str2);
+        }
+        return $res;
       }
     });
   }
@@ -361,7 +388,7 @@ function hwc_partner_views_pre_render(&$view) {
     $new_rows = [];
     foreach ($view->result as $row) {
       unset($row->_field_data);
-      if (( $prev_name) && ($prev_name == $row->field_name_field[0]['raw']['value']) ) {
+      if ($prev_name && ($prev_name == $row->field_name_field[0]['raw']['value'])) {
         $row->field_field_flag = [];
         $new_rows[] = $row;
       }

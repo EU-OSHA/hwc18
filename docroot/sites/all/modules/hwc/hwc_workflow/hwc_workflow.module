@@ -163,7 +163,7 @@ function hwc_workflow_node_view($node, $view_mode, $langcode) {
 		};
 })(jQuery);
 ', 'inline');
-      echo '<div style="visibility: hidden;display: none"><div id="validation_reminder" title="' . t('Reminder') . '"><p>' . $reminder_text[0] . '</p></div></div>';
+      $node->content['share_widget']['#markup'] .= '<div style="visibility: hidden;display: none"><div id="validation_reminder" title="' . t('Reminder') . '"><p>' . $reminder_text[0] . '</p></div></div>';
     }
 
     $is_draft = !empty($node->workbench_moderation['current']) && $node->workbench_moderation['current']->state == 'draft';
