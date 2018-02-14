@@ -48,6 +48,9 @@ function osha_news_osha_tmgmt_i18n_string_list() {
   return osha_news_get_translatable_strings();
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 function osha_news_form_alter(&$form, &$form_state, $form_id) {
   global $theme;
 

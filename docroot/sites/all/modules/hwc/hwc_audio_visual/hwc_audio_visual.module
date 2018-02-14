@@ -6,6 +6,9 @@
 
 include_once 'hwc_audio_visual.features.inc';
 
+/**
+ * Implements hook_init.
+ */
 function hwc_audio_visual_init() {
   $item = menu_get_object();
   if (
@@ -23,6 +26,9 @@ function hwc_audio_visual_preprocess_views_view(&$vars) {
   }
 }
 
+/**
+ * Implements hook_element_info_alter.
+ */
 function hwc_audio_visual_element_info_alter(&$type) {
   if (isset($type['text_format']['#process'])) {
     foreach ($type['text_format']['#process'] as &$callback) {

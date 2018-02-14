@@ -356,6 +356,9 @@ function osha_publication_ctools_plugin_directory($owner, $plugin_type) {
   }
 }
 
+/**
+ * Implements hook_panels_pre_render().
+ */
 function osha_publication_panels_pre_render($panels_display, $renderer) {
   if (strpos($panels_display->cache_key, 'panel_context:node_view::node_view__publication_detail') == 0) {
   }

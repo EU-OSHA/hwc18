@@ -4,6 +4,9 @@
  * osha_lingua_tools module file
  */
 
+/**
+ * Implements hook_menu().
+ */
 function osha_lingua_tools_menu() {
 
   $items['node/%node/linguatools'] = array(
@@ -18,6 +21,9 @@ function osha_lingua_tools_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 function osha_lingua_tools_form_alter(&$form, &$form_state, $form_id) {
 }
 
