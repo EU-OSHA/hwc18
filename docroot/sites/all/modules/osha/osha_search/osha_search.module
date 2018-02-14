@@ -7,6 +7,9 @@
 include_once 'osha_search.features.inc';
 module_load_include('inc', 'osha_search', 'osha_search.admin');
 
+/**
+ * Implements hook_facet_items().
+ */
 function osha_search_facet_items_alter(&$build, &$settings) {
 
   $query_params = drupal_get_query_parameters();

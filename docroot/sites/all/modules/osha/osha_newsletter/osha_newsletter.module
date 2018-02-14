@@ -98,6 +98,9 @@ function osha_newsletter_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_menu_alter().
+ */
 function osha_newsletter_menu_alter(&$items) {
   if (isset($items['entity-collection/%entity_collection/content'])) {
     $items['entity-collection/%entity_collection/content']['page callback'] =
@@ -124,6 +127,9 @@ function osha_newsletter_entity_collection_content_admin($entity_collection) {
   return $form;
 }
 
+/**
+ * Implements hook_action_info().
+ */
 function osha_newsletter_action_info() {
   return array(
     'osha_newsletter_add_to_newsletter_action' => array(
@@ -1093,6 +1099,9 @@ function osha_newsletter_send_email($key, $to, $from, $form_values, $message) {
   }
 }
 
+/**
+ * Implements hook_menu_alter().
+ */
 function osha_newsletter_mail_alter(&$message) {
     if ($message['id'] == 'osha_newsletter_subscribe_email' ||
       $message['id'] == 'osha_newsletter_unsubscribe_email' ||

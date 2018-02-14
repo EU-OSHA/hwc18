@@ -293,6 +293,7 @@ function osha_events_popup_date_validate($element, &$form_state, $form) {
 }
 
 /**
+ * Implements hook_date_popup_process_alter().
  * Altering Date Popup to remove labels and description for specific field
  */
 function osha_events_date_popup_process_alter(&$element, &$form_state, $context) {

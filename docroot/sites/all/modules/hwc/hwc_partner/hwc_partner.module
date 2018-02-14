@@ -43,6 +43,9 @@ function hwc_partner_views_query_alter(&$view, &$query) {
   }
 }
 
+/**
+ * Implements hook_context_plugins().
+ */
 function hwc_partner_context_plugins() {
   $plugins = array();
   $plugins['hwc_context_condition_partner_page'] = array(
@@ -56,6 +59,9 @@ function hwc_partner_context_plugins() {
   return $plugins;
 }
 
+/**
+ * Implements hook_context_registry().
+ */
 function hwc_partner_context_registry() {
   return array(
     'conditions' => array(
@@ -68,6 +74,9 @@ function hwc_partner_context_registry() {
   );
 }
 
+/**
+ * Implements hook_context_page_condition().
+ */
 function hwc_partner_context_page_condition() {
   if ($plugin = context_get_plugin('condition', 'hwc_context_condition_partner_page')) {
     $plugin->execute();
@@ -555,6 +564,7 @@ function hwc_partner_form_after_build($form, $form_state) {
   $form['field_modified_on']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
   return $form;
 }
+
 /**
  * Implements hook_form_alter().
  */

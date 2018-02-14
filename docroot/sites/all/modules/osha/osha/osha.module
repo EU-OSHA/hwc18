@@ -7,6 +7,9 @@ include_once 'osha.pathauto.inc';
 define('OSHA_ARTICLE_CONTENT_TYPE_ARTICLE', 'article');
 define('OSHA', 'OSHA');
 
+/**
+ * Implements hook_menu().
+ */
 function osha_menu() {
   $items = array();
   $items['users/autocomplete/%'] = array(
@@ -341,6 +344,7 @@ function osha_disabled_language_list() {
 }
 
 /**
+ * Implements hook_language_list.
  * Get OSHA official language list.
  *
  * @param bool $osha_sorted
