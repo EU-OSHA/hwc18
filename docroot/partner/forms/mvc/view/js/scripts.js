@@ -1245,6 +1245,17 @@ $(document).ready(function () {
                         fillRequiredFieldName = "To agree with all the requirements";
                     }
 
+                    //JA - 14/02/2018 - Workaorund for homepage url message
+                    if(first.attr('id') == 'company_osh_homepage'){
+                        $('#fillRequiredFieldName').text(fillRequiredFieldName);
+                        $('#errorMessage').text(' is not a valid field. Please fill it correctly in order to continue.');
+                    } else{
+                        if($('#errorMessage').text().indexOf('valid') > 0){
+                            $('#errorMessage').text(' is required. Please fill it in order to continue.');
+                        }
+                        $('#fillRequiredFieldName').text(fillRequiredFieldName);
+                    }
+
                     $('#fillRequiredFieldName').text(fillRequiredFieldName);
                     $("#fillRequiredDialog").removeClass('hidden');
                     $('html,body').animate({scrollTop: 0}, 300, function() {
@@ -2511,7 +2522,7 @@ $(document).ready(function () {
 
     //Redirect to the private zone from congrats.
     $(".privateZoneredirect").click(function (e) {
-        window.top.location.href = "https://healthy-workplaces.eu/all-ages-splash-page/";
+        window.top.location.href = "https://test-hwc18.osha.europa.eu/";
     });
     $(".privateZoneredirectMF").click(function (e) {
         var partner_nid = $('#partner_nid').val();
@@ -2521,7 +2532,7 @@ $(document).ready(function () {
             var url = homeurl + language + "/node/" + partner_nid;
             window.top.location.href = url;
         }else{
-            window.top.location.href = "https://healthy-workplaces.eu/all-ages-splash-page/";
+            window.top.location.href = "https://test-hwc18.osha.europa.eu/";
         }
     });
 
