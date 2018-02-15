@@ -221,5 +221,5 @@ function hwc_partner_update_7027() {
  * MDR-1669 HW18: Country name clickable.
  */
 function hwc_partner_update_7028() {
-  features_revert(array('hwc_partner' => 'views_view'));
+  features_revert_module('hwc_partner');
 }
