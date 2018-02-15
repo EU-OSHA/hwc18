@@ -880,6 +880,8 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
   $handler->display->display_options['fields']['name_field']['relationship'] = 'field_country_tid';
   $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['name_field']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['element_wrapper_class'] = 'hwc-alpha-pager-view-title-field';
   $handler->display->display_options['fields']['name_field']['settings'] = array(
