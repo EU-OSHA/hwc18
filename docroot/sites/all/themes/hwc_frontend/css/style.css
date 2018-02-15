@@ -5,15 +5,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
-.node-366 .field-name-body .field-item p {
-  display: block;
-  color: #003399;
-  font-weight: bold;
-  font-style: italic;
-  text-align: center;
-}
-
 body {
   margin: 0;
 }
@@ -6640,10 +6631,6 @@ body .checkbox + .checkbox {
 }
 body label {
   font-weight: normal;
-}
-body ul {
-  list-style: none;
-  padding-left: 0;
 }
 body .nav > li > a:hover,
 body .nav > li > a:focus {
@@ -13835,6 +13822,10 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .page-communications .region.region-content .view-search .view-header .count-container p a:before {
   content: "> ";
 }
+.page-partners-documents .region.region-content .view-search .view-header .no-results.count-container p a,
+.page-communications .region.region-content .view-search .view-header .no-results.count-container p a {
+  position: inherit;
+}
 .page-partners-documents .region.region-content .view-search .view-content .views-row,
 .page-communications .region.region-content .view-search .view-content .views-row {
   border-bottom: 1px dotted #749b00;
@@ -15459,6 +15450,12 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 #document-node-form #edit-field-document-files table[id*="field-document-files-values"] button.form-submit {
   display: block;
+}
+#document-node-form #edit-field-document-files .delta-order {
+  margin-top: 41px;
+  display: block;
+  border-top: 0px;
+  width: 80px;
 }
 #document-node-form #edit-field-publication-date {
   margin-top: 0px;
@@ -19046,6 +19043,13 @@ input#edit-field-image-und-0-upload::before {
 .page-node-366 li.share-this-article {
   display: block;
   margin-bottom: 15px;
+}
+.node-366 .field-name-body .field-item p {
+  display: block;
+  color: #003399;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
 }
 /*end page-node-366*/
 /*Newsletter mail styles*/
