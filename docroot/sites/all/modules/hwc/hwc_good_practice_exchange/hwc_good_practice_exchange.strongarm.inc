@@ -123,25 +123,25 @@ function hwc_good_practice_exchange_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
-        ),
-        'redirect' => array(
           'weight' => '10',
         ),
+        'redirect' => array(
+          'weight' => '11',
+        ),
         'workbench_access' => array(
-          'weight' => '3',
+          'weight' => '4',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'language' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
