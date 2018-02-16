@@ -2522,7 +2522,7 @@ $(document).ready(function () {
 
     //Redirect to the private zone from congrats.
     $(".privateZoneredirect").click(function (e) {
-        window.top.location.href = "https://test-hwc18.osha.europa.eu/";
+        window.top.location.href = " https://healthy-workplaces.eu/";
     });
     $(".privateZoneredirectMF").click(function (e) {
         var partner_nid = $('#partner_nid').val();
@@ -2532,7 +2532,7 @@ $(document).ready(function () {
             var url = homeurl + language + "/node/" + partner_nid;
             window.top.location.href = url;
         }else{
-            window.top.location.href = "https://test-hwc18.osha.europa.eu/";
+            window.top.location.href = " https://healthy-workplaces.eu/";
         }
     });
 
