@@ -524,15 +524,20 @@ $(document).ready(function () {
         return result && decodeURI(result[1]) || "";
     }
 
-    function validateActivitiesTextArea() {
+    /**
+     * JA - Workaround for make activities required on submit
+     */
+    function validateActivitiesTextArea () {
         $('.validate').each(function (ind,item) {
             var response = validateRequiredField($(item));
             if (response){
-                $(item).removeClass("error");
-                $(item).attr("data-error", "");
+                $(this).removeClass("error");
+                $(this).parent().removeClass('postRequired');
+                //$(this).attr("data-error", "");
             }else{
-                $(item).addClass("error");
-                $(item).attr("data-error", "true");
+                $(this).addClass("error");
+                $(this).parent().addClass('postRequired');
+                //$(this).attr("data-error", "true");
             }
         });
     }
@@ -892,6 +897,18 @@ $(document).ready(function () {
 //        }
     });
 
+
+    //JA- 12/02/2018 -Workaround for make activities required on validate
+    $('input[type="checkbox"] + textarea[data-section="INVOLVEMENT"]').on('change',function(){
+        if($(this).val()){
+            $(this).removeClass("error");
+            $(this).attr("data-error", "");
+        }else{
+            if(!$(this).hasClass('error')) $(this).addClass("error");
+            $(this).attr("data-error", "true");
+        }
+    });
+
     $("#contact_osh_mainemail").on({
         blur: function () {
             $("#contact_osh_mainemailAux").val($("#contact_osh_mainemail").val());
@@ -1226,6 +1243,17 @@ $(document).ready(function () {
 
                     if (fillRequiredFieldName == "") {
                         fillRequiredFieldName = "To agree with all the requirements";
+                    }
+
+                    //JA - 14/02/2018 - Workaorund for homepage url message
+                    if(first.attr('id') == 'company_osh_homepage'){
+                        $('#fillRequiredFieldName').text(fillRequiredFieldName);
+                        $('#errorMessage').text(' is not a valid field. Please fill it correctly in order to continue.');
+                    } else{
+                        if($('#errorMessage').text().indexOf('valid') > 0){
+                            $('#errorMessage').text(' is required. Please fill it in order to continue.');
+                        }
+                        $('#fillRequiredFieldName').text(fillRequiredFieldName);
                     }
 
                     $('#fillRequiredFieldName').text(fillRequiredFieldName);
@@ -1622,6 +1650,15 @@ $(document).ready(function () {
                 //Disabled the imageButtons
                 $('.company_osh_ceoimage_popup-modal').css({
                     'pointer-events': 'inherit'
+                });
+            }
+
+            if(dataSection=="INVOLVEMENT"){
+                //JA - 12/02/2018 - Workaround for make checkboxes clickables
+                $('input[data-section="INVOLVEMENT"][type="checkbox"]').each(function (id, item) {
+                    $(item).css({
+                        'pointer-events':'inherit'
+                    })
                 });
             }
 
@@ -2082,15 +2119,21 @@ $(document).ready(function () {
      */
     $(".combined-checkbox").click(function () {
         var target = "#" + $(this).attr("data-target");
+
+        //JA - Workaround for make activities required
         if($(this).is(':checked')){
-            $(this).closest('control-group').addClass('required');
-            $(this).next().addClass('validate').append('<span class="required-icon" style="color:red;font-size:2vw;margin-left:5px;position: absolute"> *</span>');
+            $(this).closest('.control-group').addClass('required');
+            $(this).next().addClass('validate').after('<span class="required-icon" style="color:red;font-size:2vw;margin-left:5px;position: absolute"> *</span>');
+            $(this).next().addClass('error').attr('data-error',"true");
         } else{
-            $(this).parent().removeClass('postRequired')
-            $(this).closest('control-group').removeClass('required');
-            $(this).next().removeClass('validate');
+            $(this).closest('.control-group').removeClass('required');
+            $(this).next().val(null).removeClass('validate');
+            if($(this).next().hasClass('error')){
+                $(this).next().removeClass('error').attr('data-error',"");
+            }
             if($(this).next().next().hasClass('required-icon')) $(this).next().next().remove();
         }
+
         $(target).toggle();
         if ($(target).is(":hidden")) {
             ////$(target).val("");
@@ -2479,7 +2522,7 @@ $(document).ready(function () {
 
     //Redirect to the private zone from congrats.
     $(".privateZoneredirect").click(function (e) {
-        window.top.location.href = "https://healthy-workplaces.eu/all-ages-splash-page/";
+        window.top.location.href = " https://healthy-workplaces.eu/";
     });
     $(".privateZoneredirectMF").click(function (e) {
         var partner_nid = $('#partner_nid').val();
@@ -2489,7 +2532,7 @@ $(document).ready(function () {
             var url = homeurl + language + "/node/" + partner_nid;
             window.top.location.href = url;
         }else{
-            window.top.location.href = "https://healthy-workplaces.eu/all-ages-splash-page/";
+            window.top.location.href = " https://healthy-workplaces.eu/";
         }
     });
 

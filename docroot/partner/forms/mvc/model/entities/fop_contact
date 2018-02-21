@@ -304,7 +304,7 @@
     "contact_osh_maincontactpersonfirstname": "firstname",
     "contact_osh_maincontactpersonlastname": "lastname",
     "contact_osh_mainphone": "telephone1",
-    "contact_osh_prefixmaincontactphone": "osh_prefixphone1",
+    "contact_osh_prefixmaincontactphone": "osh_prefixmaincontactphone",
     "contact_osh_mainemail": "emailaddress1",
     "company_osh_facebookprofile": "osh_facebookprofile",
     "company_osh_twitterprofile": "osh_twitterprofile",

@@ -48,6 +48,9 @@ function osha_news_osha_tmgmt_i18n_string_list() {
   return osha_news_get_translatable_strings();
 }
 
+/**
+ * Implements hook_form_alter().
+ */
 function osha_news_form_alter(&$form, &$form_state, $form_id) {
   global $theme;
 
@@ -59,6 +62,10 @@ function osha_news_form_alter(&$form, &$form_state, $form_id) {
       $form['#after_build'] = array();
     }
     $form['#after_build'][] = '_osha_news_form_after_build';
+  }
+
+  if ($form_id == 'news_node_form') {
+    drupal_add_css(drupal_get_path('module', 'osha_news') . '/css/osha_news.css');
   }
 
   if ($form_id == 'events_node_form') {

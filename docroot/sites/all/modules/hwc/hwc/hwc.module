@@ -964,7 +964,7 @@ function hwc_news_share_widget($node, $options = array()) {
     $vars['label'] = t('Share this video');
   }
   if (!empty($node->nid) && ($node->nid == 366)) {
-    $vars['label'] = t('I participate in the Healthy Workplaces Manage Dangerous Substances Campaign. Join us on URL');
+    $vars['label'] = '';
   }
 
   // Merge default vars with ones from options.

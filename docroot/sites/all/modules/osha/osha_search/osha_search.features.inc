@@ -136,6 +136,7 @@ function osha_search_default_search_api_index() {
         },
         "field_sector_industry_covered" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_segment" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_share_partner_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_social_dialog_partner" : { "type" : "boolean" },
         "field_speaker" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_start_date:value" : { "type" : "date" },

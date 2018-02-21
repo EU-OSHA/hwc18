@@ -118,3 +118,29 @@ function hwc_good_practice_exchange_update_7016() {
 function hwc_good_practice_exchange_update_7017() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * MDR-1694 EU-OSHA´s communications: type of partner.
+ */
+function hwc_good_practice_exchange_update_7018() {
+  features_revert_module('hwc_good_practice_exchange');
+  $map = [
+    'OCPs' => 185,
+    'MPs' => 186,
+    'EEN' => 1804,
+    'FOP' => 187,
+  ];
+  foreach ($map as $name => $code) {
+    $term = taxonomy_get_term_by_name($name, 'document_partner_type');
+    if (empty($term)) {
+      $voc = taxonomy_vocabulary_machine_name_load('document_partner_type');
+      $term = new stdClass();
+      $term->parent = 0;
+      $term->language = 'en';
+      $term->name = $name;
+      $term->vid = $voc->vid;
+      $term->field_partner_type_code[LANGUAGE_NONE][]['value'] = $code;
+      taxonomy_term_save($term);
+    }
+  }
+}

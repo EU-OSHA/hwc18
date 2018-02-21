@@ -96,6 +96,7 @@ function osha_gallery_config_form($form, &$form_state) {
 }
 
 /**
+ * Implements hook_field_formatter_view().
  * @see galleryformatter_field_formatter_view().
  */
 function osha_gallery_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {

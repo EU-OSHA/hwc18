@@ -43,6 +43,9 @@ function hwc_partner_views_query_alter(&$view, &$query) {
   }
 }
 
+/**
+ * Implements hook_context_plugins().
+ */
 function hwc_partner_context_plugins() {
   $plugins = array();
   $plugins['hwc_context_condition_partner_page'] = array(
@@ -56,6 +59,9 @@ function hwc_partner_context_plugins() {
   return $plugins;
 }
 
+/**
+ * Implements hook_context_registry().
+ */
 function hwc_partner_context_registry() {
   return array(
     'conditions' => array(
@@ -68,6 +74,9 @@ function hwc_partner_context_registry() {
   );
 }
 
+/**
+ * Implements hook_context_page_condition().
+ */
 function hwc_partner_context_page_condition() {
   if ($plugin = context_get_plugin('condition', 'hwc_context_condition_partner_page')) {
     $plugin->execute();
@@ -555,6 +564,7 @@ function hwc_partner_form_after_build($form, $form_state) {
   $form['field_modified_on']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
   return $form;
 }
+
 /**
  * Implements hook_form_alter().
  */
@@ -635,6 +645,29 @@ function hwc_partner_get_partners_user_options() {
  * Implements hook_node_access().
  */
 function hwc_partner_node_access($node, $op, $account) {
+  if (($node->type == 'document') && ($op == 'view')) {
+    if (
+       !in_array(ROLE_SUPERVISOR, $account->roles)
+    && !in_array(ROLE_ADMINISTRATOR, $account->roles)
+    && !in_array(ROLE_SUPERADMINISTRATOR, $account->roles)
+    ) {
+
+      $partner_type_tid = hwc_good_practice_exchange_user_get_partner_type();
+      if ($partner_type_tid) {
+        if (hwc_worklow_node_belongs_to_partner_user($node)) {
+          return NODE_ACCESS_IGNORE;
+        }
+        $map = hwc_good_practice_exchange_get_document_partner_types_map();
+        $share_partner_type_id = $map[$partner_type_tid];
+        foreach ($node->field_share_partner_type[LANGUAGE_NONE] as $share_partner_type) {
+          if ($share_partner_type['tid'] == $share_partner_type_id) {
+            return NODE_ACCESS_IGNORE;
+          }
+        }
+      }
+      return NODE_ACCESS_DENY;
+    }
+  }
   if ($op == 'view' && $node->nid == 253
     && (!in_array(ROLE_CAMPAIGN_PARTNER, $account->roles)
       && !in_array(ROLE_SUPERVISOR, $account->roles)
