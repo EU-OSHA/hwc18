@@ -42,20 +42,21 @@ function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_arg
     $share_partner_type_id = $map[$partner_type];
   }
 
+  // EU-OSHA communications. section = generic public.
   if (arg(0) == 'communications') {
     $call_args['params']['fq'][] = 'is_partner_section:"1"';
     $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+    if ($share_partner_type_id) {
+      $call_args['params']['fq'][] = '(im_field_share_partner_type:"' . $share_partner_type_id . '")';
+    }
   }
 
+  // Partners documents. section = partner.
   if (arg(0) == 'partners-documents') {
-    $is_partner_section = 0;
     $call_args['params']['fq'][] = 'is_partner_section:"0"';
+    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
     if ($partner_type) {
-      $fq = '(is_partner_category_type:"' . $partner_type . '")';;
-      if ($share_partner_type_id) {
-        $fq .= ' OR (im_field_share_partner_type:"' . $share_partner_type_id . '") ';
-      }
-      $call_args['params']['fq'][] = $fq;
+      $call_args['params']['fq'][] = '(is_partner_category_type:"' . $partner_type . '")';
     }
   }
 
