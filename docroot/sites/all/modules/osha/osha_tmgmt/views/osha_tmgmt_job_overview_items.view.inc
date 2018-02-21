@@ -259,6 +259,16 @@ $handler->display->display_options['path'] = 'admin/tmgmt/job-items';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+$handler->display->display_options['defaults']['relationships'] = FALSE;
+/* Relationship: Translation Management Job Item: Content */
+$handler->display->display_options['relationships']['job_item_to_node_revision']['id'] = 'job_item_to_node_revision';
+$handler->display->display_options['relationships']['job_item_to_node_revision']['table'] = 'tmgmt_job_item';
+$handler->display->display_options['relationships']['job_item_to_node_revision']['field'] = 'job_item_to_node_revision';
+/* Relationship: Content revision: User */
+$handler->display->display_options['relationships']['uid']['id'] = 'uid';
+$handler->display->display_options['relationships']['uid']['table'] = 'node_revision';
+$handler->display->display_options['relationships']['uid']['field'] = 'uid';
+$handler->display->display_options['relationships']['uid']['relationship'] = 'job_item_to_node_revision';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Translation Management Job Item: Item_id */
   $handler->display->display_options['fields']['item_id']['id'] = 'item_id';
