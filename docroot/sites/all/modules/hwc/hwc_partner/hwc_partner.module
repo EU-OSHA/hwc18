@@ -659,7 +659,7 @@ function hwc_partner_node_access($node, $op, $account) {
         }
         $map = hwc_good_practice_exchange_get_document_partner_types_map();
         $share_partner_type_id = $map[$partner_type_tid];
-        foreach($node->field_share_partner_type[LANGUAGE_NONE] as $share_partner_type) {
+        foreach ($node->field_share_partner_type[LANGUAGE_NONE] as $share_partner_type) {
           if ($share_partner_type['tid'] == $share_partner_type_id) {
             return NODE_ACCESS_IGNORE;
           }

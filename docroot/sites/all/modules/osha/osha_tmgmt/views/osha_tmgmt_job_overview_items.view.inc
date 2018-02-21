@@ -250,6 +250,9 @@ $handler->display->display_options['path'] = 'admin/tmgmt/job-items';
 
   /* Display: Job preview */
   $handler = $view->new_display('page', 'Job preview', 'job_preview');
+$handler->display->display_options['field_language'] = 'en';
+$handler->display->display_options['defaults']['query'] = FALSE;
+$handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -325,6 +328,27 @@ $handler->display->display_options['relationships']['uid']['relationship'] = 'jo
   $handler->display->display_options['fields']['body-revision_id']['settings'] = array(
     'field_formatter_class' => '',
   );
+$handler->display->display_options['defaults']['arguments'] = FALSE;
+/* Contextual filter: Translation Management Job Item: Tjid */
+$handler->display->display_options['arguments']['tjid']['id'] = 'tjid';
+$handler->display->display_options['arguments']['tjid']['table'] = 'tmgmt_job_item';
+$handler->display->display_options['arguments']['tjid']['field'] = 'tjid';
+$handler->display->display_options['arguments']['tjid']['default_action'] = 'default';
+$handler->display->display_options['arguments']['tjid']['default_argument_type'] = 'raw';
+$handler->display->display_options['arguments']['tjid']['default_argument_options']['index'] = '3';
+$handler->display->display_options['arguments']['tjid']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['tjid']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['tjid']['summary_options']['items_per_page'] = '25';
+/* Contextual filter: Translation Management Job Item: Target language */
+$handler->display->display_options['arguments']['target_language']['id'] = 'target_language';
+$handler->display->display_options['arguments']['target_language']['table'] = 'tmgmt_job_item';
+$handler->display->display_options['arguments']['target_language']['field'] = 'target_language';
+$handler->display->display_options['arguments']['target_language']['exception']['value'] = 'any';
+$handler->display->display_options['arguments']['target_language']['default_argument_type'] = 'fixed';
+$handler->display->display_options['arguments']['target_language']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['target_language']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['target_language']['summary_options']['items_per_page'] = '25';
+$handler->display->display_options['arguments']['target_language']['limit'] = '0';
   $handler->display->display_options['path'] = 'admin/tmgmt/job-items/preview';
 $translatables['osha_job_overview_job_items'] = array(
   t('Master'),
