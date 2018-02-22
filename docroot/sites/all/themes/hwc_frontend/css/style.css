@@ -19218,6 +19218,80 @@ input#edit-field-image-und-0-upload::before {
 .validation_reminder .ui-dialog-titlebar-close {
   display: none !important;
 }
+/*input clean x button*/
+/* Clearable text inputs */
+/*Galder styles*/
+.page-glossary-list .page-header {
+  text-align: center;
+  color: #749b00 ;
+  font-size: 48px;
+  font-weight: bold;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 1em;
+  border-bottom: 0px;
+}
+.page-glossary-list .view-glossary-list {
+  margin-bottom: 100px;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type {
+  border: 1px solid #749b00;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 10px 2em 10px 1.5em;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .type-name {
+  color: #003399;
+  font-weight: bold;
+  text-align: left;
+  cursor: pointer;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .content-term {
+  width: 100%;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .content-term dl .term-title {
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+  font-weight: bold;
+  padding-top: 1em;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .content-term dl .term-description {
+  margin-left: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px dotted #749b00;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .type-name .glyphicon {
+  color: #FFF;
+  background: #003399;
+  border-radius: 17px;
+  width: 21px;
+  height: 21px;
+  float: right;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .type-name .glyphicon:before {
+  content: "\e252";
+  padding-top: 0px;
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .type-name.active .glyphicon:before {
+  content: "\e253";
+  padding-top: 0px;
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+.page-glossary-list .view-glossary-list .view-content .glossary_type .type-name.active.collapsed .glyphicon:before {
+  content: "\e252";
+  padding-top: 0px;
+  display: block;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
   border: none;

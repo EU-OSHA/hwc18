@@ -768,6 +768,7 @@ final class CDB
         } else {
             throw new CDBException('resource_not_found', 404);
         }
+       
         return $response;
     }
 
