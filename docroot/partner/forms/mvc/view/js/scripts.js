@@ -187,7 +187,6 @@ window.onload = function () {
      }else if($("#PLEDGE").length > 0){
      $("#PLEDGE").css("padding-top", height);
      }
-
      }*/
     if($("#company_osh_homepage").prop("disabled")){
         $("#company_osh_selectsocialnetworks").prop("disabled", "disabled");
@@ -1602,7 +1601,7 @@ $(document).ready(function () {
      */
     $(".validation").click(function (e) {
         //Recorre todos los elementos que contienen la validaciÃƒÂ³n de la seccion actual
-
+        debugger;
         var dataSection = $(this).attr("data-section");
 
         if ($(this).hasClass("validation-pressed")) {
@@ -1753,14 +1752,30 @@ $(document).ready(function () {
                 if(!$("#checkFieldsDialog").hasClass('hidden')){
                     $("#checkFieldsDialog").addClass('hidden');
                 }
+                //JA - CDB18-105
+                if(!$('#checkInvalidFields').hasClass('hidden')){
+                    $("#checkInvalidFields").addClass('hidden');
+                }
             }else{
-
 
                 // alert("Section check cannot be checked until the mandatory fields are filled");
                 if($("#container-message").length > 0){
                     closeGreyBox();
                 }
-                $("#checkFieldsDialog").removeClass('hidden');
+                if($('.invalid').length > 0 && $('.required .field.error').length > 0){
+                    $("#checkInvalidFields, #checkFieldsDialog").removeClass('hidden');
+                } else if($('.invalid').length > 0){
+                    $("#checkInvalidFields").removeClass('hidden');
+                } else if( $('.required .field.error').length > 0){
+                    $("#checkFieldsDialog").removeClass('hidden');
+                }
+
+                if($('.required .field.error').length === 0){
+                    $("#checkFieldsDialog").addClass('hidden');
+                }
+                if($('.invalid').length === 0){
+                    $("#checkInvalidFields").addClass('hidden');
+                }
 //                document.location.href = "#top";
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
                 if(window.parent.document.getElementsByClassName("top_anchor").length == 1){
@@ -2194,7 +2209,6 @@ $(document).ready(function () {
     /*$(".closeDialog").click(function (e) {
      debugger;
      $(".dialog").addClass('hidden');
-
      scrollToTop();
      });*/
 
@@ -2260,6 +2274,18 @@ $(document).ready(function () {
         //+
         click: function (e){
 
+            //JA - CDB18-108
+            $("#invalidSocialUrl,#maxSocialNetDialog").addClass('hidden');
+            var regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
+            if(!regex.test($('#socialNetworkTextBox').val())){
+                $("#invalidSocialUrl").removeClass('hidden');
+                //document.location.href = "#top";
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+                if(window.parent.document.getElementsByClassName("top_anchor").length == 1){
+                    window.parent.document.getElementsByClassName("top_anchor")[0].click();
+                }
+                return;
+            }
 
             var args = [];
             args["selectorName"] = $(this).data("selector");
@@ -2740,25 +2766,25 @@ $(document).ready(function () {
                 aux = web.value.substr(web.value.indexOf("www.")+4);
             }
             if(!re.test(aux) || web.value.indexOf(" ")!= -1 || !httpIncluded){
-                $('#'+web.id).addClass("error");
+                $('#'+web.id).addClass("error invalid"); //JA - CDB18-105
                 $('#'+web.id).attr("data-error", "true");
                 if (!$('#'+web.id+'_webformat_errormsg').length) {
                     $('#'+web.id).parent().append('<div id="'+web.id+'_webformat_errormsg" class="error-msg">The field must be a valid web url</div>');
                 }
             } else {
-                $('#'+web.id).removeClass("error");
+                $('#'+web.id).removeClass("error invalid");
                 $('#'+web.id).attr("data-error", "");
                 $('#'+web.id+'_webformat_errormsg').remove();
             }
         }else {
             if ($(web).parent().parent().hasClass("required")) {
-                $('#' + web.id).addClass("error");
+                $('#' + web.id).addClass("error invalid"); //JA - CDB18-105
                 $('#' + web.id).attr("data-error", "true");
                 if (!$('#' + web.id + '_webformat_errormsg').length) {
                     $('#' + web.id).parent().append('<div id="' + web.id + '_webformat_errormsg" class="error-msg">The field must be a valid web url</div>');
                 }
             }else{
-                $('#'+web.id).removeClass("error");
+                $('#'+web.id).removeClass("error invalid");//JA - CDB18-105
                 $('#'+web.id).attr("data-error", "");
                 $('#'+web.id+'_webformat_errormsg').remove();
             }
