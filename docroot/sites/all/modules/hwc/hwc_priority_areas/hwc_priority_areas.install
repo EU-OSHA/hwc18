@@ -321,3 +321,10 @@ function hwc_priority_areas_update_7034() {
 function hwc_priority_areas_update_7035() {
   features_revert(array('hwc_priority_areas' => 'views_view'));
 }
+
+/**
+ * HW18-437 Priority areas title and h1 is not translated.
+ */
+function hwc_priority_areas_update_7036() {
+  features_revert(array('hwc_priority_areas' => 'page_manager_pages', 'page_manager_handlers'));
+}
