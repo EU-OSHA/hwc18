@@ -147,6 +147,7 @@ function hwc_priority_areas_block_info() {
 
 
 function hwc_priority_areas_get_intro_map() {
+  global $language;
   static $intro_map = [];
   if (!$intro_map) {
     $map = [
@@ -162,7 +163,7 @@ function hwc_priority_areas_get_intro_map() {
     $node = node_load($nid);
     $w = entity_metadata_wrapper('node', $node->nid);
     foreach ($map as $search => $field) {
-      $intro_map[$search] = $w->$field->value()['safe_value'];
+      $intro_map[$search] = $w->language($language->language)->$field->value()['safe_value'];
     }
   }
   return $intro_map;
