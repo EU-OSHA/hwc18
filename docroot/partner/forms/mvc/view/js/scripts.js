@@ -1762,19 +1762,14 @@ $(document).ready(function () {
                 if($("#container-message").length > 0){
                     closeGreyBox();
                 }
-                if($('.invalid').length > 0 && $('.required .field.error').length > 0){
-                    $("#checkInvalidFields, #checkFieldsDialog").removeClass('hidden');
-                } else if($('.invalid').length > 0){
+                //JA - CDB18-105
+                $("#checkInvalidFields, #checkFieldsDialog").addClass('hidden');
+                if($('input[data-section='+dataSection+'].invalid').length > 0){
                     $("#checkInvalidFields").removeClass('hidden');
-                } else if( $('.required .field.error').length > 0){
+                } else if($('.required [data-section='+dataSection+'].field.error').length > 0){
                     $("#checkFieldsDialog").removeClass('hidden');
-                }
-
-                if($('.required .field.error').length === 0){
-                    $("#checkFieldsDialog").addClass('hidden');
-                }
-                if($('.invalid').length === 0){
-                    $("#checkInvalidFields").addClass('hidden');
+                } else{
+                    $("#checkFieldsDialog").removeClass('hidden');
                 }
 //                document.location.href = "#top";
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
