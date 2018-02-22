@@ -15,41 +15,64 @@ function hwc_good_practice_exchange_get_partner_title($nid) {
   return $titles[$nid];
 }
 
+function hwc_good_practice_exchange_get_document_partner_types_map() {
+  $term_voc = taxonomy_vocabulary_machine_name_load('document_partner_type');
+  $terms = taxonomy_term_load_multiple(array(), array('vid' => $term_voc->vid));
+  $map = [];
+  foreach ($terms as $term) {
+    $map[$term->field_partner_type_code[LANGUAGE_NONE][0]['value']] = $term->tid;
+  }
+  return $map;
+}
+
 /**
  * Implements hook_search_api_solr_query_alter().
  */
 function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
   global $language;
 
-  if (arg(0) == 'communications') {
-    $is_partner_section = 1;
+  if ((arg(0) != 'communications') && (arg(0) != 'partners-documents')) {
+    return;
   }
-  if (arg(0) == 'partners-documents') {
-    $is_partner_section = 0;
-    $partner_type = hwc_good_practice_exchange_user_get_partner_type();
-    if ($partner_type) {
-      $call_args['params']['fq'][] = 'is_partner_category_type:"' . $partner_type . '"';
-    }
-  }
-  if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
-    $call_args['params']['fq'][] = 'is_partner_section:"' . $is_partner_section . '"';
-    if (arg(0) == 'communications') {
-      $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
-    }
 
-    $call_args['params']['sort'] = 'sort_title2 asc';
-    $sort_by = strtolower(@$_REQUEST['sort_by']);
-    $sort_order = strtolower(@$_REQUEST['sort_order']);
-    if ($sort_by) {
-      $call_args['params']['sort'] = 'ds_field_publication_date ';
-      if ($sort_by == 'title2') {
-        $call_args['params']['sort'] = 'sort_title2  ';
-      }
-      if (!in_array($sort_order, ['asc', 'desc'])) {
-        $sort_order = 'desc';
-      }
-      $call_args['params']['sort'] .= $sort_order;
+  $share_partner_type_id = FALSE;
+  $partner_type = hwc_good_practice_exchange_user_get_partner_type();
+  if ($partner_type) {
+    $map = hwc_good_practice_exchange_get_document_partner_types_map();
+    $share_partner_type_id = $map[$partner_type];
+  }
+
+  // EU-OSHA communications. section = generic public.
+  if (arg(0) == 'communications') {
+    $call_args['params']['fq'][] = 'is_partner_section:"1"';
+    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+    if ($share_partner_type_id) {
+      $call_args['params']['fq'][] = '(im_field_share_partner_type:"' . $share_partner_type_id . '")';
     }
+  }
+
+  // Partners documents. section = partner.
+  if (arg(0) == 'partners-documents') {
+    $call_args['params']['fq'][] = 'is_partner_section:"0"';
+    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+    if ($partner_type) {
+      $call_args['params']['fq'][] = '(is_partner_category_type:"' . $partner_type . '")';
+    }
+  }
+
+
+  $call_args['params']['sort'] = 'sort_title2 asc';
+  $sort_by = strtolower(@$_REQUEST['sort_by']);
+  $sort_order = strtolower(@$_REQUEST['sort_order']);
+  if ($sort_by) {
+    $call_args['params']['sort'] = 'ds_field_publication_date ';
+    if ($sort_by == 'title2') {
+      $call_args['params']['sort'] = 'sort_title2  ';
+    }
+    if (!in_array($sort_order, ['asc', 'desc'])) {
+      $sort_order = 'desc';
+    }
+    $call_args['params']['sort'] .= $sort_order;
   }
 }
 
