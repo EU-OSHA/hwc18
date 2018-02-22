@@ -328,3 +328,10 @@ function hwc_priority_areas_update_7035() {
 function hwc_priority_areas_update_7036() {
   features_revert(array('hwc_priority_areas' => 'page_manager_pages', 'page_manager_handlers'));
 }
+
+/**
+ * HW18-439 Facts and figures article titles and breadcrumb.
+ */
+function hwc_priority_areas_update_7037() {
+  features_revert(array('hwc_priority_areas' => 'page_manager_pages', 'page_manager_handlers'));
+}

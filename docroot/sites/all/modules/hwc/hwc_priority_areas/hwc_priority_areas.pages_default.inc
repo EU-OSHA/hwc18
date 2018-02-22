@@ -47,7 +47,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'About the topic
 Topics
-%term:name-field',
+%term:name_field',
     'panels_breadcrumbs_paths' => '<none>
 topics
 <none>
