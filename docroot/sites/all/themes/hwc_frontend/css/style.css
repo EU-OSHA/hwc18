@@ -18478,6 +18478,10 @@ input#edit-field-image-und-0-upload::before {
 .priority-detail .related_links h2.pane-title:before {
   content: url(../images/content/icono-related-links.png);
 }
+.priority-detail .related_links ul {
+  list-style: none;
+  padding-left: 0px;
+}
 .priority-detail .related_links .node-external-url a {
   color: #003399;
   font-weight: bold;
