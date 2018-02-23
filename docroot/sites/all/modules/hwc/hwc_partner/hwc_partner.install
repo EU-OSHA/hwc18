@@ -223,3 +223,11 @@ function hwc_partner_update_7027() {
 function hwc_partner_update_7028() {
   features_revert_module('hwc_partner');
 }
+
+/**
+ * HW18-446 Titles from head and breadcrumbs from campaign partners sections untranslated.
+ */
+function hwc_partner_update_7029() {
+  features_revert(array('hwc_partner' => 'page_manager_pages', 'page_manager_handlers'));
+  features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages', 'page_manager_handlers'));
+}
