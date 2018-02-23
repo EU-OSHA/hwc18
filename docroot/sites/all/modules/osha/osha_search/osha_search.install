@@ -137,3 +137,10 @@ function osha_search_update_7014() {
 function osha_search_update_7015() {
   features_revert(array('osha_search' => 'facetapi'));
 }
+
+/**
+ * MDR-1694 EU-OSHA´s communications: type of partner.
+ */
+function osha_search_update_7016() {
+  features_revert_module('osha_search');
+}

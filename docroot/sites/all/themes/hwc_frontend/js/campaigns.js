@@ -297,6 +297,10 @@ jQuery(document).ready(function() {
 			});
 			
 		}
-	}	
+	}
 
+	//AÑADIDO GALDER
+	jQuery(".page-glossary-list .view-content .glossary_type .type-name").click(function(){
+		jQuery(this).addClass("active");
+		});
 });
