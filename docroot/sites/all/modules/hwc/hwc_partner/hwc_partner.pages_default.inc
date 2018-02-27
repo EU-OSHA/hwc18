@@ -6956,6 +6956,12 @@ function hwc_partner_default_page_manager_pages() {
     ),
     'relationships' => array(),
     'name' => 'panel',
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => 'Campaign partners
+%node:title_field',
+    'panels_breadcrumbs_paths' => '<none>
+<none>',
+    'panels_breadcrumbs_home' => 1,
   );
   $display = new panels_display();
   $display->layout = 'flexible';
@@ -7114,7 +7120,7 @@ function hwc_partner_default_page_manager_pages() {
     'relationships' => array(),
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'Campaign partners
-%node:title',
+%node:title_field',
     'panels_breadcrumbs_paths' => '<none>
 <none>',
     'panels_breadcrumbs_home' => 1,
@@ -7279,7 +7285,7 @@ function hwc_partner_default_page_manager_pages() {
     'relationships' => array(),
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'Campaign partners
-%node:title',
+%node:title_field',
     'panels_breadcrumbs_paths' => '<none>
 <none>',
     'panels_breadcrumbs_home' => 1,
@@ -7681,7 +7687,7 @@ function hwc_partner_default_page_manager_pages() {
   $display->content['new-43dc0335-e792-4884-9be8-0fe5bc86180d'] = $pane;
   $display->panels['center'][0] = 'new-43dc0335-e792-4884-9be8-0fe5bc86180d';
   $pane = new stdClass();
-  $pane->pid = 'new-6c0d4e94-c202-45f8-a4ff-ed3c80e83647';
+  $pane->pid = 'new-70d232a3-c541-48ba-a043-2b591b8bfb71';
   $pane->panel = 'center';
   $pane->type = 'views';
   $pane->subtype = 'partner_draft_content';

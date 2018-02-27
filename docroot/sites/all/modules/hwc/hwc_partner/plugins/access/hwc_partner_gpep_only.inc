@@ -15,8 +15,8 @@ $plugin = array(
  * Check for access.
  */
 function hwc_partner_gpep_ctools_access_check($conf, $context) {
-  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
-    return TRUE;
-  }
+//  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
+//    return TRUE;
+//  }
   return FALSE;
 }

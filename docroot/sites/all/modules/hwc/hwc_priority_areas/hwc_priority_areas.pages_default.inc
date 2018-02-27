@@ -47,7 +47,7 @@ function hwc_priority_areas_default_page_manager_handlers() {
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'About the topic
 Topics
-%term:name-field',
+%term:name_field',
     'panels_breadcrumbs_paths' => '<none>
 topics
 <none>
@@ -619,7 +619,7 @@ Topics',
     ),
   );
   $display->cache = array();
-  $display->title = '%node:title-field';
+  $display->title = '';
   $display->uuid = 'feb09f9c-dfae-4f43-bc0d-ca2a7b2ece37';
   $display->storage_type = 'page_manager';
   $display->storage_id = 'page_topics__panel';
@@ -703,6 +703,31 @@ Topics',
   $pane->uuid = 'b60bf7ab-e6fb-4e7c-907e-30413b66de89';
   $display->content['new-b60bf7ab-e6fb-4e7c-907e-30413b66de89'] = $pane;
   $display->panels['center'][1] = 'new-b60bf7ab-e6fb-4e7c-907e-30413b66de89';
+  $pane = new stdClass();
+  $pane->pid = 'new-6a55c468-41d8-420a-9dc4-451692b5fa73';
+  $pane->panel = 'center';
+  $pane->type = 'custom_title_tag';
+  $pane->subtype = 'custom_title_tag';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'buttons' => NULL,
+    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'form_build_id' => 'form-pj5TTPPanqkpr-kK-lY6XmRbv5Y-NAQ0LFOFyyaWdDo',
+    'form_token' => 'pnhxF_wW4dcHps0oBCMxmxWauomXi1EDqcljNbvmZl8',
+    'form_id' => 'panels_custom_title_tag_edit_form',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '6a55c468-41d8-420a-9dc4-451692b5fa73';
+  $display->content['new-6a55c468-41d8-420a-9dc4-451692b5fa73'] = $pane;
+  $display->panels['center'][2] = 'new-6a55c468-41d8-420a-9dc4-451692b5fa73';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

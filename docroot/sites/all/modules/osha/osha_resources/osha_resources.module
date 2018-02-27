@@ -7,7 +7,7 @@
 include_once 'osha_resources.features.inc';
 
 /**
- * Define custom view mode for entities - wiki
+ * Define custom view mode for entities - wiki.
  */
 function osha_resources_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['osha_resources'] = array(
@@ -17,17 +17,18 @@ function osha_resources_entity_info_alter(&$entity_info) {
 }
 
 /**
- * Implements hook_node_view
+ * Implements hook_node_view.
  * @param $node
  * @param $view_mode
  * @param $langcode
  */
-function osha_resources_node_view_alter(&$build){
-  if($build['#bundle'] == 'youtube'){
-    if(isset($build['field_youtube']) && $build['field_youtube']['#formatter'] == 'youtube_thumbnail'){
-      foreach($build['field_youtube'] as $key => $youtube){
-        if(is_array($youtube) && isset($youtube['#image_link']['options']))
+function osha_resources_node_view_alter(&$build) {
+  if ($build['#bundle'] == 'youtube') {
+    if (isset($build['field_youtube']) && $build['field_youtube']['#formatter'] == 'youtube_thumbnail') {
+      foreach ($build['field_youtube'] as $key => $youtube) {
+        if (is_array($youtube) && isset($youtube['#image_link']['options'])) {
           $build['field_youtube'][$key]['#image_link']['options']['attributes']['target'] = '_blank';
+        }
       }
     }
   }
@@ -107,6 +108,7 @@ function osha_resources_field_formatter_view($entity_type, $entity, $field, $ins
         '#theme' => 'external_url_title_link',
         '#items' => $items,
         '#entity' => $entity,
+        '#langcode' => $langcode,
       );
       break;
 
@@ -143,6 +145,7 @@ function osha_resources_theme() {
       'variables' => array(
         'items' => NULL,
         'entity' => NULL,
+        'langcode' => NULL,
       ),
       'path' => $path . '/templates',
     ),
@@ -172,7 +175,7 @@ function theme_osha_resources_file_as_title_format($element) {
     : $entity->title_field['en'][0]['value'];
   $output = '<a href="' . file_create_url($file->uri) . '">';
   $output .= theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
-  $output .= '<span>'.$name.'</span>';
+  $output .= '<span>' . $name . '</span>';
   $size = @filesize($file->uri);
   if ($size) {
     $output .= '<span class="related_size">(' . format_size($size) . ')</span>';
