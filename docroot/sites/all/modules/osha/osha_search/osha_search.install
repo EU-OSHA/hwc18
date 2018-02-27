@@ -144,3 +144,10 @@ function osha_search_update_7015() {
 function osha_search_update_7016() {
   features_revert_module('osha_search');
 }
+
+/**
+ * MDR-1720 Good Practice exchange platform - Unify both susbsections.
+ */
+function osha_search_update_7017() {
+  features_revert(array('osha_search' => 'fe_block_settings'));
+}
