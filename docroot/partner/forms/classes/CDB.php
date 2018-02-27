@@ -495,6 +495,7 @@ final class CDB
         $response   = $response[$readMethod['response']];
         if (! is_array($response)) {
             $response = json_decode($response, true);
+            $_SESSION['categoryReal'] = ($response[0]['Fields']['memberof.osh_categoryid']['Value']['Name']);
         }
         if (! $params->getUrlParam('entity') || ! $params->getUrlParam('partner_type') || ! $params->getUrlParam('maintenance_mode') || ! $params->getUrlParam('locked')) {
             throw new OshException('bad_config', 500);
