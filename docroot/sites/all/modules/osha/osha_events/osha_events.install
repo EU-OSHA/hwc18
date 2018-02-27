@@ -151,3 +151,53 @@ function osha_events_update_7013() {
 function osha_events_update_7014() {
   features_revert_module('osha_events');
 }
+
+/**
+ * MDR-1688 - Update event content type - cleanup osha dump.
+ */
+function osha_events_update_7015() {
+  $tables = [
+    'field_data_field_adonis',
+    'field_revision_field_adonis',
+
+    'field_data_field_unit_ref',
+    'field_revision_field_unit_ref',
+
+    'field_data_field_agency_role',
+    'field_revision_field_agency_role',
+
+    'field_data_field_agency_initial_contact',
+    'field_revision_field_agency_initial_contact',
+
+    'field_data_field_agency_rep_confirmed',
+    'field_revision_field_agency_rep_confirmed',
+
+    'field_data_field_satisfaction_rate',
+    'field_revision_field_satisfaction_rate',
+
+    'field_data_field_event_in_amp',
+    'field_revision_field_event_in_amp',
+
+    'field_data_field_agency_contact_reply',
+    'field_revision_field_agency_contact_reply',
+
+    'field_data_field_number_of_attendees',
+    'field_revision_field_number_of_attendees',
+
+    'field_data_field_color',
+    'field_revision_field_color',
+  ];
+
+  foreach ($tables as $table) {
+    if (db_table_exists($table)) {
+      db_drop_table($table);
+    }
+  }
+}
+
+/**
+ * MDR-1688 HWC18: Changes on events' fields.
+ */
+function osha_events_update_7016() {
+  features_revert_module('osha_events');
+}

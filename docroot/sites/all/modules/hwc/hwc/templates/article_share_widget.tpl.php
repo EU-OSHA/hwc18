@@ -18,9 +18,9 @@
 ?>
 <div class="hwc-share-widget">
   <ul>
-    <li class="share-this-article">
+    <?php if ($label) { ?><li class="share-this-article">
       <?php print $label; ?>
-    </li>
+    </li><?php } ?>
     <li id="facebook-share-button-<?php print $node->nid; ?>"  class="hwc-share-widget-button hwc-share-widget-facebook" data-href="">
       <a onclick="window.open(this.href, 'hwc-share', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
         href="https://www.facebook.com/sharer/sharer.php?u=<?php print $url ?>">Facebook</a>

@@ -6,6 +6,9 @@
 
 include_once 'osha_flickr.features.inc';
 
+/**
+ * Implements hook_form_alter().
+ */
 function osha_flickr_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'flickr_gallery_node_form') {
     drupal_add_css(drupal_get_path('module', 'osha_flickr') .'/css/osha_flickr.css');
@@ -39,6 +42,9 @@ function osha_flickr_album_sizes() {
   );
 }
 
+/**
+ * Implements hook_field_formatter_info().
+ */
 function osha_flickr_field_formatter_info() {
   // Formatters for general Flickr field.
   $sizes = osha_flickr_album_sizes();
@@ -652,6 +658,9 @@ function theme_osha_flickr_photo($variables) {
   }
 }
 
+/**
+ * Implements hook_theme().
+ */
 function osha_flickr_theme() {
   $themes = array();
   foreach (osha_flickr_album_sizes() as $size => $info) {

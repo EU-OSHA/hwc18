@@ -11,6 +11,239 @@ function hwc_glossary_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'glossary_list';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Glossary';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Glossary';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
+  /* Field: Taxonomy term: Term description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = '';
+  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Type */
+  $handler->display->display_options['fields']['field_glossary_type']['id'] = 'field_glossary_type';
+  $handler->display->display_options['fields']['field_glossary_type']['table'] = 'field_data_field_glossary_type';
+  $handler->display->display_options['fields']['field_glossary_type']['field'] = 'field_glossary_type';
+  $handler->display->display_options['fields']['field_glossary_type']['label'] = '';
+  $handler->display->display_options['fields']['field_glossary_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_glossary_type']['type'] = 'taxonomy_term_reference_plain';
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
+  /* Contextual filter: Taxonomy term: Type (field_glossary_type) */
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['id'] = 'field_glossary_type_tid';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['table'] = 'field_data_field_glossary_type';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['field'] = 'field_glossary_type_tid';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_glossary_type_tid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'glossary' => 'glossary',
+  );
+  /* Filter criterion: Taxonomy term: Type (field_glossary_type) */
+  $handler->display->display_options['filters']['field_glossary_type_tid']['id'] = 'field_glossary_type_tid';
+  $handler->display->display_options['filters']['field_glossary_type_tid']['table'] = 'field_data_field_glossary_type';
+  $handler->display->display_options['filters']['field_glossary_type_tid']['field'] = 'field_glossary_type_tid';
+  $handler->display->display_options['filters']['field_glossary_type_tid']['relationship'] = 'field_glossary_type_tid';
+  $handler->display->display_options['filters']['field_glossary_type_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_glossary_type_tid']['vocabulary'] = 'glossary_type';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['metatags'] = array(
+    'und' => array(
+      'title' => array(
+        'value' => '[view:title] | Dangerous Substances e-tool | EU-OSHA',
+        'default' => '[view:title] | [current-page:pager][site:name]',
+      ),
+      'description' => array(
+        'value' => 'Definitions on Chemical terms, Health and safety, Legislation, Measures and procedures',
+        'default' => '[view:description]',
+      ),
+      'abstract' => array(
+        'value' => '',
+      ),
+      'keywords' => array(
+        'value' => '',
+      ),
+      'robots' => array(
+        'value' => array(
+          'index' => 0,
+          'follow' => 0,
+          'noindex' => 0,
+          'nofollow' => 0,
+          'noarchive' => 0,
+          'nosnippet' => 0,
+          'noodp' => 0,
+          'noydir' => 0,
+          'noimageindex' => 0,
+          'notranslate' => 0,
+        ),
+      ),
+      'news_keywords' => array(
+        'value' => '',
+      ),
+      'standout' => array(
+        'value' => '',
+      ),
+      'rating' => array(
+        'value' => '',
+      ),
+      'referrer' => array(
+        'value' => '',
+      ),
+      'rights' => array(
+        'value' => '',
+      ),
+      'image_src' => array(
+        'value' => '',
+      ),
+      'canonical' => array(
+        'value' => '[view:url]',
+        'default' => '[view:url]',
+      ),
+      'shortlink' => array(
+        'value' => '[current-page:url:unaliased]',
+        'default' => '[current-page:url:unaliased]',
+      ),
+      'original-source' => array(
+        'value' => '',
+      ),
+      'prev' => array(
+        'value' => '',
+      ),
+      'next' => array(
+        'value' => '',
+      ),
+      'content-language' => array(
+        'value' => '',
+      ),
+      'geo.position' => array(
+        'value' => '',
+      ),
+      'geo.placename' => array(
+        'value' => '',
+      ),
+      'geo.region' => array(
+        'value' => '',
+      ),
+      'icbm' => array(
+        'value' => '',
+      ),
+      'refresh' => array(
+        'value' => '',
+      ),
+      'revisit-after' => array(
+        'value' => '',
+        'period' => '',
+      ),
+      'pragma' => array(
+        'value' => '',
+      ),
+      'cache-control' => array(
+        'value' => '',
+      ),
+      'expires' => array(
+        'value' => '',
+      ),
+      'dcterms.title' => array(
+        'value' => '[current-page:title]',
+        'default' => '[current-page:title]',
+      ),
+      'dcterms.creator' => array(
+        'value' => '',
+      ),
+      'dcterms.subject' => array(
+        'value' => '',
+      ),
+      'dcterms.description' => array(
+        'value' => '',
+      ),
+      'dcterms.publisher' => array(
+        'value' => '',
+      ),
+      'dcterms.contributor' => array(
+        'value' => '',
+      ),
+      'dcterms.date' => array(
+        'value' => '',
+      ),
+      'dcterms.type' => array(
+        'value' => 'Text',
+        'default' => 'Text',
+      ),
+      'dcterms.format' => array(
+        'value' => 'text/html',
+        'default' => 'text/html',
+      ),
+      'dcterms.identifier' => array(
+        'value' => '[current-page:url:absolute]',
+        'default' => '[current-page:url:absolute]',
+      ),
+      'dcterms.source' => array(
+        'value' => '',
+      ),
+      'dcterms.language' => array(
+        'value' => '',
+      ),
+      'dcterms.relation' => array(
+        'value' => '',
+      ),
+      'dcterms.coverage' => array(
+        'value' => '',
+      ),
+      'dcterms.rights' => array(
+        'value' => '',
+      ),
+    ),
+  );
+  $handler->display->display_options['path'] = 'glossary_list';
+  $translatables['glossary_list'] = array(
+    t('Master'),
+    t('Glossary'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('All'),
+    t('Page'),
+  );
+  $export['glossary_list'] = $view;
+
+  $view = new view();
   $view->name = 'search_term_content';
   $view->description = '';
   $view->tag = 'default';

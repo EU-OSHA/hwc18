@@ -307,3 +307,10 @@ function osha_update_7019() {
 function osha_update_7020() {
   features_revert_module('osha');
 }
+
+/**
+ * MDR-1711 HWC18: Change number in Partners Documents date.
+ */
+function osha_update_7021() {
+  features_revert(array('osha' => 'field_base'));
+}

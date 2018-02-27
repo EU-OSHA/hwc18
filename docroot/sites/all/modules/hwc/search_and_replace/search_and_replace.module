@@ -109,6 +109,9 @@ function search_and_replace_permission() {
   return $permissions;
 }
 
+/**
+ * Implements hook_form().
+ */
 function search_and_replace_form($form, &$form_state, $node = array()) {
   // If search is in node context, store the node on the form.
   if (!empty($node)) {
