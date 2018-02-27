@@ -26,6 +26,9 @@ function hwc_views_plugins() {
  * Implements hook_views_pre_render().
  */
 function hwc_views_pre_render(view &$view) {
+  if ($view->name == 'documents') {
+    drupal_add_css(drupal_get_path('module', 'hwc') . '/css/hwc.css');
+  }
   // Add the alphabetical anchor javascript for views.
   // It requires class hwc-alpha-pager-view on the view
   // And hwc-alpha-pager-view-title-field on the field used as title.
