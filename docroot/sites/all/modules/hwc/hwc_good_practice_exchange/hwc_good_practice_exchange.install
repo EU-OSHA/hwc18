@@ -144,3 +144,11 @@ function hwc_good_practice_exchange_update_7018() {
     }
   }
 }
+
+/**
+ * MDR-1720 Good Practice exchange platform - Unify both susbsections.
+ */
+function hwc_good_practice_exchange_update_7019() {
+  features_revert(array('hwc_good_practice_exchange' => 'fe_block_settings'));
+  features_revert(array('hwc_good_practice_exchange' => 'views_view'));
+}

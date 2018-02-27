@@ -21,8 +21,7 @@ function hwc_good_practice_exchange_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'partners-documents
-communications',
+    'pages' => 'good-practice-exchange-platform',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -42,52 +41,23 @@ communications',
     'visibility' => 1,
   );
 
-  $export['views--exp-documents-page_1'] = array(
+  $export['views--exp-documents-gpep'] = array(
     'cache' => -1,
     'css_class' => '',
     'custom' => 0,
-    'delta' => '-exp-documents-page_1',
+    'delta' => '-exp-documents-gpep',
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'partners-documents',
+    'pages' => 'good-practice-exchange-platform',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -96,
-      ),
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '<none>',
-    'visibility' => 1,
-  );
-
-  $export['views--exp-documents-page_2'] = array(
-    'cache' => -1,
-    'css_class' => '',
-    'custom' => 0,
-    'delta' => '-exp-documents-page_2',
-    'i18n_block_language' => array(),
-    'i18n_mode' => 0,
-    'module' => 'views',
-    'node_types' => array(),
-    'pages' => 'communications',
-    'roles' => array(),
-    'themes' => array(
-      'hwc_frontend' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
-        'theme' => 'hwc_frontend',
-        'weight' => -95,
+        'weight' => -97,
       ),
       'seven' => array(
         'region' => '',
