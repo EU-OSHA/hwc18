@@ -536,7 +536,7 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
     ),
     'panels_breadcrumbs_state' => 1,
     'panels_breadcrumbs_titles' => 'Campaign partners
-Good practice exchange',
+%node:title_field',
     'panels_breadcrumbs_paths' => '<none>
 <none>
 ',

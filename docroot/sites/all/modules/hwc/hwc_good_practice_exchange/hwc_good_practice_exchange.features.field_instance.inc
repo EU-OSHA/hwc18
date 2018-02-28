@@ -601,7 +601,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_document_type',
-    'label' => 'Document Type',
+    'label' => 'Information Type',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1084,10 +1084,10 @@ function hwc_good_practice_exchange_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Cover image');
   t('Description');
-  t('Document Type');
   t('File');
   t('File Title');
   t('Files');
+  t('Information Type');
   t('Language');
   t('Partner type code');
   t('Publication date');

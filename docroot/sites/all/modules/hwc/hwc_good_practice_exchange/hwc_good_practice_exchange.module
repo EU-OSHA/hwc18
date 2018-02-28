@@ -31,7 +31,7 @@ function hwc_good_practice_exchange_get_document_partner_types_map() {
 function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
   global $language;
 
-  if ((arg(0) != 'communications') && (arg(0) != 'partners-documents')) {
+  if ((arg(0) != 'good-practice-exchange-platform')) {
     return;
   }
 
@@ -42,24 +42,27 @@ function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_arg
     $share_partner_type_id = $map[$partner_type];
   }
 
-  // EU-OSHA communications. section = generic public.
-  if (arg(0) == 'communications') {
-    $call_args['params']['fq'][] = 'is_partner_section:"1"';
-    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+  if (arg(0) == 'good-practice-exchange-platform') {
+    // EU-OSHA communications. section = generic public.
+    $cond1 = [];
+    $cond1[] = '(is_partner_section:"1")';
+    $cond1[] = '(ss_language:"' . $language->language . '")';
     if ($share_partner_type_id) {
-      $call_args['params']['fq'][] = '(im_field_share_partner_type:"' . $share_partner_type_id . '")';
+      $cond1[] = '(im_field_share_partner_type:"' . $share_partner_type_id . '")';
     }
-  }
+    $fq1 = implode(' AND ', $cond1);
 
-  // Partners documents. section = partner.
-  if (arg(0) == 'partners-documents') {
-    $call_args['params']['fq'][] = 'is_partner_section:"0"';
-    $call_args['params']['fq'][] = 'ss_language:"' . $language->language . '"';
+    $cond2 = [];
+    $cond2[] = '(is_partner_section:"0")';
+
+    $cond2[] = '(ss_language:"' . $language->language . '")';
     if ($partner_type) {
-      $call_args['params']['fq'][] = '(is_partner_category_type:"' . $partner_type . '")';
+      $cond2[] = '(is_partner_category_type:"' . $partner_type . '")';
     }
-  }
+    $fq2 = implode(' AND ', $cond2);
 
+    $call_args['params']['fq'][] = '(' . $fq1 . ') OR (' . $fq2 . ')';
+  }
 
   $call_args['params']['sort'] = 'sort_title2 asc';
   $sort_by = strtolower(@$_REQUEST['sort_by']);
@@ -82,9 +85,12 @@ function hwc_good_practice_exchange_search_api_solr_query_alter(array &$call_arg
 function hwc_good_practice_exchange_facet_items_alter(&$build, $settings) {
   if ($settings->facet == "partner_organisation") {
     foreach ($build as $nid => $item) {
-      if (intval($nid)) {
+      if (intval($nid) > 0) {
         $node = node_load($nid);
         $build[$nid]['#markup'] = $node->title;
+      }
+      if (intval($nid) == -1) {
+        $build[$nid]['#markup'] = t('EU-OSHA');
       }
     }
   }
@@ -171,7 +177,7 @@ function hwc_good_practice_exchange_user_get_partner_type() {
 function hwc_good_practice_exchange_node_get_partner_organisation($item) {
   $partner = hwc_good_practice_exchange_node_get_workbench_partner($item);
   if (!$partner) {
-    return NULL;
+    return -1;
   }
   return $partner->nid;
 }
@@ -325,7 +331,11 @@ function hwc_good_practice_exchange_views_post_render(&$view, &$output, &$cache)
       $no_results = FALSE;
     }
     $output = trim(str_replace('@order', $order_html, $output)) . '</span>';
-    if ($view->current_display == 'page_1') {
+    if (
+      ($view->current_display == 'page_1')
+      ||
+      ($view->current_display == 'gpep')
+    ) {
       $link = l(t('New Document'), 'node/add/document');
       if ($no_results) {
         $output = str_replace('<div class="view-header">', '<div class="view-header"><span class="no-results count-container pull-right">', $output);
@@ -388,10 +398,7 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $link = '';
     $node = menu_get_object('node');
 
-    $destination = 'partners-documents';
-    if (isset($node->workbench_access['section'])) {
-      $destination = 'communications';
-    }
+    $destination = 'good-practice-exchange-platform';
     if ($node && node_access('update', $node)) {
       $link = l(t('Edit'), 'node/' . $node->nid . '/edit', ['query' => ['destination' => $destination], 'absolute' => TRUE]);
     }
@@ -420,15 +427,6 @@ function hwc_good_practice_exchange_block_view($delta = '') {
   if ($delta == 'gpep_links') {
 
     $links = [];
-    $links[] = l(
-      '<span class="link-img"></span><span class="title">' . t('Partners documents') . '</span>',
-      'partners-documents',
-      ['html' => TRUE, 'attributes' => ['class' => 'partners-documents']]);
-    $links[] = l(
-      '<span class="link-img"></span><span class="title">' . t('EU-OSHA communications') . '</span>',
-      'communications',
-      ['html' => TRUE, 'attributes' => ['class' => 'communications']]);
-
     $node = menu_get_object('node');
     $intro_text = variable_get('hwc_gpep_document_intro_text', '');
     $title = t('Good practice exchange platform');

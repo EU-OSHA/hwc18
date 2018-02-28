@@ -50,7 +50,7 @@ function osha_search_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'partners-documents',
+    'pages' => 'good-practice-exchange-platform',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -177,8 +177,7 @@ safety-and-health-legislation/european-directives
 node/2544
 legislation/guidelines/*
 practical-tools
-partners-documents
-communications',
+good-practice-exchange-platform',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(

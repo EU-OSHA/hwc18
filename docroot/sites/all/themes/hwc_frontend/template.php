@@ -11,25 +11,12 @@ function bootstrap_menu_tree__menu_footer_menu(&$variables) {
 function hwc_frontend_menu_link__menu_block($variables) {
   $element = &$variables['element'];
   $delta = $element['#bid']['delta'];
-  // Add homepage Icon.
-  /*$attr = drupal_attributes($element['#attributes']);
-  if (isset($variables['element']['#href']) &&
-    $variables['element']['#href'] == '<front>' &&
-    isset($element['#localized_options']['content']['image'])
-  ) {
-    $path = file_create_url($element['#localized_options']['content']['image']);
-    $link = l('<img src="' . $path . '" />', $element['#href'],
-      array('html' => TRUE, 'attributes' => $element['#localized_options']['attributes'])
-    );
-    return sprintf("\n<li %s>%s</li>", $attr, $link);
-  }*/
   // Render or not the Menu Image.
   // Get the variable provided by osha_menu module.
   $render_img = variable_get('menu_block_' . $delta . '_' . HWC_MENU_RENDER_IMG_VAR_NAME, 0);
   if (!$render_img) {
     return theme_menu_link($variables);
   }
-  // $element['#attributes']['data-image-url'] = $image_url;
   $output_link = l($element['#title'], $element['#href'], $element['#localized_options']);
   $output_image = "";
   if (!empty($element['#localized_options']['content']['image'])
@@ -64,7 +51,6 @@ function hwc_frontend_menu_link(array $variables) {
       $element['#localized_options']['html'] = TRUE;
       // Set dropdown trigger element to # to prevent inadvertant page loading
       // when a submenu link is clicked.
-//      $element['#localized_options']['attributes']['data-target'] = '#';
       $element['#localized_options']['attributes']['class'][] = 'dropdown-toggle';
       $element['#localized_options']['attributes']['data-toggle'] = 'dropdown';
       $element['#localized_options']['attributes']['role'] = 'button';
@@ -77,14 +63,6 @@ function hwc_frontend_menu_link(array $variables) {
   if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
     $element['#attributes']['class'][] = 'active';
   }
-  // Add image to menu item
-//  if (isset($variables['element']['#href']) && isset($element['#localized_options']['content']['image'])) {
-//    $path = file_create_url($element['#localized_options']['content']['image']);
-//    $link = l('<img src="' . $path . '" />', $element['#href'],
-//      array('html' => TRUE, 'attributes' => $element['#localized_options']['attributes'])
-//    );
-//    return '<li' . drupal_attributes($element['#attributes']) . '>' . $link . "</li>\n";
-//  }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
@@ -102,21 +80,25 @@ function hwc_frontend_preprocess_html(&$vars) {
       $vars['classes_array'][] = 'pz-page';
     }
   }
-  if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'gpep') {
-    $n = menu_get_object('node');
-    if ($n->type == 'partner') {
-      $vars['classes_array'][] = 'gpep-page';
-    }
-  }
   if (
     (arg(0) . arg(1) . arg(2)) == 'nodeaddnews' ||
     (arg(0) . arg(1) . arg(2)) == 'nodeaddevents'
   ) {
     $vars['classes_array'][] = 'pz-page';
   }
+  if (arg(0) == 'good-practice-exchange-platform') {
+    $vars['classes_array'][] = 'page-partners-documents';
+    $vars['classes_array'][] = 'page-documents';
+  }
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
+  if (arg(0) == 'good-practice-exchange-platform') {
+    $breadcrumb = [];
+    $breadcrumb[] = l(t('Home'), '<front>');
+    $breadcrumb[] = drupal_get_title();
+    drupal_set_breadcrumb($breadcrumb);
+  }
 
   $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
@@ -150,12 +132,8 @@ function hwc_frontend_preprocess_page(&$vars) {
     );
     switch ($node->type) {
       case 'document':
-        $link_href = 'partners-documents';
-        $link_title = t('Back to the partners’ document list');
-        if (isset($node->workbench_access['section'])) {
-          $link_href = 'communications';
-          $link_title = t('Back to the EU-OSHA communications list');
-        }
+        $link_href = 'good-practice-exchange-platform';
+        $link_title = t('Back to the Good practice exchange platform');
         break;
 
       case 'publication':
@@ -386,10 +364,9 @@ function hwc_frontend_preprocess_page(&$vars) {
       );
     }
 
-    if ((arg(0) == 'communications') || (arg(0) == 'partners-documents')) {
-      $url_options = ['query' => ['page' => 'gpep']];
-      $link_href = url('node/' . $partner->nid, $url_options);
-      $link_title = t('Back to the Good practice exchange platform');
+    if (arg(0) == 'good-practice-exchange-platform') {
+      $link_href = url('node/' . $partner->nid);
+      $link_title = t('Back to Private Zone');
       $vars['page']['below_title']['back-to-link'] = array(
         '#type' => 'item',
         '#markup' => '<a class="back-to-link pull-right" href="' . $link_href . '">' . $link_title . '</a>',
