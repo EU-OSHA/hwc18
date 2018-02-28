@@ -19225,6 +19225,9 @@ input#edit-field-image-und-0-upload::before {
 /*input clean x button*/
 /* Clearable text inputs */
 /*Galder styles*/
+.page-glossary-list {
+  /*end galder styles*/
+}
 .page-glossary-list .page-header {
   text-align: center;
   color: #749b00 ;
@@ -19295,6 +19298,10 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 5px;
   margin-left: 5px;
   font-size: 12px;
+}
+/*galder styles css issue bulgaria*/
+.page-topics.i18n-bg .main-container .view-id-topics .views-row .views-field-name-field a {
+  font-size: 1em;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
