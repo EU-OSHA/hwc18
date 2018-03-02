@@ -201,3 +201,10 @@ function osha_events_update_7015() {
 function osha_events_update_7016() {
   features_revert_module('osha_events');
 }
+
+/**
+ * MDR-1724 HWC18: Delete ‘tagging functionality' in the items to be uploaded from the Private Zone.
+ */
+function osha_events_update_7017() {
+  features_revert(array('osha_events' => array('field_instance')));
+}
