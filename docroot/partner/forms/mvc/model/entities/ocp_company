@@ -459,7 +459,6 @@
     "company_osh_ceoimage": "osh_ceoimage",
     "company_osh_socialdialoguepartner": "osh_socialdialoguepartner",
     "company_osh_homepage": "osh_homepage",
-    "company_osh_dedicatedsite": "osh_dedicatedsite",
     "company_osh_facebookprofile": "osh_facebookprofile",
     "company_osh_pinterestprofile": "osh_pinterestprofile",
     "company_osh_twitterprofile": "osh_twitterprofile",
@@ -483,7 +482,8 @@
     "comrep_osh_mediaproshlastname" : "osh_mediaproshlastname",
     "comrep_osh_emailmediapr" : "osh_emailmediapr",
     "comrep_osh_phonemediapr" : "osh_phonemediapr",
-    "comrep_osh_prefixmediaprphone": "osh_prefixmediaprphone"
+    "comrep_osh_prefixmediaprphone": "osh_prefixmediaprphone",
+    "company_osh_dedicatedcampaignsite": "osh_dedicatedsite"
   },
   "map_mf": {
     "company_osh_address": "osh_phaddress",
