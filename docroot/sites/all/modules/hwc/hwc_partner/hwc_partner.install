@@ -243,3 +243,14 @@ function hwc_partner_update_7030() {
     user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
   }
 }
+
+/**
+ * HW18-446 Titles from head and breadcrumbs from campaign partners sections untranslated.
+ */
+function hwc_partner_update_7031() {
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+
+  features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages'));
+  features_revert(array('hwc_good_practice_exchange' => 'page_manager_handlers'));
+}
