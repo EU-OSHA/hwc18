@@ -7,7 +7,7 @@
     <p class="help-block">{$fieldHelpText}</p>
     {/if}
     <div class="controls">
-        <select {$disabled} class="field" id="{$fieldName}" name="{$fieldName}" data-section="{$fieldSection}" data-value='<?php echo $_SESSION["mainContactPrefix"]; ?>'>
+        <select {$disabled} class="field" id="{$fieldName}" name="{$fieldName}" data-section="{$fieldSection}" data-value='{if ($fieldName == "contact_osh_prefixmaincontactphone")}<?php echo $_SESSION["mainContactPrefix"]; ?>{/if}'>
              <option value="">Select an option</option>
             {foreach from=$fieldValue key=id item=value}
             {if ($selectedValue === $value)}
