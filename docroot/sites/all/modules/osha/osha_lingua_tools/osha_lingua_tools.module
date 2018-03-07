@@ -15,7 +15,7 @@ function osha_lingua_tools_menu() {
     'page arguments' => array('form_lingua_form'),
     'access callback' => 'linguatools_access',
     'weight' => 7,
-    'type' => MENU_LOCAL_TASK
+    'type' => MENU_LOCAL_TASK,
   );
 
   return $items;
@@ -32,15 +32,13 @@ function form_lingua_form($form, &$form_state) {
   $numlen = count($node->translations->data);
 
   if ($numlen <= 1) {
-    //echo ("There are no translations for this node");
     $form['header_text'] = array(
       '#markup' => '<p class="linguaheader">There are no translations for this node.</p>',
-      '#fieldintname' => '0'
+      '#fieldintname' => '0',
     );
   }
   else {
-    //Get the node id, what we want translate.
-
+    // Get the node id, what we want translate.
     $type = $node->type;
     $fields = field_info_instances("node", $type);
     $countfields = 1;
@@ -52,14 +50,14 @@ function form_lingua_form($form, &$form_state) {
       $fieldintname = $field['field_name'];
       $arrayfield = $node->$fieldintname;
 
-      //TODO Check that the field has data
+      //TODO Check that the field has data.
       $numdatosfield = count($arrayfield) + 1;
       $fieldid = $field['field_id'];
       $transfield = istranslatable($fieldid);
 
       $form['header_text'] = array(
         '#markup' => '<p class="linguaheader">Please, select the fields to spread and press the <strong>spread data</strong> button.</p>',
-        '#fieldintname' => '0'
+        '#fieldintname' => '0',
       );
       if ($transfield == 1 && $field['widget']['module'] != 'media' && $field['widget']['module'] != 'file' && $field['widget']['module'] != 'pdf_to_image' && $numdatosfield > 0) {
         $countfields++;
@@ -99,7 +97,7 @@ function form_lingua_form($form, &$form_state) {
     '#multiple' => TRUE,
     '#options' => $languages,
     '#default_value' => array_keys($selected_languages),
-    '#weight' => array('#weight' => 6)
+    '#weight' => array('#weight' => 6),
   );
   $form['create_translations_submit_button'] = array(
     '#type' => 'submit',
@@ -111,10 +109,11 @@ function form_lingua_form($form, &$form_state) {
   return $form;
 }
 
-
+/**
+ * Access callback for lingua tools.
+ */
 function linguatools_access() {
   global $user;
-  $useradmin = 0;
 
   foreach ($user->roles as $userrol) {
     if ($userrol == 'administrator') {
@@ -123,7 +122,6 @@ function linguatools_access() {
   }
 
   return FALSE;
-
 }
 
 function istranslatable($idfield) {
@@ -164,7 +162,8 @@ function form_lingua_form_submit($form, &$form_state) {
 
   foreach ($form as $fieldchk) {
     $fieldintname = $fieldchk['#fieldintname'];
-    if ($fieldintname <> '0') { //0 Is the value of the summary field
+    // 0 Is the value of the summary field.
+    if ($fieldintname <> '0') {
 
       $fieldupdate = $form_state['values'][$fieldchk['#title']];
       if ($fieldupdate) {
@@ -221,7 +220,7 @@ function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $
     return FALSE;
   }
 
-  //update the field_data fields
+  // Update the field_data fields.
   $data = db_update($table_name)
     ->fields(array(
       $field_name => $propvalue,
@@ -229,7 +228,7 @@ function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $
     ->condition('entity_id', $intnodeid)
     ->execute();
 
-  //update the field_revision fields
+  // Update the field_revision fields.
   $data2 = db_update($table_rev_name)
     ->fields(array(
       $field_name => $propvalue,
@@ -246,7 +245,7 @@ function propage_url($intnodeid) {
   $propvalue = $node->path['alias'];
 
   $aliasurl = "node/" . $intnodeid;
-  //update the url field
+  // Update the url field.
   $data = db_update('url_alias')
     ->fields(array(
       'alias' => $propvalue,
@@ -277,7 +276,7 @@ function osha_lingua_tools_create_translations($form, &$form_state) {
     }
   }
   $translation_handler->saveTranslations();
-  // clone url_aliases
+  // Clone url_aliases.
   foreach ($languages as $lang_code => $value) {
     if ($value) {
       $args = array(

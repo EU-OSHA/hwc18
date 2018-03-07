@@ -236,6 +236,13 @@ window.onload = function () {
         });
     }
 
+    //JA-02/03/2018 - MaincontactPrefix not displayed
+    if(typeof $("#contact_osh_prefixmaincontactphone").attr('data-value') !== 'undefined'){
+        if($("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").length){
+            $("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").attr("selected","selected");
+        }
+    }
+
     if (document.getElementById("company_osh_orgname") != null) {
         document.getElementById("company_osh_orgname").value  = document.getElementById("company_osh_orgname").value;
     }

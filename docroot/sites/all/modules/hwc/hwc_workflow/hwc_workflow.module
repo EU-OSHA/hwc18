@@ -400,7 +400,7 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
     drupal_set_title(t('Upload Information') . $form['#node']->title);
   }
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
-    $form['field_document_type']['#access'] = FALSE;
+    $form['field_share_partner_type']['#access'] = FALSE;
   }
 
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {

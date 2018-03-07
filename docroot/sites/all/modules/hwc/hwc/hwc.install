@@ -681,3 +681,10 @@ function hwc_update_7043() {
 function hwc_update_7044() {
   module_enable(['lexicon', 'hwc_glossary']);
 }
+
+/**
+ * Improve security of the website against CSRF (Cross-Site Request Forgery) attacks.
+ */
+function hwc_update_7045() {
+  module_enable(['csrf_checks']);
+}
