@@ -167,6 +167,11 @@ function osha_publication_views_pre_render(&$view) {
         str_replace(
           'publications', 'publications?language%5B' . $language->language . '%5D=' . $language->language,
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
+
+      $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
+        str_replace(
+          'practical-tools', 'practical-tools?language%5B' . $language->language . '%5D=' . $language->language,
+          $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
     }
   }
   if ($view->name == 'publications_slideshow') {
