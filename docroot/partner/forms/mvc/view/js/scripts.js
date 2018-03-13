@@ -236,11 +236,19 @@ window.onload = function () {
         });
     }
 
-    //JA-02/03/2018 - MaincontactPrefix not displayed
-    if(typeof $("#contact_osh_prefixmaincontactphone").attr('data-value') !== 'undefined'){
-        if($("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").length){
-            $("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").attr("selected","selected");
+    //JA-13/03/2018 - Countries disapear
+
+    $('body').on('click', '.section', function (){
+        var currentVal = $('#company_osh_osh_appform_osh_country').select2("val");
+        if(JSON.parse(localStorage.getItem('countryAct') === currentVal)){
+            $('#company_osh_osh_appform_osh_country').select2("val", JSON.parse(localStorage.getItem('countryAct')));
+        } else{
+            localStorage.setItem('countryAct', JSON.stringify(currentVal));
         }
+    });
+
+    if($('#company_osh_osh_appform_osh_country').select2("val") !== null){
+        localStorage.setItem('countryAct',JSON.stringify($('#company_osh_osh_appform_osh_country').select2("val")));
     }
 
     if (document.getElementById("company_osh_orgname") != null) {
