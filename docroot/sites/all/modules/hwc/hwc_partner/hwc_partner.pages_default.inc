@@ -1267,7 +1267,7 @@ enterprise-europe-network
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-gBLGroD0Dq66xB3cP00EJYbIZektcDtJRmS6wAnoiro',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
@@ -7052,7 +7052,7 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-H2hk6rekiaoFhCCM8kZN9oaPe4hveVCZVgn9Q5m19ig',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
@@ -7217,7 +7217,7 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-NTCUI--7sA-Wov7RwqO_W1kUzHO99P0QsuiBdYopQWo',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
@@ -7382,7 +7382,7 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-f80y8RcRYRzSpj3beDSxh5cocWzydjQAFWkRSaGjKEM',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
@@ -7876,7 +7876,7 @@ function hwc_partner_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-tn8XXFVisd0hWALdxlINatk5TBlnE9lYfG2hJ1l8UFI',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',
