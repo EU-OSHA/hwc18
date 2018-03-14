@@ -237,24 +237,24 @@ window.onload = function () {
     }
 
     //JA-13/03/2018 - Countries disapear
-
-    $('body').on('click', '.section', function (){
-        var currentVal = $('#company_osh_osh_appform_osh_country').select2("val");
-        if(JSON.parse(localStorage.getItem('countryAct') === currentVal)){
-            $('#company_osh_osh_appform_osh_country').select2("val", JSON.parse(localStorage.getItem('countryAct')));
-        } else{
-            localStorage.setItem('countryAct', JSON.stringify(currentVal));
+    setTimeout(function () {
+        var currentVal = $('#company_osh_osh_appform_osh_country').val();
+        if(currentVal != null){
+            localStorage.setItem('countryAct', JSON.stringify($('#company_osh_osh_appform_osh_country').val()));
         }
-    });
+        if(JSON.parse(localStorage.getItem('countryAct')) !== null){
+            $('#company_osh_osh_appform_osh_country').select2('val',JSON.parse(localStorage.getItem('countryAct')));
+        }
+    },1500);
 
-    if($('#company_osh_osh_appform_osh_country').select2("val") !== null){
-        localStorage.setItem('countryAct',JSON.stringify($('#company_osh_osh_appform_osh_country').select2("val")));
-    }
+    $('#company_osh_osh_appform_osh_country').on('change',function () {
+        localStorage.setItem('countryAct', JSON.stringify($(this).val()));
+    });
 
     if (document.getElementById("company_osh_orgname") != null) {
         document.getElementById("company_osh_orgname").value  = document.getElementById("company_osh_orgname").value;
     }
-
+    console.log('Updated');
 }
 function checkSectionsByCDB(dataSection){
     debugger;
