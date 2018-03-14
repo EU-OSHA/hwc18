@@ -153,7 +153,7 @@ function hwc_homepage_block_view($delta = '') {
   if ($delta == 'hwc_homepage_tools_and_resources') {
     $items = [];
     $items[] = l(t('Case studies'), 'case-studies');
-    $items[] = l(t('DS e-tool'), 'healthy-workplaces-all-ages-e-guide');
+    $items[] = l(t('DS e-tool'), 'e-tool');
     $items[] = l(t('Practical tools'), 'practical-tools');
     $block['content']['message'] = array(
       'type' => 'item',
