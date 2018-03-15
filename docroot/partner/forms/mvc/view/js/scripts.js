@@ -236,25 +236,28 @@ window.onload = function () {
         });
     }
 
-    //JA-13/03/2018 - Countries disapear
+    //JA - Country activities 15/03/2018
     setTimeout(function () {
         var currentVal = $('#company_osh_osh_appform_osh_country').val();
         if(currentVal != null){
-            localStorage.setItem('countryAct', JSON.stringify($('#company_osh_osh_appform_osh_country').val()));
+            sessionStorage.setItem('countryAct', JSON.stringify($('#company_osh_osh_appform_osh_country').val()));
         }
-        if(JSON.parse(localStorage.getItem('countryAct')) !== null){
-            $('#company_osh_osh_appform_osh_country').select2('val',JSON.parse(localStorage.getItem('countryAct')));
+
+        if(JSON.parse(sessionStorage.getItem('countryAct')) !== null){
+            $('#company_osh_osh_appform_osh_country').select2('val',JSON.parse(sessionStorage.getItem('countryAct')));
         }
-    },1500);
+
+    },2000);
+
 
     $('#company_osh_osh_appform_osh_country').on('change',function () {
-        localStorage.setItem('countryAct', JSON.stringify($(this).val()));
+        sessionStorage.setItem('countryAct', JSON.stringify($(this).val()));
     });
 
     if (document.getElementById("company_osh_orgname") != null) {
         document.getElementById("company_osh_orgname").value  = document.getElementById("company_osh_orgname").value;
     }
-    console.log('Updated');
+    console.log('15');
 }
 function checkSectionsByCDB(dataSection){
     debugger;
@@ -1100,6 +1103,7 @@ $(document).ready(function () {
         submit: function (e) {
             enableFields();
             //debugger;
+            sessionStorage.clear();
             if (buttonPressed == "next") {
 //                var enableFields = true;
                 var field = null;
