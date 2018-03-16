@@ -170,7 +170,7 @@ function osha_publication_views_pre_render(&$view) {
 
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
         str_replace(
-          'practical-tools', 'practical-tools?language%5B' . $language->language . '%5D=' . $language->language,
+          'practical-tools', 'practical-tools?f%5B0%5D=field_available_in_languages%253Avalue%3A' . $language->language,
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
     }
   }
