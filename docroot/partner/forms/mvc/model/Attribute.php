@@ -117,7 +117,11 @@ class Attribute
                 }
             }
         } else {
-            $this->selectedValues = $selectedValues;
+            if(is_array($selectedValues)){
+                $this->selectedValues = $selectedValues['Name'];
+            } else{
+                $this->selectedValues = $selectedValues;
+            }
         }
     }
 

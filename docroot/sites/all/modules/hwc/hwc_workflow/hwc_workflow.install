@@ -153,3 +153,10 @@ function hwc_workflow_update_7009() {
 function hwc_workflow_update_7010() {
   features_revert_module('hwc_workflow');
 }
+
+/**
+ * MDR-1725 HWC18: Partners should receive a notification.
+ */
+function hwc_workflow_update_7011() {
+  features_revert_module('hwc_workflow');
+}
