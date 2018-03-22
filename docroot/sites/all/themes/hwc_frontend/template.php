@@ -336,6 +336,16 @@ function hwc_frontend_preprocess_page(&$vars) {
       $breadcrumbs = _path_breadcrumbs_build_breadcrumbs($pb);
       drupal_set_breadcrumb($breadcrumbs);
     }
+
+    if (
+      ($node->type == 'tk_article') ||
+      ($node->type == 'tk_topic') ||
+      ($node->type == 'tk_tool') ||
+      ($node->type == 'tk_example')
+    ) {
+      $breadcrumb = hwc_toolkit_menu_breadcrumbs();
+      drupal_set_breadcrumb($breadcrumb);
+    }
   }
 
   // Add back link (e.g. 'Back to homepage') for Partners pages.
@@ -471,12 +481,13 @@ function hwc_frontend_preprocess_node(&$vars) {
     }
   }
 
-  // Hide share widget
+  // Hide share widget.
   $exclude_nid = array('129');
-  if(in_array($vars['node']->nid, $exclude_nid)){
+  if (in_array($vars['node']->nid, $exclude_nid)) {
     unset($vars['content']['share_widget']);
   }
   hwc_frontend_top_anchor($vars);
+
 }
 
 function hwc_frontend_file_upload_help($variables) {
