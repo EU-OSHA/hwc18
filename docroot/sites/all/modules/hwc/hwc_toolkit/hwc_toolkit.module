@@ -19,6 +19,13 @@ function hwc_toolkit_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
     'weight' => 0,
   );
+  $blocks['toolkit_nav'] = array(
+    'info' => t('Toolkit next prev buttons'),
+    'status' => 1,
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'weight' => 0,
+  );
   return $blocks;
 }
 
@@ -26,11 +33,33 @@ function hwc_toolkit_block_info() {
  * Implements hook_block_view().
  */
 function hwc_toolkit_block_view($delta = '') {
+  $active_id = NULL;
+  if (arg(0) == 'taxonomy') {
+    $active_id = arg(2);
+  }
+  else {
+    $active_id = arg(1);
+  }
+
   $block = array();
   if ($delta == 'toolkit_left_menu') {
+    $menu = hwc_toolkit_get_left_menu($active_id);
     $block['content'] = array(
       '#type' => 'markup',
-      '#markup' => hwc_toolkit_get_left_menu(),
+      '#markup' => theme('toolkit_menu',
+        array(
+          'menu' => $menu,
+          'active' => $active_id,
+        )
+      ),
+    );
+  }
+  if ($delta == 'toolkit_nav') {
+    hwc_toolkit_get_left_menu($active_id);
+    $markup = theme('toolkit_navigation', ['nid' => arg(2)]);
+    $block['content'] = array(
+      '#type' => 'markup',
+      '#markup' => $markup,
     );
   }
   return $block;
@@ -56,19 +85,29 @@ function hwc_toolkit_theme($existing, $type, $theme, $path) {
   $theme['toolkit_menu'] = array(
     'template' => 'templates/hwc_toolkit_menu',
     'variables' => array(
-      'nid' => [],
       'menu' => [],
       'active' => NULL,
+    ),
+  );
+  $theme['toolkit_navigation'] = array(
+    'template' => 'templates/hwc_toolkit_navigation',
+    'variables' => array(
+      'nid' => NULL,
     ),
   );
   return $theme;
 }
 
-function _toolkit_menu_item($title, $href = NULL) {
-  $item = ['title' => $title];
+function _toolkit_menu_item($title, $path = NULL, $type = 'node') {
+  $item = [
+    'title' => $title,
+    'children' => [],
+    'path' => $path,
+    'type' => $type,
+  ];
   $item['class'] = hwc_toolkit_prepare_link(strtolower($title));
-  if ($href) {
-    $item['href'] = $href;
+  if ($path) {
+    $item['href'] = url($path);
   }
   else {
     $item['href'] = '#' . $item['class'];
@@ -99,76 +138,36 @@ function hwc_toolkit_examples_result_count($add = 0) {
   return $total;
 }
 
-function hwc_toolkit_get_left_menu() {
-  $id = NULL;
-  if (arg(0) == 'taxonomy') {
-    $id = arg(2);
+function hwc_toolkit_get_menu_tree($level1) {
+  static $menu = [];
+  if ($menu) {
+    return $menu;
   }
-  else {
-    $id = arg(1);
-  }
+  $tools = views_get_view_result('menu_tk_tools');
 
-  $q = db_select('node', 'n');
-  $q->fields('n', ['nid']);
-  $q->condition('n.type', 'tk_section');
-  $rs = $q->execute()->fetchAll();
-  $nid = $rs[0]->nid;
-  $node = node_load($nid);
-  $wt = entity_metadata_wrapper('node', $node);
-  $title_0 = $wt->title->value();
-  $articles = $wt->field_tk_article->value();
   $tools_examples_nid = NULL;
-  $menu = [];
 
-  foreach ($articles as $article) {
+  foreach ($level1 as $article) {
     $w = entity_metadata_wrapper('node', $article);
-    $title = $w->title->value();
-    $article_nid = $article->nid;
-
-    $menu[$article_nid] = _toolkit_menu_item($title, url('node/' . $article_nid));
-
-    if ($id == $article_nid) {
-      $menu[$article_nid]['class'] .= ' active';
-
-      hwc_toolkit_menu_breadcrumbs(l($title_0, 'node/' . $id));
-      hwc_toolkit_menu_breadcrumbs($title);
-    }
+    $l1_nid = $article->nid;
+    $l1_title = $w->title->value();
+    $menu[$l1_nid] = _toolkit_menu_item($l1_title, 'node/' . $l1_nid);
 
     $articles = $w->field_tk_article->value();
     if ($articles) {
       foreach ($articles as $tk_article) {
         $wrapper = entity_metadata_wrapper('node', $tk_article);
-        $title = $wrapper->title->value();
-
-        $menu[$article_nid]['children'][$tk_article->nid] = _toolkit_menu_item($title, url('node/' . $tk_article->nid));
-
-        if ($id == $tk_article->nid) {
-          $menu[$article_nid]['children'][$tk_article->nid]['class'] .= ' active';
-          $menu[$article_nid]['class'] .= ' active';
-
-          hwc_toolkit_menu_breadcrumbs(l($title_0, 'node/' . $id));
-          hwc_toolkit_menu_breadcrumbs(l($menu[$article_nid]['title'], 'node/' . $article_nid));
-          hwc_toolkit_menu_breadcrumbs($title);
-        }
+        $l2_nid = $tk_article->nid;
+        $l2_title = $wrapper->title->value();
+        $menu[$l1_nid]['children'][$l2_nid] = _toolkit_menu_item($l2_title, 'node/' . $l2_nid);
 
         $topics = $wrapper->field_tk_topics->value();
         if ($topics) {
           foreach ($topics as $tk_topic) {
             $wrapper = entity_metadata_wrapper('node', $tk_topic);
-            $title = $wrapper->title->value();
-
-            $menu[$article_nid]['children'][$tk_article->nid]['children'][$tk_topic->nid] = _toolkit_menu_item($title, url('node/' . $tk_topic->nid));
-
-            if ($id == $tk_topic->nid) {
-              $menu[$article_nid]['children'][$tk_article->nid]['children'][$tk_topic->nid]['class'] .= ' active';
-              $menu[$article_nid]['children'][$tk_article->nid]['class'] .= ' active';
-              $menu[$article_nid]['class'] .= ' active';
-
-              hwc_toolkit_menu_breadcrumbs(l($title_0, 'node/' . $id));
-              hwc_toolkit_menu_breadcrumbs(l($menu[$article_nid]['title'], 'node/' . $article_nid));
-              hwc_toolkit_menu_breadcrumbs(l($menu[$article_nid]['children'][$tk_article->nid]['title'], 'node/' . $tk_article->nid));
-              hwc_toolkit_menu_breadcrumbs($title);
-            }
+            $l3_nid = $tk_topic->nid;
+            $l3_title = $wrapper->title->value();
+            $menu[$l1_nid]['children'][$l2_nid]['children'][$l3_nid] = _toolkit_menu_item($l3_title, 'node/' . $l3_nid);
           }
         }
       }
@@ -176,47 +175,130 @@ function hwc_toolkit_get_left_menu() {
 
     $terms = $w->field_tools_examples->value();
     if ($terms) {
-      $tools_examples_nid = $article_nid;
+      $tools_nid = $l1_nid;
       foreach ($terms as $tk_term) {
-        $wrapper = entity_metadata_wrapper('taxonomy_term', $tk_term->tid);
-        $title = $wrapper->name->value();
-
-        $menu[$article_nid]['children'][$tk_term->tid] = _toolkit_menu_item($title, url('taxonomy/term/' . $tk_term->tid));
-        if ($id == $tk_term->tid) {
-          $menu[$article_nid]['children'][$tk_term->tid]['class'] .= ' active';
-          $menu[$article_nid]['class'] .= ' active';
-
-          hwc_toolkit_menu_breadcrumbs(l($title_0, 'node/' . $id));
-          hwc_toolkit_menu_breadcrumbs(l($menu[$article_nid]['title'], 'node/' . $article_nid));
-          $breadcrumb = hwc_toolkit_menu_breadcrumbs($title);
-          drupal_set_breadcrumb($breadcrumb);
-        }
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $tk_term);
+        $l2_tid = $tk_term->tid;
+        $l2_title = $wrapper->name->value();
+        $menu[$l1_nid]['children'][$l2_tid] = _toolkit_menu_item($l2_title, 'taxonomy/term/' . $l2_tid, 'taxonomy');
       }
     }
   }
 
-  $tools = views_get_view_result('menu_tk_tools');
-
   foreach ($tools as $tool) {
-    $tid = $tool->field_field_tk_tool_type[0]['raw']['tid'];
-    $menu[$tools_examples_nid]['children'][$tid]['children'][$tool->nid] = _toolkit_menu_item($tool->node_title, url('node/' . $tool->nid));
-    if ($id == $tool->nid) {
-      $menu[$tools_examples_nid]['children'][$tid]['children'][$tool->nid]['class'] .= ' active';
-      $menu[$tools_examples_nid]['children'][$tid]['class'] .= ' active';
-      $menu[$tools_examples_nid]['class'] .= ' active';
+    $l2_tid = $tool->field_field_tk_tool_type[0]['raw']['tid'];
+    $l3_nid = $tool->nid;
+    $l3_title = $tool->node_title;
+    $menu[$tools_nid]['children'][$l2_tid]['children'][$l3_nid] = _toolkit_menu_item($l3_title, 'node/' . $l3_nid);
+  }
+  return $menu;
+}
 
-      hwc_toolkit_menu_breadcrumbs(l($title_0, 'node/' . $id));
-      hwc_toolkit_menu_breadcrumbs(l($menu[$tools_examples_nid]['title'], 'node/' . $tools_examples_nid));
-      hwc_toolkit_menu_breadcrumbs(l($menu[$tools_examples_nid]['children'][$tid]['title'], 'taxonomy/term/' . $tid));
-      hwc_toolkit_menu_breadcrumbs($tool->node_title);
-    }
+function hwc_toolkit_nav_next($nid) {
+  $nav = hwc_toolkit_nav();
+  return @$nav[$nid]['next'];
+}
+
+function hwc_toolkit_nav_prev($nid) {
+  $nav = hwc_toolkit_nav();
+  return @$nav[$nid]['prev'];
+}
+
+function hwc_toolkit_nav($_nav = NULL) {
+  static $nav = [];
+  if ($_nav) {
+    $nav = $_nav;
+  }
+  return $nav;
+}
+
+function hwc_toolkit_get_left_menu($active_id) {
+  static $menu = [];
+  if ($menu) {
+    return $menu;
   }
 
-  return theme('toolkit_menu',
-    array(
-      'nid' => $nid,
-      'menu' => $menu,
-      'active' => $id,
-    )
-  );
+/*
+  $active_id = NULL;
+  if (arg(0) == 'taxonomy') {
+    $active_id = arg(2);
+  }
+  else {
+    $active_id = arg(1);
+  }
+*/
+
+  $q = db_select('node', 'n');
+  $q->fields('n', ['nid']);
+  $q->condition('n.type', 'tk_section');
+  $rs = $q->execute()->fetchAll();
+  $l0_nid = $rs[0]->nid;
+  $node = node_load($l0_nid);
+  $wt = entity_metadata_wrapper('node', $node);
+  $l0_title = $wt->title->value();
+  $level1 = $wt->field_tk_article->value();
+
+  $menu = hwc_toolkit_get_menu_tree($level1);
+  $nav = [];
+
+  $prev1_id = NULL;
+
+  $lo_link = l($l0_title, 'node/' . $active_id);
+  foreach ($menu as $l1_id => $menu_item1) {
+    if ($prev1_id) {
+      $nav[$prev1_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]);
+      $nav[$l1_id]['prev'] = hwc_toolkit_nav_item($menu[$prev1_id]);
+    }
+    $prev1_id = $l1_id;
+    $prev2_id = NULL;
+
+    if ($active_id == $l1_id) {
+      $menu[$l1_id]['class'] .= ' active';
+      hwc_toolkit_menu_breadcrumbs($lo_link);
+      hwc_toolkit_menu_breadcrumbs($menu_item1['title']);
+    }
+    foreach ($menu_item1['children'] as $l2_id => $menu_item2) {
+      if ($prev2_id) {
+        $nav[$prev2_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]);
+        $nav[$l2_id]['prev'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$prev2_id]);
+      }
+      $prev2_id = $l2_id;
+      $prev3_id = NULL;
+
+      if ($active_id == $l2_id) {
+        $menu[$l1_id]['children'][$l2_id]['class'] .= ' active';
+        $menu[$l1_id]['class'] .= ' active';
+        hwc_toolkit_menu_breadcrumbs($lo_link);
+        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
+        hwc_toolkit_menu_breadcrumbs($menu_item2['title']);
+        if ('taxonomy' == $menu_item2['type']) {
+          drupal_set_breadcrumb(hwc_toolkit_menu_breadcrumbs());
+        }
+      }
+      foreach ($menu_item2['children'] as $l3_id => $menu_item3) {
+        if ($prev3_id) {
+          $nav[$prev3_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]['children'][$l3_id]);
+          $nav[$l3_id]['prev'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]['children'][$prev3_id]);
+        }
+        $prev3_id = $l3_id;
+
+        if ($active_id == $l3_id) {
+          $menu[$l1_id]['children'][$l2_id]['children'][$l3_id]['class'] .= ' active';
+          $menu[$l1_id]['children'][$l2_id]['class'] .= ' active';
+          $menu[$l1_id]['class'] .= ' active';
+          hwc_toolkit_menu_breadcrumbs($lo_link);
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['href']));
+          hwc_toolkit_menu_breadcrumbs($menu_item3['title']);
+        }
+
+      }
+    }
+  }
+  hwc_toolkit_nav($nav);
+  return $menu;
+}
+
+function hwc_toolkit_nav_item($menu_item) {
+  return ['href' => $menu_item['href'], 'title' => $menu_item['title']];
 }

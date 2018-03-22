@@ -148,6 +148,29 @@ function hwc_toolkit_default_page_manager_handlers() {
   $display->content['new-862664fa-d3e8-4f07-830a-ebffe6f1cf77'] = $pane;
   $display->panels['center'][0] = 'new-862664fa-d3e8-4f07-830a-ebffe6f1cf77';
   $pane = new stdClass();
+  $pane->pid = 'new-99d30471-1e13-4067-8655-0acbed43c2a0';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_toolkit-toolkit_nav';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '99d30471-1e13-4067-8655-0acbed43c2a0';
+  $display->content['new-99d30471-1e13-4067-8655-0acbed43c2a0'] = $pane;
+  $display->panels['center'][1] = 'new-99d30471-1e13-4067-8655-0acbed43c2a0';
+  $pane = new stdClass();
   $pane->pid = 'new-4623ca35-85b7-494a-b36f-229dc12489e0';
   $pane->panel = 'left';
   $pane->type = 'block';

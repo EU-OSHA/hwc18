@@ -27,6 +27,38 @@ function hwc_toolkit_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_fe_nodequeue_export_fields().
+ */
+function hwc_toolkit_fe_nodequeue_export_fields() {
+  $nodequeues = array();
+
+  // Exported nodequeues: most_popular_tools_and_examples
+  $nodequeues['most_popular_tools_and_examples'] = array(
+    'name' => 'most_popular_tools_and_examples',
+    'title' => 'Most Popular Tools and Examples',
+    'subqueue_title' => '',
+    'size' => 5,
+    'link' => '',
+    'link_remove' => '',
+    'owner' => 'nodequeue',
+    'show_in_ui' => 1,
+    'show_in_tab' => 1,
+    'show_in_links' => 0,
+    'reference' => 0,
+    'reverse' => 0,
+    'i18n' => 0,
+    'subqueues' => 1,
+    'types' => array(
+      0 => 'tk_example',
+    ),
+    'roles' => array(),
+    'count' => 0,
+  );
+
+  return $nodequeues;
+}
+
+/**
  * Implements hook_node_info().
  */
 function hwc_toolkit_node_info() {

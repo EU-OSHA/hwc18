@@ -522,6 +522,23 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['field'] = 'reverse_field_tk_examples_node';
   $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['label'] = 'TK_examples';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'most_popular_tools_and_examples' => 'most_popular_tools_and_examples',
+    'publication_queue' => 0,
+    'featured_press_release' => 0,
+    'press_contacts_queue' => 0,
+    'featured_partner_frontpage' => 0,
+    'featured_gallery' => 0,
+    'good_practice_exchange' => 0,
+    'good_practice_exchange_intro' => 0,
+    'homepage_about_the_topic' => 0,
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -543,11 +560,11 @@ function hwc_toolkit_views_default_views() {
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -575,7 +592,18 @@ function hwc_toolkit_views_default_views() {
 
   /* Display: Tool Examples Carousel */
   $handler = $view->new_display('block', 'Tool Examples Carousel', 'block');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['id'] = 'reverse_field_tk_examples_node';
+  $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['field'] = 'reverse_field_tk_examples_node';
+  $handler->display->display_options['relationships']['reverse_field_tk_examples_node']['label'] = 'TK_examples';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
   $handler->display->display_options['block_description'] = 'Tool Examples Carousel';
+
+  /* Display: Most Popular */
+  $handler = $view->new_display('block', 'Most Popular', 'popular');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
   $translatables['tool_examples_carousel'] = array(
     t('Master'),
     t('Tool Examples Carousel'),
@@ -586,9 +614,11 @@ function hwc_toolkit_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('TK_examples'),
+    t('queue'),
     t('Nid'),
     t('Title'),
     t('All'),
+    t('Most Popular'),
   );
   $export['tool_examples_carousel'] = $view;
 

@@ -457,13 +457,8 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'ds',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'taxonomy_term_reference_view_mode' => 'full',
-          'use_content_language' => TRUE,
-        ),
-        'type' => 'ds_taxonomy_view_mode',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 14,
       ),
       'highlights_item' => array(

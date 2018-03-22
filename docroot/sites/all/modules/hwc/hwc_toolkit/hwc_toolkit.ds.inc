@@ -115,7 +115,6 @@ function hwc_toolkit_ds_layout_settings_info() {
         1 => 'body',
         2 => 'field_tk_topics',
         3 => 'field_tk_article',
-        4 => 'field_tools_examples',
       ),
     ),
     'fields' => array(
@@ -123,7 +122,6 @@ function hwc_toolkit_ds_layout_settings_info() {
       'body' => 'ds_content',
       'field_tk_topics' => 'ds_content',
       'field_tk_article' => 'ds_content',
-      'field_tools_examples' => 'ds_content',
     ),
     'classes' => array(
       'layout_class' => array(

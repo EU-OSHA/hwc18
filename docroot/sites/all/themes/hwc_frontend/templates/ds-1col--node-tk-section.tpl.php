@@ -12,7 +12,10 @@
   <?php endif; ?>
 
   <div class="key-content col-md-9 col-sm-12">
-    <?php print $ds_content; ?>
+    <?php
+    print $ds_content;
+    print theme('toolkit_navigation', ['nid' => $nid]);
+    ?>
   </div>
 
 </<?php print $ds_content_wrapper ?>>
