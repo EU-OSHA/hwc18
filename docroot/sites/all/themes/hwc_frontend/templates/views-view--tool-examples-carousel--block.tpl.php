@@ -24,7 +24,7 @@
     <div id="toolkit_examples" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="toolkit_examples">
             <!-- Indicators -->
-            <ol class="carousel-indicators jssorb03"><?php
+            <ol class="carousel-indicators"><?php
               $total = hwc_toolkit_examples_result_count();
               $class = "active";
               for ($i = 0; $i < $total; $i++) {
@@ -40,11 +40,11 @@
             </div>
 
             <!-- Left and right controls -->
-            <a class="jssora03l left carousel-control" href="#toolkit_examples" data-slide="prev">
+            <a class="left carousel-control" href="#toolkit_examples" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
                 <span class="sr-only"><?php echo t('Previous'); ?></span>
             </a>
-            <a class="jssora03r right carousel-control" href="#toolkit_examples" data-slide="next">
+            <a class="right carousel-control" href="#toolkit_examples" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only"><?php echo t('Next'); ?></span>
             </a>

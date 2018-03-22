@@ -191,13 +191,21 @@ function hwc_toolkit_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title',
         1 => 'field_image',
-        2 => 'body',
+        2 => 'field_organisation',
+        3 => 'field_country',
+        4 => 'body',
+        5 => 'field_download_pdf',
+        6 => 'field_external_link',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'field_image' => 'ds_content',
+      'field_organisation' => 'ds_content',
+      'field_country' => 'ds_content',
       'body' => 'ds_content',
+      'field_download_pdf' => 'ds_content',
+      'field_external_link' => 'ds_content',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -258,13 +266,15 @@ function hwc_toolkit_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'field_image',
-        2 => 'body',
+        1 => 'field_introduction',
+        2 => 'field_benefits',
+        3 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'field_image' => 'ds_content',
+      'field_introduction' => 'ds_content',
+      'field_benefits' => 'ds_content',
       'body' => 'ds_content',
     ),
     'classes' => array(

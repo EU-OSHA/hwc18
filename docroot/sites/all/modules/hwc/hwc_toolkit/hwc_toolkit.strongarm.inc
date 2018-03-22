@@ -336,6 +336,9 @@ function hwc_toolkit_strongarm() {
         'xmlsitemap' => array(
           'weight' => '7',
         ),
+        'language' => array(
+          'weight' => '6',
+        ),
       ),
       'display' => array(),
     ),
@@ -406,25 +409,25 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'workbench_access' => array(
           'weight' => '3',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'language' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
@@ -583,25 +586,25 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'workbench_access' => array(
           'weight' => '5',
         ),
         'xmlsitemap' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'language' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(),

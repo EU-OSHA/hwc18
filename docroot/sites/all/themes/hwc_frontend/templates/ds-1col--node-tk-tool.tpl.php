@@ -20,7 +20,6 @@ $titleLink = hwc_toolkit_prepare_link(strtolower($title));
 
 print '<div id="' . $titleLink . '" class="title_link _close">';
 print $ds_content;
-print theme('toolkit_navigation', ['nid' => $nid]);
 print '</div>';
 
 ?>

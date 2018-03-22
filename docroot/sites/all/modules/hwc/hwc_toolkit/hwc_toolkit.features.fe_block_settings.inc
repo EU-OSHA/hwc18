@@ -65,7 +65,7 @@ function hwc_toolkit_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'seven' => array(
         'region' => '',
@@ -96,7 +96,7 @@ function hwc_toolkit_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'seven' => array(
         'region' => '',
@@ -106,7 +106,7 @@ function hwc_toolkit_default_fe_block_settings() {
       ),
     ),
     'title' => '<none>',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;

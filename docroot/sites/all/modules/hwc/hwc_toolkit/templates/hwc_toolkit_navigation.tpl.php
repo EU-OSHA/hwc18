@@ -2,7 +2,6 @@
 
 $prev = hwc_toolkit_nav_prev($nid);
 $next = hwc_toolkit_nav_next($nid);
-
 if ($prev || $next) {
   print '<div class="key-next-prev-buttons">';
   if ($prev) {
@@ -13,16 +12,3 @@ if ($prev || $next) {
   }
   print '</div>';
 }
-?>
-<style>
-  .key-next-prev-buttons {
-    overflow: hidden;
-    margin-top: 25px;
-  }
-  .key-next-prev-buttons .prev-button {
-    float: left;
-  }
-  .key-next-prev-buttons .next-button {
-    float: right;
-  }
-</style>

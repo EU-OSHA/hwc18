@@ -1,17 +1,41 @@
 <div class="key-menu-container">
-<ul><?php
-  foreach ($menu as $menu_nid => $menu_item1) { ?>
-      <li><a href="<?php print $menu_item1['href'];?>" class="key-<?php print $menu_item1['class'];?>"><?php print $menu_item1['title'] ?></a>
+<ul class="menu clearfix"><?php
+  foreach ($menu as $menu_nid => $menu_item1) {
+    $class = "menu__item";
+    if ($menu_item1['children']) {
+      $class .= " expanded";
+    }
+    if (isset($menu_item1['active'])) {
+      $class .= " active";
+    }
+    ?>
+      <li class="<?php print $class; ?>"><a href="<?php print $menu_item1['href'];?>" class="key-<?php print $menu_item1['class'];?>"><?php print $menu_item1['title'] ?></a>
         <?php
-        if (isset($menu_item1['children'])) {
-          print '<ul>';
-          foreach($menu_item1['children'] as $menu_nid2 => $menu_item2) { ?>
-              <li><a href="<?php print $menu_item2['href'];?>" class="key-<?php print $menu_item2['class'];?>"><?php print $menu_item2['title'] ?></a>
+        if ($menu_item1['children']) {
+          print '<ul class="menu clearfix">';
+          foreach($menu_item1['children'] as $menu_nid2 => $menu_item2) {
+            $class = "menu__item";
+            if ($menu_item2['children']) {
+              $class .= " expanded";
+            }
+            if (isset($menu_item2['active'])) {
+              $class .= " active";
+            }
+            ?>
+              <li class="<?php print $class; ?>"><a href="<?php print $menu_item2['href'];?>" class="key-<?php print $menu_item2['class'];?>"><?php print $menu_item2['title'] ?></a>
             <?php
-            if (isset($menu_item2['children'])) {
-              print '<ul>';
-              foreach($menu_item2['children'] as $menu_nid3 => $menu_item3) { ?>
-                  <li><a href="<?php print $menu_item3['href'];?>" class="key-<?php print $menu_item3['class'];?>"><?php print $menu_item3['title'] ?></a></li>
+            if ($menu_item2['children']) {
+              print '<ul class="menu clearfix">';
+              foreach($menu_item2['children'] as $menu_nid3 => $menu_item3) {
+                $class = "menu__item";
+                if ($menu_item3['children']) {
+                  $class .= " expanded";
+                }
+                if (isset($menu_item3['active'])) {
+                  $class .= " active";
+                }
+                ?>
+                  <li class="<?php print $class; ?>"><a href="<?php print $menu_item3['href'];?>" class="key-<?php print $menu_item3['class'];?>"><?php print $menu_item3['title'] ?></a></li>
                 <?php
               }
               print '</ul>';
@@ -66,7 +90,18 @@
         /*visibility: hidden;*/
         /*display: none;*/
     }
-    .key-menu-container .active {
+    .key-menu-container .active > a {
         font-weight: bold;
+    }
+    .key-menu-container .expanded.active .expanded.active li,
+    .key-menu-container .expanded.active > ul > li,
+    .key-menu-container .expanded.active {
+        visibility: visible;
+        display: block;
+    }
+    .key-menu-container .expanded li li,
+    .key-menu-container li .expanded {
+        visibility: hidden;
+        display: none;
     }
 </style>
