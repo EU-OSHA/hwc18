@@ -849,7 +849,7 @@ function hwc_toolkit_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 8,
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -966,7 +966,7 @@ function hwc_toolkit_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -1302,7 +1302,7 @@ function hwc_toolkit_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 31,
+      'weight' => 1,
     ),
   );
 
@@ -1406,7 +1406,7 @@ function hwc_toolkit_field_default_field_instances() {
         'view_mode' => 'full',
       ),
       'type' => 'entityreference_view_widget',
-      'weight' => 42,
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -1504,7 +1504,7 @@ function hwc_toolkit_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 
@@ -1707,7 +1707,7 @@ function hwc_toolkit_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );

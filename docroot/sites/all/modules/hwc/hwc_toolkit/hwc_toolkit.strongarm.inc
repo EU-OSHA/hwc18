@@ -406,22 +406,25 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'workbench_access' => array(
           'weight' => '3',
         ),
         'xmlsitemap' => array(
-          'weight' => '4',
+          'weight' => '5',
+        ),
+        'language' => array(
+          'weight' => '6',
         ),
       ),
       'display' => array(),
@@ -493,19 +496,22 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '7',
         ),
         'path' => array(
-          'weight' => '30',
+          'weight' => '4',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '6',
         ),
         'workbench_access' => array(
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '30',
+          'weight' => '5',
+        ),
+        'language' => array(
+          'weight' => '3',
         ),
       ),
       'display' => array(),
@@ -577,21 +583,24 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'workbench_access' => array(
           'weight' => '5',
         ),
         'xmlsitemap' => array(
+          'weight' => '7',
+        ),
+        'language' => array(
           'weight' => '6',
         ),
       ),
@@ -691,62 +700,56 @@ function hwc_toolkit_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tk_article';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_tk_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tk_example';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_tk_example'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tk_section';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_tk_section'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tk_tool';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_tk_tool'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_tk_topic';
-  $strongarm->value = '1';
+  $strongarm->value = '4';
   $export['language_content_type_tk_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_tk_article';
-  $strongarm->value = array(
-    0 => 'menu-toolkit',
-  );
+  $strongarm->value = array();
   $export['menu_options_tk_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_tk_example';
-  $strongarm->value = array(
-    0 => 'menu-toolkit',
-  );
+  $strongarm->value = array();
   $export['menu_options_tk_example'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_tk_section';
-  $strongarm->value = array(
-    0 => 'menu-toolkit',
-  );
+  $strongarm->value = array();
   $export['menu_options_tk_section'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -854,7 +857,7 @@ function hwc_toolkit_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_tk_example';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_tk_example'] = $strongarm;
 
   $strongarm = new stdClass();
