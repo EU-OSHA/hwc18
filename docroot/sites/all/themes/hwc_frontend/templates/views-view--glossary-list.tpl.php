@@ -37,7 +37,8 @@
     $terms = taxonomy_get_tree($voc->vid);
 
       foreach ($terms as $glossary_type) {
-        $name = $glossary_type->name;
+        $w = entity_metadata_wrapper('taxonomy_term', $glossary_type->tid);
+        $name = $w->label();
         $number = $glossary_type->tid;
 
         // Load the data of the glossary terms of each type.
@@ -53,10 +54,9 @@
             <div class="content-term collapssed  collapse" id="demo<?php print $number;?>">
               <dl>
               <?php
-
               foreach ($glossary_list as $term) {
-                $term_title = $term->taxonomy_term_data_name;
-                $term_desc = $term->taxonomy_term_data_description;
+                $term_title = $term->field_name_field[0]['rendered']['#markup'];
+                $term_desc = $term->field_description_field[0]['rendered']['#markup'];
               ?>
                 <dt class="term-title">
                  <?php print $term_title; ?>
