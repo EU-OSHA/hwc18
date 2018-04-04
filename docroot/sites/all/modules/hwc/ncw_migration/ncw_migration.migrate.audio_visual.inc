@@ -147,7 +147,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
 
 class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
 
-  public function getNextRow() {
+/*  public function getNextRow() {
     if (empty($this->rows)) {
       $this->readData();
     }
@@ -197,7 +197,8 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
     }
     ncw_migration_debug('!klass: Done reading items', array('!klass' => get_class($this)));
     reset($this->rows);
-  }
+  }*/
+
   /**
    * The list of available fields to map from the source, keyed by field name.
    */
