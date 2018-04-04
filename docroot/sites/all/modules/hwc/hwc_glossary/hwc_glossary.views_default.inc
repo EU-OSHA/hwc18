@@ -32,19 +32,25 @@ function hwc_glossary_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Field: Taxonomy term: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['name']['link_to_taxonomy'] = TRUE;
-  /* Field: Taxonomy term: Term description */
-  $handler->display->display_options['fields']['description']['id'] = 'description';
-  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['fields']['description']['field'] = 'description';
-  $handler->display->display_options['fields']['description']['label'] = '';
-  $handler->display->display_options['fields']['description']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field']['id'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['table'] = 'field_data_name_field';
+  $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
+  $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['name_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  $handler->display->display_options['fields']['name_field']['link_to_entity'] = 1;
+  /* Field: Taxonomy term: Description */
+  $handler->display->display_options['fields']['description_field']['id'] = 'description_field';
+  $handler->display->display_options['fields']['description_field']['table'] = 'field_data_description_field';
+  $handler->display->display_options['fields']['description_field']['field'] = 'description_field';
+  $handler->display->display_options['fields']['description_field']['label'] = '';
+  $handler->display->display_options['fields']['description_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['description_field']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  $handler->display->display_options['fields']['description_field']['link_to_entity'] = 0;
   /* Field: Taxonomy term: Type */
   $handler->display->display_options['fields']['field_glossary_type']['id'] = 'field_glossary_type';
   $handler->display->display_options['fields']['field_glossary_type']['table'] = 'field_data_field_glossary_type';

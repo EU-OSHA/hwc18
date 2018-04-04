@@ -226,6 +226,14 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
         $data->field_guid_organisation = (string) $attributes['Table0_Details1'];
         $data->field_general_email = (string) $attributes['Textbox2'];
         $data->field_general_phone = (string) $attributes['Textbox3'];
+
+        $prefix = trim((string) $attributes['Textbox39']);
+        $parts = explode('(', $prefix);
+        if (count($parts) == 2) {
+          $prefix = trim($parts[0]);
+        }
+        $data->field_general_phone = $prefix . $data->field_general_phone;
+
         $data->field_website = (string) $attributes['Textbox4'];
         $data->field_orgtype = (string) $attributes['Textbox5'];
         $data->field_bussines_sector = (string) $attributes['Textbox6'];

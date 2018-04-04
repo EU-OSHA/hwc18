@@ -18,6 +18,7 @@ function ncw_migration_cronapi() {
 function ncw_migration_cron() {
   include_once 'ncw_migration.drush.inc';
   drush_ncw_migration_hwc_migrate_all();
+  drush_ncw_migration_hwc_migrate_av_related();
 }
 
 /**

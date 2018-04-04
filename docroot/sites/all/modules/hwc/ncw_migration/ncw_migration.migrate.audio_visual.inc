@@ -147,6 +147,58 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
 
 class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
 
+/*  public function getNextRow() {
+    if (empty($this->rows)) {
+      $this->readData();
+    }
+    $item = NULL;
+    if (count($this->rows)) {
+      $node_url = current($this->rows);
+      if ($rowd = $this->fileGetContents($node_url)) {
+        if ($row_ob = json_decode($rowd, TRUE)) {
+          unset($rowd);
+          $item = new stdClass();
+          foreach ($row_ob as $k => $v) {
+            $item->$k = $v;
+          }
+          unset($row_ob);
+        }
+      }
+      else {
+        $msg = format_string('Failed to read data from !url', array('!url' => $node_url));
+        watchdog('ncw_migration', $msg, [], WATCHDOG_ERROR);
+      }
+      next($this->rows);
+    }
+    return $item;
+  }
+
+  public function readData() {
+    ncw_migration_debug('!klass: Starting reading items from !url', array('!klass' => get_class($this), '!url' => $this->endpoint_url));
+    $this->rows = array();
+    $content = $this->fileGetContents($this->endpoint_url);
+    if ($data = json_decode($content)) {
+      ncw_migration_debug('!klass:      * Processing !count items', array('!klass' => get_class($this), '!count' => count($data->items)));
+      foreach ($data->items as $ob) {
+        $ob = $ob->item;
+        $id = $this->itemIdentifier($ob);
+        if (in_array($id, $this->skip_ids)) {
+          continue;
+        }
+        $node_url = $this->itemURL($id);
+        ncw_migration_debug('!klass:      * Reading item: !url', array('!klass' => get_class($this), '!url' => $node_url));
+        $this->rows[$id] = $node_url;
+      }
+    }
+    else {
+      $msg = format_string('Failed to read data from !url', array('!url' => $this->endpoint_url));
+      watchdog('ncw_migration', $msg, [], WATCHDOG_ERROR);
+      throw new MigrateException($msg, Migration::MESSAGE_ERROR);
+    }
+    ncw_migration_debug('!klass: Done reading items', array('!klass' => get_class($this)));
+    reset($this->rows);
+  }*/
+
   /**
    * The list of available fields to map from the source, keyed by field name.
    */
