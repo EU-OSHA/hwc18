@@ -721,8 +721,7 @@ function osha_tmgmt_node_presave($node) {
         )
       ) {
         // Can be not set for a new node with empty body.
-        //$new_text = OshaTMGMTRetranslate::prepare_text(trim($node->body[$lang][0]['value']));
-        $new_text = OshaTMGMTRetranslate::prepare_text($node->body[$lang][0]['value']);
+        $new_text = OshaTMGMTRetranslate::prepare_text(trim($node->body[$lang][0]['value']));
         $node->body[$lang][0]['value'] = $new_text;
       }
     }
