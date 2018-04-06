@@ -31,10 +31,15 @@
         var titles = $(container).find('.hwc-alpha-pager-view-title-field .field-content');
         titles.each(function(index, elem) {
             var first_char = $(elem).text()[0].toLowerCase();
-            if (aa_type){
-                first_char = first_char + $(elem).text()[1].toLowerCase();
+            if (aa_type) {
+                if ($(elem).data('iso')) {
+                    first_char = $(elem).data('iso').toLowerCase();
+                }
+                else {
+                    first_char = first_char + $(elem).text()[1].toLowerCase();
+                }
             }
-            if (first_char != char) {
+            if (first_char !== char) {
                 char = first_char;
                 chars.push(char);
                 $(elem).closest(group_wrapper).before(hwc_alpha_pager_format_char(idx, char));
@@ -67,14 +72,14 @@
         $.each(alphabet, function(idx, char) {
             if (aa_type) {
                 $.each(alphabet, function(idx2, char2) {
-                    if ($.inArray(char+''+char2, chars) != -1) {
+                    if ($.inArray(char+''+char2, chars) !== -1) {
                         output += '<a class="hwc-char-link" href="#hwc-char-' + prefix + '-' + char+''+char2 + '">' + char+''+char2 + '</span>';
                     }
                 });
             }
             else {
-                if ($.inArray(char+''+char2, chars) != -1) {
-                    output += '<a class="hwc-char-link" href="#hwc-char-' + prefix + '-' + char+''+char2 + '">' + char+''+char2 + '</span>';
+                if ($.inArray(char, chars) != -1) {
+                    output += '<a class="hwc-char-link" href="#hwc-char-' + prefix + '-' + char + '">' + char + '</span>';
                 }
                 else {
                     //HCW-950: Only the letters with content must be shown.
