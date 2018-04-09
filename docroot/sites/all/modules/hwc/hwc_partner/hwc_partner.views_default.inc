@@ -1070,7 +1070,7 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Find the partner in your country</p>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p> Find the OSH ambassador in your country </p>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
@@ -1214,7 +1214,7 @@ function hwc_partner_views_default_views() {
     t('MOP list'),
     t('<div class="field-content" data-iso="[field_iso2]">[name_field]</div>'),
     t('EEN list'),
-    t('<p>Find the partner in your country</p>'),
+    t('<p> Find the OSH ambassador in your country </p>'),
     t('Type (field_partner_type)'),
   );
   $export['partners_list'] = $view;
