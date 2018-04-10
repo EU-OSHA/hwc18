@@ -128,7 +128,7 @@ function hwc_workflow_mail_alter(&$message) {
     // Block mails that are send for hwc workflow if user's preference.
     $user = user_load_by_mail($message['to']);
     $send_notif = variable_get('osha_workflow_send_mail', FALSE);
-    // when using rereoute mail, the to address is not of an user.
+    // When using rereoute mail, the to address is not of an user.
     $usr_receive_notif = empty($user) || !empty($user->field_cmw_mail_notifications[LANGUAGE_NONE][0]['value']);
     if (!$send_notif || !$usr_receive_notif) {
       $message['send'] = FALSE;
@@ -400,7 +400,7 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
     drupal_set_title(t('Upload Information') . $form['#node']->title);
   }
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
-    $form['field_document_type']['#access'] = FALSE;
+    $form['field_share_partner_type']['#access'] = FALSE;
   }
 
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {

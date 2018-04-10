@@ -349,17 +349,10 @@ function hwc_partner_views_pre_render(&$view) {
       $view->display_handler->set_option('link_url', 'events');
     }
   }
-  if ($view->name == 'partners_list' && (
-      ($view->current_display == 'fop') ||
-      ($view->current_display == 'block_1') ||
-      ($view->current_display == 'een')
-    )) {
+
+  if ($view->name == 'partners_list' && ($view->current_display == 'fop')) {
     global $language;
-    $sort_title_field = TRUE;
-    if ($view->current_display == 'fop') {
-      $sort_title_field = FALSE;
-    }
-    $current_display = $view->current_display;
+    $sort_title_field = FALSE;
     $results = &$view->result;
     // Sort the results by country name (using UTF-8).
     uasort($results, function ($a, $b) use ($language, $sort_title_field) {
@@ -390,6 +383,56 @@ function hwc_partner_views_pre_render(&$view) {
       }
     });
   }
+
+  if ($view->name == 'partners_list' && (
+      ($view->current_display == 'block_1') || ($view->current_display == 'een')
+    )) {
+    global $language;
+    $sort_title_field = TRUE;
+    $results = &$view->result;
+    // Sort the results by country name (using UTF-8).
+    uasort($results, function ($a, $b) use ($language, $sort_title_field) {
+      // Requires php-intl extension.
+      if (class_exists('Collator')) {
+        $collator = new \Collator($language->language);
+        $str1 = htmlspecialchars($a->field_field_iso2[0]['rendered']['#markup']);
+        if (!$str1) {
+          $str1 = $a->field_name_field[0]['rendered']['#markup'];
+        }
+        $str2 = htmlspecialchars($b->field_field_iso2[0]['rendered']['#markup']);
+        if (!$str2) {
+          $str2 = $b->field_name_field[0]['rendered']['#markup'];
+        }
+        $res = $collator->compare($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = $a->field_title_field[0]['rendered']['#markup'];
+          $str2 = $b->field_title_field[0]['rendered']['#markup'];
+          $res = $collator->compare($str1, $str2);
+        }
+        return $res;
+      }
+      // Sorting in some languages (greek) are wrong.
+      else {
+        $str1 = htmlspecialchars($a->field_field_iso2[0]['rendered']['#markup']);
+        if (!$str1) {
+          $str1 = htmlspecialchars($a->field_name_field[0]['rendered']['#markup']);
+        }
+        $str2 = htmlspecialchars($b->field_field_iso2[0]['rendered']['#markup']);
+        if (!$str2) {
+          $str2 = htmlspecialchars($b->field_name_field[0]['rendered']['#markup']);
+        }
+
+        $res = strcmp($str1, $str2);
+        if (($res == 0) && $sort_title_field) {
+          $str1 = htmlspecialchars($a->field_title_field[0]['rendered']['#markup']);
+          $str2 = htmlspecialchars($b->field_title_field[0]['rendered']['#markup']);
+          $res = strcmp($str1, $str2);
+        }
+        return $res;
+      }
+    });
+  }
+
   if ($view->name == 'partners_list' && (($view->current_display == 'block_1') || ($view->current_display == 'een'))) {
     $prev_name = '';
     $new_rows = [];
@@ -511,14 +554,24 @@ function hwc_partner_menu_alter(&$items) {
   $items['user/reset/%/%/%']['title'] = 'Set/Reset Password';
 }
 
+function hwc_partner_user_profile_form_redirect_profile($form, &$form_state) {
+  global $user;
+  $form_state['redirect'] = 'user/' . $user->uid;
+  drupal_redirect_form($form_state);
+}
+
 /**
  * Implments hook_form_FORM_ID_alter().
  */
 function hwc_partner_form_user_profile_form_alter(&$form, $form_state) {
   global $user;
+
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
     $form['field_cmw_mail_notifications']['#access'] = FALSE;
     $form['#submit'][] = 'hwc_partner_user_profile_form_redirect';
+  }
+  elseif (isset($_REQUEST['pass-reset-token'])) {
+    $form['#submit'][] = 'hwc_partner_user_profile_form_redirect_profile';
   }
   $form['field_crm_guid']['#access'] = FALSE;
   $form['field_user_partner_guid']['#access'] = FALSE;
@@ -569,15 +622,11 @@ function hwc_partner_form_after_build($form, $form_state) {
 function hwc_partner_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   global $language;
-  if(
-    (
-      ($form_id == 'news_node_form') ||
-      ($form_id == 'events_node_form')
-    )
+  if (
+    (($form_id == 'news_node_form') || ($form_id == 'events_node_form'))
     &&
-    ( isset($_SESSION['masqueraded_user']) )
-  )
-  {
+    (isset($_SESSION['masqueraded_user']))
+  ) {
     if (!isset($form['#after_build'])) {
       $form['#after_build'] = array();
     }

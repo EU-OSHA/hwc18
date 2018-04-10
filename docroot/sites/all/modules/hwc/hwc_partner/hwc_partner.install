@@ -231,3 +231,33 @@ function hwc_partner_update_7029() {
   features_revert(array('hwc_partner' => 'page_manager_pages', 'page_manager_handlers'));
   features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages', 'page_manager_handlers'));
 }
+
+/**
+ * MDR-1726 HWC18: Reviewers and Campaign Project Manager should be able to act as a partner.
+ */
+function hwc_partner_update_7030() {
+  if ($role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER)) {
+    user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
+  }
+  if ($role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER)) {
+    user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
+  }
+}
+
+/**
+ * HW18-446 Titles from head and breadcrumbs from campaign partners sections untranslated.
+ */
+function hwc_partner_update_7031() {
+  features_revert(array('hwc_partner' => 'page_manager_pages'));
+  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+
+  features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages'));
+  features_revert(array('hwc_good_practice_exchange' => 'page_manager_handlers'));
+}
+
+/**
+ * MDR-1798 changes to the media partners.
+ */
+function hwc_partner_update_7032() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}

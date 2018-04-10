@@ -445,7 +445,7 @@
     "company_osh_emailrepresentative": "osh_emailrepresentative",
     "company_osh_generalemail":"osh_generalemail",
     "company_osh_generalphone":"osh_generalphone",
-    "company_osh_prefixgeneralphone": "osh_prefixphone1",
+    "company_osh_prefixgeneralphone": "osh_prefixgeneralphone",
     "company_osh_phonerepresentative": "osh_phonerepresentative",
     "company_osh_prefixrepresentativephone": "osh_prefixrepresentativephone",
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
@@ -459,7 +459,6 @@
     "company_osh_ceoimage": "osh_ceoimage",
     "company_osh_socialdialoguepartner": "osh_socialdialoguepartner",
     "company_osh_homepage": "osh_homepage",
-    "company_osh_dedicatedsite": "osh_dedicatedsite",
     "company_osh_facebookprofile": "osh_facebookprofile",
     "company_osh_pinterestprofile": "osh_pinterestprofile",
     "company_osh_twitterprofile": "osh_twitterprofile",
@@ -483,7 +482,9 @@
     "comrep_osh_mediaproshlastname" : "osh_mediaproshlastname",
     "comrep_osh_emailmediapr" : "osh_emailmediapr",
     "comrep_osh_phonemediapr" : "osh_phonemediapr",
-    "comrep_osh_prefixmediaprphone": "osh_prefixmediaprphone"
+    "comrep_osh_prefixmediaprphone": "osh_prefixmediaprphone",
+    "company_osh_dedicatedcampaignsite": "osh_dedicatedsite",
+    "company_osh_dedicatedsite" : "osh_dedicatedsite"
   },
   "map_mf": {
     "company_osh_address": "osh_phaddress",
@@ -502,7 +503,7 @@
     "company_osh_yourmissionstatement": "osh_yourmissionstatement",
     "company_osh_zipcode": "osh_phcp",
     "company_osh_generalphone":"osh_phone1",
-    "company_osh_prefixgeneralphone": "osh_prefixphone1",
+    "company_osh_prefixgeneralphone": "osh_prefixgeneralphone",
     "company_osh_orgname": "osh_companyorganisationname",
     "company_osh_osh_appform_osh_country": "returnPaises",
     "company_osh_othercountries": "osh_othercountries",

@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * Implements hook_menu_alter().
+ */
 function hwc_sitemap_menu_alter(&$items) {
   $items['sitemap.xml']['page callback'] = 'hwc_sitemap_output_sitemap';
 }
 
+/**
+ * Page callback for sitemap.xml.
+ */
 function hwc_sitemap_output_sitemap() {
   if (request_uri() == '/sitemap.xml') {
     hwc_sitemap_get_all_sitemaps();
@@ -13,6 +19,9 @@ function hwc_sitemap_output_sitemap() {
   }
 }
 
+/**
+ * Helper function for sitemap.xml.
+ */
 function hwc_sitemap_get_all_sitemaps() {
   global $base_url;
   $headers = array(
@@ -30,7 +39,7 @@ function hwc_sitemap_get_all_sitemaps() {
 
   $text = '<?xml version="1.0" encoding="UTF-8"?>';
   $text .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-  while($site_map = $query->fetchAssoc()) {
+  while ($site_map = $query->fetchAssoc()) {
     $context = unserialize($site_map['context']);
     $text .= '<sitemap>';
     $text .= '<loc>' . $base_url . '/' . $context['language'] . '/sitemap.xml' . '</loc>';
@@ -56,9 +65,12 @@ function hwc_sitemap_xmlsitemap_link_insert(array $link, array $context) {
   hwc_sitemap_exclude_menu_to_node($link);
 }
 
+/**
+ * Helper function to exclude menu link to node.
+ */
 function hwc_sitemap_exclude_menu_to_node($link) {
   if ($link['type'] == 'menu_link' && strpos($link['loc'], 'node/') === 0) {
-    // Disable this from getting into the sitemap.xml
+    // Disable this from getting into the sitemap.xml.
     $link['status'] = 0;
     drupal_write_record('xmlsitemap', $link, array('type', 'id', 'language'));
   }

@@ -361,6 +361,7 @@ function osha_publication_menu_publications_search_related($form_state, $native_
   $q->condition('a.type', 'publication');
   $q->condition('a.status', 1);
   $q->condition('b.field_publication_type_tid', CASE_STUDY_TID, '!=');
+  $q->distinct();
   if ($sort == 'alphabetically') {
     $q->orderBy('title_field_value', 'ASC');
   }
@@ -377,7 +378,7 @@ function osha_publication_menu_publications_search_related($form_state, $native_
     $q->innerJoin('field_data_field_priority_area', 'fs', 'fs.entity_id = a.nid AND fs.revision_id = a.vid');
     $q->condition('fs.field_priority_area_tid', $relevant_for, 'IN');
   }
-  $nids = $q->execute()->fetchCol();
+  $nids = $q->execute()->fetchAllKeyed(0, 0);
   // Remove the nodes displayed above (native).
   if (!empty($native_nids)) {
     $nids = array_filter($nids, function ($nid) use ($native_nids) {

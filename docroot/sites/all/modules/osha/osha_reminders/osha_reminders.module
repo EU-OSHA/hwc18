@@ -22,10 +22,14 @@ function osha_reminders_menu() {
  * Implements Elysia hook_cronapi().
  */
 function osha_reminders_cronapi() {
-  return array('osha_reminders_cron' => array(
-    'description' => 'Send reminders about content not reviewed recently and broken links (run interval overridden in hook!)',
-    'rule' => '0 * * * *', // Every hour (Actual date handled in hook_cron)
-  ));
+  // Every hour (Actual date handled in hook_cron).
+  return
+    array(
+      'osha_reminders_cron' => array(
+        'description' => 'Send reminders about content not reviewed recently and broken links (run interval overridden in hook!)',
+        'rule' => '0 * * * *',
+      ),
+    );
 }
 
 /**

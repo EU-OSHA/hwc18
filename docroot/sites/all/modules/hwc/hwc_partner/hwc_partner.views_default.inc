@@ -735,6 +735,11 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['style_options']['tab_title_field'] = 'field_orgtype';
   $handler->display->display_options['style_options']['row_class'] = 'col-md-2 col-sm-3 col-xs-6';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Find the media partner in your country</p>';
   /* Relationship: Content: Country (field_country) */
   $handler->display->display_options['relationships']['field_country_tid']['id'] = 'field_country_tid';
   $handler->display->display_options['relationships']['field_country_tid']['table'] = 'field_data_field_country';
@@ -813,6 +818,7 @@ function hwc_partner_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Organisation Type (field_orgtype) */
   $handler->display->display_options['relationships']['field_orgtype_tid']['id'] = 'field_orgtype_tid';
@@ -840,6 +846,7 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
@@ -922,6 +929,8 @@ function hwc_partner_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'MOP list';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hwc-alpha-pager-view aa';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'col-md-2 col-sm-3 col-xs-6';
@@ -929,6 +938,12 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p>Find the media partner in your country</p>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
@@ -949,6 +964,18 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: ISO2 */
+  $handler->display->display_options['fields']['field_iso2']['id'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['table'] = 'field_data_field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['field'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['relationship'] = 'field_country_tid';
+  $handler->display->display_options['fields']['field_iso2']['label'] = '';
+  $handler->display->display_options['fields']['field_iso2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_iso2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_iso2']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_iso2']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Taxonomy term: Flag */
   $handler->display->display_options['fields']['field_flag']['id'] = 'field_flag';
   $handler->display->display_options['fields']['field_flag']['table'] = 'field_data_field_flag';
@@ -969,6 +996,9 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
   $handler->display->display_options['fields']['name_field']['relationship'] = 'field_country_tid';
   $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<div class="field-content" data-iso="[field_iso2]">[name_field]</div>';
+  $handler->display->display_options['fields']['name_field']['element_type'] = '0';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['element_wrapper_class'] = 'hwc-alpha-pager-view-title-field';
   $handler->display->display_options['fields']['name_field']['settings'] = array(
@@ -1026,6 +1056,8 @@ function hwc_partner_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'een');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'EEN list';
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'hwc-alpha-pager-view aa';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'col-md-2 col-sm-3 col-xs-6';
@@ -1033,6 +1065,12 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<p> Find the OSH ambassador in your country </p>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
@@ -1052,6 +1090,18 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: ISO2 */
+  $handler->display->display_options['fields']['field_iso2']['id'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['table'] = 'field_data_field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['field'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['relationship'] = 'field_country_tid';
+  $handler->display->display_options['fields']['field_iso2']['label'] = '';
+  $handler->display->display_options['fields']['field_iso2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_iso2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_iso2']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_iso2']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Taxonomy term: Flag */
   $handler->display->display_options['fields']['field_flag']['id'] = 'field_flag';
   $handler->display->display_options['fields']['field_flag']['table'] = 'field_data_field_flag';
@@ -1072,6 +1122,9 @@ function hwc_partner_views_default_views() {
   $handler->display->display_options['fields']['name_field']['field'] = 'name_field';
   $handler->display->display_options['fields']['name_field']['relationship'] = 'field_country_tid';
   $handler->display->display_options['fields']['name_field']['label'] = '';
+  $handler->display->display_options['fields']['name_field']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name_field']['alter']['text'] = '<div class="field-content" data-iso="[field_iso2]">[name_field]</div>';
+  $handler->display->display_options['fields']['name_field']['element_type'] = '0';
   $handler->display->display_options['fields']['name_field']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name_field']['element_wrapper_class'] = 'hwc-alpha-pager-view-title-field';
   $handler->display->display_options['fields']['name_field']['settings'] = array(
@@ -1151,6 +1204,7 @@ function hwc_partner_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('<p>Find the media partner in your country</p>'),
     t('term from field_country'),
     t('<img src="[field_logo-fid]" title="[title_field]" alt="[title_field]" />'),
     t('[title_field]'),
@@ -1158,7 +1212,9 @@ function hwc_partner_views_default_views() {
     t('term from field_orgtype'),
     t('FOP list'),
     t('MOP list'),
+    t('<div class="field-content" data-iso="[field_iso2]">[name_field]</div>'),
     t('EEN list'),
+    t('<p> Find the OSH ambassador in your country </p>'),
     t('Type (field_partner_type)'),
   );
   $export['partners_list'] = $view;

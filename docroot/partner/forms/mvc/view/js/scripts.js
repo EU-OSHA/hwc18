@@ -236,15 +236,28 @@ window.onload = function () {
         });
     }
 
-    //JA-02/03/2018 - MaincontactPrefix not displayed
-    if($("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").length){
-        $("#contact_osh_prefixmaincontactphone").find("option[value="+$("#contact_osh_prefixmaincontactphone").data("value").Id+"]").attr("selected","selected");
-    }
+    //JA - Country activities 15/03/2018
+    setTimeout(function () {
+        var currentVal = $('#company_osh_osh_appform_osh_country').val();
+        if(currentVal != null){
+            sessionStorage.setItem('countryAct', JSON.stringify($('#company_osh_osh_appform_osh_country').val()));
+        }
+
+        if(JSON.parse(sessionStorage.getItem('countryAct')) !== null){
+            $('#company_osh_osh_appform_osh_country').select2('val',JSON.parse(sessionStorage.getItem('countryAct')));
+        }
+
+    },2000);
+
+
+    $('#company_osh_osh_appform_osh_country').on('change',function () {
+        sessionStorage.setItem('countryAct', JSON.stringify($(this).val()));
+    });
 
     if (document.getElementById("company_osh_orgname") != null) {
         document.getElementById("company_osh_orgname").value  = document.getElementById("company_osh_orgname").value;
     }
-
+    console.log('15');
 }
 function checkSectionsByCDB(dataSection){
     debugger;
@@ -1090,6 +1103,7 @@ $(document).ready(function () {
         submit: function (e) {
             enableFields();
             //debugger;
+            sessionStorage.clear();
             if (buttonPressed == "next") {
 //                var enableFields = true;
                 var field = null;

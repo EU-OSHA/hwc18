@@ -784,7 +784,7 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $pane->access = array();
   $pane->configuration = array(
     'buttons' => NULL,
-    'custom_page_title_pattern' => '%node:title | [site:name]',
+    'custom_page_title_pattern' => '%node:title_field | [site:name]',
     'form_build_id' => 'form-Q-f8jwe87PXcMSZ8ZDIviGvIj1ssEH83jYXkbWDYu9U',
     'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
     'form_id' => 'panels_custom_title_tag_edit_form',

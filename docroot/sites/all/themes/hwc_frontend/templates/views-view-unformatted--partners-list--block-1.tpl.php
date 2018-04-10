@@ -12,7 +12,7 @@
 <?php endif; ?>
 <?php foreach ($rows as $id => $row): ?>
     <div<?php if ($classes_array[$id]) {
-      print ' class="' . $classes_array[$id] .'"';
+      print ' class="' . $classes_array[$id] . '"';
       if (strpos($row, ' new_line ')) {
         print ' style="clear:left;"';
       }

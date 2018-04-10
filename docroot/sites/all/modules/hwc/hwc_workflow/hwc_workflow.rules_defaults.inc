@@ -229,5 +229,24 @@ function hwc_workflow_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_notification_related_partners_document_created'] = entity_import('rules_config', '{ "rules_notification_related_partners_document_created" : {
+      "LABEL" : "Notification related partners document created",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "hwc_workflow", "rules" ],
+      "ON" : { "node_insert--document" : { "bundle" : "document" } },
+      "IF" : [
+        { "document_related_partner_notifications" : { "entity" : [ "node" ] } }
+      ],
+      "DO" : [
+        { "hwc_mail_to_related_partners" : {
+            "node" : [ "node" ],
+            "subject" : "HWC Workflow: New document added for your company",
+            "message" : "\\u003Cp\\u003EDear partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EYour [node:type] is currently in the \\u201cpublish\\u201d status\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces Campaign 2018-2019 Manage Dangerous Substances campaign.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
   return $items;
 }

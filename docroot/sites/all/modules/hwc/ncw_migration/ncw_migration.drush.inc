@@ -40,8 +40,10 @@ function drush_ncw_migration_hwc_migrate_av_related() {
     'tax_evaluation',
     'tax_material_objective',
     'tax_nace_codes',
+
+    'dangerous_substances',
   );
-  foreach($migrations as $migration) {
+  foreach ($migrations as $migration) {
     ncw_migration_run_single($migration);
   }
 }
@@ -70,7 +72,7 @@ function drush_ncw_migration_hwc_migrate_all() {
     'press_releases',
     'press_contacts',
   );
-  foreach($migrations as $migration) {
+  foreach ($migrations as $migration) {
     ncw_migration_run_single($migration);
   }
 }
