@@ -254,3 +254,10 @@ function hwc_partner_update_7031() {
   features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages'));
   features_revert(array('hwc_good_practice_exchange' => 'page_manager_handlers'));
 }
+
+/**
+ * MDR-1798 changes to the media partners.
+ */
+function hwc_partner_update_7032() {
+  features_revert(array('hwc_partner' => 'views_view'));
+}

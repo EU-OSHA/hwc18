@@ -16013,6 +16013,11 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .view-id-partners_list .quicktabs-tabs li.last {
   border-right: none;
 }
+.view-id-partners_list .view-header {
+  color: #333333;
+  margin-bottom: 12px;
+  font-style: normal;
+}
 .view-id-partners_list .hwc-alphabet-container {
   border-bottom: 1px dotted #749b00;
   padding-bottom: 1em;
@@ -16028,6 +16033,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .view-id-partners_list .hwc-char-link.active {
   color: #749b00;
+}
+.view-id-partners_list .hwc-char-link:first-child {
+  padding-left: 0px;
 }
 .view-id-partners_list div[id*="hwc-char-"] {
   margin-top: 1em;
