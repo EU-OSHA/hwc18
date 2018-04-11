@@ -688,3 +688,10 @@ function hwc_update_7044() {
 function hwc_update_7045() {
   module_enable(['csrf_checks']);
 }
+
+/**
+ * MDR-1765 add custom dimensions to the piwik script - Campaign.
+ */
+function hwc_update_7046() {
+  variable_set('osha_menu_level_reverse', FALSE);
+}
