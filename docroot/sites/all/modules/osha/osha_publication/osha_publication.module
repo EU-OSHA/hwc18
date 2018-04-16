@@ -163,9 +163,15 @@ function osha_publication_views_pre_render(&$view) {
         str_replace(
           'node/160', 'napo-film',
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
+
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
         str_replace(
-          'publications', 'publications?language%5B' . $language->language . '%5D=' . $language->language,
+          'case-studies', 'case-studies?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
+          $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
+
+      $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
+        str_replace(
+          'publications', 'publications?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
 
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
@@ -173,6 +179,7 @@ function osha_publication_views_pre_render(&$view) {
           'practical-tools', 'practical-tools?f%5B0%5D=field_available_in_languages%253Avalue%3A' . $language->language,
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
     }
+
   }
   if ($view->name == 'publications_slideshow') {
     osha_publication_result_count(count($view->result));

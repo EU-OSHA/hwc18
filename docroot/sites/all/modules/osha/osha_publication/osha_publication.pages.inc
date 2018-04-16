@@ -54,7 +54,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
 
   drupal_set_title(t('Publications'));
   $text = hwc_req_param($form_state, 'text');
-  $sort = hwc_req_param($form_state, 'sort', 'alphabetically');
+  $sort = hwc_req_param($form_state, 'sort', 'date');
 
   $form = array(
     '#action' => $action,
@@ -100,7 +100,10 @@ function osha_publication_menu_publications_faceted_form($variables) {
     '#default_value' => $sort,
     '#prefix' => '<div class="sort-container col-xs-3">',
     '#suffix' => '</div>',
-    '#options' => array('alphabetically' => t('Alphabetically'), 'date' => t('Latest first')),
+    '#options' => array(
+      'date' => t('Latest first'),
+      'alphabetically' => t('Alphabetically'),
+    ),
   );
 
   $form['#attached']['js'] = array(
@@ -473,7 +476,7 @@ function osha_publication_menu_case_studies_faceted_form($variables) {
 
   drupal_set_title(t('Publications'));
   $text = hwc_req_param($form_state, 'text');
-  $sort = hwc_req_param($form_state, 'sort', 'alphabetically');
+  $sort = hwc_req_param($form_state, 'sort', 'date');
   $form = array(
     '#action' => $action,
     '#method' => 'GET',
@@ -517,7 +520,10 @@ function osha_publication_menu_case_studies_faceted_form($variables) {
     '#default_value' => $sort,
     '#prefix' => '<div class="sort-container col-xs-3">',
     '#suffix' => '</div>',
-    '#options' => array('alphabetically' => t('Alphabetically'), 'date' => t('Latest first')),
+    '#options' => array(
+      'date' => t('Latest first'),
+      'alphabetically' => t('Alphabetically'),
+    ),
   );
   $form['#attached']['js'] = array(
     drupal_get_path('module', 'osha_publication') . '/js/form.js',
