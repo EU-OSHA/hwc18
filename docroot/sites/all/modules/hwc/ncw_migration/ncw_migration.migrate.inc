@@ -274,7 +274,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
   }
 
   /**
-   * Configure field mappings, reads bundle field information
+   * Configure field mappings, reads bundle field information.
    */
   protected function addFieldMappings() {
     // Node base fields.
@@ -291,14 +291,14 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $this->addFieldMapping('path', 'path');
     $this->addFieldMapping('workbench_access')->defaultValue('section'); // Assign default section
 
-    // Handle field migration in a generic way
+    // Handle field migration in a generic way.
     $fields = field_info_instances('node', $this->bundle);
     $exposed = $this->source->fields();
-    foreach($fields as $field_name => $field_info) {
+    foreach ($fields as $field_name => $field_info) {
       if (array_key_exists($field_name, $exposed) && !in_array($field_name, $this->getManuallyMigratedFields())) {
         $this->addFieldMapping($field_name, $field_name);
 
-        // Extra mappings depending on field type
+        // Extra mappings depending on field type.
         $fi = field_info_field($field_name);
         if ($fi['translatable'] == 1
           && $fi['type'] != 'taxonomy_term_reference' /* field_organised_by */) {
@@ -531,11 +531,12 @@ abstract class AbstractNCWNodeMigration extends Migration {
                 $node->status = 0;
                 node_save($node);
                 $this->currentMigration()->displayMessage(
-                  strtr('Unpublishing @type @title - not found in source anymore.', array('@type'=>$node->type, '@title' => $node->title)),
+                  strtr('Unpublishing @type @title - not found in source anymore.', array('@type' => $node->type, '@title' => $node->title)),
                   'warning'
                 );
               }
-            } else {
+            }
+            else {
               $this->currentMigration()->displayMessage(
                 strtr('Node @nid not found! Deleted from migrate map.', array('@nid' => $nid)),
                 'warning'
