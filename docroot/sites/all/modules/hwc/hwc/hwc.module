@@ -497,8 +497,13 @@ function hwc_theme() {
 }
 
 function hwc_page_not_found() {
-  // Try to find it in the old sites.
+  // Redirect old publications to publications list page.
   $request_uri = request_uri();
+  if (strpos($request_uri, 'tools-and-publications/publications/') == 4) {
+    drupal_goto('publications', array(), 301);
+  }
+
+  // Try to find it in the old sites.
   $old_sites = variable_get('hwc_old_site_url', 'http://hw2014.healthy-workplaces.eu');
   $old_sites = preg_split('/\r\n|[\r\n]/', $old_sites);
   $old_sites = array_filter($old_sites);
