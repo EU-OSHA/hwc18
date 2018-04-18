@@ -6,7 +6,7 @@
 function hwc_toolkit_migration_drush_command()
 {
   $items = array();
-  $items['hwc-toolkit-tools-and-examples'] = array(
+  $items['tools-and-examples'] = array(
     'description' => 'Import Tools and Examples',
     'examples' => array(),
     'options' => array(),
