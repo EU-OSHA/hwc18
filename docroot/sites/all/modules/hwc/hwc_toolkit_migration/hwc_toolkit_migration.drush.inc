@@ -14,7 +14,7 @@ function hwc_toolkit_migration_drush_command()
   return $items;
 }
 
-function drush_hwc_toolkit_tools_and_examples() {
+function drush_hwc_toolkit_migration_tools_and_examples() {
   $file = sprintf('%s/data/tae.json', dirname(__FILE__));
   if (!is_readable($file)) {
     drupal_set_message("Cannot read taxonomy file! ($file).", 'warning');
