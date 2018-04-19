@@ -9,4 +9,5 @@ files[] = hwc_toolkit_migration.migrate.inc
 files[] = hwc_toolkit_migration.migrate.tk_example.inc
 files[] = hwc_toolkit_migration.migrate.tk_tool.inc
 files[] = hwc_toolkit_migration.migrate.tk_topic.inc
+files[] = hwc_toolkit_migration.migrate.tk_article.inc
 files[] = hwc_toolkit_migration.migrate.taxonomies.inc

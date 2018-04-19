@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class TKTopicMigration migrates news.
+ * Class TKTopicMigration migrates topic.
  *
  * Set hwc_migration_news_url variable for explicit source URL.
  */

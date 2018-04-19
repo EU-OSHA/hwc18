@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class TKExampleMigration migrates news.
+ * Class TKExampleMigration migrates example.
  *
  * Set hwc_migration_news_url variable for explicit source URL.
  */
@@ -77,7 +77,6 @@ class TKExampleSource extends AbstractHWCToolkitNodeSource {
 
       'field_download_pdf',
       'field_download_pdf_language',
-
       'field_country',
     );
     return array_combine($fields, $fields);

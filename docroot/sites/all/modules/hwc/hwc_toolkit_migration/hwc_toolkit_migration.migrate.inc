@@ -25,7 +25,7 @@ function hwc_toolkit_migration_migrate_api() {
 
       'tk_example' => array(
         'group_name' => 'hwc_toolkit',
-        'dependencies' => array('tax_tools_and_examples'),
+        'dependencies' => array(),
         'class_name' => 'TKExampleMigration',
       ),
 
@@ -33,6 +33,12 @@ function hwc_toolkit_migration_migrate_api() {
         'group_name' => 'hwc_toolkit',
         'dependencies' => array('tk_example'),
         'class_name' => 'TKTopicMigration',
+      ),
+
+      'tk_article' => array(
+        'group_name' => 'hwc_toolkit',
+        'dependencies' => array('tk_example'),
+        'class_name' => 'TKArticleMigration',
       ),
 
       'tk_tool' => array(
@@ -169,7 +175,6 @@ abstract class AbstractHWCToolkitNodeMigration extends AbstractNCWNodeMigration 
   }
 
   public function postImport() {
-    //    $this->removeNeedsUpdateItems();
   }
 
   public function getMigrationURL() {
@@ -212,7 +217,6 @@ abstract class AbstractHWCToolkitNodeSource extends AbstractNCWNodeSource {
 
   public function fileGetContents($url) {
     return file_get_contents($url);
-    //    return ncw_migration_file_get_contents($url);
   }
 
   /**
