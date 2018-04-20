@@ -37,6 +37,23 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['table'] = 'field_data_field_tk_tool_type';
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['field'] = 'field_tk_tool_type_tid';
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['required'] = TRUE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'tools_and_examples' => 'tools_and_examples',
+    'publication_queue' => 0,
+    'featured_press_release' => 0,
+    'press_contacts_queue' => 0,
+    'featured_partner_frontpage' => 0,
+    'featured_gallery' => 0,
+    'good_practice_exchange' => 0,
+    'good_practice_exchange_intro' => 0,
+    'homepage_about_the_topic' => 0,
+    'most_popular_tools_and_examples' => 0,
+  );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -62,11 +79,12 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['fields']['field_tk_tool_type']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['position']['order'] = 'DESC';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -90,6 +108,7 @@ function hwc_toolkit_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('term from field_tk_tool_type'),
+    t('queue'),
   );
   $export['menu_tk_tools'] = $view;
 
@@ -320,6 +339,23 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['table'] = 'field_data_field_tk_tool_type';
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['field'] = 'field_tk_tool_type_tid';
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['required'] = TRUE;
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'tools_and_examples' => 'tools_and_examples',
+    'publication_queue' => 0,
+    'featured_press_release' => 0,
+    'press_contacts_queue' => 0,
+    'featured_partner_frontpage' => 0,
+    'featured_gallery' => 0,
+    'good_practice_exchange' => 0,
+    'good_practice_exchange_intro' => 0,
+    'homepage_about_the_topic' => 0,
+    'most_popular_tools_and_examples' => 0,
+  );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -350,11 +386,12 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['sorts']['position']['order'] = 'DESC';
   /* Contextual filter: Taxonomy term: Term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_term_data';
@@ -388,6 +425,7 @@ function hwc_toolkit_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('term from field_tk_tool_type'),
+    t('queue'),
     t('All'),
   );
   $export['tk_tools'] = $view;

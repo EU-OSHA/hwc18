@@ -52,70 +52,15 @@ function hwc_toolkit_migration_migrate_api() {
 
 abstract class AbstractHWCToolkitNodeMigration extends AbstractNCWNodeMigration {
 
-  /**
-   * Configure field mappings, reads bundle field information.
-   */
-  protected function DeladdFieldMappings() {
-    // Node base fields.
-    $this->addFieldMapping('uid')->defaultValue(0);
-    $this->addFieldMapping('comment')->defaultValue(0);
-    $this->addFieldMapping('status', 'status');
-    $this->addFieldMapping('title', 'title');
-    $this->addFieldMapping('changed', 'changed');
-    $this->addFieldMapping('created', 'created');
-    $this->addFieldMapping('promote', 'promote');
-    $this->addFieldMapping('sticky', 'sticky');
-    $this->addFieldMapping('log', 'log');
-    $this->addFieldMapping('language', 'language');
-    $this->addFieldMapping('path', 'path');
-    // Assign default section.
-    $this->addFieldMapping('workbench_access')->defaultValue('section');
-
-    // Handle field migration in a generic way.
-    $fields = field_info_instances('node', $this->bundle);
-    $exposed = $this->source->fields();
-    foreach ($fields as $field_name => $field_info) {
-      if (array_key_exists($field_name, $exposed) && !in_array($field_name, $this->getManuallyMigratedFields())) {
-        $this->addFieldMapping($field_name, $field_name);
-
-        // Extra mappings depending on field type.
-        $fi = field_info_field($field_name);
-        if ($fi['translatable'] == 1
-          && $fi['type'] != 'taxonomy_term_reference' /* field_organised_by */) {
-          $this->addFieldMapping("$field_name:language", $field_name . '_language');
-        }
-        if ($fi['type'] == 'taxonomy_term_reference') {
-          $this->addFieldMapping("$field_name:create_term")->defaultValue(TRUE);
-        }
-        if ($fi['type'] == 'link_field') {
-          $this->addFieldMapping("$field_name:title", $field_name . '_title');
-          $this->addFieldMapping("$field_name:attributes", $field_name . '_attributes');
-        }
-        if ($fi['type'] == 'text_with_summary') {
-          $this->addFieldMapping("$field_name:summary", $field_name . '_summary');
-          $this->addFieldMapping("$field_name:format", $field_name . '_format');
-        }
-        if ($fi['type'] == 'text_long') {
-          $this->addFieldMapping("$field_name:format", $field_name . '_format');
-        }
-        if ($fi['type'] == 'datetime') {
-          $this->addFieldMapping("$field_name:to", $field_name . '_value2');
-          $this->addFieldMapping("$field_name:timezone", $field_name . '_timezone');
-        }
-        if ($fi['type'] == 'flickrfield') {
-          $this->addFieldMapping("$field_name:type", $field_name . '_type');
-          $this->addFieldMapping("$field_name:nsid", $field_name . '_nsid');
-        }
-        if ($fi['type'] == 'file' || $fi['type'] == 'image') {
-          $this->addFieldMapping("$field_name:file_replace")->defaultValue(TRUE);
-        }
-      }
+  function fixBody(&$row) {
+    $root = variable_get('hwc_tk_migration_root_url', '');
+    foreach ($row->body as &$body) {
+      $body = str_replace(json_decode('"\u00a0"'), '', $body);
+      $body = str_replace(['</p> <p>','<span>  </span>'], ['</p><p>', ''], $body);
+      $body = str_replace(
+        [$root . 'en', '<p></p>', '<span> </span>', '<ul> </ul>', "\n", '<p><br /></p>'],
+        '', $body);
     }
-    $this->addUnmigratedDestinations(
-      array(
-        'revision', 'tnid', 'translate', 'revision_uid', 'is_new',
-      )
-    );
   }
 
   /**
@@ -165,6 +110,7 @@ abstract class AbstractHWCToolkitNodeMigration extends AbstractNCWNodeMigration 
       hwc_tk_migration_debug("Exception while preparing the row: {$row->nid}", 'error');
       return FALSE;
     }
+    $this->fixBody($row);
     return TRUE;
   }
 
@@ -189,20 +135,6 @@ abstract class AbstractHWCToolkitNodeMigration extends AbstractNCWNodeMigration 
 }
 
 abstract class AbstractHWCToolkitNodeSource extends AbstractNCWNodeSource {
-
-  public function Delfields() {
-    return array(
-      'nid' => 'nid',
-      'created' => 'created',
-      'changed' => 'changed',
-      'status' => 'status',
-      'promote' => 'promote',
-      'sticky' => 'sticky',
-      'log' => 'log',
-      'language' => 'language',
-      'path' => 'path',
-    ) + $this->contentFields();
-  }
 
   /**
    * Return a string representing the source, for display in the UI.
