@@ -649,7 +649,8 @@ function hwc_partner_get_partners_user_options() {
  * Implements hook_node_access().
  */
 function hwc_partner_node_access($node, $op, $account) {
-  if (($node->type == 'document') && ($op == 'view')) {
+  $type = is_string($node) ? $node : $node->type;
+  if (($type == 'document') && ($op == 'view')) {
     if (
        !in_array(ROLE_SUPERVISOR, $account->roles)
     && !in_array(ROLE_ADMINISTRATOR, $account->roles)
