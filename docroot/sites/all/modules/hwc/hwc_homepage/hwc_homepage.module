@@ -132,10 +132,12 @@ function hwc_homepage_block_view($delta = '') {
     $tree = taxonomy_get_tree($voc->vid);
     $items = [];
     foreach ($tree as $i => $term) {
+      $w = entity_metadata_wrapper('taxonomy_term', $term->tid);
+      $name = $w->label();
       $items[$i % 2][] = [
-        'data' => l($term->name, 'taxonomy/term/' . $term->tid),
+        'data' => l($name, 'taxonomy/term/' . $term->tid),
         'class' => ['priority_area_' . ($i + 1)],
-        'title' => $term->name,
+        'title' => $name,
       ];
     }
     $block['content']['message'] = array(
