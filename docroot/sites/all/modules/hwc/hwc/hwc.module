@@ -617,6 +617,11 @@ function hwc_content_post_render($content) {
   return $content;
 }
 
+function hwc_content_post_render_add_classes($content) {
+  $content = str_replace('region region-content', 'region region-content col-md-9', $content);
+  return $content;
+}
+
 /**
  * Implements hook_form_alter().
  */
