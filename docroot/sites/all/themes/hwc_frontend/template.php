@@ -216,7 +216,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'events':
         $date = new DateTime($node->field_start_date['und'][0]['value']);
-        $now = new DateTime();
+        $now = new DateTime('today');
 
         $breadcrumb = array();
         $breadcrumb[] = l(t('Home'), '<front>');

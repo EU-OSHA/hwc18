@@ -3273,7 +3273,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_start_date_value']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_start_date_value']['value'] = 'now';
+  $handler->display->display_options['filters']['field_start_date_value']['value'] = 'today';
   $handler->display->display_options['path'] = 'events';
 
   /* Display: Past events */
@@ -3397,7 +3397,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_start_date_value']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['operator'] = '<';
-  $handler->display->display_options['filters']['field_start_date_value']['value'] = 'now';
+  $handler->display->display_options['filters']['field_start_date_value']['value'] = 'today';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
