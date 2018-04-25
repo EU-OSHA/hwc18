@@ -44,3 +44,10 @@ function ncw_migration_update_7003() {
     taxonomy_term_save($term);
   }
 }
+
+/**
+ * Set different channel for ncw migration cron.
+ */
+function ncw_migration_update_7004() {
+  variable_set('ncw_migration_publication_check_related', TRUE);
+}

@@ -138,16 +138,7 @@ function osha_publication_menu_local_tasks_alter(&$data, $router_item, $root_pat
  * Implements hook_form_FORM_ID_alter().
  */
 function osha_publication_form_lang_dropdown_form_alter(&$form, &$form_state, $form_id) {
-  // For publications, the language switcher should get to '/view' (CW-1413)
-  $node = menu_get_object();
-  if (!empty($node) && $node->type == 'publication') {
-    $languages = osha_language_list();
-    foreach (array_keys($languages) as $lang) {
-      if (isset($form[$lang])) {
-        $form[$lang]['#default_value'] .= '/view';
-      }
-    }
-  }
+  // For HWC this is no longer required.
 }
 
 /**
@@ -431,49 +422,6 @@ function osha_publication_field_formatter_view($entity_type, $entity, $field, $i
       );
       break;
 
-    case 'publication_title_linked':
-      $settings = $display['settings'];
-      $output = isset($items[0]) ? $items[0]['safe_value'] : '';
-
-      if (!empty($output) && $settings['title_link'] == 'content') {
-        $uri = entity_uri($entity_type, $entity);
-        $path = url($uri['path']);
-        if ($entity->type == 'publication') {
-          $path .= '/view';
-        }
-        $output = '<a href="' . check_plain($path) . '">' . $output . '</a>';
-      }
-
-      $wrap_tag = empty($settings['title_style']) ? '_none' : $settings['title_style'];
-
-      if ($wrap_tag != '_none') {
-        $element = array(
-          'element' => array(
-            '#tag' => $wrap_tag,
-            '#value' => $output,
-          ),
-        );
-
-        if (!empty($settings['title_class'])) {
-          $element['#attributes'] = array('class' => $settings['title_class']);
-        }
-
-        $output = theme('html_tag', $element);
-      }
-      // If the content is archived, add a label for it.
-      if (!empty($output) && $settings['title_link'] == 'content') {
-        if (!empty($entity->field_archived[LANGUAGE_NONE][0]['value'])) {
-          $output .= '<span class="title-archived">' . t('Archived') . '</span>';
-        }
-      }
-
-      $element = array(
-        array(
-          '#markup' => $output,
-        ),
-      );
-
-      return $element;
   }
   return $element;
 }
