@@ -71,11 +71,23 @@ function hwc_frontend_menu_link(array $variables) {
  * Implements hook_preprocess_html().
  */
 function hwc_frontend_preprocess_html(&$vars) {
+  $n = menu_get_object('node');
+  if ($n) {
+    switch ($n->type) {
+      case "tk_section":
+      case "tk_article":
+      case "tk_tool":
+      case "tk_example":
+      case "tk_topic":
+        $vars['classes_array'][] = 'toolkit-page';
+        break;
+    }
+  }
+
   if (!empty($vars['is_front'])) {
     $vars['head_title'] = t('Healthy Workplaces MANAGE DANGEROUS SUBSTANCES 2018-19');
   }
   if (arg(0) . arg(2) == 'nodeedit') {
-    $n = menu_get_object('node');
     if ($n->type == 'news' || $n->type == 'events') {
       $vars['classes_array'][] = 'pz-page';
     }
