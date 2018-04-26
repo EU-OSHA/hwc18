@@ -1,5 +1,6 @@
 <div class="key-menu-container">
-<ul class="menu clearfix"><?php
+    <ul class="menu-index clearfix"><li class="menu__item"><span class="index-button"><?php echo t('Index')?></span></li></ul>
+    <ul class="menu clearfix"><?php
   foreach ($menu as $menu_nid => $menu_item1) {
     $class = "menu__item";
     if ($menu_item1['children']) {
@@ -9,9 +10,16 @@
       $class .= " active";
     }
     ?>
-      <li class="<?php print $class; ?>"><a href="<?php print $menu_item1['href'];?>" class="key-<?php print $menu_item1['class'];?>"><?php print $menu_item1['title'] ?></a>
+      <li class="<?php print $class; ?>">
         <?php
-        if ($menu_item1['children']) {
+        if (!$menu_item1['children']) {
+            ?>
+            <a href="<?php print $menu_item1['href'];?>" class="key-<?php print $menu_item1['class'];?>"><?php print $menu_item1['title'] ?></a>
+      <?php
+        }
+        else { ?>
+            <span class="key-<?php print $menu_item1['class']; ?>"><?php print $menu_item1['title'] ?></span>
+        <?php
           print '<ul class="menu clearfix">';
           foreach($menu_item1['children'] as $menu_nid2 => $menu_item2) {
             $class = "menu__item";
