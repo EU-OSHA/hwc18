@@ -139,7 +139,7 @@ class OshaTMGMTJobItem extends TMGMTJobItem {
   }
 
   /**
-   * Move the Job Item to Translation Ready to Publish state.
+   * Move the Job Item to Translation Validation Required state.
    */
   public function toTranslationValidationRequired($message = '') {
     $this->state = OSHA_TMGMT_JOB_ITEM_STATE_TranslationValidationRequired;
@@ -185,7 +185,7 @@ class OshaTMGMTJobItem extends TMGMTJobItem {
   }
 
   /**
-   * Move the Job Item to Translation Validation Required state.
+   * Move the Job Item to Translation Ready to Publish state.
    */
   public function toTranslationReadyToPublish($message = '') {
     $this->state = OSHA_TMGMT_JOB_ITEM_STATE_TranslatedReadyToPublish;

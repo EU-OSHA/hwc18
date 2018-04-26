@@ -131,6 +131,14 @@ function hwc_frontend_preprocess_page(&$vars) {
       ),
     );
     switch ($node->type) {
+      case "tk_section":
+      case "tk_article":
+      case "tk_tool":
+      case "tk_example":
+      case "tk_topic":
+        $vars['page']['content']['#post_render'][] = 'hwc_content_post_render_add_classes';
+        break;
+
       case 'document':
         $link_href = 'good-practice-exchange-platform';
         $link_title = t('Back to the Good practice exchange platform');
@@ -216,7 +224,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'events':
         $date = new DateTime($node->field_start_date['und'][0]['value']);
-        $now = new DateTime();
+        $now = new DateTime('today');
 
         $breadcrumb = array();
         $breadcrumb[] = l(t('Home'), '<front>');

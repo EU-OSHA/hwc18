@@ -275,7 +275,7 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_start_date_value']['granularity'] = 'second';
-  $handler->display->display_options['filters']['field_start_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_start_date_value']['default_date'] = 'today';
   $handler->display->display_options['filters']['field_start_date_value']['year_range'] = '-10:+10';
 
   /* Display: Block */
