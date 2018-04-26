@@ -1,5 +1,6 @@
 <div class="key-menu-container">
-<ul class="menu clearfix"><?php
+    <ul class="menu-index clearfix"><li class="menu__item"><span class="index-button"><?php echo t('Index')?></span></li></ul>
+    <ul class="menu clearfix"><?php
   foreach ($menu as $menu_nid => $menu_item1) {
     $class = "menu__item";
     if ($menu_item1['children']) {
