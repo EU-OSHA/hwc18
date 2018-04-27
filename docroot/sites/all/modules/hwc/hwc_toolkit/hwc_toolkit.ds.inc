@@ -122,21 +122,25 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_article';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'title_field',
         1 => 'body',
         2 => 'field_tk_topics',
         3 => 'field_tk_article',
       ),
+      'right' => array(
+        4 => 'field_image',
+      ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'body' => 'ds_content',
-      'field_tk_topics' => 'ds_content',
-      'field_tk_article' => 'ds_content',
+      'title_field' => 'left',
+      'body' => 'left',
+      'field_tk_topics' => 'left',
+      'field_tk_article' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -144,13 +148,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_article|default'] = $ds_layout;
 
@@ -314,21 +320,23 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_topic';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title_field',
-        1 => 'title',
-        2 => 'field_image',
-        3 => 'body',
+      'left' => array(
+        0 => 'title',
+        1 => 'title_field',
+        2 => 'body',
+      ),
+      'right' => array(
+        3 => 'field_image',
       ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'title' => 'ds_content',
-      'field_image' => 'ds_content',
-      'body' => 'ds_content',
+      'title' => 'left',
+      'title_field' => 'left',
+      'body' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -336,13 +344,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_topic|default'] = $ds_layout;
 
@@ -352,19 +362,21 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_topic';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'title',
-        1 => 'field_image',
-        2 => 'body',
+        1 => 'body',
+      ),
+      'right' => array(
+        2 => 'field_image',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_image' => 'ds_content',
-      'body' => 'ds_content',
+      'title' => 'left',
+      'body' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -372,13 +384,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_topic|full'] = $ds_layout;
 

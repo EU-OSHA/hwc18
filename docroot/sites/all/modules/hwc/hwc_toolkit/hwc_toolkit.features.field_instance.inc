@@ -137,12 +137,12 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium_large',
         ),
         'type' => 'image',
         'weight' => 15,
@@ -2640,7 +2640,7 @@ function hwc_toolkit_field_default_field_instances() {
           'field_formatter_class' => '',
         ),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'highlights_item' => array(
         'label' => 'above',
@@ -2755,10 +2755,10 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium_large',
         ),
         'type' => 'image',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -2766,7 +2766,7 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium_large',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -2913,13 +2913,13 @@ function hwc_toolkit_field_default_field_instances() {
           'title_style' => 'h3',
         ),
         'type' => 'title_linked',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 11,
       ),
       'highlights_item' => array(
         'label' => 'above',
