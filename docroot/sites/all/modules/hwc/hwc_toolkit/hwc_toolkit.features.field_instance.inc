@@ -2488,7 +2488,7 @@ function hwc_toolkit_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -2605,10 +2605,15 @@ function hwc_toolkit_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 1,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -2756,9 +2761,12 @@ function hwc_toolkit_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'default' => array(
