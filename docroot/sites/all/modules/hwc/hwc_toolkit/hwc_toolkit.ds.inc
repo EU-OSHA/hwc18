@@ -92,6 +92,21 @@ function hwc_toolkit_ds_field_settings_info() {
   );
   $export['node|tk_topic|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tk_topic|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tk_topic';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'node_link' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|tk_topic|teaser'] = $ds_fieldsetting;
+
   return $export;
 }
 
