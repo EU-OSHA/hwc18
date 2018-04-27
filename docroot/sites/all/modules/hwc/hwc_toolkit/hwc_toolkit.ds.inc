@@ -382,5 +382,47 @@ function hwc_toolkit_ds_layout_settings_info() {
   );
   $export['node|tk_topic|full'] = $ds_layout;
 
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tk_topic|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tk_topic';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_2col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'field_image',
+      ),
+      'right' => array(
+        1 => 'title_field',
+        2 => 'body',
+        3 => 'node_link',
+      ),
+    ),
+    'fields' => array(
+      'field_image' => 'left',
+      'title_field' => 'right',
+      'body' => 'right',
+      'node_link' => 'right',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'left' => 'div',
+      'right' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => 0,
+  );
+  $export['node|tk_topic|teaser'] = $ds_layout;
+
   return $export;
 }
