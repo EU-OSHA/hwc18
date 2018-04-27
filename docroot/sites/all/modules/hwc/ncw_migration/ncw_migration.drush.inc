@@ -41,6 +41,7 @@ function drush_ncw_migration_hwc_migrate_av_related() {
     'tax_material_objective',
     'tax_nace_codes',
 
+    'gallery',
     'dangerous_substances',
   );
   foreach ($migrations as $migration) {
