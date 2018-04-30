@@ -242,6 +242,12 @@ function hwc_toolkit_get_left_menu($active_id) {
   $nav = [];
 
   $prev1_id = NULL;
+  $prev2_id = NULL;
+  $prev3_id = NULL;
+
+  $prev[1] = NULL;
+  $prev[2] = NULL;
+  $prev[3] = NULL;
 
   $l1_pages = array_keys($menu);
   $first = $l1_pages[0];
@@ -249,16 +255,17 @@ function hwc_toolkit_get_left_menu($active_id) {
 
   $lo_link = l($l0_title, 'node/' . $active_id);
   foreach ($menu as $l1_id => $menu_item1) {
+    $current[1] = $menu_item1;
     if ($prev1_id) {
       if (($first != $prev1_id)) {
-        $nav[$prev1_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]);
+        $nav[$prev1_id]['next'] = hwc_toolkit_nav_item($current[1]);
       }
       if ($last != $l1_id) {
-        $nav[$l1_id]['prev'] = hwc_toolkit_nav_item($menu[$prev1_id]);
+        $nav[$l1_id]['prev'] = hwc_toolkit_nav_item($prev[1]);
       }
     }
     $prev1_id = $l1_id;
-    $prev2_id = NULL;
+    $prev[1] = $menu_item1;
 
     if ($active_id == $l1_id) {
       $menu[$l1_id]['class'] .= ' active';
@@ -267,12 +274,13 @@ function hwc_toolkit_get_left_menu($active_id) {
       hwc_toolkit_menu_breadcrumbs($menu_item1['title']);
     }
     foreach ($menu_item1['children'] as $l2_id => $menu_item2) {
+      $current[2] = $menu_item2;
       if ($prev2_id) {
-        $nav[$prev2_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]);
-        $nav[$l2_id]['prev'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$prev2_id]);
+        $nav[$prev2_id]['next'] = hwc_toolkit_nav_item($current[2]);
+        $nav[$l2_id]['prev'] = hwc_toolkit_nav_item($prev[2]);
       }
       $prev2_id = $l2_id;
-      $prev3_id = NULL;
+      $prev[2] = $menu_item2;
 
       if ($active_id == $l2_id) {
         $menu[$l1_id]['children'][$l2_id]['class'] .= ' active';
@@ -288,11 +296,13 @@ function hwc_toolkit_get_left_menu($active_id) {
         }
       }
       foreach ($menu_item2['children'] as $l3_id => $menu_item3) {
+        $current[3] = $menu_item3;
         if ($prev3_id) {
-          $nav[$prev3_id]['next'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]['children'][$l3_id]);
-          $nav[$l3_id]['prev'] = hwc_toolkit_nav_item($menu[$l1_id]['children'][$l2_id]['children'][$prev3_id]);
+          $nav[$prev3_id]['next'] = hwc_toolkit_nav_item($current[3]);
+          $nav[$l3_id]['prev'] = hwc_toolkit_nav_item($prev[3]);
         }
         $prev3_id = $l3_id;
+        $prev[3] = $menu_item3;
 
         if ($active_id == $l3_id) {
           $menu[$l1_id]['children'][$l2_id]['children'][$l3_id]['class'] .= ' active';
