@@ -2,28 +2,28 @@
 
 /**
  * @file
- * Display Suite 1 column template.
+ * Display Suite 2 column template.
  */
 ?><?php
-// Todo ...
-$wrapper = entity_metadata_wrapper('node', $node);
-$title = $wrapper->title->value();
-$titleLink = hwc_toolkit_prepare_link(strtolower($title));
+if ($right) {
+  $left_classes .= ' group-left';
+}
 ?>
-<<?php print $ds_content_wrapper; print $layout_attributes; ?> class="col-xs-12 col-sm-12 col-md-9 <?php print $classes;?> clearfix">
+<<?php print $layout_wrapper; print $layout_attributes; ?> class="ds-2col <?php print $classes;?> clearfix">
 
   <?php if (isset($title_suffix['contextual_links'])): ?>
   <?php print render($title_suffix['contextual_links']); ?>
   <?php endif; ?>
 
-<?php
+  <<?php print $left_wrapper ?> class="<?php print $left_classes; ?>">
+    <?php print $left; ?>
+  </<?php print $left_wrapper ?>>
 
-print '<div id="' . $titleLink . '" class="title_link _close">';
-print $ds_content;
-print '</div>';
+  <?php if ($right) {?><<?php print $right_wrapper ?> class="group-right<?php print $right_classes; ?>">
+    <?php print $right; ?>
+  </<?php print $right_wrapper ?>><?php } ?>
 
-?>
-</<?php print $ds_content_wrapper ?>>
+</<?php print $layout_wrapper ?>>
 
 <?php if (!empty($drupal_render_children)): ?>
   <?php print $drupal_render_children ?>

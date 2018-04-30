@@ -1981,14 +1981,11 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'title',
+        'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
         ),
-        'type' => 'title_linked',
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'highlights_item' => array(
@@ -2318,6 +2315,7 @@ function hwc_toolkit_field_default_field_instances() {
   // Exported field_instance: 'node-tk_tool-field_tk_examples'.
   $field_instances['node-tk_tool-field_tk_examples'] = array(
     'bundle' => 'tk_tool',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2398,17 +2396,20 @@ function hwc_toolkit_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference_view_widget',
+      'module' => 'entityreference',
       'settings' => array(
         'allow_duplicates' => 0,
         'close_modal' => 1,
+        'match_operator' => 'CONTAINS',
         'pass_argument' => 0,
         'pass_arguments' => '',
+        'path' => '',
         'rendered_entity' => 0,
+        'size' => 60,
         'view' => 'tk_examples_reference_widget_sample_view|tk_examples_entityreference_view_widget',
         'view_mode' => 'full',
       ),
-      'type' => 'entityreference_view_widget',
+      'type' => 'entityreference_autocomplete',
       'weight' => 5,
     ),
     'workbench_access_field' => 0,
