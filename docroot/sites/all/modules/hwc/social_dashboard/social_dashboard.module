@@ -443,7 +443,10 @@ function social_dashboard_facebook_cron() {
       if (@$items[$post['id']]) {
         $entity_id = $items[$post['id']];
       }
-      $timestamp = strtotime($post['updated_time']->date);
+      $updated_time = $post['updated_time'];
+      if ($updated_time && is_object($updated_time)) {
+        $timestamp = $updated_time->getTimestamp();
+      }
       if (social_dashboard_is_item_visible($tags, $selected_tag)) {
         $weight = date('Ymd') . (9999 - $offset++);
       }
