@@ -103,15 +103,15 @@ function social_dashboard_cronapi() {
   return array(
     'social_dashboard_linkedin_cron' => array(
       'description' => 'Download linkedin updates',
-      'rule' => '0 */2 * * *',
+      'rule' => '*/5 * * * *',
     ),
     'social_dashboard_twitter_cron' => array(
       'description' => 'Download twitter tweets',
-      'rule' => '0 */2 * * *',
+      'rule' => '*/5 * * * *',
     ),
     'social_dashboard_facebook_cron' => array(
       'description' => 'Download facebook posts',
-      'rule' => '0 */2 * * *',
+      'rule' => '*/5 * * * *',
     ),
   );
 }
