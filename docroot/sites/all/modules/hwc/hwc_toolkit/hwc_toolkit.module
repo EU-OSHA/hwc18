@@ -329,3 +329,28 @@ function hwc_toolkit_get_left_menu($active_id) {
 function hwc_toolkit_nav_item($menu_item) {
   return ['href' => $menu_item['href'], 'title' => $menu_item['title']];
 }
+
+function hwc_toolkit_add_tool_to_queue() {
+  $added = 0;
+  $q = db_select('node', 'n');
+  $q->fields('n', ['nid']);
+  $q->condition('n.type', 'tk_tool');
+  $nids = $q->execute()->fetchAllKeyed(0, 0);
+  $type = 'tk_tool';
+  $qids = _osha_nodequeue_get_auto_qids($type, FALSE);
+  if (!empty($qids)) {
+    $queues = nodequeue_load_queues($qids);
+    foreach ($queues as $queue) {
+      $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
+      $subqueue = array_shift($subqueues);
+      foreach ($nids as $nid) {
+        $nodes = _osha_nodequeue_get_auto_qids($type, $nid);
+        if (!$nodes) {
+          $added++;
+          nodequeue_subqueue_add($queue, $subqueue, $nid);
+        }
+      }
+    }
+  }
+  return $added;
+}
