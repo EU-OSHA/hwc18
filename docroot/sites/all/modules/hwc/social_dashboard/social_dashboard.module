@@ -458,6 +458,9 @@ function social_dashboard_facebook_cron() {
       print_r($e);
     }
   }
+  if (!count($response->getGraphEdge())) {
+    watchdog('social_dashboard', '[CRON]Error no facebook posts found!');
+  }
   return count($response->getGraphEdge());
 }
 
@@ -505,6 +508,9 @@ function social_dashboard_linkedin_cron() {
       $weight = date('Ymd') . '1000';
     }
     social_dashboard_create_dashboard_item($entity_id, $id_str, 'linkedin', $name, $content, $tags, $weight, $timestamp, $variables);
+  }
+  if (!count($updates['values'])) {
+    watchdog('social_dashboard', '[CRON]Error no companies updates found!');
   }
   return count($updates['values']);
 }
@@ -578,8 +584,10 @@ function social_dashboard_twitter_cron() {
     else {
       $weight = date('Ymd') . '1000';
     }
-
     social_dashboard_create_dashboard_item($entity_id, $id_str, 'twitter', $name, $content, $tags, $weight, $timestamp);
+  }
+  if (!count($tweets)) {
+    watchdog('social_dashboard', '[CRON]Error no twitter tweets found!');
   }
   return count($tweets);
 }
