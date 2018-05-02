@@ -2636,11 +2636,11 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'hwc',
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'text_default',
+        'type' => 'body_with_summary',
         'weight' => 1,
       ),
       'highlights_item' => array(
