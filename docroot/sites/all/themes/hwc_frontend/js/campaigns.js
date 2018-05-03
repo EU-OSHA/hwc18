@@ -17,6 +17,16 @@ jQuery(document).ready(function() {
         setTimeout(ipad_fix_iframe_width, 5000);
     }
 
+    //menu toolkit
+    jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu >.menu__item.expanded >span").click(function(){
+    	if(jQuery(this).siblings("ul").is(":visible")){
+    		jQuery(this).siblings("ul").hide();
+    	}else{
+    		jQuery(this).siblings("ul").show();
+    	}
+    	
+    });
+
     // Detect objectFit support
 	//if('objectFit' in document.documentElement.style === false) {
 	  

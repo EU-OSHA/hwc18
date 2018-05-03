@@ -19351,6 +19351,68 @@ input#edit-field-image-und-0-upload::before {
 .page-topics.i18n-bg .main-container .view-id-topics .views-row .views-field-name-field a {
   font-size: 1em;
 }
+/*end galder styles issue bulgaria*/
+/*start toolkit styles*/
+.toolkit-page .well {
+  background-color: inherit;
+  border: none;
+  border-radius: 0px;
+  margin: 0px;
+  padding: 0px;
+  box-shadow: inherit;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span {
+  border: 2px solid green;
+  padding: 10px 15px;
+  display: block;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  color: #333333;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a.active,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span.active {
+  background-color: green;
+  color: white;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > a:after,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > span:after {
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  float: right;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > a.active:after,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > span.active:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > .menu {
+  display: none;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded.active > .menu {
+  display: block;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li ul li {
+  margin-left: 15px;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li ul li a {
+  text-decoration: none;
+  color: #333333;
+  margin-bottom: 10px;
+  display: block;
+}
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
   border: none;
