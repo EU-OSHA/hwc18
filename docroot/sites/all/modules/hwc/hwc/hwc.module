@@ -423,6 +423,10 @@ function hwc_field_formatter_info() {
         'custom_title' => '',
       ),
     ),
+    'body_with_summary' => array(
+      'label' => t('body with summary'),
+      'field types' => array('text_with_summary'),
+    ),
   );
   return $info;
 }
@@ -615,6 +619,17 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
         }
         $link = l($link_name, $uri['path'], array('query' => $uri['options']['query']));
         $element[$delta]['#markup'] = $link;
+      }
+      break;
+
+    case 'body_with_summary':
+      foreach ($items as $delta => $item) {
+        $output = _text_sanitize($instance, $langcode, $item, 'summary');
+        if ($output) {
+          $output = '<div class="body-summary">' . $output . '</div>';
+        }
+        $output .= _text_sanitize($instance, $langcode, $item, 'value');
+        $element[$delta] = array('#markup' => $output);
       }
       break;
 

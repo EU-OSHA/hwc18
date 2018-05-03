@@ -124,6 +124,140 @@ function hwc_toolkit_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-tk_article-field_image'.
+  $field_instances['node-tk_article-field_image'] = array(
+    'bundle' => 'tk_article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'image_link' => '',
+          'image_style' => 'medium_large',
+        ),
+        'type' => 'image',
+        'weight' => 15,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_slideshow' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'pub_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_image',
+    'label' => 'Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'entity_translation_sync' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'image_field_caption' => 0,
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'media',
+      'settings' => array(
+        'allowed_schemes' => array(
+          'public' => 'public',
+        ),
+        'allowed_types' => array(
+          'audio' => 0,
+          'document' => 0,
+          'image' => 'image',
+          'video' => 0,
+        ),
+        'browser_plugins' => array(
+          'media_browser_osha--media_browser_osha' => 0,
+          'media_browser_osha--media_browser_osha_my_files' => 0,
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'upload' => 0,
+        ),
+        'manualcrop_crop_info' => 1,
+        'manualcrop_default_crop_area' => 1,
+        'manualcrop_enable' => 0,
+        'manualcrop_inline_crop' => 0,
+        'manualcrop_instant_crop' => FALSE,
+        'manualcrop_instant_preview' => 1,
+        'manualcrop_keyboard' => 1,
+        'manualcrop_maximize_default_crop_area' => 0,
+        'manualcrop_require_cropping' => array(),
+        'manualcrop_styles_list' => array(),
+        'manualcrop_styles_mode' => 'include',
+        'manualcrop_thumblist' => 0,
+      ),
+      'type' => 'media_generic',
+      'weight' => 6,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-tk_article-field_tk_article'.
   $field_instances['node-tk_article-field_tk_article'] = array(
     'bundle' => 'tk_article',
@@ -1847,14 +1981,11 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'title',
+        'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
-          'title_class' => '',
-          'title_link' => '',
-          'title_style' => '',
         ),
-        'type' => 'title_linked',
+        'type' => 'text_default',
         'weight' => 2,
       ),
       'highlights_item' => array(
@@ -2184,6 +2315,7 @@ function hwc_toolkit_field_default_field_instances() {
   // Exported field_instance: 'node-tk_tool-field_tk_examples'.
   $field_instances['node-tk_tool-field_tk_examples'] = array(
     'bundle' => 'tk_tool',
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -2264,17 +2396,20 @@ function hwc_toolkit_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'entityreference_view_widget',
+      'module' => 'entityreference',
       'settings' => array(
         'allow_duplicates' => 0,
         'close_modal' => 1,
+        'match_operator' => 'CONTAINS',
         'pass_argument' => 0,
         'pass_arguments' => '',
+        'path' => '',
         'rendered_entity' => 0,
+        'size' => 60,
         'view' => 'tk_examples_reference_widget_sample_view|tk_examples_entityreference_view_widget',
         'view_mode' => 'full',
       ),
-      'type' => 'entityreference_view_widget',
+      'type' => 'entityreference_autocomplete',
       'weight' => 5,
     ),
     'workbench_access_field' => 0,
@@ -2488,7 +2623,7 @@ function hwc_toolkit_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'default' => array(
         'label' => 'hidden',
@@ -2501,12 +2636,12 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'hwc',
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'text_default',
-        'weight' => 3,
+        'type' => 'body_with_summary',
+        'weight' => 1,
       ),
       'highlights_item' => array(
         'label' => 'above',
@@ -2605,12 +2740,6 @@ function hwc_toolkit_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
@@ -2621,13 +2750,24 @@ function hwc_toolkit_field_default_field_instances() {
         'type' => 'image',
         'weight' => 1,
       ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'image_link' => '',
+          'image_style' => 'medium_large',
+        ),
+        'type' => 'image',
+        'weight' => 3,
+      ),
       'full' => array(
         'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'medium_large',
         ),
         'type' => 'image',
         'weight' => 2,
@@ -2756,9 +2896,12 @@ function hwc_toolkit_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'text_plain',
         'weight' => 0,
       ),
       'default' => array(
@@ -2771,13 +2914,13 @@ function hwc_toolkit_field_default_field_instances() {
           'title_style' => 'h3',
         ),
         'type' => 'title_linked',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 11,
       ),
       'highlights_item' => array(
         'label' => 'above',

@@ -92,6 +92,21 @@ function hwc_toolkit_ds_field_settings_info() {
   );
   $export['node|tk_topic|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tk_topic|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tk_topic';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'node_link' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+  );
+  $export['node|tk_topic|teaser'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -107,21 +122,25 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_article';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'title_field',
         1 => 'body',
         2 => 'field_tk_topics',
         3 => 'field_tk_article',
       ),
+      'right' => array(
+        4 => 'field_image',
+      ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'body' => 'ds_content',
-      'field_tk_topics' => 'ds_content',
-      'field_tk_article' => 'ds_content',
+      'title_field' => 'left',
+      'body' => 'left',
+      'field_tk_topics' => 'left',
+      'field_tk_article' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -129,13 +148,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_article|default'] = $ds_layout;
 
@@ -290,6 +311,7 @@ function hwc_toolkit_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['node|tk_tool|default'] = $ds_layout;
 
@@ -299,21 +321,23 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_topic';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col_wrapper';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
-        0 => 'title_field',
-        1 => 'title',
-        2 => 'field_image',
-        3 => 'body',
+      'left' => array(
+        0 => 'title',
+        1 => 'title_field',
+        2 => 'body',
+      ),
+      'right' => array(
+        3 => 'field_image',
       ),
     ),
     'fields' => array(
-      'title_field' => 'ds_content',
-      'title' => 'ds_content',
-      'field_image' => 'ds_content',
-      'body' => 'ds_content',
+      'title' => 'left',
+      'title_field' => 'left',
+      'body' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -321,13 +345,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_topic|default'] = $ds_layout;
 
@@ -337,19 +363,21 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_topic';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'title',
-        1 => 'field_image',
-        2 => 'body',
+        1 => 'body',
+      ),
+      'right' => array(
+        2 => 'field_image',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_image' => 'ds_content',
-      'body' => 'ds_content',
+      'title' => 'left',
+      'body' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -357,15 +385,59 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_topic|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tk_topic|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tk_topic';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_2col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'field_image',
+      ),
+      'right' => array(
+        1 => 'title_field',
+        2 => 'body',
+        3 => 'node_link',
+      ),
+    ),
+    'fields' => array(
+      'field_image' => 'left',
+      'title_field' => 'right',
+      'body' => 'right',
+      'node_link' => 'right',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'left' => 'div',
+      'right' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => 0,
+  );
+  $export['node|tk_topic|teaser'] = $ds_layout;
 
   return $export;
 }

@@ -83,6 +83,9 @@ class TKArticleSource extends AbstractHWCToolkitNodeSource {
       'body_language',
       'body_summary',
 
+      'field_image',
+      'field_image_language',
+
       'field_tk_article_type',
       'field_tk_article',
       'field_tk_topics',

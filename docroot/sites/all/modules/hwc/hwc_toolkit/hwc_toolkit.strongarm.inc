@@ -319,25 +319,25 @@ function hwc_toolkit_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'workbench_access' => array(
           'weight' => '6',
         ),
         'xmlsitemap' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'language' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
       ),
       'display' => array(),
@@ -803,6 +803,43 @@ function hwc_toolkit_strongarm() {
   $strongarm->name = 'menu_parent_tk_topic';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_tk_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_comment_link_tk_topic';
+  $strongarm->value = '0';
+  $export['nodeblock_comment_link_tk_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_node_link_tk_topic';
+  $strongarm->value = '0';
+  $export['nodeblock_node_link_tk_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_node_overrides_tk_topic';
+  $strongarm->value = array(
+    0 => 'view_mode',
+  );
+  $export['nodeblock_node_overrides_tk_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_node_override_block_available_tk_topic';
+  $strongarm->value = 'enabled_off';
+  $export['nodeblock_node_override_block_available_tk_topic'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'nodeblock_view_mode_tk_topic';
+  $strongarm->value = 'body';
+  $export['nodeblock_view_mode_tk_topic'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -57,6 +57,7 @@ class TKToolSource extends AbstractHWCToolkitNodeSource {
       'field_tk_tool_type',
       'field_introduction',
       'field_image',
+      'field_image_language',
 
       'body',
       'body_language',
