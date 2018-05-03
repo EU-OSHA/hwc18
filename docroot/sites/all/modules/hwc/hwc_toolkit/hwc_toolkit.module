@@ -149,6 +149,9 @@ function hwc_toolkit_get_menu_tree($level1) {
 
   foreach ($level1 as $article) {
     $w = entity_metadata_wrapper('node', $article);
+    if (!$w) {
+      continue;
+    }
     $l1_nid = $article->nid;
     $l1_title = $w->title->value();
     $menu[$l1_nid] = _toolkit_menu_item($l1_title, 'node/' . $l1_nid);
@@ -157,6 +160,9 @@ function hwc_toolkit_get_menu_tree($level1) {
     if ($articles) {
       foreach ($articles as $tk_article) {
         $wrapper = entity_metadata_wrapper('node', $tk_article);
+        if (!$wrapper) {
+          continue;
+        }
         $l2_nid = $tk_article->nid;
         $l2_title = $wrapper->title->value();
         $menu[$l1_nid]['children'][$l2_nid] = _toolkit_menu_item($l2_title, 'node/' . $l2_nid);
@@ -165,6 +171,9 @@ function hwc_toolkit_get_menu_tree($level1) {
         if ($topics) {
           foreach ($topics as $tk_topic) {
             $wrapper = entity_metadata_wrapper('node', $tk_topic);
+            if (!$wrapper || !$tk_topic) {
+              continue;
+            }
             $l3_nid = $tk_topic->nid;
             $l3_title = $wrapper->title->value();
             $menu[$l1_nid]['children'][$l2_nid]['children'][$l3_nid] = _toolkit_menu_item($l3_title, 'node/' . $l3_nid);
@@ -178,6 +187,9 @@ function hwc_toolkit_get_menu_tree($level1) {
       $tools_nid = $l1_nid;
       foreach ($terms as $tk_term) {
         $wrapper = entity_metadata_wrapper('taxonomy_term', $tk_term);
+        if (!$wrapper) {
+          continue;
+        }
         $l2_tid = $tk_term->tid;
         $l2_title = $wrapper->name->value();
         $menu[$l1_nid]['children'][$l2_tid] = _toolkit_menu_item($l2_title, 'taxonomy/term/' . $l2_tid, 'taxonomy');
@@ -235,6 +247,9 @@ function hwc_toolkit_get_left_menu($active_id) {
   $l0_nid = $rs[0]->nid;
   $node = node_load($l0_nid);
   $wt = entity_metadata_wrapper('node', $node);
+  if (!$wt) {
+    return;
+  }
   $l0_title = $wt->title->value();
   $level1 = $wt->field_tk_article->value();
 
