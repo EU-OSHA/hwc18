@@ -93,23 +93,3 @@
     });
 
 </script>
-<style>
-    .close {
-        /*visibility: hidden;*/
-        /*display: none;*/
-    }
-    .key-menu-container .active > a {
-        font-weight: bold;
-    }
-    .key-menu-container .expanded.active .expanded.active li,
-    .key-menu-container .expanded.active > ul > li,
-    .key-menu-container .expanded.active {
-        visibility: visible;
-        display: block;
-    }
-    .key-menu-container .expanded li li,
-    .key-menu-container li .expanded {
-        visibility: hidden;
-        display: none;
-    }
-</style>
