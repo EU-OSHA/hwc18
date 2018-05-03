@@ -82,6 +82,8 @@ function hwc_frontend_preprocess_html(&$vars) {
         $vars['classes_array'][] = 'toolkit-page';
         break;
     }
+  } else if ($term = menu_get_object('taxonomy_term', 2)) {
+    $vars['classes_array'][] = 'toolkit-page';
   }
 
   if (!empty($vars['is_front'])) {
