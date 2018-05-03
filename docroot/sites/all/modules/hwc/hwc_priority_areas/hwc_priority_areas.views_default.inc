@@ -513,6 +513,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'campaign_materials' => 'campaign_materials',
     'publication' => 'publication',
   );
   /* Filter criterion: Content: Publication Type (field_publication_type) */
@@ -851,6 +852,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'campaign_materials' => 'campaign_materials',
     'publication' => 'publication',
   );
   /* Filter criterion: Content: Publication Type (field_publication_type) */
