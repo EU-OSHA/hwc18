@@ -1,5 +1,6 @@
 // Insert your styling here.
-
+	/*testing commit*/
+	
 	body{
 	/* General */
 		padding-top: 210px;
@@ -10264,3 +10265,82 @@ input#edit-field-image-und-0-upload::before {
 
 
 /*end galder styles issue bulgaria*/
+
+
+/*start toolkit styles*/
+.toolkit-page{
+	//background-color: red;
+	.well{
+		background-color: inherit;
+		border: none;
+		border-radius: 0px;
+		margin: 0px;
+		padding: 0px;
+		box-shadow: inherit;
+		#block-hwc-toolkit-toolkit-left-menu{
+			padding-left: 15px;
+			padding-right: 15px;
+			.key-menu-container{
+				ul{
+					padding: 0px;
+					margin: 0px;
+					list-style: none;
+				}
+				>ul{
+					>li{	
+						>a, >span{
+							border: 2px solid green;
+							padding: 10px 15px;
+							display: block;
+							margin-bottom: 15px;
+							border-radius: 3px;
+							font-weight: bold;
+							text-decoration: none;
+							cursor: pointer;
+							color:@colorNormalText;
+							&.active{
+								background-color: green;
+								color: white;
+							}
+						}
+						&.expanded{
+							>a, >span{
+								&:after{
+									content:"\e250";
+									font-family: "Glyphicons Halflings";
+									float: right;
+								}
+								&.active{
+									&:after{
+										content:"\e252";
+										font-family: "Glyphicons Halflings";
+									}
+								}
+							}
+							>.menu{
+								display: none;
+							}
+						}
+						&.expanded.active{
+							>.menu{
+								display: block;
+							}
+						}
+						ul{
+							li{
+								margin-left: 15px;
+								a{
+									text-decoration: none;
+									color:@colorNormalText;
+									margin-bottom: 10px;
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+/*end toolkit styles*/
