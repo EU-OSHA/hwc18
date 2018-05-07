@@ -62,7 +62,8 @@ function hwc_toolkit_default_page_manager_handlers() {
         'width' => 100,
         'width_type' => '%',
         'children' => array(
-          0 => 'main-row',
+          0 => 1,
+          1 => 'main-row',
         ),
         'parent' => 'canvas',
       ),
@@ -90,7 +91,26 @@ function hwc_toolkit_default_page_manager_handlers() {
         'width' => 50,
         'width_type' => '%',
         'parent' => 'main-row',
-        'class' => 'key-menu-container col-md-3 col-sm-12',
+        'class' => 'key-menu-container col-md-3 col-sm-12 well',
+        'hide_empty' => 0,
+      ),
+      1 => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'image',
+        ),
+        'parent' => 'main',
+        'class' => 'toolkit-top',
+        'hide_empty' => 0,
+      ),
+      'image' => array(
+        'type' => 'region',
+        'title' => 'image',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => '1',
+        'class' => '',
         'hide_empty' => 0,
       ),
     ),
@@ -100,6 +120,10 @@ function hwc_toolkit_default_page_manager_handlers() {
       'default' => NULL,
       'center' => NULL,
       'left' => NULL,
+      'image' => NULL,
+    ),
+    'left' => array(
+      'style' => '-1',
     ),
   );
   $display->cache = array();
@@ -171,6 +195,35 @@ function hwc_toolkit_default_page_manager_handlers() {
   $display->content['new-99d30471-1e13-4067-8655-0acbed43c2a0'] = $pane;
   $display->panels['center'][1] = 'new-99d30471-1e13-4067-8655-0acbed43c2a0';
   $pane = new stdClass();
+  $pane->pid = 'new-1a0a0051-666e-4b5d-baa4-6eb6f4d3e9aa';
+  $pane->panel = 'image';
+  $pane->type = 'node';
+  $pane->subtype = 'node';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'nid' => '8288',
+    'links' => 0,
+    'leave_node_title' => 0,
+    'identifier' => '',
+    'build_mode' => 'body',
+    'link_node_title' => 0,
+    'override_title' => 1,
+    'override_title_text' => '<none>',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '1a0a0051-666e-4b5d-baa4-6eb6f4d3e9aa';
+  $display->content['new-1a0a0051-666e-4b5d-baa4-6eb6f4d3e9aa'] = $pane;
+  $display->panels['image'][0] = 'new-1a0a0051-666e-4b5d-baa4-6eb6f4d3e9aa';
+  $pane = new stdClass();
   $pane->pid = 'new-4623ca35-85b7-494a-b36f-229dc12489e0';
   $pane->panel = 'left';
   $pane->type = 'block';
@@ -186,7 +239,10 @@ function hwc_toolkit_default_page_manager_handlers() {
   $pane->style = array(
     'settings' => NULL,
   );
-  $pane->css = array();
+  $pane->css = array(
+    'css_id' => 'block-hwc-toolkit-toolkit-left-menu',
+    'css_class' => '',
+  );
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();

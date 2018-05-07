@@ -230,16 +230,6 @@ function hwc_toolkit_get_left_menu($active_id) {
     return $menu;
   }
 
-/*
-  $active_id = NULL;
-  if (arg(0) == 'taxonomy') {
-    $active_id = arg(2);
-  }
-  else {
-    $active_id = arg(1);
-  }
-*/
-
   $q = db_select('node', 'n');
   $q->fields('n', ['nid']);
   $q->condition('n.type', 'tk_section');
