@@ -10269,7 +10269,8 @@ input#edit-field-image-und-0-upload::before {
 
 /*start toolkit styles*/
 .toolkit-page{
-	//background-color: red;
+	
+	//menu toolkit
 	.well{
 		background-color: inherit;
 		border: none;
@@ -10281,6 +10282,7 @@ input#edit-field-image-und-0-upload::before {
 			padding-left: 15px;
 			padding-right: 15px;
 			.key-menu-container{
+				/*first level*/
 				ul{
 					padding: 0px;
 					margin: 0px;
@@ -10301,6 +10303,7 @@ input#edit-field-image-und-0-upload::before {
 							&.active{
 								background-color: green;
 								color: white;
+
 							}
 						}
 						&.expanded{
@@ -10309,6 +10312,7 @@ input#edit-field-image-und-0-upload::before {
 									content:"\e250";
 									font-family: "Glyphicons Halflings";
 									float: right;
+									vertical-align: middle;
 								}
 								&.active{
 									&:after{
@@ -10326,6 +10330,57 @@ input#edit-field-image-und-0-upload::before {
 								display: block;
 							}
 						}
+						.key-start-here{
+							border-color: green;
+							color: green;
+							&:after{
+								color: green;
+							}
+							&.active{
+								background-color: green;
+								color: white;
+							}
+						}
+						.key-how-to-run-a-campaign{
+							border-color: blue;
+							color: blue;
+							&:after{
+								color: blue;
+							}
+							&.active{
+								background-color: blue;
+								color: white;
+								&:after{
+									color: white;
+								}
+							}
+						}
+						.key-tools---examples{
+							border-color: darkblue;
+							color: darkblue;
+							&:after{
+								color: darkblue;
+							}
+							&.active{
+								background-color: darkblue;
+								color: white;
+								&:after{
+									color: white;
+								}
+							}
+						}
+						.key-about{
+							border-color: aquamarine;
+							color: aquamarine;
+							&:after{
+								color: aquamarine;
+							}
+							&.active{
+								background-color: aquamarine;
+								color: white;
+							}
+						}
+						/*second sublevel*/
 						ul{
 							li{
 								margin-left: 15px;
@@ -10334,8 +10389,230 @@ input#edit-field-image-und-0-upload::before {
 									color:@colorNormalText;
 									margin-bottom: 10px;
 									display: block;
+									&.active{
+										font-weight: bold;
+									}
 								}
 							}
+						}
+						>ul{
+							>li{
+								&.expanded{
+									>a{
+										&:after{
+											content:"\e250";
+											font-family: "Glyphicons Halflings";
+											margin-left: 7px;
+											vertical-align: middle;
+										}
+									}
+									/*third sublevel*/
+									>ul{
+										display: none;
+										>li{
+											>a{
+												margin-left: 15px;
+											}
+										}
+									}
+								}
+								&.expanded.active{
+									>a{
+										&:after{
+											content:"\e252";
+											font-family: "Glyphicons Halflings";
+										}
+									}
+									/*third sublevel*/
+									>ul{
+										display: block;
+									}
+									
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//toolkit general content styles
+	.main-container{
+		.page_title{
+			h1.page-header{
+				display: none;
+			}
+		}
+		h2{
+			font-style: normal;
+			color: @h2-default-color-2;
+			font-weight: 600;
+			margin-bottom: 40px;
+			font-size: 2em;
+		}
+		h3{
+			font-size: 1.3em;
+			font-weight: 600;
+			color: @color-h2-toolkit;
+			margin-bottom: 30px;
+			margin-top: 40px;
+		}
+		.introduction-text{
+			font-weight: 600;
+			font-style: italic;
+			margin-bottom: 40px;
+		}
+		//top image
+		.above_title{
+			margin-left: -15px;
+			margin-right: -15px;
+			max-height: 224px;
+			overflow: hidden;
+			position: relative;
+			margin-bottom: 50px;
+			.contextual-links-region{
+				position: inherit;
+			}
+			.field-name-title-field{
+				position: absolute;
+				text-align: center;
+				font-size: 2.5em;
+			    font-weight: bold;
+			    text-align: center;
+			    color: white;
+			    width: 100%;
+			    bottom: 25%;
+			    text-shadow: 2px 2px #0000009c;
+			}
+			.field-name-field-image{
+
+			}
+		}
+		//start here page
+		.start-here{
+			margin-top: 40px;
+			.col{
+				padding-left: 15px;
+				padding-right: 15px;
+				margin-bottom: 30px;
+			}
+			.col-inner{
+				background-color: @bg-color-grey-toolkit;
+				text-align: center;
+				padding: 30px 15px;
+				h3{
+					font-size: 1.1em;
+					margin-bottom: 15px;
+					margin-top: 0px;
+					&:before{
+						content:"lala";
+						display: block;
+						width: 74px;
+						height: 74px;
+						background-color: @color-h2-toolkit;
+						margin: 0 auto;margin-bottom: 20px;
+						border-radius: 50%;
+						color: white;
+						line-height: 5;
+					}
+				}
+				p.subtitle{
+					margin-bottom: 30px;
+				}
+				.see-more{
+					a{
+						background-color: @h2-default-color-2;
+						display: inline-block;
+						text-align: center;
+						padding: 10px 15px;
+						text-transform: uppercase;
+						color: white;
+						font-weight: 600;
+						text-decoration: none;
+						&:hover{
+							background-color: @hover-grey-button-toolkit;
+						}
+					}
+				}
+			}
+		}
+		//how to run list pages
+		.field-name-field-tk-topics{
+			.field-items{
+				.field-item{
+					margin-bottom: 30px;
+					background-color: @bg-color-grey-toolkit;
+					.node-tk-topic{
+						.group-left{
+							display: inline-block;
+							width: 234px;
+							height: 251px;
+							background-color: grey;
+						}
+						.group-right{
+							padding: 30px;
+						    display: inline-block;
+						    position: absolute;
+						    width: inherit;
+						    right: 0;
+    						left: 234px;
+							h3{
+								margin-top: 0px;
+								font-size: 1.4em;
+							}
+							.field-type-text-with-summary{
+								p{
+									font-weight: 600;
+								}
+							}
+							//see more
+							.field-name-node-link{
+								text-align: right;
+								a{
+									background-color: @h2-default-color-2;
+									display: inline-block;
+									text-align: center;
+									padding: 10px 15px;
+									text-transform: uppercase;
+									color: white;
+									font-weight: 600;
+									text-decoration: none;
+									&:hover{
+										background-color: @hover-grey-button-toolkit;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//tools & examples list page
+		.view-tk-tools{
+			.views-row{
+				padding-left: 15px;
+				padding-right: 15px;
+				margin-bottom: 30px;
+				.views-field-field-image{
+					background-color: #ccc;
+					width: 100%;
+					height: 250px;
+				}
+				.views-field-title{
+					
+					span{
+						
+						a{
+							height: 75px;
+							background-color: @color-h2-toolkit;
+							color: white;
+							font-weight: 600;
+							font-size: 1.1em;
+							text-align: center;
+							display: block;
+							padding-top: 25px;
 						}
 					}
 				}
