@@ -695,3 +695,21 @@ function hwc_update_7045() {
 function hwc_update_7046() {
   variable_set('osha_menu_level_reverse', FALSE);
 }
+
+/**
+ * MDR-1900 HWC18-19: "Activity" field options.
+ */
+function hwc_update_7047() {
+  $name = '4.5 Healthy workplaces campaign 2018-2019';
+  $term = taxonomy_get_term_by_name($name, 'activity');
+  if (empty($term)) {
+    $voc = taxonomy_vocabulary_machine_name_load('activity');
+    $term = new stdClass();
+    $term->parent = 0;
+    $term->language = 'en';
+    $term->name = $name;
+    $term->vid = $voc->vid;
+    $term->field_activity_code[LANGUAGE_NONE][]['value'] = 'dangerous_substances_2018_19';
+    taxonomy_term_save($term);
+  }
+}
