@@ -19411,54 +19411,64 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded.active > .menu {
   display: block;
 }
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .index-button {
+  border-color: #255b39;
+  color: white;
+  background: #255b39;
+  display: inline-block;
+  min-width: 150px;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .index-button:after {
+  color: white;
+}
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here {
-  border-color: green;
-  color: green;
+  border-color: #10a748;
+  color: #10a748;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here:after {
-  color: green;
+  color: #10a748;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here.active {
-  background-color: green;
+  background-color: #10a748;
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign {
-  border-color: blue;
-  color: blue;
+  border-color: #98c93c;
+  color: #98c93c;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign:after {
-  color: blue;
+  color: #98c93c;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign.active {
-  background-color: blue;
+  background-color: #98c93c;
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign.active:after {
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples {
-  border-color: darkblue;
-  color: darkblue;
+  border-color: #213097;
+  color: #213097;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples:after {
-  color: darkblue;
+  color: #213097;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples.active {
-  background-color: darkblue;
+  background-color: #213097;
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples.active:after {
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about {
-  border-color: aquamarine;
-  color: aquamarine;
+  border-color: #10aaaa;
+  color: #10aaaa;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about:after {
-  color: aquamarine;
+  color: #10aaaa;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about.active {
-  background-color: aquamarine;
+  background-color: #10aaaa;
   color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li ul li {
@@ -19542,7 +19552,7 @@ input#edit-field-image-und-0-upload::before {
   text-shadow: 2px 2px #0000009c;
 }
 .toolkit-page .main-container .start-here {
-  margin-top: 40px;
+  margin-top: 10px;
 }
 .toolkit-page .main-container .start-here .col {
   padding-left: 15px;
@@ -19647,6 +19657,101 @@ input#edit-field-image-und-0-upload::before {
   text-align: center;
   display: block;
   padding-top: 25px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples {
+  background-color: #f3f3f3;
+  padding: 30px 60px;
+  margin-bottom: 80px;
+  position: relative;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators {
+  bottom: -45px;
+  margin-bottom: 0px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators li {
+  border: 1px solid #7b7b7b;
+  margin: 0px;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators li.active {
+  background-color: #7b7b7b;
+  border: none;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-first {
+  width: 30%;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-first .inside {
+  margin: 0px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-first .inside .field-name-field-image {
+  margin-bottom: 0px;
+  margin-right: 30px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last {
+  width: 70%;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside {
+  margin: 0px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside h3 {
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside h3 a {
+  text-decoration: none;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-field-organisation,
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-field-country {
+  margin-bottom: 10px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-body {
+  margin-bottom: 25px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-node-link {
+  text-align: right;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-node-link a {
+  background-color: #749b00;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .panel-col-last .inside .field-name-node-link a:hover {
+  background-color: #595959;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-control {
+  background-image: inherit;
+  width: 5%;
+  text-shadow: inherit;
+  color: #003399;
+  opacity: 1;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .left.carousel-control span:first-child {
+  font-size: 40px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .left.carousel-control span:first-child:before {
+  content: "\e257";
+  font-family: "Glyphicons Halflings";
+  padding-left: 0px;
+  padding-right: 0px;
+  font-weight: lighter;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .right.carousel-control span:first-child {
+  font-size: 40px;
+  margin-right: 0px;
+}
+.toolkit-page .main-container .carousel.slide .toolkit_examples .right.carousel-control span:first-child:before {
+  content: "\e258";
+  font-family: "Glyphicons Halflings";
+  padding-left: 0px;
+  padding-right: 0px;
+  font-weight: lighter;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
