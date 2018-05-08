@@ -22,3 +22,10 @@ function osha_linkchecker_enable() {
     osha_linkchecker_scan_for_links();
   }
 }
+
+/**
+ * MDR-1901 HWC18-19: Strange message in a new item.
+ */
+function osha_linkchecker_update_7001() {
+  variable_set('linkchecker_ignore_response_codes', "200\n206\n302\n304\n401\n403\n301\n900");
+}
