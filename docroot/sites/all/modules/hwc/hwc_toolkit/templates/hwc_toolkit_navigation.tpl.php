@@ -6,10 +6,10 @@ if ($prev || $next) {
   print '<div class="col-xs-12 col-sm-12 col-md-9">';
   print '<div class="key-next-prev-buttons">';
   if ($prev) {
-    print '<span class="prev-button"><a href="' . $prev['href'] . '" class="previous-button">' . t('Prev topic') . ' ' . $prev['title'] . '</a></span>';
+    print '<span class="prev-button"><a href="' . $prev['href'] . '" class="previous-button"><span class="nav-info">' . t('Prev topic') . '</span><span class="nav-title">' . $prev['title'] . '</span></a></span>';
   }
   if ($next) {
-    print '<span class="next-button"><a href="' . $next['href'] . '" class="nexting-button">' . t('Next topic') . ' ' . $next['title'] . '</a></span>';
+    print '<span class="next-button"><a href="' . $next['href'] . '" class="nexting-button"><span class="nav-info">' . t('Next topic') . '</span><span class="nav-title">' . $next['title'] . '</span></a></span>';
   }
   print '</div>';
   print '</div>';
