@@ -785,8 +785,8 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $pane->configuration = array(
     'buttons' => NULL,
     'custom_page_title_pattern' => '%node:title_field | [site:name]',
-    'form_build_id' => 'form-Q-f8jwe87PXcMSZ8ZDIviGvIj1ssEH83jYXkbWDYu9U',
-    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
+    'form_build_id' => 'form-j47ZeJUzDMMExiPAa9nWxv7Vg4lApc5R2PK4gH0Nho4',
+    'form_token' => 'kjaBuDPfwwk9IOgu2xytFpt-cEcnpH8UHOvPU-FJ6fY',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
