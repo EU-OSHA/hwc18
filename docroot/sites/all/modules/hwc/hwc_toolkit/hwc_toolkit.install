@@ -33,3 +33,10 @@ function hwc_toolkit_update_7004() {
 function hwc_toolkit_update_7005() {
   features_revert_module('hwc_toolkit');
 }
+
+/**
+ * TKIT-2 Creation of new content types to migrate the contents.
+ */
+function hwc_toolkit_update_7006() {
+  features_revert_module('hwc_toolkit');
+}
