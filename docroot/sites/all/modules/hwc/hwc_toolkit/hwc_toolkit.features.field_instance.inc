@@ -849,14 +849,14 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
           'trim_length' => 600,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -964,10 +964,13 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'inline',
+        'module' => 'taxonomy',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 3,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -1066,7 +1069,7 @@ function hwc_toolkit_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -1164,10 +1167,10 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -1423,13 +1426,13 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
         ),
         'type' => 'text_plain',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -1528,10 +1531,16 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'label' => 'hidden',
+        'module' => 'title',
+        'settings' => array(
+          'field_formatter_class' => '',
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h3',
+        ),
+        'type' => 'title_linked',
+        'weight' => 1,
       ),
       'title_body' => array(
         'label' => 'above',
@@ -2897,11 +2906,14 @@ function hwc_toolkit_field_default_field_instances() {
     'display' => array(
       'body' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'title',
         'settings' => array(
           'field_formatter_class' => '',
+          'title_class' => '',
+          'title_link' => '',
+          'title_style' => 'h1',
         ),
-        'type' => 'text_plain',
+        'type' => 'title_linked',
         'weight' => 0,
       ),
       'default' => array(
