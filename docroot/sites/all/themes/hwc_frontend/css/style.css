@@ -10747,6 +10747,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_CZ {
   background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_CS {
+  background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-center .event_day_month .code_DK {
   background: url(../images/events/big/Denmark-180x180.png) no-repeat center;
 }
@@ -11616,6 +11619,10 @@ article .hwc-share-widget ul {
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_BE {
   background: url(../images/events/big/Belgium-180x180.png) no-repeat center;
 }
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CZ,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CZ {
+  background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
+}
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS {
   background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
@@ -11682,7 +11689,7 @@ article .hwc-share-widget ul {
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO {
-  background: url(../images/events/big/Norwegian-180x180.png) no-repeat center;
+  background: url(../images/events/big/Norway-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL {
