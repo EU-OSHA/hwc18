@@ -10744,6 +10744,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_BE {
   background: url(../images/events/big/Belgium-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_CZ {
+  background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-center .event_day_month .code_CS {
   background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
 }
@@ -10775,10 +10778,10 @@ html:lang(no) .pane-node-field-provider .field-items,
   background: url(../images/events/big/Hungary-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_IS {
-  background: url(../images/events/big/Icelandic-180x180.png) no-repeat center;
+  background: url(../images/events/big/Iceland-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_IT {
-  background: url(../images/events/big/Itali-180x180.png) no-repeat center;
+  background: url(../images/events/big/Italy-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_LV {
   background: url(../images/events/big/Latvia-180x180.png) no-repeat center;
@@ -10793,7 +10796,7 @@ html:lang(no) .pane-node-field-provider .field-items,
   background: url(../images/events/big/Malta-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_NO {
-  background: url(../images/events/big/Norwegian-180x180.png) no-repeat center;
+  background: url(../images/events/big/Norway-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-center .event_day_month .code_PL {
   background: url(../images/events/big/Poland-180x180.png) no-repeat center;
@@ -10821,6 +10824,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 }
 .front .panels-flexible-region-new-center .event_day_month .code_CN {
   background: url(../images/events/big/China-180x180.png) no-repeat center;
+}
+.front .panels-flexible-region-new-center .event_day_month .code_CY {
+  background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
 }
 .front .panels-flexible-region-new-home_right h2.pane-title {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
@@ -11613,6 +11619,10 @@ article .hwc-share-widget ul {
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_BE {
   background: url(../images/events/big/Belgium-180x180.png) no-repeat center;
 }
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CZ,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CZ {
+  background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
+}
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CS {
   background: url(../images/events/big/Czech-Republic-180x180.png) no-repeat center;
@@ -11679,7 +11689,7 @@ article .hwc-share-widget ul {
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_NO {
-  background: url(../images/events/big/Norwegian-180x180.png) no-repeat center;
+  background: url(../images/events/big/Norway-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_PL {
@@ -11716,6 +11726,10 @@ article .hwc-share-widget ul {
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CN,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CN {
   background: url(../images/events/big/China-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY {
+  background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a {

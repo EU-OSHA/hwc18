@@ -9,12 +9,12 @@ $company = $variables['company'];
 $variables = $variables['companyStatusUpdate'];
 $share = $variables['share'];
 
-$main_title   = @$share['comment'];
+$main_title = @$share['comment'];
 $title = @$share['content']['title'];
 $submittedUrl = @$share['content']['submittedUrl'];
 $background_image = @$share['content']['submittedImageUrl'];
 
-// Fix https image visibility(Content Security Policy) because of http url
+// Fix https image visibility(Content Security Policy) because of http url.
 $background_image = str_replace('http://image-store','https://image-store', $background_image);
 
 if ($submittedUrl) {
@@ -54,7 +54,7 @@ if ($main_title) {
   echo '<div class="feed-s-update__description">' . $main_title . '</div>';
 }
 
-if ($title) {
+if ($title || $background_image) {
 echo '      <div class="feed-s-update__update-content-wrapper">
         <div class="feed-s-hero-entity__image-container">
           <a target="_blank" href="' . $linkedin_link . '">

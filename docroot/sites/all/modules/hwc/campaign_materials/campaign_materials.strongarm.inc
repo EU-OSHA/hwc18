@@ -162,7 +162,7 @@ function campaign_materials_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'title' => array(
           'weight' => '-5',
@@ -178,6 +178,9 @@ function campaign_materials_strongarm() {
         ),
         'language' => array(
           'weight' => '2',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(),
