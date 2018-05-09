@@ -2341,6 +2341,7 @@ function _linkchecker_isvalid_response_code($code) {
     503 => 'Service Unavailable',
     504 => 'Gateway Time-out',
     505 => 'HTTP Version not supported',
+    900 => 'Linkedin error code',
   );
 
   return array_key_exists($code, $responses);

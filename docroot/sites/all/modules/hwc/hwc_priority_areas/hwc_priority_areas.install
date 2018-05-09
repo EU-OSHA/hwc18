@@ -335,3 +335,19 @@ function hwc_priority_areas_update_7036() {
 function hwc_priority_areas_update_7037() {
   features_revert(array('hwc_priority_areas' => 'page_manager_pages', 'page_manager_handlers'));
 }
+
+/**
+ * MDR-1894 Priority areas - Allow a third item in tools and publications section.
+ */
+function hwc_priority_areas_update_7038() {
+  features_revert(array('hwc_priority_areas' => 'views_view'));
+}
+
+/**
+ * MDR-1895 Priority areas - Facts and figures - Link campaign guide
+ * into publications section.
+ */
+function hwc_priority_areas_update_7039() {
+  features_revert_module('campaign_materials');
+  features_revert(array('hwc_priority_areas' => 'views_view'));
+}
