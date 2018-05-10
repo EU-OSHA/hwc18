@@ -49,7 +49,7 @@ function hwc_toolkit_default_fe_block_settings() {
 
   $export['views-tool_examples_carousel-block'] = array(
     'cache' => -1,
-    'css_class' => 'col-xs-12 col-sm-12 col-md-9',
+    'css_class' => 'col-xs-12 col-sm-12 col-md-12',
     'custom' => 0,
     'delta' => 'tool_examples_carousel-block',
     'i18n_block_language' => array(),

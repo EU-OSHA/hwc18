@@ -331,7 +331,7 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['style_options']['row_class'] = 'col-xs-12 col-sm-6 col-md-3';
+  $handler->display->display_options['style_options']['row_class'] = 'col-xs-12 col-sm-6 col-md-4';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Content: Type (field_tk_tool_type) */
   $handler->display->display_options['relationships']['field_tk_tool_type_tid']['id'] = 'field_tk_tool_type_tid';

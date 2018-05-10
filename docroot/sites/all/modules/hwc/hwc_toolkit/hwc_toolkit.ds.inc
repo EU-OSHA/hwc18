@@ -82,11 +82,11 @@ function hwc_toolkit_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h4',
-        'class' => 'aaaa',
+        'link' => '0',
+        'wrapper' => 'h2',
+        'class' => '',
         'exclude node title settings' => '1',
-        'field_formatter_class' => 'bbbb',
+        'field_formatter_class' => '',
       ),
     ),
   );
