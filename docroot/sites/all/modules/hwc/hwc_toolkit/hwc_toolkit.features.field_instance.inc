@@ -1685,14 +1685,8 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'links' => 1,
-          'use_content_language' => 1,
-          'view_mode' => 'title_body',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'highlights_item' => array(

@@ -252,14 +252,6 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->view_mode = 'default';
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'field_tk_article',
-      ),
-    ),
-    'fields' => array(
-      'field_tk_article' => 'ds_content',
-    ),
     'classes' => array(
       'layout_class' => array(
         '' => '',
@@ -273,6 +265,7 @@ function hwc_toolkit_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['node|tk_section|default'] = $ds_layout;
 
