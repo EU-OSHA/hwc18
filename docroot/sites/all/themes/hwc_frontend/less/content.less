@@ -10487,13 +10487,19 @@ input#edit-field-image-und-0-upload::before {
 			.field-name-title-field{
 				position: absolute;
 				text-align: center;
-				font-size: 2.5em;
 			    font-weight: bold;
 			    text-align: center;
-			    color: white;
 			    width: 100%;
 			    bottom: 25%;
 			    text-shadow: 2px 2px #0000009c;
+			    h1{
+			    	font-style: normal;
+			    	font-weight: bold;
+			    	color: #ffffff;
+   					font-size: 2.5em;
+   					margin: 0px;
+   					padding: 0px;
+			    }
 			}
 			.field-name-field-image{
 
@@ -10635,6 +10641,7 @@ input#edit-field-image-und-0-upload::before {
 				padding: 30px 60px;
 				margin-bottom: 80px;
 				position: relative;
+				margin-top: 30px;
 				.carousel-indicators{
 					bottom: -45px;
 					margin-bottom: 0px;
@@ -10653,48 +10660,42 @@ input#edit-field-image-und-0-upload::before {
 				}
 				.carousel-inner{
 					.views-row{
-						.panel-col-first{
+						.group-left{
 							width: 30%;
-							.inside{
-								margin: 0px;
 								.field-name-field-image{
 									margin-bottom: 0px;
 									margin-right: 30px;
 								}
-							}
 						}
-						.panel-col-last{
+						.group-right{
 							width: 70%;
-							.inside{
-								margin: 0px;
-								h3{
-									margin-top: 0px;
-									margin-bottom: 25px;
-									a{
-										text-decoration: none;
-									}
+							h3{
+								margin-top: 0px;
+								margin-bottom: 25px;
+								a{
+									text-decoration: none;
 								}
-								.field-name-field-organisation,
-								.field-name-field-country{
-									margin-bottom: 10px;
-								}
-								.field-name-body{
-									margin-bottom: 25px;
-								}
-								.field-name-node-link{
-									text-align: right;
-									a{
-										background-color: @h2-default-color-2;
-										display: inline-block;
-										text-align: center;
-										padding: 10px 15px;
-										text-transform: uppercase;
-										color: white;
-										font-weight: 600;
-										text-decoration: none;
-										&:hover{
-											background-color: @hover-grey-button-toolkit;
-										}
+							}
+							.field-name-field-organisation,
+							.field-name-field-country{
+								margin-bottom: 10px;
+							}
+							.field-name-body{
+								margin-bottom: 25px;
+							}
+							.field-name-node-link{
+								text-align: right;
+								a{
+									background-color: @h2-default-color-2;
+									display: inline-block;
+									text-align: center;
+									padding: 10px 15px;
+									text-transform: uppercase;
+									color: white;
+									font-weight: 600;
+									text-decoration: none;
+									&:hover{
+										background-color: @hover-grey-button-toolkit;
 									}
 								}
 							}
@@ -10732,6 +10733,160 @@ input#edit-field-image-und-0-upload::before {
 							font-weight: lighter;
 						}
 					}
+				}
+			}
+		}
+	}//end main container toolkit
+	//next-prev arrows toolkit
+	#block-hwc-toolkit-toolkit-nav,
+	.pane-hwc-toolkit-toolkit-nav{
+		clear: both;
+		margin-top: 20px;
+		.key-next-prev-buttons{
+			overflow: hidden;
+			.prev-button,
+			.next-button{
+				display: inline-block;
+				a{
+					text-decoration: none;
+					display: inline-block;
+					span{
+						display: block;
+					}
+					.nav-info{
+						color: @color-h2-toolkit;
+						font-weight: bold;
+						display: grid;
+					}
+					.nav-title{
+						color: #484848;
+						text-transform: uppercase;
+						font-size: 1.1em;
+						font-weight: 600;
+						display: grid;
+					}
+				}
+			}
+			.prev-button{
+				text-align: left;
+				.previous-button{
+					background: url(../images/header/twitter.png) no-repeat 0px 0px;
+    				background-size: 30px 45px;
+    				padding-left: 50px;
+    				/*
+					&:before{
+						content: "\e257";
+						font-family: "Glyphicons Halflings";
+						padding-left: 0px;
+						padding-right: 0px;
+						font-weight: bold;
+					    vertical-align: sub;
+					    font-size: 36px;
+					    margin-right: 10px;
+					    color: @color-h2-toolkit;
+					    float: left;
+					}
+					*/
+				}
+			}
+			.next-button{
+				text-align: right;
+				float: right;
+				.nexting-button{
+					background: url(../images/header/twitter.png) no-repeat 100% 0px;
+    				background-size: 30px 45px;
+    				padding-right: 50px;
+    				/*
+					&:before{
+						content: "\e258";
+						font-family: "Glyphicons Halflings";
+						padding-left: 0px;
+						padding-right: 0px;
+						font-weight: bold;
+					    vertical-align: sub;
+					    font-size: 36px;
+					    margin-left: 10px;
+					    color: @color-h2-toolkit;
+					    float: right;
+					}
+					*/
+				}
+			}
+		}
+	}
+}
+.node-type-tk-topic{
+	.node-tk-topic{
+		.group-left{
+			width: 70%;
+			.field-name-body{
+				p{
+					margin-bottom: 25px;
+					display: inline-block;
+				}
+				.body-summary{
+					p{
+						font-weight: 600;
+						font-style: italic;
+						margin-bottom: 25px;
+						font-size: 1.1em;
+					}
+				}
+				ul{
+					margin: 0px;
+					padding-left: 15px;
+					li{
+						margin-bottom: 15px;
+					}
+				}
+			}
+			.box-check-content{
+				background-color: @bg-color-grey-toolkit;
+				padding: 30px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				h4{
+					border-bottom: 2px solid @h2-default-color-2;
+				    padding-bottom: 10px;
+				    font-weight: bold;
+				    font-size: 1.4em;
+				    margin-bottom: 30px;
+				}
+				ul{
+					list-style: none;
+				    padding: 0px;
+				    margin: 0px;
+				    li{
+				    	margin-bottom: 0px;
+				    	&:before{
+							content: "\e013";
+							font-family: "Glyphicons Halflings";
+							text-align: center;
+							line-height: 30px;
+							width: 30px;
+							height: 30px;
+							background-color: @h2-default-color-2;
+							display: inline-block;
+							vertical-align: middle;
+							border-radius: 50%;
+							color: white;
+							margin-right: 15px;
+				    	}
+				    	p{
+				    		display: inline-block;
+				    	}
+				    }
+				}
+			}
+		}
+		.group-right{
+			width: 30%;
+			.field-name-field-image{
+				float: right;
+				padding-left: 30px;
+				width: 100%;
+				img{
+					width: 100%;
 				}
 			}
 		}
