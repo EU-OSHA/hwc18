@@ -206,27 +206,29 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'tk_example';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'title',
-        1 => 'field_image',
         2 => 'field_organisation',
         3 => 'field_country',
         4 => 'body',
         5 => 'field_download_pdf',
         6 => 'field_external_link',
       ),
+      'right' => array(
+        1 => 'field_image',
+      ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
-      'field_image' => 'ds_content',
-      'field_organisation' => 'ds_content',
-      'field_country' => 'ds_content',
-      'body' => 'ds_content',
-      'field_download_pdf' => 'ds_content',
-      'field_external_link' => 'ds_content',
+      'title' => 'left',
+      'field_image' => 'right',
+      'field_organisation' => 'left',
+      'field_country' => 'left',
+      'body' => 'left',
+      'field_download_pdf' => 'left',
+      'field_external_link' => 'left',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -234,13 +236,15 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'wrappers' => array(
-      'ds_content' => 'div',
+      'left' => 'div',
+      'right' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => 0,
   );
   $export['node|tk_example|default'] = $ds_layout;
 
