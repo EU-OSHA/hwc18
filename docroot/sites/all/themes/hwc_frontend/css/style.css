@@ -19393,6 +19393,13 @@ input#edit-field-image-und-0-upload::before {
   background-color: green;
   color: white;
 }
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a.up-arrow:after,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span.up-arrow:after {
+  content: "\e252" !important;
+  font-family: "Glyphicons Halflings";
+  float: right;
+  vertical-align: middle;
+}
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > a:after,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > span:after {
   content: "\e250";
@@ -19576,7 +19583,7 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 0px;
 }
 .toolkit-page .main-container .start-here .col-inner h3:before {
-  content: "lala";
+  content: "";
   display: block;
   width: 74px;
   height: 74px;
@@ -19603,15 +19610,27 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .start-here .col-inner .see-more a:hover {
   background-color: #595959;
 }
+.toolkit-page .main-container .start-here .campaigning .col-inner h3:before {
+  background-image: url(../images/toolkit-campaigning.png);
+}
+.toolkit-page .main-container .start-here .plane-campaign .col-inner h3:before {
+  background-image: url(../images/toolkit-plan.png);
+}
+.toolkit-page .main-container .start-here .resources-networks .col-inner h3:before {
+  background-image: url(../images/toolkit-resources.png);
+}
 .toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item {
   margin-bottom: 30px;
   background-color: #f3f3f3;
 }
 .toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-left {
   display: inline-block;
-  width: 234px;
-  height: 251px;
+  width: 235px;
+  height: 250px;
   background-color: grey;
+}
+.toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-left img {
+  width: 100%;
 }
 .toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-right {
   padding: 30px;
@@ -19664,6 +19683,50 @@ input#edit-field-image-und-0-upload::before {
   display: block;
   padding-top: 25px;
 }
+.toolkit-page .main-container .node-tk-tool .field-name-field-introduction ul,
+.toolkit-page .main-container .node-tk-tool .field-name-body ul {
+  padding-left: 18px;
+}
+.toolkit-page .main-container .node-tk-tool .field-name-field-introduction ul li,
+.toolkit-page .main-container .node-tk-tool .field-name-body ul li {
+  margin-bottom: 15px;
+}
+.toolkit-page .main-container .node-tk-tool .field-name-field-benefits {
+  background-color: #f3f3f3;
+  padding: 30px;
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+.toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-label {
+  border-bottom: 2px solid #749b00;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-bottom: 40px;
+  color: #749b00;
+}
+.toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-items .field-item {
+  margin-bottom: 30px;
+  padding-left: 40px;
+  position: relative;
+}
+.toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-items .field-item:before {
+  content: "\e013";
+  font-family: "Glyphicons Halflings";
+  text-align: center;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  background-color: #749b00;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: white;
+  margin-right: 15px;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
 .toolkit-page .main-container .carousel.slide .toolkit_examples {
   background-color: #f3f3f3;
   padding: 30px 60px;
@@ -19687,14 +19750,14 @@ input#edit-field-image-und-0-upload::before {
   border: none;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-left {
-  width: 30%;
+  width: 25%;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-left .field-name-field-image {
   margin-bottom: 0px;
   margin-right: 30px;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right {
-  width: 70%;
+  width: 75%;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right h3 {
   margin-top: 0px;
@@ -19758,6 +19821,8 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .pane-hwc-toolkit-toolkit-nav {
   clear: both;
   margin-top: 20px;
+  overflow: hidden;
+  margin-bottom: 50px;
 }
 .toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons,
 .toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons {
@@ -19786,7 +19851,6 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button a .nav-info,
 .toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button a .nav-info,
 .toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button a .nav-info {
-  color: #003399;
   font-weight: bold;
   display: grid;
 }
@@ -19800,54 +19864,63 @@ input#edit-field-image-und-0-upload::before {
   font-weight: 600;
   display: grid;
 }
-.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button,
-.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button {
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue {
   text-align: left;
 }
-.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button .previous-button,
-.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button .previous-button {
-  background: url(../images/header/twitter.png) no-repeat 0px 0px;
-  background-size: 30px 45px;
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue .previous-button,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue .previous-button {
+  background: url(../images/arrow-blue-left.png) no-repeat 0px 0px;
+  background-size: 30px 43px;
   padding-left: 50px;
-  /*
-					&:before{
-						content: "\e257";
-						font-family: "Glyphicons Halflings";
-						padding-left: 0px;
-						padding-right: 0px;
-						font-weight: bold;
-					    vertical-align: sub;
-					    font-size: 36px;
-					    margin-right: 10px;
-					    color: @color-h2-toolkit;
-					    float: left;
-					}
-					*/
 }
-.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button,
-.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button {
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue .previous-button .nav-info,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.blue .previous-button .nav-info {
+  color: #003399;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green {
+  text-align: left;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green .previous-button,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green .previous-button {
+  background: url(../images/arrow-green-left.png) no-repeat 0px 0px;
+  background-size: 30px 43px;
+  padding-left: 50px;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green .previous-button .nav-info,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .prev-button.green .previous-button .nav-info {
+  color: #749b00;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue {
   text-align: right;
   float: right;
 }
-.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button .nexting-button,
-.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button .nexting-button {
-  background: url(../images/header/twitter.png) no-repeat 100% 0px;
-  background-size: 30px 45px;
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue .nexting-button,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue .nexting-button {
+  background: url(../images/arrow-blue-right.png) no-repeat 100% 0px;
+  background-size: 30px 43px;
   padding-right: 50px;
-  /*
-					&:before{
-						content: "\e258";
-						font-family: "Glyphicons Halflings";
-						padding-left: 0px;
-						padding-right: 0px;
-						font-weight: bold;
-					    vertical-align: sub;
-					    font-size: 36px;
-					    margin-left: 10px;
-					    color: @color-h2-toolkit;
-					    float: right;
-					}
-					*/
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue .nexting-button .nav-info,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.blue .nexting-button .nav-info {
+  color: #003399;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green {
+  text-align: right;
+  float: right;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button {
+  background: url(../images/arrow-green-right.png) no-repeat 100% 0px;
+  background-size: 30px 43px;
+  padding-right: 50px;
+}
+.toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button .nav-info,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button .nav-info {
+  color: #749b00;
 }
 .node-type-tk-topic .node-tk-topic .group-left {
   width: 70%;
@@ -19917,6 +19990,79 @@ input#edit-field-image-und-0-upload::before {
 }
 .node-type-tk-topic .node-tk-topic .group-right .field-name-field-image img {
   width: 100%;
+}
+.page-node-6358 .node-tk-article .group-left,
+.node-type-tk-example .node-tk-article .group-left,
+.page-node-6358 .node-tk-example .group-left,
+.node-type-tk-example .node-tk-example .group-left {
+  width: 70%;
+}
+.page-node-6358 .node-tk-article .group-left p,
+.node-type-tk-example .node-tk-article .group-left p,
+.page-node-6358 .node-tk-example .group-left p,
+.node-type-tk-example .node-tk-example .group-left p {
+  margin-bottom: 15px;
+}
+.page-node-6358 .node-tk-article .group-left .external-link,
+.node-type-tk-example .node-tk-article .group-left .external-link,
+.page-node-6358 .node-tk-example .group-left .external-link,
+.node-type-tk-example .node-tk-example .group-left .external-link {
+  color: #749b00;
+  display: block;
+  margin-top: 30px;
+}
+.page-node-6358 .node-tk-article .group-left .external-link:before,
+.node-type-tk-example .node-tk-article .group-left .external-link:before,
+.page-node-6358 .node-tk-example .group-left .external-link:before,
+.node-type-tk-example .node-tk-example .group-left .external-link:before {
+  content: "\e013";
+  font-family: "Glyphicons Halflings";
+  text-align: center;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  background-color: #749b00;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: white;
+  margin-right: 15px;
+}
+.page-node-6358 .node-tk-article .group-left .external-link:after,
+.node-type-tk-example .node-tk-article .group-left .external-link:after,
+.page-node-6358 .node-tk-example .group-left .external-link:after,
+.node-type-tk-example .node-tk-example .group-left .external-link:after {
+  content: "\e066";
+  font-family: "Glyphicons Halflings";
+  vertical-align: sub;
+  margin-left: 5px;
+  font-size: 20px;
+}
+.page-node-6358 .node-tk-article .group-right,
+.node-type-tk-example .node-tk-article .group-right,
+.page-node-6358 .node-tk-example .group-right,
+.node-type-tk-example .node-tk-example .group-right {
+  width: 30%;
+}
+.page-node-6358 .node-tk-article .group-right .field-name-field-image,
+.node-type-tk-example .node-tk-article .group-right .field-name-field-image,
+.page-node-6358 .node-tk-example .group-right .field-name-field-image,
+.node-type-tk-example .node-tk-example .group-right .field-name-field-image {
+  float: right;
+  padding-left: 30px;
+  width: 100%;
+}
+.page-node-6358 .node-tk-article .group-right .field-name-field-image img,
+.node-type-tk-example .node-tk-article .group-right .field-name-field-image img,
+.page-node-6358 .node-tk-example .group-right .field-name-field-image img,
+.node-type-tk-example .node-tk-example .group-right .field-name-field-image img {
+  width: 100%;
+}
+.node-type-tk-example .node-tk-example .group-left .field {
+  margin-bottom: 20px;
+}
+.node-type-tk-example .node-tk-example .group-left .field-type-text-with-summary .field-label {
+  margin-bottom: 5px;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
