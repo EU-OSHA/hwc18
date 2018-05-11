@@ -20,8 +20,12 @@ jQuery(document).ready(function() {
     //menu toolkit
     jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu >.menu__item.expanded >span").click(function(){
     	if(jQuery(this).siblings("ul").is(":visible")){
+    		jQuery(this).removeClass("up-arrow");
+    		//jQuery(this).removeClass("active");
     		jQuery(this).siblings("ul").hide();
     	}else{
+    		jQuery(this).addClass("up-arrow");
+    		//jQuery(this).addClass("active");
     		jQuery(this).siblings("ul").show();
     	}
     	
