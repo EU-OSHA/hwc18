@@ -11,6 +11,14 @@ include_once 'hwc_toolkit.features.inc';
  */
 function hwc_toolkit_block_info() {
   $blocks = array();
+  $blocks['toolkit_go_back'] = array(
+    'info' => 'Toolkit Go back',
+    'status' => 1,
+    'region' => 'above_title',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'weight' => 0,
+  );
   $blocks['toolkit_left_menu'] = array(
     'info' => t('Toolkit left menu'),
     'status' => 1,
@@ -46,12 +54,7 @@ function hwc_toolkit_block_view($delta = '') {
     $menu = hwc_toolkit_get_left_menu($active_id);
     $block['content'] = array(
       '#type' => 'markup',
-      '#markup' => theme('toolkit_menu',
-        array(
-          'menu' => $menu,
-          'active' => $active_id,
-        )
-      ),
+      '#markup' => theme('toolkit_menu', array('menu' => $menu, 'active' => $active_id)),
     );
   }
   if ($delta == 'toolkit_nav') {
@@ -61,6 +64,23 @@ function hwc_toolkit_block_view($delta = '') {
       '#type' => 'markup',
       '#markup' => $markup,
     );
+  }
+  if ($delta == 'toolkit_go_back') {
+    $q = db_select('node', 'n');
+    $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+    $q->fields('n', ['nid']);
+    $q->condition('n.type', 'tk_tool');
+    $q->condition('n.status', 1);
+    $q->condition('e.field_tk_examples_target_id', intval($active_id));
+    $rows = $q->execute()->fetchCol();
+    $block = [];
+    if ($rows) {
+      $markup = l(t('Go back'), 'node/' . $rows[0]);
+      $block['content'] = array(
+        '#type' => 'markup',
+        '#markup' => $markup,
+      );
+    }
   }
   return $block;
 }

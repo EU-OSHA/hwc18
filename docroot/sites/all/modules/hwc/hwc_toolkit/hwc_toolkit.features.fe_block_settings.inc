@@ -12,6 +12,37 @@ function hwc_toolkit_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['hwc_toolkit-toolkit_go_back'] = array(
+    'cache' => 8,
+    'css_class' => '',
+    'custom' => 0,
+    'delta' => 'toolkit_go_back',
+    'i18n_block_language' => array(),
+    'i18n_mode' => 0,
+    'module' => 'hwc_toolkit',
+    'node_types' => array(
+      0 => 'tk_example',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'hwc_frontend' => array(
+        'region' => 'above_title',
+        'status' => 1,
+        'theme' => 'hwc_frontend',
+        'weight' => 1,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
   $export['hwc_toolkit-toolkit_left_menu'] = array(
     'cache' => 8,
     'css_class' => '',

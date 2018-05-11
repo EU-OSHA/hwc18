@@ -41,6 +41,7 @@ features[ds_layout_settings][] = node|tk_tool|default
 features[ds_layout_settings][] = node|tk_topic|default
 features[ds_layout_settings][] = node|tk_topic|full
 features[ds_layout_settings][] = node|tk_topic|teaser
+features[fe_block_settings][] = hwc_toolkit-toolkit_go_back
 features[fe_block_settings][] = hwc_toolkit-toolkit_left_menu
 features[fe_block_settings][] = views-tool_examples_carousel-block
 features[fe_block_settings][] = views-tool_examples_carousel-popular
