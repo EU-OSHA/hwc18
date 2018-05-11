@@ -19629,6 +19629,9 @@ input#edit-field-image-und-0-upload::before {
   height: 250px;
   background-color: grey;
 }
+.toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-left img {
+  width: 100%;
+}
 .toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-right {
   padding: 30px;
   display: inline-block;
