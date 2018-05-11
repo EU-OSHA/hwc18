@@ -798,7 +798,7 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
@@ -913,7 +913,7 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'taxonomy',
         'settings' => array(
           'field_formatter_class' => '',
@@ -1117,11 +1117,11 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'hwc',
+        'module' => 'link',
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'hwc_see_more_ext_link',
+        'type' => 'link_url',
         'weight' => 6,
       ),
       'highlights_item' => array(
@@ -1375,7 +1375,7 @@ function hwc_toolkit_field_default_field_instances() {
         'weight' => 0,
       ),
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
@@ -1685,14 +1685,8 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'links' => 1,
-          'use_content_language' => 1,
-          'view_mode' => 'title_body',
-        ),
-        'type' => 'entityreference_entity_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'highlights_item' => array(
