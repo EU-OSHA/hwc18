@@ -314,3 +314,10 @@ function osha_update_7020() {
 function osha_update_7021() {
   features_revert(array('osha' => 'field_base'));
 }
+
+/**
+ * MDR-1917 cannot select events on GP exchange page.
+ */
+function osha_update_7022() {
+  features_revert(array('osha_resources' => 'views_view'));
+}
