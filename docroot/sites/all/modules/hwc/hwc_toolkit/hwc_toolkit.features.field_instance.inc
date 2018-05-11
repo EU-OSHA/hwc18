@@ -2823,7 +2823,7 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => 'medium_thumbnail_mc_340',
+          'image_style' => 'toolkit',
         ),
         'type' => 'image',
         'weight' => 0,

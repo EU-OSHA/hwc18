@@ -85,6 +85,34 @@ function hwc_toolkit_fe_nodequeue_export_fields() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function hwc_toolkit_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: toolkit.
+  $styles['toolkit'] = array(
+    'label' => 'toolkit',
+    'effects' => array(
+      1 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 235,
+          'height' => 250,
+          'upscale' => 0,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'toolkit',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function hwc_toolkit_node_info() {
