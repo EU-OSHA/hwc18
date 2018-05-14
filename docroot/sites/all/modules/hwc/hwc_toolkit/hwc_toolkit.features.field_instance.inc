@@ -1018,6 +1018,7 @@ function hwc_toolkit_field_default_field_instances() {
           'description' => 0,
           'field_formatter_class' => '',
           'label' => 'Download',
+          'open_new_tab' => 1,
           'size' => 1,
         ),
         'type' => 'icon_file_formatter',

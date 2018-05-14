@@ -27,7 +27,7 @@ function hwc_toolkit_default_fe_block_settings() {
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
-        'region' => 'above_title',
+        'region' => 'below_title',
         'status' => 1,
         'theme' => 'hwc_frontend',
         'weight' => 1,
