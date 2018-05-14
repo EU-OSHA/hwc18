@@ -19,6 +19,7 @@ function campaign_materials_field_formatter_info() {
         'label' => t('Download'),
         'description' => 0,
         'size' => 1,
+        'open_new_tab' => 0,
       ),
     ),
   );
@@ -36,6 +37,7 @@ function campaign_materials_theme() {
         'label' => NULL,
         'description' => NULL,
         'size' => NULL,
+        'open_new_tab' => NULL,
         'delta' => NULL,
       ),
     ),
