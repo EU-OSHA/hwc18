@@ -436,6 +436,33 @@ function hwc_frontend_panels_flexible($vars) {
   $output .= "</div>\n</div>\n";
   return $output;
 }
+
+function hwc_frontend_field($variables) {
+  $output = '';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    if (in_array($variables['element']['#field_name'], ['field_download_pdf', 'field_external_link'])) {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    }
+    else {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+    }
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}
+
 function hwc_frontend_preprocess_field(&$variables) {
   // Add theme suggestion for field based on field name and view mode.
   if (!empty($variables['element']['#view_mode'])) {

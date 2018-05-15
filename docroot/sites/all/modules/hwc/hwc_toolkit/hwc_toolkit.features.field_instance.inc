@@ -1018,6 +1018,7 @@ function hwc_toolkit_field_default_field_instances() {
           'description' => 0,
           'field_formatter_class' => '',
           'label' => 'Download',
+          'open_new_tab' => 1,
           'size' => 1,
         ),
         'type' => 'icon_file_formatter',
@@ -1080,7 +1081,7 @@ function hwc_toolkit_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_download_pdf',
-    'label' => 'Downloads PDF',
+    'label' => 'Download PDF',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
@@ -3096,7 +3097,7 @@ function hwc_toolkit_field_default_field_instances() {
   t('Body');
   t('Country');
   t('Description');
-  t('Downloads PDF');
+  t('Download PDF');
   t('Examples');
   t('Image');
   t('Introduction');
