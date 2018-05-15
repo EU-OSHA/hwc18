@@ -22,14 +22,28 @@ jQuery(document).ready(function() {
     	if(jQuery(this).siblings("ul").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
     		//jQuery(this).removeClass("active");
-    		jQuery(this).siblings("ul").hide();
+    		jQuery(this).siblings("ul").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
     		//jQuery(this).addClass("active");
-    		jQuery(this).siblings("ul").show();
+    		jQuery(this).siblings("ul").slideDown();
     	}
     	
     });
+
+    //toolkit download pdf & links
+    jQuery(".node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label, .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label").click(function(){
+    	if(jQuery(this).siblings(".field-items").is(":visible")){
+    		jQuery(this).removeClass("up-arrow");
+    		//jQuery(this).removeClass("active");
+    		jQuery(this).siblings(".field-items").slideUp();
+    	}else{
+    		jQuery(this).addClass("up-arrow");
+    		//jQuery(this).addClass("active");
+    		jQuery(this).siblings(".field-items").slideDown();
+    	}
+    });
+
 
     // Detect objectFit support
 	//if('objectFit' in document.documentElement.style === false) {
