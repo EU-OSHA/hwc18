@@ -10681,10 +10681,15 @@ input#edit-field-image-und-0-upload::before {
 		.node-tk-tool{
 			.field-name-field-introduction,
 			.field-name-body{
-				ul{
+				ul,ol{
 					padding-left: 18px;
 					li{
 						margin-bottom: 15px;
+						ul,ol{
+							li:first-child{
+								margin-top: 15px;
+							}
+						}
 					}
 				}
 			}
@@ -11049,12 +11054,56 @@ input#edit-field-image-und-0-upload::before {
 					margin-bottom: 5px;
 				}
 			}
+			.field-name-field-download-pdf,
 			.field-name-field-external-link{
+				.field-items{
+					border: 2px solid @h2-default-color-2;
+					border-top: none;
+					background-color: @bg-color-grey-toolkit;
+					padding: 25px 15px;
+					display: none;
+					a, span{
+						color: @color-h2-toolkit;
+					}
+				}
 				.field-label{
-
+					background-color: @h2-default-color-2;
+					color: white;
+					padding: 10px 15px;
+					font-size: 1.2em;
+					font-weight: 500;
+					cursor: pointer;
+					&:hover{
+						background-color:  @hover-grey-button-toolkit;
+					}
+					&:after{
+						content:"\e250";
+						font-family: "Glyphicons Halflings";
+						float: right;
+						vertical-align: middle;
+					}
+				}
+				.field-label.up-arrow{
+					&:after{
+						content:"\e252";
+					}
+				}
+				
+			}
+			.field-name-field-download-pdf{
+				.field-label{
+					
 				}
 				.field-items{
-
+					
+				}
+			}
+			.field-name-field-external-link{
+				.field-label{
+					
+				}
+				.field-items{
+					
 				}
 			}
 		}
