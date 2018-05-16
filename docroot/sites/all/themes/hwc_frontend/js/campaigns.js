@@ -31,6 +31,20 @@ jQuery(document).ready(function() {
     	
     });
 
+    //menu toolkit tablet & mobile
+    jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu-index").click(function(){
+    	if(jQuery(this).siblings(".menu").is(":visible")){
+    		jQuery(this).removeClass("up-arrow");
+    		//jQuery(this).removeClass("active");
+    		jQuery(this).siblings(".menu").slideUp();
+    	}else{
+    		jQuery(this).addClass("up-arrow");
+    		//jQuery(this).addClass("active");
+    		jQuery(this).siblings(".menu").slideDown();
+    	}
+    	
+    });
+
     //toolkit download pdf & links
     jQuery(".node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label, .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label").click(function(){
     	if(jQuery(this).siblings(".field-items").is(":visible")){
