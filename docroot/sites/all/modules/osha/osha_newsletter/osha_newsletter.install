@@ -228,3 +228,10 @@ function osha_newsletter_update_7008() {
 function osha_newsletter_update_7009() {
   features_revert_module('osha_newsletter');
 }
+
+/**
+ * MDR-1932 HWC newsletter has to be improved!.
+ */
+function osha_newsletter_update_7010() {
+  features_revert_module('osha_newsletter');
+}

@@ -139,12 +139,12 @@ $directory = drupal_get_path('module','osha_newsletter');
                   <?php print t("Healthy Workplaces Campaign Newsletter");?>
                 </td>
                 <td style="width: 30%; text-align: right; font-size: 24px; font-weight: normal; color: #ffffff; font-family: Arial,sans-serif;" class="header-date hidden-print responsive-column">
-                  <?php
-                    // $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y');
-                    print t($newsletter_ready_date);
-                  ?>
+                  <?php print t($newsletter_ready_date); ?>
                 </td>
               </tr>
+            <tr class="intro"><td colspan="2">
+                    <p style="font-style: italic; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif;"><?php print t($newsletter_intro);?></p>
+                </td></tr>
             </tbody>
           </table>
          </div>
