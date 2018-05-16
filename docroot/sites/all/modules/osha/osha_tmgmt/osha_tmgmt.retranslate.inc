@@ -5,6 +5,27 @@ define("ID_PREFIX", "tmgmt-");
 class OshaTMGMTRetranslate {
 
   /**
+   * Recursively remove all tmgmt-id attributes from markup
+   */
+  public static function cleanup_text($text) {
+    if (empty($text)) {
+      // Return empty array for empty text to avoid warnings
+      return array();
+    }
+    $dom = self::getDOMDocument($text);
+    $body = $dom->getElementsByTagName('body')->item(0);
+
+    $result = array();
+    $callback = function(&$item, &$result, $div_start, $div_end) {
+      if (get_class($item) == 'DOMElement') {
+        $item->removeAttribute('id');
+      }
+    };
+    self::browseDOMRecursive($body->childNodes, $callback, $result, TRUE, TRUE);
+    return self::getHTML($body->childNodes);
+  }
+
+  /**
    * Add data-translation-id for level 1 HTML elements.
    */
   public static function prepare_text($text) {

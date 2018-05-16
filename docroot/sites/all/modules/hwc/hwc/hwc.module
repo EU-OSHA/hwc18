@@ -423,6 +423,10 @@ function hwc_field_formatter_info() {
         'custom_title' => '',
       ),
     ),
+    'body_with_summary' => array(
+      'label' => t('body with summary'),
+      'field types' => array('text_with_summary'),
+    ),
   );
   return $info;
 }
@@ -618,6 +622,17 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
       }
       break;
 
+    case 'body_with_summary':
+      foreach ($items as $delta => $item) {
+        $output = _text_sanitize($instance, $langcode, $item, 'summary');
+        if ($output) {
+          $output = '<div class="body-summary">' . $output . '</div>';
+        }
+        $output .= _text_sanitize($instance, $langcode, $item, 'value');
+        $element[$delta] = array('#markup' => $output);
+      }
+      break;
+
   }
   return $element;
 }
@@ -715,6 +730,11 @@ function hwc_content_post_render($content) {
   $content = str_replace('for="edit-submitted-activities"', '', $content);
   $content = str_replace('for="security_code"', 'for="edit-search-block-form--2"', $content);
   $content = str_replace('for="edit-captcha-response"', 'for="security_code"', $content);
+  return $content;
+}
+
+function hwc_content_post_render_add_classes($content) {
+  $content = str_replace('region region-content', 'region region-content col-md-9', $content);
   return $content;
 }
 

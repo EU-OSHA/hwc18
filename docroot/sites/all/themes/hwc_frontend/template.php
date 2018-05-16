@@ -71,11 +71,25 @@ function hwc_frontend_menu_link(array $variables) {
  * Implements hook_preprocess_html().
  */
 function hwc_frontend_preprocess_html(&$vars) {
+  $n = menu_get_object('node');
+  if ($n) {
+    switch ($n->type) {
+      case "tk_section":
+      case "tk_article":
+      case "tk_tool":
+      case "tk_example":
+      case "tk_topic":
+        $vars['classes_array'][] = 'toolkit-page';
+        break;
+    }
+  } else if ($term = menu_get_object('taxonomy_term', 2)) {
+    $vars['classes_array'][] = 'toolkit-page';
+  }
+
   if (!empty($vars['is_front'])) {
     $vars['head_title'] = t('Healthy Workplaces MANAGE DANGEROUS SUBSTANCES 2018-19');
   }
   if (arg(0) . arg(2) == 'nodeedit') {
-    $n = menu_get_object('node');
     if ($n->type == 'news' || $n->type == 'events') {
       $vars['classes_array'][] = 'pz-page';
     }
@@ -131,6 +145,14 @@ function hwc_frontend_preprocess_page(&$vars) {
       ),
     );
     switch ($node->type) {
+      case "tk_section":
+      case "tk_article":
+      case "tk_tool":
+      case "tk_example":
+      case "tk_topic":
+        $vars['page']['content']['#post_render'][] = 'hwc_content_post_render_add_classes';
+        break;
+
       case 'document':
         $link_href = 'good-practice-exchange-platform';
         $link_title = t('Back to the Good practice exchange platform');
@@ -336,6 +358,16 @@ function hwc_frontend_preprocess_page(&$vars) {
       $breadcrumbs = _path_breadcrumbs_build_breadcrumbs($pb);
       drupal_set_breadcrumb($breadcrumbs);
     }
+
+    if (
+      ($node->type == 'tk_article') ||
+      ($node->type == 'tk_topic') ||
+      ($node->type == 'tk_tool') ||
+      ($node->type == 'tk_example')
+    ) {
+      $breadcrumb = hwc_toolkit_menu_breadcrumbs();
+      drupal_set_breadcrumb($breadcrumb);
+    }
   }
 
   // Add back link (e.g. 'Back to homepage') for Partners pages.
@@ -404,6 +436,33 @@ function hwc_frontend_panels_flexible($vars) {
   $output .= "</div>\n</div>\n";
   return $output;
 }
+
+function hwc_frontend_field($variables) {
+  $output = '';
+  // Render the label, if it's not hidden.
+  if (!$variables['label_hidden']) {
+    if (in_array($variables['element']['#field_name'], ['field_download_pdf', 'field_external_link'])) {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . '</div>';
+    }
+    else {
+      $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
+    }
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<div class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}
+
 function hwc_frontend_preprocess_field(&$variables) {
   // Add theme suggestion for field based on field name and view mode.
   if (!empty($variables['element']['#view_mode'])) {
@@ -471,12 +530,13 @@ function hwc_frontend_preprocess_node(&$vars) {
     }
   }
 
-  // Hide share widget
+  // Hide share widget.
   $exclude_nid = array('129');
-  if(in_array($vars['node']->nid, $exclude_nid)){
+  if (in_array($vars['node']->nid, $exclude_nid)) {
     unset($vars['content']['share_widget']);
   }
   hwc_frontend_top_anchor($vars);
+
 }
 
 function hwc_frontend_file_upload_help($variables) {

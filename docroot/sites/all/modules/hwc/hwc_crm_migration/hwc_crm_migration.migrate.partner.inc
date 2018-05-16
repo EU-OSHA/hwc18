@@ -308,7 +308,7 @@ class PartnerMigrateListXml extends AbstractCrmMigrateListXml {
         }
         $ready_to_import++;
       }
-      if (($user->uid == 1) && (arg(2) == 'migrate')) {
+      if (($user->uid == 1) && (arg(2) == 'migrate') && (isset($_REQUEST['debug']))) {
         drupal_set_message(strtr('File: @file', array('@file' => $this->file)));
         drupal_set_message(strtr('Total: @total', array('@total' => $total)));
         drupal_set_message(strtr('Ready to import: @ready_to_import', array('@ready_to_import' => $ready_to_import)));
