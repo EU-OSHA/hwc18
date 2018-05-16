@@ -19427,6 +19427,10 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .index-button:after {
   color: white;
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  float: right;
+  vertical-align: middle;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here {
   border-color: #10a748;
@@ -19514,6 +19518,10 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > ul > li.expanded.active > ul {
   display: block;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container .menu-index.up-arrow .index-button:after {
+  content: "\e252";
+  font-family: "Glyphicons Halflings";
 }
 .toolkit-page .main-container .page_title h1.page-header {
   display: none;
@@ -20115,6 +20123,22 @@ input#edit-field-image-und-0-upload::before {
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label.up-arrow:after,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label.up-arrow:after {
   content: "\e252";
+}
+.node-type-tk-example #block-hwc-toolkit-toolkit-go-back a {
+  color: #749b00;
+  font-weight: 600;
+  text-align: right;
+  display: block;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  font-size: 1.2em;
+}
+.node-type-tk-example #block-hwc-toolkit-toolkit-go-back a:after {
+  content: url(../images/content/back-arrow-toolkit.png);
+  margin-left: 10px;
+}
+.node-type-tk-example .above_title {
+  margin-bottom: 25px !important;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
@@ -22464,6 +22488,42 @@ input#edit-field-image-und-0-upload::before {
   }
   .checkbox input[type=checkbox]:checked {
     margin-left: -18px;
+  }
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu {
+    margin-bottom: 20px;
+  }
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu-index {
+    display: inline-block;
+  }
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu {
+    display: none;
+  }
+  .toolkit-page .region-content.col-md-9 {
+    clear: both;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .toolkit-page .main-container .above_title {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .toolkit-page #block-hwc-toolkit-toolkit-go-back {
+    display: none;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples {
+    margin-bottom: 50px;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators {
+    display: none;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-left {
+    width: 35%;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right {
+    width: 65%;
+  }
+  .node-type-tk-example .above_title {
+    margin-bottom: 50px !important;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -25640,6 +25700,132 @@ input#edit-field-image-und-0-upload::before {
   }
   .pane-good-practice-exchange-introduction .views-row .title {
     font-size: 1.4em;
+  }
+  .toolkit-page .above_title {
+    display: none;
+  }
+  .toolkit-page #block-hwc-toolkit-toolkit-nav {
+    margin-bottom: 0px;
+    display: inline-block;
+  }
+  .toolkit-page #block-hwc-toolkit-toolkit-nav .prev-button {
+    margin-bottom: 25px;
+  }
+  .toolkit-page .pane-hwc-toolkit-toolkit-nav {
+    margin-bottom: 0px;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline-block;
+  }
+  .toolkit-page .pane-hwc-toolkit-toolkit-nav .prev-button {
+    margin-bottom: 25px;
+  }
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu-index {
+    display: block;
+  }
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu-index > li span {
+    display: block;
+  }
+  .toolkit-page .region-content.col-md-9 {
+    clear: both;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .toolkit-page .main-container .above_title {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .toolkit-page #block-hwc-toolkit-toolkit-go-back {
+    display: none;
+  }
+  .toolkit-page .main-container h2 {
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 1.6em !important;
+  }
+  .toolkit-page .main-container .start-here .col {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .toolkit-page .main-container .start-here .col .col-inner h3 {
+    margin-bottom: 30px;
+  }
+  .toolkit-page .main-container .start-here .col .col-inner p.subtitle {
+    display: none;
+  }
+  .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-left {
+    display: none;
+  }
+  .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right {
+    padding: 30px 15px;
+    position: relative;
+    left: inherit;
+  }
+  .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right .field-name-node-link {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right .field-name-node-link .field-item {
+    margin-bottom: 0px;
+  }
+  .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right .field-type-text-with-summary p {
+    font-weight: 400;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    margin-bottom: 15px;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    display: none;
+  }
+  .toolkit-page .main-container .node-tk-tool .field-name-field-benefits {
+    padding: 30px 15px;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples {
+    margin-bottom: 0px;
+    padding: 30px 45px;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators {
+    display: none;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-left {
+    display: none;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right {
+    width: 100%;
+  }
+  .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right .field-name-node-link {
+    text-align: center;
+  }
+  .node-type-tk-example .above_title {
+    margin-bottom: 50px !important;
+  }
+  .node-type-tk-topic .node-tk-topic .group-left {
+    width: 100%;
+  }
+  .node-type-tk-topic .node-tk-topic .group-right {
+    width: 100%;
+  }
+  .node-type-tk-topic .node-tk-topic .group-right .field-name-field-image {
+    padding-left: 0px;
+  }
+  .page-node-6358 .node-tk-article .group-left,
+  .node-type-tk-example .node-tk-article .group-left,
+  .page-node-6358 .node-tk-example .group-left,
+  .node-type-tk-example .node-tk-example .group-left {
+    width: 100%;
+  }
+  .page-node-6358 .node-tk-article .group-right,
+  .node-type-tk-example .node-tk-article .group-right,
+  .page-node-6358 .node-tk-example .group-right,
+  .node-type-tk-example .node-tk-example .group-right {
+    width: 100%;
+  }
+  .page-node-6358 .node-tk-article .group-right .field-name-field-image,
+  .node-type-tk-example .node-tk-article .group-right .field-name-field-image,
+  .page-node-6358 .node-tk-example .group-right .field-name-field-image,
+  .node-type-tk-example .node-tk-example .group-right .field-name-field-image {
+    padding-left: 0px;
   }
 }
 @media only screen and (max-width: 480px) {
