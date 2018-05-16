@@ -35,14 +35,14 @@ function social_dashboard_media_centre_form($form, $form_state) {
   $output .= "</script>\n";
 
   $options = [
-    '' => 'All',
-    'facebook' => 'Facebook world',
-    'twitter' => 'Twitter world',
-    'linkedin' => 'Linkedin world'
+    '' => t('All'),
+    'facebook' => t('Facebook'),
+    'twitter' => t('Twitter'),
+    'linkedin' => t('Linkedin'),
   ];
   $form['source'] = array(
     '#type' => 'select',
-    '#title' => 'All', // @todo hide via css
+    '#title' => 'All',
     '#options' => $options,
     '#suffix' => $output,
   );
@@ -103,15 +103,15 @@ function social_dashboard_cronapi() {
   return array(
     'social_dashboard_linkedin_cron' => array(
       'description' => 'Download linkedin updates',
-      'rule' => '0 */2 * * *', // Every two hours
+      'rule' => '*/5 * * * *',
     ),
     'social_dashboard_twitter_cron' => array(
       'description' => 'Download twitter tweets',
-      'rule' => '0 */2 * * *', // Every two hours
+      'rule' => '*/5 * * * *',
     ),
     'social_dashboard_facebook_cron' => array(
       'description' => 'Download facebook posts',
-      'rule' => '0 */2 * * *', // Every two hours
+      'rule' => '*/5 * * * *',
     ),
   );
 }
@@ -172,9 +172,9 @@ function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-social-dashboard-page') {
     $options = [
       '' => 'All',
-      'facebook' => 'Facebook world',
-      'twitter' => 'Twitter world',
-      'linkedin' => 'Linkedin world'
+      'facebook' => t('Facebook'),
+      'twitter' => t('Twitter'),
+      'linkedin' => t('Linkedin'),
     ];
 
     $form['source'] = array(
@@ -201,14 +201,14 @@ function social_dashboard_views_query_alter(&$view, &$query) {
     $map['linkedin'] = variable_get('social_linkedin_selected_tag', '');
     $map['twitter'] = variable_get('social_twitter_selected_tag', '');
 
-    foreach($map as $source => $selected_tag) {
+    foreach ($map as $source => $selected_tag) {
       if (isset($_REQUEST['source']) && $_REQUEST['source'] && $source != $_REQUEST['source']) {
         continue;
       }
       $condition_group = [
         'conditions' => [],
         'args' => [],
-        'type' => 'AND'
+        'type' => 'AND',
       ];
       if ($selected_tag) {
         $condition_group['conditions'][] = [
@@ -239,7 +239,7 @@ function social_dashboard_menu() {
   $menu = [];
 
   $sources = social_dashboard_social_dashboard_sources();
-  foreach($sources as $source => $source_name) {
+  foreach ($sources as $source => $source_name) {
     $menu += [
       $base . $source => array(
         'title' => $source_name,
@@ -279,29 +279,29 @@ function social_dashboard_menu() {
   }
 
   return array(
-      'admin/config/media/social-dashboard' => array(
-        'title' => 'Dashboard Settings',
-        'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('social_dashboard_settings_form'),
-        'access callback' => 'user_access',
-        'access arguments' => array('administer social dashboard'),
-        'type' => MENU_NORMAL_ITEM,
-        'file' => 'social_dashboard.admin.inc',
-        'module' => 'social_dashboard',
-      ),
+    'admin/config/media/social-dashboard' => array(
+      'title' => 'Dashboard Settings',
+      'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('social_dashboard_settings_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('administer social dashboard'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'social_dashboard.admin.inc',
+      'module' => 'social_dashboard',
+    ),
 
-      'admin/config/media/social-dashboard/settings' => array(
-        'title' => 'Dashboard Settings',
-        'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('social_dashboard_settings_form'),
-        'access callback' => 'user_access',
-        'access arguments' => array('administer social dashboard'),
-        'type' => MENU_DEFAULT_LOCAL_TASK,
-        'file' => 'social_dashboard.admin.inc',
-        'module' => 'social_dashboard',
-      ),
+    'admin/config/media/social-dashboard/settings' => array(
+      'title' => 'Dashboard Settings',
+      'description' => 'Configure social dashboard Facebook, Twitter, Linkedin Settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('social_dashboard_settings_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('administer social dashboard'),
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'file' => 'social_dashboard.admin.inc',
+      'module' => 'social_dashboard',
+    ),
 
     ) + $menu;
 }
@@ -377,7 +377,6 @@ function social_dashboard_admin_access() {
 
 /**
  * Implement hook_theme().
- *
  */
 function social_dashboard_theme() {
   return array(
@@ -409,7 +408,7 @@ function social_dashboard_facebook_cron() {
 
   $selected_tag = variable_get('social_facebook_selected_tag', '');
   $items = social_dashboard_get_stored_items('facebook');
-  $appId  = variable_get('social_facebook_application_id', '');
+  $appId = variable_get('social_facebook_application_id', '');
   $secret = variable_get('social_facebook_consumer_secret', '');
   $page_id = variable_get('social_facebook_page_id', '');
   $access_token = $appId . '|' . $secret;
@@ -444,10 +443,14 @@ function social_dashboard_facebook_cron() {
       if (@$items[$post['id']]) {
         $entity_id = $items[$post['id']];
       }
-      $timestamp = strtotime($post['updated_time']->date);
+      $updated_time = $post['updated_time'];
+      if ($updated_time && is_object($updated_time)) {
+        $timestamp = $updated_time->getTimestamp();
+      }
       if (social_dashboard_is_item_visible($tags, $selected_tag)) {
         $weight = date('Ymd') . (9999 - $offset++);
-      } else {
+      }
+      else {
         $weight = date('Ymd') . '1000';
       }
       social_dashboard_create_dashboard_item($entity_id, $post['id'], 'facebook', $name, $content, $tags, $weight, $timestamp);
@@ -457,6 +460,9 @@ function social_dashboard_facebook_cron() {
     if ($user->uid == 1) {
       print_r($e);
     }
+  }
+  if (!count($response->getGraphEdge())) {
+    watchdog('social_dashboard', '[CRON]Error no facebook posts found!');
   }
   return count($response->getGraphEdge());
 }
@@ -481,7 +487,7 @@ function social_dashboard_linkedin_cron() {
   $count = variable_get('social_dashboard_limit', 20);
   $updates = $linkedIn->get("v1/companies/{$id}/updates?count={$count}&start={$start}");
   $offset = 0;
-  foreach($updates['values'] as $update) {
+  foreach ($updates['values'] as $update) {
     $entity_id = NULL;
     $name = @$update['updateContent']['companyStatusUpdate']['share']['content']['title'];
     $content = @$update['updateContent']['companyStatusUpdate']['share']['content']['description'];
@@ -489,7 +495,7 @@ function social_dashboard_linkedin_cron() {
     $id_str = $update['updateKey'];
     $timestamp = intval($update['timestamp'] / 1000);
     $variables = $update['updateContent'];
-    $tags = social_dashboard_get_tags($content . ' '. $name);
+    $tags = social_dashboard_get_tags($content . ' ' . $name);
     $tags = implode(',', $tags);
     if ($tags) {
       $tags .= ',';
@@ -500,10 +506,14 @@ function social_dashboard_linkedin_cron() {
 
     if (social_dashboard_is_item_visible($tags, $selected_tag)) {
       $weight = date('Ymd') . (9999 - $offset++);
-    } else {
+    }
+    else {
       $weight = date('Ymd') . '1000';
     }
     social_dashboard_create_dashboard_item($entity_id, $id_str, 'linkedin', $name, $content, $tags, $weight, $timestamp, $variables);
+  }
+  if (!count($updates['values'])) {
+    watchdog('social_dashboard', '[CRON]Error no companies updates found!');
   }
   return count($updates['values']);
 }
@@ -535,7 +545,7 @@ function social_dashboard_twitter_cron() {
   $screen_name = variable_get('social_twitter_screen_name', '');
   $count = variable_get('social_dashboard_limit', 20);
   $items = social_dashboard_get_stored_items('twitter');
-  $getfield = '?include_entities=false&include_rts=true&screen_name=' . $screen_name . '&count=' . $count;
+  $getfield = '?tweet_mode=extended&include_entities=true&include_rts=true&screen_name=' . $screen_name . '&count=' . $count;
   $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
   $requestMethod = 'GET';
   $twitter = new TwitterAPIExchange(
@@ -549,14 +559,21 @@ function social_dashboard_twitter_cron() {
   $response = $twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest();
   $tweets = json_decode($response, TRUE);
   $offset = 0;
-  foreach($tweets as $tweet) {
+  foreach ($tweets as $tweet) {
     $entity_id = NULL;
-    $content = $tweet['text'];
+    $content = substr($tweet['full_text'], 0, 255);
     $id_str = $tweet['id_str'];
     $name = $tweet['user']['screen_name'];
     $timestamp = strtotime($tweet['created_at']);
 
-    $tags = social_dashboard_get_tags($content);
+    $visible = FALSE;
+    $tags = [];
+    foreach ($tweet['entities']['hashtags'] as $hashtag) {
+      $tags[] = '#' . $hashtag['text'];
+      if ($selected_tag == '#' . $hashtag['text']) {
+        $visible = TRUE;
+      }
+    }
     $tags = implode(',', $tags);
     if ($tags) {
       $tags .= ',';
@@ -564,14 +581,16 @@ function social_dashboard_twitter_cron() {
     if (@$items[$id_str]) {
       $entity_id = $items[$id_str];
     }
-
-    if (social_dashboard_is_item_visible($tags, $selected_tag)) {
+    if ($visible) {
       $weight = date('Ymd') . (9999 - $offset++);
-    } else {
+    }
+    else {
       $weight = date('Ymd') . '1000';
     }
-
     social_dashboard_create_dashboard_item($entity_id, $id_str, 'twitter', $name, $content, $tags, $weight, $timestamp);
+  }
+  if (!count($tweets)) {
+    watchdog('social_dashboard', '[CRON]Error no twitter tweets found!');
   }
   return count($tweets);
 }
@@ -589,17 +608,18 @@ function social_dashboard_create_dashboard_item($entity_id, $social_id, $source,
     $entity->weight    = $weight;
     $entity->timestamp = $timestamp;
     $entity->variables = serialize($variables);
-  } else {
+  }
+  else {
     $entity = entity_create('dashboard_item', [
-        'social_id' => $social_id,
-        'source'    => $source,
-        'name'      => $name,
-        'content'   => $content,
-        'tags'      => $tags,
-        'weight'    => $weight,
-        'timestamp' => $timestamp,
-        'variables' => serialize($variables),
-      ]
+      'social_id' => $social_id,
+      'source'    => $source,
+      'name'      => $name,
+      'content'   => $content,
+      'tags'      => $tags,
+      'weight'    => $weight,
+      'timestamp' => $timestamp,
+      'variables' => serialize($variables),
+    ]
     );
   }
   $entity->save();

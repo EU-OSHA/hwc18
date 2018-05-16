@@ -197,9 +197,13 @@ class NCWPublicationsSource extends AbstractNCWNodeSource {
         if ($rowd = $this->fileGetContents($node_url)) {
           if ($row_ob = json_decode($rowd, TRUE)) {
             $row = new stdClass();
-            foreach ($row_ob as $k => $v) { $row->$k = $v; }
+            foreach ($row_ob as $k => $v) {
+              $row->$k = $v;
+            }
             $this->rows[$id] = $row;
-            $this->children_recursive_publications($row);
+            if (variable_get('ncw_migration_publication_check_related', TRUE)) {
+              $this->children_recursive_publications($row);
+            }
           }
         }
         else {
@@ -219,13 +223,13 @@ class NCWPublicationsSource extends AbstractNCWNodeSource {
 
 
   protected function children_recursive_publications($row) {
-    // Check the field_related_publications for children and add to source
+    // Check the field_related_publications for children and add to source.
     $tmp = new stdClass();
     $tmp->field_related_publications = $row->field_related_publications;
     $firp = field_info_field('field_related_publications');
     osha_migration_normalize_field_entityreference($tmp, 'field_related_publications', $firp);
-    foreach($tmp->field_related_publications as $cid) {
-      // Skip records already added
+    foreach ($tmp->field_related_publications as $cid) {
+      // Skip records already added.
       if (array_key_exists($cid, $this->rows)) {
         continue;
       }
@@ -233,7 +237,9 @@ class NCWPublicationsSource extends AbstractNCWNodeSource {
       if ($child_rowd = $this->fileGetContents($child_url)) {
         if ($child_row_ob = json_decode($child_rowd, TRUE)) {
           $child_row = new stdClass();
-          foreach ($child_row_ob as $k => $v) { $child_row->$k = $v; }
+          foreach ($child_row_ob as $k => $v) {
+            $child_row->$k = $v;
+          }
           $this->rows[$cid] = $child_row;
           $this->children_recursive_publications($child_row);
         }
