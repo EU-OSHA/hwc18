@@ -535,6 +535,12 @@ class OSHNewsletter {
       $newsletterVersion2Date = variable_get('osha_newsletter_version_2_deployment_time', strtotime('1 March 2017'));
       $isOldNewsletter = $newsletterVersion2Date > strtotime($source->field_publication_date[LANGUAGE_NONE][0]['value']);
     }
+
+    $newsletter_intro = NULL;
+    if (isset($source->field_newsletter_intro_text[LANGUAGE_NONE][0])) {
+      $newsletter_intro = $source->field_newsletter_intro_text[LANGUAGE_NONE][0]['value'];
+    };
+
     $content = [];
     $entityCollectionItems = entity_collection_load_content($source->bundle, $source);
 
@@ -693,7 +699,9 @@ class OSHNewsletter {
         !empty($source->field_publication_date)
           ? $source->field_publication_date[LANGUAGE_NONE][0]['value']
           : $source->field_created[LANGUAGE_NONE][0]['value'],
+      'newsletter_intro' => $newsletter_intro,
       'campaign_id' => $campaign_id,
+
     ));
 
     $footer = theme('newsletter_footer', array('campaign_id' => $campaign_id));
