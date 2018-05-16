@@ -20094,11 +20094,10 @@ input#edit-field-image-und-0-upload::before {
   padding: 25px 15px;
   display: none;
 }
-.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items a,
-.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items a,
-.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items span,
-.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items span {
-  color: #003399;
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item,
+.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items .field-item {
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label {
@@ -20123,6 +20122,35 @@ input#edit-field-image-und-0-upload::before {
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label.up-arrow:after,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label.up-arrow:after {
   content: "\e252";
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item > span,
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item > a {
+  margin-right: 5px;
+  text-decoration: none;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item > span:first-child {
+  font-weight: bold;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item a {
+  color: #003399;
+  font-weight: bold;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item .glyphicon-chevron-right:before {
+  content: url('../images/file_icons/application-pdf.png');
+  padding-left: 0px;
+  padding-right: 0px;
+  vertical-align: middle;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items a {
+  color: #003399;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items a:after {
+  content: "\e066";
+  font-family: "Glyphicons Halflings";
+  vertical-align: sub;
+  margin-left: 5px;
+  font-size: 20px;
+  color: #749b00;
 }
 .node-type-tk-example #block-hwc-toolkit-toolkit-go-back a {
   color: #749b00;

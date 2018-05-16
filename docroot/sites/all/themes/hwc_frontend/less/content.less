@@ -11073,8 +11073,9 @@ input#edit-field-image-und-0-upload::before {
 					background-color: @bg-color-grey-toolkit;
 					padding: 25px 15px;
 					display: none;
-					a, span{
-						color: @color-h2-toolkit;
+					.field-item{
+						font-size: 1.2em;
+						margin-bottom: 10px;
 					}
 				}
 				.field-label{
@@ -11102,19 +11103,41 @@ input#edit-field-image-und-0-upload::before {
 				
 			}
 			.field-name-field-download-pdf{
-				.field-label{
-					
-				}
 				.field-items{
-					
+					.field-item{
+						>span,>a{
+							margin-right: 5px;
+							text-decoration: none;
+						}
+						>span:first-child{
+							font-weight: bold;
+						}
+						a{
+							color: @color-h2-toolkit;
+							font-weight: bold;
+						}
+						.glyphicon-chevron-right:before{
+							content: url('../images/file_icons/application-pdf.png');
+							padding-left: 0px;
+							padding-right: 0px;
+							vertical-align: middle;
+						}
+					}
 				}
 			}
 			.field-name-field-external-link{
-				.field-label{
-					
-				}
 				.field-items{
-					
+					a{
+						color: @color-h2-toolkit;
+						&:after{
+							content: "\e066";
+							font-family: "Glyphicons Halflings";
+							vertical-align: sub;
+						    margin-left: 5px;
+						    font-size: 20px;
+						    color: @h2-default-color-2;
+				    	}
+					}
 				}
 			}
 		}
