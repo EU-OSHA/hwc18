@@ -1023,6 +1023,7 @@ function osha_newsletter_mail($key, &$message, $params) {
       $source = entity_collection_load($params['#style']->entity_collection->name);
       $source->requiredcontexts = array();
       osha_newsletter_build_mail($message, $source);
+      entity_save('entity_collection', $source);
       break;
 
     case 'send_newsletter':
