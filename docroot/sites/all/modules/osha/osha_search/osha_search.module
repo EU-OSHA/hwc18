@@ -89,7 +89,7 @@ function osha_search_block_view($delta = '') {
     '#markup' => '<h3>' . t('Filter results') . '</h3><div class="clear-wrapper">',
   );
   // Active links will be added onlink via js in facet_item.
-  if (arg(0) == 'search') {
+  if ((arg(0) == 'search') || (arg(0) == 'practical-tools')) {
     $content['remove_filter'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="remove_filter"></div>',
