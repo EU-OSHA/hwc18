@@ -12514,6 +12514,13 @@ article .hwc-share-widget ul {
   font-size: 32px;
   margin-bottom: 1em;
 }
+.become-partner .partners .partner .partner-opinion {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  display: block;
+  overflow: hidden;
+}
 .become-partner .partners .partner .partner-opinion p {
   font-style: italic;
 }
@@ -20101,8 +20108,8 @@ input#edit-field-image-und-0-upload::before {
     margin-right: 0px;
   }
   .node-type-article article .field-name-body {
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
   /*fin articles*/
   /* Block: recommended-articles and recommended-resources and article aditional resources*/
@@ -20509,10 +20516,6 @@ input#edit-field-image-und-0-upload::before {
     padding-right: 15px;
     height: 1%;
     overflow: hidden;
-  }
-  .become-partner .partners .partner .partner-opinion {
-    margin-right: 0;
-    margin-left: 0;
   }
   .become-partner .partners .partner .partner-opinion .quottes-left,
   .become-partner .partners .partner .partner-opinion .quottes-right {
