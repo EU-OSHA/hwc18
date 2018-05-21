@@ -244,6 +244,11 @@ function entity_collection_form_submit($form, &$form_state) {
     $form_state['values']['settings']['row_settings'] : array();
   $entity_collection->settings['style_settings'] = isset($form_state['values']['settings']['style_settings']) ?
     $form_state['values']['settings']['style_settings'] : array();
+
+  if (isset($entity_collection->settings) && !is_array($entity_collection->settings)) {
+    $entity_collection->settings = unserialize($entity_collection->settings);
+  }
+
   foreach ($form_state['values']['settings']['allowed_bundles'] as $entity_name => $allowed) {
     $entity_collection->settings['allowed_bundles'][$entity_name] = array();
     foreach ($allowed as $bundle => $allowed) {
