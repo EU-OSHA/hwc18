@@ -208,3 +208,10 @@ function osha_events_update_7016() {
 function osha_events_update_7017() {
   features_revert(array('osha_events' => array('field_instance')));
 }
+
+/**
+ * MDR-1919 Select manually and replicate in the NCW news and events created in the HWC.
+ */
+function osha_events_update_7018() {
+  features_revert_module('osha_events');
+}

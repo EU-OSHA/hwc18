@@ -1354,20 +1354,8 @@ function osha_news_field_default_field_instances() {
       ),
       'newsletter_item' => array(
         'label' => 'hidden',
-        'module' => 'smart_trim',
-        'settings' => array(
-          'field_formatter_class' => '',
-          'more_link' => FALSE,
-          'more_text' => 'Read more',
-          'summary_handler' => 'full',
-          'trim_length' => 300,
-          'trim_link' => FALSE,
-          'trim_options' => array(),
-          'trim_preserve_tags' => '',
-          'trim_suffix' => '...',
-          'trim_type' => 'chars',
-        ),
-        'type' => 'smart_trim_format',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'osha_resources' => array(
