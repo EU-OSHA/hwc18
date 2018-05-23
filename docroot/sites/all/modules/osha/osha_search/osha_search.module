@@ -26,7 +26,7 @@ function osha_search_facet_items_alter(&$build, &$settings) {
         $build[$key]['#markup'] = t('No specific group');
       }
       if ($item['#active']) {
-        $query = _osha_search_strip_param_value($query_params, $settings->facet, $item['#indexed_value']);
+        $query = _osha_search_strip_param_value($query_params, urlencode($settings->facet), $item['#indexed_value']);
         $filter_label = '<span class="glyphicon glyphicon-remove"></span>' . $item['#markup'];
         $facet_items[] = l($filter_label, $path, array('query' => $query, 'html' => TRUE));
       }
