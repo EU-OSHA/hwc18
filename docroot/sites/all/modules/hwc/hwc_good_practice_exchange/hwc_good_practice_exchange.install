@@ -165,3 +165,11 @@ function hwc_good_practice_exchange_update_7020() {
 function hwc_good_practice_exchange_update_7021() {
   features_revert_module('hwc_good_practice_exchange');
 }
+
+/**
+ * MDR-1926 HWC - Cannot add an event to good-practice-exchange as related resource.
+ */
+function hwc_good_practice_exchange_update_7022() {
+  features_revert_module('hwc_good_practice_exchange');
+  features_revert_module('osha_resources');
+}

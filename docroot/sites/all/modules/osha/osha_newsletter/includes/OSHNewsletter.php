@@ -300,7 +300,7 @@ class OSHNewsletter {
     if ($variables['section']->name == 'Events') {
       $url = url('events', ['absolute' => TRUE]);
       $content['#suffix'] .= '
-        <div class="more-link" style="background-color: #003399;display: table;margin: 0px auto;">
+        <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">
         <tr>
           <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
@@ -313,7 +313,7 @@ class OSHNewsletter {
     if ($variables['section']->name == 'Tweets') {
       $url = url('social_media_centre', ['absolute' => TRUE]);
       $content['#suffix'] .= '
-        <div class="more-link" style="background-color: #003399;display: table;margin: 0px auto;">
+        <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">
         <tr>
           <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>

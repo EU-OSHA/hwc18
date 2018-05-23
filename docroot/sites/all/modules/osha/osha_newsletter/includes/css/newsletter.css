@@ -338,11 +338,13 @@ p.tweet-link a {
 }
 
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.rs2 {
-  width: 60px;
+  width: 40px;
 }
-.newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.rs2 {
-  padding-right: 0;
+
+.newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr.tr_h > .ar {
+  padding: 0 20px 0 0;
 }
+
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.cs2 {
   padding-top: 16px;
   padding-left: 0;
