@@ -277,6 +277,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
     ncw_migration_debug('!klass: Done reading items', array('!klass' => get_class($this)));
     reset($this->rows);
   }
+
   /**
    * The list of available fields to map from the source, keyed by field name.
    */
