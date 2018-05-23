@@ -1441,7 +1441,7 @@ function osha_search_facetapi_default_facet_settings() {
         'weight' => '-48',
       ),
       'narrow_results' => array(
-        'status' => 0,
+        'status' => 1,
         'weight' => '-47',
       ),
       'show_if_minimum_items' => array(
@@ -2411,7 +2411,7 @@ function osha_search_facetapi_default_facet_settings() {
         'weight' => '-48',
       ),
       'rewrite_items' => array(
-        'status' => 0,
+        'status' => 1,
         'weight' => '-47',
       ),
       'narrow_results' => array(
@@ -2462,6 +2462,7 @@ function osha_search_facetapi_default_facet_settings() {
     'exclude' => 'Not applicable',
     'regex' => 0,
     'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_hazard_health_effects'] = $facet;
 
@@ -2512,7 +2513,32 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -2545,6 +2571,10 @@ function osha_search_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_item_type'] = $facet;
 
@@ -4211,7 +4241,36 @@ function osha_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 1,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -4244,6 +4303,10 @@ function osha_search_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_target_group'] = $facet;
 
@@ -4272,7 +4335,7 @@ function osha_search_facetapi_default_facet_settings() {
         'weight' => '-48',
       ),
       'rewrite_items' => array(
-        'status' => 0,
+        'status' => 1,
         'weight' => '-47',
       ),
       'narrow_results' => array(
@@ -4323,6 +4386,7 @@ function osha_search_facetapi_default_facet_settings() {
     'exclude' => 'Not applicable',
     'regex' => 0,
     'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_tasks_covered'] = $facet;
 
@@ -4639,7 +4703,7 @@ function osha_search_facetapi_default_facet_settings() {
         'weight' => '-48',
       ),
       'rewrite_items' => array(
-        'status' => 0,
+        'status' => 1,
         'weight' => '-47',
       ),
       'narrow_results' => array(
@@ -4690,6 +4754,7 @@ function osha_search_facetapi_default_facet_settings() {
     'exclude' => 'Not applicable',
     'regex' => 0,
     'show_minimum_items' => 2,
+    'rewrite_items' => 1,
   );
   $export['search_api@default_multilingual_node_index:block:field_worker_groups_type'] = $facet;
 
