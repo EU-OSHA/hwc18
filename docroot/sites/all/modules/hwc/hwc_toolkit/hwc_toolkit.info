@@ -38,6 +38,7 @@ features[ds_field_settings][] = node|tk_topic|teaser
 features[ds_layout_settings][] = node|tk_article|default
 features[ds_layout_settings][] = node|tk_article|title_body
 features[ds_layout_settings][] = node|tk_example|default
+features[ds_layout_settings][] = node|tk_example|teaser
 features[ds_layout_settings][] = node|tk_section|default
 features[ds_layout_settings][] = node|tk_tool|default
 features[ds_layout_settings][] = node|tk_topic|default
