@@ -42,6 +42,28 @@ function hwc_toolkit_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tk_example|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tk_example';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'node_link' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'See more',
+        'link class' => '',
+        'wrapper' => '',
+        'class' => '',
+        'field_formatter_class' => '',
+      ),
+    ),
+  );
+  $export['node|tk_example|teaser'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|tk_tool|default';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'tk_tool';
@@ -103,6 +125,13 @@ function hwc_toolkit_ds_field_settings_info() {
       'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'See more',
+        'link class' => '',
+        'wrapper' => '',
+        'class' => '',
+        'field_formatter_class' => '',
+      ),
     ),
   );
   $export['node|tk_topic|teaser'] = $ds_fieldsetting;
