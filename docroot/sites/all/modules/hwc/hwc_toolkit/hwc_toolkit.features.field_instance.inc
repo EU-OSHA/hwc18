@@ -853,7 +853,7 @@ function hwc_toolkit_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(
           'field_formatter_class' => '',
-          'trim_length' => 600,
+          'trim_length' => 300,
         ),
         'type' => 'text_summary_or_trimmed',
         'weight' => 4,
@@ -1537,7 +1537,7 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'title_class' => '',
-          'title_link' => '',
+          'title_link' => 'content',
           'title_style' => 'h3',
         ),
         'type' => 'title_linked',
