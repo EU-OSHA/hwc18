@@ -216,6 +216,8 @@ jQuery(document).ready(function() {
 	funcionesTabletMovil();
 
 	funcionesMovil();
+
+	funcionesDesktop();
 	
 	
 	//Fixing responsive menu to iPhone
@@ -295,6 +297,20 @@ jQuery(document).ready(function() {
 	 jQuery("#edit-search-block-form--2 ,#osha-publication-menu-publications-form input, #osha-publication-menu-case-studies-form input, #edit-search-api-views-fulltext-wrapper input").addClear();
 	/************************** FUNCTIONS *******************************/
 
+	function funcionesDesktop () {
+		jQuery(window).resize(function() {
+	    	windowWidth= jQuery(window).width();//window size, when resizing
+		    if(windowWidth > 976){//<-----functions for desktop
+				
+		    	jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu').css("display", "block");
+
+			}else{
+				jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu').css("display", "none");
+				jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu-index').removeClass("up-arrow");
+			}//<-----End: functions for desktop
+		});
+		
+	}
 	function funcionesTabletMovil () {
 		if(windowWidth <= 992){//<-----functions for tablet and/or mobile
 			
