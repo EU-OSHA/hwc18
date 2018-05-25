@@ -66,20 +66,29 @@ function hwc_toolkit_block_view($delta = '') {
     );
   }
   if ($delta == 'toolkit_go_back') {
-    $q = db_select('node', 'n');
-    $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
-    $q->fields('n', ['nid']);
-    $q->condition('n.type', 'tk_tool');
-    $q->condition('n.status', 1);
-    $q->condition('e.field_tk_examples_target_id', intval($active_id));
-    $rows = $q->execute()->fetchCol();
-    $block = [];
-    if ($rows) {
-      $markup = l(t('Go back'), 'node/' . $rows[0]);
+    if (isset($_REQUEST['destination'])) {
+      $markup = l(t('Go back'), 'node/' . intval($_REQUEST['destination']));
       $block['content'] = array(
         '#type' => 'markup',
         '#markup' => $markup,
       );
+    }
+    else {
+      $q = db_select('node', 'n');
+      $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+      $q->fields('n', ['nid']);
+      $q->condition('n.type', 'tk_tool');
+      $q->condition('n.status', 1);
+      $q->condition('e.field_tk_examples_target_id', intval($active_id));
+      $rows = $q->execute()->fetchCol();
+      $block = [];
+      if ($rows) {
+        $markup = l(t('Go back'), 'node/' . $rows[0]);
+        $block['content'] = array(
+          '#type' => 'markup',
+          '#markup' => $markup,
+        );
+      }
     }
   }
   return $block;
