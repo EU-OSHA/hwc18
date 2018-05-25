@@ -1118,11 +1118,11 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'link',
+        'module' => 'osha_resources',
         'settings' => array(
           'field_formatter_class' => '',
         ),
-        'type' => 'link_url',
+        'type' => 'external_url',
         'weight' => 6,
       ),
       'highlights_item' => array(

@@ -42,6 +42,28 @@ function hwc_toolkit_ds_field_settings_info() {
 
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|tk_example|teaser';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'tk_example';
+  $ds_fieldsetting->view_mode = 'teaser';
+  $ds_fieldsetting->settings = array(
+    'node_link' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'See more',
+        'link class' => '',
+        'wrapper' => '',
+        'class' => '',
+        'field_formatter_class' => '',
+      ),
+    ),
+  );
+  $export['node|tk_example|teaser'] = $ds_fieldsetting;
+
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|tk_tool|default';
   $ds_fieldsetting->entity_type = 'node';
   $ds_fieldsetting->bundle = 'tk_tool';
@@ -103,6 +125,13 @@ function hwc_toolkit_ds_field_settings_info() {
       'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'See more',
+        'link class' => '',
+        'wrapper' => '',
+        'class' => '',
+        'field_formatter_class' => '',
+      ),
     ),
   );
   $export['node|tk_topic|teaser'] = $ds_fieldsetting;
@@ -247,6 +276,52 @@ function hwc_toolkit_ds_layout_settings_info() {
     'layout_disable_css' => 0,
   );
   $export['node|tk_example|default'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|tk_example|teaser';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'tk_example';
+  $ds_layout->view_mode = 'teaser';
+  $ds_layout->layout = 'ds_2col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'left' => array(
+        0 => 'field_image',
+      ),
+      'right' => array(
+        1 => 'title_field',
+        2 => 'field_organisation',
+        3 => 'field_country',
+        4 => 'body',
+        5 => 'node_link',
+      ),
+    ),
+    'fields' => array(
+      'field_image' => 'left',
+      'title_field' => 'right',
+      'field_organisation' => 'right',
+      'field_country' => 'right',
+      'body' => 'right',
+      'node_link' => 'right',
+    ),
+    'classes' => array(
+      'layout_class' => array(
+        '' => '',
+      ),
+    ),
+    'wrappers' => array(
+      'left' => 'div',
+      'right' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
+    'layout_disable_css' => 0,
+  );
+  $export['node|tk_example|teaser'] = $ds_layout;
 
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
