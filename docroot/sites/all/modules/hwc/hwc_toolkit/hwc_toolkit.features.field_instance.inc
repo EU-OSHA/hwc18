@@ -1015,13 +1015,13 @@ function hwc_toolkit_field_default_field_instances() {
         'label' => 'above',
         'module' => 'campaign_materials',
         'settings' => array(
-          'description' => 0,
+          'description' => 1,
           'field_formatter_class' => '',
-          'label' => 'Download',
+          'label' => '',
           'open_new_tab' => 1,
           'size' => 1,
         ),
-        'type' => 'icon_file_formatter',
+        'type' => 'toolkit_pdf_file_formatter',
         'weight' => 5,
       ),
       'highlights_item' => array(

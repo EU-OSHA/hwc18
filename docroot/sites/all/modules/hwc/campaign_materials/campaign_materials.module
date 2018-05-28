@@ -22,6 +22,17 @@ function campaign_materials_field_formatter_info() {
         'open_new_tab' => 0,
       ),
     ),
+    'toolkit_pdf_file_formatter' => array(
+      'label' => t('Toolkit PDF File'),
+      'field types' => array('file'),
+      'description' => 'Displays toolkit pdf file type (optional: label, file description)',
+      'settings' => array(
+        'label' => t('Download'),
+        'description' => 0,
+        'size' => 1,
+        'open_new_tab' => 0,
+      ),
+    ),
   );
   return $info;
 }
@@ -32,6 +43,16 @@ function campaign_materials_field_formatter_info() {
 function campaign_materials_theme() {
   return array(
     'icon_file_formatter' => array(
+      'variables' => array(
+        'file' => NULL,
+        'label' => NULL,
+        'description' => NULL,
+        'size' => NULL,
+        'open_new_tab' => NULL,
+        'delta' => NULL,
+      ),
+    ),
+    'toolkit_pdf_file_formatter' => array(
       'variables' => array(
         'file' => NULL,
         'label' => NULL,
@@ -115,6 +136,26 @@ function campaign_materials_field_formatter_view($entity_type, $entity, $field, 
       }
 
       break;
+    case 'toolkit_pdf_file_formatter':
+      $settings = $display['settings'];
+      $label = trim($settings['label']);
+      $description = $settings['description'];
+      $size = $settings['size'];
+      $open_new_tab = $settings['open_new_tab'];
+
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'toolkit_pdf_file_formatter',
+          '#file' => $item,
+          '#label' => $label,
+          '#description' => $description,
+          '#size' => $size,
+          '#open_new_tab' => $open_new_tab,
+          '#delta' => $delta,
+        );
+      }
+
+      break;
   }
   return $element;
 }
@@ -158,6 +199,45 @@ function theme_icon_file_formatter($element) {
   }
 
   $output .= '</a>';
+
+  $output .= '<span class="glyphicon glyphicon-chevron-right"></span>';
+
+  return $output;
+}
+
+/**
+ * Formats the file fields as label , icon , description/filename, filesize
+ */
+function theme_toolkit_pdf_file_formatter($element) {
+  $file = (object) $element['file'];
+  $name = ($file->description != NULL) ? $file->description : $file->filename;
+  $label = $element['label'];
+  $description = $element['description'];
+  $show_size = $element['size'];
+  $open_new_tab = $element['open_new_tab'];
+
+  $output = '';
+  if ($label != '') {
+    $output .= '<span>' . t($label) . '</span>';
+  }
+
+  $attr = "";
+  if ($open_new_tab) {
+    $attr = ' target="_blank"';
+  }
+  $output .= '<a' . $attr . ' href="' . file_create_url($file->uri) . '">';
+
+  if ($description) {
+    $output .= '<span>' . $name . '</span>';
+  }
+
+  $output .= '</a>';
+
+  $file_size = @filesize($file->uri);
+
+  if ($show_size && $file_size) {
+    $output .= '<span class="file_size">' . format_size($file_size) . '</span>';
+  }
 
   $output .= '<span class="glyphicon glyphicon-chevron-right"></span>';
 
