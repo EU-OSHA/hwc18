@@ -91,3 +91,10 @@ function osha_news_update_7012() {
 function osha_news_update_7013() {
   features_revert_module('osha_news');
 }
+
+/**
+ * MDR-1954 Newsletter: Uniformize the length of the text of the related news.
+ */
+function osha_news_update_7014() {
+  features_revert(array('osha_news' => 'field_instance'));
+}
