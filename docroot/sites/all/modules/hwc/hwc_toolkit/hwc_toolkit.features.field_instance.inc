@@ -1087,7 +1087,7 @@ function hwc_toolkit_field_default_field_instances() {
       'description_field' => 0,
       'entity_translation_sync' => FALSE,
       'file_directory' => '',
-      'file_extensions' => 'pdf',
+      'file_extensions' => 'pdf jpeg ppt pptx mp3',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
