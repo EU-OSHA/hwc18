@@ -91,7 +91,7 @@ if (!empty($campaign_id)) {
                   ?>
                 </td>
                 <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
-                    <div><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
+                    <div style="font-weight: bold;"><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
                     <div>
                       <?php
                       print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(

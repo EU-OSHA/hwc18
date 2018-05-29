@@ -185,7 +185,8 @@ function hwc_homepage_panels_pane_content_alter($content, $pane, $args, $context
   }
 }
 
-function _hwc_trim_view_results_titles(&$result, $max = 80) {
+function _hwc_trim_view_results_titles(&$result) {
+  $max = variable_get('trim_titles_max_len', 100);
   foreach ($result as &$row) {
     $safe_value = $row->field_title_field[0]['raw']['safe_value'];
     if (drupal_strlen($safe_value) > $max) {

@@ -83,9 +83,20 @@ th {
 }
 
 .header-banner > tbody > tr > td {
-  padding: 17px 20px 28px 20px;
+  padding: 17px 20px 0px 20px;
   line-height: 1.1;
 }
+
+.header-banner > tbody > tr.intro > td {
+  padding: 14px 20px 28px 20px;
+  line-height: 1.1;
+}
+
+.header-banner > tbody > tr.intro > td p {
+  padding: 0;
+  margin: 0;
+}
+
 .header-date {
   font-size: 24px;
 }
@@ -327,11 +338,13 @@ p.tweet-link a {
 }
 
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.rs2 {
-  width: 60px;
+  width: 40px;
 }
-.newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.rs2 {
-  padding-right: 0;
+
+.newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr.tr_h > .ar {
+  padding: 0 20px 0 0;
 }
+
 .newsletter-full-width-2-col-blocks-item > .newsletter-item > tbody > tr > td.cs2 {
   padding-top: 16px;
   padding-left: 0;

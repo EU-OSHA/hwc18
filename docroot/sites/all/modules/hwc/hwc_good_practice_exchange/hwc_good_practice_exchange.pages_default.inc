@@ -666,6 +666,41 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $display->content['new-879326bb-4778-4203-86c9-8c2121dcb495'] = $pane;
   $display->panels['center'][2] = 'new-879326bb-4778-4203-86c9-8c2121dcb495';
   $pane = new stdClass();
+  $pane->pid = 'new-d067b645-d2d3-41d6-8c8a-22f73e2cf466';
+  $pane->panel = 'center';
+  $pane->type = 'views';
+  $pane->subtype = 'additional_resources';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_pager_settings' => 0,
+    'use_pager' => 0,
+    'nodes_per_page' => '0',
+    'pager_id' => '0',
+    'offset' => '0',
+    'more_link' => 0,
+    'feed_icons' => 0,
+    'panel_args' => 0,
+    'link_to_view' => 0,
+    'args' => '',
+    'url' => '',
+    'display' => 'gpe_events',
+    'override_title' => 1,
+    'override_title_text' => '<none>',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 3;
+  $pane->locks = array();
+  $pane->uuid = 'd067b645-d2d3-41d6-8c8a-22f73e2cf466';
+  $display->content['new-d067b645-d2d3-41d6-8c8a-22f73e2cf466'] = $pane;
+  $display->panels['center'][3] = 'new-d067b645-d2d3-41d6-8c8a-22f73e2cf466';
+  $pane = new stdClass();
   $pane->pid = 'new-449d8322-01ee-428a-83b1-c327dc4999a7';
   $pane->panel = 'center';
   $pane->type = 'views';
@@ -698,11 +733,11 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
     'css_class' => 'container',
   );
   $pane->extras = array();
-  $pane->position = 3;
+  $pane->position = 4;
   $pane->locks = array();
   $pane->uuid = '449d8322-01ee-428a-83b1-c327dc4999a7';
   $display->content['new-449d8322-01ee-428a-83b1-c327dc4999a7'] = $pane;
-  $display->panels['center'][3] = 'new-449d8322-01ee-428a-83b1-c327dc4999a7';
+  $display->panels['center'][4] = 'new-449d8322-01ee-428a-83b1-c327dc4999a7';
   $pane = new stdClass();
   $pane->pid = 'new-f5eb3bc8-1368-408a-88d4-ed34819ac917';
   $pane->panel = 'center';
@@ -724,11 +759,11 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
     'css_class' => 'container',
   );
   $pane->extras = array();
-  $pane->position = 4;
+  $pane->position = 5;
   $pane->locks = array();
   $pane->uuid = 'f5eb3bc8-1368-408a-88d4-ed34819ac917';
   $display->content['new-f5eb3bc8-1368-408a-88d4-ed34819ac917'] = $pane;
-  $display->panels['center'][4] = 'new-f5eb3bc8-1368-408a-88d4-ed34819ac917';
+  $display->panels['center'][5] = 'new-f5eb3bc8-1368-408a-88d4-ed34819ac917';
   $pane = new stdClass();
   $pane->pid = 'new-b202e51f-96bb-4bbc-872f-3118418b7a07';
   $pane->panel = 'center';
@@ -747,11 +782,11 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 5;
+  $pane->position = 6;
   $pane->locks = array();
   $pane->uuid = 'b202e51f-96bb-4bbc-872f-3118418b7a07';
   $display->content['new-b202e51f-96bb-4bbc-872f-3118418b7a07'] = $pane;
-  $display->panels['center'][5] = 'new-b202e51f-96bb-4bbc-872f-3118418b7a07';
+  $display->panels['center'][6] = 'new-b202e51f-96bb-4bbc-872f-3118418b7a07';
   $pane = new stdClass();
   $pane->pid = 'new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
   $pane->panel = 'center';
@@ -770,11 +805,11 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 6;
+  $pane->position = 7;
   $pane->locks = array();
   $pane->uuid = '87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
   $display->content['new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952'] = $pane;
-  $display->panels['center'][6] = 'new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
+  $display->panels['center'][7] = 'new-87eb0c94-bce5-4fa0-a9f5-ba2b63ee9952';
   $pane = new stdClass();
   $pane->pid = 'new-6f2d5de0-abcf-44df-8036-37876ebd1e87';
   $pane->panel = 'center';
@@ -785,8 +820,8 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $pane->configuration = array(
     'buttons' => NULL,
     'custom_page_title_pattern' => '%node:title_field | [site:name]',
-    'form_build_id' => 'form-Q-f8jwe87PXcMSZ8ZDIviGvIj1ssEH83jYXkbWDYu9U',
-    'form_token' => 'aXVB0k2ZxkdtYKOWGfIueWJDv04JkokckDshkSsu9sQ',
+    'form_build_id' => 'form-j47ZeJUzDMMExiPAa9nWxv7Vg4lApc5R2PK4gH0Nho4',
+    'form_token' => 'kjaBuDPfwwk9IOgu2xytFpt-cEcnpH8UHOvPU-FJ6fY',
     'form_id' => 'panels_custom_title_tag_edit_form',
   );
   $pane->cache = array();
@@ -795,11 +830,11 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 7;
+  $pane->position = 8;
   $pane->locks = array();
   $pane->uuid = '6f2d5de0-abcf-44df-8036-37876ebd1e87';
   $display->content['new-6f2d5de0-abcf-44df-8036-37876ebd1e87'] = $pane;
-  $display->panels['center'][7] = 'new-6f2d5de0-abcf-44df-8036-37876ebd1e87';
+  $display->panels['center'][8] = 'new-6f2d5de0-abcf-44df-8036-37876ebd1e87';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

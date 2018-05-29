@@ -356,19 +356,6 @@ function hwc_good_practice_exchange_views_default_views() {
     'good_practice_exchange' => 0,
     'homepage_about_the_topic' => 0,
   );
-  /* Field: Field: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => 'small_thumbnail_mc_150_150',
-    'image_link' => '',
-    'field_formatter_class' => '',
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -394,13 +381,7 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="col-sm-3 hidden-xs">
-[field_image]
-</div>
-<div class="col-sm-9">
-<div class="title">
-[title]
-</div>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="col-sm-12">
 <div class="body">
 [body]
 </div>
@@ -438,13 +419,7 @@ function hwc_good_practice_exchange_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('queue'),
-    t('<div class="col-sm-3 hidden-xs">
-[field_image]
-</div>
-<div class="col-sm-9">
-<div class="title">
-[title]
-</div>
+    t('<div class="col-sm-12">
 <div class="body">
 [body]
 </div>

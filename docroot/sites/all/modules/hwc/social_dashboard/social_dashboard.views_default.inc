@@ -136,6 +136,7 @@ function social_dashboard_views_default_views() {
   $handler->display->display_options['fields']['dashboard_item_id']['id'] = 'dashboard_item_id';
   $handler->display->display_options['fields']['dashboard_item_id']['table'] = 'dashboard_item';
   $handler->display->display_options['fields']['dashboard_item_id']['field'] = 'dashboard_item_id';
+  $handler->display->display_options['fields']['dashboard_item_id']['separator'] = '';
   /* Sort criterion: Dashboard item: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'dashboard_item';
@@ -454,7 +455,6 @@ function social_dashboard_views_default_views() {
     t('Timestamp'),
     t('Internal, numeric dashboard item ID'),
     t('.'),
-    t(','),
     t('Page'),
     t('Latest Tweets'),
     t('More social media'),

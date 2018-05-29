@@ -113,13 +113,13 @@ function osha_news_ds_layout_settings_info() {
         14 => 'field_character_count',
         15 => 'field_archived',
         16 => 'field_modified_on',
+        21 => 'field_show_in_ncw',
       ),
       'hidden' => array(
         17 => 'field_modified_by',
         18 => 'xmlsitemap',
         19 => 'field_wf_notification',
         20 => 'field_migration_source',
-        21 => 'field_show_in_ncw',
         22 => '_add_existing_field',
       ),
     ),
@@ -145,7 +145,7 @@ function osha_news_ds_layout_settings_info() {
       'xmlsitemap' => 'hidden',
       'field_wf_notification' => 'hidden',
       'field_migration_source' => 'hidden',
-      'field_show_in_ncw' => 'hidden',
+      'field_show_in_ncw' => 'footer',
       '_add_existing_field' => 'hidden',
     ),
     'classes' => array(
@@ -188,6 +188,7 @@ function osha_news_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['node|news|form'] = $ds_layout;
 
