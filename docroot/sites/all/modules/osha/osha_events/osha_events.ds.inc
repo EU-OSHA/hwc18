@@ -175,6 +175,7 @@ function osha_events_ds_layout_settings_info() {
         31 => 'field_number_of_attendees',
         32 => 'field_color',
         33 => 'field_modified_on',
+        39 => 'field_show_in_ncw',
       ),
       'hidden' => array(
         34 => 'field_modified_by',
@@ -182,7 +183,6 @@ function osha_events_ds_layout_settings_info() {
         36 => 'xmlsitemap',
         37 => 'field_wf_notification',
         38 => 'field_migration_source',
-        39 => 'field_show_in_ncw',
         40 => '_add_existing_field',
       ),
     ),
@@ -226,7 +226,7 @@ function osha_events_ds_layout_settings_info() {
       'xmlsitemap' => 'hidden',
       'field_wf_notification' => 'hidden',
       'field_migration_source' => 'hidden',
-      'field_show_in_ncw' => 'hidden',
+      'field_show_in_ncw' => 'footer',
       '_add_existing_field' => 'hidden',
     ),
     'classes' => array(
@@ -266,6 +266,7 @@ function osha_events_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',
+    'layout_disable_css' => FALSE,
   );
   $export['node|events|form'] = $ds_layout;
 
