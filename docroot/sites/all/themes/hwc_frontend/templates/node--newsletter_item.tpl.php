@@ -75,7 +75,7 @@ if (!empty($campaign_id)) {
                   <?php
                   if (isset($field_image)) {
                       print l(theme('image_style', array(
-                        'style_name' => 'medium_crop_220',
+                        'style_name' => 'medium_newsletter_crop',
                         'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
                         'width' => 220,
                         'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
