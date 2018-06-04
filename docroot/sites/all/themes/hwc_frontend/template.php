@@ -86,6 +86,9 @@ function hwc_frontend_preprocess_html(&$vars) {
   ) {
     $vars['classes_array'][] = 'pz-page';
   }
+  if (arg(0) == 'priority-areas') {
+    $vars['classes_array'][] = 'page-topics';
+  }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
     $vars['classes_array'][] = 'page-documents';
