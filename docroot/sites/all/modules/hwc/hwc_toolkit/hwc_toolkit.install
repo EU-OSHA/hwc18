@@ -75,3 +75,10 @@ function hwc_toolkit_update_7010() {
 function hwc_toolkit_update_7011() {
   features_revert_module('hwc_toolkit');
 }
+
+/**
+ * TKIT-31 TKIT: crop Examples pictures in the "Homepage" and "Tools & Examples" sections.
+ */
+function hwc_toolkit_update_7012() {
+  features_revert(array('hwc_toolkit' => array('field_instance')));
+}
