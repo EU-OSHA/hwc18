@@ -18,24 +18,23 @@ function osha_search_facet_items_alter(&$build, &$settings) {
       $build[$key]["#markup"] = drupal_ucfirst(drupal_strtolower($item["#markup"]));
     }
   }
-
-  if (in_array($settings->facet, ['field_priority_area', 'language', 'type'])) {
+  $path = arg(0);
+  if (in_array($settings->facet, ['field_priority_area', 'language', 'type']) || ($path == 'practical-tools')) {
     $facet_items = [];
     foreach ($build as $key => $item) {
       if (($settings->facet == 'field_priority_area') && ($key == '!')) {
         $build[$key]['#markup'] = t('No specific group');
       }
       if ($item['#active']) {
-        $query = _osha_search_strip_param_value($query_params, $settings->facet, $item['#indexed_value']);
+        $query = _osha_search_strip_param_value($query_params, urlencode($settings->facet), $item['#indexed_value']);
         $filter_label = '<span class="glyphicon glyphicon-remove"></span>' . $item['#markup'];
-        $facet_items[] = l($filter_label, 'search', array('query' => $query, 'html' => TRUE));
+        $facet_items[] = l($filter_label, $path, array('query' => $query, 'html' => TRUE));
       }
     }
     if ($facet_items) {
       drupal_add_js(array('facet_items' => [$settings->facet => $facet_items]), 'setting');
     }
   }
-
 }
 
 /**
@@ -89,7 +88,7 @@ function osha_search_block_view($delta = '') {
     '#markup' => '<h3>' . t('Filter results') . '</h3><div class="clear-wrapper">',
   );
   // Active links will be added onlink via js in facet_item.
-  if (arg(0) == 'search') {
+  if ((arg(0) == 'search') || (arg(0) == 'practical-tools')) {
     $content['remove_filter'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="remove_filter"></div>',

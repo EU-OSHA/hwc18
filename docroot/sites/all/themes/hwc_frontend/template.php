@@ -100,6 +100,9 @@ function hwc_frontend_preprocess_html(&$vars) {
   ) {
     $vars['classes_array'][] = 'pz-page';
   }
+  if (arg(0) == 'priority-areas') {
+    $vars['classes_array'][] = 'page-topics';
+  }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
     $vars['classes_array'][] = 'page-documents';
@@ -222,9 +225,10 @@ function hwc_frontend_preprocess_page(&$vars) {
         $link_title = t('Back to practical tools list');
         $link_href = 'practical-tools';
         if (isset($_REQUEST['destination'])) {
+          $destination = drupal_get_destination();
           $vars['page']['below_title']['back-to-link'] = array(
             '#type' => 'item',
-            '#markup' => '<a class="back-to-link pull-right" href="' . $_REQUEST['destination'] . '">' . $link_title . '</a>',
+            '#markup' => '<a class="back-to-link pull-right" href="' . strip_tags($destination['destination']) . '">' . $link_title . '</a>',
           );
           unset($link_title);
         }

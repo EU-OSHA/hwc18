@@ -153,7 +153,7 @@ function osha_newsletter_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'osha_newsletter_image_block_intro_text';
-  $strongarm->value = 'Would you like to stay informed about the latest developments regarding ageing workers?';
+  $strongarm->value = '';
   $export['osha_newsletter_image_block_intro_text'] = $strongarm;
 
   $strongarm = new stdClass();

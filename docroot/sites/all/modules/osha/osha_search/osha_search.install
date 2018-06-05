@@ -151,3 +151,10 @@ function osha_search_update_7016() {
 function osha_search_update_7017() {
   features_revert(array('osha_search' => 'fe_block_settings'));
 }
+
+/**
+ * MDR-1922 HWC: Practical tools and guidance filters.
+ */
+function osha_search_update_7018() {
+  features_revert(array('osha_search' => 'facetapi'));
+}

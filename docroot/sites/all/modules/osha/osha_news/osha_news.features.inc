@@ -59,6 +59,38 @@ function osha_news_fe_nodequeue_export_fields() {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function osha_news_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: medium_newsletter_crop.
+  $styles['medium_newsletter_crop'] = array(
+    'label' => 'Medium Newsletter Crop (220 x 145)',
+    'effects' => array(
+      4 => array(
+        'name' => 'manualcrop_reuse',
+        'data' => array(
+          'reuse_crop_style' => 'manual_crop',
+          'apply_all_effects' => 0,
+        ),
+        'weight' => 0,
+      ),
+      5 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 220,
+          'height' => 145,
+        ),
+        'weight' => 2,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function osha_news_node_info() {

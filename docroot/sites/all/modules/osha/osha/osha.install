@@ -314,3 +314,31 @@ function osha_update_7020() {
 function osha_update_7021() {
   features_revert(array('osha' => 'field_base'));
 }
+
+/**
+ * MDR-1917 cannot select events on GP exchange page.
+ */
+function osha_update_7022() {
+  features_revert(array('osha_resources' => 'views_view'));
+}
+
+/**
+ * MDR-1917 cannot select events on GP exchange page.
+ */
+function osha_update_7023() {
+  db_delete('node')->condition('nid', 4221, '=')->execute();
+}
+
+/**
+ * MDR-1923 OSHwiki: recommended resources intro text.
+ */
+function osha_update_7024() {
+  features_revert(array('osha' => array('field_instance')));
+}
+
+/**
+ * MHOS-62 HWC - bad redirect.
+ */
+function osha_update_7025() {
+  variable_set('hwc_old_site_url', 'https://healthy-workplaces.eu/previous/all-ages-2016');
+}

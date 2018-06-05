@@ -120,7 +120,7 @@ function hwc_toolkit_default_fe_block_settings() {
     'node_types' => array(
       0 => 'tk_article',
     ),
-    'pages' => 'node/8286',
+    'pages' => 'node/6219',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(

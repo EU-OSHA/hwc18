@@ -77,3 +77,31 @@ function osha_news_update_7010() {
 function osha_news_update_7011() {
   features_revert(array('osha_news' => 'path_breadcrumbs'));
 }
+
+/**
+ * MDR-1932 HWC newsletter has to be improved!.
+ */
+function osha_news_update_7012() {
+  features_revert(array('osha_news' => 'field_instance'));
+}
+
+/**
+ * MDR-1919 Select manually and replicate in the NCW news and events created in the HWC.
+ */
+function osha_news_update_7013() {
+  features_revert_module('osha_news');
+}
+
+/**
+ * MDR-1954 Newsletter: Uniformize the length of the text of the related news.
+ */
+function osha_news_update_7014() {
+  features_revert(array('osha_news' => 'field_instance'));
+}
+
+/**
+ * MDR-1952 Delete intro text in the news displayed in the Newsletter.
+ */
+function osha_news_update_7015() {
+  features_revert(array('osha_news' => 'field_instance'));
+}
