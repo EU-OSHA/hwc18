@@ -150,6 +150,9 @@ function hwc_frontend_preprocess_page(&$vars) {
     switch ($node->type) {
       case "tk_section":
       case "tk_article":
+        if ($node->title == 'About') {
+          $vars['classes_array'][] = 'tk-about';
+        }
       case "tk_tool":
       case "tk_example":
       case "tk_topic":
