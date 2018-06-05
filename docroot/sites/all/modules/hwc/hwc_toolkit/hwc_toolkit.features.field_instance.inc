@@ -850,12 +850,22 @@ function hwc_toolkit_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'smart_trim',
         'settings' => array(
           'field_formatter_class' => '',
-          'trim_length' => 300,
+          'more_link' => 0,
+          'more_text' => 'Read more',
+          'summary_handler' => 'full',
+          'trim_length' => 190,
+          'trim_link' => 0,
+          'trim_options' => array(
+            'text' => 'text',
         ),
-        'type' => 'text_summary_or_trimmed',
+          'trim_preserve_tags' => '',
+          'trim_suffix' => '...',
+          'trim_type' => 'chars',
+        ),
+        'type' => 'smart_trim_format',
         'weight' => 4,
       ),
       'title_body' => array(
