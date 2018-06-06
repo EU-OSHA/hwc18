@@ -32,7 +32,7 @@ div.workbench-info-block {
   /* size of bullet elment */
   width: 16px;
   height: 16px;
-  background: url(sites/all/libraries/jquery-slider-master/img/b12.png) no-repeat;
+  background: url(/sites/all/libraries/jquery-slider-master/img/b12.png) no-repeat;
   overflow: hidden;
   cursor: pointer;
 }
