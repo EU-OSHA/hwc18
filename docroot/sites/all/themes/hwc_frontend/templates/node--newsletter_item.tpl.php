@@ -105,14 +105,12 @@ if (!empty($campaign_id)) {
                     </div>
                   <?php
                   $is_empty = FALSE;
-                  if (!empty($elements['field_summary'])) {
-                    $summary = render($elements['field_summary']);
-                    if (!trim(strip_tags($summary))) {
-                      $is_empty = TRUE;
-                    }
-                    else {
+                  $summary = render($elements['field_summary']);
+                  if (!trim(strip_tags($summary))) {
+                    $is_empty = TRUE;
+                  }
+                  else {
                       print $summary;
-                    }
                   }
 
                   if (!empty($elements['body']) && $is_empty) {

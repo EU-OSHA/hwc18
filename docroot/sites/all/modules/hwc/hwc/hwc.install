@@ -713,3 +713,10 @@ function hwc_update_7047() {
     taxonomy_term_save($term);
   }
 }
+
+/**
+ * MDR-1968 HWC 18-19 - Delete the access to taxonomy webpages.
+ */
+function hwc_update_7048() {
+  features_revert(array('hwc' => 'page_manager_handlers'));
+}
