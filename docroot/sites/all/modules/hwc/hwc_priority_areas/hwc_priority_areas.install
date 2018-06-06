@@ -351,3 +351,10 @@ function hwc_priority_areas_update_7039() {
   features_revert_module('campaign_materials');
   features_revert(array('hwc_priority_areas' => 'views_view'));
 }
+
+/**
+ * MDR-1971 HWC 18-19: Priority areas url is called "topics" instead of "priority areas".
+ */
+function hwc_priority_areas_update_7040() {
+  features_revert(array('hwc_priority_areas' => 'page_manager_pages'));
+}

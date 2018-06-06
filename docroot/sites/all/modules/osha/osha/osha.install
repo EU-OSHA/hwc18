@@ -335,3 +335,10 @@ function osha_update_7023() {
 function osha_update_7024() {
   features_revert(array('osha' => array('field_instance')));
 }
+
+/**
+ * MHOS-62 HWC - bad redirect.
+ */
+function osha_update_7025() {
+  variable_set('hwc_old_site_url', 'https://healthy-workplaces.eu/previous/all-ages-2016');
+}

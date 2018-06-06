@@ -373,7 +373,7 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
     'image_style' => 'large',
-    'image_link' => 'content',
+    'image_link' => '',
     'field_formatter_class' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = TRUE;
@@ -446,6 +446,10 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   /* Field: Entity Reference View Widget Checkbox: Content */
   $handler->display->display_options['fields']['entityreference_view_widget']['id'] = 'entityreference_view_widget';
