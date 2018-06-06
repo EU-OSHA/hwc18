@@ -19593,6 +19593,12 @@ input#edit-field-image-und-0-upload::before {
   margin: 0px;
   padding: 0px;
 }
+.toolkit-page .main-container h3.p2 {
+  clear: both;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  display: inline-block;
+}
 .toolkit-page .main-container .start-here {
   margin-top: 10px;
 }
@@ -19606,12 +19612,15 @@ input#edit-field-image-und-0-upload::before {
   text-align: center;
   padding: 30px 15px;
 }
-.toolkit-page .main-container .start-here .col-inner h3 {
+.toolkit-page .main-container .start-here .col-inner a {
+  text-decoration: none;
+}
+.toolkit-page .main-container .start-here .col-inner a h3 {
   font-size: 1.1em;
   margin-bottom: 15px;
   margin-top: 0px;
 }
-.toolkit-page .main-container .start-here .col-inner h3:before {
+.toolkit-page .main-container .start-here .col-inner a h3:before {
   content: "";
   display: block;
   width: 74px;
@@ -19623,10 +19632,12 @@ input#edit-field-image-und-0-upload::before {
   color: white;
   line-height: 5;
 }
-.toolkit-page .main-container .start-here .col-inner p.subtitle {
+.toolkit-page .main-container .start-here .col-inner a p.subtitle {
   margin-bottom: 30px;
+  color: #333333;
 }
-.toolkit-page .main-container .start-here .col-inner .see-more a {
+.toolkit-page .main-container .start-here .col-inner a .see-more span,
+.toolkit-page .main-container .start-here .col-inner a .see-more a {
   background-color: #749b00;
   display: inline-block;
   text-align: center;
@@ -19636,7 +19647,8 @@ input#edit-field-image-und-0-upload::before {
   font-weight: 600;
   text-decoration: none;
 }
-.toolkit-page .main-container .start-here .col-inner .see-more a:hover {
+.toolkit-page .main-container .start-here .col-inner a .see-more span:hover,
+.toolkit-page .main-container .start-here .col-inner a .see-more a:hover {
   background-color: #595959;
 }
 .toolkit-page .main-container .start-here .campaigning .col-inner h3:before {
@@ -19696,11 +19708,17 @@ input#edit-field-image-und-0-upload::before {
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 30px;
+  max-width: 420px;
 }
 .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
   background-color: #ccc;
   width: 100%;
   height: 250px;
+  overflow: hidden;
+}
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image img {
+  width: 100%;
+  max-width: inherit;
 }
 .toolkit-page .main-container .view-tk-tools .views-row .views-field-title span a {
   height: 75px;
@@ -19711,6 +19729,52 @@ input#edit-field-image-und-0-upload::before {
   text-align: center;
   display: block;
   padding-top: 25px;
+}
+@media (min-width: 1301px) and (max-width: 1665px) {
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    max-width: 420px;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    height: 189px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    min-width: 300px;
+    width: 50%;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    height: 250px;
+  }
+}
+@media (min-width: 993px) and (max-width: 1145px) {
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    min-width: 300px;
+    width: 50%;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    height: 217px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    min-width: 300px;
+    width: 50%;
+    max-width: inherit;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    height: 217px;
+  }
+}
+@media (min-width: 1px) and (max-width: 767px) {
+  .toolkit-page .main-container .view-tk-tools .views-row {
+    min-width: 100px;
+    width: 100%;
+    max-width: inherit;
+  }
+  .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image {
+    height: inherit;
+  }
 }
 .toolkit-page .main-container .node-tk-tool .field-name-field-introduction ul,
 .toolkit-page .main-container .node-tk-tool .field-name-body ul,
@@ -20035,28 +20099,36 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-left,
+.tk-about .node-tk-article .group-left,
 .node-type-tk-example .node-tk-article .group-left,
 .page-node-6358 .node-tk-example .group-left,
+.tk-about .node-tk-example .group-left,
 .node-type-tk-example .node-tk-example .group-left {
   width: 70%;
 }
 .page-node-6358 .node-tk-article .group-left p,
+.tk-about .node-tk-article .group-left p,
 .node-type-tk-example .node-tk-article .group-left p,
 .page-node-6358 .node-tk-example .group-left p,
+.tk-about .node-tk-example .group-left p,
 .node-type-tk-example .node-tk-example .group-left p {
   margin-bottom: 15px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link,
+.tk-about .node-tk-article .group-left .external-link,
 .node-type-tk-example .node-tk-article .group-left .external-link,
 .page-node-6358 .node-tk-example .group-left .external-link,
+.tk-about .node-tk-example .group-left .external-link,
 .node-type-tk-example .node-tk-example .group-left .external-link {
   color: #749b00;
   display: block;
   margin-top: 30px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:before,
+.tk-about .node-tk-article .group-left .external-link:before,
 .node-type-tk-example .node-tk-article .group-left .external-link:before,
 .page-node-6358 .node-tk-example .group-left .external-link:before,
+.tk-about .node-tk-example .group-left .external-link:before,
 .node-type-tk-example .node-tk-example .group-left .external-link:before {
   content: "\e013";
   font-family: "Glyphicons Halflings";
@@ -20072,8 +20144,10 @@ input#edit-field-image-und-0-upload::before {
   margin-right: 15px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:after,
+.tk-about .node-tk-article .group-left .external-link:after,
 .node-type-tk-example .node-tk-article .group-left .external-link:after,
 .page-node-6358 .node-tk-example .group-left .external-link:after,
+.tk-about .node-tk-example .group-left .external-link:after,
 .node-type-tk-example .node-tk-example .group-left .external-link:after {
   content: "\e066";
   font-family: "Glyphicons Halflings";
@@ -20082,22 +20156,28 @@ input#edit-field-image-und-0-upload::before {
   font-size: 20px;
 }
 .page-node-6358 .node-tk-article .group-right,
+.tk-about .node-tk-article .group-right,
 .node-type-tk-example .node-tk-article .group-right,
 .page-node-6358 .node-tk-example .group-right,
+.tk-about .node-tk-example .group-right,
 .node-type-tk-example .node-tk-example .group-right {
   width: 30%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image,
+.tk-about .node-tk-article .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image,
+.tk-about .node-tk-example .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image {
   float: right;
   padding-left: 30px;
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image img,
+.tk-about .node-tk-article .group-right .field-name-field-image img,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image img,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image img,
+.tk-about .node-tk-example .group-right .field-name-field-image img,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image img {
   width: 100%;
 }
