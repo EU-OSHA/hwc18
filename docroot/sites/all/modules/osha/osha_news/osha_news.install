@@ -98,3 +98,10 @@ function osha_news_update_7013() {
 function osha_news_update_7014() {
   features_revert(array('osha_news' => 'field_instance'));
 }
+
+/**
+ * MDR-1952 Delete intro text in the news displayed in the Newsletter.
+ */
+function osha_news_update_7015() {
+  features_revert(array('osha_news' => 'field_instance'));
+}

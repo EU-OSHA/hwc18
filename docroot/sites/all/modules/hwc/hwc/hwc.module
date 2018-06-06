@@ -499,10 +499,6 @@ function hwc_theme() {
 function hwc_page_not_found() {
   // Redirect old publications to publications list page.
   $request_uri = request_uri();
-  if (strpos($request_uri, 'tools-and-publications/publications/') == 4) {
-    drupal_goto('publications', array(), 301);
-  }
-
   // Try to find it in the old sites.
   $old_sites = variable_get('hwc_old_site_url', 'http://hw2014.healthy-workplaces.eu');
   $old_sites = preg_split('/\r\n|[\r\n]/', $old_sites);
@@ -523,6 +519,13 @@ function hwc_page_not_found() {
         drupal_goto($old_url_en, array(), 301);
       }
     }
+  }
+
+  if (strpos($request_uri, 'tools-and-publications/publications/') == 4) {
+    if (isset($_GET['destination'])) {
+      unset($_GET['destination']);
+    }
+    drupal_goto('publications', array(), 301);
   }
 
   drupal_set_title(t('Page not found'));
