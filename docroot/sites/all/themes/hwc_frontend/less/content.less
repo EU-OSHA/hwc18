@@ -10499,15 +10499,15 @@ input#edit-field-image-und-0-upload::before {
 			font-style: normal;
 			color: @h2-default-color-2;
 			font-weight: 600;
-			margin-bottom: 40px;
+			margin-bottom: 25px;
 			font-size: 2em;
 		}
 		h3{
 			font-size: 1.3em;
 			font-weight: 600;
 			color: @color-h2-toolkit;
-			margin-bottom: 30px;
-			margin-top: 40px;
+			margin-bottom: 15px;
+			margin-top: 25px;
 		}
 		.introduction-text{
 			font-weight: 600;
@@ -10565,6 +10565,21 @@ input#edit-field-image-und-0-upload::before {
 				background-color: @bg-color-grey-toolkit;
 				text-align: center;
 				padding: 30px 15px;
+				.see-more{
+					a{
+						background-color: @h2-default-color-2;
+						display: inline-block;
+						text-align: center;
+						padding: 10px 15px;
+						text-transform: uppercase;
+						color: white;
+						font-weight: 600;
+						text-decoration: none;
+						&:hover{
+							background-color: @hover-grey-button-toolkit;
+						}
+					}
+				}
 				a{
 					text-decoration: none;
 					h3{
@@ -10786,29 +10801,29 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.field-name-field-benefits{
 				background-color: @bg-color-grey-toolkit;
-				padding: 30px;
+				padding:15px 30px;
 				margin-top: 35px;
 				margin-bottom: 20px;
 				.field-label{
 					border-bottom: 2px solid @h2-default-color-2;
-				    padding-bottom: 10px;
+			        padding-bottom: 2px;
 				    font-weight: bold;
 				    font-size: 1.4em;
-				    margin-bottom: 40px;
+			        margin-bottom: 30px;
 				    color: @h2-default-color-2;
 				}
 				.field-items{
 					.field-item{
-						margin-bottom: 30px;
-						padding-left: 40px;
-    					position: relative;
+					    margin-bottom: 20px;
+					    padding-left: 35px;
+					    position: relative;
 				    	&:before{
 							content: "\e013";
 							font-family: "Glyphicons Halflings";
 							text-align: center;
-							line-height: 30px;
-							width: 30px;
-							height: 30px;
+						    line-height: 25px;
+						    width: 25px;
+						    height: 25px;
 							background-color: @h2-default-color-2;
 							display: inline-block;
 							vertical-align: middle;
@@ -10817,7 +10832,8 @@ input#edit-field-image-und-0-upload::before {
 							margin-right: 15px;
 							position: absolute;
 						    left: 0;
-						    top: -5px;
+						    top: -4px;
+						    font-size: 1rem;
 				    	}
 					}
 				}
@@ -11033,12 +11049,12 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.box-check-content{
 				background-color: @bg-color-grey-toolkit;
-				padding: 30px;
+				padding:15px 30px;
 				margin-top: 20px;
 				margin-bottom: 20px;
 				h4{
 					border-bottom: 2px solid @h2-default-color-2;
-				    padding-bottom: 10px;
+				    padding-bottom: 5px;
 				    font-weight: bold;
 				    font-size: 1.4em;
 				    margin-bottom: 30px;
@@ -11047,24 +11063,30 @@ input#edit-field-image-und-0-upload::before {
 					list-style: none;
 				    padding: 0px;
 				    margin: 0px;
+			        column-count: 2;
 				    li{
 				    	margin-bottom: 0px;
+			    	    padding: 2px 0 0;
 				    	&:before{
 							content: "\e013";
 							font-family: "Glyphicons Halflings";
 							text-align: center;
-							line-height: 30px;
-							width: 30px;
-							height: 30px;
+							line-height: 25px;
+							width: 25px;
+							height: 25px;
 							background-color: @h2-default-color-2;
 							display: inline-block;
 							vertical-align: middle;
 							border-radius: 50%;
 							color: white;
-							margin-right: 15px;
+							margin-right: 6px;
+							font-size: 1rem;
+							position: relative;
+							top: -2px;
 				    	}
 				    	p{
 				    		display: inline-block;
+			    		    margin-bottom: 20px;
 				    	}
 				    }
 				}
@@ -11103,22 +11125,25 @@ input#edit-field-image-und-0-upload::before {
 					content: "\e013";
 					font-family: "Glyphicons Halflings";
 					text-align: center;
-					line-height: 30px;
-					width: 30px;
-					height: 30px;
+				    line-height: 25px;
+				    width: 25px;
+				    height: 25px;
 					background-color: @h2-default-color-2;
 					display: inline-block;
 					vertical-align: middle;
 					border-radius: 50%;
 					color: white;
-					margin-right: 15px;
+				    margin-right: 6px;
+				    font-size: 1rem;
+				    position: relative;
+				    top: -2px;
 		    	}
 		    	&:after{
 					content: "\e066";
 					font-family: "Glyphicons Halflings";
 					vertical-align: sub;
-				    margin-left: 5px;
-				    font-size: 20px;
+					margin-left: 6px;
+					font-size: 16px;
 		    	}
 			}
 		}

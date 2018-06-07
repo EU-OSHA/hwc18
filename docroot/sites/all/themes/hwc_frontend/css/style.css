@@ -19551,15 +19551,15 @@ input#edit-field-image-und-0-upload::before {
   font-style: normal;
   color: #749b00;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   font-size: 2em;
 }
 .toolkit-page .main-container h3 {
   font-size: 1.3em;
   font-weight: 600;
   color: #003399;
-  margin-bottom: 30px;
-  margin-top: 40px;
+  margin-bottom: 15px;
+  margin-top: 25px;
 }
 .toolkit-page .main-container .introduction-text {
   font-weight: 600;
@@ -19611,6 +19611,19 @@ input#edit-field-image-und-0-upload::before {
   background-color: #f3f3f3;
   text-align: center;
   padding: 30px 15px;
+}
+.toolkit-page .main-container .start-here .col-inner .see-more a {
+  background-color: #749b00;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.toolkit-page .main-container .start-here .col-inner .see-more a:hover {
+  background-color: #595959;
 }
 .toolkit-page .main-container .start-here .col-inner a {
   text-decoration: none;
@@ -19800,30 +19813,30 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container .node-tk-tool .field-name-field-benefits {
   background-color: #f3f3f3;
-  padding: 30px;
+  padding: 15px 30px;
   margin-top: 35px;
   margin-bottom: 20px;
 }
 .toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-label {
   border-bottom: 2px solid #749b00;
-  padding-bottom: 10px;
+  padding-bottom: 2px;
   font-weight: bold;
   font-size: 1.4em;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #749b00;
 }
 .toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-items .field-item {
-  margin-bottom: 30px;
-  padding-left: 40px;
+  margin-bottom: 20px;
+  padding-left: 35px;
   position: relative;
 }
 .toolkit-page .main-container .node-tk-tool .field-name-field-benefits .field-items .field-item:before {
   content: "\e013";
   font-family: "Glyphicons Halflings";
   text-align: center;
-  line-height: 30px;
-  width: 30px;
-  height: 30px;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
   background-color: #749b00;
   display: inline-block;
   vertical-align: middle;
@@ -19832,7 +19845,8 @@ input#edit-field-image-und-0-upload::before {
   margin-right: 15px;
   position: absolute;
   left: 0;
-  top: -5px;
+  top: -4px;
+  font-size: 1rem;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples {
   background-color: #f3f3f3;
@@ -20051,13 +20065,13 @@ input#edit-field-image-und-0-upload::before {
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content {
   background-color: #f3f3f3;
-  padding: 30px;
+  padding: 15px 30px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content h4 {
   border-bottom: 2px solid #749b00;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-weight: bold;
   font-size: 1.4em;
   margin-bottom: 30px;
@@ -20066,26 +20080,32 @@ input#edit-field-image-und-0-upload::before {
   list-style: none;
   padding: 0px;
   margin: 0px;
+  column-count: 2;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul li {
   margin-bottom: 0px;
+  padding: 2px 0 0;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul li:before {
   content: "\e013";
   font-family: "Glyphicons Halflings";
   text-align: center;
-  line-height: 30px;
-  width: 30px;
-  height: 30px;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
   background-color: #749b00;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
   color: white;
-  margin-right: 15px;
+  margin-right: 6px;
+  font-size: 1rem;
+  position: relative;
+  top: -2px;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul li p {
   display: inline-block;
+  margin-bottom: 20px;
 }
 .node-type-tk-topic .node-tk-topic .group-right {
   width: 30%;
@@ -20133,15 +20153,18 @@ input#edit-field-image-und-0-upload::before {
   content: "\e013";
   font-family: "Glyphicons Halflings";
   text-align: center;
-  line-height: 30px;
-  width: 30px;
-  height: 30px;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
   background-color: #749b00;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
   color: white;
-  margin-right: 15px;
+  margin-right: 6px;
+  font-size: 1rem;
+  position: relative;
+  top: -2px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:after,
 .tk-about .node-tk-article .group-left .external-link:after,
@@ -20152,8 +20175,8 @@ input#edit-field-image-und-0-upload::before {
   content: "\e066";
   font-family: "Glyphicons Halflings";
   vertical-align: sub;
-  margin-left: 5px;
-  font-size: 20px;
+  margin-left: 6px;
+  font-size: 16px;
 }
 .page-node-6358 .node-tk-article .group-right,
 .tk-about .node-tk-article .group-right,
