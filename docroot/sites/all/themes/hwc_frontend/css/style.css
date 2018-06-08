@@ -10762,6 +10762,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_ES {
   background: url(../images/events/big/Spain-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_EU {
+  background: url(../images/events/big/European-Union-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-center .event_day_month .code_EE {
   background: url(../images/events/big/Estonia-180x180.png) no-repeat center;
 }
@@ -11643,6 +11646,11 @@ article .hwc-share-widget ul {
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_ES {
   background: url(../images/events/big/Spain-180x180.png) no-repeat center;
 }
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EU,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EU {
+  background: url(../images/events/big/European-Union-180x180.png) no-repeat center;
+}
+
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EE,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EE {
   background: url(../images/events/big/Estonia-180x180.png) no-repeat center;
