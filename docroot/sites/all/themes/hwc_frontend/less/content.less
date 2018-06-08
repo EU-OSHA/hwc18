@@ -10495,19 +10495,26 @@ input#edit-field-image-und-0-upload::before {
 				display: none;
 			}
 		}
+		.field-type-text-with-summary .field-items:before{
+			content: " ";
+			display: table;
+		}
 		h2{
 			font-style: normal;
 			color: @h2-default-color-2;
 			font-weight: 600;
-			margin-bottom: 25px;
+		    margin-bottom: 15px;
 			font-size: 2em;
 		}
 		h3{
 			font-size: 1.3em;
 			font-weight: 600;
 			color: @color-h2-toolkit;
-			margin-bottom: 15px;
-			margin-top: 25px;
+		    margin-bottom: 10px;
+		    margin-top: 25px;
+		}
+		h3:first-child{
+			margin-top: 15px;
 		}
 		.introduction-text{
 			font-weight: 600;
@@ -10521,7 +10528,7 @@ input#edit-field-image-und-0-upload::before {
 			max-height: 224px;
 			overflow: hidden;
 			position: relative;
-			margin-bottom: 50px;
+			margin-bottom: 35px;
 			.contextual-links-region{
 				position: inherit;
 			}
