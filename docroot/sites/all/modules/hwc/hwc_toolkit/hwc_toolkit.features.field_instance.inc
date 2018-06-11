@@ -1091,7 +1091,7 @@ function hwc_toolkit_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_download_pdf',
-    'label' => 'Download PDF',
+    'label' => 'Download files',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
@@ -2977,7 +2977,7 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'title_class' => '',
-          'title_link' => '',
+          'title_link' => 'content',
           'title_style' => 'h3',
         ),
         'type' => 'title_linked',

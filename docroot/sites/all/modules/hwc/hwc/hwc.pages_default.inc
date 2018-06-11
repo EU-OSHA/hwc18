@@ -5,6 +5,49 @@
  */
 
 /**
+ * Implements hook_default_page_manager_handlers().
+ */
+function hwc_default_page_manager_handlers() {
+  $export = array();
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'term_view__other';
+  $handler->task = 'term_view';
+  $handler->subtask = '';
+  $handler->handler = 'http_response';
+  $handler->weight = 2;
+  $handler->conf = array(
+    'title' => 'Other',
+    'contexts' => array(),
+    'relationships' => array(),
+    'code' => '404',
+    'destination' => '',
+    'name' => 'other',
+    'access' => array(
+      'plugins' => array(
+        1 => array(
+          'name' => 'term_vocabulary',
+          'settings' => array(
+            'machine_name' => array(
+              'priority_area' => 'priority_area',
+              'tools_and_examples' => 'tools_and_examples',
+            ),
+          ),
+          'context' => 'argument_term_1',
+          'not' => TRUE,
+        ),
+      ),
+      'logic' => 'or',
+    ),
+  );
+  $export['term_view__other'] = $handler;
+
+  return $export;
+}
+
+/**
  * Implements hook_default_page_manager_pages().
  */
 function hwc_default_page_manager_pages() {
