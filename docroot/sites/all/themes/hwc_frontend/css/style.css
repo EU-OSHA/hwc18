@@ -19608,11 +19608,17 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container .start-here {
   margin-top: 10px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .toolkit-page .main-container .start-here .col {
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 30px;
+  display: -webkit-flex;
+  display: flex;
 }
 .toolkit-page .main-container .start-here .col-inner {
   background-color: #f3f3f3;
@@ -20228,7 +20234,7 @@ input#edit-field-image-und-0-upload::before {
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items .field-item {
-  font-size: 1.2em;
+  /* font-size: 1.2em; */
   margin-bottom: 10px;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label,
@@ -20281,7 +20287,7 @@ input#edit-field-image-und-0-upload::before {
   font-family: "Glyphicons Halflings";
   vertical-align: sub;
   margin-left: 5px;
-  font-size: 20px;
+  font-size: 16px;
   color: #749b00;
 }
 .node-type-tk-example #block-hwc-toolkit-toolkit-go-back a {
