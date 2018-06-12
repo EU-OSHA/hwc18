@@ -19623,7 +19623,17 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .start-here .col-inner {
   background-color: #f3f3f3;
   text-align: center;
-  padding: 30px 15px;
+  padding: 30px 15px 50px;
+  position: relative;
+}
+.toolkit-page .main-container .start-here .col-inner .see-more {
+  position: absolute;
+  bottom: 15px;
+  margin-top: 15px;
+  width: 100%;
+  display: block;
+  left: 0;
+  text-align: center;
 }
 .toolkit-page .main-container .start-here .col-inner .see-more a {
   background-color: #749b00;
@@ -19640,6 +19650,9 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container .start-here .col-inner a {
   text-decoration: none;
+}
+.toolkit-page .main-container .start-here .col-inner a > br {
+  display: none;
 }
 .toolkit-page .main-container .start-here .col-inner a h3 {
   font-size: 1.1em;
@@ -25910,6 +25923,8 @@ input#edit-field-image-und-0-upload::before {
   .toolkit-page .main-container .start-here .col {
     padding-left: 0px;
     padding-right: 0px;
+    display: block;
+    width: 100%;
   }
   .toolkit-page .main-container .start-here .col .col-inner h3 {
     margin-bottom: 30px;

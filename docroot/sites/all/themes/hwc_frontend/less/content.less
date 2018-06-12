@@ -10577,8 +10577,16 @@ input#edit-field-image-und-0-upload::before {
 			.col-inner{
 				background-color: @bg-color-grey-toolkit;
 				text-align: center;
-				padding: 30px 15px;
+			    padding: 30px 15px 50px;
+			    position: relative;
 				.see-more{
+					position: absolute;
+					bottom: 15px;
+					margin-top: 15px;
+					width: 100%;
+				    display: block;
+				    left: 0;
+			        text-align: center;
 					a{
 						background-color: @h2-default-color-2;
 						display: inline-block;
@@ -10595,6 +10603,9 @@ input#edit-field-image-und-0-upload::before {
 				}
 				a{
 					text-decoration: none;
+					> br{
+						display: none;
+					}
 					h3{
 						font-size: 1.1em;
 						margin-bottom: 15px;
