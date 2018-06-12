@@ -20306,6 +20306,7 @@ input#edit-field-image-und-0-upload::before {
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items a {
   color: #003399;
+  word-break: break-all;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items a:after {
   content: "\e066";
