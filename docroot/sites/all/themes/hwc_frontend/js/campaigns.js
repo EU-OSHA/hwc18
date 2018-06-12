@@ -13,6 +13,11 @@ window.onorientationchange = function() {
 
 jQuery(document).ready(function() {
 
+    jQuery(".start-here .col-inner").click(function() {
+        window.location = jQuery(this).find("a").attr("href");
+        return false;
+    });
+
     if ((jQuery('.fb-post').length) && (jQuery(window).width()<=1024)) {
         setTimeout(ipad_fix_iframe_width, 5000);
     }
