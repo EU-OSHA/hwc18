@@ -1,11 +1,32 @@
 //rewrite styles for responsive design
+@media only screen and (max-width : 1366px) {
+	.page-node-6358,
+	.tk-about,
+	.node-type-tk-example{
+		.node-tk-article,
+		.node-tk-example{
+			.group-right{
+				.field-name-field-image{			
+					.field-item {
+					overflow: hidden;
+						img{
+						    top: 0px;
+						    left: 0px;
+						}					
+					}
+
+				} 
+			}
+		}
+	}
+}
+
 @media only screen and (max-width : 1195px) {
 
-
-header.navbar-default .navbar-collapse nav ul.menu li{
-	//min-height: 62px;
-	font-size:0.90em;
-}
+	header.navbar-default .navbar-collapse nav ul.menu li{
+		//min-height: 62px;
+		font-size:0.90em;
+	}
 
 }
 @media only screen and (max-width : 1022px) {
