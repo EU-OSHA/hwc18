@@ -81,6 +81,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['arguments']['field_priority_area_tid']['id'] = 'field_priority_area_tid';
   $handler->display->display_options['arguments']['field_priority_area_tid']['table'] = 'field_data_field_priority_area';
   $handler->display->display_options['arguments']['field_priority_area_tid']['field'] = 'field_priority_area_tid';
+  $handler->display->display_options['arguments']['field_priority_area_tid']['relationship'] = 'reverse_field_tools_and_guidance_node';
   $handler->display->display_options['arguments']['field_priority_area_tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_priority_area_tid']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_priority_area_tid']['summary']['number_of_records'] = '0';
@@ -300,7 +301,8 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['field'] = 'reverse_field_tools_and_guidance_node';
   $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['ui_name'] = 'Topic';
-  $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['label'] = 'Topic';
+  $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['label'] = 'tools_and_guidance';
+  $handler->display->display_options['relationships']['reverse_field_tools_and_guidance_node']['required'] = TRUE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
@@ -702,7 +704,7 @@ function hwc_priority_areas_views_default_views() {
     t('Tools and Guidelines'),
     t('more'),
     t('_tools_and_guidance_intro_'),
-    t('Topic'),
+    t('tools_and_guidance'),
     t('<div class="item-title">[title_field]</div>
 <div class="field-body">[body]</div>
 <div class="see-more">[view_node]</div>'),
