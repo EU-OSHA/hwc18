@@ -10579,6 +10579,10 @@ input#edit-field-image-und-0-upload::before {
 				text-align: center;
 			    padding: 30px 15px 50px;
 			    position: relative;
+			    &:hover{
+			    	background-color: @gray-lighter;
+			    	cursor: pointer;
+			    }
 				.see-more{
 					position: absolute;
 					bottom: 15px;
@@ -10606,22 +10610,6 @@ input#edit-field-image-und-0-upload::before {
 					> br{
 						display: none;
 					}
-					h3{
-						font-size: 1.1em;
-						margin-bottom: 15px;
-						margin-top: 0px;
-						&:before{
-							content:"";
-							display: block;
-							width: 74px;
-							height: 74px;
-							background-color: @color-h2-toolkit;
-							margin: 0 auto;margin-bottom: 20px;
-							border-radius: 50%;
-							color: white;
-							line-height: 5;
-						}
-					}
 					p.subtitle{
 						margin-bottom: 30px;
 						color:#333333;
@@ -10641,7 +10629,7 @@ input#edit-field-image-und-0-upload::before {
 							}
 						}
 					}
-				}
+				} 
 			} 
 			h3{
 				font-size: 1.1em;
