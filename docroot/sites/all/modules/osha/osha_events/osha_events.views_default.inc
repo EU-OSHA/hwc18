@@ -3215,6 +3215,16 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['view_node']['label'] = '';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'See more';
+  /* Field: Indexed Multilingual Content: Show EU flag */
+  $handler->display->display_options['fields']['field_show_eu_flag']['id'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_show_eu_flag']['field'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['label'] = '';
+  $handler->display->display_options['fields']['field_show_eu_flag']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Starting date: Start date (indexed) */
   $handler->display->display_options['sorts']['field_start_date_value']['id'] = 'field_start_date_value';
@@ -3369,6 +3379,16 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['view_node']['label'] = '';
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'See more';
+  /* Field: Indexed Multilingual Content: Show EU flag */
+  $handler->display->display_options['fields']['field_show_eu_flag']['id'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['fields']['field_show_eu_flag']['field'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['label'] = '';
+  $handler->display->display_options['fields']['field_show_eu_flag']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Multilingual Content: Content type */
