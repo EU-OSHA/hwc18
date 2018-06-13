@@ -12,6 +12,7 @@ function osha_newsletter_subscribe_extra_form() {
   );
 
   $form['subscribe_details']['email'] = array(
+    '#prefix' => '<div style="subscribe_block">',
     '#type' => 'textfield',
     '#size' => 30,
     '#attributes' => array(
@@ -29,6 +30,13 @@ function osha_newsletter_subscribe_extra_form() {
       '#captcha_type' => 'default',
     );
   }
+
+  $form['subscribe_details']['agree_processing_personal_data'] = array(
+    '#suffix' => '</div>',
+    '#type' => 'checkbox',
+    '#title' => t('I agree to the processing of my personal data'),
+    '#default_value' => 0,
+  );
 
   $form['subscribe_details']['submit'] = array(
     '#type' => 'submit',
@@ -63,6 +71,11 @@ function osha_newsletter_subscribe_extra_form() {
  * Newsletter subscribe EXTRA form validate.
  */
 function osha_newsletter_subscribe_extra_form_validate($form, &$form_state) {
+  $agree = trim($form_state['values']['agree_processing_personal_data']);
+  if (!$agree) {
+    form_set_error('agree_processing_personal_data', t('Please, tick the box to agree in order to submit your email.'));
+  }
+
   $email = trim($form_state['values']['email']);
   if (strlen($email) != 0) {
     if (!valid_email_address($form_state['values']['email'])) {

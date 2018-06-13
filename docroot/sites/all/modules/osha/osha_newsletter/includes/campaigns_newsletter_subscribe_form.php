@@ -26,16 +26,24 @@ function campaigns_newsletter_subscribe_form() {
   $form['#suffix'] = '</div>';
 
   $form['email'] = array(
+    '#prefix' => '<div style="subscribe_block">',
     '#type' => 'textfield',
     '#size' => 30,
     '#attributes' => array('placeholder' => t('E-mail address'), 'title' => t('E-mail address')),
   );
-  $form['#validate'] = array('campaigns_newsletter_subscribe_captcha_form_validate');
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign up!'),
     '#submit' => array('campaigns_newsletter_subscribe_captcha_form_submit'),
   );
+  $form['agree_processing_personal_data'] = array(
+    '#suffix' => '</div>',
+    '#type' => 'checkbox',
+    '#title' => t('I agree to the processing of my personal data'),
+    '#default_value' => 0,
+  );
+  $form['#validate'] = array('campaigns_newsletter_subscribe_captcha_form_validate');
+
   if (user_is_anonymous()) {
     drupal_add_library('system', 'drupal.ajax');
     drupal_add_library('system', 'jquery.form');
@@ -64,6 +72,13 @@ function campaigns_newsletter_subscribe_captcha_form() {
     '#captcha_type' => 'default',
   );
 
+  $form['agree_processing_personal_data'] = array(
+    '#suffix' => '</div>',
+    '#type' => 'checkbox',
+    '#title' => t('I agree to the processing of my personal data'),
+    '#default_value' => 0,
+  );
+
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Sign up!'),
@@ -83,6 +98,13 @@ function campaigns_newsletter_subscribe_captcha_form_validate($form, &$form_stat
     // Invalid CAPTCHA.
     $has_error = TRUE;
   }
+
+  $agree = trim($form_state['values']['agree_processing_personal_data']);
+  if (!$agree) {
+    $has_error = TRUE;
+    form_set_error('agree_processing_personal_data', t('Please, tick the box to agree in order to submit your email.'));
+  }
+
   if (empty($form_state['values']['email']) || !valid_email_address($form_state['values']['email'])) {
     form_set_error('email', t('The e-mail address is not valid.'));
     $has_error = TRUE;

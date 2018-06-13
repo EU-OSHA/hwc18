@@ -358,3 +358,11 @@ function hwc_priority_areas_update_7039() {
 function hwc_priority_areas_update_7040() {
   features_revert(array('hwc_priority_areas' => 'page_manager_pages'));
 }
+
+/**
+ * MDR-1894 Priority areas - Allow a third item in tools and publications section.
+ */
+function hwc_priority_areas_update_7041() {
+  features_revert(array('hwc_priority_areas' => 'views_view'));
+  features_revert(array('hwc_priority_areas' => 'field_base'));
+}
