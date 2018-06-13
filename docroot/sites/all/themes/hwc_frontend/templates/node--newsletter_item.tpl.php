@@ -73,21 +73,23 @@ if (!empty($campaign_id)) {
             <tr>
                 <td style="padding-bottom: 10px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
                   <?php
-                  print l(theme('image_style', array(
-                    'style_name' => 'medium_crop_220',
-                    'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
-                    'width' => 220,
-                    'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
-                    'attributes' => array(
-                      'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
-                      'align' => 'left',
-                      'hspace' => '20',
-                      'vspace' => '20',
-                    ),
-                  )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
-                    'html' => TRUE,
-                    'external' => TRUE,
-                  ));
+                  if (isset($field_image)) {
+                      print l(theme('image_style', array(
+                        'style_name' => 'medium_newsletter_crop',
+                        'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
+                        'width' => 220,
+                        'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
+                        'attributes' => array(
+                          'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
+                          'align' => 'left',
+                          'hspace' => '20',
+                          'vspace' => '20',
+                        ),
+                      )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                        'html' => TRUE,
+                        'external' => TRUE,
+                      ));
+                  }
                   ?>
                 </td>
                 <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
@@ -102,10 +104,16 @@ if (!empty($campaign_id)) {
                       ?>
                     </div>
                   <?php
-                  if (!empty($elements['field_summary'])) {
-                    print render($elements['field_summary']);
+                  $is_empty = FALSE;
+                  $summary = render($elements['field_summary']);
+                  if (!trim(strip_tags($summary))) {
+                    $is_empty = TRUE;
                   }
-                  if (!empty($elements['body'])) {
+                  else {
+                      print $summary;
+                  }
+
+                  if (!empty($elements['body']) && $is_empty) {
                     print render($elements['body']);
                   }
                   $directory = drupal_get_path('module', 'osha_newsletter');

@@ -86,6 +86,9 @@ function hwc_frontend_preprocess_html(&$vars) {
   ) {
     $vars['classes_array'][] = 'pz-page';
   }
+  if (arg(0) == 'priority-areas') {
+    $vars['classes_array'][] = 'page-topics';
+  }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
     $vars['classes_array'][] = 'page-documents';
@@ -130,7 +133,14 @@ function hwc_frontend_preprocess_page(&$vars) {
         ),
       ),
     );
+
     switch ($node->type) {
+      case 'tk_article':
+        if ($node->title == 'About') {
+          $vars['classes_array'][] = 'tk-about';
+        }
+        break;
+
       case 'document':
         $link_href = 'good-practice-exchange-platform';
         $link_title = t('Back to the Good practice exchange platform');
