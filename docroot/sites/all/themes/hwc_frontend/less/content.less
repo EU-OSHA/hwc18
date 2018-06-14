@@ -309,6 +309,7 @@ ul.tabs--primary.nav.nav-tabs{
 			margin-left: -25px;
 			margin-top: 2px;
 			cursor: pointer;
+			width: 6px !important;
 			
 			&:before {
 				content: "\2713";
@@ -7558,6 +7559,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				margin: 0 auto;
 				max-width: 390px;
 				margin-bottom: 20px;
+				position: relative;
 				span{
 					margin-top: 7px;
     				margin-bottom: 3px;
@@ -7570,6 +7572,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				}
 				#edit-submit{
 					vertical-align: inherit;
+					position: absolute;
+					top: 14px;
+					right: 12%;
 				}
 			}
 			#edit-unsubscribe-details{
@@ -7640,6 +7645,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				table.newsletter-item{
 					td{
 						padding-bottom: 0px !important;
+						> div:nth-child(1){
+							font-weight: bold;
+						}
 						a{
 							font-size: 1.3em !important;
 							color: @colorNormalText !important;
