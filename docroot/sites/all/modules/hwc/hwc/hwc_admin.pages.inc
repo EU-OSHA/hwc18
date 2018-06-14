@@ -142,7 +142,7 @@ function hwc_admin_config_form() {
   );
 
   $form['hwc_toolkit_about_nid'] = array(
-    '#type' => 'textarea',
+    '#type' => 'textfield',
     '#default_value' => variable_get('hwc_toolkit_about_nid', 6746),
     '#title' => 'Toolkit about page node nid',
   );
