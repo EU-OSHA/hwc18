@@ -79,10 +79,15 @@ function hwc_frontend_preprocess_html(&$vars) {
       case "tk_tool":
       case "tk_example":
       case "tk_topic":
+        $about_nid = variable_get('hwc_toolkit_about_nid', 6746);
+        if ($n->nid == $about_nid) {
+          $vars['classes_array'][] = 'tk-about';
+        }
         $vars['classes_array'][] = 'toolkit-page';
         break;
     }
-  } else if ($term = menu_get_object('taxonomy_term', 2)) {
+  }
+  else if ($term = menu_get_object('taxonomy_term', 2)) {
     $vars['classes_array'][] = 'toolkit-page';
   }
 
@@ -150,9 +155,6 @@ function hwc_frontend_preprocess_page(&$vars) {
     switch ($node->type) {
       case "tk_section":
       case "tk_article":
-        if ($node->title == 'About') {
-          $vars['classes_array'][] = 'tk-about';
-        }
       case "tk_tool":
       case "tk_example":
       case "tk_topic":
