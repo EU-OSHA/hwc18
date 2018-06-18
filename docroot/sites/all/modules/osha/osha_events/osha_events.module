@@ -128,9 +128,8 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['title_field'][$lang][0]['value']['#attributes']['maxlength_js_label'][0] = '@remaining' . ' ' . t('left', array(), array('context' => 'characters left'));
   }
 
-  $form['title_field']['#disabled'] = TRUE;
-
   if (!empty($form['#entity']->field_migration_source)) {
+    $form['title_field']['#disabled'] = TRUE;
     $disabled = [
       'language',
       'revision_information',
