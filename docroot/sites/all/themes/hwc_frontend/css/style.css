@@ -8046,7 +8046,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-left: -25px;
   margin-top: 2px;
   cursor: pointer;
-  width: 6px !important;
+  width: 0px !important;
 }
 .checkbox input[type=checkbox]:checked:before {
   content: "\2713";
@@ -10837,6 +10837,22 @@ html:lang(no) .pane-node-field-provider .field-items,
 }
 .front .panels-flexible-region-new-home_right .more-link {
   margin-top: 15px;
+}
+.front #campaigns-newsletter-subscribe-form .checkbox input[type=checkbox]:checked:before {
+  content: "\2713";
+  color: #003399;
+  padding: 0px 2px 0px 2px;
+  margin-right: 6px;
+  font-weight: normal;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin-top: 0px;
+  display: block;
+  background-color: white;
+  height: 17px;
+  width: 14px;
+  position: relative;
+  left: -26px;
+  top: 2px;
 }
 /*End Home*/
 /*share line*/
