@@ -19623,7 +19623,7 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .start-here .col {
   padding-left: 15px;
   padding-right: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   display: -webkit-flex;
   display: flex;
 }
@@ -20157,25 +20157,31 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-left,
+.node-type-tk-article .node-tk-article .group-left,
 .tk-about .node-tk-article .group-left,
 .node-type-tk-example .node-tk-article .group-left,
 .page-node-6358 .node-tk-example .group-left,
+.node-type-tk-article .node-tk-example .group-left,
 .tk-about .node-tk-example .group-left,
 .node-type-tk-example .node-tk-example .group-left {
   width: 70%;
 }
 .page-node-6358 .node-tk-article .group-left p,
+.node-type-tk-article .node-tk-article .group-left p,
 .tk-about .node-tk-article .group-left p,
 .node-type-tk-example .node-tk-article .group-left p,
 .page-node-6358 .node-tk-example .group-left p,
+.node-type-tk-article .node-tk-example .group-left p,
 .tk-about .node-tk-example .group-left p,
 .node-type-tk-example .node-tk-example .group-left p {
   margin-bottom: 15px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link,
+.node-type-tk-article .node-tk-article .group-left .external-link,
 .tk-about .node-tk-article .group-left .external-link,
 .node-type-tk-example .node-tk-article .group-left .external-link,
 .page-node-6358 .node-tk-example .group-left .external-link,
+.node-type-tk-article .node-tk-example .group-left .external-link,
 .tk-about .node-tk-example .group-left .external-link,
 .node-type-tk-example .node-tk-example .group-left .external-link {
   color: #749b00;
@@ -20183,9 +20189,11 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 30px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:before,
+.node-type-tk-article .node-tk-article .group-left .external-link:before,
 .tk-about .node-tk-article .group-left .external-link:before,
 .node-type-tk-example .node-tk-article .group-left .external-link:before,
 .page-node-6358 .node-tk-example .group-left .external-link:before,
+.node-type-tk-article .node-tk-example .group-left .external-link:before,
 .tk-about .node-tk-example .group-left .external-link:before,
 .node-type-tk-example .node-tk-example .group-left .external-link:before {
   content: "\e013";
@@ -20205,9 +20213,11 @@ input#edit-field-image-und-0-upload::before {
   top: -2px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:after,
+.node-type-tk-article .node-tk-article .group-left .external-link:after,
 .tk-about .node-tk-article .group-left .external-link:after,
 .node-type-tk-example .node-tk-article .group-left .external-link:after,
 .page-node-6358 .node-tk-example .group-left .external-link:after,
+.node-type-tk-article .node-tk-example .group-left .external-link:after,
 .tk-about .node-tk-example .group-left .external-link:after,
 .node-type-tk-example .node-tk-example .group-left .external-link:after {
   content: "\e066";
@@ -20217,17 +20227,21 @@ input#edit-field-image-und-0-upload::before {
   font-size: 16px;
 }
 .page-node-6358 .node-tk-article .group-right,
+.node-type-tk-article .node-tk-article .group-right,
 .tk-about .node-tk-article .group-right,
 .node-type-tk-example .node-tk-article .group-right,
 .page-node-6358 .node-tk-example .group-right,
+.node-type-tk-article .node-tk-example .group-right,
 .tk-about .node-tk-example .group-right,
 .node-type-tk-example .node-tk-example .group-right {
   width: 30%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image,
 .tk-about .node-tk-article .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image,
 .tk-about .node-tk-example .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image {
   float: right;
@@ -20235,17 +20249,21 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image .field-item,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image .field-item,
 .tk-about .node-tk-article .group-right .field-name-field-image .field-item,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image .field-item,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image .field-item,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image .field-item,
 .tk-about .node-tk-example .group-right .field-name-field-image .field-item,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image .field-item {
   overflow: hidden;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image .field-item img,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image .field-item img,
 .tk-about .node-tk-article .group-right .field-name-field-image .field-item img,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image .field-item img,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image .field-item img,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image .field-item img,
 .tk-about .node-tk-example .group-right .field-name-field-image .field-item img,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image .field-item img {
   width: 100%;
