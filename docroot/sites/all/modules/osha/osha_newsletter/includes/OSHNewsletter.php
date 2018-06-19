@@ -231,7 +231,7 @@ class OSHNewsletter {
           'newsletter-section',
           'template-container',
         ],
-        'width' => '100%',
+        'width' => '760',
         'cellpadding' => '0',
         'cellspacing' => '0',
       ],

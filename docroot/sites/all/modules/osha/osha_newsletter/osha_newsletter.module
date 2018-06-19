@@ -1371,3 +1371,7 @@ function osha_newsletter_vbo_action_access_alter(&$has_access, $operation) {
     $has_access = TRUE;
   }
 }
+
+function osha_newsletter_get_templates_list() {
+  return OSHNewsletter::getTemplatesList();
+}
