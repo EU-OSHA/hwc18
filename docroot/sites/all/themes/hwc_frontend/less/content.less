@@ -309,6 +309,7 @@ ul.tabs--primary.nav.nav-tabs{
 			margin-left: -25px;
 			margin-top: 2px;
 			cursor: pointer;
+			width: 0px !important;
 			
 			&:before {
 				content: "\2713";
@@ -3022,6 +3023,24 @@ ul.tabs--primary.nav.nav-tabs{
 		}
 		.more-link{
 			margin-top: 15px;
+		}
+	}
+	#campaigns-newsletter-subscribe-form{
+		.checkbox input[type=checkbox]:checked:before {
+		    content: "\2713";
+		    color: #003399;
+		    padding: 0px 2px 0px 2px;
+		    margin-right: 6px;
+		    font-weight: normal;
+		    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+		    margin-top: 0px;
+		    display: block;
+		    background-color: white;
+		    height: 17px;
+		    width: 14px;
+		    position: relative;
+		    left: -26px;
+		    top: 2px;
 		}
 	}
 }
@@ -7558,6 +7577,7 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				margin: 0 auto;
 				max-width: 390px;
 				margin-bottom: 20px;
+				position: relative;
 				span{
 					margin-top: 7px;
     				margin-bottom: 3px;
@@ -7570,6 +7590,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				}
 				#edit-submit{
 					vertical-align: inherit;
+					position: absolute;
+					top: 14px;
+					right: 12%;
 				}
 			}
 			#edit-unsubscribe-details{
@@ -7640,6 +7663,9 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 				table.newsletter-item{
 					td{
 						padding-bottom: 0px !important;
+						> div:nth-child(1){
+							font-weight: bold;
+						}
 						a{
 							font-size: 1.3em !important;
 							color: @colorNormalText !important;
