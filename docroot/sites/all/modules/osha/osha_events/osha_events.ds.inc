@@ -176,6 +176,7 @@ function osha_events_ds_layout_settings_info() {
         32 => 'field_color',
         33 => 'field_modified_on',
         39 => 'field_show_in_ncw',
+        40 => 'field_show_eu_flag',
       ),
       'hidden' => array(
         34 => 'field_modified_by',
@@ -183,7 +184,7 @@ function osha_events_ds_layout_settings_info() {
         36 => 'xmlsitemap',
         37 => 'field_wf_notification',
         38 => 'field_migration_source',
-        40 => '_add_existing_field',
+        41 => '_add_existing_field',
       ),
     ),
     'fields' => array(
@@ -227,6 +228,7 @@ function osha_events_ds_layout_settings_info() {
       'field_wf_notification' => 'hidden',
       'field_migration_source' => 'hidden',
       'field_show_in_ncw' => 'footer',
+      'field_show_eu_flag' => 'footer',
       '_add_existing_field' => 'hidden',
     ),
     'classes' => array(
