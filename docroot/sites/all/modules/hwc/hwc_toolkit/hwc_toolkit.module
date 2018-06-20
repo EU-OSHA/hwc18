@@ -260,11 +260,37 @@ function hwc_toolkit_get_color($colors, $curr1_id) {
   return '';
 }
 
+function hwc_toolkit_get_example_active_id($active_id, $nid) {
+  if (isset($_REQUEST['destination'])) {
+    $active_id = intval($_REQUEST['destination']);
+  }
+  else {
+    $q = db_select('node', 'n');
+    $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+    $q->fields('n', ['nid']);
+    $q->condition('n.type', 'tk_tool');
+    $q->condition('n.status', 1);
+    $q->condition('e.field_tk_examples_target_id', intval($nid));
+    $rows = $q->execute()->fetchCol();
+    if ($rows) {
+      $active_id = $rows[0];
+    }
+  }
+  return $active_id;
+}
+
 function hwc_toolkit_get_left_menu($active_id) {
   static $menu = [];
   if ($menu) {
     return $menu;
   }
+  $n = menu_get_object('node');
+  $is_example = FALSE;
+  if ($n && $n->type == 'tk_example') {
+    $active_id = hwc_toolkit_get_example_active_id($active_id, $n->nid);
+    $is_example = TRUE;
+  }
+
 
   $q = db_select('node', 'n');
   $q->fields('n', ['nid']);
@@ -370,7 +396,13 @@ function hwc_toolkit_get_left_menu($active_id) {
           hwc_toolkit_menu_breadcrumbs($lo_link);
           hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
           hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['href']));
-          hwc_toolkit_menu_breadcrumbs($menu_item3['title']);
+          if ($is_example) {
+            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['href']));
+            hwc_toolkit_menu_breadcrumbs(drupal_get_title());
+          }
+          else {
+            hwc_toolkit_menu_breadcrumbs($menu_item3['title']);
+          }
         }
         $prev3_id = $l3_id;
         $prev[3] = $menu_item3;

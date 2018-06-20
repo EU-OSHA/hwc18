@@ -8047,6 +8047,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-left: -25px;
   margin-top: 2px;
   cursor: pointer;
+  width: 0px !important;
 }
 .checkbox input[type=checkbox]:checked:before {
   content: "\2713";
@@ -9231,6 +9232,7 @@ div[class*='node-'] .more-link {
   border-radius: 0px;
   margin: auto;
   height: 31px;
+  margin-right: 0 !important;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text {
@@ -9239,7 +9241,7 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text .form-group,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text .form-group {
-  display: inline-block;
+  display: inline-block !important;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text a,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text a {
@@ -9251,11 +9253,11 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe #campaigns-newsletter-subscribe-form button,
 #block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form button {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
   height: 31px;
-  margin-left: -3px;
-  margin-top: 0px;
+  margin-left: 0px;
+  margin-top: -3px;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #join_subscribers > img,
 #block-osha-newsletter-osha-newsletter-image #join_subscribers > img {
@@ -10838,6 +10840,22 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-home_right .more-link {
   margin-top: 15px;
 }
+.front #campaigns-newsletter-subscribe-form .checkbox input[type=checkbox]:checked:before {
+  content: "\2713";
+  color: #003399;
+  padding: 0px 2px 0px 2px;
+  margin-right: 6px;
+  font-weight: normal;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin-top: 0px;
+  display: block;
+  background-color: white;
+  height: 17px;
+  width: 14px;
+  position: relative;
+  left: -26px;
+  top: 2px;
+}
 /*End Home*/
 /*share line*/
 .a2a_kit.a2a_target.addtoany_list {
@@ -11651,7 +11669,6 @@ article .hwc-share-widget ul {
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EU {
   background: url(../images/events/big/European-Union-180x180.png) no-repeat center;
 }
-
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EE,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_EE {
   background: url(../images/events/big/Estonia-180x180.png) no-repeat center;
@@ -16257,19 +16274,23 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin: 0 auto;
   max-width: 390px;
   margin-bottom: 20px;
+  position: relative;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details span {
   margin-top: 7px;
   margin-bottom: 3px;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email {
-  display: inline-block;
+  display: inline-block !important;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email input {
-  margin-right: 0px;
+  margin-right: 0px !important;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details #edit-submit {
   vertical-align: inherit;
+  position: absolute;
+  top: 14px;
+  right: 12%;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-unsubscribe-details {
   text-align: center;
@@ -16334,6 +16355,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td {
   padding-bottom: 0px !important;
+}
+.page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td > div:nth-child(1) {
+  font-weight: bold;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td a {
   font-size: 1.3em !important;
@@ -19624,7 +19648,7 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .start-here .col {
   padding-left: 15px;
   padding-right: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   display: -webkit-flex;
   display: flex;
 }
@@ -20158,25 +20182,31 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-left,
+.node-type-tk-article .node-tk-article .group-left,
 .tk-about .node-tk-article .group-left,
 .node-type-tk-example .node-tk-article .group-left,
 .page-node-6358 .node-tk-example .group-left,
+.node-type-tk-article .node-tk-example .group-left,
 .tk-about .node-tk-example .group-left,
 .node-type-tk-example .node-tk-example .group-left {
   width: 70%;
 }
 .page-node-6358 .node-tk-article .group-left p,
+.node-type-tk-article .node-tk-article .group-left p,
 .tk-about .node-tk-article .group-left p,
 .node-type-tk-example .node-tk-article .group-left p,
 .page-node-6358 .node-tk-example .group-left p,
+.node-type-tk-article .node-tk-example .group-left p,
 .tk-about .node-tk-example .group-left p,
 .node-type-tk-example .node-tk-example .group-left p {
   margin-bottom: 15px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link,
+.node-type-tk-article .node-tk-article .group-left .external-link,
 .tk-about .node-tk-article .group-left .external-link,
 .node-type-tk-example .node-tk-article .group-left .external-link,
 .page-node-6358 .node-tk-example .group-left .external-link,
+.node-type-tk-article .node-tk-example .group-left .external-link,
 .tk-about .node-tk-example .group-left .external-link,
 .node-type-tk-example .node-tk-example .group-left .external-link {
   color: #749b00;
@@ -20184,9 +20214,11 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 30px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:before,
+.node-type-tk-article .node-tk-article .group-left .external-link:before,
 .tk-about .node-tk-article .group-left .external-link:before,
 .node-type-tk-example .node-tk-article .group-left .external-link:before,
 .page-node-6358 .node-tk-example .group-left .external-link:before,
+.node-type-tk-article .node-tk-example .group-left .external-link:before,
 .tk-about .node-tk-example .group-left .external-link:before,
 .node-type-tk-example .node-tk-example .group-left .external-link:before {
   content: "\e013";
@@ -20206,9 +20238,11 @@ input#edit-field-image-und-0-upload::before {
   top: -2px;
 }
 .page-node-6358 .node-tk-article .group-left .external-link:after,
+.node-type-tk-article .node-tk-article .group-left .external-link:after,
 .tk-about .node-tk-article .group-left .external-link:after,
 .node-type-tk-example .node-tk-article .group-left .external-link:after,
 .page-node-6358 .node-tk-example .group-left .external-link:after,
+.node-type-tk-article .node-tk-example .group-left .external-link:after,
 .tk-about .node-tk-example .group-left .external-link:after,
 .node-type-tk-example .node-tk-example .group-left .external-link:after {
   content: "\e066";
@@ -20218,17 +20252,21 @@ input#edit-field-image-und-0-upload::before {
   font-size: 16px;
 }
 .page-node-6358 .node-tk-article .group-right,
+.node-type-tk-article .node-tk-article .group-right,
 .tk-about .node-tk-article .group-right,
 .node-type-tk-example .node-tk-article .group-right,
 .page-node-6358 .node-tk-example .group-right,
+.node-type-tk-article .node-tk-example .group-right,
 .tk-about .node-tk-example .group-right,
 .node-type-tk-example .node-tk-example .group-right {
   width: 30%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image,
 .tk-about .node-tk-article .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image,
 .tk-about .node-tk-example .group-right .field-name-field-image,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image {
   float: right;
@@ -20236,17 +20274,21 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image .field-item,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image .field-item,
 .tk-about .node-tk-article .group-right .field-name-field-image .field-item,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image .field-item,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image .field-item,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image .field-item,
 .tk-about .node-tk-example .group-right .field-name-field-image .field-item,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image .field-item {
   overflow: hidden;
 }
 .page-node-6358 .node-tk-article .group-right .field-name-field-image .field-item img,
+.node-type-tk-article .node-tk-article .group-right .field-name-field-image .field-item img,
 .tk-about .node-tk-article .group-right .field-name-field-image .field-item img,
 .node-type-tk-example .node-tk-article .group-right .field-name-field-image .field-item img,
 .page-node-6358 .node-tk-example .group-right .field-name-field-image .field-item img,
+.node-type-tk-article .node-tk-example .group-right .field-name-field-image .field-item img,
 .tk-about .node-tk-example .group-right .field-name-field-image .field-item img,
 .node-type-tk-example .node-tk-example .group-right .field-name-field-image .field-item img {
   width: 100%;
@@ -20327,6 +20369,35 @@ input#edit-field-image-und-0-upload::before {
   margin-left: 5px;
   font-size: 16px;
   color: #749b00;
+}
+.node-type-tk-example .node-tk-example .group-left .external-link {
+  color: #749b00;
+  display: block;
+  margin-top: 30px;
+}
+.node-type-tk-example .node-tk-example .group-left .external-link:before {
+  content: "\e013";
+  font-family: "Glyphicons Halflings";
+  text-align: center;
+  line-height: 25px;
+  width: 25px;
+  height: 25px;
+  background-color: #749b00;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  color: white;
+  margin-right: 6px;
+  font-size: 1rem;
+  position: relative;
+  top: -2px;
+}
+.node-type-tk-example .node-tk-example .group-left .external-link:after {
+  content: "\e066";
+  font-family: "Glyphicons Halflings";
+  vertical-align: sub;
+  margin-left: 6px;
+  font-size: 16px;
 }
 .node-type-tk-example #block-hwc-toolkit-toolkit-go-back a {
   color: #749b00;
@@ -22466,10 +22537,14 @@ input#edit-field-image-und-0-upload::before {
   .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details {
     text-align: center;
   }
+  .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-agree-processing-personal-data {
+    float: none;
+    width: 100%;
+  }
   .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details #edit-submit {
-    display: block;
-    margin-bottom: 10px;
-    margin: 15px auto;
+    position: absolute;
+    top: 14px;
+    right: -30px;
   }
   .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block h2 {
     font-size: 1.2em !important;
@@ -26037,28 +26112,36 @@ input#edit-field-image-und-0-upload::before {
   }
   .page-node-6358 .node-tk-article,
   .node-type-tk-example .node-tk-article,
+  .node-type-tk-article .node-tk-article,
   .page-node-6358 .node-tk-example,
-  .node-type-tk-example .node-tk-example {
+  .node-type-tk-example .node-tk-example,
+  .node-type-tk-article .node-tk-example {
     display: grid;
   }
   .page-node-6358 .node-tk-article .group-left,
   .node-type-tk-example .node-tk-article .group-left,
+  .node-type-tk-article .node-tk-article .group-left,
   .page-node-6358 .node-tk-example .group-left,
-  .node-type-tk-example .node-tk-example .group-left {
+  .node-type-tk-example .node-tk-example .group-left,
+  .node-type-tk-article .node-tk-example .group-left {
     width: 100%;
     order: 2;
   }
   .page-node-6358 .node-tk-article .group-right,
   .node-type-tk-example .node-tk-article .group-right,
+  .node-type-tk-article .node-tk-article .group-right,
   .page-node-6358 .node-tk-example .group-right,
-  .node-type-tk-example .node-tk-example .group-right {
+  .node-type-tk-example .node-tk-example .group-right,
+  .node-type-tk-article .node-tk-example .group-right {
     width: 100%;
     order: 1;
   }
   .page-node-6358 .node-tk-article .group-right .field-name-field-image,
   .node-type-tk-example .node-tk-article .group-right .field-name-field-image,
+  .node-type-tk-article .node-tk-article .group-right .field-name-field-image,
   .page-node-6358 .node-tk-example .group-right .field-name-field-image,
-  .node-type-tk-example .node-tk-example .group-right .field-name-field-image {
+  .node-type-tk-example .node-tk-example .group-right .field-name-field-image,
+  .node-type-tk-article .node-tk-example .group-right .field-name-field-image {
     padding-left: 0px;
   }
 }
