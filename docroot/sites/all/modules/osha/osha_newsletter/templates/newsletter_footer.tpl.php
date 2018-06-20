@@ -18,7 +18,7 @@ if (!empty($campaign_id)) {
 global $language;
 ?>
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="template-container newsletter-container newsletter-footer">
+<table border="0" cellpadding="0" cellspacing="0" width="800" class="template-container newsletter-container newsletter-footer">
   <tbody>
     <tr>
       <?php
@@ -27,12 +27,12 @@ global $language;
       ?>
       <td background="<?php print $bg_path; ?>" bgcolor="#416400" valign="top" style="background-image: url('<?php print $bg_path; ?>'); background-repeat: no-repeat; background-size: cover; padding: 0;">
         <!--[if gte mso 9]>
-          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
+          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:800px;">
             <v:fill type="frame" src="<?php print $bg_path; ?>" color="#416400" />
             <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
         <![endif]-->
         <div>
-          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <table border="0" cellpadding="0" cellspacing="0" width="800">
             <tbody>
               <tr class="social footer-social">
                 <td>
@@ -100,14 +100,6 @@ global $language;
         <![endif]-->
       </td>
     </tr>
-<!--    <tr class="footer-disclaimer">
-      <td>
-        <p>
-          This is a disclaimer lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-      </td>
-    </tr>
--->
     <tr class="footer-unsubscribe">
       <td>
         <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>', array('@style' => 'color: #003399; text-decoration: none;', '@url' => url($base_url.'/'.$language->language.'/oshmail-newsletter', array('query' => $url_query)))); ?>

@@ -105,3 +105,11 @@ function osha_news_update_7014() {
 function osha_news_update_7015() {
   features_revert(array('osha_news' => 'field_instance'));
 }
+
+/**
+ * MDR-2018 Newsletter: delete bold style in the body of the news.
+ */
+function osha_news_update_7016() {
+  features_revert(array('osha_news' => 'field_instance'));
+  features_revert(array('osha_news' => 'image'));
+}
