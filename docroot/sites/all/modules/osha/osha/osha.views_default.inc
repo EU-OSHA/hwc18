@@ -540,6 +540,36 @@ function osha_views_default_views() {
     10 => 0,
     11 => 0,
   );
+  /* Filter criterion: Content: Type (field_partner_type) */
+  $handler->display->display_options['filters']['field_partner_type_tid']['id'] = 'field_partner_type_tid';
+  $handler->display->display_options['filters']['field_partner_type_tid']['table'] = 'field_data_field_partner_type';
+  $handler->display->display_options['filters']['field_partner_type_tid']['field'] = 'field_partner_type_tid';
+  $handler->display->display_options['filters']['field_partner_type_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_partner_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator_id'] = 'field_partner_type_tid_op';
+  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['label'] = 'Type of partner';
+  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator'] = 'field_partner_type_tid_op';
+  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['identifier'] = 'field_partner_type_tid';
+  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+  );
+  $handler->display->display_options['filters']['field_partner_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_partner_type_tid']['vocabulary'] = 'partner_types';
   /* Filter criterion: Taxonomy term: Vocabulary */
   $handler->display->display_options['filters']['vid']['id'] = 'vid';
   $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
@@ -650,23 +680,12 @@ function osha_views_default_views() {
     2 => array(),
     3 => array(),
   );
-  /* Filter criterion: Workbench Moderation: Current */
-  $handler->display->display_options['filters']['current']['id'] = 'current';
-  $handler->display->display_options['filters']['current']['table'] = 'workbench_moderation_node_history';
-  $handler->display->display_options['filters']['current']['field'] = 'current';
-  $handler->display->display_options['filters']['current']['value'] = '1';
-  $handler->display->display_options['filters']['current']['group'] = 2;
-  /* Filter criterion: Workbench Moderation: Type is moderated */
-  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['id'] = 'workbench_moderation_moderated_type';
-  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['table'] = 'node';
-  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['field'] = 'workbench_moderation_moderated_type';
-  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['value'] = '0';
-  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['group'] = 2;
   /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
   $handler->display->display_options['filters']['created']['table'] = 'node';
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['group'] = 1;
   $handler->display->display_options['filters']['created']['exposed'] = TRUE;
   $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
   $handler->display->display_options['filters']['created']['expose']['label'] = 'Created (from)';
@@ -689,6 +708,18 @@ function osha_views_default_views() {
     14 => 0,
     15 => 0,
   );
+  /* Filter criterion: Workbench Moderation: Current */
+  $handler->display->display_options['filters']['current']['id'] = 'current';
+  $handler->display->display_options['filters']['current']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['current']['field'] = 'current';
+  $handler->display->display_options['filters']['current']['value'] = '1';
+  $handler->display->display_options['filters']['current']['group'] = 2;
+  /* Filter criterion: Workbench Moderation: Type is moderated */
+  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['id'] = 'workbench_moderation_moderated_type';
+  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['table'] = 'node';
+  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['field'] = 'workbench_moderation_moderated_type';
+  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['value'] = '0';
+  $handler->display->display_options['filters']['workbench_moderation_moderated_type']['group'] = 2;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'main_page');
@@ -732,6 +763,7 @@ function osha_views_default_views() {
     t('[edit_node] [delete_node]'),
     t('Operations'),
     t('Type'),
+    t('Type of partner'),
     t('Vocabulary'),
     t('Not translated in'),
     t('State'),
