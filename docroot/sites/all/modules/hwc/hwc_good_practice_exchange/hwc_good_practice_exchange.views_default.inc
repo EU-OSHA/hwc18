@@ -29,6 +29,7 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
     12 => '12',
+    14 => '14',
     11 => '11',
     13 => '13',
   );
