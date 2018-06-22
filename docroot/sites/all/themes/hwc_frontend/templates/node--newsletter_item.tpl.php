@@ -120,7 +120,7 @@ if (!empty($campaign_id)) {
                   ?>
                     <table>
                         <tr>
-                            <td style="padding-top: 10px;">
+                            <td style="padding-top: 10px;" width="505">
                               <?php
 
                               print '<div class="see-more">';
@@ -146,7 +146,7 @@ if (!empty($campaign_id)) {
                               ?>
 
                             </td>
-                            <td align="right" valign="middle" style="padding-top: 10px;">
+                            <td align="right" valign="middle" style="padding-top: 10px;" width="20">
                               <?php
                               print l(theme('image', array(
                                 'path' => $directory . '/images/' . 'share-icon.png',
