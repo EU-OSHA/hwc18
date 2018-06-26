@@ -71,7 +71,7 @@ if (!empty($campaign_id)) {
         else {
           ?>
             <tr>
-                <td style="padding-bottom: 10px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                <td style="padding-bottom: 0px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
                   <?php
                   if (isset($field_image)) {
                       print l(theme('image_style', array(
@@ -92,7 +92,7 @@ if (!empty($campaign_id)) {
                   }
                   ?>
                 </td>
-                <td style="padding-left: 10px;padding-bottom: 10px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                <td style="padding-bottom: 0px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
                     <div style="font-weight: bold;"><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
                     <div>
                       <?php
@@ -118,9 +118,14 @@ if (!empty($campaign_id)) {
                   }
                   $directory = drupal_get_path('module', 'osha_newsletter');
                   ?>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-bottom: 10px; ">&nbsp;</td>
+                <td style="padding-bottom: 10px; ">
                     <table>
                         <tr>
-                            <td style="padding-top: 10px;" width="505">
+                            <td style="padding-top: 0px;" width="505">
                               <?php
 
                               print '<div class="see-more">';
@@ -146,7 +151,7 @@ if (!empty($campaign_id)) {
                               ?>
 
                             </td>
-                            <td align="right" valign="middle" style="padding-top: 10px;" width="20">
+                            <td align="right" valign="middle" style="padding-top: 0px;" width="20">
                               <?php
                               print l(theme('image', array(
                                 'path' => $directory . '/images/' . 'share-icon.png',
