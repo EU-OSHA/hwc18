@@ -251,6 +251,17 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
   }
 
   /**
+   * Get modified dates.
+   */
+  function getPracticalToolModifiedDates() {
+    $q = db_select('migrate_map_dangerous_substances', 'mm');
+    $q->fields('mm', ['sourceid1']);
+    $q->fields('md', ['field_modified_date_value']);
+    $q->leftJoin('field_data_field_modified_date', 'md', 'md.entity_id = mm.destid1');
+    return $q->execute()->fetchAllKeyed(0, 1);
+  }
+
+  /**
    * Read data from source.
    */
   public function readData() {
@@ -259,7 +270,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
     $content = $this->fileGetContents($this->endpoint_url);
     if ($data = json_decode($content)) {
       ncw_migration_debug('!klass:      * Processing !count items', array('!klass' => get_class($this), '!count' => count($data->items)));
-      $dates = get_practical_tool_modified_dates();
+      $dates = $this->getPracticalToolModifiedDates();
       $check_date = variable_get('ncw_migration_ds_check_date', TRUE);
       foreach ($data->items as $ob) {
         $ob = $ob->item;
