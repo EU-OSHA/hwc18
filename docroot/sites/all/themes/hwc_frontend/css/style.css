@@ -20280,10 +20280,10 @@ input#edit-field-image-und-0-upload::before {
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-items {
-  border: 2px solid #749b00;
+  border: 1px solid #749b00;
   border-top: none;
   background-color: #f3f3f3;
-  padding: 25px 15px;
+  padding: 15px 12px 5px;
   display: none;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-items .field-item,
@@ -20295,14 +20295,19 @@ input#edit-field-image-und-0-upload::before {
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label {
   background-color: #749b00;
   color: white;
-  padding: 10px 15px;
-  font-size: 1.2em;
-  font-weight: 500;
+  padding: 6px 12px;
+  font-size: 1em;
+  font-weight: bold;
   cursor: pointer;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label:hover,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label:hover {
   background-color: #595959;
+}
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label:hover ~ .field-items,
+.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label:hover ~ .field-items {
+  border: 1px solid #595959;
+  border-top: none;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label:after,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label:after {
@@ -20310,6 +20315,8 @@ input#edit-field-image-und-0-upload::before {
   font-family: "Glyphicons Halflings";
   float: right;
   vertical-align: middle;
+  font-size: 0.8em;
+  margin-top: 2px;
 }
 .node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label.up-arrow:after,
 .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label.up-arrow:after {

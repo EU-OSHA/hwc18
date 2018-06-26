@@ -11218,10 +11218,10 @@ input#edit-field-image-und-0-upload::before {
 			.field-name-field-download-pdf,
 			.field-name-field-external-link{
 				.field-items{
-					border: 2px solid @h2-default-color-2;
+					border: 1px solid @h2-default-color-2;
 					border-top: none;
 					background-color: @bg-color-grey-toolkit;
-					padding: 25px 15px;
+					padding: 15px 12px 5px;
 					display: none;
 					.field-item{
 						/* font-size: 1.2em; */
@@ -11231,18 +11231,26 @@ input#edit-field-image-und-0-upload::before {
 				.field-label{
 					background-color: @h2-default-color-2;
 					color: white;
-					padding: 10px 15px;
-					font-size: 1.2em;
-					font-weight: 500;
+					padding: 6px 12px;
+					font-size: 1em;
+					//font-weight: 500;
+					font-weight: bold;
 					cursor: pointer;
 					&:hover{
 						background-color:  @hover-grey-button-toolkit;
+
+						~ .field-items{
+							border: 1px solid @hover-grey-button-toolkit;
+							border-top: none;
+						}
 					}
 					&:after{
 						content:"\e250";
 						font-family: "Glyphicons Halflings";
 						float: right;
 						vertical-align: middle;
+						font-size: 0.8em;
+						margin-top: 2px;
 					}
 				}
 				.field-label.up-arrow{
