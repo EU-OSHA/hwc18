@@ -14,6 +14,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
   $permissions['create document content'] = array(
     'name' => 'create document content',
     'roles' => array(
+      'Review Manager' => 'Review Manager',
       'administrator' => 'administrator',
       'campaign partner' => 'campaign partner',
       'supervisor' => 'supervisor',
@@ -36,6 +37,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
   $permissions['delete own document content'] = array(
     'name' => 'delete own document content',
     'roles' => array(
+      'Review Manager' => 'Review Manager',
       'administrator' => 'administrator',
       'campaign partner' => 'campaign partner',
       'supervisor' => 'supervisor',
@@ -65,6 +67,7 @@ function hwc_good_practice_exchange_user_default_permissions() {
   $permissions['edit own document content'] = array(
     'name' => 'edit own document content',
     'roles' => array(
+      'Review Manager' => 'Review Manager',
       'administrator' => 'administrator',
       'campaign partner' => 'campaign partner',
       'supervisor' => 'supervisor',

@@ -52,6 +52,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
   protected function getManuallyMigratedFields() {
     $map = array_keys($this->getTermReferenceFieldsMap());
     $map[] = 'field_fc_provider';
+    $map[] = 'field_modified_date';
     return $map;
   }
 
@@ -63,7 +64,8 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     if ($entity->field_available_in_languages) {
       $entity->field_available_in_languages['und'] = $entity->field_available_in_languages['und'][0]['value'];
     }
-
+    $entity->field_modified_date = [];
+    $entity->field_modified_date[LANGUAGE_NONE][0]['value'] = $row->changed;
     // field_collection_item - field_fc_provider.
     $entity_ids = [];
     if (!empty($entity->nid)) {
@@ -249,6 +251,17 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
   }
 
   /**
+   * Get modified dates.
+   */
+  function getPracticalToolModifiedDates() {
+    $q = db_select('migrate_map_dangerous_substances', 'mm');
+    $q->fields('mm', ['sourceid1']);
+    $q->fields('md', ['field_modified_date_value']);
+    $q->leftJoin('field_data_field_modified_date', 'md', 'md.entity_id = mm.destid1');
+    return $q->execute()->fetchAllKeyed(0, 1);
+  }
+
+  /**
    * Read data from source.
    */
   public function readData() {
@@ -257,11 +270,16 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
     $content = $this->fileGetContents($this->endpoint_url);
     if ($data = json_decode($content)) {
       ncw_migration_debug('!klass:      * Processing !count items', array('!klass' => get_class($this), '!count' => count($data->items)));
+      $dates = $this->getPracticalToolModifiedDates();
+      $check_date = variable_get('ncw_migration_ds_check_date', TRUE);
       foreach ($data->items as $ob) {
         $ob = $ob->item;
         $id = $this->itemIdentifier($ob);
         $this->source_ids[$id] = $id;
         if (in_array($id, $this->skip_ids)) {
+          continue;
+        }
+        if ($check_date && isset($dates[$id]) && ($dates[$id] == $ob->changed)) {
           continue;
         }
         $node_url = $this->itemURL($id);
@@ -330,6 +348,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
       'field_worker_groups_other' => '',
       'title_field' => '',
       'field_fc_provider' => '',
+      'field_modified_date' => '',
       'title_field_language' => '',
     ];
     $fields += $text;
