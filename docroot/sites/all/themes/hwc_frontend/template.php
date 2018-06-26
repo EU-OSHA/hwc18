@@ -5,6 +5,7 @@
 function bootstrap_menu_tree__menu_footer_menu(&$variables) {
   return '<ul class="menu nav nav-pills">' . $variables['tree'] . '</ul>';
 }
+
 /**
  * Implements theme_menu_link__menu_block().
  */
@@ -579,14 +580,67 @@ function hwc_frontend_pager($variables) {
   $variables['tags'][4] = '»';
   return theme_pager($variables);
 }
+
+/**
+ * Theme function
+ *
+ * @param $service
+ *    Icon for appropriate service.
+ * @param $link
+ *    URL where link should point.
+ * @param $title
+ *    Title attribute for the link tag.
+ *
+ * @return
+ *    Linked icon with wrapper markup.
+ */
+function hwc_frontend_on_the_web_item($variables) {
+  $service = $variables['service'];
+  $link = $variables['link'];
+  $title = $variables['title'];
+
+  // Build the img tag.
+  $image = theme('on_the_web_image', array('service' => $service, 'title' => $title));
+
+  $title = ucfirst($variables['service']);
+  if ($title == 'Linkedin') {
+    $title = 'LinkedIn';
+  }
+  // Determine attributes for the link.
+  $attributes = ['title' => $title];
+  if (variable_get('on_the_web_target', TRUE) == TRUE) {
+    $attributes['target'] = '_blank';
+  }
+
+  // Link the image and wrap it in a span.
+  $linked_image = l($image, $link, array('attributes' => $attributes, 'html' => TRUE));
+
+  return $linked_image;
+}
+
+/**
+ * Theme function
+ *
+ * @param $service
+ *    Icon for appropriate service.
+ * @param $title
+ *    Title attribute for the link tag.
+ *
+ * @return
+ *    Icon image of appropriate size.
+ */
 function hwc_frontend_on_the_web_image($variables) {
   $service = $variables['service'];
-  $title   = $variables['title'];
-  $size    = variable_get('on_the_web_size', 'sm');
+  $title = ucfirst($variables['service']);
+  if ($title == 'Linkedin') {
+    $title = 'LinkedIn';
+  }
+  $alt = $variables['title'];
+  $size = variable_get('on_the_web_size', 'sm');
   $variables = array(
-    'alt'   => $title,
+    'alt'   => $alt,
     'path'  => drupal_get_path('theme', 'hwc_frontend') . '/images/social_icons/' . $size . '/' . $service . '.png',
-    'title' => $title
+    'title' => $title,
   );
   return theme('image', $variables);
 }

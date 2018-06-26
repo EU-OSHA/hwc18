@@ -8047,6 +8047,7 @@ ul.tabs--primary.nav.nav-tabs > li.active > a:focus {
   margin-left: -25px;
   margin-top: 2px;
   cursor: pointer;
+  width: 0px !important;
 }
 .checkbox input[type=checkbox]:checked:before {
   content: "\2713";
@@ -9231,6 +9232,7 @@ div[class*='node-'] .more-link {
   border-radius: 0px;
   margin: auto;
   height: 31px;
+  margin-right: 0 !important;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text {
@@ -9239,7 +9241,7 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text .form-group,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text .form-group {
-  display: inline-block;
+  display: inline-block !important;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #block_newsletter_image_text a,
 #block-osha-newsletter-osha-newsletter-image #block_newsletter_image_text a {
@@ -9251,11 +9253,11 @@ div[class*='node-'] .more-link {
 }
 #block-osha-newsletter-osha-newsletter-subscribe #campaigns-newsletter-subscribe-form button,
 #block-osha-newsletter-osha-newsletter-image #campaigns-newsletter-subscribe-form button {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
   height: 31px;
-  margin-left: -3px;
-  margin-top: 0px;
+  margin-left: 0px;
+  margin-top: -3px;
 }
 #block-osha-newsletter-osha-newsletter-subscribe #join_subscribers > img,
 #block-osha-newsletter-osha-newsletter-image #join_subscribers > img {
@@ -10837,6 +10839,22 @@ html:lang(no) .pane-node-field-provider .field-items,
 }
 .front .panels-flexible-region-new-home_right .more-link {
   margin-top: 15px;
+}
+.front #campaigns-newsletter-subscribe-form .checkbox input[type=checkbox]:checked:before {
+  content: "\2713";
+  color: #003399;
+  padding: 0px 2px 0px 2px;
+  margin-right: 6px;
+  font-weight: normal;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  margin-top: 0px;
+  display: block;
+  background-color: white;
+  height: 17px;
+  width: 14px;
+  position: relative;
+  left: -26px;
+  top: 2px;
 }
 /*End Home*/
 /*share line*/
@@ -16256,19 +16274,23 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin: 0 auto;
   max-width: 390px;
   margin-bottom: 20px;
+  position: relative;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details span {
   margin-top: 7px;
   margin-bottom: 3px;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email {
-  display: inline-block;
+  display: inline-block !important;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email input {
-  margin-right: 0px;
+  margin-right: 0px !important;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details #edit-submit {
   vertical-align: inherit;
+  position: absolute;
+  top: 14px;
+  right: 12%;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-unsubscribe-details {
   text-align: center;
@@ -16333,6 +16355,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td {
   padding-bottom: 0px !important;
+}
+.page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td > div:nth-child(1) {
+  font-weight: bold;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block div.newsletter-item table.newsletter-item td a {
   font-size: 1.3em !important;
@@ -22519,10 +22544,14 @@ input#edit-field-image-und-0-upload::before {
   .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details {
     text-align: center;
   }
+  .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-agree-processing-personal-data {
+    float: none;
+    width: 100%;
+  }
   .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details #edit-submit {
-    display: block;
-    margin-bottom: 10px;
-    margin: 15px auto;
+    position: absolute;
+    top: 14px;
+    right: -30px;
   }
   .page-node-129 .pane-osha-newsletter-osha-newsletter-latest #latest-newsletters-block h2 {
     font-size: 1.2em !important;
