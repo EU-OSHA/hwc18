@@ -17,7 +17,9 @@ if (!empty($campaign_id)) {
 global $language;
 $directory = drupal_get_path('module','osha_newsletter');
 ?>
-
+<style type="text/css">
+    a {text-decoration: none !important;}
+</style>
 <span class="preview-text" style="color: transparent; display: none !important; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">
   <?php
     $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y');
