@@ -208,3 +208,11 @@ function hwc_practical_tool_update_7026() {
 function hwc_practical_tool_update_7027() {
   features_revert(array('hwc_practical_tool' => 'field_base'));
 }
+
+/**
+ * MDR-2034 DS database not synchronising.
+ */
+function hwc_practical_tool_update_7028() {
+  features_revert(array('hwc_practical_tool' => 'field_base'));
+  features_revert(array('hwc_practical_tool' => 'field_instance'));
+}
