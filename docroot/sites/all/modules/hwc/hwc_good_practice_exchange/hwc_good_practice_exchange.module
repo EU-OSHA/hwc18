@@ -197,12 +197,6 @@ function hwc_good_practice_exchange_node_get_workbench_section($item) {
 }
 
 /**
- * Implements hook_views_data().
- */
-function hwc_good_practice_exchange_views_data() {
-}
-
-/**
  * Implements hook_entity_property_info_alter().
  */
 function hwc_good_practice_exchange_entity_property_info_alter(&$info) {
@@ -225,29 +219,6 @@ function hwc_good_practice_exchange_entity_property_info_alter(&$info) {
     'getter callback' => 'hwc_good_practice_exchange_node_get_workbench_section',
   );
 
-}
-
-/**
- * Getter callback for created_week_day property.
- */
-function hwc_good_practice_exchange_property_weekday_getter_callback($item) {
-  return format_date($item->created, 'custom', 'D');
-}
-
-/**
- * Getter callback for multiple field.
- */
-function hwc_good_practice_exchange_property_random_text_getter_callback($item) {
-  $strings = array('one', 'two', 'three', 'four', 'five');
-  $number = rand(1, 5);
-
-  $values = array();
-  while ($number > 0) {
-    $values[] = $strings[rand(0, 4)];
-    $number--;
-  }
-
-  return $values;
 }
 
 /**
