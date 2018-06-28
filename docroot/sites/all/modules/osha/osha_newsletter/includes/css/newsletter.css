@@ -26,6 +26,10 @@
   max-width: 100%;
 }
 
+.newsletter-container .field.field-name-field-summary {
+  font-weight: normal;
+}
+
 /* General */
 a {
   color: #0074BD;

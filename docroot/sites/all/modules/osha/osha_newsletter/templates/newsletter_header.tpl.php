@@ -17,7 +17,9 @@ if (!empty($campaign_id)) {
 global $language;
 $directory = drupal_get_path('module','osha_newsletter');
 ?>
-
+<style type="text/css">
+    a {text-decoration: none !important;}
+</style>
 <span class="preview-text" style="color: transparent; display: none !important; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">
   <?php
     $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y');
@@ -25,7 +27,7 @@ $directory = drupal_get_path('module','osha_newsletter');
     print t($newsletter_ready_date);
   ?>
 </span>
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="preheader template-container">
+<table border="0" cellpadding="0" cellspacing="0" width="800" class="preheader template-container">
   <tbody>
     <tr>
       <td height="6" style="background-color: #003399;"">
@@ -34,7 +36,7 @@ $directory = drupal_get_path('module','osha_newsletter');
   </tbody>
 </table>
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-family: Arial,sans-serif; table-layout: fixed;" class="header template-container">
+<table border="0" cellpadding="0" cellspacing="0" width="800" style="font-family: Arial,sans-serif; table-layout: fixed;" class="header template-container">
   <tbody>
     <tr>
       <td class="hwc-logo visible-mobile" width="0" style="width: 0px; max-width: 0px;" valign="bottom">
@@ -118,7 +120,7 @@ $directory = drupal_get_path('module','osha_newsletter');
   </tbody>
 </table>
 
-<table border="0" cellpadding="0" cellspacing="0" width="100%" class="template-container">
+<table border="0" cellpadding="0" cellspacing="0" width="800" class="template-container">
   <tbody>
     <tr>
       <?php
@@ -127,12 +129,12 @@ $directory = drupal_get_path('module','osha_newsletter');
       ?>
       <td class="header-banner-container" background="<?php print $bg_path; ?>" bgcolor="#6ca638" valign="top" style="background-image: url(<?php print $bg_path; ?>); background-repeat: no-repeat; background-size: cover; padding-top: 0; padding-bottom: 0px;">
         <!--[if gte mso 9]>
-        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;">
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 800px;">
           <v:fill type="frame" src="<?php print $bg_path; ?>" color="#6ca638" />
           <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
         <![endif]-->
         <div>
-          <table border="0" cellpadding="0" cellspacing="0" width="100%" class="header-banner">
+          <table border="0" cellpadding="0" cellspacing="0" width="800" class="header-banner">
             <tbody>
               <tr>
                 <td style="width: 70%; text-align: left; font-size: 24px; font-weight: bold; color: #ffffff; font-family: Arial,sans-serif;" class="header-title responsive-column">

@@ -231,7 +231,7 @@ class OSHNewsletter {
           'newsletter-section',
           'template-container',
         ],
-        'width' => '100%',
+        'width' => '760',
         'cellpadding' => '0',
         'cellspacing' => '0',
       ],
@@ -299,29 +299,29 @@ class OSHNewsletter {
     }
     if ($variables['section']->name == 'Events') {
       $url = url('events', ['absolute' => TRUE]);
-      $content['#suffix'] .= '
+      $content['#suffix'] .= '<table><tr><td align="center">
         <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">
         <tr>
-          <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
-          <td style="border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
+          <td style="background-color: #003399; border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
+          <td style="background-color: #003399; border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
           color: #ffffff; text-decoration: none;">' . t('View All') . '</a></td>
         </tr>
         </table>
-        </div>';
+        </div></td></tr></table>';
     }
     if ($variables['section']->name == 'Tweets') {
       $url = url('social_media_centre', ['absolute' => TRUE]);
-      $content['#suffix'] .= '
+      $content['#suffix'] .= '<table><tr><td align="center">
         <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">
         <tr>
-          <td style="border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
-          <td style="border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
+          <td style="background-color: #003399; border: 0; color: #ffffff; padding: 0.5em 0 0.5em 0.5em;">&gt; </td>
+          <td style="background-color: #003399; border: 0; color: #ffffff; padding: 0.5em;"><a href="' . $url . '" style="
           color: #ffffff; text-decoration: none;">' . t('More Social media') . '</a></td>
         </tr>
         </table>
-        </div>';
+        </div></td></tr></table>';
     }
     switch ($template) {
       case 'newsletter_multiple_columns':

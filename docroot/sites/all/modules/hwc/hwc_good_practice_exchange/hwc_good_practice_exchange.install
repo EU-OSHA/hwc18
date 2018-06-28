@@ -173,3 +173,18 @@ function hwc_good_practice_exchange_update_7022() {
   features_revert_module('hwc_good_practice_exchange');
   features_revert_module('osha_resources');
 }
+
+/**
+ * MDR-1943 Upload video to Good Practice Exchange platform.
+ */
+function hwc_good_practice_exchange_update_7023() {
+  features_revert(array('hwc_good_practice_exchange' => array('field_instance')));
+}
+
+/**
+ * MDR-2028 Review Managers should have permission to access GPE platform.
+ */
+function hwc_good_practice_exchange_update_7024() {
+  features_revert(array('hwc_good_practice_exchange' => array('views_view')));
+  features_revert(array('hwc_good_practice_exchange' => array('user_permission')));
+}

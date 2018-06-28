@@ -338,7 +338,7 @@ function hwc_priority_areas_field_default_field_bases() {
   // Exported field_base: 'field_tools_and_guidance'.
   $field_bases['field_tools_and_guidance'] = array(
     'active' => 1,
-    'cardinality' => 2,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tools_and_guidance',

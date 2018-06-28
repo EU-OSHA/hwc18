@@ -235,3 +235,12 @@ function osha_newsletter_update_7009() {
 function osha_newsletter_update_7010() {
   features_revert_module('osha_newsletter');
 }
+
+/**
+ * MDR-2019 Newsletter: tweets overlapped.
+ */
+function osha_newsletter_update_7011() {
+  $term = taxonomy_term_load(86);
+  $term->field_newsletter_template[LANGUAGE_NONE][0]['value'] = 'newsletter_full_width_list';
+  taxonomy_term_save($term);
+}

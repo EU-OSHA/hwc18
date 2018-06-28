@@ -178,6 +178,16 @@ function hwc_homepage_views_default_views() {
   $handler->display->display_options['style_options']['heading_field'] = 'field_start_date';
   $handler->display->display_options['style_options']['body_field'] = 'field_country_code';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Show EU flag */
+  $handler->display->display_options['fields']['field_show_eu_flag']['id'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['table'] = 'field_data_field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['field'] = 'field_show_eu_flag';
+  $handler->display->display_options['fields']['field_show_eu_flag']['label'] = '';
+  $handler->display->display_options['fields']['field_show_eu_flag']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_show_eu_flag']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';

@@ -1694,6 +1694,7 @@ function hwc_practical_tool_field_default_field_instances() {
         'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'field_formatter_class' => '',
           'link' => FALSE,
         ),
@@ -2563,6 +2564,84 @@ function hwc_practical_tool_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 42,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-practical_tool-field_modified_date'.
+  $field_instances['node-practical_tool-field_modified_date'] = array(
+    'bundle' => 'practical_tool',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 46,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_modified_date',
+    'label' => 'Modified Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_text',
+      'weight' => 51,
     ),
     'workbench_access_field' => 0,
   );
@@ -4406,6 +4485,7 @@ function hwc_practical_tool_field_default_field_instances() {
   t('Hazard - physical state other');
   t('Language');
   t('Languages other');
+  t('Modified Date');
   t('Name');
   t('Objective');
   t('Other type provider');
