@@ -16273,23 +16273,19 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin: 0 auto;
   max-width: 390px;
   margin-bottom: 20px;
-  position: relative;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details span {
   margin-top: 7px;
   margin-bottom: 3px;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email {
-  display: inline-block !important;
+  display: inline-block;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details .form-item-email input {
-  margin-right: 0px !important;
+  margin-right: 0px;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-subscribe-details #edit-submit {
   vertical-align: inherit;
-  position: absolute;
-  top: 14px;
-  right: 12%;
 }
 .page-node-129 .pane-osha-newsletter-osha-newsletter-subscribe-extra #subscribe-extra #edit-unsubscribe-details {
   text-align: center;
