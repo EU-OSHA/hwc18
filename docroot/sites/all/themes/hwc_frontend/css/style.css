@@ -10794,6 +10794,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_LT {
   background: url(../images/events/big/Lithuania-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_LU {
+  background: url(../images/events/big/Luxembourg-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-center .event_day_month .code_LI {
   background: url(../images/events/big/Liechtenstein-180x180.png) no-repeat center;
 }
@@ -11706,6 +11709,10 @@ article .hwc-share-widget ul {
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LT,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LT {
   background: url(../images/events/big/Lithuania-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LU,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LU {
+  background: url(../images/events/big/Luxembourg-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LI,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_LI {
