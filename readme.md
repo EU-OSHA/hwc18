@@ -1,4 +1,4 @@
-OSHA
+HWC18
 ====
 
 Build scripts and source code for the Osha project
