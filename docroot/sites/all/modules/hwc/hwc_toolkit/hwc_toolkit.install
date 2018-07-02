@@ -89,3 +89,10 @@ function hwc_toolkit_update_7012() {
 function hwc_toolkit_update_7013() {
   features_revert(array('hwc_toolkit' => array('field_instance')));
 }
+
+/**
+ * TKIT-93 H1 hidden elements.
+ */
+function hwc_toolkit_update_7014() {
+  features_revert(array('hwc_toolkit' => array('field_instance')));
+}

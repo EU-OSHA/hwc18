@@ -693,6 +693,9 @@ function hwc_toolkit_strongarm() {
         'xmlsitemap' => array(
           'weight' => '4',
         ),
+        'language' => array(
+          'weight' => '5',
+        ),
       ),
       'display' => array(),
     ),
