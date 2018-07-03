@@ -127,7 +127,7 @@ function hwc_toolkit_image_default_styles() {
 function hwc_toolkit_node_info() {
   $items = array(
     'tk_article' => array(
-      'name' => 'TK Article',
+      'name' => 'Toolkit Article',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -135,7 +135,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_example' => array(
-      'name' => 'TK Example',
+      'name' => 'Toolkit Example',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -151,7 +151,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_tool' => array(
-      'name' => 'TK Tool',
+      'name' => 'Toolkit Tool',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -159,7 +159,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_topic' => array(
-      'name' => 'TK Topic',
+      'name' => 'Toolkit Topic',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
