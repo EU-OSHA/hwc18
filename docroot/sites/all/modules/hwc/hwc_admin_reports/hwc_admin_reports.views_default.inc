@@ -132,7 +132,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['fields']['nid']['table'] = 'node';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
   $handler->display->display_options['fields']['nid']['label'] = 'nid';
-  /* Sort criterion: Content: Starting date and time -  start date (field_start_date) */
+  /* Sort criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['sorts']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['sorts']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['sorts']['field_start_date_value']['field'] = 'field_start_date_value';
@@ -629,7 +629,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
   $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = 'hwc_reports_news.xlsx';
+  $handler->display->display_options['style_options']['filename'] = 'hwc_reports_news.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
@@ -647,7 +647,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['fields']['field_summary_1']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Image */
+  /* Field: Field: Image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
   $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
@@ -929,7 +929,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_xlsx';
   $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = 'hwc_reports_events.xlsx';
+  $handler->display->display_options['style_options']['filename'] = 'hwc_reports_events.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Author */
@@ -956,7 +956,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['fields']['created']['date_format'] = 'us_date_only_format';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'm/d/Y H:i';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'year';
-  /* Field: Content: Starting date and time */
+  /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
@@ -972,7 +972,7 @@ function hwc_admin_reports_views_default_views() {
     'osha_date_theme' => '',
     'field_formatter_class' => '',
   );
-  /* Field: Content: Starting date and time */
+  /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
   $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date_1']['field'] = 'field_start_date';
@@ -1057,7 +1057,7 @@ function hwc_admin_reports_views_default_views() {
   $handler->display->display_options['fields']['field_contact_phone']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Speakers */
+  /* Field: Content: Speaker */
   $handler->display->display_options['fields']['field_speaker']['id'] = 'field_speaker';
   $handler->display->display_options['fields']['field_speaker']['table'] = 'field_data_field_speaker';
   $handler->display->display_options['fields']['field_speaker']['field'] = 'field_speaker';
@@ -1068,7 +1068,7 @@ function hwc_admin_reports_views_default_views() {
   );
   $handler->display->display_options['fields']['field_speaker']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_speaker']['separator'] = '|';
-  /* Field: Content: Speakers */
+  /* Field: Content: Speaker */
   $handler->display->display_options['fields']['field_speaker_1']['id'] = 'field_speaker_1';
   $handler->display->display_options['fields']['field_speaker_1']['table'] = 'field_data_field_speaker';
   $handler->display->display_options['fields']['field_speaker_1']['field'] = 'field_speaker';
