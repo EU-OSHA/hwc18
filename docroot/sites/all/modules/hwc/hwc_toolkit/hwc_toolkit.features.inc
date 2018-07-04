@@ -94,17 +94,26 @@ function hwc_toolkit_image_default_styles() {
   $styles['toolkit'] = array(
     'label' => 'toolkit',
     'effects' => array(
-      2 => array(
+      1 => array(
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
-          'width' => 235,
-          'height' => 250,
+          'width' => 237,
+          'height' => 252,
           'upscale' => 0,
           'respectminimum' => 1,
           'onlyscaleifcrop' => 0,
           'style_name' => 'toolkit',
         ),
         'weight' => 0,
+      ),
+      2 => array(
+        'name' => 'image_crop',
+        'data' => array(
+          'width' => 235,
+          'height' => 250,
+          'anchor' => 'center-center',
+        ),
+        'weight' => 2,
       ),
     ),
   );
@@ -118,7 +127,7 @@ function hwc_toolkit_image_default_styles() {
 function hwc_toolkit_node_info() {
   $items = array(
     'tk_article' => array(
-      'name' => 'TK Article',
+      'name' => 'Toolkit Article',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -126,7 +135,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_example' => array(
-      'name' => 'TK Example',
+      'name' => 'Toolkit Example',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -142,7 +151,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_tool' => array(
-      'name' => 'TK Tool',
+      'name' => 'Toolkit Tool',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -150,7 +159,7 @@ function hwc_toolkit_node_info() {
       'help' => '',
     ),
     'tk_topic' => array(
-      'name' => 'TK Topic',
+      'name' => 'Toolkit Topic',
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

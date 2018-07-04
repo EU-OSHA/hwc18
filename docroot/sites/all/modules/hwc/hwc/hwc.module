@@ -15,8 +15,15 @@ define('NAPO_WEBSITE', 'https://www.napofilm.net/');
  * Implements hook_menu_alter().
  */
 function hwc_menu_alter(&$items) {
+
+  $items['taxonomy/term/%taxonomy_term/feed']['page callback'] = 'hwc_disable_taxonomy_term_feed';
+
   $items['user/password']['title'] = t('Create / Forgot password');
   $items['user/password']['weight'] = 10;
+}
+
+function hwc_disable_taxonomy_term_feed() {
+  drupal_not_found();
 }
 
 /**
