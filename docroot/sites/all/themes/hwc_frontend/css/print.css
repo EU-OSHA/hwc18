@@ -19,6 +19,11 @@
 	display:block!important;
 }
 
+.navbar-header .col-xs-12.col-sm-9{
+	width: 100% !important ;
+	margin-bottom: 20px;
+}
+
 .navbar-header img{
 	width: 75px!important;
     height: 75px!important;
@@ -30,18 +35,21 @@ header.navbar-default .navbar-header img:nth-child(3){
     padding-bottom: 15px!important;
     padding-right: 17px!important;
 }
-
+header.navbar-default .campaigns-header .row:first-of-type {
+    padding: 0px !important;
+}
 header.navbar-default .campaigns-header .navbar-header a img.pull-left {
     width: 120px!important;
     height: auto!important;
-    margin-top: -10px!important;
+    margin-top: 20px!important;
     margin-left: 0!important;
+    margin-right: 15px !important;
 }
 
 .header-text{
-	padding-top: 0px!important;
+	padding-top: 20px!important;
     padding-left: 20px!important;
-    font-size: 19px!important;
+    font-size: 16px!important;
 }
 
 .col-xs-12.col-sm-3.xs-menu{
@@ -52,8 +60,11 @@ header.navbar-default .campaigns-header .navbar-header a img.pull-left {
 	margin-left: 0px!important;
     padding-left: 0px!important;
     padding-top: 10px;
+    margin-bottom: 10px;
 }
-
+header.navbar-default .navbar-collapse{
+	display: none !important;
+}
 .main-container h1, .main-container .title-alt , .view-news .views-row{
 	border-bottom: 1px dotted #000;
 }
@@ -118,6 +129,13 @@ html:lang(en) #homepage_slider .views-field-title span {
 
 #block-views-partners-block-1{
 	display:none;
+}
+
+header.navbar-default{
+	position: relative !important;
+}
+body.toolbar-drawer, body.toolbar, body.logged-in {
+    padding-top: 0px !important;
 }
 
 h1{
@@ -424,4 +442,141 @@ a:after{
 #share-popup-container {
 	display: none;
 }
+
+/*toolkit*/
+.toolkit-page aside{
+	display: none;
+
+}
+.toolkit-page .above_title{
+	display: none !important;
+}
+
+.toolkit-page .region-content.col-md-9{
+	width: 100% !important;
+	padding: 0px !important;
+}
+
+.toolkit-page .start-here .col{
+	margin-bottom: 20px !important;
+	width: 100% !important;
+	display: block;
+	padding: 0px !important;
+}
+
+.toolkit-page .start-here .col .col-inner{
+	padding: 0px !important;
+}
+.toolkit-page .start-here .col h3{
+	text-align: left;
+}
+.toolkit-page .start-here .col h3:before{
+	display: none !important;
+}
+
+.toolkit-page .start-here .col .subtitle{
+	margin-bottom: 0px !important;
+	text-align: left;
+}
+
+.toolkit-page .start-here .col .see-more{
+	display: none;
+}
+
+.toolkit-page #block-views-tool-examples-carousel-popular,
+.toolkit-page #block-views-tool-examples-carousel-block{
+	display: none;
+}
+
+.container-fluid{
+	padding: 0px !important;
+}
+
+.toolkit-page.node-type-tk-article h2{
+	margin-bottom: 30px !important;
+}
+
+.toolkit-page.node-type-tk-article .field-name-field-tk-topics .group-left{
+	display: none !important;
+}
+
+.toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-right{
+	padding: 0px;
+    display: block;
+    position: relative;
+    width: 100%;
+    right: inherit;
+    left: inherit;
+}
+
+.toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item .node-tk-topic .group-right .field-name-node-link{
+	display: none !important;
+}
+
+.toolkit-page #block-hwc-toolkit-toolkit-nav,
+.toolkit-page .pane-hwc-toolkit-toolkit-nav{
+	display: none !important;
+}
+
+.toolkit-page .main-container h2{
+	margin-bottom: 30px !important;
+}
+
+.node-type-tk-topic .node-tk-topic .group-left .box-check-content{
+	padding: 0px !important;
+}
+
+.node-type-tk-topic .node-tk-topic .group-left{
+	width: 100% !important;
+}
+.toolkit-page .well{
+	display: none !important;
+}
+
+.nav-up{
+	position: relative !important;
+    top: 0px !important;
+}
+
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image{
+	display: none !important;
+}
+
+.toolkit-page .key-content.col-md-9.col-sm-12{
+	width: 100% !important;
+}
+
+.toolkit-page .main-container .view-tk-tools .views-row{
+	width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.toolkit-page .main-container .view-tk-tools .views-row a{
+	height: inherit !important;
+	text-align: left !important;
+}
+
+.toolkit-page .main-container .node-tk-tool .field-name-field-benefits{
+	padding: 0px !important;
+	margin-bottom: 10px !important;
+}
+
+.page-node-6358 .node-tk-article .group-left{
+	width: 100% !important;
+}
+
+.node-type-tk-example #block-hwc-toolkit-toolkit-go-back a{
+	display: none !important;
+}
+
+.node-type-tk-example .node-tk-example .group-left{
+	width: 100% !important;
+}
+
+.node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf,
+.node-type-tk-example .node-tk-example .group-left .field-name-field-external-link{
+	display: none !important;
+}
+
 }

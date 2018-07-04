@@ -141,6 +141,12 @@ function hwc_admin_config_form() {
     '#size' => 90,
   );
 
+  $form['hwc_toolkit_about_nid'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('hwc_toolkit_about_nid', 6746),
+    '#title' => 'Toolkit about page node nid',
+  );
+
   $form = system_settings_form($form);
   $form['actions']['#weight'] = 150;
   // Prepend this hook to the beginning of array because we need the unchanged

@@ -1,5 +1,6 @@
 // Insert your styling here.
-
+	/*testing commit*/
+	
 	body{
 	/* General */
 		padding-top: 210px;
@@ -10332,3 +10333,1066 @@ input#edit-field-image-und-0-upload::before {
 
 
 /*end galder styles issue bulgaria*/
+
+
+/*start toolkit styles*/
+.toolkit-page{
+	
+	//menu toolkit
+	.well{
+		background-color: inherit;
+		border: none;
+		border-radius: 0px;
+		margin: 0px;
+		padding: 0px;
+		box-shadow: inherit;
+		#block-hwc-toolkit-toolkit-left-menu{
+			padding-left: 15px;
+			padding-right: 15px;
+			.key-menu-container{
+				/*first level*/
+				ul{
+					padding: 0px;
+					margin: 0px;
+					list-style: none;
+				}
+				>ul{
+					>li{	
+						>a, >span{
+							border: 2px solid green;
+							padding: 10px 15px;
+							display: block;
+							margin-bottom: 15px;
+							border-radius: 3px;
+							font-weight: bold;
+							text-decoration: none;
+							cursor: pointer;
+							color:@colorNormalText;
+							&.active{
+								background-color: green;
+								color: white;
+
+							}
+
+						}
+						//para el jquery
+						>a, >span{
+							&.up-arrow{
+								&:after{
+									content:"\e252" !important;
+									font-family: "Glyphicons Halflings";
+									float: right;
+									vertical-align: middle;
+								}
+							}
+						}
+						&.expanded{
+							>a, >span{
+								&:after{
+									content:"\e250";
+									font-family: "Glyphicons Halflings";
+									float: right;
+									vertical-align: middle;
+								}
+								&.active{
+									&:after{
+										content:"\e252";
+										font-family: "Glyphicons Halflings";
+									}
+								}
+							}
+							>.menu{
+								display: none;
+							}
+						}
+						&.expanded.active{
+							>.menu{
+								display: block;
+							}
+						}
+						
+						.index-button{
+							border-color: @color-menu-0;
+							color: white;
+							background: @color-menu-0;
+							display: inline-block;
+							min-width: 150px;
+							&:after{
+								color: white;
+								content:"\e250";
+								font-family: "Glyphicons Halflings";
+								float: right;
+								vertical-align: middle;
+							}
+						}
+						.key-start-here{
+							border-color: @color-menu-1;
+							color: @color-menu-1;
+							&:after{
+								color: @color-menu-1;
+							}
+							&.active{
+								background-color: @color-menu-1;
+								color: white;
+							}
+						}
+						.key-how-to-run-a-campaign{
+							border-color: @color-menu-2;
+							color: @color-menu-2;
+							&:after{
+								color: @color-menu-2;
+							}
+							&.active{
+								background-color: @color-menu-2;
+								color: white;
+								&:after{
+									color: white;
+								}
+							}
+						}
+						.key-tools---examples{
+							border-color: @color-menu-3;
+							color: @color-menu-3;
+							&:after{
+								color: @color-menu-3;
+							}
+							&.active{
+								background-color: @color-menu-3;
+								color: white;
+								&:after{
+									color: white;
+								}
+							}
+						}
+						.key-about{
+							border-color: @color-menu-4;
+							color: @color-menu-4;
+							&:after{
+								color: @color-menu-4;
+							}
+							&.active{
+								background-color: @color-menu-4;
+								color: white;
+							}
+						}
+						/*second sublevel*/
+						ul{
+							li{
+								margin-left: 15px;
+								a{
+									text-decoration: none;
+									color:@colorNormalText;
+									margin-bottom: 10px;
+									display: block;
+									&.active{
+										font-weight: bold;
+									}
+								}
+							}
+						}
+						>ul{
+							>li{
+								&.expanded{
+									>a{
+										&:after{
+											content:"\e250";
+											font-family: "Glyphicons Halflings";
+											margin-left: 7px;
+											vertical-align: middle;
+										}
+									}
+									/*third sublevel*/
+									>ul{
+										display: none;
+										>li{
+											>a{
+												margin-left: 15px;
+											}
+										}
+									}
+								}
+								&.expanded.active{
+									>a{
+										&:after{
+											content:"\e252";
+											font-family: "Glyphicons Halflings";
+										}
+									}
+									/*third sublevel*/
+									>ul{
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+				.menu-index.up-arrow{
+					.index-button{
+						&:after{
+							content:"\e252";
+							font-family: "Glyphicons Halflings";
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//toolkit general content styles
+	.main-container{
+		.page_title{
+			h1.page-header{
+				display: none;
+			}
+		}
+		.field-type-text-with-summary .field-items:before{
+			content: " ";
+			display: table;
+		}
+		h2{
+			font-style: normal;
+			color: @h2-default-color-2;
+			font-weight: 600;
+		    margin-bottom: 15px;
+			font-size: 2em;
+		}
+		h3{
+			font-size: 1.3em;
+			font-weight: 600;
+			color: @color-h2-toolkit;
+		    margin-bottom: 10px;
+		    margin-top: 25px;
+		}
+		h3:first-child{
+			margin-top: 15px;
+		}
+		.introduction-text{
+			font-weight: 600;
+			font-style: italic;
+			margin-bottom: 40px;
+		}
+		//top image
+		.above_title{
+			margin-left: -15px;
+			margin-right: -15px;
+			max-height: 224px;
+			overflow: hidden;
+			position: relative;
+			margin-bottom: 35px;
+			.contextual-links-region{
+				position: inherit;
+			}
+			.field-name-title-field{
+				position: absolute;
+				text-align: center;
+			    font-weight: bold;
+			    text-align: center;
+			    width: 100%;
+			    bottom: 25%;
+			    text-shadow: 2px 2px #0000009c;
+			    .campaign-toolkit{
+			    	font-style: normal;
+			    	font-weight: bold;
+			    	color: #ffffff;
+   					font-size: 2.5em;
+   					margin: 0px;
+   					padding: 0px;
+   					line-height: 1.1;
+			    }
+			}
+			.field-name-field-image{
+
+			}
+		}
+		//start here page
+		h3.p2{
+				clear: both;
+				margin-bottom: 5px;
+			    margin-top: 20px;
+			    display: inline-block;
+			}
+		.start-here{
+			margin-top: 10px;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-wrap: wrap;
+			flex-wrap: wrap;
+			
+			.col{
+				padding-left: 15px;
+				padding-right: 15px;
+				margin-bottom: 10px;
+			    display: -webkit-flex;
+			    display: flex;
+			}
+			.col-inner{
+				background-color: @bg-color-grey-toolkit;
+				text-align: center;
+			    padding: 30px 15px 50px;
+			    position: relative;
+			    &:hover{
+			    	background-color: @gray-lighter;
+			    	cursor: pointer;
+			    }
+				.see-more{
+					position: absolute;
+					bottom: 15px;
+					margin-top: 15px;
+					width: 100%;
+				    display: block;
+				    left: 0;
+			        text-align: center;
+					a{
+						background-color: @h2-default-color-2;
+						display: inline-block;
+						text-align: center;
+						padding: 10px 15px;
+						text-transform: uppercase;
+						color: white;
+						font-weight: 600;
+						text-decoration: none;
+						&:hover{
+							background-color: @hover-grey-button-toolkit;
+						}
+					}
+				}
+				a{
+					text-decoration: none;
+					> br{
+						display: none;
+					}
+					p.subtitle{
+						margin-bottom: 30px;
+						color:#333333;
+					}
+					.see-more{
+						span, a{
+							background-color: @h2-default-color-2;
+							display: inline-block;
+							text-align: center;
+							padding: 10px 15px;
+							text-transform: uppercase;
+							color: white;
+							font-weight: 600;
+							text-decoration: none;
+							&:hover{
+								background-color: @hover-grey-button-toolkit;
+							}
+						}
+					}
+				} 
+			} 
+			h3{
+				font-size: 1.1em;
+				margin-bottom: 15px;
+				margin-top: 0px;
+				&:before{
+					content:"";
+					display: block;
+					width: 74px;
+					height: 74px;
+					background-color: @color-h2-toolkit;
+					margin: 0 auto;margin-bottom: 20px;
+					border-radius: 50%;
+					color: white;
+					line-height: 5;
+				}
+			}		
+			.campaigning{
+				.col-inner{
+					h3{
+						&:before{
+							background-image: url(../images/toolkit-campaigning.png);
+						}
+					}
+				}
+			}
+			.plane-campaign{
+				.col-inner{
+					h3{
+						&:before{
+							background-image: url(../images/toolkit-plan.png);
+						}
+					}
+				}
+			}
+			.resources-networks{
+				.col-inner{
+					h3{
+						&:before{
+							background-image: url(../images/toolkit-resources.png);
+						}
+					}
+				}
+			}
+		}
+		//how to run list pages
+		.field-name-field-tk-topics{
+			.field-items{
+				.field-item{
+					margin-bottom: 30px;
+					background-color: @bg-color-grey-toolkit;
+					.node-tk-topic{
+						.group-left{
+							display: inline-block;
+							width: 235px;
+							height: 250px;
+							background-color: grey;
+							img{
+								width: 100%;
+							}
+						}
+						.group-right{
+							padding: 30px;
+						    display: inline-block;
+						    position: absolute;
+						    width: inherit;
+						    right: 0;
+    						left: 234px;
+							h3{
+								margin-top: 0px;
+								font-size: 1.4em;
+							}
+							.field-type-text-with-summary{
+								p{
+									font-weight: 600;
+								}
+							}
+							//see more
+							.field-name-node-link{
+								text-align: right;
+								a{
+									background-color: @h2-default-color-2;
+									display: inline-block;
+									text-align: center;
+									padding: 10px 15px;
+									text-transform: uppercase;
+									color: white;
+									font-weight: 600;
+									text-decoration: none;
+									&:hover{
+										background-color: @hover-grey-button-toolkit;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//tools & examples list page
+		.view-tk-tools{
+			.views-row{
+				padding-left: 15px;
+				padding-right: 15px;
+				margin-bottom: 30px;
+				max-width: 420px;
+				.views-field-field-image{
+					background-color: #ccc;
+					width: 100%;
+					height: 250px;
+					overflow: hidden;
+					img{
+						width: 100%;
+					    max-width: inherit;
+					}
+				}
+				.views-field-title{
+					
+					span{
+						
+						a{
+							height: 75px;
+							background-color: @color-h2-toolkit;
+							color: white;
+							font-weight: 600;
+							font-size: 1.1em;
+							text-align: center;
+							display: block;
+							padding-top: 25px;
+						}
+					}
+				}
+			}
+			@media (min-width : 1301px) and (max-width : 1665px) {
+				.views-row{
+					max-width: 420px;
+					.views-field-field-image{
+						height: 189px;
+					}
+				}
+			}
+			@media (min-width : 992px) and (max-width : 1300px) {
+				.views-row{
+					min-width: 300px;
+					width: 50%;
+					.views-field-field-image{
+						height: 250px;
+					}
+				}
+			}
+			@media (min-width : 993px) and (max-width : 1145px) {
+				.views-row{
+					min-width: 300px;
+					width: 50%;
+					.views-field-field-image{
+						height: 217px;
+					}
+				}
+			}
+			@media (min-width : 768px) and (max-width : 991px) {
+				.views-row{
+					min-width: 300px;
+					width: 50%;
+					max-width: inherit;
+					.views-field-field-image{
+						height: 217px;
+					}
+				}
+			}
+			@media (min-width : 1px) and (max-width : 767px) {
+				.views-row{
+					min-width: 100px;
+					width: 100%;
+					max-width: inherit;
+					.views-field-field-image{
+						height: inherit;
+					}
+				}
+			}
+		}
+		//tools & examples detail page
+		.node-tk-tool{
+			.field-name-field-introduction,
+			.field-name-body{
+				ul,ol{
+					padding-left: 18px;
+					li{
+						margin-bottom: 15px;
+						ul,ol{
+							li:first-child{
+								margin-top: 15px;
+							}
+						}
+					}
+				}
+			}
+			.field-name-field-benefits{
+				background-color: @bg-color-grey-toolkit;
+				padding:15px 30px;
+				margin-top: 35px;
+				margin-bottom: 20px;
+				.field-label{
+					border-bottom: 2px solid @h2-default-color-2;
+			        padding-bottom: 2px;
+				    font-weight: bold;
+				    font-size: 1.4em;
+			        margin-bottom: 30px;
+				    color: @h2-default-color-2;
+				}
+				.field-items{
+					.field-item{
+					    margin-bottom: 20px;
+					    padding-left: 35px;
+					    position: relative;
+				    	&:before{
+							content: "\e013";
+							font-family: "Glyphicons Halflings";
+							text-align: center;
+						    line-height: 25px;
+						    width: 25px;
+						    height: 25px;
+							background-color: @h2-default-color-2;
+							display: inline-block;
+							vertical-align: middle;
+							border-radius: 50%;
+							color: white;
+							margin-right: 15px;
+							position: absolute;
+						    left: 0;
+						    top: -4px;
+						    font-size: 1rem;
+				    	}
+					}
+				}
+			}
+		}
+		//carrousel
+		.carousel.slide{
+			.toolkit_examples{
+				background-color: @bg-color-grey-toolkit;
+				padding: 30px 60px;
+				margin-bottom: 80px;
+				position: relative;
+				margin-top: 30px;
+				.carousel-indicators{
+					bottom: -45px;
+					margin-bottom: 0px;
+					li{
+						border: 1px solid #7b7b7b;
+						margin: 0px;
+						width: 12px;
+						height: 12px;
+						margin-right: 5px;
+
+					}
+					li.active{
+						background-color: #7b7b7b;
+						border: none;
+					}
+				}
+				.carousel-inner{
+					.views-row{
+						.group-left{
+							width: 25%;
+								.field-name-field-image{
+									margin-bottom: 0px;
+									margin-right: 30px;
+								}
+						}
+						.group-right{
+							width: 75%;
+							h3{
+								margin-top: 0px;
+								margin-bottom: 25px;
+								a{
+									text-decoration: none;
+								}
+							}
+							.field-name-field-organisation,
+							.field-name-field-country{
+								margin-bottom: 10px;
+							}
+							.field-name-body{
+								margin-bottom: 25px;
+							}
+							.field-name-node-link{
+								text-align: right;
+								a{
+									background-color: @h2-default-color-2;
+									display: inline-block;
+									text-align: center;
+									padding: 10px 15px;
+									text-transform: uppercase;
+									color: white;
+									font-weight: 600;
+									text-decoration: none;
+									&:hover{
+										background-color: @hover-grey-button-toolkit;
+									}
+								}
+							}
+						}
+					}
+				}
+				.carousel-control{
+					background-image: inherit;
+					width: 5%;
+					text-shadow: inherit;
+					color: @color-h2-toolkit;
+					opacity: 1;
+				}
+				.left.carousel-control{
+					span:first-child{
+						font-size: 40px;
+						&:before{
+							content: "\e257";
+							font-family: "Glyphicons Halflings";
+							padding-left: 0px;
+							padding-right: 0px;
+							font-weight: lighter;
+						}
+					}
+				}
+				.right.carousel-control{
+					span:first-child{
+						font-size: 40px;
+						margin-right: 0px;
+						&:before{
+							content: "\e258";
+							font-family: "Glyphicons Halflings";
+							padding-left: 0px;
+							padding-right: 0px;
+							font-weight: lighter;
+						}
+					}
+				}
+			}
+		}
+	}//end main container toolkit
+	//next-prev arrows toolkit
+	#block-hwc-toolkit-toolkit-nav,
+	.pane-hwc-toolkit-toolkit-nav{
+		clear: both;
+		margin-top: 20px;
+		overflow: hidden;
+		margin-bottom: 50px;
+		.key-next-prev-buttons{
+			overflow: hidden;
+			.prev-button,
+			.next-button{
+				display: inline-block;
+				a{
+					text-decoration: none;
+					display: inline-block;
+					span{
+						display: block;
+					}
+					.nav-info{
+						font-weight: bold;
+						display: grid;
+					}
+					.nav-title{
+						color: #484848;
+						text-transform: uppercase;
+						font-size: 1.1em;
+						font-weight: 600;
+						display: grid;
+					}
+				}
+			}
+			.prev-button.blue{
+				text-align: left;
+				margin-right: 15px;
+				.previous-button{
+					background: url(../images/arrow-blue-left.png) no-repeat 0px 0px;
+    				background-size: 30px 43px;
+    				padding-left: 43px;
+    				.nav-info{
+						color:@color-h2-toolkit;
+    				}
+				}
+			}
+			.prev-button.green{
+				text-align: left;
+				.previous-button{
+					background: url(../images/arrow-green-left.png) no-repeat 0px 0px;
+    				background-size: 30px 43px;
+    				padding-left: 43px;
+    				.nav-info{
+						color:@h2-default-color-2;
+    				}
+				}
+			}
+			.next-button.blue{
+				text-align: right;
+				float: right;
+				.nexting-button{
+					background: url(../images/arrow-blue-right.png) no-repeat 100% 0px;
+    				background-size: 30px 43px;
+    				padding-right: 43px;
+    				.nav-info{
+						color: @color-h2-toolkit;
+    				}
+				}
+			}
+			.next-button.green{
+				text-align: right;
+				float: right;
+				.nexting-button{
+					background: url(../images/arrow-green-right.png) no-repeat 100% 0px;
+    				background-size: 30px 43px;
+    				padding-right: 43px;
+    				.nav-info{
+						color:@h2-default-color-2;
+    				}
+				}
+			}
+		}
+	}
+}
+.node-type-tk-topic{
+	.node-tk-topic{
+		.group-left{
+			width: 70%;
+			.field-name-body{
+				p{
+					margin-bottom: 25px;
+					display: inline-block;
+				}
+				.body-summary{
+					p{
+						font-weight: 600;
+						font-style: italic;
+						margin-bottom: 25px;
+						font-size: 1.1em;
+					}
+				}
+				ul{
+					margin: 0px;
+					padding-left: 15px;
+					li{
+						margin-bottom: 15px;
+					}
+				}
+			}
+			.box-check-content{
+				background-color: @bg-color-grey-toolkit;
+				padding:15px 30px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				h4{
+					border-bottom: 2px solid @h2-default-color-2;
+				    padding-bottom: 5px;
+				    font-weight: bold;
+				    font-size: 1.4em;
+				    margin-bottom: 30px;
+				}
+				ul{
+					list-style: none;
+				    padding: 0px;
+				    margin: 0px;
+			        column-count: 2;
+				    li{
+				    	margin-bottom: 0px;
+			    	    padding: 2px 0 0;
+				    	&:before{
+							content: "\e013";
+							font-family: "Glyphicons Halflings";
+							text-align: center;
+							line-height: 25px;
+							width: 25px;
+							height: 25px;
+							background-color: @h2-default-color-2;
+							display: inline-block;
+							vertical-align: middle;
+							border-radius: 50%;
+							color: white;
+							margin-right: 6px;
+							font-size: 1rem;
+							position: relative;
+							top: -2px;
+				    	}
+				    	p{
+				    		display: inline-block;
+			    		    margin-bottom: 20px;
+				    	}
+				    }
+				}
+			}
+		}
+		.group-right{
+			width: 30%;
+			.field-name-field-image{
+				float: right;
+				padding-left: 30px;
+				width: 100%;
+				img{
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+//page about toolkit and detail of examples
+.page-node-6358,
+.node-type-tk-article, 
+.tk-about,
+.node-type-tk-example{
+	.node-tk-article,
+	.node-tk-example{
+		.group-left{
+			width: 70%;
+			p{
+				margin-bottom: 15px;
+			}
+			.external-link{
+				color: @h2-default-color-2;
+				display: block;
+				margin-top: 30px;
+				&:before{
+					content: "\e013";
+					font-family: "Glyphicons Halflings";
+					text-align: center;
+				    line-height: 25px;
+				    width: 25px;
+				    height: 25px;
+					background-color: @h2-default-color-2;
+					display: inline-block;
+					vertical-align: middle;
+					border-radius: 50%;
+					color: white;
+				    margin-right: 6px;
+				    font-size: 1rem;
+				    position: relative;
+				    top: -2px;
+		    	}
+		    	&:after{
+					content: "\e066";
+					font-family: "Glyphicons Halflings";
+					vertical-align: sub;
+					margin-left: 6px;
+					font-size: 16px;
+		    	}
+			}
+		}
+		.group-right{
+			width: 30%;
+			.field-name-field-image{
+				float: right;
+				padding-left: 30px;
+				width: 100%;				
+				.field-item {
+				overflow: hidden;
+					img{
+					    width: 100%;
+					    transform: scale(1.018);
+					    position: relative;
+					    top: -3px;
+					    left: -1px;
+					}					
+				}
+
+			}
+		}
+	}
+}
+.node-type-tk-example{
+	.node-tk-example{
+		.group-left{
+			.field{
+				margin-bottom: 20px;
+			}
+			.field-type-text-with-summary{
+				.field-label{
+					margin-bottom: 5px;
+				}
+			}
+			.field-name-field-download-pdf,
+			.field-name-field-external-link{
+				.field-items{
+					border: 1px solid @h2-default-color-2;
+					border-top: none;
+					background-color: @bg-color-grey-toolkit;
+					padding: 15px 12px 5px;
+					display: none;
+					.field-item{
+						/* font-size: 1.2em; */
+						margin-bottom: 10px;
+					}
+				}
+				.field-label{
+					background-color: @h2-default-color-2;
+					color: white;
+					padding: 6px 12px;
+					font-size: 1em;
+					//font-weight: 500;
+					font-weight: bold;
+					cursor: pointer;
+					&:hover{
+						background-color:  @hover-grey-button-toolkit;
+
+						~ .field-items{
+							border: 1px solid @hover-grey-button-toolkit;
+							border-top: none;
+						}
+					}
+					&:after{
+						content:"\e250";
+						font-family: "Glyphicons Halflings";
+						float: right;
+						vertical-align: middle;
+						font-size: 0.8em;
+						margin-top: 2px;
+					}
+				}
+				.field-label.up-arrow{
+					&:after{
+						content:"\e252";
+					}
+				}
+				
+			}
+			.field-name-field-download-pdf{
+				.field-items{
+					.field-item{
+						>span,>a{
+							margin-right: 5px;
+							text-decoration: none;
+						}
+						>span:first-child{
+							font-weight: bold;
+						}
+						a{
+							color: @color-h2-toolkit;
+							font-weight: bold;
+						}
+						.glyphicon-chevron-right:before{
+							content: url('../images/file_icons/application-pdf.png');
+							padding-left: 0px;
+							padding-right: 0px;
+							vertical-align: middle;
+						}
+					}
+				}
+			}
+			.field-name-field-external-link{
+				.field-items{
+					a{
+						color: @color-h2-toolkit;
+					    word-break: break-all;
+						&:after{
+							content: "\e066";
+							font-family: "Glyphicons Halflings";
+							vertical-align: sub;
+						    margin-left: 5px;
+						    font-size: 16px;
+						    color: @h2-default-color-2;
+				    	}
+					}
+				}
+			}
+			.external-link{
+				color: @h2-default-color-2;
+				display: block;
+				margin-top: 30px;
+				&:before{
+					content: "\e013";
+					font-family: "Glyphicons Halflings";
+					text-align: center;
+				    line-height: 25px;
+				    width: 25px;
+				    height: 25px;
+					background-color: @h2-default-color-2;
+					display: inline-block;
+					vertical-align: middle;
+					border-radius: 50%;
+					color: white;
+				    margin-right: 6px;
+				    font-size: 1rem;
+				    position: relative;
+				    top: -2px;
+		    	}
+		    	&:after{
+					content: "\e066";
+					font-family: "Glyphicons Halflings";
+					vertical-align: sub;
+					margin-left: 6px;
+					font-size: 16px;
+		    	}
+			}
+		}
+	}
+	#block-hwc-toolkit-toolkit-go-back{
+		a{
+			color: @h2-default-color-2;
+			font-weight: 600;
+		    text-align: right;
+		    display: block;
+		    margin-bottom: 15px;
+		    margin-right: 15px;
+		    font-size: 1.2em;
+			&:after{
+				content: url(../images/content/back-arrow-toolkit.png);
+				margin-left: 10px;
+			}
+		}
+	}
+	.above_title{
+		margin-bottom: 25px !important;
+	}
+}
+/*end toolkit styles*/

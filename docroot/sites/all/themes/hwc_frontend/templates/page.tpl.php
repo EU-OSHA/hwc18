@@ -155,7 +155,7 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
       <?php endif; ?>
 	  
 	  <?php if (!empty($page['sidebar_first'])): ?>
-		  <aside class="col-xs-12 col-sm-12 col-md-3" role="complementary">
+		  <aside class="col-xs-12 col-sm-6 col-md-3" role="complementary">
 			<?php print render($page['sidebar_first']); ?>
 		  </aside>  <!-- /#sidebar-first -->
 	  <?php endif; ?>

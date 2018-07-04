@@ -138,7 +138,7 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
         $row->{$taxonomy} = osha_migration_normalize_migrated_term_reference($row->{$taxonomy}, 'tax_' . $vocabulary);
         if (!$row->{$taxonomy}) {
           foreach ($orig_taxonomies as $orig_taxonomy) {
-            watchdog('ncw_migration', "[BUG]Cannot find taxonomy '".serialize($orig_taxonomy)."', for $vocabulary", array(), WATCHDOG_ERROR);
+            watchdog('ncw_migration', "[BUG]Cannot find taxonomy '" . serialize($orig_taxonomy) . "', for $vocabulary", array(), WATCHDOG_ERROR);
           }
         }
       }
