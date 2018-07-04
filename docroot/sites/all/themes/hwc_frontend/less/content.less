@@ -1425,14 +1425,19 @@ ul.tabs--primary.nav.nav-tabs{
 				color:#FFF;
 			}
 		}
-		#campaigns-newsletter-subscribe-form{
+		#campaigns-newsletter-subscribe-form, 
+		#campaigns-newsletter-subscribe-captcha-form{
 			margin-top: 30px;
+			position: relative;
 			button{
-				padding-left: 12px;
-				padding-right: 12px;
-				height: 31px;
-				margin-left: 0px;
-				margin-top: -3px;
+			    padding-left: 12px;
+			    padding-right: 12px;
+			    height: 31px;
+			    margin-left: 0px;
+			    margin-top: 0;
+			    top: 0;
+		        left: 58.9%;
+			    position: absolute;
 			}
 		}
 		#join_subscribers > img{
@@ -3032,7 +3037,7 @@ ul.tabs--primary.nav.nav-tabs{
 			margin-top: 15px;
 		}
 	}
-	#campaigns-newsletter-subscribe-form{
+	#campaigns-newsletter-subscribe-form, #campaigns-newsletter-subscribe-captcha-form{
 		.checkbox input[type=checkbox]:checked:before {
 		    content: "\2713";
 		    color: #003399;
