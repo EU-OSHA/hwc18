@@ -437,7 +437,17 @@ header{
 		}
 	}
 }
-
+.front .form-type-checkbox{
+	float: none;
+	width: 100%;
+	label{
+		white-space: nowrap;
+		font-size: @size3;
+		&:before{
+			margin-right: 3px;
+		}
+	}
+}
 #edit-left-column{
 	padding-right: 0px;
 	padding-left: 0px;
@@ -1584,7 +1594,7 @@ h1{
 				#edit-submit{
 					position: absolute;
 				    top: 14px;
-				    right: -30px;
+				    right: -26px;
 				}
 			}
 		}
@@ -1871,6 +1881,12 @@ h1{
 .checkbox input[type=checkbox]:checked{
 	margin-left: -18px;
 }
-
+.front #campaigns-newsletter-subscribe-form .checkbox input[type=checkbox]:checked:before, 
+.front #campaigns-newsletter-subscribe-captcha-form .checkbox input[type=checkbox]:checked:before {
+    margin-right: 0;
+    height: 16px;
+    left: -19px;
+    top: 1px;
+}
 }//end media
 
