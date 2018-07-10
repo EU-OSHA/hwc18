@@ -759,7 +759,7 @@ function hwc_update_7051() {
   $urls = [
     'priority-areas' => 'about-topic/priority-areas',
     'glossary_list' => 'about-topic/glossary-list',
-    '/get-your-certificate' => 'get-involved/get-your-certificate',
+    'get-your-certificate' => 'get-involved/get-your-certificate',
     'national-focal-points' => 'campaign-partners/national-focal-points',
     'official-campaign-partners' => 'campaign-partners/official-campaign-partners',
     'good-practice-exchange' => 'campaign-partners/good-practice-exchange',
