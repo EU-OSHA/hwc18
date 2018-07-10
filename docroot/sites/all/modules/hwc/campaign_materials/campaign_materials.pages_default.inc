@@ -15,7 +15,7 @@ function campaign_materials_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Campaign materials';
   $page->admin_description = 'Campaign materials';
-  $page->path = 'campaign-materials';
+  $page->path = 'tools-and-publications/campaign-materials';
   $page->access = array(
     'logic' => 'and',
     'type' => 'none',

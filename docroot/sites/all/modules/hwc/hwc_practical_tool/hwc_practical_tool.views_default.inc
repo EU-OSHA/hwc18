@@ -88,7 +88,7 @@ function hwc_practical_tool_views_default_views() {
   $handler->display->display_options['fields']['search_api_relevance']['label'] = '';
   $handler->display->display_options['fields']['search_api_relevance']['exclude'] = TRUE;
   $handler->display->display_options['fields']['search_api_relevance']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/practical-tools\'>See more</a>';
+  $handler->display->display_options['fields']['search_api_relevance']['alter']['text'] = '<a href=\'[url]?destination=/en/tools-and-publications/practical-tools\'>See more</a>';
   $handler->display->display_options['fields']['search_api_relevance']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['search_api_relevance']['link_to_entity'] = 0;
   /* Field: Indexed Multilingual Content: Country */
@@ -285,7 +285,7 @@ function hwc_practical_tool_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['exposed_block'] = TRUE;
-  $handler->display->display_options['path'] = 'practical-tools';
+  $handler->display->display_options['path'] = 'tools-and-publications/practical-tools';
   $translatables['practical_tools'] = array(
     t('Master'),
     t('Practical tools and guidance'),
@@ -305,7 +305,7 @@ function hwc_practical_tool_views_default_views() {
     t('@order Showing @start - @end from @total'),
     t('No results'),
     t('Multilingual ID'),
-    t('<a href=\'[url]?destination=/en/practical-tools\'>See more</a>'),
+    t('<a href=\'[url]?destination=/en/tools-and-publications/practical-tools\'>See more</a>'),
     t('.'),
     t(','),
     t('<span class="views-label">Country: </span><span>[field_country]</span>'),

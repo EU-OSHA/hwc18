@@ -21,7 +21,7 @@ function social_dashboard_panels_pre_render($panels_display, $renderer) {
 
 function social_dashboard_media_centre_form($form, $form_state) {
   $form = array(
-    '#action' => 'social_media_centre',
+    '#action' => 'media-centre/social-media-centre',
     '#method' => 'GET',
     '#token' => FALSE,
   );
@@ -186,7 +186,7 @@ function social_dashboard_form_alter(&$form, &$form_state, $form_id) {
 
 function social_dashboard_views_post_render(&$view, &$output, &$cache) {
   if ($view->name == 'social_dashboard' && $view->current_display != 'block_1') {
-    $social_link = url('social_media_centre', ['query' => ['source' => $view->current_display]]);
+    $social_link = url('media-centre/social-media-centre', ['query' => ['source' => $view->current_display]]);
     $output = str_replace('__social_link__', $social_link, $output);
   }
 }
@@ -476,7 +476,7 @@ function social_dashboard_linkedin_cron() {
   $consumer_secret = variable_get('social_linkedin_consumer_secret', '');
   $token = variable_get('social_linkedin_token', '');
   if (!$consumer_key || !$consumer_secret || !$token) {
-    return;
+    return 0;
   }
 
   $items = social_dashboard_get_stored_items('linkedin');
@@ -486,6 +486,10 @@ function social_dashboard_linkedin_cron() {
   $start = 0;
   $count = variable_get('social_dashboard_limit', 20);
   $updates = $linkedIn->get("v1/companies/{$id}/updates?count={$count}&start={$start}");
+  if ($updates['status'] == 401) {
+    watchdog('social_dashboard', '[CRON] Error! %message', ['%message' => $updates['message']], WATCHDOG_ERROR);
+    return 0;
+  }
   $offset = 0;
   foreach ($updates['values'] as $update) {
     $entity_id = NULL;
@@ -658,5 +662,5 @@ function social_dashboard_remove_utf8mb4($text) {
 
 function social_dashboard_get_linkedin_link($social_id) {
   $parts = explode('-', $social_id);
-  return 'https://www.linkedin.com/feed/update/urn:li:activity:' . array_pop($parts);// todo check live
+  return 'https://www.linkedin.com/feed/update/urn:li:activity:' . array_pop($parts);
 }

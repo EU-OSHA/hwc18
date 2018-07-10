@@ -21,7 +21,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -79,7 +80,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -166,7 +168,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -195,7 +198,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -224,7 +228,8 @@ function hwc_practical_tool_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -254,6 +259,7 @@ function hwc_practical_tool_default_fe_block_settings() {
     'module' => 'facetapi',
     'node_types' => array(),
     'pages' => 'practical-tools
+tools-and-publications/practical-tools
 partners-documents',
     'roles' => array(),
     'themes' => array(
@@ -283,7 +289,8 @@ partners-documents',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -312,7 +319,8 @@ partners-documents',
     'i18n_mode' => 0,
     'module' => 'facetapi',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -370,7 +378,8 @@ partners-documents',
     'i18n_mode' => 0,
     'module' => 'hwc_practical_tool',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -399,7 +408,8 @@ partners-documents',
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'practical-tools',
+    'pages' => 'practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
