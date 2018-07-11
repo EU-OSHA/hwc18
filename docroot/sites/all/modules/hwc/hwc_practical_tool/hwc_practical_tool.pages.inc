@@ -13,7 +13,7 @@ function hwc_practical_tool_form_hwc_practical_tool_menu_tools_form_alter(&$form
 function hwc_practical_tool_menu_tools_form($form, $form_state) {
   global $current_page;
   drupal_set_title(t('Practical tools'));
-  $action = 'practical-tools';
+  $action = 'tools-and-publications/practical-tools';
 
   $text = hwc_req_param($form_state, 'text');
   $sort = hwc_req_param($form_state, 'sort', 'date');
@@ -101,7 +101,7 @@ function hwc_practical_tool_menu_tools_form($form, $form_state) {
       $options = array();
       foreach ($facets[$field_name] as $facet_value) {
         if (!empty($values_list[$facet_value['filter']])) {
-          $options[$facet_value['filter']] = $values_list[$facet_value['filter']]; // . ' ' . strtr('(@no)', array('@no' => $facet_value['count'])); // todo
+          $options[$facet_value['filter']] = $values_list[$facet_value['filter']];
           $form['left-column'][$field_name] = array(
             '#type' => 'checkboxes',
             '#options' => $options,

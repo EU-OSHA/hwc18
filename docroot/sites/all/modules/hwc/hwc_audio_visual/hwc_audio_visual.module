@@ -42,10 +42,10 @@ function hwc_audio_visual_element_info_alter(&$type) {
 // Remove guidelines and help text.
 function hwc_audio_visual_filter_process_format($element) {
   $element = filter_process_format($element);
-  if ($element['#bundle'] == 'practical_tool') {
+  if ((isset($element['#bundle'])) && ($element['#bundle'] == 'practical_tool')) {
     unset($element['format']['guidelines']);
     unset($element['format']['help']);
-    $element['format']['format']['#options'] = [ 'audio_visual' => $element['format']['format']['#options']['audio_visual'] ];
+    $element['format']['format']['#options'] = ['audio_visual' => $element['format']['format']['#options']['audio_visual']];
     unset($element['format']['format']['']);
     $element['#format'] = 'audio_visual';
   }

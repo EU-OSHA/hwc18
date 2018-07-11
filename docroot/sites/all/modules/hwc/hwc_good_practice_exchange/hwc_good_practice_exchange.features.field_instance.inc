@@ -908,7 +908,7 @@ function hwc_good_practice_exchange_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 6,
-      ),
+    ),
     'workbench_access_field' => 0,
   );
 

@@ -66,7 +66,7 @@ function hwc_partner_default_page_manager_handlers() {
 Enterprise Europe Network
 %node:title-field',
     'panels_breadcrumbs_paths' => '<none>
-enterprise-europe-network
+campaign-partners/enterprise-europe-network
 <none>',
     'panels_breadcrumbs_home' => 1,
   );
@@ -1938,7 +1938,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
 National focal points
 %node:title-field',
     'panels_breadcrumbs_paths' => '<none>
-national-focal-points
+campaign-partners/national-focal-points
 <none>',
     'panels_breadcrumbs_home' => 1,
   );
@@ -3539,7 +3539,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $display->content['new-f2b8dcc5-13ec-44a6-85dc-6185f0fbeeee'] = $pane;
   $display->panels['right_'][7] = 'new-f2b8dcc5-13ec-44a6-85dc-6185f0fbeeee';
   $pane = new stdClass();
-  $pane->pid = 'new-f62f3a42-a973-49a9-bcf7-27f0cc33608f';
+  $pane->pid = 'new-6388e855-6315-4dcc-bb67-ef17ae401030';
   $pane->panel = 'right__';
   $pane->type = 'views';
   $pane->subtype = 'partner_content';
@@ -3573,9 +3573,9 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = 'f62f3a42-a973-49a9-bcf7-27f0cc33608f';
-  $display->content['new-f62f3a42-a973-49a9-bcf7-27f0cc33608f'] = $pane;
-  $display->panels['right__'][0] = 'new-f62f3a42-a973-49a9-bcf7-27f0cc33608f';
+  $pane->uuid = '6388e855-6315-4dcc-bb67-ef17ae401030';
+  $display->content['new-6388e855-6315-4dcc-bb67-ef17ae401030'] = $pane;
+  $display->panels['right__'][0] = 'new-6388e855-6315-4dcc-bb67-ef17ae401030';
   $pane = new stdClass();
   $pane->pid = 'new-77cc5bf8-5bbc-40ce-8d91-e31ff9f96577';
   $pane->panel = 'statement_';
@@ -3756,7 +3756,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
 Media partners
 %node:title-field',
     'panels_breadcrumbs_paths' => '<none>
-campaign-media-partners
+campaign-partners/campaign-media-partners
 <none>',
     'panels_breadcrumbs_home' => 1,
   );
@@ -5023,7 +5023,7 @@ Official campaign partners
 %node:title-field
 ',
     'panels_breadcrumbs_paths' => '<none>
-official-campaign-partners
+campaign-partners/official-campaign-partners
 <none>
 ',
     'panels_breadcrumbs_home' => 1,
@@ -6867,7 +6867,7 @@ function hwc_partner_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Enterprise Europe Network';
   $page->admin_description = '';
-  $page->path = 'enterprise-europe-network';
+  $page->path = 'campaign-partners/enterprise-europe-network';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
@@ -7027,7 +7027,7 @@ function hwc_partner_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Focal points';
   $page->admin_description = '';
-  $page->path = 'national-focal-points';
+  $page->path = 'campaign-partners/national-focal-points';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -7192,7 +7192,7 @@ function hwc_partner_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Mop listing';
   $page->admin_description = '';
-  $page->path = 'campaign-media-partners';
+  $page->path = 'campaign-partners/campaign-media-partners';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -7683,7 +7683,7 @@ function hwc_partner_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Official campaign partners';
   $page->admin_description = '';
-  $page->path = 'official-campaign-partners';
+  $page->path = 'campaign-partners/official-campaign-partners';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,

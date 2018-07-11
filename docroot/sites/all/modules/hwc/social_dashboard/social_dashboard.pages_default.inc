@@ -15,7 +15,7 @@ function social_dashboard_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Media centre';
   $page->admin_description = '';
-  $page->path = 'social_media_centre';
+  $page->path = 'media-centre/social-media-centre';
   $page->access = array();
   $page->menu = array(
     'type' => 'normal',
@@ -71,6 +71,16 @@ Social media centre',
           0 => 'main',
         ),
         'parent' => NULL,
+        'class' => 'page-media-centre-social-media-centre',
+        'column_class' => '',
+        'row_class' => '',
+        'region_class' => '',
+        'no_scale' => FALSE,
+        'fixed_width' => '',
+        'column_separation' => '0.5em',
+        'region_separation' => '0.5em',
+        'row_separation' => '0.5em',
+        'hide_empty' => 0,
       ),
       'main' => array(
         'type' => 'column',

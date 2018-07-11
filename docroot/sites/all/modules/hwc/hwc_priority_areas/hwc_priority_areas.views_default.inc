@@ -115,7 +115,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'See More Case Studies';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
   $handler->display->display_options['link_display'] = 'custom_url';
-  $handler->display->display_options['link_url'] = 'case-studies?field_priority_area[!1]=!1';
+  $handler->display->display_options['link_url'] = 'tools-and-publications/case-studies?field_priority_area[!1]=!1';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -277,7 +277,7 @@ function hwc_priority_areas_views_default_views() {
   $handler = $view->new_display('block', 'Tools and Guidance', 'tools_and_guidance');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tools and Guidelines';
-  $handler->display->display_options['link_url'] = 'practical-tools?field_priority_area[!1]=!1';
+  $handler->display->display_options['link_url'] = 'tools-and-publications/practical-tools?field_priority_area[!1]=!1';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
@@ -370,7 +370,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See More Publications';
-  $handler->display->display_options['link_url'] = 'publications?field_priority_area[!1]=!1';
+  $handler->display->display_options['link_url'] = 'tools-and-publications/publications?field_priority_area[!1]=!1';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
@@ -540,7 +540,7 @@ function hwc_priority_areas_views_default_views() {
   $handler->display->display_options['use_more_always'] = TRUE;
   $handler->display->display_options['defaults']['use_more_text'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'See More Publications';
-  $handler->display->display_options['link_url'] = 'publications?relevant_for[%1]';
+  $handler->display->display_options['link_url'] = 'tools-and-publications/publications?relevant_for[%1]';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';

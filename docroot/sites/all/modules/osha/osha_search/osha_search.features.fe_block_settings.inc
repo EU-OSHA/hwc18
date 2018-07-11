@@ -80,7 +80,8 @@ function osha_search_default_fe_block_settings() {
     'module' => 'facetapi',
     'node_types' => array(),
     'pages' => 'search
-practical-tools',
+practical-tools
+tools-and-publications/practical-tools',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -170,13 +171,13 @@ search/wiki',
     'node_types' => array(),
     'pages' => 'search
 search/*
-tools-and-publications/publications
 tools-and-publications/seminars
 legislation/directives/*
 safety-and-health-legislation/european-directives
 node/2544
 legislation/guidelines/*
 practical-tools
+tools-and-publications/practical-tools
 good-practice-exchange-platform',
     'roles' => array(),
     'themes' => array(

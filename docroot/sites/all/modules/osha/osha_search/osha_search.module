@@ -18,8 +18,11 @@ function osha_search_facet_items_alter(&$build, &$settings) {
       $build[$key]["#markup"] = drupal_ucfirst(drupal_strtolower($item["#markup"]));
     }
   }
-  $path = arg(0);
-  if (in_array($settings->facet, ['field_priority_area', 'language', 'type']) || ($path == 'practical-tools')) {
+  $path = arg(0) . '/' . arg(1);
+  if (in_array($settings->facet, ['field_priority_area', 'language', 'type'])
+    || ($path == 'tools-and-publications/practical-tools')
+    || ($path == 'practical-tools/')
+  ) {
     $facet_items = [];
     foreach ($build as $key => $item) {
       if (($settings->facet == 'field_priority_area') && ($key == '!')) {
@@ -88,7 +91,11 @@ function osha_search_block_view($delta = '') {
     '#markup' => '<h3>' . t('Filter results') . '</h3><div class="clear-wrapper">',
   );
   // Active links will be added onlink via js in facet_item.
-  if ((arg(0) == 'search') || (arg(0) == 'practical-tools')) {
+  if (
+    (arg(0) == 'search')
+    || (arg(0) == 'practical-tools')
+    || (arg(1) == 'practical-tools')
+  ) {
     $content['remove_filter'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="remove_filter"></div>',

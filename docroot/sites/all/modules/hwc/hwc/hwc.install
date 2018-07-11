@@ -727,3 +727,135 @@ function hwc_update_7048() {
 function hwc_update_7049() {
   features_revert(array('hwc' => 'views_view'));
 }
+
+/**
+ * MDR-2041 "move" all articles to subfolders - view pages.
+ */
+function hwc_update_7050() {
+  features_revert(array('campaign_materials' => array('page_manager_pages', 'path_breadcrumbs')));
+  echo "campaign_materials\n";
+  features_revert(array('hwc' => array('page_manager_pages')));
+  echo "hwc\n";
+  features_revert(array('hwc_gallery' => array('views_view', 'path_breadcrumbs')));
+  echo "hwc_gallery\n";
+
+  features_revert(array('hwc_glossary' => array('views_view')));
+  echo "hwc_glossary\n";
+  features_revert(array('hwc_good_practice_exchange' => array('page_manager_pages')));
+  echo "hwc_good_practice_exchange\n";
+
+
+  features_revert(array('hwc_homepage' => array('views_view')));
+  echo "hwc_homepage\n";
+
+  features_revert(array('hwc_partner' => array('path_breadcrumbs', 'page_manager_pages')));
+  echo "hwc_partner\n";
+
+  features_revert_module('hwc_practical_tool');
+  echo "hwc_practical_tool\n";
+  features_revert(array('hwc_priority_areas' => array('views_view', 'page_manager_pages')));
+  echo "hwc_priority_areas\n";
+  features_revert(array('social_dashboard' => array('views_view', 'page_manager_pages')));
+  echo "social_dashboard\n";
+
+  features_revert(array('osha_flickr' => array('views_view')));
+  echo "osha_flickr\n";
+  features_revert(array('osha_publication' => array('page_manager_pages', 'path_breadcrumbs')));
+  echo "osha_publication\n";
+
+  features_revert(array('osha_search' => array('fe_block_settings')));
+  echo "osha_search\n";
+  features_revert(array('osha_news' => array('views_view', 'path_breadcrumbs')));
+  echo "osha_news\n";
+  features_revert(array('osha_events' => array('views_view', 'path_breadcrumbs', 'fe_block_settings')));
+  echo "osha_events\n";
+  features_revert(array('osha_press_release' => array('page_manager_pages', 'path_breadcrumbs')));
+  echo "osha_press_release\n";
+}
+
+/**
+ * MDR-2041 "move" all articles to subfolders - view pages.
+ */
+function hwc_update_7051() {
+  redirect_delete_by_path('media-centre/news');
+  redirect_delete_by_path('media-centre/events');
+  $urls = [
+    'campaign-materials' => 'tools-and-publications/campaign-materials',
+    'get-your-certificate' => 'get-involved/get-your-certificate',
+    'photo-gallery' => 'media-centre/photo-gallery',
+
+    'glossary_list' => 'about-topic/glossary-list',
+    'good-practice-exchange' => 'campaign-partners/good-practice-exchange',
+
+    'national-focal-points' => 'campaign-partners/national-focal-points',
+    'official-campaign-partners' => 'campaign-partners/official-campaign-partners',
+    'campaign-media-partners' => 'campaign-partners/campaign-media-partners',
+    'enterprise-europe-network' => 'campaign-partners/enterprise-europe-network',
+
+    'practical-tools' => 'tools-and-publications/practical-tools',
+    'priority-areas' => 'about-topic/priority-areas',
+    'social_media_centre' => 'media-centre/social-media-centre',
+
+
+    'publications' => 'tools-and-publications/publications',
+    'case-studies' => 'tools-and-publications/case-studies',
+
+    'news' => 'media-centre/news',
+    'events' => 'media-centre/events',
+    'past-events' => 'media-centre/past-events',
+    'press-room' => 'media-centre/press-room',
+  ];
+
+  $languages = language_list();
+  foreach ($urls as $old_url => $new_url) {
+    db_update('menu_links')
+      ->fields(array(
+        'link_path' => $new_url,
+        'router_path' => $new_url,
+      ))
+      ->condition('link_path', $old_url, '=')
+      ->execute();
+
+    foreach ($languages as $language => $lang) {
+      if (!$lang->enabled) {
+        continue;
+      }
+      // Redirect old alias.
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect);
+      $redirect->source = $old_url;
+      $redirect->redirect = $new_url;
+      $redirect->language = $language;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($redirect);
+      }
+    }
+  }
+
+}
+
+/**
+ * MDR-2041 "move" all articles to subfolders - view pages.
+ */
+function hwc_update_7052() {
+  $links = [
+    1819 => 'tools-and-publications/case-studies',
+    1825 => 'tools-and-publications/publications',
+    1824 => 'tools-and-publications/practical-tools',
+    1817 => 'tools-and-publications/campaign-materials',
+  ];
+  foreach ($links as $tid => $link) {
+    $term = taxonomy_term_load($tid);
+    $term->field_tools_publications_link[LANGUAGE_NONE][0]['url'] = $link;
+    taxonomy_term_save($term);
+  }
+
+  db_update('menu_links')
+    ->fields(array(
+      'hidden' => 1,
+    ))
+    ->condition('mlid', 32031, '=')
+    ->execute();
+}

@@ -14,7 +14,7 @@ function osha_publication_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'case_studies';
   $path_breadcrumb->name = 'Case studies';
-  $path_breadcrumb->path = 'case-studies';
+  $path_breadcrumb->path = 'tools-and-publications/case-studies';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'Tools and publications',
@@ -45,7 +45,7 @@ function osha_publication_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '<none>',
-      1 => 'case-studies',
+      1 => 'tools-and-publications/case-studies',
       2 => '<none>',
     ),
     'home' => 1,
@@ -69,7 +69,7 @@ function osha_publication_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '<none>',
-      1 => 'publications',
+      1 => 'tools-and-publications/publications',
       2 => '<none>',
     ),
     'home' => 1,
@@ -84,7 +84,7 @@ function osha_publication_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'publications_listing';
   $path_breadcrumb->name = 'Publications listing';
-  $path_breadcrumb->path = 'publications';
+  $path_breadcrumb->path = 'tools-and-publications/publications';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'Tools and publications',

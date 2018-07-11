@@ -24,7 +24,7 @@ function hwc_partner_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '<none>',
-      1 => 'national-focal-points',
+      1 => 'campaign-partners/national-focal-points',
       2 => 'node/%node:nid',
       3 => '<none>',
     ),
@@ -72,7 +72,7 @@ function hwc_partner_path_breadcrumbs_settings_info() {
     ),
     'paths' => array(
       0 => '<none>',
-      1 => 'national-focal-points',
+      1 => 'campaign-partners/national-focal-points',
       2 => 'node/%node:nid',
       3 => '<none>',
     ),

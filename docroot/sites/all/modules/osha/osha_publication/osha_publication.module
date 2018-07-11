@@ -157,12 +157,12 @@ function osha_publication_views_pre_render(&$view) {
 
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
         str_replace(
-          'case-studies', 'case-studies?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
+          '/case-studies', '/case-studies?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
 
       $view->result[$k]->field_field_tools_publications_link[0]['raw']['url'] =
         str_replace(
-          'publications', 'publications?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
+          '/publications', '/publications?language%5B' . $language->language . '%5D=' . $language->language . '&sort=date',
           $view->result[$k]->field_field_tools_publications_link[0]['raw']['url']);
     }
   }

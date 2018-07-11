@@ -311,7 +311,7 @@ class OSHNewsletter {
         </div></td></tr></table>';
     }
     if ($variables['section']->name == 'Tweets') {
-      $url = url('social_media_centre', ['absolute' => TRUE]);
+      $url = url('media-centre/social-media-centre', ['absolute' => TRUE]);
       $content['#suffix'] .= '<table><tr><td align="center">
         <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">

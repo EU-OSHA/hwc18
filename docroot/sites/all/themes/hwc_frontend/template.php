@@ -106,13 +106,45 @@ function hwc_frontend_preprocess_html(&$vars) {
   ) {
     $vars['classes_array'][] = 'pz-page';
   }
-  if (arg(0) == 'priority-areas') {
+
+  if ((arg(0) == 'priority-areas') || (arg(1) == 'priority-areas')) {
     $vars['classes_array'][] = 'page-topics';
   }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
     $vars['classes_array'][] = 'page-documents';
   }
+
+  $arg1 = arg(1);
+  $views_map = hwc_get_views_class_map();
+  if (isset($views_map[$arg1])) {
+    $vars['classes_array'][] = $views_map[$arg1];
+  }
+}
+
+function hwc_get_views_class_map() {
+  $views_map = [
+    'priority-areas' => 'page-priority-areas',
+    'glossary-list' => 'page-glossary-list',
+    'tools_and_publications' => 'page-tools-and-publications',
+    'get-your-certificate' => 'page-get-your-certificate',
+    'national-focal-points' => 'page-national-focal-points',
+    'official-campaign-partners' => 'page-official-campaign-partners',
+    'good-practice-exchange' => 'page-good-practice-exchange',
+    'campaign-media-partners' => 'page-campaign-media-partners',
+    'enterprise-europe-network' => 'page-enterprise-europe-network',
+    'press-room' => 'page-press-room',
+    'news' => 'page-news',
+    'events' => 'page-events',
+    'past-events' => 'page-past-events',
+    'photo-gallery' => 'page-photo-gallery',
+    'social-media-centre' => 'page-social-media-centre',
+    'publications' => 'page-publications',
+    'practical-tools' => 'page-practical-tools page-search',
+    'campaign-materials' => 'page-campaign-materials',
+    'case-studies' => 'page-case-studies',
+  ];
+  return $views_map;
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
@@ -126,10 +158,10 @@ function hwc_frontend_preprocess_page(&$vars) {
   $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title.
-  if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
-      array('page__events', 'page__past_events'))) {
+  if (!empty($vars['theme_hook_suggestions']['1']) && in_array($vars['theme_hook_suggestions']['1'],
+      array('page__media_centre__events', 'page__media_centre__past_events'))) {
     $title = '<span id="block-osha-events-events-links">';
-    $title .= l(t('Upcoming events'), 'events') . ' / ' . l(t('Past events'), 'past-events');
+    $title .= l(t('Upcoming events'), 'media-centre/events') . ' / ' . l(t('Past events'), 'media-centre/past-events');
     $title .= '</span>';
     drupal_set_title($title, PASS_THROUGH);
   }
@@ -137,8 +169,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     unset($vars['page']['content']['system_main']['default_message']);
     drupal_set_title('');
   }
-
-  if (arg(0) == 'practical-tools') {
+  if ((arg(0) == 'practical-tools') || (arg(1) == 'practical-tools')) {
     $vars['classes_array'][] = 'page-search';
   }
 
@@ -189,7 +220,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'press_release':
         $link_title = t('Back to press releases list');
-        $link_href = 'press-room';
+        $link_href = 'media-centre/press-room';
         $tag_vars['element']['#value'] = t('Press releases');
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
@@ -199,7 +230,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'news':
         $link_title = t('Back to news');
-        $link_href = 'news';
+        $link_href = 'media-centre/news';
         $tag_vars['element']['#value'] = t('News');
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
@@ -229,7 +260,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'practical_tool':
         $link_title = t('Back to practical tools list');
-        $link_href = 'practical-tools';
+        $link_href = 'tools-and-publications/practical-tools';
         if (isset($_REQUEST['destination'])) {
           $destination = drupal_get_destination();
           $vars['page']['below_title']['back-to-link'] = array(
@@ -255,10 +286,10 @@ function hwc_frontend_preprocess_page(&$vars) {
         $breadcrumb[] = t('Media centre');
 
         if ($date < $now) {
-          $breadcrumb[] = l(t('Past events'), 'past-events');
+          $breadcrumb[] = l(t('Past events'), 'media-centre/past-events');
 
           $link_title = t('Back to past events list');
-          $link_href = 'past-events';
+          $link_href = 'media-centre/past-events';
           $tag_vars['element']['#value'] = t('Past events');
           $vars['page']['above_title']['events-page-title'] = array(
             '#type' => 'item',
@@ -266,10 +297,10 @@ function hwc_frontend_preprocess_page(&$vars) {
           );
         }
         else {
-          $breadcrumb[] = l(t('Upcoming events'), 'events');
+          $breadcrumb[] = l(t('Upcoming events'), 'media-centre/events');
 
           $link_title = t('Back to events list');
-          $link_href = 'events';
+          $link_href = 'media-centre/events';
           $tag_vars['element']['#value'] = t('Upcoming events');
           $vars['page']['above_title']['practical-tool-page-title'] = array(
             '#type' => 'item',
@@ -314,7 +345,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
         drupal_set_title(t('Photo gallery'));
         $link_title = t('Back to gallery');
-        $link_href = 'photo-gallery';
+        $link_href = 'media-centre/photo-gallery';
         $vars['page']['below_title']['back-to-link'] = array(
           '#type' => 'item',
           '#markup' => l($link_title, $link_href, array('attributes' => array('class' => array('back-to-link pull-right')))),
@@ -325,7 +356,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'hwc_gallery':
         $link_title = t('Back to gallery');
-        $link_href = 'photo-gallery';
+        $link_href = 'media-centre/photo-gallery';
         $tag_vars['element']['#value'] = t('Photo gallery');
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
