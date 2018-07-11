@@ -3284,7 +3284,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_start_date_value']['value'] = 'today';
-  $handler->display->display_options['path'] = 'events';
+  $handler->display->display_options['path'] = 'media-centre/events';
 
   /* Display: Past events */
   $handler = $view->new_display('page', 'Past events', 'page_1');
@@ -3442,7 +3442,7 @@ function osha_events_views_default_views() {
     'body:value' => 'body:value',
     'title_field' => 'title_field',
   );
-  $handler->display->display_options['path'] = 'past-events';
+  $handler->display->display_options['path'] = 'media-centre/past-events';
   $translatables['events_search'] = array(
     t('Master'),
     t('Past events'),

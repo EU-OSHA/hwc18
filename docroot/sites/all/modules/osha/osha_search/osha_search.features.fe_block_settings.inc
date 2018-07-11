@@ -171,7 +171,6 @@ search/wiki',
     'node_types' => array(),
     'pages' => 'search
 search/*
-tools-and-publications/publications
 tools-and-publications/seminars
 legislation/directives/*
 safety-and-health-legislation/european-directives

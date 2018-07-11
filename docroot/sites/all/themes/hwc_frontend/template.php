@@ -136,6 +136,7 @@ function hwc_get_views_class_map() {
     'press-room' => 'page-press-room',
     'news' => 'page-news',
     'events' => 'page-events',
+    'past-events' => 'page-past-events',
     'photo-gallery' => 'page-photo-gallery',
     'social-media-centre' => 'page-social-media-centre',
     'publications' => 'page-publications',
@@ -157,10 +158,10 @@ function hwc_frontend_preprocess_page(&$vars) {
   $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
   // Change Events page title.
-  if (!empty($vars['theme_hook_suggestions']['0']) && in_array($vars['theme_hook_suggestions']['0'],
-      array('page__events', 'page__past_events'))) {
+  if (!empty($vars['theme_hook_suggestions']['1']) && in_array($vars['theme_hook_suggestions']['1'],
+      array('page__media_centre__events', 'page__media_centre__past_events'))) {
     $title = '<span id="block-osha-events-events-links">';
-    $title .= l(t('Upcoming events'), 'events') . ' / ' . l(t('Past events'), 'past-events');
+    $title .= l(t('Upcoming events'), 'media-centre/events') . ' / ' . l(t('Past events'), 'media-centre/past-events');
     $title .= '</span>';
     drupal_set_title($title, PASS_THROUGH);
   }
@@ -219,7 +220,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'press_release':
         $link_title = t('Back to press releases list');
-        $link_href = 'press-room';
+        $link_href = 'media-centre/press-room';
         $tag_vars['element']['#value'] = t('Press releases');
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
@@ -229,7 +230,7 @@ function hwc_frontend_preprocess_page(&$vars) {
 
       case 'news':
         $link_title = t('Back to news');
-        $link_href = 'news';
+        $link_href = 'media-centre/news';
         $tag_vars['element']['#value'] = t('News');
         $vars['page']['above_title']['title-alternative'] = array(
           '#type' => 'item',
@@ -285,10 +286,10 @@ function hwc_frontend_preprocess_page(&$vars) {
         $breadcrumb[] = t('Media centre');
 
         if ($date < $now) {
-          $breadcrumb[] = l(t('Past events'), 'past-events');
+          $breadcrumb[] = l(t('Past events'), 'media-centre/past-events');
 
           $link_title = t('Back to past events list');
-          $link_href = 'past-events';
+          $link_href = 'media-centre/past-events';
           $tag_vars['element']['#value'] = t('Past events');
           $vars['page']['above_title']['events-page-title'] = array(
             '#type' => 'item',
@@ -296,10 +297,10 @@ function hwc_frontend_preprocess_page(&$vars) {
           );
         }
         else {
-          $breadcrumb[] = l(t('Upcoming events'), 'events');
+          $breadcrumb[] = l(t('Upcoming events'), 'media-centre/events');
 
           $link_title = t('Back to events list');
-          $link_href = 'events';
+          $link_href = 'media-centre/events';
           $tag_vars['element']['#value'] = t('Upcoming events');
           $vars['page']['above_title']['practical-tool-page-title'] = array(
             '#type' => 'item',

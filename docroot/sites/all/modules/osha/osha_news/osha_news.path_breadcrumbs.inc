@@ -12,6 +12,28 @@ function osha_news_path_breadcrumbs_settings_info() {
 
   $path_breadcrumb = new stdClass();
   $path_breadcrumb->api_version = 1;
+  $path_breadcrumb->machine_name = 'news';
+  $path_breadcrumb->name = 'News';
+  $path_breadcrumb->path = 'media-centre/news';
+  $path_breadcrumb->data = array(
+    'titles' => array(
+      0 => 'Media centre',
+      1 => '!page_title',
+    ),
+    'paths' => array(
+      0 => '<none>',
+      1 => '<none>',
+    ),
+    'home' => 1,
+    'translatable' => 1,
+    'arguments' => array(),
+    'access' => array(),
+  );
+  $path_breadcrumb->weight = 0;
+  $export['news'] = $path_breadcrumb;
+
+  $path_breadcrumb = new stdClass();
+  $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'news_details';
   $path_breadcrumb->name = 'News details';
   $path_breadcrumb->path = 'node/%node';

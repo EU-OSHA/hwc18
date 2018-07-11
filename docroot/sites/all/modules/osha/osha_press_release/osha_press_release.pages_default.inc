@@ -15,7 +15,7 @@ function osha_press_release_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Press room';
   $page->admin_description = '';
-  $page->path = 'press-room';
+  $page->path = 'media-centre/press-room';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
