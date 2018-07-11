@@ -32,7 +32,7 @@
 ?>
 <div>
   <?php if (empty($variables['form']['#block']->subject)): ?>
-<?php if (!drupal_is_front_page()){ ?>    <h1 class="element-invisible"><?php print t('Search form'); ?></h1><?php } ?>
+<?php if (!drupal_is_front_page()){ ?>    <div class="element-invisible"><?php print t('Search form'); ?></div><?php } ?>
   <?php endif; ?>
   <?php print $search_form; ?>
 </div>

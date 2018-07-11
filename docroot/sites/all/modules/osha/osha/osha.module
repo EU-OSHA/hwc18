@@ -20,14 +20,35 @@ function osha_menu() {
     'type' => MENU_CALLBACK,
   );
 
-//  $items['admin/config/regional/osha_language'] = array(
-//    'title' => 'EU-OSHA Languages',
-//    'page callback' => 'drupal_get_form',
-//    'page arguments' => array('osha_admin_languages_form'),
-//    'access arguments' => array('administer site configuration'),
-//    'type' => MENU_CALLBACK,
-//  );
+  $items['export/taxonomy_term/%taxonomy_term'] = array(
+    'page callback' => 'osha_export_taxonomy_term',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
+}
+
+/**
+ * Export taxonomy_term to JSON.
+ *
+ * @param $term
+ */
+function osha_export_taxonomy_term($term) {
+  header('Content-type: application/javascript; charset=utf-8');
+  $fields = field_info_instances('taxonomy_term', $term->vocabulary_machine_name);
+  $w = entity_metadata_wrapper('taxonomy_term', $term);
+  $term->path = path_load('taxonomy/term/' . $term->nid);
+  foreach(array_keys($fields) as $field_name) {
+    $info = field_info_field($field_name);
+    if ($info['type'] == 'taxonomy_term_reference') {
+      $term->$field_name = $w->$field_name->value();
+    }
+  }
+  $export = json_encode($term, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+  print $export;
+  drupal_exit();
 }
 
 /**
