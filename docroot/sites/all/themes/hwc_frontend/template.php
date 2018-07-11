@@ -153,6 +153,7 @@ function hwc_frontend_preprocess_page(&$vars) {
         ),
       ),
     );
+
     switch ($node->type) {
       case 'tk_article':
         if ($node->title == 'About') {
