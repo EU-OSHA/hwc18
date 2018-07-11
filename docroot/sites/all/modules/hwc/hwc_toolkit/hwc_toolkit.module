@@ -464,3 +464,113 @@ function hwc_toolkit_add_tool_to_queue() {
   }
   return $added;
 }
+
+function hwc_toolkit_update_menu_item_alias($menu_item, $new_alias) {
+  if (!$new_alias) {
+    return;
+  }
+  $path = explode('/', $menu_item['path']);
+  if (($path[0] == 'node') && (isset($path[1]))) {
+    $nid = intval($path[1]);
+    if (!$nid) {
+      return;
+    }
+    $node = node_load($nid);
+    if (!$node) {
+      return;
+    }
+    $existing_alias = path_load(array('source' => 'node/' . $node->nid));
+
+    if (!empty($existing_alias) && $existing_alias['alias'] != $new_alias) {
+
+      // Remove old alias.
+      path_delete(array('alias' => $existing_alias['alias']));
+
+      // Redirect old alias.
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect);
+      $redirect->source = $existing_alias['alias'];
+      $redirect->redirect = $existing_alias['source'];
+      $redirect->language = $node->language;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($redirect);
+      }
+    }
+    $node->path['pathauto'] = 0;
+    $node->path['alias'] = $new_alias;
+    node_save($node);
+  }
+}
+
+function hwc_update_toolkit_menu_content_links() {
+  module_load_include('inc', 'pathauto');
+  $map = hwc_toolkit_get_tool_example_map();
+  $menu = hwc_toolkit_get_left_menu(0);
+  foreach ($menu as $l1_item) {
+    $menu_item = $l1_item;
+    $alias1 = hwc_pathauto_cleanstring($menu_item['title']);
+    $new_alias = hwc_toolkit_check_menu($menu_item, $alias1);
+    hwc_toolkit_update_menu_item_alias($menu_item, $new_alias);
+    foreach ($l1_item['children'] as $l2_item) {
+      $menu_item = $l2_item;
+      $alias2 = hwc_pathauto_cleanstring($menu_item['title']);
+      $new_alias = hwc_toolkit_check_menu($menu_item, $alias2, [$alias1]);
+      hwc_toolkit_update_menu_item_alias($menu_item, $new_alias);
+      $type = $menu_item['type'];
+      foreach ($l2_item['children'] as $id => $l3_item) {
+        $menu_item = $l3_item;
+        $alias3 = hwc_pathauto_cleanstring($menu_item['title']);
+        $new_alias = hwc_toolkit_check_menu($menu_item, $alias3, [$alias1, $alias2]);
+        hwc_toolkit_update_menu_item_alias($menu_item, $new_alias);
+        if ($type == 'taxonomy' && isset($map[$id])) {
+          foreach ($map[$id] as $example_nid => $example_title) {
+            $alias4 = hwc_pathauto_cleanstring($example_title, TRUE);
+            $example_path = 'node/' . $example_nid;
+            $existing_alias = drupal_lookup_path('alias', 'node/' . $example_nid);
+            $new_alias = hwc_toolkit_check_menu( ['title' => $example_title, 'href' => $existing_alias, 'path' => $example_path], $alias4, [$alias1, $alias2, $alias3]);
+
+            if ($new_alias && ($new_alias != $existing_alias)) {
+              path_delete(array('alias' => $existing_alias['alias']));
+              $args = array(
+                'source' => 'node/' . $example_nid,
+                'alias' => $new_alias,
+                'language' => 'en',
+              );
+              path_save($args);
+            }
+          }
+        }
+      }
+    }
+  }
+  return $menu;
+}
+
+function hwc_toolkit_get_tool_example_map() {
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('n', ['nid']);
+  $q->fields('ex', ['title']);
+  $q->fields('e', ['field_tk_examples_target_id']);
+  $q->join('node', 'ex', 'e.field_tk_examples_target_id = ex.nid');
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rows = $q->execute()->fetchAll();
+  $map = [];
+  foreach ($rows as $row) {
+    @$map[$row->nid][$row->field_tk_examples_target_id] = $row->title;
+  }
+  return $map;
+}
+
+function hwc_toolkit_check_menu($menu_item, $alias, $aliases = []) {
+  $aliases[] = $alias;
+  $full_alias = implode('/', $aliases);
+  $href = str_replace('/en/', '', $menu_item['href']);
+  if ($href != $full_alias) {
+    return $full_alias;
+  }
+  return '';
+}
