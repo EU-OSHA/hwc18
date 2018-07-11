@@ -167,6 +167,15 @@ function hwc_toolkit_examples_result_count($add = 0) {
   return $total;
 }
 
+function hwc_toolkit_get_menu_titles_map() {
+  $menu = menu_tree_all_data('menu-toolkit');
+  $map = [];
+  foreach ($menu as $menu_item) {
+    $map[$menu_item['link']['link_path']] = $menu_item['link']['title'];
+  }
+  return $map;
+}
+
 function hwc_toolkit_get_menu_tree($level1) {
   static $menu = [];
   if ($menu) {
@@ -174,6 +183,7 @@ function hwc_toolkit_get_menu_tree($level1) {
   }
   $tools = views_get_view_result('menu_tk_tools');
 
+  $map = hwc_toolkit_get_menu_titles_map();
   $tools_examples_nid = NULL;
 
   foreach ($level1 as $article) {
@@ -182,7 +192,12 @@ function hwc_toolkit_get_menu_tree($level1) {
       continue;
     }
     $l1_nid = $article->nid;
-    $l1_title = $w->title->value();
+    if (isset($map['node/' . $l1_nid])) {
+      $l1_title = $map['node/' . $l1_nid];
+    }
+    else {
+      $l1_title = $w->title->value();
+    }
     $menu[$l1_nid] = _toolkit_menu_item($l1_title, 'node/' . $l1_nid);
 
     $articles = $w->field_tk_article->value();
