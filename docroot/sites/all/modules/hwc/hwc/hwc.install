@@ -720,3 +720,10 @@ function hwc_update_7047() {
 function hwc_update_7048() {
   features_revert(array('hwc' => 'page_manager_handlers'));
 }
+
+/**
+ * MDR-2009 Back end - Events field - Tagging functionality.
+ */
+function hwc_update_7049() {
+  features_revert(array('hwc' => 'views_view'));
+}

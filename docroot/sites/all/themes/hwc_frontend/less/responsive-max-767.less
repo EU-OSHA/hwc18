@@ -2346,7 +2346,7 @@ header.navbar-default{
 				#edit-submit{
 					display: block;
 					margin-bottom: 10px;
-					margin: 15px auto;
+					margin: 0px auto;
 				}
 			}
 		}
@@ -2888,6 +2888,184 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 }
 
 
+
+//toolkit styles
+.toolkit-page{
+	.above_title{
+		display: none;
+	}
+	#block-hwc-toolkit-toolkit-nav{
+		margin-bottom: 0px;
+		display: inline-block;
+		width: 100%;
+		.prev-button{
+			margin-bottom: 25px;
+		}
+	}
+	.pane-hwc-toolkit-toolkit-nav{
+		margin-bottom: 0px;
+		margin-top: 15px;
+		padding-left: 15px;
+		padding-right: 15px;
+		display: inline-block;
+		.prev-button{
+			margin-bottom: 25px;
+		}
+	}
+	.well{
+		#block-hwc-toolkit-toolkit-left-menu{
+			.key-menu-container{
+				>.menu-index{
+					display: block;
+					>li{
+						span{
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+	.region-content.col-md-9{
+		clear: both;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.main-container .above_title{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#block-hwc-toolkit-toolkit-go-back{
+		/*display: none;*/
+		display: inline-block;
+		float: right;
+	}
+	.main-container {
+		h2{
+			margin-left: 0px;
+			margin-right: 0px;
+			font-size: 1.6em !important;
+		}
+		.start-here{ 
+			.col{
+				padding-left: 0px;
+				padding-right: 0px;
+				display: block;
+				width: 100%;
+				.col-inner {
+					h3{
+						margin-bottom: 30px;
+					}
+					p.subtitle{
+						display: none;
+					}
+				}
+			}
+		}
+		.field-name-field-tk-topics{
+			>.field-items{
+				>.field-item{
+					.node-tk-topic{
+						.group-left{
+							display: none;
+						}
+						.group-right{
+							padding: 30px 15px;
+							position: relative;
+							left: inherit;
+							.field-name-node-link{
+								text-align: center;
+								margin-top: 30px;
+								.field-item{
+									margin-bottom: 0px;
+								}
+							}
+							.field-type-text-with-summary{
+								p{
+									font-weight: 400;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.view-tk-tools{
+			.views-row{
+				margin-bottom: 15px;
+				.views-field-field-image{
+					display: none;
+				}
+			}
+		}
+		.node-tk-tool{
+			.field-name-field-benefits{
+				padding: 30px 15px;
+			}
+		}
+	}
+	//toolkit example
+	.main-container .carousel.slide .toolkit_examples{
+		margin-bottom: 0px;
+		padding: 30px 45px;
+		.carousel-indicators{
+			display: none;
+		}
+		.carousel-inner{
+			.views-row {
+				.group-left{
+					display: none;
+				}
+				.group-right{
+					width: 100%;
+					.field-name-node-link{
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}
+.node-type-tk-example{
+	.above_title{
+		margin-bottom: 50px !important;
+	}
+}
+
+.node-type-tk-topic{
+	.node-tk-topic{
+		.group-left {
+    		width: 100%;
+    	}
+    	.group-right{
+    		width: 100%;
+    		.field-name-field-image{
+    			padding-left: 0px;
+    		}
+    	}
+    }
+}
+
+//example toolkit & about
+.page-node-6358, 
+.node-type-tk-example, 
+.node-type-tk-article{
+	.node-tk-article,
+	.node-tk-example{
+		display: grid;
+		.group-left{
+			width: 100%;
+		    order: 2;
+		}
+		.group-right{
+			width: 100%;
+		    order: 1;
+			.field-name-field-image{
+				padding-left: 0px;
+			}
+		}
+	}
+}
 
 
 }
