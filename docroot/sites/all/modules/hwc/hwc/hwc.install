@@ -780,7 +780,7 @@ function hwc_update_7051() {
   redirect_delete_by_path('media-centre/news');
   redirect_delete_by_path('media-centre/events');
   $urls = [
-    'campaign-materials' => 'tools-and-publications/campaign-materials',//todo breadcrumbs http://hwc.local.ro/en/admin/structure/path-breadcrumbs/edit/campaign_materials_listing
+    'campaign-materials' => 'tools-and-publications/campaign-materials',
     'get-your-certificate' => 'get-involved/get-your-certificate',
     'photo-gallery' => 'media-centre/photo-gallery',
 
@@ -834,4 +834,28 @@ function hwc_update_7051() {
     }
   }
 
+}
+
+/**
+ * MDR-2041 "move" all articles to subfolders - view pages.
+ */
+function hwc_update_7052() {
+  $links = [
+    1819 => 'tools-and-publications/case-studies',
+    1825 => 'tools-and-publications/publications',
+    1824 => 'tools-and-publications/practical-tools',
+    1817 => 'tools-and-publications/campaign-materials',
+  ];
+  foreach ($links as $tid => $link) {
+    $term = taxonomy_term_load($tid);
+    $term->field_tools_publications_link[LANGUAGE_NONE][0]['url'] = $link;
+    taxonomy_term_save($term);
+  }
+
+  db_update('menu_links')
+    ->fields(array(
+      'hidden' => 1,
+    ))
+    ->condition('mlid', 32031, '=')
+    ->execute();
 }
