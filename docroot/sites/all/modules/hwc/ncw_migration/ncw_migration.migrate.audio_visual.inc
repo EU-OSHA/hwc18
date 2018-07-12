@@ -215,6 +215,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
   public function __construct($options) {
     parent::__construct($options);
     $this->source_ids = [];
+    $this->endpoint_url .= '?' . rand(100, 200);
   }
 
   public function getNextRow() {
@@ -265,6 +266,8 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
    * Read data from source.
    */
   public function readData() {
+    $msg = format_string('Updating from !url', array('!url' => $this->endpoint_url));
+    watchdog('ncw_migration', $msg, [], WATCHDOG_INFO);
     ncw_migration_debug('!klass: Starting reading items from !url', array('!klass' => get_class($this), '!url' => $this->endpoint_url));
     $this->rows = array();
     $content = $this->fileGetContents($this->endpoint_url);
@@ -285,6 +288,8 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
         $node_url = $this->itemURL($id);
         ncw_migration_debug('!klass:      * Reading item: !url', array('!klass' => get_class($this), '!url' => $node_url));
         $this->rows[$id] = $node_url;
+        $msg = format_string('Updating from !url', array('!url' => $node_url));
+        watchdog('ncw_migration', $msg, [], WATCHDOG_INFO);
       }
     }
     else {

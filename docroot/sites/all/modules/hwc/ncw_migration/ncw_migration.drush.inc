@@ -8,6 +8,9 @@ function ncw_migration_drush_command() {
     'hwc-migrate-av-related' => array(
       'description' => 'Import audio-video related taxonomies from the corporate website',
     ),
+    'hwc-migrate-ds' => array(
+      'description' => 'Import DS from the corporate website',
+    ),
     'hwc-migrate-all' => array(
       'description' => 'Import all content from the corporate website',
     ),
@@ -22,6 +25,15 @@ function ncw_migration_drush_command() {
       ),
     ),
   );
+}
+
+function drush_ncw_migration_hwc_migrate_ds() {
+  $migrations = array(
+    'dangerous_substances',
+  );
+  foreach ($migrations as $migration) {
+    ncw_migration_run_single($migration);
+  }
 }
 
 function drush_ncw_migration_hwc_migrate_av_related() {
@@ -39,10 +51,11 @@ function drush_ncw_migration_hwc_migrate_av_related() {
     'tax_target_group',
     'tax_evaluation',
     'tax_material_objective',
-    'tax_nace_codes',
 
     'gallery',
     'dangerous_substances',
+
+    'tax_nace_codes',
   );
   foreach ($migrations as $migration) {
     ncw_migration_run_single($migration);
