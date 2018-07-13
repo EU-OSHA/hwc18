@@ -87,7 +87,9 @@ function hwc_toolkit_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(
-      0 => 'tk_tool',
+      0 => 'tk_article',
+      1 => 'tk_tool',
+      2 => 'tk_topic',
     ),
     'pages' => '',
     'roles' => array(),
@@ -120,7 +122,7 @@ function hwc_toolkit_default_fe_block_settings() {
     'node_types' => array(
       0 => 'tk_article',
     ),
-    'pages' => 'node/6219',
+    'pages' => 'node/6321',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(

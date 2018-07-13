@@ -7,6 +7,37 @@
 include_once 'hwc_toolkit.features.inc';
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function hwc_toolkit_field_formatter_info() {
+  $info = array(
+    'hwc_toolkit_term_title' => array(
+      'label' => 'Toolkit term title',
+      'field types' => array('text'),
+      'description' => 'Displays term name in h1 tag.',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function hwc_toolkit_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'hwc_toolkit_term_title':
+      $output = isset($items[0]) ? $items[0]['safe_value'] : '';
+      if (!empty($output)) {
+        $output = '<h1>' . $output . '</h1>';
+      }
+      $element = array(array('#markup' => $output));
+      break;
+  }
+  return $element;
+}
+
+/**
  * Implements hook_block_info().
  */
 function hwc_toolkit_block_info() {
