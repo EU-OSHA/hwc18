@@ -73,6 +73,13 @@ function hwc_toolkit_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'exclude node title settings' => '1',
+        'field_formatter_class' => '',
+      ),
     ),
   );
   $export['node|tk_tool|default'] = $ds_fieldsetting;
