@@ -36,7 +36,7 @@ function osha_events_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'past_events';
   $path_breadcrumb->name = 'Past events';
-  $path_breadcrumb->path = 'past-events';
+  $path_breadcrumb->path = 'media-centre/past-events';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'Media centre',

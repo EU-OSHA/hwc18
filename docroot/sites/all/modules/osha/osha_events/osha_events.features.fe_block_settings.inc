@@ -50,8 +50,8 @@ function osha_events_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'past-events
-past-events/*',
+    'pages' => 'media-centre/past-events
+media-centre/past-events/*',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(
@@ -80,8 +80,8 @@ past-events/*',
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'events
-events/*',
+    'pages' => 'media-centre/events
+media-centre/events/*',
     'roles' => array(),
     'themes' => array(
       'hwc_frontend' => array(

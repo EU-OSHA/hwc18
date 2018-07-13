@@ -431,6 +431,10 @@ function hwc_field_formatter_info() {
         'custom_title' => '',
       ),
     ),
+    'body_with_summary' => array(
+      'label' => t('body with summary'),
+      'field types' => array('text_with_summary'),
+    ),
   );
   return $info;
 }
@@ -629,6 +633,17 @@ function hwc_field_formatter_view($entity_type, $entity, $field, $instance, $lan
       }
       break;
 
+    case 'body_with_summary':
+      foreach ($items as $delta => $item) {
+        $output = _text_sanitize($instance, $langcode, $item, 'summary');
+        if ($output) {
+          $output = '<div class="body-summary">' . $output . '</div>';
+        }
+        $output .= _text_sanitize($instance, $langcode, $item, 'value');
+        $element[$delta] = array('#markup' => $output);
+      }
+      break;
+
   }
   return $element;
 }
@@ -729,6 +744,11 @@ function hwc_content_post_render($content) {
   $content = str_replace('for="edit-submitted-activities"', '', $content);
   $content = str_replace('for="security_code"', 'for="edit-search-block-form--2"', $content);
   $content = str_replace('for="edit-captcha-response"', 'for="security_code"', $content);
+  return $content;
+}
+
+function hwc_content_post_render_add_classes($content) {
+  $content = str_replace('region region-content', 'region region-content col-md-9', $content);
   return $content;
 }
 
@@ -1542,4 +1562,98 @@ function hwc_get_htmlmail_content($body) {
   $content = hwc_attach_inline_css($content);
   $content['body'] = str_replace('__SIGNATURE__', '', $body);
   return $content;
+}
+
+function hwc_pathauto_cleanstring($string) {
+  $string = str_replace('&', 'and', $string);
+  return pathauto_cleanstring($string);
+}
+
+function hwc_update_main_menu_content_links() {
+  module_load_include('inc', 'pathauto');
+  $rules = db_query('SELECT rid, admin_title, plid, menu_name, enabled, weight, conditions FROM {menu_position_rules} ORDER BY weight, rid')->fetchAll();
+  foreach ($rules as $rule) {
+    $rule->conditions = unserialize($rule->conditions);
+  }
+
+  $menu = menu_tree_all_data('main-menu');
+  foreach ($menu as $l1_item) {
+    $link = $l1_item['link'];
+    $alias1 = hwc_pathauto_cleanstring($link['link_title']);
+    hwc_update_main_menu_links($link, $alias1, []);
+
+    foreach ($l1_item['below'] as $l2_item) {
+      $link = $l2_item['link'];
+      $alias2 = hwc_pathauto_cleanstring($link['link_title']);
+      hwc_update_main_menu_links($link, $alias2, [$alias1]);
+
+      foreach ($l2_item['below'] as $l3_item) {
+        $link = $l3_item['link'];
+        $alias3 = hwc_pathauto_cleanstring($link['link_title']);
+        hwc_update_main_menu_links($link, $alias3, [$alias1, $alias2]);
+
+      }
+    }
+  }
+  return $menu;
+}
+
+function hwc_update_main_menu_links($link, $alias, $aliases) {
+  static $update = [];
+  if ($link['router_path'] != 'node/%') {
+    if ($link['hidden'] || $link['router_path'] == '<nolink>') {
+      return;
+    }
+    return;
+  }
+  $path = explode('/', $link['link_path']);
+  $nid = $path[1];
+  $node = node_load($nid);
+  if (!$node) {
+    return;
+  }
+  if (isset($update[$nid])) {
+    return;
+  }
+  $update[$nid] = $nid;
+  $current_alias = drupal_lookup_path('alias', $link['link_path']);
+
+  $menu_item = [
+    'title' => $node->title,
+    'href' => $current_alias,
+    'path' => $link['link'],
+  ];
+
+  $new_alias = hwc_toolkit_check_menu($menu_item, $alias, $aliases);
+  if (!$new_alias) {
+    return;
+  }
+
+  foreach ($node->translations->data as $language => $translation) {
+    $existing_alias = path_load(array('source' => 'node/' . $node->nid, 'language' => $language));
+
+    if (!empty($existing_alias) && $existing_alias['alias'] != $new_alias) {
+      // Remove old alias.
+      path_delete(array('alias' => $existing_alias['alias'], 'language' => $language));
+
+      // Redirect old alias.
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect);
+      $redirect->source = $existing_alias['alias'];
+      $redirect->redirect = $existing_alias['source'];
+      $redirect->language = $language;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($redirect);
+      }
+    }
+
+    $args = array(
+      'source' => 'node/' . $node->nid,
+      'alias' => $new_alias,
+      'language' => $language,
+    );
+    path_save($args);
+  }
 }

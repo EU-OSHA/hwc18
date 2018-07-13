@@ -191,7 +191,11 @@ function osha_search_default_search_api_index() {
               "partner" : "partner",
               "practical_tool" : "practical_tool",
               "press_release" : "press_release",
-              "publication" : "publication"
+              "publication" : "publication",
+              "tk_article" : "tk_article",
+              "tk_example" : "tk_example",
+              "tk_tool" : "tk_tool",
+              "tk_topic" : "tk_topic"
             }
           }
         },

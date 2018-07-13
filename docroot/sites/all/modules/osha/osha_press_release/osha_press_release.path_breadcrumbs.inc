@@ -14,7 +14,7 @@ function osha_press_release_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'press_room';
   $path_breadcrumb->name = 'Press room';
-  $path_breadcrumb->path = 'press-room';
+  $path_breadcrumb->path = 'media-centre/press-room';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => '%site:current-page:menu-link:pb-join:name',

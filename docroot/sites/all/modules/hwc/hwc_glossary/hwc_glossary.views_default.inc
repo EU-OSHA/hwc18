@@ -88,7 +88,7 @@ function hwc_glossary_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['field_language'] = 'en';
-  $handler->display->display_options['path'] = 'glossary_list';
+  $handler->display->display_options['path'] = 'about-topic/glossary-list';
   $translatables['glossary_list'] = array(
     t('Master'),
     t('Glossary'),

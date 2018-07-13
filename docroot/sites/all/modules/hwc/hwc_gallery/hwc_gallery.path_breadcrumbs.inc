@@ -60,7 +60,7 @@ function hwc_gallery_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'photo_gallery';
   $path_breadcrumb->name = 'Photo gallery';
-  $path_breadcrumb->path = 'photo-gallery';
+  $path_breadcrumb->path = 'media-centre/photo-gallery';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'Media centre',

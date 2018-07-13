@@ -38,7 +38,7 @@ function osha_publication_form_osha_publication_menu_case_studies_form_alter(&$f
 
 function osha_publication_menu_publications_form($form, $form_state) {
   $variables['form_state'] = $form_state;
-  $variables['action'] = 'publications';
+  $variables['action'] = 'tools-and-publications/publications';
   $variables['facet_callback'] = '_osha_publication_menu_publications_get_facets_def';
   $variables['search_callback'] = 'osha_publication_menu_publications_search';
 
@@ -123,7 +123,10 @@ function osha_publication_menu_publications_faceted_form($variables) {
   $per_page = 4;
   $form['content']['results-native'] = osha_publication_menu_publications_native_results($form_state, $response, $per_page, $sort);
   $start = $current_page * $per_page;
-  $shown = $form['content']['results-native']['#shown'];
+  $shown = 0;
+  if (isset($form['content']['results-native']['#shown'])) {
+    $shown = $form['content']['results-native']['#shown'];
+  }
 
   $facets = array();
   if (!empty($response['search_api_facets'])) {
@@ -187,7 +190,11 @@ function osha_publication_menu_publications_faceted_form($variables) {
     }
   }
 
-  $native_nids = $form['content']['results-native']['#nids'];
+  $native_nids = [];
+  if (isset($form['content']['results-native']['#nids'])) {
+    $native_nids = $form['content']['results-native']['#nids'];
+  }
+
   $form['content']['results-related'] = osha_publication_menu_publications_search_related($form_state, $native_nids, $sort);
   if (!empty($form_state['#results-native'])) {
     $form['content']['results-native'] = $form_state['#results-native'];
@@ -419,7 +426,7 @@ function osha_publication_menu_publications_search_related($form_state, $native_
 
 function osha_publication_menu_case_studies_form($form, $form_state) {
   $variables['form_state'] = $form_state;
-  $variables['action'] = 'case-studies';
+  $variables['action'] = 'tools-and-publications/case-studies';
   $variables['facet_callback'] = '_osha_publication_menu_case_studies_get_facets_def';
   $variables['search_callback'] = 'osha_publication_menu_case_studies_search';
   return osha_publication_menu_case_studies_faceted_form($variables);
