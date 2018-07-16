@@ -866,3 +866,10 @@ function hwc_update_7052() {
 function hwc_update_7053() {
   hwc_update_main_menu_content_links();
 }
+
+/**
+ * MDR-2042 "move" all articles to subfolders - menu position rules.
+ */
+function hwc_update_7054() {
+  hwc_update_main_menu_position_rule();
+}
