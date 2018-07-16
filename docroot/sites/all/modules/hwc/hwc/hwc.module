@@ -1571,10 +1571,10 @@ function hwc_pathauto_cleanstring($string) {
 
 function hwc_update_main_menu_content_links() {
   module_load_include('inc', 'pathauto');
-  $rules = db_query('SELECT rid, admin_title, plid, menu_name, enabled, weight, conditions FROM {menu_position_rules} ORDER BY weight, rid')->fetchAll();
-  foreach ($rules as $rule) {
-    $rule->conditions = unserialize($rule->conditions);
-  }
+//  $rules = db_query('SELECT rid, admin_title, plid, menu_name, enabled, weight, conditions FROM {menu_position_rules} ORDER BY weight, rid')->fetchAll();
+//  foreach ($rules as $rule) {
+//    $rule->conditions = unserialize($rule->conditions);
+//  }
 
   $menu = menu_tree_all_data('main-menu');
   foreach ($menu as $l1_item) {
