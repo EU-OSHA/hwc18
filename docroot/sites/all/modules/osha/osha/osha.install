@@ -347,12 +347,12 @@ function osha_update_7025() {
  * MDR-2001 Include a new filter in the back end, in 'Content' section.
  */
 function osha_update_7026() {
-  features_revert(array('osha' => 'views_view'));
+  features_revert(array('osha' => array('views_view')));
 }
 
 /**
  * MDR-2067 HWC: Flags available in Drupal.
  */
 function osha_update_7027() {
-  features_revert(array('osha' => 'views_view'));
+  features_revert(array('osha' => array('views_view')));
 }
