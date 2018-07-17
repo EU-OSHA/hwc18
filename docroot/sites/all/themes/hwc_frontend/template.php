@@ -110,6 +110,9 @@ function hwc_frontend_preprocess_html(&$vars) {
   if ((arg(0) == 'priority-areas') || (arg(1) == 'priority-areas')) {
     $vars['classes_array'][] = 'page-topics';
   }
+  if (arg(0) == 'available-flags') {
+    $vars['classes_array'][] = 'page-events';
+  }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
     $vars['classes_array'][] = 'page-documents';

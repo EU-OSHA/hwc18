@@ -349,3 +349,10 @@ function osha_update_7025() {
 function osha_update_7026() {
   features_revert(array('osha' => 'views_view'));
 }
+
+/**
+ * MDR-2067 HWC: Flags available in Drupal.
+ */
+function osha_update_7027() {
+  features_revert(array('osha' => 'views_view'));
+}
