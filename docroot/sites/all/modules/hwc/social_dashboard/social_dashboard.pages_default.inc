@@ -18,7 +18,7 @@ function social_dashboard_default_page_manager_pages() {
   $page->path = 'media-centre/social-media-centre';
   $page->access = array();
   $page->menu = array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'Social Media',
     'name' => 'main-menu',
     'weight' => '0',
