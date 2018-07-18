@@ -38,7 +38,7 @@ function osha_publication_form_osha_publication_menu_case_studies_form_alter(&$f
 
 function osha_publication_menu_publications_form($form, $form_state) {
   $variables['form_state'] = $form_state;
-  $variables['action'] = 'publications';
+  $variables['action'] = 'tools-and-publications/publications';
   $variables['facet_callback'] = '_osha_publication_menu_publications_get_facets_def';
   $variables['search_callback'] = 'osha_publication_menu_publications_search';
 
@@ -426,7 +426,7 @@ function osha_publication_menu_publications_search_related($form_state, $native_
 
 function osha_publication_menu_case_studies_form($form, $form_state) {
   $variables['form_state'] = $form_state;
-  $variables['action'] = 'case-studies';
+  $variables['action'] = 'tools-and-publications/case-studies';
   $variables['facet_callback'] = '_osha_publication_menu_case_studies_get_facets_def';
   $variables['search_callback'] = 'osha_publication_menu_case_studies_search';
   return osha_publication_menu_case_studies_faceted_form($variables);

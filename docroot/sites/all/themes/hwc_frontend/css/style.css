@@ -7732,6 +7732,7 @@ header.navbar-default .navbar-collapse nav ul.menu > li.first a:before {
     padding-top: 0.9em !important;
   }
 }
+/*testing commit*/
 body {
   /* General */
   padding-top: 210px;
@@ -11705,7 +11706,7 @@ article .hwc-share-widget ul {
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IS,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IS {
-  background: url(../images/events/big/Icelandic-180x180.png) no-repeat center;
+  background: url(../images/events/big/Iceland-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IT,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_IT {
@@ -19599,12 +19600,21 @@ input#edit-field-image-und-0-upload::before {
   content: "\e252";
   font-family: "Glyphicons Halflings";
 }
+.toolkit-page .field-name-body h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #003399;
+  margin-bottom: 10px;
+}
 .toolkit-page .main-container .page_title h1.page-header {
   display: none;
 }
 .toolkit-page .main-container .field-type-text-with-summary .field-items:before {
   content: " ";
   display: table;
+}
+.toolkit-page .main-container .field-type-text-with-summary .field-items:before h3 {
+  margin-bottom: 25px;
 }
 .toolkit-page .main-container h2 {
   font-style: normal;
@@ -19622,6 +19632,9 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container h3:first-child {
   margin-top: 15px;
+}
+.toolkit-page .main-container .field-name-body.field-type-text-with-summary h3 {
+  margin-bottom: 25px;
 }
 .toolkit-page .main-container .introduction-text {
   font-weight: 600;
@@ -20163,6 +20176,7 @@ input#edit-field-image-und-0-upload::before {
   font-weight: bold;
   font-size: 1.4em;
   margin-bottom: 30px;
+  color: #749b00;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul {
   list-style: none;

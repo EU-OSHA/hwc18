@@ -154,9 +154,9 @@ function hwc_homepage_block_view($delta = '') {
   }
   if ($delta == 'hwc_homepage_tools_and_resources') {
     $items = [];
-    $items[] = l(t('Case studies'), 'case-studies');
+    $items[] = l(t('Case studies'), 'tools-and-publications/case-studies');
     $items[] = l(t('DS e-tool'), 'e-tool');
-    $items[] = l(t('Practical tools'), 'practical-tools');
+    $items[] = l(t('Practical tools'), 'tools-and-publications/practical-tools');
     $block['content']['message'] = array(
       'type' => 'item',
       '#prefix' => '<div class="text-muted">',

@@ -463,7 +463,7 @@ function osha_events_views_pre_render(&$view) {
         continue;
       }
       $month = $row_month;
-      $path = $view->current_display == 'block_1' ? 'past-events' : 'events';
+      $path = $view->current_display == 'block_1' ? 'media-centre/past-events' : 'media-centre/events';
 
       // Add a css class to selected month.
       $class = $class_year = '';
@@ -530,7 +530,7 @@ function osha_events_views_pre_render(&$view) {
     drupal_set_breadcrumb(
       array(
         l(t('Media centre'), '<front>'),
-        l(t('Events'), 'events'),
+        l(t('Events'), 'media-centre/events'),
         $title,
       )
     );

@@ -519,7 +519,7 @@ function osha_publication_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Case studies';
   $page->admin_description = '';
-  $page->path = 'case-studies';
+  $page->path = 'tools-and-publications/case-studies';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -636,7 +636,7 @@ function osha_publication_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Publications listing';
   $page->admin_description = '';
-  $page->path = 'publications';
+  $page->path = 'tools-and-publications/publications';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,

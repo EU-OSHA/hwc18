@@ -6,6 +6,22 @@
 
 include_once 'hwc_practical_tool.features.inc';
 
+/**
+ * Implements Elysia hook_cronapi().
+ */
+function hwc_practical_tool_cronapi() {
+  return array(
+    'hwc_practical_tool_cron' => array(
+      'description' => 'Migrate NCW DS content',
+      'rule' => '30 3 * * *',
+    ),
+  );
+}
+
+function hwc_practical_tool_cron() {
+  include_once 'ncw_migration.drush.inc';
+  drush_ncw_migration_hwc_migrate_ds();
+}
 
 /**
  * Implements hook_menu_alter().
@@ -64,7 +80,7 @@ function hwc_practical_tool_entity_info_alter(&$entity_info) {
  */
 function hwc_practical_tool_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
   global $language;
-  if (arg(0) == 'practical-tools') {
+  if ((arg(0) == 'practical-tools') || (arg(1) == 'practical-tools')) {
     $call_args['params']['sort'] = 'score desc';
     $sort_order = strtolower(@$_REQUEST['sort_order']);
     $sort_by = strtolower(@$_REQUEST['sort_by']);
