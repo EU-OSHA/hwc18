@@ -356,3 +356,11 @@ function osha_update_7026() {
 function osha_update_7027() {
   features_revert(array('osha' => array('views_view')));
 }
+
+/**
+ * MDR-2009 Back end - Events field - Tagging functionality.
+ */
+function osha_update_7028() {
+  variable_set('hwc_migration_news_url', '/export/news/list');
+  variable_set('hwc_migration_events_url', '/export/events/list');
+}
