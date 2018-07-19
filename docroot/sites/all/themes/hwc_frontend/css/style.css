@@ -19832,15 +19832,19 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
   max-width: inherit;
 }
-.toolkit-page .main-container .view-tk-tools .views-row .views-field-title span a {
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-title h2 a {
   height: 75px;
   background-color: #003399;
   color: white;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1.5rem;
   text-align: center;
   display: block;
   padding-top: 25px;
+}
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-title h2 a:before {
+  content: "";
+  padding-right: 0;
 }
 @media (min-width: 1301px) and (max-width: 1665px) {
   .toolkit-page .main-container .view-tk-tools .views-row {
