@@ -10818,18 +10818,23 @@ input#edit-field-image-und-0-upload::before {
 				}
 				.views-field-title{
 					
-					span{
+					h2{
 						
 						a{
 							height: 75px;
 							background-color: @color-h2-toolkit;
 							color: white;
 							font-weight: 600;
-							font-size: 1.1em;
+							font-size: 1.5rem;
 							text-align: center;
 							display: block;
 							padding-top: 25px;
+							&:before{
+								content: "";
+								padding-right: 0;
+							}
 						}
+
 					}
 				}
 			}
