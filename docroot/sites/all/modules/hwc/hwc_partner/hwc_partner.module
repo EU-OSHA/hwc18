@@ -534,7 +534,7 @@ function hwc_partner_form_masquerade_validate($form, &$form_state) {
 
 function hwc_partner_form_masquerade_redirect($form, $form_state) {
   if (!empty($form_state['values']['masquerade_user_field']) && $account = user_load_by_name($form_state['values']['masquerade_user_field'])) {
-    // If the user is a partner, redirect to the corresponding partner profile
+    // If the user is a partner, redirect to the corresponding partner profile.
     if (in_array(ROLE_CAMPAIGN_PARTNER, $account->roles) && !empty($account->workbench_access)) {
       $sections = array_keys($account->workbench_access);
       foreach ($sections as $id_section) {
@@ -611,8 +611,9 @@ function _hwc_partner_untranslate_form_labels(&$element) {
 }
 
 function hwc_partner_form_after_build($form, $form_state) {
-  $form['field_modified_by']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
-  $form['field_modified_on']['#states'] = ['visible'=>[ '#edit-field-modified-by-und' => ['value' => [-1]] ] ]; // always hidden
+  // Always hidden.
+  $form['field_modified_by']['#states'] = ['visible' => ['#edit-field-modified-by-und' => ['value' => [-1]]]];
+  $form['field_modified_on']['#states'] = ['visible' => ['#edit-field-modified-by-und' => ['value' => [-1]]]];
   return $form;
 }
 
@@ -759,7 +760,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
       $auth = $mqsq_wu->field_crm_guid->value();
     }
     $user_is_partner = hwc_partner_match_user_partner($node);
-    $show_update_profile =  $user_is_partner
+    $show_update_profile = $user_is_partner
       || in_array(ROLE_SUPERVISOR, $user->roles)
       || in_array(ROLE_ADMINISTRATOR, $user->roles)
       || in_array(ROLE_SUPERADMINISTRATOR, $user->roles);
@@ -781,7 +782,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     unset($node->content['field_schedule']);
   }
 
-  // node 253 - /private/profile/update
+  // Node 253 - /private/profile/update.
   if ($node->nid == 253 && !empty($_GET['session_id']) && !empty($node->content['body'][0]['#markup'])) {
     $partner = hwc_partner_get_account_partner();
     $lang_parameter = !empty($language->language) ? $language->language : 'en';
@@ -796,7 +797,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
       drupal_set_message('Warning! The page might not work properly due to failure to find the form URL. Please contact technical support');
     }
   }
-  // node 225 - /partner/register
+  // Node 225 - /partner/register.
   if ($node->nid == 225 && !empty($_GET['session_id']) && !empty($node->content['body'][0]['#markup'])) {
     $url = '/partner/forms/index.php?session_id=' . check_plain($_GET['session_id']);
     if (!empty($_GET['auth'])) {
@@ -886,7 +887,7 @@ function hwc_partner_node_presave($node) {
     masquerade_switch_back();
     $user_original = user_load($_SESSION['masquerading']); /* Original user */
 
-    if ( ($node->type == 'news') || ($node->type == 'events') ) {
+    if (($node->type == 'news') || ($node->type == 'events')) {
       $node->field_modified_on[LANGUAGE_NONE][0] = [
         'value' => format_date(strtotime('now'), 'custom', 'Y-m-d H:i:') . '00',
         'timezone' => 'Europe/Madrid',
@@ -896,7 +897,7 @@ function hwc_partner_node_presave($node) {
     }
 
     if (!$node->nid) {
-      $node->uid  = $user_original->uid;
+      $node->uid = $user_original->uid;
       $node->name = $user_original->name;
       $node->log = 'Created by ' . $user_original->name . '.';
     }
@@ -925,7 +926,7 @@ function hwc_partner_node_update($node) {
 function _hwc_partner_masquerade_reswitch() {
   if (isset($_SESSION['masqueraded_user'])) {
     masquerade_switch_user($_SESSION['masqueraded_user']);
-    unset ($_SESSION['masqueraded_user']);
+    unset($_SESSION['masqueraded_user']);
   }
 }
 
@@ -938,7 +939,7 @@ function _hwc_partner_masquerade_reswitch() {
  */
 function _hwc_partner_show_editing_time_to_partners($node) {
   global $user;
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)){
+  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
     $p_account = hwc_partner_get_account_partner();
     if ($p_account != NULL) {
       if (in_array($type = $node->type, array('news', 'events')) && $node->workbench_moderation_state_new == 'final_draft') {

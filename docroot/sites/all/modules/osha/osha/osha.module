@@ -880,7 +880,7 @@ function osha_expire_node_page($node) {
 
   // Redirects
   $redirects = db_select('redirect')->fields(NULL, array('rid', 'source', 'language'))->condition('redirect', $node_url)->execute()->fetchAllAssoc('rid');
-  foreach($redirects as $row) {
+  foreach ($redirects as $row) {
     if ($row->language == LANGUAGE_NONE) {
       $url = '/' . $row->source;
     }

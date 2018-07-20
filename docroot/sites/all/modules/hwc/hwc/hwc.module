@@ -1146,6 +1146,14 @@ function hwc_workbench_access_node_element_alter(&$element, $form_state, $active
   if (!empty($form['#node_edit_form']) && !in_array($form['#node']->type, $allow_section_field)) {
     $element['#access'] = FALSE;
   }
+
+  // Set default value for section according to mapping.
+  $node = $form_state['node'];
+  $section_term = osha_workflow_get_default_section($node);
+  if ($section_term && in_array($section_term->tid, array_keys($element['#options']))) {
+    $element['#default_value'] = $section_term->tid;
+  }
+
 }
 
 /**
