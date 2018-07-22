@@ -272,6 +272,9 @@ function hwc_user_login(&$edit, $account) {
         }
       }
     }
+    if (in_array(ROLE_REVIEW_MANAGER, $account->roles)) {
+      $edit['redirect'] = 'good-practice-exchange-platform';
+    }
   }
 }
 
