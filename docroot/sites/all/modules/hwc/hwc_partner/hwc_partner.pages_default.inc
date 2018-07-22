@@ -9147,6 +9147,205 @@ foreach( $contexts[\'argument_entity_id:node_1\']->data->field_users[\'und\'] as
   $page->default_handlers[$handler->name] = $handler;
   $pages['private_area_for_partners'] = $page;
 
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'private_workbench';
+  $page->task = 'page';
+  $page->admin_title = 'private_workbench';
+  $page->admin_description = '';
+  $page->path = 'private_workbench';
+  $page->access = array(
+    'logic' => 'and',
+  );
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_private_workbench__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'private_workbench';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'masquerade as any user',
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+    'panels_breadcrumbs_state' => 1,
+    'panels_breadcrumbs_titles' => '',
+    'panels_breadcrumbs_paths' => '',
+    'panels_breadcrumbs_home' => 0,
+  );
+  $display = new panels_display();
+  $display->layout = 'flexible';
+  $display->layout_settings = array(
+    'items' => array(
+      'canvas' => array(
+        'type' => 'row',
+        'contains' => 'column',
+        'children' => array(
+          0 => 'main',
+        ),
+        'parent' => NULL,
+        'class' => 'profile-edit-links-container node-type-partner',
+        'column_class' => '',
+        'row_class' => '',
+        'region_class' => '',
+        'no_scale' => FALSE,
+        'fixed_width' => '',
+        'column_separation' => '0.5em',
+        'region_separation' => '0.5em',
+        'row_separation' => '0.5em',
+        'hide_empty' => 0,
+      ),
+      'main' => array(
+        'type' => 'column',
+        'width' => 100,
+        'width_type' => '%',
+        'children' => array(
+          0 => 'main-row',
+        ),
+        'parent' => 'canvas',
+      ),
+      'main-row' => array(
+        'type' => 'row',
+        'contains' => 'region',
+        'children' => array(
+          0 => 'center',
+        ),
+        'parent' => 'main',
+      ),
+      'center' => array(
+        'type' => 'region',
+        'title' => 'Center',
+        'width' => 100,
+        'width_type' => '%',
+        'parent' => 'main-row',
+      ),
+    ),
+  );
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'center' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'My private Workbench';
+  $display->uuid = 'deb176b3-23ea-4053-b190-03a283f9c3b0';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_private_workbench__panel';
+  $display->content = array();
+  $display->panels = array();
+  $pane = new stdClass();
+  $pane->pid = 'new-42adf8cb-b117-4c00-9dae-ec4b4a955319';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_partner-hwc_partner_act_as_partner';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-sm-3 pane-hwc-partner-hwc-partner-private-link-1',
+  );
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '42adf8cb-b117-4c00-9dae-ec4b4a955319';
+  $display->content['new-42adf8cb-b117-4c00-9dae-ec4b4a955319'] = $pane;
+  $display->panels['center'][0] = 'new-42adf8cb-b117-4c00-9dae-ec4b4a955319';
+  $pane = new stdClass();
+  $pane->pid = 'new-9c21887d-6eaa-4ca1-89d6-650c42c8210c';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_partner-hwc_partner_private_link_3';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-sm-3',
+  );
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '9c21887d-6eaa-4ca1-89d6-650c42c8210c';
+  $display->content['new-9c21887d-6eaa-4ca1-89d6-650c42c8210c'] = $pane;
+  $display->panels['center'][1] = 'new-9c21887d-6eaa-4ca1-89d6-650c42c8210c';
+  $pane = new stdClass();
+  $pane->pid = 'new-811ce5e8-4da1-4d92-8e54-bf59ab720363';
+  $pane->panel = 'center';
+  $pane->type = 'block';
+  $pane->subtype = 'hwc_partner-hwc_partner_private_link_2';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array(
+    'css_id' => '',
+    'css_class' => 'col-sm-3',
+  );
+  $pane->extras = array();
+  $pane->position = 2;
+  $pane->locks = array();
+  $pane->uuid = '811ce5e8-4da1-4d92-8e54-bf59ab720363';
+  $display->content['new-811ce5e8-4da1-4d92-8e54-bf59ab720363'] = $pane;
+  $display->panels['center'][2] = 'new-811ce5e8-4da1-4d92-8e54-bf59ab720363';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-9c21887d-6eaa-4ca1-89d6-650c42c8210c';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['private_workbench'] = $page;
+
   return $pages;
 
 }

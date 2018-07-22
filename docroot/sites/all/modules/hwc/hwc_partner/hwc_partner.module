@@ -135,6 +135,14 @@ function hwc_partner_block_info() {
     'cache' => DRUPAL_CACHE_PER_USER,
     'weight' => 60,
   );
+  $blocks['hwc_partner_act_as_partner'] = array(
+    'info' => t('Act as a partner page'),
+    'status' => 1,
+    'region' => '-1',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'cache' => DRUPAL_NO_CACHE,
+    'weight' => 50,
+  );
   $blocks['hwc_partner_mostra_masquerade'] = array(
     'info' => t('Act as a partner'),
     'status' => 1,
@@ -265,6 +273,18 @@ function hwc_partner_block_view($delta = '') {
         );
       }
     }
+    elseif (arg(0) == 'private_workbench') {
+      if ($it == 3) {
+        $url = 'good-practice-exchange-platform';
+      }
+      $block['content'] = theme('hwc_partner_private_link_' . $it,
+        array(
+          'hwc_partner_private_link_title' => l(variable_get('hwc_partner_private_link_' . $it . '_title'), $url, []),
+          'node' => $node,
+          'delta' => $delta,
+        )
+      );
+    }
   }
   elseif ($delta == 'hwc_partner_login_text') {
     // Did this to use it in panels.
@@ -307,13 +327,19 @@ function hwc_partner_block_view($delta = '') {
       }
     }
   }
+  elseif ($delta == 'hwc_partner_act_as_partner') {
+    $block['title'] = '<none>';
+    if (user_access('masquerade as any user')) {
+      $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => ''));
+    }
+  }
   elseif ($delta == 'hwc_partner_mostra_masquerade') {
     $block['title'] = '<none>';
     if (isset($_SESSION['masquerading'])) {
       $block['content'] = l(t('Switch back to your user'), 'masquerade/unswitch', array('query' => array('token' => drupal_get_token('masquerade/unswitch'))));
     }
-    elseif (user_access('masquerade as any user')) {
-      $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => ''));
+    elseif (user_access('masquerade as any user')  && arg(0) != 'private_workbench') {
+      $block['content'] = theme('hwc_partner_my_private_workbench', array('content' => ''));
     }
   }
   return $block;
@@ -477,6 +503,12 @@ function hwc_partner_theme() {
       'path' => $path . '/templates',
     );
   }
+  $theme['hwc_partner_my_private_workbench'] = array(
+    'template' => 'templates/hwc_partner_my_private_workbench',
+    'variables' => array(
+      'content' => '',
+    ),
+  );
   $theme['hwc_partner_act_as_partner_block'] = array(
     'template' => 'templates/hwc_partner_act_as_partner_block',
     'variables' => array(
