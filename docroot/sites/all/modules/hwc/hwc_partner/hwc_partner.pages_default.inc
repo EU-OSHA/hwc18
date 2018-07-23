@@ -8684,6 +8684,16 @@ foreach( $contexts[\'argument_entity_id:node_1\']->data->field_users[\'und\'] as
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
+      4 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 14,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
     ),
     'logic' => 'or',
     'type' => 'none',
