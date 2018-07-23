@@ -727,7 +727,9 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_show_in_ncw']['#access'] = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
   }
 
-  if (!empty($form['#entity']->field_migration_source)) {
+  if (!empty($form['#entity']->field_migration_source)
+    &&
+      !empty($form['#entity']->field_migration_source[LANGUAGE_NONE])) {
     // Hide all events fields except checkbox and disabled title.
     if ($form['type']['#value'] != 'events') {
       drupal_set_message('You are not allowed to edit imported content', 'warning');
