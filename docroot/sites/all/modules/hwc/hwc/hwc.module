@@ -727,7 +727,9 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_show_in_ncw']['#access'] = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
   }
 
-  if (!empty($form['#entity']->field_migration_source)) {
+  if (!empty($form['#entity']->field_migration_source)
+    &&
+      !empty($form['#entity']->field_migration_source[LANGUAGE_NONE])) {
     // Hide all events fields except checkbox and disabled title.
     if ($form['type']['#value'] != 'events') {
       drupal_set_message('You are not allowed to edit imported content', 'warning');
@@ -1571,11 +1573,6 @@ function hwc_pathauto_cleanstring($string) {
 
 function hwc_update_main_menu_content_links() {
   module_load_include('inc', 'pathauto');
-  $rules = db_query('SELECT rid, admin_title, plid, menu_name, enabled, weight, conditions FROM {menu_position_rules} ORDER BY weight, rid')->fetchAll();
-  foreach ($rules as $rule) {
-    $rule->conditions = unserialize($rule->conditions);
-  }
-
   $menu = menu_tree_all_data('main-menu');
   foreach ($menu as $l1_item) {
     $link = $l1_item['link'];
@@ -1596,6 +1593,105 @@ function hwc_update_main_menu_content_links() {
     }
   }
   return $menu;
+}
+
+function hwc_update_main_menu_position_rule() {
+  module_load_include('inc', 'pathauto');
+  $rules = db_query('SELECT rid, conditions FROM {menu_position_rules} ORDER BY weight, rid')->fetchAllKeyed(0,1);
+  foreach ($rules as $rid => $rule) {
+    $rule = unserialize($rule);
+    $rules[$rid] = $rule['content_type']['content_type'];
+  }
+  $menu = menu_tree_all_data('main-menu');
+  foreach ($menu as $l1_item) {
+    $link = $l1_item['link'];
+    $alias1 = hwc_pathauto_cleanstring($link['link_title']);
+    hwc_update_main_menu_position_rule_links($rules, $link, []);
+
+    foreach ($l1_item['below'] as $l2_item) {
+      $link = $l2_item['link'];
+      $alias2 = hwc_pathauto_cleanstring($link['link_title']);
+      hwc_update_main_menu_position_rule_links($rules, $link, [$alias1]);
+
+      foreach ($l2_item['below'] as $l3_item) {
+        $link = $l3_item['link'];
+        hwc_update_main_menu_position_rule_links($rules, $link, [$alias1, $alias2]);
+      }
+    }
+  }
+}
+
+function hwc_update_main_menu_position_rule_links($rules, $link, $aliases) {
+  if ($link['router_path'] != 'menu-position/%') {
+    return;
+  }
+  $link_path = explode('/', $link['link_path']);
+  $rid = $link_path[1];
+  $types = $rules[$rid];
+  if (!$types) {
+    return;
+  }
+  $q = db_select('node', 'n');
+  $q->fields('n', ['nid', 'title']);
+  $q->condition('n.type', $types, 'in');
+  $rows = $q->execute()->fetchAll();
+
+  foreach ($rows as $row) {
+    $alias = hwc_pathauto_cleanstring($row->title);
+    hwc_update_main_menu_position_rule_content($row->nid, $alias, $aliases);
+  }
+}
+
+function hwc_update_main_menu_position_rule_content($nid, $alias, $aliases) {
+  static $update = [];
+  $node = node_load($nid);
+  if (!$node) {
+    return;
+  }
+  if (isset($update[$nid])) {
+    return;
+  }
+  $update[$nid] = $nid;
+  $current_alias = drupal_lookup_path('alias', 'node/' . $node->nid);
+
+  $menu_item = [
+    'title' => $node->title,
+    'href' => $current_alias,
+    'path' => 'node/' . $node->nid,
+  ];
+
+  $new_alias = hwc_toolkit_check_menu($menu_item, $alias, $aliases);
+  if (!$new_alias) {
+    return;
+  }
+
+  foreach ($node->translations->data as $language => $translation) {
+    $existing_alias = path_load(array('source' => 'node/' . $node->nid, 'language' => $language));
+
+    if (!empty($existing_alias) && $existing_alias['alias'] != $new_alias) {
+      // Remove old alias.
+      path_delete(array('alias' => $existing_alias['alias'], 'language' => $language));
+
+      // Redirect old alias.
+      $redirect = new stdClass();
+      redirect_object_prepare($redirect);
+      $redirect->source = $existing_alias['alias'];
+      $redirect->redirect = $existing_alias['source'];
+      $redirect->language = $language;
+      // Check if the redirect exists before saving.
+      $hash = redirect_hash($redirect);
+      if (!redirect_load_by_hash($hash)) {
+        redirect_save($redirect);
+      }
+    }
+
+    $args = array(
+      'source' => 'node/' . $node->nid,
+      'alias' => $new_alias,
+      'language' => $language,
+    );
+    path_save($args);
+  }
 }
 
 function hwc_update_main_menu_links($link, $alias, $aliases) {

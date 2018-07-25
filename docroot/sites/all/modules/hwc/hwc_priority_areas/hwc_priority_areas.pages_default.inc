@@ -518,7 +518,7 @@ function hwc_priority_areas_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Priority areas';
   $page->admin_description = '';
-  $page->path = 'priority-areas';
+  $page->path = 'about-topic/priority-areas';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();

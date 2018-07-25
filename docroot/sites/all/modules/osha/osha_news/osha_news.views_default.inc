@@ -179,7 +179,7 @@ function osha_news_views_default_views() {
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
-  $handler->display->display_options['path'] = 'news';
+  $handler->display->display_options['path'] = 'media-centre/news';
 
   /* Display: Latest News */
   $handler = $view->new_display('block', 'Latest News', 'oshnews_latest');

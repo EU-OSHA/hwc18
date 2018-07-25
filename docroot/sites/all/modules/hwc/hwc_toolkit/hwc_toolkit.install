@@ -96,3 +96,10 @@ function hwc_toolkit_update_7013() {
 function hwc_toolkit_update_7014() {
   features_revert(array('hwc_toolkit' => array('field_instance')));
 }
+
+/**
+ * TKIT-100 SEO - Remove H2 tags from navigation elements.
+ */
+function hwc_toolkit_update_7015() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}

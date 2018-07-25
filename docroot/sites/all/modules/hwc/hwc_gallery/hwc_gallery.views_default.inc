@@ -128,7 +128,7 @@ function hwc_gallery_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'photo-gallery';
+  $handler->display->display_options['path'] = 'media-centre/photo_gallery';
 
   /* Display: Attachment */
   $handler = $view->new_display('attachment', 'Attachment', 'attachment_1');

@@ -494,9 +494,9 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'good_practice_exchange';
   $page->task = 'page';
-  $page->admin_title = 'good-practice-exchange';
+  $page->admin_title = 'Good practice exchange';
   $page->admin_description = '';
-  $page->path = 'good-practice-exchange';
+  $page->path = 'campaign-partners/good-practice-exchange';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
@@ -849,7 +849,10 @@ function hwc_good_practice_exchange_default_page_manager_pages() {
   $page->admin_title = 'Good practice exchange initiative page';
   $page->admin_description = '';
   $page->path = 'good-practice-exchange-initiative';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(

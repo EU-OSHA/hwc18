@@ -1,7 +1,7 @@
 name = osha
 core = 7.x
 package = OSHA
-version = 7.x-1.41
+version = 7.x-1.42
 project = osha
 dependencies[] = aggregator
 dependencies[] = better_exposed_filters
@@ -345,6 +345,7 @@ features[variable][] = workbench_access_node_type_internal_url
 features[variable][] = workbench_moderation_default_state_internal_url
 features[views_view][] = administration_content
 features[views_view][] = articles
+features[views_view][] = available_flags
 features[wysiwyg][] = full_html
 features[wysiwyg][] = plain_text
 files[] = osha.test

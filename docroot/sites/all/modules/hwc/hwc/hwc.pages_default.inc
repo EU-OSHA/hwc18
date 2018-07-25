@@ -58,7 +58,7 @@ function hwc_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Get your certificate page';
   $page->admin_description = '';
-  $page->path = 'get-your-certificate';
+  $page->path = 'get-involved/get-your-certificate';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,

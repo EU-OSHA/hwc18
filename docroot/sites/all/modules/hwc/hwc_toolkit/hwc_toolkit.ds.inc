@@ -73,6 +73,13 @@ function hwc_toolkit_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => '',
+        'exclude node title settings' => '1',
+        'field_formatter_class' => '',
+      ),
     ),
   );
   $export['node|tk_tool|default'] = $ds_fieldsetting;
@@ -105,7 +112,7 @@ function hwc_toolkit_ds_field_settings_info() {
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '0',
-        'wrapper' => 'h2',
+        'wrapper' => 'h1',
         'class' => '',
         'exclude node title settings' => '1',
         'field_formatter_class' => '',
@@ -240,24 +247,24 @@ function hwc_toolkit_ds_layout_settings_info() {
     'regions' => array(
       'left' => array(
         0 => 'title',
-        2 => 'field_organisation',
-        3 => 'field_country',
-        4 => 'body',
-        5 => 'field_download_pdf',
-        6 => 'field_external_link',
+        1 => 'field_organisation',
+        2 => 'field_country',
+        3 => 'body',
+        4 => 'field_download_pdf',
+        5 => 'field_external_link',
       ),
       'right' => array(
-        1 => 'field_image',
+        6 => 'field_image',
       ),
     ),
     'fields' => array(
       'title' => 'left',
-      'field_image' => 'right',
       'field_organisation' => 'left',
       'field_country' => 'left',
       'body' => 'left',
       'field_download_pdf' => 'left',
       'field_external_link' => 'left',
+      'field_image' => 'right',
     ),
     'classes' => array(
       'layout_class' => array(
@@ -397,8 +404,8 @@ function hwc_toolkit_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'left' => array(
-        0 => 'title',
-        1 => 'title_field',
+        0 => 'title_field',
+        1 => 'title',
         2 => 'body',
       ),
       'right' => array(
@@ -406,8 +413,8 @@ function hwc_toolkit_ds_layout_settings_info() {
       ),
     ),
     'fields' => array(
-      'title' => 'left',
       'title_field' => 'left',
+      'title' => 'left',
       'body' => 'left',
       'field_image' => 'right',
     ),

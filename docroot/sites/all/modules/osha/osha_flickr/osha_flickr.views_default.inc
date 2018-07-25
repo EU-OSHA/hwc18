@@ -152,7 +152,7 @@ function osha_flickr_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'photo-gallery';
+  $handler->display->display_options['path'] = 'media-centre/photo-gallery';
   $translatables['flickr_albums'] = array(
     t('Master'),
     t('Photo gallery'),

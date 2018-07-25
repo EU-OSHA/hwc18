@@ -1549,8 +1549,15 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_document_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_document_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_events_pattern';
-  $strongarm->value = 'oshevents/[node:title]';
+  $strongarm->value = 'media-centre/events/[node:title]';
   $export['pathauto_node_events_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1585,7 +1592,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_news_pattern';
-  $strongarm->value = 'news/[node:title]';
+  $strongarm->value = 'media-centre/news/[node:title]';
   $export['pathauto_node_news_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
