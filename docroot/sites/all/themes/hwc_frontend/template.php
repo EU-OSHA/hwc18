@@ -176,6 +176,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     $vars['classes_array'][] = 'page-search';
   }
 
+  $vars['show_title'] = TRUE;
   // Add back to links (e.g. Back to news).
   if (isset($vars['node'])) {
     $node = $vars['node'];
@@ -193,6 +194,7 @@ function hwc_frontend_preprocess_page(&$vars) {
       case "tk_tool":
       case "tk_example":
       case "tk_topic":
+        $vars['show_title'] = FALSE;
         $vars['page']['content']['#post_render'][] = 'hwc_content_post_render_add_classes';
         break;
 
