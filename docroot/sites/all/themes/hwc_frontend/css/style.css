@@ -19430,6 +19430,9 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end galder styles issue bulgaria*/
 /*start toolkit styles*/
+.toolkit-page {
+  /* toolkit examples */
+}
 .toolkit-page .well {
   background-color: inherit;
   border: none;
@@ -19606,6 +19609,13 @@ input#edit-field-image-und-0-upload::before {
   color: #003399;
   margin-bottom: 10px;
 }
+.toolkit-page .node-type-tk-example div.group-left > div.field.field-name-title > div > div > h1 {
+  font-style: normal;
+  color: #003399;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 2em;
+}
 .toolkit-page .main-container .page_title h1.page-header {
   display: none;
 }
@@ -19616,12 +19626,24 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .field-type-text-with-summary .field-items:before h3 {
   margin-bottom: 25px;
 }
-.toolkit-page .main-container h2 {
+.toolkit-page .main-container h1 {
   font-style: normal;
   color: #749b00;
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 2em;
+  text-align: left;
+}
+.toolkit-page .main-container h2 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #003399;
+  margin-bottom: 10px;
+  font-style: normal;
+}
+.toolkit-page .main-container h2 a:before {
+  content: '';
+  padding-left: 0;
 }
 .toolkit-page .main-container h3 {
   font-size: 1.3em;
@@ -20173,14 +20195,15 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.node-type-tk-topic .node-tk-topic .group-left .box-check-content h3,
-.node-type-tk-topic .node-tk-topic .group-left .box-check-content h4 {
+.node-type-tk-topic .node-tk-topic .group-left .box-check-content h2,
+.node-type-tk-topic .node-tk-topic .group-left .box-check-content h3 {
   border-bottom: 2px solid #749b00;
   padding-bottom: 5px;
   font-weight: bold;
   font-size: 1.4em;
   margin-bottom: 30px;
   color: #749b00;
+  margin-top: 15px;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul {
   list-style: none;
@@ -26106,10 +26129,12 @@ input#edit-field-image-und-0-upload::before {
     display: inline-block;
     float: right;
   }
+  .toolkit-page .main-container h1 {
+    padding-left: 0;
+  }
   .toolkit-page .main-container h2 {
     margin-left: 0px;
     margin-right: 0px;
-    font-size: 1.6em !important;
   }
   .toolkit-page .main-container .start-here .col {
     padding-left: 0px;
@@ -26130,6 +26155,7 @@ input#edit-field-image-und-0-upload::before {
     padding: 30px 15px;
     position: relative;
     left: inherit;
+    width: 100%;
   }
   .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right .field-name-node-link {
     text-align: center;
