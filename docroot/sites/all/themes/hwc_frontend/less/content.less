@@ -10548,6 +10548,18 @@ input#edit-field-image-und-0-upload::before {
 		}
 	}
 
+	/* toolkit examples */
+
+	.node-type-tk-example{
+		div.group-left > div.field.field-name-title > div > div > h1{
+			font-style: normal;
+		    color: @color-h2-toolkit;
+		    font-weight: 600;
+		    margin-bottom: 15px;
+		    font-size: 2em;
+		}
+	}
+
 	//toolkit general content styles
 	.main-container{
 		.page_title{
@@ -10562,20 +10574,34 @@ input#edit-field-image-und-0-upload::before {
 				margin-bottom: 25px;
 			}
 		}
-		h2{
+		h1{
 			font-style: normal;
 			color: @h2-default-color-2;
 			font-weight: 600;
 		    margin-bottom: 15px;
 			font-size: 2em;
+			text-align: left;
 		}
-		h3{
+		h2{
 			font-size: 1.3em;
 			font-weight: 600;
 			color: @color-h2-toolkit;
 		    margin-bottom: 10px;
+		    font-style: normal;
+			& a:before{
+				content: '';
+				padding-left: 0;
+			}
+		}
+
+		h3{
+		    font-size: 1.3em;
+		    font-weight: 600;
+		    color: @color-h2-toolkit;
+		    margin-bottom: 10px;
 		    margin-top: 25px;
 		}
+
 		h3:first-child{
 			margin-top: 15px;
 		}
@@ -11155,14 +11181,15 @@ input#edit-field-image-und-0-upload::before {
 				padding:15px 30px;
 				margin-top: 20px;
 				margin-bottom: 20px;
-				h3,
-				h4{
+				h2,
+				h3{
 					border-bottom: 2px solid @h2-default-color-2;
 				    padding-bottom: 5px;
 				    font-weight: bold;
 				    font-size: 1.4em;
 				    margin-bottom: 30px;
 				    color: #749b00;
+				    margin-top: 15px;
 				}
 				ul{
 					list-style: none;
