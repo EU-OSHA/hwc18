@@ -12,10 +12,13 @@ foreach ($files as $f) {
 }
 $file_items = theme('item_list', array('items' => $items));
 
+$ext = pathinfo($entity->field_document_file['und'][0]['filename'], PATHINFO_EXTENSION);
+$icon_directory = drupal_get_path('theme', 'hwc_frontend') . '/images/file_icons/';
+$icon = $icon_directory . $ext . '.png'
 ?>
 <div class="publication-teaser">
   <div class="field field-files">
-      <span class="publication-ext-type"><?php print $ext_type; ?></span>
+      <span class="publication-ext-type"><img src="/<?php print $icon; ?>"/></span>
       <span class="publication-download-label"><?php print t('Download in'); ?></span>
       <?php print $file_items; ?>
   </div>
