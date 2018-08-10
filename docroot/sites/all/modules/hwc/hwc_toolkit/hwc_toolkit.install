@@ -103,3 +103,11 @@ function hwc_toolkit_update_7014() {
 function hwc_toolkit_update_7015() {
   features_revert(array('hwc_toolkit' => array('views_view')));
 }
+
+/**
+ * TKIT-111 Move all articles to subfolders.
+ */
+function hwc_toolkit_update_7016() {
+  variable_set('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
+  hwc_update_toolkit_menu_content_links();
+}

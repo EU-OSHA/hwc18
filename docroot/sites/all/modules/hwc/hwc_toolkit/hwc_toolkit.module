@@ -539,9 +539,10 @@ function hwc_update_toolkit_menu_content_links() {
   module_load_include('inc', 'pathauto');
   $map = hwc_toolkit_get_tool_example_map();
   $menu = hwc_toolkit_get_left_menu(0);
+  $toolkit_menu_prefix = variable_get('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
   foreach ($menu as $l1_item) {
     $menu_item = $l1_item;
-    $alias1 = hwc_pathauto_cleanstring($menu_item['title']);
+    $alias1 = $toolkit_menu_prefix . hwc_pathauto_cleanstring($menu_item['title']);
     $new_alias = hwc_toolkit_check_menu($menu_item, $alias1);
     hwc_toolkit_update_menu_item_alias($menu_item, $new_alias);
     foreach ($l1_item['children'] as $l2_item) {
@@ -560,8 +561,13 @@ function hwc_update_toolkit_menu_content_links() {
             $alias4 = hwc_pathauto_cleanstring($example_title, TRUE);
             $example_path = 'node/' . $example_nid;
             $existing_alias = drupal_lookup_path('alias', 'node/' . $example_nid);
-            $new_alias = hwc_toolkit_check_menu( ['title' => $example_title, 'href' => $existing_alias, 'path' => $example_path], $alias4, [$alias1, $alias2, $alias3]);
-
+            $menu_item = [
+              'title' => $example_title,
+              'href' => $existing_alias,
+              'path' => $example_path,
+            ];
+            $new_alias = hwc_toolkit_check_menu($menu_item, $alias4,
+              [$alias1, $alias2, $alias3]);
             if ($new_alias && ($new_alias != $existing_alias)) {
               path_delete(array('alias' => $existing_alias['alias']));
               $args = array(
