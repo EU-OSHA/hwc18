@@ -69,6 +69,15 @@ function hwc_frontend_menu_link(array $variables) {
 }
 
 /**
+ * Implements hook_preprocess_region().
+ */
+function hwc_frontend_preprocess_region(&$variables, $hook) {
+  if (($variables['region'] == "content") && (arg(2) == 'search-toolkit-examples')) {
+    $variables['classes_array'][] = 'col-md-9';
+  }
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function hwc_frontend_preprocess_html(&$vars) {
@@ -88,7 +97,10 @@ function hwc_frontend_preprocess_html(&$vars) {
         break;
     }
   }
-  else if ($term = menu_get_object('taxonomy_term', 2)) {
+  elseif (arg(2) == 'search-toolkit-examples') {
+    $vars['classes_array'][] = 'toolkit-page';
+  }
+  elseif ($term = menu_get_object('taxonomy_term', 2)) {
     $vars['classes_array'][] = 'toolkit-page';
   }
 

@@ -94,7 +94,7 @@ function hwc_toolkit_image_default_styles() {
   $styles['toolkit'] = array(
     'label' => 'toolkit',
     'effects' => array(
-      5 => array(
+      1 => array(
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 237,
@@ -106,7 +106,7 @@ function hwc_toolkit_image_default_styles() {
         ),
         'weight' => 0,
       ),
-      6 => array(
+      2 => array(
         'name' => 'image_crop',
         'data' => array(
           'width' => 235,

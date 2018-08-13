@@ -6,6 +6,18 @@
 
 include_once 'hwc_toolkit.features.inc';
 
+define('HWC_SEARCH_TOOLKIT_EXAMPLES', '99999');
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function hwc_toolkit_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['hwc_teaser'] = array(
+    'label' => t('HWC teaser'),
+    'custom settings' => TRUE,
+  );
+}
+
 /**
  * Implements hook_field_formatter_info().
  */
@@ -259,6 +271,9 @@ function hwc_toolkit_get_menu_tree($level1) {
 
     $terms = $w->field_tools_examples->value();
     if ($terms) {
+
+      $menu[$l1_nid]['children'][HWC_SEARCH_TOOLKIT_EXAMPLES] = _toolkit_menu_item(t('Search Toolkit Examples'), 'tools-and-examples/media-communication-tools/search-toolkit-examples', 'views');
+
       $tools_nid = $l1_nid;
       foreach ($terms as $tk_term) {
         $wrapper = entity_metadata_wrapper('taxonomy_term', $tk_term);
@@ -336,7 +351,9 @@ function hwc_toolkit_get_left_menu($active_id) {
     $active_id = hwc_toolkit_get_example_active_id($active_id, $n->nid);
     $is_example = TRUE;
   }
-
+  if (arg(2) == 'search-toolkit-examples') {
+    $active_id = HWC_SEARCH_TOOLKIT_EXAMPLES;
+  }
 
   $q = db_select('node', 'n');
   $q->fields('n', ['nid']);

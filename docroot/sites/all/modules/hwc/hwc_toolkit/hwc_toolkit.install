@@ -111,3 +111,10 @@ function hwc_toolkit_update_7016() {
   variable_set('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
   hwc_update_toolkit_menu_content_links();
 }
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7017() {
+  features_revert(array('hwc_toolkit' => array('views_view', 'context', 'ds_field_settings', 'ds_layout_settings')));
+}
