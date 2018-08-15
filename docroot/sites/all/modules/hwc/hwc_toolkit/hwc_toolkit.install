@@ -118,3 +118,10 @@ function hwc_toolkit_update_7016() {
 function hwc_toolkit_update_7017() {
   features_revert(array('hwc_toolkit' => array('views_view', 'context', 'ds_field_settings', 'ds_layout_settings')));
 }
+
+/**
+ * TKIT-112 adding a type filter in the examples search page.
+ */
+function hwc_toolkit_update_7018() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}

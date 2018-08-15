@@ -8,6 +8,125 @@ include_once 'hwc_toolkit.features.inc';
 
 define('HWC_SEARCH_TOOLKIT_EXAMPLES', '99999');
 
+function hwc_toolkit_get_available_example_countries() {
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_country', 'c', 'c.entity_id = n.nid');
+  $q->fields('c', ['field_country_tid']);
+  $q->condition('c.bundle', 'tk_example');
+  $q->condition('n.type', 'tk_example');
+  $q->condition('n.status', 1);
+  return $q->execute()->fetchAllKeyed(0,0);
+}
+
+function hwc_toolkit_node_get_example_tool_type_options() {
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('n', ['nid']);
+  $q->fields('e', ['field_tk_examples_target_id']);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rows = $q->execute()->fetchAll();
+  $map = [NULL => t('All')];
+  foreach ($rows as $row) {
+    $node = node_load($row->nid);
+    $map[$row->nid] = $node->title;
+  }
+  return $map;
+}
+
+function hwc_toolkit_node_get_tool_examples($node, $examples = []) {
+  if ($node->type != 'tk_tool') {
+    return [];
+  }
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('e', ['field_tk_examples_target_id']);
+  $q->condition('n.nid', $node->nid);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rows = $q->execute()->fetchAll();
+  foreach ($rows as $row) {
+    $examples[$row->field_tk_examples_target_id] = $row->field_tk_examples_target_id;
+  }
+  return $examples;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function hwc_toolkit_form_alter(&$form, $form_state, $form_id) {
+  if (($form_id == 'views_exposed_form') && ($form['#id'] == 'views-exposed-form-search-toolkit-examples-page')) {
+    $form['example_tool_type']['#type'] = "select";
+    $form['example_tool_type']['#size'] = NULL;
+    $form['example_tool_type']['#options'] = hwc_toolkit_node_get_example_tool_type_options();
+    $countries = hwc_toolkit_get_available_example_countries();
+    foreach ($form['country']['#options'] as $tid => $value) {
+      if (in_array($tid, $countries) || $tid == 'All') {
+        continue;
+      }
+      unset($form['country']['#options'][$tid]);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function hwc_toolkit_node_presave($node) {
+  $examples = &drupal_static('hwc_toolkit_tool_examples');
+  $examples = hwc_toolkit_node_get_tool_examples($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function hwc_toolkit_node_update($node) {
+  $examples = &drupal_static('hwc_toolkit_tool_examples');
+  $new_examples = hwc_toolkit_node_get_tool_examples($node, $examples);
+  $examples = array_merge($examples, $new_examples);
+  // Reindex all tool examples.
+  foreach ($examples as $nid) {
+    $example = node_load($nid);
+    if (!empty($example->translations->data)) {
+      foreach ($example->translations->data as $language => $tr) {
+        search_api_track_item_change('search_api_et_node', array($language . '_' . $example->nid));
+      }
+    }
+  }
+}
+
+/**
+ * Document partner category type tid.
+ */
+function hwc_toolkit_node_get_example_tool_type($item) {
+  if ($item->type != 'tk_example') {
+    return NULL;
+  }
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('e', ['entity_id']);
+  $q->condition('e.field_tk_examples_target_id', $item->nid);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rs = $q->execute()->fetchCol();
+  if ($rs) {
+    return $rs[0];
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function hwc_toolkit_entity_property_info_alter(&$info) {
+  $info['node']['properties']['example_tool_type'] = array(
+    'type' => 'integer',
+    'label' => t('Example Tool Type'),
+    'sanitized' => TRUE,
+    'getter callback' => 'hwc_toolkit_node_get_example_tool_type',
+  );
+}
+
 /**
  * Implements hook_entity_info_alter().
  */

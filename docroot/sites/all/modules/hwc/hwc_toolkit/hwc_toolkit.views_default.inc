@@ -143,6 +143,10 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = 'Showing @start - @end from @total';
+  /* Relationship: Indexed Multilingual Content: Examples */
+  $handler->display->display_options['relationships']['field_tk_examples']['id'] = 'field_tk_examples';
+  $handler->display->display_options['relationships']['field_tk_examples']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['relationships']['field_tk_examples']['field'] = 'field_tk_examples';
   /* Field: Indexed Multilingual Content: Multilingual ID */
   $handler->display->display_options['fields']['search_api_et_id']['id'] = 'search_api_et_id';
   $handler->display->display_options['fields']['search_api_et_id']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -186,6 +190,35 @@ function hwc_toolkit_views_default_views() {
     'title' => 'title',
     'title_field' => 'title_field',
   );
+  /* Filter criterion: Indexed Multilingual Content: Example Tool Type */
+  $handler->display->display_options['filters']['example_tool_type']['id'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['example_tool_type']['field'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['group'] = 1;
+  $handler->display->display_options['filters']['example_tool_type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['example_tool_type']['expose']['operator_id'] = 'example_tool_type_op';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['operator'] = 'example_tool_type_op';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['identifier'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
   /* Filter criterion: Indexed Multilingual Content: Country */
   $handler->display->display_options['filters']['field_country']['id'] = 'field_country';
   $handler->display->display_options['filters']['field_country']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -225,6 +258,31 @@ function hwc_toolkit_views_default_views() {
     'tk_example' => 'tk_example',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
   /* Filter criterion: Indexed Multilingual Content: Status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -254,9 +312,12 @@ function hwc_toolkit_views_default_views() {
     t('next ›'),
     t('last »'),
     t('Showing @start - @end from @total'),
+    t('Examples'),
     t('Multilingual ID'),
     t('Search'),
+    t('Type'),
     t('Country'),
+    t('Content type'),
     t('Page'),
   );
   $export['search_toolkit_examples'] = $view;
