@@ -155,6 +155,14 @@ function hwc_toolkit_views_default_views() {
   $handler->display->display_options['sorts']['title2']['id'] = 'title2';
   $handler->display->display_options['sorts']['title2']['table'] = 'search_api_index_default_multilingual_node_index';
   $handler->display->display_options['sorts']['title2']['field'] = 'title2';
+  $handler->display->display_options['sorts']['title2']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['title2']['expose']['label'] = 'Alphabetically';
+  /* Sort criterion: Search: Relevance */
+  $handler->display->display_options['sorts']['search_api_relevance']['id'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['sorts']['search_api_relevance']['field'] = 'search_api_relevance';
+  $handler->display->display_options['sorts']['search_api_relevance']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['search_api_relevance']['expose']['label'] = 'Relevance';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
@@ -314,6 +322,8 @@ function hwc_toolkit_views_default_views() {
     t('Showing @start - @end from @total'),
     t('Examples'),
     t('Multilingual ID'),
+    t('Alphabetically'),
+    t('Relevance'),
     t('Search'),
     t('Type'),
     t('Country'),
