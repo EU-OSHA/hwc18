@@ -570,30 +570,6 @@ function osha_views_default_views() {
   );
   $handler->display->display_options['filters']['field_partner_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_partner_type_tid']['vocabulary'] = 'partner_types';
-  /* Filter criterion: Taxonomy term: Vocabulary */
-  $handler->display->display_options['filters']['vid']['id'] = 'vid';
-  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['vid']['field'] = 'vid';
-  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['filters']['vid']['group'] = 1;
-  $handler->display->display_options['filters']['vid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
-  $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
-  $handler->display->display_options['filters']['vid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-  );
   /* Filter criterion: Entity translation: Translation exists */
   $handler->display->display_options['filters']['translation_exists']['id'] = 'translation_exists';
   $handler->display->display_options['filters']['translation_exists']['table'] = 'entity_translation';
@@ -764,7 +740,6 @@ function osha_views_default_views() {
     t('Operations'),
     t('Type'),
     t('Type of partner'),
-    t('Vocabulary'),
     t('Not translated in'),
     t('State'),
     t('Created (from)'),
