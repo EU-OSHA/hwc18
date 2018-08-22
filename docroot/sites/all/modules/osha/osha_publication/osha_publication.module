@@ -195,14 +195,6 @@ function osha_publication_post_features_enable_feature($component) {
 }
 
 /**
- * Implements hook_workbench_moderation_transition().
- */
-function osha_publication_workbench_moderation_transition($node, $old, $new) {
-  // No longer needed for HWC.
-  return;
-}
-
-/**
  * Implements hook_field_formatter_info().
  */
 function osha_publication_field_formatter_info() {

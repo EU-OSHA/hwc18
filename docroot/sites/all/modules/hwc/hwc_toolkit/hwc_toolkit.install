@@ -96,3 +96,32 @@ function hwc_toolkit_update_7013() {
 function hwc_toolkit_update_7014() {
   features_revert(array('hwc_toolkit' => array('field_instance')));
 }
+
+/**
+ * TKIT-100 SEO - Remove H2 tags from navigation elements.
+ */
+function hwc_toolkit_update_7015() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}
+
+/**
+ * TKIT-111 Move all articles to subfolders.
+ */
+function hwc_toolkit_update_7016() {
+  variable_set('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
+  hwc_update_toolkit_menu_content_links();
+}
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7017() {
+  features_revert(array('hwc_toolkit' => array('views_view', 'context', 'ds_field_settings', 'ds_layout_settings')));
+}
+
+/**
+ * TKIT-112 adding a type filter in the examples search page.
+ */
+function hwc_toolkit_update_7018() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}

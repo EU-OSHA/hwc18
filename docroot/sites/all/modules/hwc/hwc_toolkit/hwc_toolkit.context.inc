@@ -29,12 +29,15 @@ function hwc_toolkit_context_default_contexts() {
         'node_form' => '1',
       ),
     ),
-    'taxonomy_term' => array(
+    'path' => array(
       'values' => array(
-        'tools_and_examples' => 'tools_and_examples',
+        'tools-and-examples/media-communication-tools/search-toolkit-examples' => 'tools-and-examples/media-communication-tools/search-toolkit-examples',
+        'tools-and-examples/media-communication-tools/search-toolkit-examples/*' => 'tools-and-examples/media-communication-tools/search-toolkit-examples/*',
       ),
-      'options' => array(
-        'term_form' => '1',
+    ),
+    'views' => array(
+      'values' => array(
+        'search_toolkit_examples' => 'search_toolkit_examples',
       ),
     ),
   );

@@ -361,6 +361,26 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
 
   // Implements permission select content section.
   if (isset($form['#node_edit_form']) && !empty($form['workbench_access']['workbench_access'])) {
+    $q = db_select('workbench_access_node', 't');
+    $q->leftJoin('taxonomy_term_data', 's', 't.access_id = s.tid');
+    $q->leftJoin('node', 'n', 'n.nid = t.nid');
+    $q->addField('t', 'access_id', 'tid');
+    $q->condition('t.access_id', 'section', '<>');
+    $q->condition('n.type', 'partner');
+    $q->condition('n.status', 0);
+    $sections = $q->execute()->fetchAll();
+    $default_value = 0;
+    if ($form['workbench_access']['workbench_access']['#default_value']) {
+      $default_value = $form['workbench_access']['workbench_access']['#default_value'][0];
+    }
+    foreach ($sections as $section) {
+      if ($section->tid == $default_value) {
+        continue;
+      }
+      if (isset($form['workbench_access']['workbench_access']['#options'][$section->tid])) {
+        unset($form['workbench_access']['workbench_access']['#options'][$section->tid]);
+      }
+    }
     $form['workbench_access']['workbench_access']['#access'] = user_access('select content section');
   }
   if ($form_id == 'entity_collection_content_add_form') {
@@ -433,8 +453,8 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
 function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
   global $user;
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
-    foreach($user->workbench_access as $user_id_section => $value) {
-      foreach($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
           $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
           $form['workbench_access']['workbench_access']['#access'] = FALSE;
@@ -453,7 +473,7 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  else if (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }

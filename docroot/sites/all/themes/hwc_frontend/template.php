@@ -69,6 +69,15 @@ function hwc_frontend_menu_link(array $variables) {
 }
 
 /**
+ * Implements hook_preprocess_region().
+ */
+function hwc_frontend_preprocess_region(&$variables, $hook) {
+  if (($variables['region'] == "content") && (arg(2) == 'search-toolkit-examples')) {
+    $variables['classes_array'][] = 'col-md-9';
+  }
+}
+
+/**
  * Implements hook_preprocess_html().
  */
 function hwc_frontend_preprocess_html(&$vars) {
@@ -88,7 +97,10 @@ function hwc_frontend_preprocess_html(&$vars) {
         break;
     }
   }
-  else if ($term = menu_get_object('taxonomy_term', 2)) {
+  elseif (arg(2) == 'search-toolkit-examples') {
+    $vars['classes_array'][] = 'toolkit-page';
+  }
+  elseif ($term = menu_get_object('taxonomy_term', 2)) {
     $vars['classes_array'][] = 'toolkit-page';
   }
 
@@ -109,6 +121,9 @@ function hwc_frontend_preprocess_html(&$vars) {
 
   if ((arg(0) == 'priority-areas') || (arg(1) == 'priority-areas')) {
     $vars['classes_array'][] = 'page-topics';
+  }
+  if (arg(0) == 'available-flags') {
+    $vars['classes_array'][] = 'page-events';
   }
   if (arg(0) == 'good-practice-exchange-platform') {
     $vars['classes_array'][] = 'page-partners-documents';
@@ -173,6 +188,7 @@ function hwc_frontend_preprocess_page(&$vars) {
     $vars['classes_array'][] = 'page-search';
   }
 
+  $vars['show_title'] = TRUE;
   // Add back to links (e.g. Back to news).
   if (isset($vars['node'])) {
     $node = $vars['node'];
@@ -190,6 +206,7 @@ function hwc_frontend_preprocess_page(&$vars) {
       case "tk_tool":
       case "tk_example":
       case "tk_topic":
+        $vars['show_title'] = FALSE;
         $vars['page']['content']['#post_render'][] = 'hwc_content_post_render_add_classes';
         break;
 

@@ -14,7 +14,7 @@ function osha_events_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'events';
   $path_breadcrumb->name = 'Events';
-  $path_breadcrumb->path = 'events';
+  $path_breadcrumb->path = 'media-centre/events';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => '%site:current-page:menu-link:pb-join:name',

@@ -570,30 +570,6 @@ function osha_views_default_views() {
   );
   $handler->display->display_options['filters']['field_partner_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_partner_type_tid']['vocabulary'] = 'partner_types';
-  /* Filter criterion: Taxonomy term: Vocabulary */
-  $handler->display->display_options['filters']['vid']['id'] = 'vid';
-  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['vid']['field'] = 'vid';
-  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['filters']['vid']['group'] = 1;
-  $handler->display->display_options['filters']['vid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
-  $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
-  $handler->display->display_options['filters']['vid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-  );
   /* Filter criterion: Entity translation: Translation exists */
   $handler->display->display_options['filters']['translation_exists']['id'] = 'translation_exists';
   $handler->display->display_options['filters']['translation_exists']['table'] = 'entity_translation';
@@ -764,7 +740,6 @@ function osha_views_default_views() {
     t('Operations'),
     t('Type'),
     t('Type of partner'),
-    t('Vocabulary'),
     t('Not translated in'),
     t('State'),
     t('Created (from)'),
@@ -912,6 +887,107 @@ function osha_views_default_views() {
     t('Title (title_field)'),
   );
   $export['articles'] = $view;
+
+  $view = new view();
+  $view->name = 'available_flags';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'Available Flags';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Available Flags';
+  $handler->display->display_options['css_class'] = 'view-events-search';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    11 => '11',
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Header: Global: Unfiltered text */
+  $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<div class="view-content">&nbsp;</div>';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = '';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: ISO2 */
+  $handler->display->display_options['fields']['field_iso2']['id'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['table'] = 'field_data_field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['field'] = 'field_iso2';
+  $handler->display->display_options['fields']['field_iso2']['label'] = '';
+  $handler->display->display_options['fields']['field_iso2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_iso2']['alter']['text'] = '<div class="field-content">
+<div class="event_day_month">
+  <div class="event_country code_[field_iso2-value]"> </div>
+</div>
+</div>';
+  $handler->display->display_options['fields']['field_iso2']['element_class'] = 'views-field-field-start-date';
+  $handler->display->display_options['fields']['field_iso2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_iso2']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'country' => 'country',
+  );
+  /* Filter criterion: Taxonomy term: ISO2 (field_iso2) */
+  $handler->display->display_options['filters']['field_iso2_value']['id'] = 'field_iso2_value';
+  $handler->display->display_options['filters']['field_iso2_value']['table'] = 'field_data_field_iso2';
+  $handler->display->display_options['filters']['field_iso2_value']['field'] = 'field_iso2_value';
+  $handler->display->display_options['filters']['field_iso2_value']['operator'] = 'not empty';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'available-flags';
+  $translatables['available_flags'] = array(
+    t('Master'),
+    t('Available Flags'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('<div class="view-content">&nbsp;</div>'),
+    t('<div class="field-content">
+<div class="event_day_month">
+  <div class="event_country code_[field_iso2-value]"> </div>
+</div>
+</div>'),
+    t('Page'),
+  );
+  $export['available_flags'] = $view;
 
   return $export;
 }

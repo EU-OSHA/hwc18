@@ -51,13 +51,7 @@ function hwc_toolkit_default_fe_block_settings() {
     'i18n_block_language' => array(),
     'i18n_mode' => 0,
     'module' => 'hwc_toolkit',
-    'node_types' => array(
-      0 => 'tk_article',
-      1 => 'tk_example',
-      2 => 'tk_section',
-      3 => 'tk_tool',
-      4 => 'tk_topic',
-    ),
+    'node_types' => array(),
     'pages' => '',
     'roles' => array(),
     'themes' => array(

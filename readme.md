@@ -1,7 +1,7 @@
 HWC18
 ====
 
-Build scripts and source code for the Osha project
+Build scripts and source code for the EU-OSHA project
 
 [![Build Status](http://ci.edw.ro/buildStatus/icon?job=php-osha)](http://ci.edw.ro/job/php-osha/)
 
@@ -140,7 +140,7 @@ You can use the test.sh script to launch the set of tests designed for the OSHA 
 
 Command usage:
 
-* `./test.sh` - Runs all tests from the OSHA group
+* `./test.sh` - Runs all tests from the EU-OSHA group
 * `./test.sh ClassNameTest` - Runs all the test methods from the ClassNameTest test class
 * `./test.sh ClassNameTest testName1,testName2` - Runs only the two tests from the entire class
 

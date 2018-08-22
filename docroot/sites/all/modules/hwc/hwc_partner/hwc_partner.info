@@ -1,7 +1,7 @@
 name = HWC Partner
 core = 7.x
 package = HWC
-version = 7.x-1.6
+version = 7.x-1.7
 project = hwc_partner
 dependencies[] = context
 dependencies[] = ctools
@@ -133,6 +133,7 @@ features[page_manager_pages][] = official_campaign_partners
 features[page_manager_pages][] = partner_private_area
 features[page_manager_pages][] = partner_public_profile
 features[page_manager_pages][] = private_area_for_partners
+features[page_manager_pages][] = private_workbench
 features[path_breadcrumbs][] = partner_draft_events
 features[path_breadcrumbs][] = partner_draft_news
 features[taxonomy][] = bussines_sector

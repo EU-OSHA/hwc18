@@ -19,8 +19,12 @@ function hwc_practical_tool_cronapi() {
 }
 
 function hwc_practical_tool_cron() {
-  include_once 'ncw_migration.drush.inc';
-  drush_ncw_migration_hwc_migrate_ds();
+  $migrations = array(
+    'dangerous_substances',
+  );
+  foreach ($migrations as $migration) {
+    ncw_migration_run_single($migration);
+  }
 }
 
 /**
