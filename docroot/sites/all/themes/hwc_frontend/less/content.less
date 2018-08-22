@@ -10360,7 +10360,25 @@ input#edit-field-image-und-0-upload::before {
 					list-style: none;
 				}
 				>ul{
-					>li{	
+					>li{
+						a.key-search-toolkit-examples{
+							font-weight: bold;
+							&:before{
+								content: "\e003";
+								font-family: "Glyphicons Halflings";
+								padding-left: 0px;
+								padding-right: 0.6rem;
+								font-size: 1.5rem;
+								font-weight: bold;
+							}
+							&:after{
+							    content: "\e250";
+							    font-family: "Glyphicons Halflings";
+							    margin-left: 7px;
+							    vertical-align: middle;
+							}								
+						}
+
 						>a, >span{
 							border: 2px solid green;
 							padding: 10px 15px;
