@@ -101,10 +101,47 @@ jQuery(document).ready(function() {
 	    didScroll = true;
 	});
 
+
+	var isToolkitPages =  jQuery('body').attr( "class").indexOf('toolkit-page');
+	if(isToolkitPages > 0){
+		var toolkitPages = jQuery('header').addClass( "no-sticky");
+	}
+
+
+   	var toolkitPages = jQuery('header').attr( "class").indexOf('no-sticky');
+   	if(toolkitPages > 0){
+   		jQuery('body').addClass('tk-pages-resize');   	   	
+   	   	var widthWin=jQuery(window).width();
+	   	if(widthWin <= 768 ){
+	   		jQuery('header').removeClass('no-sticky');
+	   		jQuery('body').removeClass('tk-pages');
+	   	} else {	   			
+			jQuery('body').css('padding-top','');
+			jQuery('body').addClass('tk-pages');
+	   	}
+   	}
+
+	jQuery(window).resize(function () {
+		var widthWin=jQuery(window).width();
+		if( jQuery('body').attr( "class").indexOf('tk-pages-resize') > 0 ){
+		   	if(widthWin <= 768 ){
+		   		jQuery('header').removeClass('no-sticky');
+		   		jQuery('body').removeClass('tk-pages');
+		   	} else {	   		
+		   		jQuery('header').addClass('no-sticky');
+	   			jQuery('body').addClass('tk-pages');
+		   	}
+	   }
+	});	
+	
 	setInterval(function() {
 	    if (didScroll) {
-	        hasScrolled();
-	        didScroll = false;
+	    	var toolkitPages = jQuery('header').attr( "class").indexOf('no-sticky');  
+	    	if( toolkitPages < 0 ){
+		        hasScrolled();
+		        didScroll = false;
+	    	}
+
 	    }
 	}, 110);
 
@@ -135,7 +172,9 @@ jQuery(document).ready(function() {
 	if(jQuery("body").height()>=550){
 		jQuery(window).bind('scroll', function () {
 		    if (jQuery(window).scrollTop() > num) {
-		        jQuery("#navbar").addClass("sticky-menu");
+		    	if( toolkitPages < 0 ){
+		        	jQuery("#navbar").addClass("sticky-menu");
+		    	}
 		    } else {
 		        jQuery('#navbar').removeClass('sticky-menu');
 		    }
