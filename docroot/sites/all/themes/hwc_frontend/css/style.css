@@ -7202,6 +7202,9 @@ header.navbar-default {
   /* header */
   /* menu */
 }
+header.navbar-default.no-sticky {
+  position: relative !important;
+}
 header.navbar-default .campaigns-header {
   padding: 0;
   /* login */
@@ -7786,6 +7789,9 @@ body.logged-in {
   body.logged-in {
     padding-top: 170px !important;
   }
+}
+body.tk-pages {
+  padding-top: 0px !important;
 }
 body .form-type-password.form-item-pass {
   padding-bottom: 1em;
