@@ -133,7 +133,7 @@ jQuery(document).ready(function() {
 		   	}
 	   }
 	});	
-	
+
 	setInterval(function() {
 	    if (didScroll) {
 	    	var toolkitPages = jQuery('header').attr( "class").indexOf('no-sticky');  
@@ -405,4 +405,31 @@ jQuery(document).ready(function() {
 	jQuery(".page-glossary-list .view-content .glossary_type .type-name").click(function(){
 		jQuery(this).addClass("active");
 		});
+
+
+	// DELETE SEARCH TOOLKIT EXAMPLES EMPTY
+
+		jQuery('.tools-and-examples-items').each(function( index ) {
+			var examplesItemsContent = jQuery(this).html();	
+			var hasItemsContent = examplesItemsContent.trim().length;
+			if(hasItemsContent == 0){
+				jQuery(this).remove();				
+			} else {
+				jQuery(this).fadeIn( "slow" );
+			}
+		});
+
+		jQuery(".view-search-toolkit-examples .hide-filters").click(function(){
+			jQuery('.view-search-toolkit-examples .view-filters').fadeToggle();
+			jQuery('.view-footer .result-summary').toggleClass('filetrs-hidden');
+
+			var isHidden = jQuery('.view-search-toolkit-examples .view-filters').attr('style').indexOf('opacity: 1');
+			if(isHidden < 0){
+				jQuery(".view-search-toolkit-examples .hide-filters a").text('Hide filters');
+			} else {
+				jQuery(".view-search-toolkit-examples .hide-filters a").text('Show filters');
+			}
+		});
+
+
 });
