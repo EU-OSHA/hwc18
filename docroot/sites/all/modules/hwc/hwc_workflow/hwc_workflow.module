@@ -6,8 +6,6 @@
 
 include_once 'hwc_workflow.features.inc';
 
-define('HWC_ROLE_CAMPAIGN_PROJECT_MANAGER', 'Campaign Project Manager');
-
 /**
  * Implements hook_menu_alter().
  */
@@ -69,7 +67,7 @@ function hwc_workflow_cron() {
  */
 function hwc_workflow_partner_content_cron() {
   // Moderate content created by a partner, that is in Final Draft for some time.
-  $users = OshaWorkflowPermissions::getUsersByRole(ROLE_CAMPAIGN_PARTNER);
+  $users = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_CAMPAIGN_PARTNER);
   $uids = array();
   foreach ($users as $usr) {
     $uids[] = $usr->uid;
@@ -213,9 +211,9 @@ function hwc_worklow_node_belongs_to_partner_user($node) {
 function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
 
-  // Assign default cpms list
-  $from_fdraft_to_review = $old == OSHA_WORKFLOW_STATE_FINAL_DRAFT && $new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED;
-  $from_draft_to_review = $old == OSHA_WORKFLOW_STATE_DRAFT && $new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED;
+  // Assign default CPMs list.
+  $from_fdraft_to_review = ($old == OSHA_WORKFLOW_STATE_FINAL_DRAFT) && ($new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
+  $from_draft_to_review = ($old == OSHA_WORKFLOW_STATE_DRAFT) && ($new == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
   if ($from_fdraft_to_review || $from_draft_to_review) {
     $existing_cpms = _hwc_workflow_get_project_managers_entries($node->nid);
     if (empty($existing_cpms)) {
@@ -229,7 +227,7 @@ function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
     if (empty($existing_cpms)) {
       $remaining_approvers = hwc_workflow_assign_default_cpm($node);
       reset($remaining_approvers);
-      $next_approver  = array_shift($remaining_approvers);
+      $next_approver = array_shift($remaining_approvers);
     }
     else {
       // Reset approver votes (if node rejected and it's second time reviewed).
@@ -280,20 +278,21 @@ function hwc_workflow_node_access($node, $op, $account) {
     return NODE_ACCESS_IGNORE;
   }
 
-  // Administrators skip further validations
-  if (in_array(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $account->roles)) {
+  // Administrators skip further validations.
+  if (in_array(HWC_ROLE_ADMIN, $account->roles)) {
     return NODE_ACCESS_IGNORE;
   }
 
-  // Review Managers have access based on perm
+  // Review Managers have access based on perm.
   // skip additional validations..
-  if (in_array(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER, $account->roles)) {
+  if (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles) ||
+    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)) {
     return NODE_ACCESS_IGNORE;
   }
 
-  // Supervisors have access based on perm
+  // Supervisors have access based on perm.
   // skip additional validations..
-  if (in_array(ROLE_SUPERVISOR, $account->roles)) {
+  if (in_array(HWC_ROLE_SUPERVISOR, $account->roles)) {
     return NODE_ACCESS_IGNORE;
   }
 
@@ -334,7 +333,7 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
       $can_delete = $can_delete && user_access('delete any content in final_draft');
     }
 
-    if (!empty($node->nid) && $can_delete && in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
+    if (!empty($node->nid) && $can_delete && in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['actions']['delete'] = array(
         '#type' => 'submit',
         '#value' => t('Delete'),
@@ -419,11 +418,11 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
   else {
     drupal_set_title(t('Upload Information') . $form['#node']->title);
   }
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
     $form['field_share_partner_type']['#access'] = FALSE;
   }
 
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
     foreach ($user->workbench_access as $user_id_section => $value) {
       foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
@@ -440,7 +439,7 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -452,7 +451,7 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
  */
 function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
   global $user;
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
     foreach ($user->workbench_access as $user_id_section => $value) {
       foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
@@ -473,7 +472,7 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -485,7 +484,7 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
  */
 function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
   global $user;
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
     foreach ($user->workbench_access as $user_id_section => $value) {
       foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
@@ -508,7 +507,7 @@ function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  else if (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+  else if (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -522,7 +521,7 @@ function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
  */
 function hwc_workflow_js_alter(&$javascript) {
   global $user;
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2 && current_path() == 'node/add/events') {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2 && current_path() == 'node/add/events') {
     $js_path = drupal_get_path('module', 'text') . '/text.js';
 
     if (isset($javascript[$js_path])) {
