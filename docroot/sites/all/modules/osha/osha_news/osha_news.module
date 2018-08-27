@@ -19,7 +19,7 @@ function osha_news_post_features_enable_feature($component) {
   if ($component == 'variable') {
     menu_rebuild();
     drupal_static_reset();
-    if ($role = user_role_load_by_name('administrator')) {
+    if ($role = user_role_load_by_name(HWC_ROLE_ADMIN)) {
       $permissions = array(
         'create news content',
         'edit own news content',

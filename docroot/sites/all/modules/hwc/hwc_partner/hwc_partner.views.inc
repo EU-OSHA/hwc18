@@ -44,7 +44,7 @@ class hwc_partner_handler_filter_node_belongs_partner extends views_handler_filt
     if (empty($user->workbench_access)) {
       workbench_access_user_load_data($user);
     }
-    $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+    $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
     if (empty($this->value)) {
       $in_operator = 'NOT IN';
       $equal_operator = '!=';
@@ -81,8 +81,8 @@ class hwc_partner_handler_filter_node_is_cpm_assigned extends views_handler_filt
     if (empty($user->workbench_access)) {
       workbench_access_user_load_data($user);
     }
-    $is_admin = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
-    $is_supervisor = OshaWorkflowPermissions::userHasRole(ROLE_SUPERVISOR, $user);
+    $is_admin = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
+    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_SUPERVISOR, $user);
     if ($is_admin || $is_supervisor) {
 //      return;
     }

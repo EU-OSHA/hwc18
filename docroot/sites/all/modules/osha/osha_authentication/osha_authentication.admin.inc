@@ -38,18 +38,20 @@ function osha_authentication_get_role_from_dn($group_dn) {
   $role = NULL;
   $language = NULL;
   if ($group_dn == 'cn=ADMIN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
-    $role = OSHA_WORKFLOW_ROLE_ADMINISTRATOR;
+    $role = HWC_ROLE_ADMIN;
   }
-  else if ($group_dn == 'cn=LAYVAL,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  elseif ($group_dn == 'cn=LAYVAL,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_LAYOUT_VALIDATOR;
   }
-  else if ($group_dn == 'cn=NEWS_EVEN_EDT,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  elseif ($group_dn == 'cn=NEWS_EVEN_EDT,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    // HWC Staff - reviewers.
     $role = HWC_ROLE_CAMPAIGN_PROJECT_MANAGER;
   }
-  else if ($group_dn == 'cn=NEWS_EVEN_SUP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
-    $role = ROLE_SUPERVISOR;
+  elseif ($group_dn == 'cn=NEWS_EVEN_SUP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    // Mostra users.
+    $role = HWC_ROLE_SUPERVISOR;
   }
-  else if (
+  elseif (
     in_array($group_dn,
       array(
         'cn=OCP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
@@ -58,28 +60,33 @@ function osha_authentication_get_role_from_dn($group_dn) {
         'cn=OSHAMB,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu',
       )
     )) {
-    $role = ROLE_CAMPAIGN_PARTNER;
+    $role = HWC_ROLE_CAMPAIGN_PARTNER;
   }
-  else if ($group_dn == 'cn=RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
-    $role = OSHA_WORKFLOW_ROLE_REVIEW_MANAGER;
+  elseif ($group_dn == 'cn=RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    // Website Managers - Editorial Team.
+    $role = HWC_ROLE_REVIEW_MANAGER;
   }
-  else if ($group_dn == 'cn=TRLIAS,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  elseif ($group_dn == 'cn=OSHAMB_RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    // EU-OSHA EEN reviewers.
+    $role = HWC_ROLE_EEN_REVIEW_MANAGER;
+  }
+  elseif ($group_dn == 'cn=TRLIAS,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_TRANSLATION_LIAISON;
   }
-  else if ($group_dn == 'cn=TRLMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  elseif ($group_dn == 'cn=TRLMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     $role = OSHA_WORKFLOW_ROLE_TRANSLATION_MANAGER;
   }
-  // Handle content validators (CV) & unknown values
+  // Handle content validators (CV) & unknown values.
   else {
     $ldap_group_cn = NULL;
-    // _CV
+    // _CV.
     if (preg_match('/_CV\,ou\=Languages/', $group_dn, $ldap_group_cn, 0) && count($ldap_group_cn) == 1) {
       $parts = explode(',', $group_dn);
       $language = str_replace('_CV', '', $parts[0]);
       $language = str_replace('cn=', '', $language);
       $role = OSHA_WORKFLOW_ROLE_CONTENT_VALIDATOR;
     }
-    else if ($group_dn == 'cn=READ,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+    elseif ($group_dn == 'cn=READ,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
       // Do nothing ...
     }
     else {

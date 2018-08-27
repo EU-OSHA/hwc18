@@ -57,7 +57,7 @@ function osha_events_field_formatter_view($entity_type, $entity, $field, $instan
 function osha_events_form_events_node_form_alter(&$form, &$form_state) {
   global $user;
 
-  $is_admin = count(array_intersect(array('administrator'), $user->roles));
+  $is_admin = count(array_intersect(array(HWC_ROLE_ADMIN), $user->roles));
 
   if ($is_admin) {
     $form['body'][LANGUAGE_NONE][0]['#required'] = FALSE;
@@ -76,7 +76,7 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_show_in_ncw']['#access'] = TRUE;
   }
   else {
-    if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
+    if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['field_for_the_web']['#access'] = FALSE;
     }
     $form['body'][LANGUAGE_NONE][0]['#required'] = TRUE;

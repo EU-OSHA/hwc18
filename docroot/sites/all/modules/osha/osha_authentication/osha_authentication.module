@@ -140,12 +140,12 @@ function osha_authentication_user_login(&$edit, $user) {
     // Assign user the calculated roles.
     $roles = osha_authentication_extract_user_roles(array_keys($authorization));
 
-    // Update user section assignment if user has roles 'campaign partner'
-    // Remove user from all sections before rebuilding it
+    // Update user section assignment if user has roles 'campaign partner'.
+    // Remove user from all sections before rebuilding it.
     workbench_access_rebuild_user($user->uid, array());
-    foreach($authorization as $role => $sections) {
-      switch($role) {
-        case ROLE_CAMPAIGN_PARTNER:
+    foreach ($authorization as $role => $sections) {
+      switch ($role) {
+        case HWC_ROLE_CAMPAIGN_PARTNER:
           try {
             workbench_access_rebuild_user($user->uid, array_unique($sections));
           } catch(Exception $e) {
@@ -154,7 +154,7 @@ function osha_authentication_user_login(&$edit, $user) {
               'Error while rebuilding user: !uid, !message',
               array(
                 '!uid' => $user->uid,
-                '!message' => $e->getMessage()
+                '!message' => $e->getMessage(),
               ),
               WATCHDOG_ERROR
             );

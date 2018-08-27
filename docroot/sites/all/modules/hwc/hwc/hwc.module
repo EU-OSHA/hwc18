@@ -2,15 +2,20 @@
 
 include_once 'hwc.features.inc';
 
-define('ROLE_ADMINISTRATOR', 'administrator');
-define('ROLE_REVIEW_MANAGER', 'Review Manager');
-define('ROLE_CAMPAIGN_PARTNER', 'campaign partner');
+define('HWC_ROLE_ADMIN', 'administrator');
+// Website Managers - Editorial Team.
+define('HWC_ROLE_REVIEW_MANAGER', 'Review Manager');
+// EU-OSHA EEN reviewers.
+define('HWC_ROLE_EEN_REVIEW_MANAGER', 'EEN Review Manager');
+// HWC Staff - reviewers.
+define('HWC_ROLE_CAMPAIGN_PROJECT_MANAGER', 'Campaign Project Manager');
+define('HWC_ROLE_CAMPAIGN_PARTNER', 'campaign partner');
 // Mostra = supervisor.
-define('ROLE_SUPERVISOR', 'supervisor');
-define('ROLE_SUPERADMINISTRATOR', 'Superadministrators');
-define('SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
+define('HWC_ROLE_SUPERVISOR', 'supervisor');
+define('HWC_ROLE_SUPERADMIN', 'Superadministrators');
+define('HWC_SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
 
-define('NAPO_WEBSITE', 'https://www.napofilm.net/');
+define('HWC_NAPO_WEBSITE', 'https://www.napofilm.net/');
 
 /**
  * Implements hook_menu_alter().
@@ -264,7 +269,7 @@ function hwc_form_user_pass_alter(&$form, &$form_state) {
 function hwc_user_login(&$edit, $account) {
   if (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset') {
     // If the user is a partner, redirect to the corresponding partner profile.
-    if (in_array(ROLE_CAMPAIGN_PARTNER, $account->roles) && !empty($account->workbench_access)) {
+    if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $account->roles) && !empty($account->workbench_access)) {
       $sections = array_keys($account->workbench_access);
       foreach ($sections as $id_section) {
         if ($partner = hwc_partner_by_section_id_load($id_section)) {
@@ -273,7 +278,7 @@ function hwc_user_login(&$edit, $account) {
         }
       }
     }
-    if (in_array(ROLE_REVIEW_MANAGER, $account->roles)) {
+    if (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)) {
       $edit['redirect'] = 'good-practice-exchange-platform';
     }
   }
@@ -728,7 +733,7 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
   }
 
   if (isset($form['field_show_in_ncw'])) {
-    $form['field_show_in_ncw']['#access'] = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
+    $form['field_show_in_ncw']['#access'] = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
   }
 
   if (!empty($form['#entity']->field_migration_source)
@@ -902,7 +907,7 @@ function hwc_field_widget_form_alter(&$element, &$form_state, $context) {
   $is_news_form = $is_edit_form &&
     $context['form']['type']['#value'] == 'news';
 
-  if ($is_events_form) {
+  if (($is_events_form) && (isset($element['#field_name']))) {
     switch ($element['#field_name']) {
       case 'title_field':
         $placeholder = 'Event title. Max 150 characters.';
@@ -1052,10 +1057,10 @@ function hwc_node_view($node, $view_mode, $langcode) {
     }
   }
   if ($view_mode == 'full' && $node->nid == 160) {
-    $watch_other_link = NAPO_WEBSITE . '/en/napos-films/napo-%E2%80%A6-lungs-work';
-    $napo_logo_link = NAPO_WEBSITE . '/';
-    $about_napo_link = NAPO_WEBSITE . '/about-napo/the-napo-story';
-    $know_more_about_napo = NAPO_WEBSITE . '/en';
+    $watch_other_link = HWC_NAPO_WEBSITE . '/en/napos-films/napo-%E2%80%A6-lungs-work';
+    $napo_logo_link = HWC_NAPO_WEBSITE . '/';
+    $about_napo_link = HWC_NAPO_WEBSITE . '/about-napo/the-napo-story';
+    $know_more_about_napo = HWC_NAPO_WEBSITE . '/en';
 
     $node->content['title_field'][0]['#markup'] =
       '<div class="watch-other-link"><a href="' . $watch_other_link . '" target="_blank">' .

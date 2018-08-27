@@ -384,12 +384,9 @@ function _hwc_workflow_can_approve($node, $account = NULL) {
     || $node->workbench_moderation['current']->state != OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
     return FALSE;
   }
-  $is_admin = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $account);
-  $is_rm = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER, $account);
-  $is_supervisor = OshaWorkflowPermissions::userHasRole(ROLE_SUPERVISOR, $account);
+  $is_admin = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $account);
   // Remove rm and supervisor from approving on behalf - HCW-1126
   // not sure is really accurate this request
-  //if ($is_rm || $is_admin || $is_supervisor) {
   if ($is_admin) {
     return TRUE;
   }

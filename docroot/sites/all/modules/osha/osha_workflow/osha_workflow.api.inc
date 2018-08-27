@@ -158,7 +158,7 @@ function osha_workflow_create_roles() {
   module_load_include('inc', 'osha_workflow', 'osha_workflow.permissions');
   $roles = array(
     OSHA_WORKFLOW_ROLE_EDITOR => osha_workflow_permissions_role_editor(),
-    OSHA_WORKFLOW_ROLE_REVIEW_MANAGER => osha_workflow_permissions_role_review_manager(),
+    HWC_ROLE_REVIEW_MANAGER => osha_workflow_permissions_role_review_manager(),
     OSHA_WORKFLOW_ROLE_PROJECT_MANAGER => osha_workflow_permissions_role_project_manager(),
     OSHA_WORKFLOW_ROLE_APPROVER => osha_workflow_permissions_role_approver(),
   );
@@ -526,10 +526,10 @@ class OshaWorkflowPermissions {
     }
     if (isset($node->workbench_moderation)) {
       $node_in_rm_section = FALSE;
-      if (self::userHasRole(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER, $user)) {
+      if (self::userHasRole(HWC_ROLE_REVIEW_MANAGER, $user)) {
         $node_in_rm_section = osha_workflow_node_in_rm_section($node, $user);
       }
-      $is_admin = self::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
+      $is_admin = self::userHasRole(HWC_ROLE_ADMIN, $user);
       return $is_admin || $node_in_rm_section;
     }
     return FALSE;
@@ -553,7 +553,7 @@ class OshaWorkflowPermissions {
     }
     if (isset($node->workbench_moderation)) {
       $node_in_rm_section = osha_workflow_node_in_rm_section($node, $user);
-      $is_admin = self::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
+      $is_admin = self::userHasRole(HWC_ROLE_ADMIN, $user);
       return $is_admin || $node_in_rm_section;
     }
     return FALSE;
@@ -578,11 +578,11 @@ class OshaWorkflowPermissions {
       $current = $node->workbench_moderation['current'];
       $state = $current->state;
 
-      if (self::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user)) {
+      if (self::userHasRole(HWC_ROLE_ADMIN, $user)) {
         return TRUE;
       }
       return
-        self::userHasRole(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER, $user)
+        self::userHasRole(HWC_ROLE_REVIEW_MANAGER, $user)
         &&
         (
           $state == OSHA_WORKFLOW_STATE_TO_BE_REVIEWED
@@ -625,7 +625,7 @@ class OshaWorkflowPermissions {
       return TRUE;
     }
     else {
-      return self::userHasRole(OSHA_WORKFLOW_ROLE_ADMINISTRATOR, $user);
+      return self::userHasRole(HWC_ROLE_ADMIN, $user);
     }
   }
 

@@ -64,7 +64,7 @@ function osha_workflow_install() {
 
   // Add admin access by role for root section.
   db_delete('workbench_access_role')->execute();
-  $r1 = user_role_load_by_name(OSHA_WORKFLOW_ROLE_ADMINISTRATOR);
+  $r1 = user_role_load_by_name(HWC_ROLE_ADMIN);
   $role = array(
     'rid' => $r1->rid,
     'access_id' => 'section',

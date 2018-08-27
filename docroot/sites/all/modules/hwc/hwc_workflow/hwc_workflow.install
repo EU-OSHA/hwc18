@@ -9,13 +9,13 @@ function hwc_workflow_install() {
 
   // Assign permissions.
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $role = user_role_load_by_name(HWC_ROLE_REVIEW_MANAGER);
   user_role_grant_permissions($role->rid, hwc_workflow_permission_role_review_manager());
 
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 
-  $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+  $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_partner());
 
   $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
@@ -28,13 +28,13 @@ function hwc_workflow_install() {
 function hwc_workflow_update_7001() {
   // Assign permissions.
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $role = user_role_load_by_name(HWC_ROLE_REVIEW_MANAGER);
   user_role_grant_permissions($role->rid, hwc_workflow_permission_role_review_manager());
 
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 
-  $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+  $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_partner());
 }
 
@@ -43,13 +43,13 @@ function hwc_workflow_update_7001() {
  */
 function hwc_workflow_update_7002() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $role = user_role_load_by_name(HWC_ROLE_REVIEW_MANAGER);
   user_role_grant_permissions($role->rid, hwc_workflow_permission_role_review_manager());
 
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 
-  $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+  $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_partner());
 
   $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
@@ -61,13 +61,13 @@ function hwc_workflow_update_7002() {
  */
 function hwc_workflow_update_7003() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $role = user_role_load_by_name(HWC_ROLE_REVIEW_MANAGER);
   user_role_grant_permissions($role->rid, hwc_workflow_permission_role_review_manager());
 
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 
-  $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+  $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_partner());
 
   $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
@@ -79,13 +79,13 @@ function hwc_workflow_update_7003() {
  */
 function hwc_workflow_update_7004() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $role = user_role_load_by_name(HWC_ROLE_REVIEW_MANAGER);
   user_role_grant_permissions($role->rid, hwc_workflow_permission_role_review_manager());
 
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 
-  $role = user_role_load_by_name(ROLE_CAMPAIGN_PARTNER);
+  $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PARTNER);
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_partner());
 
   $role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
@@ -97,7 +97,7 @@ function hwc_workflow_update_7004() {
  */
 function hwc_workflow_update_7005() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
-  $role = user_role_load_by_name(ROLE_SUPERVISOR);
+  $role = user_role_load_by_name(HWC_ROLE_SUPERVISOR);
   user_role_revoke_permissions($role->rid, array('moderate content from draft to final_draft'));
   user_role_grant_permissions($role->rid, hwc_workflow_permissions_role_supervisor());
 

@@ -456,7 +456,7 @@ field_hazard_health_effects
 
 function _hwc_practical_tool_menu_tools_get_query() {
   $server = search_api_server_load('solr_server');
-  $index = search_api_index_load(SOLR_SEARCH_INDEX);
+  $index = search_api_index_load(HWC_SOLR_SEARCH_INDEX);
   $query = new SearchApiQuery($index);
   $query->fields(array()); // Avoid PHP notice
   $solr = new SearchApiSolrService($server);
