@@ -50,7 +50,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php print $head; ?>
-  <title><?php print $head_title; ?></title>
+  <?php
+    // get breadcrumbs to built new title
+    $breadcrumbs_items = drupal_get_breadcrumb();
+
+    // Delete the first element wellcome
+    unset($breadcrumbs_items[0]);
+    
+    // If, at least, there is one breadcrumbs element 
+    if(count($breadcrumbs_items) > 1){
+      $custom_title_page = strip_tags(implode(" | ", array_reverse($breadcrumbs_items))) . ' | ' . $head_title_array['name'];
+    } else {
+      if(drupal_get_title()){
+        $custom_title_page = drupal_get_title()  . ' | ' . $head_title_array['name'];
+      } else {
+        $custom_title_page = $head_title_array['name'];
+      }
+      
+    }
+
+  ?>
+  <title><?php  print $custom_title_page;  ?></title>
   <?php print $styles; ?>
   <!-- HTML5 element support for IE6-8 -->
   <!--[if lt IE 9]>

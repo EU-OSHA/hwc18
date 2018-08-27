@@ -7202,6 +7202,9 @@ header.navbar-default {
   /* header */
   /* menu */
 }
+header.navbar-default.no-sticky {
+  position: relative !important;
+}
 header.navbar-default .campaigns-header {
   padding: 0;
   /* login */
@@ -7786,6 +7789,9 @@ body.logged-in {
   body.logged-in {
     padding-top: 170px !important;
   }
+}
+body.tk-pages {
+  padding-top: 0px !important;
 }
 body .form-type-password.form-item-pass {
   padding-bottom: 1em;
@@ -8977,7 +8983,8 @@ table tr.error.form-type-select:after {
   content: "";
 }
 /* Node-XXX */
-div[class*='node-'] h1 {
+div[class*='node-'] h1,
+div[class*='view-'] h1 {
   text-align: center;
   font-style: italic;
   font-weight: lighter;
@@ -8985,10 +8992,12 @@ div[class*='node-'] h1 {
   font-size: 2.5em;
   border-bottom: none;
 }
-div[class*='node-'] .field-name-field-summary {
+div[class*='node-'] .field-name-field-summary,
+div[class*='view-'] .field-name-field-summary {
   font-weight: bold;
 }
-div[class*='node-'] .more-link {
+div[class*='node-'] .more-link,
+div[class*='view-'] .more-link {
   color: #003399;
   background-color: transparent;
   font-weight: bold;
@@ -19456,6 +19465,23 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li {
   /*second sublevel*/
 }
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples {
+  font-weight: bold;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples:before {
+  content: "\e003";
+  font-family: "Glyphicons Halflings";
+  padding-left: 0px;
+  padding-right: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples:after {
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  margin-left: 7px;
+  vertical-align: middle;
+}
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span {
   border: 2px solid green;
@@ -20062,6 +20088,278 @@ input#edit-field-image-und-0-upload::before {
   padding-left: 0px;
   padding-right: 0px;
   font-weight: lighter;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .hide-filters {
+  margin: 1rem 2rem 0rem;
+  text-align: right;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+  width: 33%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget.views-widget-sort-by {
+  display: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+  width: 100%;
+  position: relative;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input {
+  width: 100%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+  content: url(../images/header/search.png);
+  background: #003399;
+  height: 33px;
+  width: 33px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 7px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+  display: inline-block;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+  width: 100% !important;
+  padding: 0;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  height: 33px;
+  border-radius: 0;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+  padding: 5px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+  width: 33px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+  background: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+  content: url(../images/header/select.png);
+  background: #003399;
+  height: 33px;
+  width: 33px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 3px 13px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+  margin-top: -48px;
+  text-align: right;
+  border-top: 1px dotted #A9C809;
+  border-bottom: 1px dotted #A9C809;
+  padding: 14px 0px;
+  margin-bottom: 2rem;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+  margin-top: 15px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+  background: #F3F3F3;
+  margin-bottom: 1.5rem;
+  padding: 2rem 4rem;
+  display: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+  float: left;
+  width: 18%;
+  margin-right: 2%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+  float: left;
+  width: 80%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item {
+  position: relative;
+  margin-top: 2rem;
+  width: auto;
+  display: block;
+  text-align: right;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item a {
+  background-color: #749b00;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item a:hover {
+  background-color: #595959;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items:empty {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+    width: 100%;
+    float: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+    width: 100%;
+    position: relative;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input,
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item select {
+    width: 100%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+    content: url(../images/header/search.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 7px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+    display: inline-block;
+    margin-top: 2rem;
+    border-radius: 6px;
+    width: auto;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    height: 33px;
+    border-radius: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+    padding: 5px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+    width: 33px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+    background: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+    content: url(../images/header/select.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 3px 13px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+    margin-top: -56px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+    margin-top: 15px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+    padding: 2rem;
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+    float: left;
+    width: 18%;
+    margin-right: 2%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+    float: left;
+    width: 80%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items:empty {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+    width: 100% !important;
+    float: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+    width: 100%;
+    position: relative;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input,
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item select {
+    width: 100%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+    content: url(../images/header/search.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 7px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+    display: inline-block;
+    margin-top: 2rem;
+    border-radius: 6px;
+    width: auto;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    height: 33px;
+    border-radius: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+    padding: 5px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+    width: 33px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+    background: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+    content: url(../images/header/select.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 3px 13px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+    margin-top: -56px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+    margin-top: 15px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+    float: none !important;
+    width: 100% !important;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item {
+    text-align: center !important;
+  }
 }
 .toolkit-page #block-hwc-toolkit-toolkit-nav,
 .toolkit-page .pane-hwc-toolkit-toolkit-nav {
