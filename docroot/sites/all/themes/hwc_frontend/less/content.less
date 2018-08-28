@@ -5159,24 +5159,28 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 	.pane-hwc-partner-hwc-partner-private-link-2,
 	.pane-hwc-partner-hwc-partner-private-link-3,
 	.pane-node-profile-update-link{
-		width: 20%;
+	  width: 33.3%;
 		.pane-content{
 			border: 1px dotted @color3;
-			min-height: 111px;
 			text-align: center;
-			padding: 20px 10px !important;
-			margin:10px;
+		  margin: 3rem auto 10rem;
+		  width: 65%;
 			.hwc-partner-private-link-block-title{
-				margin-bottom: 15px;
-
+				//margin-bottom: 15px;
 				a{
 					color: @color3;
 					font-weight: bold;
 					font-style: italic;
 					font-size: 1.4em;
 					cursor: pointer;
+					display: block;
+					min-height: 111px;
+					padding: 20px 10px !important;
 					&:before{
 						content: "> ";
+					}
+					&:hover{
+						text-decoration: none;
 					}
 				}
 			}
