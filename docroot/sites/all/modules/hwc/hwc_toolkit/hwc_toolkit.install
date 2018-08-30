@@ -125,3 +125,21 @@ function hwc_toolkit_update_7017() {
 function hwc_toolkit_update_7018() {
   features_revert(array('hwc_toolkit' => array('views_view')));
 }
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7019() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}
+/**
+ * TKIT-102 Delete Campaigns general menu.
+ */
+function hwc_toolkit_update_7020() {
+  $q = db_select('node', 'n');
+  $q->fields('n', ['nid']);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.title', 'Campaigns - general');
+  $col = $q->execute()->fetchCol();
+  variable_set('toolkit_campaigns_general_nid', $col[0]);
+}
