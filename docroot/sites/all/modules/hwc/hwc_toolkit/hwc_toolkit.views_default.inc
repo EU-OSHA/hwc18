@@ -462,7 +462,7 @@ function hwc_toolkit_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['path'] = 'tools-and-examples/media-communication-tools/search-toolkit-examples';
+  $handler->display->display_options['path'] = 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples';
   $translatables['search_toolkit_examples'] = array(
     t('Master'),
     t('Search Toolkit Examples'),
