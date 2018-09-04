@@ -9092,6 +9092,7 @@ div[class*='view-'] .more-link {
 }
 .page-node .node-news .field-name-field-image-caption {
   background-color: #e2e2e3;
+  font-size: 1.2rem;
   padding: 1em;
   text-align: center;
   width: 220px;
@@ -11120,6 +11121,11 @@ article .hwc-share-widget ul {
 .field.field-name-field-image {
   margin-bottom: 1em;
 }
+.field-name-field-image .image-field-caption {
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #e2e2e3;
+}
 .container .field.field-name-body p a {
   background-color: transparent;
   color: #003399;
@@ -11197,6 +11203,7 @@ article .hwc-share-widget ul {
 .page-media-center-photo-gallery .views-field-field-images blockquote.image-field-caption,
 .view-photo-gallery .views-field-field-images blockquote.image-field-caption,
 .page-photo-gallery .views-field-field-images blockquote.image-field-caption {
+  font-size: 1.2rem;
   padding-left: 0px;
   padding-right: 0px;
   border-left: none;
@@ -20092,7 +20099,7 @@ input#edit-field-image-und-0-upload::before {
   font-weight: lighter;
 }
 .toolkit-page .main-container .view-search-toolkit-examples .hide-filters {
-  margin: 1rem 2rem 0rem;
+  margin: 1rem 3rem 0rem 0;
   text-align: right;
 }
 .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {

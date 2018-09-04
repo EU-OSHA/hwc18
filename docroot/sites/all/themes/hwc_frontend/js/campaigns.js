@@ -419,7 +419,7 @@ jQuery(document).ready(function() {
 			}
 		});
 
-		jQuery(".view-search-toolkit-examples .hide-filters").click(function(){
+		jQuery(".view-search-toolkit-examples .hide-filters a").click(function(){
 			jQuery('.view-search-toolkit-examples .view-filters').fadeToggle();
 			jQuery('.view-footer .result-summary').toggleClass('filetrs-hidden');
 
