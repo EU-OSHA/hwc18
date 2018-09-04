@@ -11126,6 +11126,9 @@ article .hwc-share-widget ul {
   text-align: center;
   background-color: #e2e2e3;
 }
+.group-left .field-name-field-image .image-field-caption {
+  display: none;
+}
 .container .field.field-name-body p a {
   background-color: transparent;
   color: #003399;
@@ -19671,10 +19674,13 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container h2 {
   font-size: 1.3em;
-  font-weight: 600;
   color: #003399;
   margin-bottom: 10px;
   font-style: normal;
+  color: #749b00;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 2em;
 }
 .toolkit-page .main-container h2 a:before {
   content: '';
