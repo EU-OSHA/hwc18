@@ -24,11 +24,96 @@ function hwc_workflow_menu() {
     'type' => MENU_LOCAL_TASK,
     'page callback' => 'drupal_get_form',
     'page arguments' => array('hwc_workflow_node_cpm_assign_form', 1),
-    'access arguments' => array('access hwc review tab'),
+    'access callback' => '_hwc_workbench_cpm_review_access',
+    'access arguments' => array(1),
     'file' => 'hwc_workflow.cpm.inc',
     'weight' => 9,
   );
+  //todo
+  $items['node/%node/ep-review'] = array(
+    'title' => 'Review',
+    'description' => 'Review page for the OSHA ep reviewing workflow.',
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('hwc_workflow_node_ep_assign_form', 1),
+    'access callback' => '_hwc_workbench_ep_review_access',
+    'access arguments' => array(1),
+    'file' => 'hwc_workflow.ep.inc',
+    'weight' => 9,
+  );
   return $items;
+}
+
+function _hwc_workbench_ep_review_access($node) {
+  global  $user;
+  $type = is_string($node) ? $node : $node->type;
+  // Check reviewer permissions.
+
+  //todo...
+  if ((in_array($type, ['news', 'events'])) &&
+    (
+      in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles) ||
+      in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
+    )) {
+    $nid = FALSE;
+    foreach ($node->workbench_access as $tid) {
+      if ($tid == 'section') {
+        continue;
+      }
+      $q = db_select('workbench_access_node', 'w');
+      $q->innerJoin('node', 'n', 'w.nid = n.nid');
+      $q->fields('w', ['nid'])
+        ->condition('w.access_id', $tid)
+        ->condition('n.type', 'partner', '=');
+      $nid = $q->execute()->fetchField();
+    }
+    if ($nid) {
+      $partner = node_load($nid);
+      if ($partner) {
+        $tid = $partner->field_partner_type[LANGUAGE_NONE][0]['tid'];
+        if (hwc_check_reviewer_node_access($tid, $user->roles) == NODE_ACCESS_DENY) {
+          return FALSE;
+        }
+        return TRUE;
+      }
+    }
+  }
+  return user_access("access hwc review tab");
+}
+
+function _hwc_workbench_cpm_review_access($node) {
+  global  $user;
+  $type = is_string($node) ? $node : $node->type;
+  // Check reviewer permissions.
+  if ((in_array($type, ['news', 'events'])) &&
+    (
+      in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles) ||
+      in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
+    )) {
+    $nid = FALSE;
+    foreach ($node->workbench_access as $tid) {
+      if ($tid == 'section') {
+        continue;
+      }
+      $q = db_select('workbench_access_node', 'w');
+      $q->innerJoin('node', 'n', 'w.nid = n.nid');
+      $q->fields('w', ['nid'])
+        ->condition('w.access_id', $tid)
+        ->condition('n.type', 'partner', '=');
+      $nid = $q->execute()->fetchField();
+    }
+    if ($nid) {
+      $partner = node_load($nid);
+      if ($partner) {
+        $tid = $partner->field_partner_type[LANGUAGE_NONE][0]['tid'];
+        if (hwc_check_reviewer_node_access($tid, $user->roles) == NODE_ACCESS_DENY) {
+          return FALSE;
+        }
+        return TRUE;
+      }
+    }
+  }
+  return user_access("access hwc review tab");
 }
 
 /**
@@ -41,6 +126,10 @@ function hwc_workflow_theme() {
     'hwc_workflow_node_cpm_assign_form' => array(
       'render element' => 'form',
       'file' => 'hwc_workflow.cpm.inc',
+    ),//todo
+    'hwc_workflow_node_ep_assign_form' => array(
+      'render element' => 'form',
+      'file' => 'hwc_workflow.ep.inc',
     ),
   );
 }
@@ -60,6 +149,27 @@ function hwc_workflow_cronapi() {
  */
 function hwc_workflow_cron() {
   hwc_workflow_partner_content_cron();
+}
+
+// todo check...
+function hwc_workflow_is_een_partner_type($node) {
+  foreach ($node->workbench_access as $section) {
+    if ($section == 'section') {
+      continue;
+    }
+    $q = db_select('workbench_access_node', 'w');
+    $q->innerJoin('node', 'n', 'w.nid = n.nid');
+    $q->innerJoin('field_data_field_partner_type', 't', 't.entity_id = w.nid');
+    $q->fields('t', ['field_partner_type_tid'])
+      ->condition('w.access_id', $section)
+      ->condition('t.field_partner_type_tid', HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR)
+      ->condition('n.type', 'partner', '=');
+    $tid = $q->execute()->fetchField();
+    if ($tid == HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR) {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
 
 /**
@@ -99,7 +209,13 @@ function hwc_workflow_partner_content_cron() {
       if (!empty($current_node->workbench_moderation['current'])
         && $current_node->workbench_moderation['current']->state == 'final_draft') {
         // Moderate the content.
-        workbench_moderation_moderate($current_node, OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
+        if (in_array($node->type, ['events', 'news'])) {
+          workbench_moderation_moderate($current_node, OSHA_WORKFLOW_STATE_TO_BE_APPROVED);
+        }
+        else {
+          workbench_moderation_moderate($current_node, OSHA_WORKFLOW_STATE_TO_BE_REVIEWED);
+        }
+
         watchdog('hwc_workflow', 'Node !title automoderated to !state', array('!title' => $current_node->title, '!state' => OSHA_WORKFLOW_STATE_TO_BE_REVIEWED), WATCHDOG_INFO);
       }
     }
@@ -113,6 +229,7 @@ function hwc_workflow_permission() {
   $permissions = array();
   $permissions['select content section'] = array('title' => t("Can select section of a content"));
   $permissions['assign cpm to node'] = array('title' => t("Assign CPMs to a node"));
+  $permissions['assign external providers to node'] = array('title' => t("Assign External Providers to a node"));
   $permissions['access hwc review tab'] = array('title' => t("Access Review tab on a node"));
 
   return $permissions;
@@ -184,6 +301,7 @@ function hwc_workflow_node_submit_form($form, &$form_state, $node) {
 }
 
 function hwc_workflow_node_simple_submit($form, &$form_state) {
+  // todo check...
   workbench_moderation_moderate($form['#node'], 'final_draft');
 }
 
@@ -208,6 +326,7 @@ function hwc_worklow_node_belongs_to_partner_user($node) {
 /**
  * Implements hook_workbench_moderation_transition().
  */
+// todo check...
 function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
 
@@ -231,7 +350,7 @@ function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
     }
     else {
       // Reset approver votes (if node rejected and it's second time reviewed).
-      _hwc_workflow_cpm_reset_votes($node->nid);
+      _hwc_workflow_cpm_reset_votes($node->nid);//todo check cpm...
       $remaining_approvers = _hwc_workflow_get_remaining_cpm_approvers($node->nid);
       reset($remaining_approvers);
       $next_approver = array_shift($remaining_approvers);
@@ -285,6 +404,7 @@ function hwc_workflow_node_access($node, $op, $account) {
 
   // Review Managers have access based on perm.
   // skip additional validations..
+  // todo check...
   if (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles) ||
     in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)) {
     return NODE_ACCESS_IGNORE;
@@ -296,10 +416,16 @@ function hwc_workflow_node_access($node, $op, $account) {
     return NODE_ACCESS_IGNORE;
   }
 
+  // todo require to check...
   // Don't allow CPM if not assign to node.
   if ($op == 'update' && in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)) {
     module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
-    if (!_hwc_workflow_node_has_cmp($node, $account)) {
+    if (!_hwc_workflow_node_has_cpm($node, $account)) {
+      if ($type == 'document') {
+        return NODE_ACCESS_IGNORE;
+      }
+      has_krumo();
+      krumo('Don\'t allow CPM if not assign to node. NODE_ACCESS_DENY ' . $op, $node);
       return NODE_ACCESS_DENY;
     }
   }
@@ -343,6 +469,7 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
+  // todo check...
   if ($form_id == 'workbench_moderation_moderate_form' && isset($form['node']['#value'])) {
     // Append the approval buttons in workbench moderation (on node view).
     module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');

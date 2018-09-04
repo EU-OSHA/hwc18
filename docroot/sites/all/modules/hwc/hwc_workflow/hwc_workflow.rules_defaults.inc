@@ -34,6 +34,64 @@ function hwc_workflow_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_cpm_notification_to_be_approved'] = entity_import('rules_config', '{ "rules_cpm_notification_to_be_approved" : {
+      "LABEL" : "CPM Notification to be Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "NOT node_een_partner" : { "entity" : [ "node" ] } }
+      ],
+      "DO" : [
+        { "mail_to_users_of_role" : {
+            "roles" : { "value" : { "15" : "15" } },
+            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETOD\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces for TODO campaign.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_een_notification_to_be_approved'] = entity_import('rules_config', '{ "rules_een_notification_to_be_approved" : {
+      "LABEL" : "EEN Notification to be Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "node_een_partner" : { "entity" : [ "node" ] } }
+      ],
+      "DO" : [
+        { "mail_to_users_of_role" : {
+            "roles" : { "value" : { "17" : "17" } },
+            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETOD\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces for TODO campaign.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_hwc_workflow_notif_his_content_published'] = entity_import('rules_config', '{ "rules_hwc_workflow_notif_his_content_published" : {
       "LABEL" : "Notifi partner when his content published",
       "PLUGIN" : "reaction rule",
@@ -117,6 +175,7 @@ function hwc_workflow_default_rules_configuration() {
   $items['rules_hwc_workflow_notification_partner_content_created'] = entity_import('rules_config', '{ "rules_hwc_workflow_notification_partner_content_created" : {
       "LABEL" : "Notification partner content created (CMW_ED_US_02)",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow" ],
       "ON" : { "node_insert" : [] },
@@ -224,6 +283,35 @@ function hwc_workflow_default_rules_configuration() {
             "subject" : "[HWC Website] CMW: ([node:nid]) [node:title-field]",
             "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E",
             "language" : [ "" ]
+          }
+        }
+      ]
+    }
+  }');
+  $items['rules_notification_partner_to_be_reviewed_by_partner'] = entity_import('rules_config', '{ "rules_notification_partner_to_be_reviewed_by_partner" : {
+      "LABEL" : "Notification to be reviewed by the partner",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "draft" } },
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+      ],
+      "DO" : [
+        { "hwc_mail_to_users_of_partner" : {
+            "node" : [ "node" ],
+            "subject" : "HWC Workflow: item is requested \\u2018to be reviewed by the partner\\u2019 TODO",
+            "message" : "\\u003Cp\\u003EDear partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces for TODO campaign.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]

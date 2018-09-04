@@ -27,6 +27,14 @@ function hwc_partner_views_data_alter(&$data) {
       'handler' => 'hwc_partner_handler_filter_node_is_cpm_assigned',
     ),
   );
+  $data['hwc_partner']['ep_assigned'] = array(
+    'title' => t('If node has current EP assigned'),
+    'help' => t('If node has current EP assigned'),
+    'filter' => array(
+      'label' => t('If node has current EP assigned'),
+      'handler' => 'hwc_partner_handler_filter_node_is_cep_assigned',
+    ),
+  );
   $data['workbench_moderation_node_history']['state']['field']['handler'] = 'hwc_partner_workbench_moderation_handler_field_state';
 }
 
@@ -107,5 +115,48 @@ class hwc_partner_handler_filter_node_is_cpm_assigned extends views_handler_filt
       )
     );
     $this->query->add_relationship($this->query->base_table . '_osha_workflow_node_project_managers', $join, $this->query->base_table);
+  }
+}
+
+/**
+ * Filters nodes that are assigned to current CPM.
+ */
+class hwc_partner_handler_filter_node_is_ep_assigned extends views_handler_filter_boolean_operator {
+
+  /**
+   * Overrides views_handler_field::query().
+   */
+  function query() {
+    global $user;
+    if (empty($user->workbench_access)) {
+      workbench_access_user_load_data($user);
+    }
+    //todo
+    $is_admin = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
+    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_SUPERVISOR, $user);
+    if ($is_admin || $is_supervisor) {
+      //      return;
+    }
+    if (empty($this->value)) {
+      $in_operator = 'NOT IN';
+      $equal_operator = '!=';
+    }
+    else {
+      $in_operator = 'IN';
+      $equal_operator = '=';
+    }
+    $join = new views_join();
+    $join->table = 'osha_workflow_node_external_providers';
+    $join->field = 'nid';
+    $join->left_table = $this->query->base_table;
+    $join->left_field = 'nid';
+    $join->type = 'INNER';
+    $join->extra = array(
+      array(
+        'field' => 'uid',
+        'value' => $user->uid,
+      )
+    );
+    $this->query->add_relationship($this->query->base_table . '_osha_workflow_node_external_providers', $join, $this->query->base_table);
   }
 }

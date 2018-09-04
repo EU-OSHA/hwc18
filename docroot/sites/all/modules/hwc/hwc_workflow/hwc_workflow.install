@@ -160,3 +160,74 @@ function hwc_workflow_update_7010() {
 function hwc_workflow_update_7011() {
   features_revert_module('hwc_workflow');
 }
+
+/**
+ * Implements hook_schema().
+ */
+function hwc_workflow_schema() {
+  $schema['osha_workflow_node_external_providers'] = array(
+    'description' => 'Base table for the content review workflow',
+    'fields' => array(
+      'npmid' => array(
+        'description' => 'Identifier',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'nid' => array(
+        'description' => 'Node under review',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'External provider account',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'approved' => array(
+        'description' => 'NULL not voted, approved or rejected',
+        'type' => 'varchar',
+        'length' => 64,
+        'default' => NULL,
+        'not null' => FALSE,
+      ),
+      'weight' => array(
+        'description' => 'Order of moderation, lowest first',
+        'type' => 'int',
+        'default' => 0,
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'Message log',
+        'type' => 'text',
+        'size' => 'medium',
+      ),
+    ),
+    'primary key' => array('npmid'),
+    'indexes' => array(
+      'osha_workflow_review_uid' => array('uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+      'nid' => array(
+        'table' => 'node',
+        'columns' => array('nid' => 'nid'),
+      ),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * MDR-2027 HWC: Changes in the workflow of news and events.
+ */
+function hwc_workflow_update_7012() {
+  if (db_table_exists('osha_workflow_node_external_providers') == FALSE) {
+    drupal_install_schema('hwc_workflow');
+  }
+}

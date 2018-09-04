@@ -109,6 +109,18 @@ function hwc_workflow_rules_action_info() {
  */
 function hwc_workflow_rules_condition_info() {
   return array(
+    'node_een_partner' => array(
+      'label' => t('Node has een partner type'),
+      'parameter' => array(
+        'entity' => array(
+          'type' => 'node',
+          'label' => t('Node'),
+          'description' => t('Specifies the node for which to evaluate the condition.'),
+        ),
+      ),
+      'group' => t('HWC workflow'),
+      'base' => 'hwc_workflow_rules_condition_node_een_partner',
+    ),
     'disable_masquerading_notifications' => array(
       'label' => t('Disable notifications when acts as a partner'),
       'group' => t('HWC workflow'),
@@ -153,6 +165,13 @@ function hwc_workflow_rules_condition_document_related_partner_notifications($no
     return FALSE;
   }
   return TRUE;
+}
+
+/**
+ * Condition: Node has een partner type.
+ */
+function hwc_workflow_rules_condition_node_een_partner($node) {
+  return hwc_workflow_is_een_partner_type($node);
 }
 
 /**

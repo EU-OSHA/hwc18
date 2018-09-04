@@ -710,6 +710,25 @@ function hwc_partner_user_profile_form_redirect($form, &$form_state) {
  * Get options array with [user_name] => partner_name.
  */
 function hwc_partner_get_partners_user_options() {
+  global $user;
+  // Filter partner sections for review managers roles.
+  $tids = [];
+  if (
+    (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) ||
+    (in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles))) {
+    $op = '!=';
+    if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
+      $op = '=';
+    }
+    $q = db_select('workbench_access_node', 'w');
+    $q->innerJoin('node', 'n', 'w.nid = n.nid');
+    $q->innerJoin('field_data_field_partner_type', 't', 't.entity_id = w.nid');
+    $q->fields('w', ['access_id'])
+      ->condition('t.field_partner_type_tid', HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR, $op)
+      ->condition('n.type', 'partner', '=');
+    $tids = $q->execute()->fetchAllKeyed(0, 0);
+  }
+
   $matches = array();
   $partner_rid = 12;
   // Get users with only PARTNER role and with a section attached.
@@ -719,12 +738,27 @@ function hwc_partner_get_partners_user_options() {
   $query->innerJoin('users_roles', 'ur', 'wu.uid = ur.uid');
   $query->addField('u', 'name', 'user_name');
   $query->condition('ur.rid', $partner_rid);
+  if ($tids) {
+    $query->condition('t.tid', $tids, 'IN');
+  }
   $query->groupBy('t.name');
   $result = $query->execute();
   while ($row = $result->fetchAssoc()) {
     $matches[$row['user_name']] = $row['name'];
   }
   return $matches;
+}
+
+function hwc_check_reviewer_node_access($tid, $roles) {
+  $rm_types = [HWC_PARTNER_TYPE_OCP, HWC_PARTNER_TYPE_MP, HWC_PARTNER_TYPE_FOP];
+  if (in_array(HWC_ROLE_REVIEW_MANAGER, $roles) && in_array($tid, $rm_types)) {
+    return NODE_ACCESS_IGNORE;
+  }
+  elseif (($tid == HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR) &&
+    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $roles)) {
+    return NODE_ACCESS_IGNORE;
+  }
+  return NODE_ACCESS_DENY;
 }
 
 /**
@@ -734,10 +768,12 @@ function hwc_partner_node_access($node, $op, $account) {
   $type = is_string($node) ? $node : $node->type;
   if (($type == 'document') && ($op == 'view')) {
     if (
-       !in_array(HWC_ROLE_SUPERVISOR, $account->roles)
-       && !in_array(HWC_ROLE_ADMIN, $account->roles)
-       && !in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)
-       && !in_array(HWC_ROLE_SUPERADMIN, $account->roles)
+      !in_array(HWC_ROLE_SUPERVISOR, $account->roles)
+      && !in_array(HWC_ROLE_ADMIN, $account->roles)
+      && !in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)
+      && !in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
+      && !in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)
+      && !in_array(HWC_ROLE_SUPERADMIN, $account->roles)
     ) {
       $partner_type_tid = hwc_good_practice_exchange_user_get_partner_type();
       if ($partner_type_tid) {
@@ -768,12 +804,39 @@ function hwc_partner_node_access($node, $op, $account) {
     }
   }
   if ($op == 'view' && $node->nid == 253 && (
-    !in_array(HWC_ROLE_CAMPAIGN_PARTNER, $account->roles) &&
-    !in_array(HWC_ROLE_SUPERVISOR, $account->roles) &&
-    !in_array(HWC_ROLE_ADMIN, $account->roles) &&
-    !in_array(HWC_ROLE_SUPERADMIN, $account->roles))
+      !in_array(HWC_ROLE_CAMPAIGN_PARTNER, $account->roles) &&
+      !in_array(HWC_ROLE_SUPERVISOR, $account->roles) &&
+      !in_array(HWC_ROLE_ADMIN, $account->roles) &&
+      !in_array(HWC_ROLE_SUPERADMIN, $account->roles))
   ) {
     return NODE_ACCESS_DENY;
+  }
+  // Check reviewers access for news and events editing.
+  if (($op != 'view') &&
+    (in_array($type, ['news', 'events'])) &&
+    (
+      in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles) ||
+      in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
+    )) {
+    $nid = FALSE;
+    foreach ($node->workbench_access as $tid) {
+      if ($tid == 'section') {
+        continue;
+      }
+      $q = db_select('workbench_access_node', 'w');
+      $q->innerJoin('node', 'n', 'w.nid = n.nid');
+      $q->fields('w', ['nid'])
+        ->condition('w.access_id', $tid)
+        ->condition('n.type', 'partner', '=');
+      $nid = $q->execute()->fetchField();
+    }
+    if ($nid) {
+      $partner = node_load($nid);
+      if ($partner) {
+        $tid = $partner->field_partner_type[LANGUAGE_NONE][0]['tid'];
+        return hwc_check_reviewer_node_access($tid, $account->roles);
+      }
+    }
   }
   return NODE_ACCESS_IGNORE;
 }

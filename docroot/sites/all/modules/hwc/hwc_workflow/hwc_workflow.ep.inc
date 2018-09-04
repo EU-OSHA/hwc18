@@ -1,31 +1,31 @@
 <?php
 
-function hwc_workflow_node_cpm_assign_form($form, &$form_state, $node) {
+function hwc_workflow_node_ep_assign_form($form, &$form_state, $node) {
   global $user;
   $form =  array();
   $form['#tree'] = TRUE;
-  $form['#theme'] = 'hwc_workflow_node_cpm_assign_form';
+  $form['#theme'] = 'hwc_workflow_node_ep_assign_form';
 
   if (empty($node->workbench_access)) {
     drupal_set_message('No section assigned to the node.');
     return $form;
   }
-  $can_edit = _hwc_workflow_can_edit_cpm($node);
+  $can_edit = _hwc_workflow_can_edit_ep($node);
   $form['#node'] = $node;
   $form['#can_edit'] = $can_edit;
-  $cpms = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
+  $eps = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_SUPERVISOR);//todo
   $options = array('' => t('-- Please select --'));
-  foreach ($cpms as $uid => $cpm) {
-    $options[$uid] = $cpm->name;
+  foreach ($eps as $uid => $ep) {
+    $options[$uid] = $ep->name;
   }
-  $project_managers = _hwc_workflow_get_project_managers($node->nid);
-  $cpm_entries = _hwc_workflow_get_project_managers_entries($node->nid);
-  if (!empty($cpm_entries)) {
+  $external_providers = _hwc_workflow_get_external_providers($node->nid);//todo
+  $ep_entries = _hwc_workflow_get_external_providers_entries($node->nid);//todo
+  if (!empty($ep_entries)) {
     $weight = 0;
     $form['rows']['#tree'] = TRUE;
-    foreach ($cpm_entries as $uid => $pm) {
+    foreach ($ep_entries as $uid => $pm) {
       $form['rows'][$uid]['name'] = array(
-        '#markup' => $project_managers[$uid]->name,
+        '#markup' => $external_providers[$uid]->name,
       );
       $form['rows'][$uid]['weight'] = array(
         '#type' => 'weight',
@@ -53,7 +53,7 @@ function hwc_workflow_node_cpm_assign_form($form, &$form_state, $node) {
         '#name' => $uid,
         '#value' => t('Remove'),
         '#access' => $can_edit,
-        '#submit' => array('hwc_workflow_admin_approvers_remove_row_submit'),
+        '#submit' => array('hwc_workflow_admin_ep_remove_row_submit'),
       );
       $weight++;
     }
@@ -70,7 +70,7 @@ function hwc_workflow_node_cpm_assign_form($form, &$form_state, $node) {
     '#value' => t('Add to queue'),
     '#access' => $can_edit,
     '#attributes' => array('class' => array('container-inline')),
-    '#submit' => array('hwc_workflow_admin_approvers_add_row_submit'),
+    '#submit' => array('hwc_workflow_admin_ep_add_row_submit'),
   );
   $form['help'] = array(
     '#type' => 'markup',
@@ -91,43 +91,43 @@ function hwc_workflow_node_cpm_assign_form($form, &$form_state, $node) {
     ),
   );
 
-  hwc_workflow_node_cpm_actions_append($form, $node);
+  hwc_workflow_node_ep_actions_append($form, $node);//todo
 
   return $form;
 }
 
-function hwc_workflow_node_cpm_actions_append(&$form, $node) {
+function hwc_workflow_node_ep_actions_append(&$form, $node) {
   global $user;
-  if ($current_approver = _hwc_workflow_get_current_cpm_approver($node->nid)) {
+  if ($current_approver = _hwc_workflow_get_current_ep_approver($node->nid)) {
     // Approval settings.
-    $form['cpm_actions'] = array(
+    $form['ep_actions'] = array(
       '#type' => 'container',
-      '#access' => _hwc_workflow_can_approve($node),
+      '#access' => _hwc_workflow_can_ep_approve($node),
     );
-    $form['cpm_actions']['approve'] = array(
+    $form['ep_actions']['approve'] = array(
       '#type' => 'submit',
       '#value' => 'Approve',
-      '#submit' => array('hwc_workflow_cpm_approve_submit'),
+      '#submit' => array('hwc_workflow_ep_approve_submit'),
     );
     if ($current_approver->uid != $user->uid) {
-      $form['cpm_actions']['approve']['#suffix'] = t('You can approve on behalf of %user', array('%user' => $current_approver->name));
+      $form['ep_actions']['approve']['#suffix'] = t('You can approve on behalf of %user', array('%user' => $current_approver->name));
     }
-    $form['cpm_actions']['reject'] = array(
+    $form['ep_actions']['reject'] = array(
       '#type' => 'submit',
       '#value' => 'Reject',
-      '#submit' => array('hwc_workflow_cpm_reject_submit'),
+      '#submit' => array('hwc_workflow_ep_reject_submit'),
       '#access' => $current_approver->uid == $user->uid,
     );
   }
 }
 
-function hwc_workflow_node_cpm_assign_form_submit($form, $form_state) {
+function hwc_workflow_node_ep_assign_form_submit($form, $form_state) {
   if (!empty($form_state['input']['rows'])) {
-    $entries = _hwc_workflow_get_project_managers_entries($form['#node']->nid);
+    $entries = _hwc_workflow_get_external_providers_entries($form['#node']->nid);
     foreach ($form_state['input']['rows'] as $row) {
       if (!empty($entries[$row['uid']])) {
         $entries[$row['uid']]->weight = $row['weight'];
-        _hwc_workflow_admin_approvers_save_row($entries[$row['uid']]);
+        _hwc_workflow_admin_ep_save_row($entries[$row['uid']]);
       }
     }
   }
@@ -136,26 +136,26 @@ function hwc_workflow_node_cpm_assign_form_submit($form, $form_state) {
 /**
  * CPM Reject button callback.
  */
-function hwc_workflow_cpm_reject_submit($form, &$form_submit) {
+function hwc_workflow_ep_reject_submit($form, &$form_submit) {
   global $user;
-  $row = _hwc_workflow_get_current_cpm_approver_entry($form['#node']->nid);
+  $row = _hwc_workflow_get_current_ep_approver_entry($form['#node']->nid);
   if (!empty($row)) {
     $row->approved = 'rejected';
     $row->message = t('!user rejected on !date', array('!user' => $user->name, '!date' => date('d-m-Y H:i:s')));
-    _hwc_workflow_admin_approvers_save_row($row);
-    workbench_moderation_moderate($form['#node'], 'needs_review');
+    _hwc_workflow_admin_ep_save_row($row);//todo
+    workbench_moderation_moderate($form['#node'], 'needs_review');//todo
   }
   else {
-    drupal_set_message('No current approver found.');
+    drupal_set_message('No current ep found.');
   }
 }
 
 /**
  * CPM Approve button.
  */
-function hwc_workflow_cpm_approve_submit($form, &$form_submit) {
+function hwc_workflow_ep_approve_submit($form, &$form_submit) {
   global $user;
-  $row = _hwc_workflow_get_current_cpm_approver_entry($form['#node']->nid);
+  $row = _hwc_workflow_get_current_ep_approver_entry($form['#node']->nid);//todo
   if (!empty($row)) {
     $row->approved = 'approved';
     if ($user->uid == $row->uid) {
@@ -166,31 +166,31 @@ function hwc_workflow_cpm_approve_submit($form, &$form_submit) {
       $message = t('!user approved on behalf of !approver on !date', array('!user' => $user->name, '!date' => date('d-m-Y H:i:s'), '!approver' => $curr_approver->name));
     }
     $row->message = $message;
-    _hwc_workflow_admin_approvers_save_row($row);
+    _hwc_workflow_admin_ep_save_row($row);//todo
 
-    $next_approver = _hwc_workflow_get_current_cpm_approver($form['#node']->nid);
+    $next_approver = _hwc_workflow_get_current_ep_approver($form['#node']->nid);//todo
     if (empty($next_approver)) {
       // If no any approver, publish the content.
       workbench_moderation_moderate($form['#node'], 'published');
       drupal_set_message(t('The content has been published'));
     }
     else {
-      $remaining_approvers = _hwc_workflow_get_remaining_cpm_approvers($form['#node']->nid);
+      $remaining_approvers = _hwc_workflow_get_remaining_ep_approvers($form['#node']->nid);//todo
       reset($remaining_approvers);
       $next_approver = array_shift($remaining_approvers);
       // Invoke the rule event
-      rules_invoke_event('node_cpm_approve', $form['#node'], $next_approver, $remaining_approvers);
+      rules_invoke_event('node_ep_approve', $form['#node'], $next_approver, $remaining_approvers);//todo
     }
   }
   else {
-    drupal_set_message('No current approver found.');
+    drupal_set_message('No current ep found.');
   }
 }
 
 /**
  * Form theme callback
  */
-function theme_hwc_workflow_node_cpm_assign_form($variables) {
+function theme_hwc_workflow_node_ep_assign_form($variables) {
   $form = $variables['form'];
 
   // Initialize the variable which will store our table rows.
@@ -240,12 +240,12 @@ function theme_hwc_workflow_node_cpm_assign_form($variables) {
 /**
  * Submit callback for remove button from a row.
  */
-function hwc_workflow_admin_approvers_remove_row_submit($form, &$form_state) {
+function hwc_workflow_admin_ep_remove_row_submit($form, &$form_state) {
   if (isset($form_state['triggering_element'])) {
     $triggering_element = $form_state['triggering_element'];
     if (isset($triggering_element['#name'])) {
       $uid = $triggering_element['#name'];
-      db_delete('osha_workflow_node_project_managers')
+      db_delete('osha_workflow_node_external_providers')
         ->condition('nid', $form['#node']->nid)
         ->condition('uid', $uid)
         ->execute();
@@ -256,11 +256,11 @@ function hwc_workflow_admin_approvers_remove_row_submit($form, &$form_state) {
 /**
  * Submit callback for Add user button.
  */
-function hwc_workflow_admin_approvers_add_row_submit($form, &$form_state) {
+function hwc_workflow_admin_ep_add_row_submit($form, &$form_state) {
   if (!empty($form_state['values']['add']['uid'])) {
     $moderator = user_load($form_state['input']['add']['uid']);
     if (!empty($moderator)) {
-      $existing_entries = _hwc_workflow_get_project_managers_entries($form['#node']->nid);
+      $existing_entries = _hwc_workflow_get_external_providers_entries($form['#node']->nid);
       if ($existing_entries[$moderator->uid]) {
         drupal_set_message('This user is already assigned', 'warning');
         return;
@@ -275,26 +275,26 @@ function hwc_workflow_admin_approvers_add_row_submit($form, &$form_state) {
         'uid' => $moderator->uid,
         'weight' => $weight,
       );
-      _hwc_workflow_admin_approvers_save_row($row);
+      _hwc_workflow_admin_ep_save_row($row);
     }
   }
 }
 
 /**
- * Get cpm users assigned for a node
+ * Get ep users assigned for a node
  */
-function _hwc_workflow_get_project_managers($nid) {
-  return user_load_multiple(array_keys(_hwc_workflow_get_project_managers_entries($nid)));
+function _hwc_workflow_get_external_providers($nid) {
+  return user_load_multiple(array_keys(_hwc_workflow_get_external_providers_entries($nid)));
 }
 
 //todo
 /**
- * Get database entries for a node from osha_workflow_node_project_managers.
+ * Get database entries for a node from osha_workflow_node_external_providers.
  */
-function _hwc_workflow_get_project_managers_entries($nid) {
+function _hwc_workflow_get_external_providers_entries($nid) {
   $data = &drupal_static(__FUNCTION__);
   if (!isset($data[$nid])) {
-    $data[$nid] = db_select('osha_workflow_node_project_managers', 'p')
+    $data[$nid] = db_select('osha_workflow_node_external_providers', 'p')
       ->fields('p')
       ->condition('nid', $nid)
       ->orderBy('weight', 'ASC')
@@ -304,50 +304,51 @@ function _hwc_workflow_get_project_managers_entries($nid) {
   return $data[$nid];
 }
 
-
 //todo
 /**
- * Insert or update an osha_workflow_node_project_managers entry.
+ * Insert or update an osha_workflow_node_external_providers entry.
  */
-function _hwc_workflow_admin_approvers_save_row($row) {
+function _hwc_workflow_admin_ep_save_row($row) {
   if (is_object($row)) {
     $row = (array) $row;
   }
   if (isset($row['npmid'])) {
-    return drupal_write_record('osha_workflow_node_project_managers', $row, array('npmid'));
+    return drupal_write_record('osha_workflow_node_external_providers', $row, array('npmid'));
   }
   else {
-    return drupal_write_record('osha_workflow_node_project_managers', $row);
+    return drupal_write_record('osha_workflow_node_external_providers', $row);
   }
 }
 
-function _hwc_workflow_node_has_cpm($node, $account) {
-  $cpms = _hwc_workflow_get_project_managers_entries($node->nid);
+function _hwc_workflow_node_has_ep($node, $account) {
+  $cpms = _hwc_workflow_get_external_providers_entries($node->nid);
   return in_array($account->uid, array_keys($cpms));
 }
 
-function _hwc_workflow_can_edit_cpm($node, $account = NULL) {
-//  if (!empty($node->workbench_moderation['current']) &&
-//    $node->workbench_moderation['current']->state != OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+function _hwc_workflow_can_edit_ep($node, $account = NULL) {
+  if (!empty($node->workbench_moderation['current']) &&
+    $node->workbench_moderation['current']->state != OSHA_WORKFLOW_STATE_TO_BE_REVIEWED) {
+//    krumo('false', empty($node->workbench_moderation['current']), $node->workbench_moderation['current']->state);
 //    return FALSE;
-//  }
+  }
   if (empty($account)) {
     global $user;
     $account = $user;
   }
-  return user_access('assign cpm to node' ,$account);
+  return user_access('assign external providers to node', $account);
 }
 
-function _hwc_workflow_get_current_cpm_approver($nid) {
-  $entry = _hwc_workflow_get_current_cpm_approver_entry($nid);
+
+function _hwc_workflow_get_current_ep_approver($nid) {
+  $entry = _hwc_workflow_get_current_ep_approver_entry($nid);
   if (!empty($entry)) {
     return user_load($entry->uid);
   }
   return NULL;
 }
 
-function _hwc_workflow_get_current_cpm_approver_entry($nid) {
-  $entries = _hwc_workflow_get_project_managers_entries($nid);
+function _hwc_workflow_get_current_ep_approver_entry($nid) {
+  $entries = _hwc_workflow_get_external_providers_entries($nid);
   foreach ($entries as $entry) {
     if (empty($entry->approved)) {
       return $entry;
@@ -355,8 +356,9 @@ function _hwc_workflow_get_current_cpm_approver_entry($nid) {
   }
   return NULL;
 }
+
 //todo
-function _hwc_workflow_get_remaining_cpm_approvers($nid) {
+function _hwc_workflow_get_remaining_ep_approvers($nid) {
   $remaining = db_select('osha_workflow_node_project_managers', 'pm')
     ->fields('pm')
     ->condition('nid', $nid)
@@ -368,19 +370,9 @@ function _hwc_workflow_get_remaining_cpm_approvers($nid) {
   }
   return NULL;
 }
-//todo
-function _hwc_workflow_cpm_reset_votes($nid) {
-  db_update('osha_workflow_node_project_managers')
-    ->fields(array(
-      'approved' => NULL,
-      'message' => NULL,
-      )
-    )
-    ->condition('nid', $nid)
-    ->execute();
-}
 
-function _hwc_workflow_can_approve($node, $account = NULL) {
+//todo...
+function _hwc_workflow_can_ep_approve($node, $account = NULL) {
   global $user;
   if (empty($account)) {
     $account = $user;
@@ -396,7 +388,7 @@ function _hwc_workflow_can_approve($node, $account = NULL) {
     return TRUE;
   }
   if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account)
-    && _hwc_workflow_node_has_cpm($node, $account)) {
+    && _hwc_workflow_node_has_ep($node, $account)) {
     return TRUE;
   }
   return FALSE;

@@ -278,7 +278,13 @@ function hwc_user_login(&$edit, $account) {
         }
       }
     }
-    if (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)) {
+    // Role based login redirect.
+    if (
+      (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)) ||
+      (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)) ||
+      (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)) ||
+      (in_array(HWC_ROLE_SUPERVISOR, $account->roles))
+    ) {
       $edit['redirect'] = 'good-practice-exchange-platform';
     }
   }
