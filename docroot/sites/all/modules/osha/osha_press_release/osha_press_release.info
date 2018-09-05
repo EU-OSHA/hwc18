@@ -93,6 +93,7 @@ features[field_instance][] = node-press_release-field_aditional_resources
 features[field_instance][] = node-press_release-field_archived
 features[field_instance][] = node-press_release-field_character_count
 features[field_instance][] = node-press_release-field_expiration_date
+features[field_instance][] = node-press_release-field_first_publication_date
 features[field_instance][] = node-press_release-field_image
 features[field_instance][] = node-press_release-field_page_count
 features[field_instance][] = node-press_release-field_pr_embargo_date

@@ -172,6 +172,9 @@ function osha_infographics_strongarm() {
         'language' => array(
           'weight' => '5',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

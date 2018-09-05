@@ -71,58 +71,82 @@ if (!empty($campaign_id)) {
         else {
           ?>
             <tr>
-                <td style="padding-bottom: 0px; width: 20%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
-                  <?php
-                  if (isset($field_image)) {
-                      print l(theme('image_style', array(
-                        'style_name' => 'medium_newsletter_crop',
-                        'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
-                        'width' => 220,
-                        'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
-                        'attributes' => array(
-                          'style' => 'border: 0px; width: 220px; max-width: 220px; padding-right: 5px; padding-bottom: 5px; margin: 0;',
-                          'align' => 'left',
-                          'hspace' => '20',
-                          'vspace' => '20',
-                        ),
-                      )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
-                        'html' => TRUE,
-                        'external' => TRUE,
-                      ));
-                  }
-                  ?>
+                <td style="width: 220px; font-size: 12px; font-family: Arial, sans-serif; color: #000000; vertical-align: middle; padding: 0; margin: 0;">
+                  <table>
+                    <tr>
+                      <td style="border: 2px solid #749b00;margin:0;padding: 0;">
+                        <?php
+                          if (isset($field_image)) {
+                              print l(theme('image_style', array(
+                                'style_name' => 'medium_newsletter_crop',
+                                'path' => (isset($field_image) && !empty($field_image)) ? $field_image['uri'] : '',
+                                'width' => 220,
+                                'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
+                                'attributes' => array(
+                                  'style' => 'background-color:red;vertical-align:middle;max-width: initial!important;',
+                                  'align' => 'left',
+                                
+                                ),
+                              )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
+                                'html' => TRUE,
+                                'external' => TRUE,
+                                'attributes' => array(
+                                      'style' => '',
+                                    ),
+                              ));
+                          }
+                          ?>
+                       </td>
+                      </tr>
+                    </table>
+                  </div>
                 </td>
-                <td style="padding-bottom: 0px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000;">
+                <td style="padding-bottom: 0px; width: 80%; font-size: 12px; font-family: Arial, sans-serif; color: #000000; padding-left: 15px; ">
                     <div style="font-weight: bold;"><?php echo format_date($field_publication_date, 'custom', 'd/m/Y'); ?></div>
                     <div>
                       <?php
                       print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
-                        'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
+                        'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: middle; text-decoration: none;'),
                         'query' => $url_query,
                         'external' => TRUE,
                       ));
                       ?>
                     </div>
-                  <?php
-                  $is_empty = FALSE;
-                  $summary = render($elements['field_summary']);
-                  if (!trim(strip_tags($summary))) {
-                    $is_empty = TRUE;
-                  }
-                  else {
-                      print $summary;
-                  }
+                    <table>
+                      <tr>
+                        <td style="padding-top: 8px;color:#000;font-size: 13px;line-height: 18px;">
+                          <?php
+                            
+                            $is_empty = FALSE;
+                            $summary = render($elements['field_summary']);
+                            
+                            if (!trim(strip_tags($summary))) {
+                              $is_empty = TRUE;
+                            }
+                            else {
+                                $clear = strip_tags($summary);
+                                print substrwords($clear, 300);
+                            }
 
-                  if (!empty($elements['body']) && $is_empty) {
-                    print render($elements['body']);
-                  }
-                  $directory = drupal_get_path('module', 'osha_newsletter');
-                  ?>
+                            if (!empty($elements['body']) && $is_empty) {
+                              $text = $elements['body'][0]['#markup'];
+                              $clear = strip_tags($text);
+                              print substrwords($clear, 300);
+
+                            }
+
+                            $directory = drupal_get_path('module', 'osha_newsletter');
+
+                          ?>
+                      </td>
+                    </tr>
+                  </table>
+                
                 </td>
             </tr>
             <tr>
                 <td style="padding-bottom: 10px; ">&nbsp;</td>
-                <td style="padding-bottom: 10px; ">
+                <td style="padding-bottom: 10px;padding-left: 15px">
                     <table>
                         <tr>
                             <td style="padding-top: 0px;" width="505">
@@ -169,6 +193,9 @@ if (!empty($campaign_id)) {
                         </tr>
                     </table>
                 </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="border-top: 1px dotted #749b00;line-height: 12px;">&nbsp;</td>
             </tr>
           <?php
       }

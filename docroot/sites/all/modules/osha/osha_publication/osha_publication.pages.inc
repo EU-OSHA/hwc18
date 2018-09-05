@@ -46,7 +46,7 @@ function osha_publication_menu_publications_form($form, $form_state) {
 }
 
 function osha_publication_menu_publications_faceted_form($variables) {
-  global $current_page;
+  global $current_page, $language;
   $form_state = $variables['form_state'];
   $action = $variables['action'];
   $facet_callback = $variables['facet_callback'];
@@ -57,7 +57,7 @@ function osha_publication_menu_publications_faceted_form($variables) {
   $sort = hwc_req_param($form_state, 'sort', 'date');
 
   $form = array(
-    '#action' => $action,
+    '#action' => '/' . $language->language . '/' . $action,
     '#method' => 'GET',
     'left-column' => array(
       '#type' => 'container',
@@ -222,7 +222,6 @@ function osha_publication_menu_publications_faceted_form($variables) {
       )
     ),
   );
-
   return $form;
 }
 
@@ -485,7 +484,7 @@ function osha_publication_menu_case_studies_faceted_form($variables) {
   $text = hwc_req_param($form_state, 'text');
   $sort = hwc_req_param($form_state, 'sort', 'date');
   $form = array(
-    '#action' => $action,
+    '#action' => '/' . $language->language . '/' . $action,
     '#method' => 'GET',
     'left-column' => array(
       '#type' => 'container',
@@ -669,7 +668,7 @@ function _osha_publication_generate_all_facet_link($key = 'field_priority_area')
   if (isset($url['query']) && isset($url['query'][$key])) {
     unset($url['query'][$key]);
   }
-  $link = l(t('All'), '/' . arg(0), array(
+  $link = l(t('All'), '/' . arg(0) . '/' . arg(1), array(
     'attributes' => array(
       'class' => 'facetapi-checkbox facetapi-inactive facetapi-makeCheckbox-processed facetapi-disableClick-processed',
     ),
@@ -751,7 +750,7 @@ function _osha_publication_menu_publications_get_facets_def() {
 
 function _osha_publication_get_query() {
   $server = search_api_server_load('solr_server');
-  $index = search_api_index_load(SOLR_SEARCH_INDEX);
+  $index = search_api_index_load('default_multilingual_node_index');
   $query = new SearchApiQuery($index);
   // Avoid PHP notice.
   $query->fields(array());

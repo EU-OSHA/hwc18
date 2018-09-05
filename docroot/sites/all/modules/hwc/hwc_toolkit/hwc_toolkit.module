@@ -339,6 +339,7 @@ function hwc_toolkit_get_menu_titles_map() {
 }
 
 function hwc_toolkit_get_menu_tree($level1) {
+  global $language;
   static $menu = [];
   if ($menu) {
     return $menu;
@@ -391,7 +392,8 @@ function hwc_toolkit_get_menu_tree($level1) {
     $terms = $w->field_tools_examples->value();
     if ($terms) {
 
-      $menu[$l1_nid]['children'][HWC_SEARCH_TOOLKIT_EXAMPLES] = _toolkit_menu_item(t('Search Toolkit Examples'), 'tools-and-examples/media-communication-tools/search-toolkit-examples', 'views');
+      $search_toolkit_examples_url = variable_get('toolkit_search_toolkit_examples', 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples');
+      $menu[$l1_nid]['children'][HWC_SEARCH_TOOLKIT_EXAMPLES] = _toolkit_menu_item(t('Search Toolkit Examples'), $search_toolkit_examples_url, 'views');
 
       $tools_nid = $l1_nid;
       foreach ($terms as $tk_term) {
@@ -403,6 +405,9 @@ function hwc_toolkit_get_menu_tree($level1) {
         $l2_title = $wrapper->name->value();
         $menu[$l1_nid]['children'][$l2_tid] = _toolkit_menu_item($l2_title, 'taxonomy/term/' . $l2_tid, 'taxonomy');
       }
+      $campaigns_general_nid = variable_get('toolkit_campaigns_general_nid', 6749);
+      $wrapper = entity_metadata_wrapper('node', $campaigns_general_nid);
+      $menu[$l1_nid]['children'][$campaigns_general_nid] = _toolkit_menu_item($wrapper->language($language->language)->title_field->value(), 'node/' . $campaigns_general_nid);
     }
   }
 
@@ -548,7 +553,7 @@ function hwc_toolkit_get_left_menu($active_id) {
         $menu[$l1_id]['children'][$l2_id]['active'] = TRUE;
         $menu[$l1_id]['active'] = TRUE;
         hwc_toolkit_menu_breadcrumbs($lo_link);
-        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
+        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
         hwc_toolkit_menu_breadcrumbs($menu_item2['title']);
         if ('taxonomy' == $menu_item2['type']) {
           drupal_set_breadcrumb(hwc_toolkit_menu_breadcrumbs());
@@ -576,10 +581,10 @@ function hwc_toolkit_get_left_menu($active_id) {
           $menu[$l1_id]['active'] = TRUE;
 
           hwc_toolkit_menu_breadcrumbs($lo_link);
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['href']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['path']));
           if ($is_example) {
-            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['href']));
+            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['path']));
             hwc_toolkit_menu_breadcrumbs(drupal_get_title());
           }
           else {

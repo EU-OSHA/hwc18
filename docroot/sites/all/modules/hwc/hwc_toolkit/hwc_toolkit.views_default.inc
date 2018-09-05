@@ -302,7 +302,167 @@ function hwc_toolkit_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'tools-and-examples/media-communication-tools/search-toolkit-examples';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['row_class'] = 'tools_and_examples_items';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entity';
+  $handler->display->display_options['row_options']['view_mode'] = 'hwc_teaser';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'We know you are keen to see some good practice for different campaings, we are offering you option to search for examples from around whole Europe and get inspired.';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  /* Footer: Global: Result summary */
+  $handler->display->display_options['footer']['result']['id'] = 'result';
+  $handler->display->display_options['footer']['result']['table'] = 'views';
+  $handler->display->display_options['footer']['result']['field'] = 'result';
+  $handler->display->display_options['footer']['result']['content'] = '<p class="result-summary">Showing @start - @end from @total</p>';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Search: Fulltext search */
+  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['group'] = 1;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
+    'body:summary' => 'body:summary',
+    'body:value' => 'body:value',
+    'title' => 'title',
+    'title_field' => 'title_field',
+  );
+  /* Filter criterion: Indexed Multilingual Content: Country */
+  $handler->display->display_options['filters']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['filters']['field_country']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['filters']['field_country']['value'] = array();
+  $handler->display->display_options['filters']['field_country']['group'] = 1;
+  $handler->display->display_options['filters']['field_country']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_country']['expose']['operator_id'] = 'field_country_op';
+  $handler->display->display_options['filters']['field_country']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['field_country']['expose']['operator'] = 'field_country_op';
+  $handler->display->display_options['filters']['field_country']['expose']['identifier'] = 'country';
+  $handler->display->display_options['filters']['field_country']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['field_country']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Multilingual Content: Example Tool Type */
+  $handler->display->display_options['filters']['example_tool_type']['id'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['example_tool_type']['field'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['group'] = 1;
+  $handler->display->display_options['filters']['example_tool_type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['example_tool_type']['expose']['operator_id'] = 'example_tool_type_op';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['operator'] = 'example_tool_type_op';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['identifier'] = 'example_tool_type';
+  $handler->display->display_options['filters']['example_tool_type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Indexed Multilingual Content: Content type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'tk_example' => 'tk_example',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
+  /* Filter criterion: Indexed Multilingual Content: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_default_multilingual_node_index';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['path'] = 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples';
   $translatables['search_toolkit_examples'] = array(
     t('Master'),
     t('Search Toolkit Examples'),
@@ -329,6 +489,8 @@ function hwc_toolkit_views_default_views() {
     t('Country'),
     t('Content type'),
     t('Page'),
+    t('We know you are keen to see some good practice for different campaings, we are offering you option to search for examples from around whole Europe and get inspired.'),
+    t('<p class="result-summary">Showing @start - @end from @total</p>'),
   );
   $export['search_toolkit_examples'] = $view;
 
