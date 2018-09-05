@@ -553,7 +553,7 @@ function hwc_toolkit_get_left_menu($active_id) {
         $menu[$l1_id]['children'][$l2_id]['active'] = TRUE;
         $menu[$l1_id]['active'] = TRUE;
         hwc_toolkit_menu_breadcrumbs($lo_link);
-        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
+        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
         hwc_toolkit_menu_breadcrumbs($menu_item2['title']);
         if ('taxonomy' == $menu_item2['type']) {
           drupal_set_breadcrumb(hwc_toolkit_menu_breadcrumbs());
@@ -581,10 +581,10 @@ function hwc_toolkit_get_left_menu($active_id) {
           $menu[$l1_id]['active'] = TRUE;
 
           hwc_toolkit_menu_breadcrumbs($lo_link);
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['href']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['path']));
           if ($is_example) {
-            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['href']));
+            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['path']));
             hwc_toolkit_menu_breadcrumbs(drupal_get_title());
           }
           else {
