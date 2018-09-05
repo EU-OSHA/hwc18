@@ -775,6 +775,8 @@ function hwc_form_chosen_admin_settings_alter(&$form, $form_state) {
 function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
   global $user;
 
+  $form['field_first_publication_date']['#access'] = FALSE;
+
   // Hide migration source field.
   if (isset($form['field_migration_source'])) {
     $form['field_migration_source']['#access'] = FALSE;

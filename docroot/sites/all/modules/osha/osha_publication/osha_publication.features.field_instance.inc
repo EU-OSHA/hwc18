@@ -2212,6 +2212,7 @@ function osha_publication_field_default_field_instances() {
   t('Cover image');
   t('Expiration date');
   t('File');
+  t('First publication date');
   t('Page count');
   t('Priority area');
   t('Publication Type');

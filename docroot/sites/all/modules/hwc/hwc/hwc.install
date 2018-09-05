@@ -885,4 +885,6 @@ function hwc_update_7055() {
   features_revert(array('osha_infographics' => array('field_instance')));
   features_revert(array('osha' => array('field_instance', 'views_view')));
   features_revert(array('osha_press_release' => array('field_instance')));
+  features_revert(array('hwc_practical_tool' => array('field_instance')));
+
 }
