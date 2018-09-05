@@ -13,6 +13,59 @@ define('SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
 define('NAPO_WEBSITE', 'https://www.napofilm.net/');
 
 /**
+ * Implements Elysia hook_cronapi().
+ */
+function ncw_cronapi() {
+  return array(
+    'ncw_cron' => array(
+      'description' => 'Update first publication date',
+      'rule' => '*/5 * * * *', // Every 5 minutes
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function hwc_cron() {
+  $nid_stamp = [];
+  $result = views_get_view_result('first_publication_date_update');
+  foreach($result as $row) {
+
+    if (isset($nid_stamp[$row->nid])) {
+      $nid_stamp[$row->nid] = min($nid_stamp[$row->nid], $row->workbench_moderation_node_history_stamp);
+    }
+    else {
+      $nid_stamp[$row->nid] = $row->workbench_moderation_node_history_stamp;
+    }
+  }
+  $max = 75;
+  foreach($nid_stamp as $nid => $stamp) {
+    $max--;
+    if (!$max) {
+      break;
+    }
+    $node = node_load($nid);
+    $node->field_first_publication_date[LANGUAGE_NONE][0] = [
+      'value' => $stamp,
+      'timezone' => 'Europe/Madrid',
+      'timezone_db' => 'Europe/Madrid',
+    ];
+    node_save($node);
+  }
+}
+
+/*
+ * hook_views_query_alter
+ */
+function hwc_views_query_alter(&$view, &$query) {
+  if ($view->name == 'first_publication_date_update') {
+    $view->query->table_queue['node_revision']['join']->left_field = 'nid';
+    $view->query->table_queue['node_revision']['join']->field = 'nid';
+  }
+}
+
+/**
  * Implements hook_menu_alter().
  */
 function hwc_menu_alter(&$items) {

@@ -149,6 +149,6 @@ function hwc_toolkit_update_7020() {
  * TKIT-106 New page in Tools and Examples.
  */
 function hwc_toolkit_update_7021() {
-  features_revert(array('hwc_toolkit' => array('views_view', 'context')));
+  features_revert(array('hwc_toolkit' => array('views_view', 'context', 'field_instance')));
   variable_set('toolkit_search_toolkit_examples', 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples');
 }
