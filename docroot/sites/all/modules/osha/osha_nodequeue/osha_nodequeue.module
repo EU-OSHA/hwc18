@@ -102,20 +102,21 @@ function osha_nodequeue_node_insert($node) {
  * Implements hook_workbench_moderation_transition().
  *
  * {@inheritdoc}
- * Add/Remove node to queue for publish/unpublish actions
+ * Add/Remove node to queue for publish/unpublish actions.
  */
-function osha_nodequeue_workbench_moderation_transition($node, $previous_state, $new_state){
+function osha_nodequeue_workbench_moderation_transition($node, $previous_state, $new_state) {
   $qids = _osha_nodequeue_get_auto_qids($node->type, FALSE);
   $nodes = _osha_nodequeue_get_auto_qids($node->type, $node->nid);
 
-  if(!empty($qids)) {
+  if (!empty($qids)) {
     $queues = nodequeue_load_queues($qids);
     foreach ($queues as $queue) {
       $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
       $subqueue = array_shift($subqueues);
-      if($new_state == 'published' && !count($nodes)) {
+      if ($new_state == 'published' && !count($nodes)) {
         nodequeue_subqueue_add($queue, $subqueue, $node->nid);
-      }else {
+      }
+      else {
         nodequeue_subqueue_remove_node($subqueue->sqid, $node->nid);
       }
     }

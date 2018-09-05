@@ -51,6 +51,7 @@ features[path_breadcrumbs][] = login
 features[path_breadcrumbs][] = sitemap
 features[variable][] = ds_classes_fields
 features[variable][] = ds_classes_regions
+features[views_view][] = first_publication_date_update
 features[views_view][] = get_your_certificate
 features[views_view][] = ncw_export
 files[] = hwc_admin.pages.inc

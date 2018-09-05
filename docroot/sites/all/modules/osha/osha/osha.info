@@ -96,6 +96,7 @@ features[field_instance][] = node-article-field_character_count
 features[field_instance][] = node-article-field_cover_image
 features[field_instance][] = node-article-field_expiration_date
 features[field_instance][] = node-article-field_external_url
+features[field_instance][] = node-article-field_first_publication_date
 features[field_instance][] = node-article-field_image
 features[field_instance][] = node-article-field_page_count
 features[field_instance][] = node-article-field_publication_date

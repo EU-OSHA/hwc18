@@ -52,6 +52,7 @@ function osha_search_default_search_api_index() {
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
         "edit_url" : { "type" : "uri" },
+        "example_tool_type" : { "type" : "integer" },
         "field_access_tool_link_fc" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"

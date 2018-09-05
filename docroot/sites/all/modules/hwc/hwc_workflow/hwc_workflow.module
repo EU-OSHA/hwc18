@@ -453,8 +453,8 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
 function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
   global $user;
   if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && count($user->roles) == 2) {
-    foreach($user->workbench_access as $user_id_section => $value) {
-      foreach($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
+    foreach ($user->workbench_access as $user_id_section => $value) {
+      foreach ($form['workbench_access']['workbench_access']['#options'] as $wb_id_section => $label) {
         if ($user_id_section == $wb_id_section) {
           $form['workbench_access']['workbench_access']['#default_value'] = $user_id_section;
           $form['workbench_access']['workbench_access']['#access'] = FALSE;
@@ -473,7 +473,7 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  else if (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array('administrator', ROLE_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }

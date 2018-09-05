@@ -7202,6 +7202,9 @@ header.navbar-default {
   /* header */
   /* menu */
 }
+header.navbar-default.no-sticky {
+  position: relative !important;
+}
 header.navbar-default .campaigns-header {
   padding: 0;
   /* login */
@@ -7786,6 +7789,9 @@ body.logged-in {
   body.logged-in {
     padding-top: 170px !important;
   }
+}
+body.tk-pages {
+  padding-top: 0px !important;
 }
 body .form-type-password.form-item-pass {
   padding-bottom: 1em;
@@ -8977,7 +8983,8 @@ table tr.error.form-type-select:after {
   content: "";
 }
 /* Node-XXX */
-div[class*='node-'] h1 {
+div[class*='node-'] h1,
+div[class*='view-'] h1 {
   text-align: center;
   font-style: italic;
   font-weight: lighter;
@@ -8985,10 +8992,12 @@ div[class*='node-'] h1 {
   font-size: 2.5em;
   border-bottom: none;
 }
-div[class*='node-'] .field-name-field-summary {
+div[class*='node-'] .field-name-field-summary,
+div[class*='view-'] .field-name-field-summary {
   font-weight: bold;
 }
-div[class*='node-'] .more-link {
+div[class*='node-'] .more-link,
+div[class*='view-'] .more-link {
   color: #003399;
   background-color: transparent;
   font-weight: bold;
@@ -9083,6 +9092,7 @@ div[class*='node-'] .more-link {
 }
 .page-node .node-news .field-name-field-image-caption {
   background-color: #e2e2e3;
+  font-size: 1.2rem;
   padding: 1em;
   text-align: center;
   width: 220px;
@@ -11111,6 +11121,14 @@ article .hwc-share-widget ul {
 .field.field-name-field-image {
   margin-bottom: 1em;
 }
+.field-name-field-image .image-field-caption {
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #e2e2e3;
+}
+.group-left .field-name-field-image .image-field-caption {
+  display: none;
+}
 .container .field.field-name-body p a {
   background-color: transparent;
   color: #003399;
@@ -11188,6 +11206,7 @@ article .hwc-share-widget ul {
 .page-media-center-photo-gallery .views-field-field-images blockquote.image-field-caption,
 .view-photo-gallery .views-field-field-images blockquote.image-field-caption,
 .page-photo-gallery .views-field-field-images blockquote.image-field-caption {
+  font-size: 1.2rem;
   padding-left: 0px;
   padding-right: 0px;
   border-left: none;
@@ -13013,7 +13032,7 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3,
 .profile-edit-links-container .pane-node-profile-update-link {
-  width: 20%;
+  width: 33.3%;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content,
@@ -13021,17 +13040,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content,
 .profile-edit-links-container .pane-node-profile-update-link .pane-content {
   border: 1px dotted #749b00;
-  min-height: 111px;
   text-align: center;
-  padding: 20px 10px !important;
-  margin: 10px;
-}
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2 .pane-content .hwc-partner-private-link-block-title,
-.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content .hwc-partner-private-link-block-title,
-.profile-edit-links-container .pane-node-profile-update-link .pane-content .hwc-partner-private-link-block-title {
-  margin-bottom: 15px;
+  margin: 3rem auto 10rem;
+  width: 65%;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a,
@@ -13043,6 +13054,9 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-style: italic;
   font-size: 1.4em;
   cursor: pointer;
+  display: block;
+  min-height: 111px;
+  padding: 20px 10px !important;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a:before,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a:before,
@@ -13050,6 +13064,13 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content .hwc-partner-private-link-block-title a:before,
 .profile-edit-links-container .pane-node-profile-update-link .pane-content .hwc-partner-private-link-block-title a:before {
   content: "> ";
+}
+.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a:hover,
+.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a:hover,
+.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2 .pane-content .hwc-partner-private-link-block-title a:hover,
+.profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content .hwc-partner-private-link-block-title a:hover,
+.profile-edit-links-container .pane-node-profile-update-link .pane-content .hwc-partner-private-link-block-title a:hover {
+  text-decoration: none;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-description span,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-description span,
@@ -19430,6 +19451,9 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end galder styles issue bulgaria*/
 /*start toolkit styles*/
+.toolkit-page {
+  /* toolkit examples */
+}
 .toolkit-page .well {
   background-color: inherit;
   border: none;
@@ -19452,6 +19476,23 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li {
   /*second sublevel*/
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples {
+  font-weight: bold;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples:before {
+  content: "\e003";
+  font-family: "Glyphicons Halflings";
+  padding-left: 0px;
+  padding-right: 0.6rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li a.key-search-toolkit-examples:after {
+  content: "\e250";
+  font-family: "Glyphicons Halflings";
+  margin-left: 7px;
+  vertical-align: middle;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span {
@@ -19606,6 +19647,13 @@ input#edit-field-image-und-0-upload::before {
   color: #003399;
   margin-bottom: 10px;
 }
+.toolkit-page .node-type-tk-example div.group-left > div.field.field-name-title > div > div > h1 {
+  font-style: normal;
+  color: #003399;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 2em;
+}
 .toolkit-page .main-container .page_title h1.page-header {
   display: none;
 }
@@ -19616,12 +19664,27 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .field-type-text-with-summary .field-items:before h3 {
   margin-bottom: 25px;
 }
-.toolkit-page .main-container h2 {
+.toolkit-page .main-container h1 {
   font-style: normal;
   color: #749b00;
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 2em;
+  text-align: left;
+}
+.toolkit-page .main-container h2 {
+  font-size: 1.3em;
+  color: #003399;
+  margin-bottom: 10px;
+  font-style: normal;
+  color: #749b00;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 2em;
+}
+.toolkit-page .main-container h2 a:before {
+  content: '';
+  padding-left: 0;
 }
 .toolkit-page .main-container h3 {
   font-size: 1.3em;
@@ -19832,15 +19895,19 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
   max-width: inherit;
 }
-.toolkit-page .main-container .view-tk-tools .views-row .views-field-title span a {
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-title h2 a {
   height: 75px;
   background-color: #003399;
   color: white;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1.5rem;
   text-align: center;
   display: block;
   padding-top: 25px;
+}
+.toolkit-page .main-container .view-tk-tools .views-row .views-field-title h2 a:before {
+  content: "";
+  padding-right: 0;
 }
 @media (min-width: 1301px) and (max-width: 1665px) {
   .toolkit-page .main-container .view-tk-tools .views-row {
@@ -20037,6 +20104,278 @@ input#edit-field-image-und-0-upload::before {
   padding-right: 0px;
   font-weight: lighter;
 }
+.toolkit-page .main-container .view-search-toolkit-examples .hide-filters {
+  margin: 1rem 3rem 0rem 0;
+  text-align: right;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+  width: 33%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget.views-widget-sort-by {
+  display: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+  width: 100%;
+  position: relative;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input {
+  width: 100%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+  content: url(../images/header/search.png);
+  background: #003399;
+  height: 33px;
+  width: 33px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 7px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+  display: inline-block;
+  margin-top: 2rem;
+  border-radius: 6px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+  width: 100% !important;
+  padding: 0;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  height: 33px;
+  border-radius: 0;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+  padding: 5px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+  width: 33px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+  background: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+  content: url(../images/header/select.png);
+  background: #003399;
+  height: 33px;
+  width: 33px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding: 3px 13px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+  margin-top: -48px;
+  text-align: right;
+  border-top: 1px dotted #A9C809;
+  border-bottom: 1px dotted #A9C809;
+  padding: 14px 0px;
+  margin-bottom: 2rem;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+  margin-top: 15px;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+  background: #F3F3F3;
+  margin-bottom: 1.5rem;
+  padding: 2rem 4rem;
+  display: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+  float: left;
+  width: 18%;
+  margin-right: 2%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+  float: left;
+  width: 80%;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item {
+  position: relative;
+  margin-top: 2rem;
+  width: auto;
+  display: block;
+  text-align: right;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item a {
+  background-color: #749b00;
+  display: inline-block;
+  text-align: center;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item a:hover {
+  background-color: #595959;
+}
+.toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items:empty {
+  display: none;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+    width: 100%;
+    float: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+    width: 100%;
+    position: relative;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input,
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item select {
+    width: 100%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+    content: url(../images/header/search.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 7px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+    display: inline-block;
+    margin-top: 2rem;
+    border-radius: 6px;
+    width: auto;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    height: 33px;
+    border-radius: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+    padding: 5px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+    width: 33px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+    background: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+    content: url(../images/header/select.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 3px 13px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+    margin-top: -56px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+    margin-top: 15px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+    padding: 2rem;
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+    float: left;
+    width: 18%;
+    margin-right: 2%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+    float: left;
+    width: 80%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items:empty {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget {
+    width: 100% !important;
+    float: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item {
+    width: 100%;
+    position: relative;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item input,
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item select {
+    width: 100%;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item.form-item-search:after {
+    content: url(../images/header/search.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 7px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item #edit-sort-order {
+    display: inline-block;
+    margin-top: 2rem;
+    border-radius: 6px;
+    width: auto;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container {
+    width: 100% !important;
+    padding: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    height: 33px;
+    border-radius: 0;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single > span {
+    padding: 5px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div {
+    width: 33px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b {
+    background: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples #views-exposed-form-search-toolkit-examples-page .views-exposed-widget .form-item .chosen-container > a.chosen-single div b:after {
+    content: url(../images/header/select.png);
+    background: #003399;
+    height: 33px;
+    width: 33px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    padding: 3px 13px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary {
+    margin-top: -56px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .view-footer .result-summary.filetrs-hidden {
+    margin-top: 15px;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items {
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-left {
+    display: none;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right {
+    float: none !important;
+    width: 100% !important;
+  }
+  .toolkit-page .main-container .view-search-toolkit-examples .tools-and-examples-items .ds-2col > .group-right .field-name-node-link .field-items .field-item {
+    text-align: center !important;
+  }
+}
 .toolkit-page #block-hwc-toolkit-toolkit-nav,
 .toolkit-page .pane-hwc-toolkit-toolkit-nav {
   clear: both;
@@ -20169,14 +20508,15 @@ input#edit-field-image-und-0-upload::before {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.node-type-tk-topic .node-tk-topic .group-left .box-check-content h3,
-.node-type-tk-topic .node-tk-topic .group-left .box-check-content h4 {
+.node-type-tk-topic .node-tk-topic .group-left .box-check-content h2,
+.node-type-tk-topic .node-tk-topic .group-left .box-check-content h3 {
   border-bottom: 2px solid #749b00;
   padding-bottom: 5px;
   font-weight: bold;
   font-size: 1.4em;
   margin-bottom: 30px;
   color: #749b00;
+  margin-top: 15px;
 }
 .node-type-tk-topic .node-tk-topic .group-left .box-check-content ul {
   list-style: none;
@@ -26102,10 +26442,12 @@ input#edit-field-image-und-0-upload::before {
     display: inline-block;
     float: right;
   }
+  .toolkit-page .main-container h1 {
+    padding-left: 0;
+  }
   .toolkit-page .main-container h2 {
     margin-left: 0px;
     margin-right: 0px;
-    font-size: 1.6em !important;
   }
   .toolkit-page .main-container .start-here .col {
     padding-left: 0px;
@@ -26126,6 +26468,7 @@ input#edit-field-image-und-0-upload::before {
     padding: 30px 15px;
     position: relative;
     left: inherit;
+    width: 100%;
   }
   .toolkit-page .main-container .field-name-field-tk-topics > .field-items > .field-item .node-tk-topic .group-right .field-name-node-link {
     text-align: center;

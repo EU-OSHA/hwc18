@@ -202,6 +202,7 @@ function osha_views_default_views() {
     'edit_node' => 'edit_node',
     'delete_node' => 'delete_node',
     'nothing' => 'nothing',
+    'field_first_publication_date' => 'field_first_publication_date',
   );
   $handler->display->display_options['style_options']['default'] = 'changed';
   $handler->display->display_options['style_options']['info'] = array(
@@ -289,6 +290,13 @@ function osha_views_default_views() {
       'empty_column' => 0,
     ),
     'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_first_publication_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -412,6 +420,19 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['field_modified_by']['field'] = 'field_modified_by';
   $handler->display->display_options['fields']['field_modified_by']['settings'] = array(
     'link' => 0,
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: First publication date */
+  $handler->display->display_options['fields']['field_first_publication_date']['id'] = 'field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['table'] = 'field_data_field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['field'] = 'field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
     'field_formatter_class' => '',
   );
   /* Field: Content: Edit link */
@@ -570,30 +591,6 @@ function osha_views_default_views() {
   );
   $handler->display->display_options['filters']['field_partner_type_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_partner_type_tid']['vocabulary'] = 'partner_types';
-  /* Filter criterion: Taxonomy term: Vocabulary */
-  $handler->display->display_options['filters']['vid']['id'] = 'vid';
-  $handler->display->display_options['filters']['vid']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['vid']['field'] = 'vid';
-  $handler->display->display_options['filters']['vid']['relationship'] = 'term_node_tid';
-  $handler->display->display_options['filters']['vid']['group'] = 1;
-  $handler->display->display_options['filters']['vid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['vid']['expose']['operator_id'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['label'] = 'Vocabulary';
-  $handler->display->display_options['filters']['vid']['expose']['operator'] = 'vid_op';
-  $handler->display->display_options['filters']['vid']['expose']['identifier'] = 'vid';
-  $handler->display->display_options['filters']['vid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-  );
   /* Filter criterion: Entity translation: Translation exists */
   $handler->display->display_options['filters']['translation_exists']['id'] = 'translation_exists';
   $handler->display->display_options['filters']['translation_exists']['table'] = 'entity_translation';
@@ -759,12 +756,12 @@ function osha_views_default_views() {
     t('Updated date'),
     t('Modified on'),
     t('Modified by'),
+    t('First publication date'),
     t('edit'),
     t('[edit_node] [delete_node]'),
     t('Operations'),
     t('Type'),
     t('Type of partner'),
-    t('Vocabulary'),
     t('Not translated in'),
     t('State'),
     t('Created (from)'),
