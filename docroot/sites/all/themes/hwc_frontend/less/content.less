@@ -947,12 +947,13 @@ ul.tabs--primary.nav.nav-tabs{
 				width: auto;
 				height: auto;
 			}
-			.node-article .field.field-name-field-image {
+			.node-article .field.field-name-field-image, .node-internal-url  .field.field-name-field-image{
 				float: left;
 				margin-right: 1em;
 				margin-bottom: 1em;
 				margin-bottom: 1em;
 				width: auto;
+				width: 150px;
 				height: auto;
 				overflow: hidden;
 				a:before{
@@ -3353,7 +3354,8 @@ article{
 		.field-name-field-image {
 				.image-field-caption{
 					//display:none;
-					background-color: #f3f3f3;
+					background-color: #FFF;
+					text-align: center;
   				color: #666;
   				padding: 3px 0;
 				}
@@ -3364,6 +3366,7 @@ article{
 .group-left{
 	.field-name-field-image {
 		position: relative;
+		overflow: auto;
 			.image-field-caption{
 				//display:none; 
 			  font-size: 1.2rem;

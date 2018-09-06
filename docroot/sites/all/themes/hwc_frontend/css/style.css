@@ -8779,16 +8779,21 @@ table tr.error.form-type-select:after {
   height: auto;
 }
 .node-article .field-name-field-recommended-resources .node-article .field.field-name-field-image,
-.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image {
+.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image,
+.node-article .field-name-field-recommended-resources .node-internal-url .field.field-name-field-image,
+.node-article .field-name-field-recommended-articles .node-internal-url .field.field-name-field-image {
   float: left;
   margin-right: 1em;
   margin-bottom: 1em;
   width: auto;
+  width: 150px;
   height: auto;
   overflow: hidden;
 }
 .node-article .field-name-field-recommended-resources .node-article .field.field-name-field-image a:before,
-.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image a:before {
+.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image a:before,
+.node-article .field-name-field-recommended-resources .node-internal-url .field.field-name-field-image a:before,
+.node-article .field-name-field-recommended-articles .node-internal-url .field.field-name-field-image a:before {
   content: "";
 }
 .node-article .field-name-field-recommended-resources .node-news .group-left,
@@ -11143,12 +11148,14 @@ article .hwc-share-widget ul {
   display: block;
 }
 .views-row .group-left .field-name-field-image .image-field-caption {
-  background-color: #f3f3f3;
+  background-color: #FFF;
+  text-align: center;
   color: #666;
   padding: 3px 0;
 }
 .group-left .field-name-field-image {
   position: relative;
+  overflow: auto;
 }
 .group-left .field-name-field-image .image-field-caption {
   font-size: 1.2rem;
