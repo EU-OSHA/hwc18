@@ -51,9 +51,11 @@ class NCWHighlightMigration extends AbstractNCWNodeMigration {
 
   function prepareRow($row) {
     parent::prepareRow($row);
+    // Disable NCW alias.
+    $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
 
-    // field_aditional_resources
+    // Field aditional_resources.
     $fi = field_info_field('field_aditional_resources');
     osha_migration_normalize_field_entityreference($row, 'field_aditional_resources', $fi);
     $additional_resources = $row->field_aditional_resources;
