@@ -405,9 +405,11 @@ function hwc_toolkit_get_menu_tree($level1) {
         $l2_title = $wrapper->name->value();
         $menu[$l1_nid]['children'][$l2_tid] = _toolkit_menu_item($l2_title, 'taxonomy/term/' . $l2_tid, 'taxonomy');
       }
-      $campaigns_general_nid = variable_get('toolkit_campaigns_general_nid', 6749);
-      $wrapper = entity_metadata_wrapper('node', $campaigns_general_nid);
-      $menu[$l1_nid]['children'][$campaigns_general_nid] = _toolkit_menu_item($wrapper->language($language->language)->title_field->value(), 'node/' . $campaigns_general_nid);
+      $campaigns_general_nid = variable_get('toolkit_campaigns_general_nid', 6620);
+      if ($campaigns_general_nid) {
+        $wrapper = entity_metadata_wrapper('node', $campaigns_general_nid);
+        $menu[$l1_nid]['children'][$campaigns_general_nid] = _toolkit_menu_item($wrapper->language($language->language)->title_field->value(), 'node/' . $campaigns_general_nid);
+      }
     }
   }
 
@@ -710,7 +712,7 @@ function hwc_update_toolkit_menu_content_links() {
             $new_alias = hwc_toolkit_check_menu($menu_item, $alias4,
               [$alias1, $alias2, $alias3]);
             if ($new_alias && ($new_alias != $existing_alias)) {
-              path_delete(array('alias' => $existing_alias['alias']));
+              path_delete(array('alias' => $existing_alias));
               $args = array(
                 'source' => 'node/' . $example_nid,
                 'alias' => $new_alias,
