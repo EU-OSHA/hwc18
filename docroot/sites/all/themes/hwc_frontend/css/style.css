@@ -13070,12 +13070,18 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin-left: 15px;
   margin-right: 15px;
 }
+.profile-edit-links-container .panels-flexible-region-inside-first {
+  justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1rem 0 3rem;
+}
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3,
 .profile-edit-links-container .pane-node-profile-update-link {
-  width: 33.3%;
+  width: 20%;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content,
@@ -13083,9 +13089,10 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content,
 .profile-edit-links-container .pane-node-profile-update-link .pane-content {
   border: 1px dotted #749b00;
+  min-height: 130px;
   text-align: center;
-  margin: 3rem auto 10rem;
-  width: 65%;
+  padding: 20px 10px !important;
+  margin: 10px;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a,
@@ -13097,9 +13104,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-style: italic;
   font-size: 1.4em;
   cursor: pointer;
+  padding: 0px 0px 20px !important;
   display: block;
-  min-height: 111px;
-  padding: 20px 10px !important;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a:before,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a:before,

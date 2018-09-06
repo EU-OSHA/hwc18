@@ -5224,17 +5224,24 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 .profile-edit-links-container{
 	margin-left: @margin2;
 	margin-right: @margin2;
+	.panels-flexible-region-inside-first{
+		justify-content: center;
+		display: flex;
+		flex-flow: row wrap;
+	  margin: 1rem 0 3rem;
+	}
 	.pane-hwc-partner-hwc-partner-private-link-0,
 	.pane-hwc-partner-hwc-partner-private-link-1,
 	.pane-hwc-partner-hwc-partner-private-link-2,
 	.pane-hwc-partner-hwc-partner-private-link-3,
 	.pane-node-profile-update-link{
-	  width: 33.3%;
+	  width: 20%;
 		.pane-content{
-			border: 1px dotted @color3;
-			text-align: center;
-		  margin: 3rem auto 10rem;
-		  width: 65%;
+		border: 1px dotted #749b00;
+		min-height: 130px;
+		text-align: center;
+		padding: 20px 10px !important;
+		margin: 10px;
 			.hwc-partner-private-link-block-title{
 				//margin-bottom: 15px;
 				a{
@@ -5243,9 +5250,8 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 					font-style: italic;
 					font-size: 1.4em;
 					cursor: pointer;
-					display: block;
-					min-height: 111px;
-					padding: 20px 10px !important;
+				  padding: 0px 0px 20px !important;
+				  display: block;
 					&:before{
 						content: "> ";
 					}
