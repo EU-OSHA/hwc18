@@ -873,3 +873,18 @@ function hwc_update_7053() {
 function hwc_update_7054() {
   hwc_update_main_menu_position_rule();
 }
+
+/**
+ * MDR-2106 Publication first date.
+ */
+function hwc_update_7055() {
+  features_revert(array('hwc' => array('views_view')));
+  features_revert(array('osha_publication' => array('field_base', 'field_instance')));
+  features_revert(array('campaign_materials' => array('field_instance')));
+  features_revert(array('osha_events' => array('field_instance')));
+  features_revert(array('osha_infographics' => array('field_instance')));
+  features_revert(array('osha' => array('field_instance', 'views_view')));
+  features_revert(array('osha_press_release' => array('field_instance')));
+  features_revert(array('hwc_practical_tool' => array('field_instance')));
+
+}

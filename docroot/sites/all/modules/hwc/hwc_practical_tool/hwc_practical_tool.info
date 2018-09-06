@@ -120,6 +120,7 @@ features[field_instance][] = node-practical_tool-field_exposure_route_other
 features[field_instance][] = node-practical_tool-field_external_url
 features[field_instance][] = node-practical_tool-field_external_urls
 features[field_instance][] = node-practical_tool-field_fc_provider
+features[field_instance][] = node-practical_tool-field_first_publication_date
 features[field_instance][] = node-practical_tool-field_free
 features[field_instance][] = node-practical_tool-field_hazard_health_effects
 features[field_instance][] = node-practical_tool-field_hazard_health_other

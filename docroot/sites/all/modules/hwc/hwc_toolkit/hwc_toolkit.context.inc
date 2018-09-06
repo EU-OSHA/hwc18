@@ -31,8 +31,8 @@ function hwc_toolkit_context_default_contexts() {
     ),
     'path' => array(
       'values' => array(
-        'tools-and-examples/media-communication-tools/search-toolkit-examples' => 'tools-and-examples/media-communication-tools/search-toolkit-examples',
-        'tools-and-examples/media-communication-tools/search-toolkit-examples/*' => 'tools-and-examples/media-communication-tools/search-toolkit-examples/*',
+        'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples' => 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples',
+        'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples/*' => 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples/*',
       ),
     ),
     'views' => array(

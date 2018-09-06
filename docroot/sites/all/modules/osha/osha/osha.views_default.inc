@@ -202,6 +202,7 @@ function osha_views_default_views() {
     'edit_node' => 'edit_node',
     'delete_node' => 'delete_node',
     'nothing' => 'nothing',
+    'field_first_publication_date' => 'field_first_publication_date',
   );
   $handler->display->display_options['style_options']['default'] = 'changed';
   $handler->display->display_options['style_options']['info'] = array(
@@ -289,6 +290,13 @@ function osha_views_default_views() {
       'empty_column' => 0,
     ),
     'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_first_publication_date' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -412,6 +420,19 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['field_modified_by']['field'] = 'field_modified_by';
   $handler->display->display_options['fields']['field_modified_by']['settings'] = array(
     'link' => 0,
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: First publication date */
+  $handler->display->display_options['fields']['field_first_publication_date']['id'] = 'field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['table'] = 'field_data_field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['field'] = 'field_first_publication_date';
+  $handler->display->display_options['fields']['field_first_publication_date']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
     'field_formatter_class' => '',
   );
   /* Field: Content: Edit link */
@@ -735,6 +756,7 @@ function osha_views_default_views() {
     t('Updated date'),
     t('Modified on'),
     t('Modified by'),
+    t('First publication date'),
     t('edit'),
     t('[edit_node] [delete_node]'),
     t('Operations'),

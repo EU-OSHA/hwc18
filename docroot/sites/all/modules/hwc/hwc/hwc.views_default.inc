@@ -11,6 +11,149 @@ function hwc_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'first_publication_date_update';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'first publication date update';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'nid' => 'nid',
+    'from_state' => 'from_state',
+    'published' => 'published',
+    'state' => 'state',
+    'stamp' => 'stamp',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'from_state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'published' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'stamp' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  /* Field: Workbench Moderation: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['machine_name'] = 0;
+  /* Field: Workbench Moderation: From state */
+  $handler->display->display_options['fields']['from_state']['id'] = 'from_state';
+  $handler->display->display_options['fields']['from_state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['from_state']['field'] = 'from_state';
+  /* Field: Workbench Moderation: Timestamp */
+  $handler->display->display_options['fields']['stamp']['id'] = 'stamp';
+  $handler->display->display_options['fields']['stamp']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['stamp']['field'] = 'stamp';
+  $handler->display->display_options['fields']['stamp']['date_format'] = 'year';
+  $handler->display->display_options['fields']['stamp']['second_date_format'] = 'year';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'article' => 'article',
+    'campaign_materials' => 'campaign_materials',
+    'events' => 'events',
+    'infographic' => 'infographic',
+    'news' => 'news',
+    'practical_tool' => 'practical_tool',
+    'press_release' => 'press_release',
+    'publication' => 'publication',
+  );
+  /* Filter criterion: Workbench Moderation: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'published' => 'published',
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filter criterion: Content: First publication date (field_first_publication_date) */
+  $handler->display->display_options['filters']['field_first_publication_date_value']['id'] = 'field_first_publication_date_value';
+  $handler->display->display_options['filters']['field_first_publication_date_value']['table'] = 'field_data_field_first_publication_date';
+  $handler->display->display_options['filters']['field_first_publication_date_value']['field'] = 'field_first_publication_date_value';
+  $handler->display->display_options['filters']['field_first_publication_date_value']['operator'] = 'empty';
+  $translatables['first_publication_date_update'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Nid'),
+    t('State'),
+    t('From state'),
+    t('Timestamp'),
+  );
+  $export['first_publication_date_update'] = $view;
+
+  $view = new view();
   $view->name = 'get_your_certificate';
   $view->description = '';
   $view->tag = 'default';
