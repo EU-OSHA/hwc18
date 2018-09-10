@@ -11153,6 +11153,9 @@ article .hwc-share-widget ul {
   color: #666;
   padding: 3px 0;
 }
+.carousel .views-row .group-left .field-name-field-image .image-field-caption {
+  background-color: transparent !important;
+}
 .group-left .field-name-field-image {
   position: relative;
   overflow: auto;
