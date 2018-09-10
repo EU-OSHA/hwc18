@@ -53,18 +53,30 @@
   <?php
     // get breadcrumbs to built new title
     $breadcrumbs_items = drupal_get_breadcrumb();
-
     // Delete the first element wellcome
     unset($breadcrumbs_items[0]);
-    
-    // If, at least, there is one breadcrumbs element 
+
+
+
+  if (strpos($variables['classes'],'toolkit-page') == true ) {
+    $site_name = 'OSH campaign toolkit';
+  } else {
+     $site_name = $head_title_array['name'];
+  }
+
+    // If, at least, there is one breadcrumbs element    
     if(count($breadcrumbs_items) > 1){
-      $custom_title_page = strip_tags(implode(" | ", array_reverse($breadcrumbs_items))) . ' | ' . $head_title_array['name'];
-    } else {
-      if(drupal_get_title()){
-        $custom_title_page = drupal_get_title()  . ' | ' . $head_title_array['name'];
+      if(count($breadcrumbs_items) > 2){
+        $custom_title_page = strip_tags(implode(" | ", array_reverse($breadcrumbs_items)));
       } else {
-        $custom_title_page = $head_title_array['name'];
+        $custom_title_page = strip_tags(implode(" | ", array_reverse($breadcrumbs_items))) . ' | ' . $site_name;
+      }
+      
+    } else {      
+      if(drupal_get_title()){
+        $custom_title_page = drupal_get_title()  . ' | ' . $site_name;
+      } else {
+        $custom_title_page = $site_name;
       }
       
     }
