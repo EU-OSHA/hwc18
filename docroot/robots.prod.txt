@@ -1,4 +1,4 @@
-#
+2#
 # robots.txt
 #
 # This file is to prevent the crawling and indexing of certain parts
@@ -179,11 +179,11 @@ Disallow: tools-and-examples
 Disallow: about-the-toolkit
 Disallow: tools-and-publications/campaign-toolkit
 Disallow: /*/toolkit
-Disallow: /*/welcome
-Disallow: /*/how-to-run-a-campaign
-Disallow: /*/tools-and-examples
-Disallow: /*/about-the-toolkit
-Disallow: /*/tools-and-publications/campaign-toolkit
+Disallow: /*welcome
+Disallow: /*how-to-run-a-campaign
+Disallow: /*tools-and-examples
+Disallow: /*about-the-toolkit
+Disallow: /*tools-and-publications/campaign-toolkit
 #
 Disallow: /*node/6619
 Disallow: /*node/6620
