@@ -245,19 +245,25 @@ function hwc_partner_update_7030() {
 }
 
 /**
- * HW18-446 Titles from head and breadcrumbs from campaign partners sections untranslated.
+ * HW18-446 Titles from head and breadcrumbs from campaign partners.
  */
 function hwc_partner_update_7031() {
-  features_revert(array('hwc_partner' => 'page_manager_pages'));
-  features_revert(array('hwc_partner' => 'page_manager_handlers'));
+  features_revert(array('hwc_partner' => array('page_manager_pages')));
+  features_revert(array('hwc_partner' => array('page_manager_handlers')));
 
-  features_revert(array('hwc_good_practice_exchange' => 'page_manager_pages'));
-  features_revert(array('hwc_good_practice_exchange' => 'page_manager_handlers'));
+  features_revert(array('hwc_good_practice_exchange' => array('page_manager_pages', 'page_manager_handlers')));
 }
 
 /**
  * MDR-1798 changes to the media partners.
  */
 function hwc_partner_update_7032() {
-  features_revert(array('hwc_partner' => 'views_view'));
+  features_revert(array('hwc_partner' => array('views_view')));
+}
+
+/**
+ * MDR-2000 Direct access to the Good Practice exchange platform.
+ */
+function hwc_partner_update_7033() {
+  features_revert(array('hwc_partner' => array('page_manager_pages', 'page_manager_handlers')));
 }

@@ -103,3 +103,59 @@ function hwc_toolkit_update_7014() {
 function hwc_toolkit_update_7015() {
   features_revert(array('hwc_toolkit' => array('views_view')));
 }
+
+/**
+ * TKIT-111 Move all articles to subfolders.
+ */
+function hwc_toolkit_update_7016() {
+  variable_set('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
+  hwc_update_toolkit_menu_content_links();
+}
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7017() {
+  features_revert(array('hwc_toolkit' => array('views_view', 'context', 'ds_field_settings', 'ds_layout_settings')));
+}
+
+/**
+ * TKIT-112 adding a type filter in the examples search page.
+ */
+function hwc_toolkit_update_7018() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7019() {
+  features_revert(array('hwc_toolkit' => array('views_view')));
+}
+
+/**
+ * TKIT-102 Delete Campaigns general menu.
+ */
+function hwc_toolkit_update_7020() {
+  $q = db_select('node', 'n');
+  $q->fields('n', ['nid']);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.title', 'Campaigns - general');
+  $col = $q->execute()->fetchCol();
+  variable_set('toolkit_campaigns_general_nid', $col[0]);
+}
+
+/**
+ * TKIT-106 New page in Tools and Examples.
+ */
+function hwc_toolkit_update_7021() {
+  features_revert(array('hwc_toolkit' => array('views_view', 'context', 'field_instance')));
+  variable_set('toolkit_search_toolkit_examples', 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples');
+}
+
+/**
+ * TKIT-104 Review and crop the cover picture of the examples.
+ */
+function hwc_toolkit_update_7022() {
+  features_revert(array('hwc_toolkit' => array('field_instance', 'image')));
+}

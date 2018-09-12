@@ -39,6 +39,7 @@ features[field_base][] = field_twin_infographics
 features[field_instance][] = node-infographic-body
 features[field_instance][] = node-infographic-field_activity
 features[field_instance][] = node-infographic-field_file
+features[field_instance][] = node-infographic-field_first_publication_date
 features[field_instance][] = node-infographic-field_image
 features[field_instance][] = node-infographic-field_publication_date
 features[field_instance][] = node-infographic-field_tags

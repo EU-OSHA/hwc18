@@ -6,6 +6,137 @@
 
 include_once 'hwc_toolkit.features.inc';
 
+define('HWC_SEARCH_TOOLKIT_EXAMPLES', '99999');
+
+function hwc_toolkit_get_available_example_countries() {
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_country', 'c', 'c.entity_id = n.nid');
+  $q->fields('c', ['field_country_tid']);
+  $q->condition('c.bundle', 'tk_example');
+  $q->condition('n.type', 'tk_example');
+  $q->condition('n.status', 1);
+  return $q->execute()->fetchAllKeyed(0,0);
+}
+
+function hwc_toolkit_node_get_example_tool_type_options() {
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('n', ['nid']);
+  $q->fields('e', ['field_tk_examples_target_id']);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rows = $q->execute()->fetchAll();
+  $map = [NULL => t('All')];
+  foreach ($rows as $row) {
+    $node = node_load($row->nid);
+    $map[$row->nid] = $node->title;
+  }
+  return $map;
+}
+
+function hwc_toolkit_node_get_tool_examples($node, $examples = []) {
+  if ($node->type != 'tk_tool') {
+    return [];
+  }
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('e', ['field_tk_examples_target_id']);
+  $q->condition('n.nid', $node->nid);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rows = $q->execute()->fetchAll();
+  foreach ($rows as $row) {
+    $examples[$row->field_tk_examples_target_id] = $row->field_tk_examples_target_id;
+  }
+  return $examples;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function hwc_toolkit_form_alter(&$form, $form_state, $form_id) {
+  if (($form_id == 'views_exposed_form') && ($form['#id'] == 'views-exposed-form-search-toolkit-examples-page')) {
+    $form['example_tool_type']['#type'] = "select";
+    $form['example_tool_type']['#size'] = NULL;
+    $form['example_tool_type']['#options'] = hwc_toolkit_node_get_example_tool_type_options();
+    $countries = hwc_toolkit_get_available_example_countries();
+    foreach ($form['country']['#options'] as $tid => $value) {
+      if (in_array($tid, $countries) || $tid == 'All') {
+        continue;
+      }
+      unset($form['country']['#options'][$tid]);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function hwc_toolkit_node_presave($node) {
+  $examples = &drupal_static('hwc_toolkit_tool_examples');
+  $examples = hwc_toolkit_node_get_tool_examples($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function hwc_toolkit_node_update($node) {
+  $examples = &drupal_static('hwc_toolkit_tool_examples');
+  $new_examples = hwc_toolkit_node_get_tool_examples($node, $examples);
+  $examples = array_merge($examples, $new_examples);
+  // Reindex all tool examples.
+  foreach ($examples as $nid) {
+    $example = node_load($nid);
+    if (!empty($example->translations->data)) {
+      foreach ($example->translations->data as $language => $tr) {
+        search_api_track_item_change('search_api_et_node', array($language . '_' . $example->nid));
+      }
+    }
+  }
+}
+
+/**
+ * Document partner category type tid.
+ */
+function hwc_toolkit_node_get_example_tool_type($item) {
+  if ($item->type != 'tk_example') {
+    return NULL;
+  }
+  $q = db_select('node', 'n');
+  $q->join('field_data_field_tk_examples', 'e', 'e.entity_id = n.nid');
+  $q->fields('e', ['entity_id']);
+  $q->condition('e.field_tk_examples_target_id', $item->nid);
+  $q->condition('n.type', 'tk_tool');
+  $q->condition('n.status', 1);
+  $rs = $q->execute()->fetchCol();
+  if ($rs) {
+    return $rs[0];
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function hwc_toolkit_entity_property_info_alter(&$info) {
+  $info['node']['properties']['example_tool_type'] = array(
+    'type' => 'integer',
+    'label' => t('Example Tool Type'),
+    'sanitized' => TRUE,
+    'getter callback' => 'hwc_toolkit_node_get_example_tool_type',
+  );
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function hwc_toolkit_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['hwc_teaser'] = array(
+    'label' => t('HWC teaser'),
+    'custom settings' => TRUE,
+  );
+}
+
 /**
  * Implements hook_field_formatter_info().
  */
@@ -208,6 +339,7 @@ function hwc_toolkit_get_menu_titles_map() {
 }
 
 function hwc_toolkit_get_menu_tree($level1) {
+  global $language;
   static $menu = [];
   if ($menu) {
     return $menu;
@@ -259,6 +391,10 @@ function hwc_toolkit_get_menu_tree($level1) {
 
     $terms = $w->field_tools_examples->value();
     if ($terms) {
+
+      $search_toolkit_examples_url = variable_get('toolkit_search_toolkit_examples', 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples');
+      $menu[$l1_nid]['children'][HWC_SEARCH_TOOLKIT_EXAMPLES] = _toolkit_menu_item(t('Search Toolkit Examples'), $search_toolkit_examples_url, 'views');
+
       $tools_nid = $l1_nid;
       foreach ($terms as $tk_term) {
         $wrapper = entity_metadata_wrapper('taxonomy_term', $tk_term);
@@ -268,6 +404,11 @@ function hwc_toolkit_get_menu_tree($level1) {
         $l2_tid = $tk_term->tid;
         $l2_title = $wrapper->name->value();
         $menu[$l1_nid]['children'][$l2_tid] = _toolkit_menu_item($l2_title, 'taxonomy/term/' . $l2_tid, 'taxonomy');
+      }
+      $campaigns_general_nid = variable_get('toolkit_campaigns_general_nid', 6620);
+      if ($campaigns_general_nid) {
+        $wrapper = entity_metadata_wrapper('node', $campaigns_general_nid);
+        $menu[$l1_nid]['children'][$campaigns_general_nid] = _toolkit_menu_item($wrapper->language($language->language)->title_field->value(), 'node/' . $campaigns_general_nid);
       }
     }
   }
@@ -336,7 +477,9 @@ function hwc_toolkit_get_left_menu($active_id) {
     $active_id = hwc_toolkit_get_example_active_id($active_id, $n->nid);
     $is_example = TRUE;
   }
-
+  if (arg(2) == 'search-toolkit-examples') {
+    $active_id = HWC_SEARCH_TOOLKIT_EXAMPLES;
+  }
 
   $q = db_select('node', 'n');
   $q->fields('n', ['nid']);
@@ -412,7 +555,7 @@ function hwc_toolkit_get_left_menu($active_id) {
         $menu[$l1_id]['children'][$l2_id]['active'] = TRUE;
         $menu[$l1_id]['active'] = TRUE;
         hwc_toolkit_menu_breadcrumbs($lo_link);
-        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
+        hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
         hwc_toolkit_menu_breadcrumbs($menu_item2['title']);
         if ('taxonomy' == $menu_item2['type']) {
           drupal_set_breadcrumb(hwc_toolkit_menu_breadcrumbs());
@@ -440,10 +583,10 @@ function hwc_toolkit_get_left_menu($active_id) {
           $menu[$l1_id]['active'] = TRUE;
 
           hwc_toolkit_menu_breadcrumbs($lo_link);
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['href']));
-          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['href']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['title'], $menu[$l1_id]['path']));
+          hwc_toolkit_menu_breadcrumbs(l($menu[$l1_id]['children'][$l2_id]['title'], $menu[$l1_id]['children'][$l2_id]['path']));
           if ($is_example) {
-            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['href']));
+            hwc_toolkit_menu_breadcrumbs(l($menu_item3['title'], $menu_item3['path']));
             hwc_toolkit_menu_breadcrumbs(drupal_get_title());
           }
           else {
@@ -539,9 +682,10 @@ function hwc_update_toolkit_menu_content_links() {
   module_load_include('inc', 'pathauto');
   $map = hwc_toolkit_get_tool_example_map();
   $menu = hwc_toolkit_get_left_menu(0);
+  $toolkit_menu_prefix = variable_get('toolkit_menu_prefix', 'tools-and-publications/campaign-toolkit/');
   foreach ($menu as $l1_item) {
     $menu_item = $l1_item;
-    $alias1 = hwc_pathauto_cleanstring($menu_item['title']);
+    $alias1 = $toolkit_menu_prefix . hwc_pathauto_cleanstring($menu_item['title']);
     $new_alias = hwc_toolkit_check_menu($menu_item, $alias1);
     hwc_toolkit_update_menu_item_alias($menu_item, $new_alias);
     foreach ($l1_item['children'] as $l2_item) {
@@ -560,10 +704,15 @@ function hwc_update_toolkit_menu_content_links() {
             $alias4 = hwc_pathauto_cleanstring($example_title, TRUE);
             $example_path = 'node/' . $example_nid;
             $existing_alias = drupal_lookup_path('alias', 'node/' . $example_nid);
-            $new_alias = hwc_toolkit_check_menu( ['title' => $example_title, 'href' => $existing_alias, 'path' => $example_path], $alias4, [$alias1, $alias2, $alias3]);
-
+            $menu_item = [
+              'title' => $example_title,
+              'href' => $existing_alias,
+              'path' => $example_path,
+            ];
+            $new_alias = hwc_toolkit_check_menu($menu_item, $alias4,
+              [$alias1, $alias2, $alias3]);
             if ($new_alias && ($new_alias != $existing_alias)) {
-              path_delete(array('alias' => $existing_alias['alias']));
+              path_delete(array('alias' => $existing_alias));
               $args = array(
                 'source' => 'node/' . $example_nid,
                 'alias' => $new_alias,

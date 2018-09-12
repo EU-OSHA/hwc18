@@ -709,13 +709,7 @@ function osha_workflow_create_section($title, $partner_guid) {
  */
 function osha_workflow_bundle_section_map() {
   return array(
-    'news' => 'AWRACT',
-    'events' => 'AWRACT',
-    'publication' => 'PUBLIC',
-    'job_vacancies' => 'CAREER',
-    'press_release' => 'PROOM',
-    'calls' => 'PROCUR',
-    'infographic' => 'CORPCM',
+    'document' => 'section',
   );
 }
 
@@ -794,6 +788,11 @@ function osha_workflow_get_default_section($node) {
   if (empty($node->workbench_access)
     && !empty($bundle_section_map[$node->type])
     && $term = osha_workflow_get_partner_section_by_guid($bundle_section_map[$node->type])) {
+    return $term;
+  }
+  if (empty($node->workbench_access) && !empty($bundle_section_map[$node->type]) && $bundle_section_map[$node->type] == 'section') {
+    $term = new stdClass();
+    $term->tid = 'section';
     return $term;
   }
   return NULL;
@@ -903,12 +902,6 @@ function osha_workflow_form_views_exposed_form_alter(&$form, &$form_state) {
       $form_state['input']['state'][] = 'needs_review';
     }
   }
-}
-
-/**
- * Implements hook_form_BASE_FORM_ID_alter().
- */
-function osha_workflow_form_node_form_alter(&$form, $form_state) {
 }
 
 /**

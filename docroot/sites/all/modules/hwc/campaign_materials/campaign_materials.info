@@ -28,6 +28,7 @@ features[field_instance][] = node-campaign_materials-field_aditional_resources
 features[field_instance][] = node-campaign_materials-field_campaign_material_type
 features[field_instance][] = node-campaign_materials-field_character_count
 features[field_instance][] = node-campaign_materials-field_cover_image
+features[field_instance][] = node-campaign_materials-field_first_publication_date
 features[field_instance][] = node-campaign_materials-field_image
 features[field_instance][] = node-campaign_materials-field_page_count
 features[field_instance][] = node-campaign_materials-field_priority_area
