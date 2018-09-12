@@ -1506,7 +1506,7 @@ function hwc_toolkit_field_default_field_instances() {
         'settings' => array(
           'field_formatter_class' => '',
           'image_link' => '',
-          'image_style' => 'toolkit',
+          'image_style' => 'toolkit_example',
         ),
         'type' => 'image',
         'weight' => 0,

@@ -90,11 +90,17 @@ function hwc_toolkit_fe_nodequeue_export_fields() {
 function hwc_toolkit_image_default_styles() {
   $styles = array();
 
+  // Exported image style: tkit_example_detail.
+  $styles['tkit_example_detail'] = array(
+    'label' => 'tkit_example_detail',
+    'effects' => array(),
+  );
+
   // Exported image style: toolkit.
   $styles['toolkit'] = array(
     'label' => 'toolkit',
     'effects' => array(
-      1 => array(
+      5 => array(
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 237,
@@ -106,7 +112,7 @@ function hwc_toolkit_image_default_styles() {
         ),
         'weight' => 0,
       ),
-      2 => array(
+      6 => array(
         'name' => 'image_crop',
         'data' => array(
           'width' => 235,
@@ -116,6 +122,59 @@ function hwc_toolkit_image_default_styles() {
         'weight' => 2,
       ),
     ),
+  );
+
+  // Exported image style: toolkit_example.
+  $styles['toolkit_example'] = array(
+    'label' => 'toolkit example',
+    'effects' => array(
+      7 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 286,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+      8 => array(
+        'name' => 'canvasactions_definecanvas',
+        'data' => array(
+          'RGB' => array(
+            'HEX' => '',
+          ),
+          'under' => 1,
+          'exact' => array(
+            'width' => 284,
+            'height' => 250,
+            'xpos' => -1,
+            'ypos' => -1,
+          ),
+          'relative' => array(
+            'leftdiff' => '',
+            'rightdiff' => '',
+            'topdiff' => '',
+            'bottomdiff' => '',
+          ),
+        ),
+        'weight' => 2,
+      ),
+      9 => array(
+        'name' => 'image_crop',
+        'data' => array(
+          'width' => 280,
+          'height' => 250,
+          'anchor' => 'center-center',
+        ),
+        'weight' => 3,
+      ),
+    ),
+  );
+
+  // Exported image style: toolkit_example_detail.
+  $styles['toolkit_example_detail'] = array(
+    'label' => 'toolkit_example_detail',
+    'effects' => array(),
   );
 
   return $styles;
