@@ -8779,16 +8779,21 @@ table tr.error.form-type-select:after {
   height: auto;
 }
 .node-article .field-name-field-recommended-resources .node-article .field.field-name-field-image,
-.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image {
+.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image,
+.node-article .field-name-field-recommended-resources .node-internal-url .field.field-name-field-image,
+.node-article .field-name-field-recommended-articles .node-internal-url .field.field-name-field-image {
   float: left;
   margin-right: 1em;
   margin-bottom: 1em;
   width: auto;
+  width: 150px;
   height: auto;
   overflow: hidden;
 }
 .node-article .field-name-field-recommended-resources .node-article .field.field-name-field-image a:before,
-.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image a:before {
+.node-article .field-name-field-recommended-articles .node-article .field.field-name-field-image a:before,
+.node-article .field-name-field-recommended-resources .node-internal-url .field.field-name-field-image a:before,
+.node-article .field-name-field-recommended-articles .node-internal-url .field.field-name-field-image a:before {
   content: "";
 }
 .node-article .field-name-field-recommended-resources .node-news .group-left,
@@ -8983,7 +8988,23 @@ table tr.error.form-type-select:after {
   content: "";
 }
 /* Node-XXX */
-div[class*='node-'] h1,
+div[class*='node-'] h1 {
+  text-align: center;
+  font-style: italic;
+  font-weight: lighter;
+  color: #575757;
+  font-size: 2.5em;
+  border-bottom: none;
+}
+div[class*='node-'] .field-name-field-summary {
+  font-weight: bold;
+}
+div[class*='node-'] .more-link {
+  color: #003399;
+  background-color: transparent;
+  font-weight: bold;
+  font-style: italic;
+}
 div[class*='view-'] h1 {
   text-align: center;
   font-style: italic;
@@ -8992,16 +9013,8 @@ div[class*='view-'] h1 {
   font-size: 2.5em;
   border-bottom: none;
 }
-div[class*='node-'] .field-name-field-summary,
 div[class*='view-'] .field-name-field-summary {
   font-weight: bold;
-}
-div[class*='node-'] .more-link,
-div[class*='view-'] .more-link {
-  color: #003399;
-  background-color: transparent;
-  font-weight: bold;
-  font-style: italic;
 }
 .field-name-field-publication-date {
   margin-top: 0.5em;
@@ -10858,6 +10871,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_CY {
   background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_US {
+  background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-home_right h2.pane-title {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
 }
@@ -11125,9 +11141,50 @@ article .hwc-share-widget ul {
   font-size: 1.2rem;
   text-align: center;
   background-color: #e2e2e3;
+  border-left: 0;
+}
+.view-tk-tools .field-name-field-image .image-field-caption {
+  font-size: 1.2rem;
+  background-color: rgba(138, 152, 197, 0.6);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: left;
+  padding: 3px 15px;
+  color: #FFF;
+  border-left: 0;
+  margin-bottom: 0px;
+}
+.group-left.col-sm-4 .field-name-field-image .image-field-caption {
+  display: block;
+}
+.views-row .group-left .field-name-field-image .image-field-caption {
+  background-color: #FFF;
+  text-align: center;
+  color: #666;
+  padding: 3px 0;
+}
+.carousel .views-row .group-left .field-name-field-image .image-field-caption {
+  background-color: transparent !important;
+}
+.group-left .field-name-field-image {
+  position: relative;
+  overflow: auto;
 }
 .group-left .field-name-field-image .image-field-caption {
-  display: none;
+  font-size: 1.2rem;
+  background-color: rgba(138, 152, 197, 0.6);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: left;
+  padding: 3px 15px;
+  color: #FFF;
+  border-left: 0;
+  margin-bottom: 0px;
+}
+.group-left .field-name-field-image .image-field-caption p {
+  margin: 0 !important;
 }
 .container .field.field-name-body p a {
   background-color: transparent;
@@ -11798,6 +11855,10 @@ article .hwc-share-widget ul {
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY {
   background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_US,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_US {
+  background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a {
@@ -13027,12 +13088,18 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   margin-left: 15px;
   margin-right: 15px;
 }
+.profile-edit-links-container .panels-flexible-region-inside-first {
+  justify-content: center;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1rem 0 3rem;
+}
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-2,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3,
 .profile-edit-links-container .pane-node-profile-update-link {
-  width: 33.3%;
+  width: 20%;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content,
@@ -13040,9 +13107,10 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-3 .pane-content,
 .profile-edit-links-container .pane-node-profile-update-link .pane-content {
   border: 1px dotted #749b00;
+  min-height: 130px;
   text-align: center;
-  margin: 3rem auto 10rem;
-  width: 65%;
+  padding: 20px 10px !important;
+  margin: 10px;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a,
@@ -13054,9 +13122,8 @@ html:lang(mt) .get-involved-section .information-tailored .images-section .image
   font-style: italic;
   font-size: 1.4em;
   cursor: pointer;
+  padding: 0px 0px 20px !important;
   display: block;
-  min-height: 111px;
-  padding: 20px 10px !important;
 }
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-0 .pane-content .hwc-partner-private-link-block-title a:before,
 .profile-edit-links-container .pane-hwc-partner-hwc-partner-private-link-1 .pane-content .hwc-partner-private-link-block-title a:before,
@@ -19890,6 +19957,7 @@ input#edit-field-image-und-0-upload::before {
   width: 100%;
   height: 250px;
   overflow: hidden;
+  position: relative;
 }
 .toolkit-page .main-container .view-tk-tools .views-row .views-field-field-image img {
   width: 100%;
