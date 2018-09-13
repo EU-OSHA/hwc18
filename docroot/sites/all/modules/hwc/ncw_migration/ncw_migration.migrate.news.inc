@@ -42,6 +42,8 @@ class NCWNewsMigration extends AbstractNCWNodeMigration {
 
   function prepareRow($row) {
     parent::prepareRow($row);
+    // Disable NCW alias.
+    $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
 
     // field_aditional_resources

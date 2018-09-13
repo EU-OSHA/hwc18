@@ -48,6 +48,8 @@ class NCWEventsMigration extends AbstractNCWNodeMigration {
 
   function prepareRow($row) {
     parent::prepareRow($row);
+    // Disable NCW alias.
+    $row->path = NULL;
     // Trim title.
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
     $row->title = views_trim_text(array(
