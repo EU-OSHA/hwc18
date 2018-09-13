@@ -10863,6 +10863,9 @@ html:lang(no) .pane-node-field-provider .field-items,
 .front .panels-flexible-region-new-center .event_day_month .code_CY {
   background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
 }
+.front .panels-flexible-region-new-center .event_day_month .code_US {
+  background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
+}
 .front .panels-flexible-region-new-home_right h2.pane-title {
   background: url(../images/content/icono-twitter.png) no-repeat center 20px;
 }
@@ -11844,6 +11847,10 @@ article .hwc-share-widget ul {
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_CY {
   background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
+}
+.page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_US,
+.page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-field-start-date .field-content .code_US {
+  background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
 }
 .page-past-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a,
 .page-events .region-content #block-system-main .view-events-search .view-content:nth-child(2) .views-row .views-field-title-field a {
