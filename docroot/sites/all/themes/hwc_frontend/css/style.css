@@ -8983,7 +8983,23 @@ table tr.error.form-type-select:after {
   content: "";
 }
 /* Node-XXX */
-div[class*='node-'] h1,
+div[class*='node-'] h1 {
+  text-align: center;
+  font-style: italic;
+  font-weight: lighter;
+  color: #575757;
+  font-size: 2.5em;
+  border-bottom: none;
+}
+div[class*='node-'] .field-name-field-summary {
+  font-weight: bold;
+}
+div[class*='node-'] .more-link {
+  color: #003399;
+  background-color: transparent;
+  font-weight: bold;
+  font-style: italic;
+}
 div[class*='view-'] h1 {
   text-align: center;
   font-style: italic;
@@ -8992,16 +9008,8 @@ div[class*='view-'] h1 {
   font-size: 2.5em;
   border-bottom: none;
 }
-div[class*='node-'] .field-name-field-summary,
 div[class*='view-'] .field-name-field-summary {
   font-weight: bold;
-}
-div[class*='node-'] .more-link,
-div[class*='view-'] .more-link {
-  color: #003399;
-  background-color: transparent;
-  font-weight: bold;
-  font-style: italic;
 }
 .field-name-field-publication-date {
   margin-top: 0.5em;
