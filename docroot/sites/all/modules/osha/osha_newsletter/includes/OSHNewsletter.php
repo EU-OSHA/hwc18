@@ -40,13 +40,6 @@ class OSHNewsletter {
 
       foreach ($form['content'] as $k => &$v) {
         if (strpos($k, 'taxonomy_term:') !== FALSE) {
-
-          // Disable all Newsletter sections except More news, Tweets and Events.
-          if (!in_array($v['entity_id']['#value'], [82, 86, 1797])) {
-            unset($form['content'][$k]);
-            continue;
-          }
-
           $v['style']['#options'] = self::getTemplatesList();
           if (empty($v['style']['#default_value']) && !empty($v['entity_id']['#value'])) {
             $tid = $v['entity_id']['#value'];
