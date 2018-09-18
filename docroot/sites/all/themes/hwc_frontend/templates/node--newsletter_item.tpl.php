@@ -74,7 +74,7 @@ if (!empty($campaign_id)) {
                 <td style="width: 220px; font-size: 12px; font-family: Arial, sans-serif; color: #000000; vertical-align: middle; padding: 0; margin: 0;">
                   <table>
                     <tr>
-                      <td style="border: 2px solid #749b00;margin:0;padding: 0;">
+                      <td style="border: 1px solid #efefef;margin:0;padding: 0;">
                         <?php
                           if (isset($field_image)) {
                               print l(theme('image_style', array(
