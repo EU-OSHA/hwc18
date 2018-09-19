@@ -14,7 +14,7 @@ $file_items = theme('item_list', array('items' => $items));
 
 $ext = pathinfo($entity->field_document_file['und'][0]['filename'], PATHINFO_EXTENSION);
 $icon_directory = drupal_get_path('theme', 'hwc_frontend') . '/images/file_icons/';
-$icon = $icon_directory . $ext . '.png'
+$icon = $icon_directory . strtolower($ext) . '.png';
 ?>
 <div class="publication-teaser">
   <div class="field field-files">

@@ -66,6 +66,7 @@ function hwc_toolkit_form_alter(&$form, $form_state, $form_id) {
       }
       unset($form['country']['#options'][$tid]);
     }
+    $form['country']['#options']['All'] = t('Any');
   }
 }
 
