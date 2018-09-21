@@ -3413,6 +3413,11 @@ article{
 			}
 	}
 }
+
+.node-type-tk-article .field-name-field-tk-topics .node-tk-topic .group-left .image-field-caption{
+    bottom: 30px;
+}
+
 .container .field.field-name-body{
 	p{
 		a{
@@ -10500,11 +10505,7 @@ input#edit-field-image-und-0-upload::before {
 							text-decoration: none;
 							cursor: pointer;
 							color:@colorNormalText;
-							&.active{
-								background-color: green;
-								color: white;
-
-							}
+							
 
 						}
 						//para el jquery
@@ -10557,14 +10558,16 @@ input#edit-field-image-und-0-upload::before {
 								vertical-align: middle;
 							}
 						}
-						.key-start-here{
-							border-color: @color-menu-1;
-							color: @color-menu-1;
+
+
+						.key-welcome{
+							border-color: #10a748;
+							color: #10a748;
 							&:after{
-								color: @color-menu-1;
+								color: #10a748;
 							}
 							&.active{
-								background-color: @color-menu-1;
+								background-color: #10a748;
 								color: white;
 							}
 						}
@@ -10582,28 +10585,28 @@ input#edit-field-image-und-0-upload::before {
 								}
 							}
 						}
-						.key-tools---examples{
-							border-color: @color-menu-3;
-							color: @color-menu-3;
+						.key-campaign-examples-and-tools{
+							border-color: #213097;
+							color: #213097;
 							&:after{
-								color: @color-menu-3;
+								color: #213097;
 							}
 							&.active{
-								background-color: @color-menu-3;
+								background-color: #213097;
 								color: white;
 								&:after{
 									color: white;
 								}
 							}
 						}
-						.key-about{
-							border-color: @color-menu-4;
-							color: @color-menu-4;
+						.key-about-the-toolkit{
+							border-color: #10aaaa;
+							color: #10aaaa;
 							&:after{
-								color: @color-menu-4;
+								color: #10aaaa;
 							}
 							&.active{
-								background-color: @color-menu-4;
+								background-color: #10aaaa;
 								color: white;
 							}
 						}
@@ -10720,14 +10723,6 @@ input#edit-field-image-und-0-upload::before {
 			color: @color-h2-toolkit;
 		    margin-bottom: 10px;
 		    font-style: normal;
-
-  font-style: normal;
-  color: #749b00;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 2em;
-
-
 			& a:before{
 				content: '';
 				padding-left: 0;
@@ -10745,8 +10740,10 @@ input#edit-field-image-und-0-upload::before {
 		h3:first-child{
 			margin-top: 15px;
 		}
+
+		
 		.field-name-body.field-type-text-with-summary{
-			h3{
+			h2{
 				margin-bottom: 25px;
 			}
 		}
@@ -10789,7 +10786,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 		}
 		//start here page
-		h3.p2{
+		h2.p2{
 				clear: both;
 				margin-bottom: 5px;
 			    margin-top: 20px;
@@ -10814,6 +10811,7 @@ input#edit-field-image-und-0-upload::before {
 				text-align: center;
 			    padding: 30px 15px 50px;
 			    position: relative;
+			    margin-bottom: 1em;
 			    &:hover{
 			    	background-color: @gray-lighter;
 			    	cursor: pointer;
@@ -10866,7 +10864,7 @@ input#edit-field-image-und-0-upload::before {
 					}
 				} 
 			} 
-			h3{
+			h2{
 				font-size: 1.1em;
 				margin-bottom: 15px;
 				margin-top: 0px;
@@ -10884,7 +10882,7 @@ input#edit-field-image-und-0-upload::before {
 			}		
 			.campaigning{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-campaigning.png);
 						}
@@ -10893,7 +10891,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.plane-campaign{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-plan.png);
 						}
@@ -10902,7 +10900,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.resources-networks{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-resources.png);
 						}
@@ -11115,7 +11113,6 @@ input#edit-field-image-und-0-upload::before {
 				padding: 30px 60px;
 				margin-bottom: 80px;
 				position: relative;
-				margin-top: 30px;
 				.carousel-indicators{
 					bottom: -45px;
 					margin-bottom: 0px;
@@ -11143,9 +11140,13 @@ input#edit-field-image-und-0-upload::before {
 						}
 						.group-right{
 							width: 75%;
-							h3{
-								margin-top: 0px;
-								margin-bottom: 25px;
+							.slider-title{
+								font-size: 1.3em;
+					    		font-weight: 600;
+					    		color: @color-h2-toolkit;
+					    		margin-top: 0px;
+					    		padding-bottom: 25px;
+					    		display: block;
 								a{
 									text-decoration: none;
 								}

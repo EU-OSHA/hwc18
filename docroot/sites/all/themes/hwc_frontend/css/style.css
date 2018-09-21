@@ -11186,6 +11186,9 @@ article .hwc-share-widget ul {
 .group-left .field-name-field-image .image-field-caption p {
   margin: 0 !important;
 }
+.node-type-tk-article .field-name-field-tk-topics .node-tk-topic .group-left .image-field-caption {
+  bottom: 30px;
+}
 .container .field.field-name-body p a {
   background-color: transparent;
   color: #003399;
@@ -19573,11 +19576,6 @@ input#edit-field-image-und-0-upload::before {
   cursor: pointer;
   color: #333333;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a.active,
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span.active {
-  background-color: green;
-  color: white;
-}
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a.up-arrow:after,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span.up-arrow:after {
   content: "\e252" !important;
@@ -19617,14 +19615,14 @@ input#edit-field-image-und-0-upload::before {
   float: right;
   vertical-align: middle;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome {
   border-color: #10a748;
   color: #10a748;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here:after {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome:after {
   color: #10a748;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-start-here.active {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome.active {
   background-color: #10a748;
   color: white;
 }
@@ -19642,28 +19640,28 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign.active:after {
   color: white;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools {
   border-color: #213097;
   color: #213097;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples:after {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools:after {
   color: #213097;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples.active {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools.active {
   background-color: #213097;
   color: white;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-tools---examples.active:after {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools.active:after {
   color: white;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit {
   border-color: #10aaaa;
   color: #10aaaa;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about:after {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit:after {
   color: #10aaaa;
 }
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about.active {
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit.active {
   background-color: #10aaaa;
   color: white;
 }
@@ -19741,13 +19739,10 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .main-container h2 {
   font-size: 1.3em;
+  font-weight: 600;
   color: #003399;
   margin-bottom: 10px;
   font-style: normal;
-  color: #749b00;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 2em;
 }
 .toolkit-page .main-container h2 a:before {
   content: '';
@@ -19763,7 +19758,7 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container h3:first-child {
   margin-top: 15px;
 }
-.toolkit-page .main-container .field-name-body.field-type-text-with-summary h3 {
+.toolkit-page .main-container .field-name-body.field-type-text-with-summary h2 {
   margin-bottom: 25px;
 }
 .toolkit-page .main-container .introduction-text {
@@ -19799,7 +19794,7 @@ input#edit-field-image-und-0-upload::before {
   padding: 0px;
   line-height: 1.1;
 }
-.toolkit-page .main-container h3.p2 {
+.toolkit-page .main-container h2.p2 {
   clear: both;
   margin-bottom: 5px;
   margin-top: 20px;
@@ -19824,6 +19819,7 @@ input#edit-field-image-und-0-upload::before {
   text-align: center;
   padding: 30px 15px 50px;
   position: relative;
+  margin-bottom: 1em;
 }
 .toolkit-page .main-container .start-here .col-inner:hover {
   background-color: #eeeeee;
@@ -19876,12 +19872,12 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .start-here .col-inner a .see-more a:hover {
   background-color: #595959;
 }
-.toolkit-page .main-container .start-here h3 {
+.toolkit-page .main-container .start-here h2 {
   font-size: 1.1em;
   margin-bottom: 15px;
   margin-top: 0px;
 }
-.toolkit-page .main-container .start-here h3:before {
+.toolkit-page .main-container .start-here h2:before {
   content: "";
   display: block;
   width: 74px;
@@ -19893,13 +19889,13 @@ input#edit-field-image-und-0-upload::before {
   color: white;
   line-height: 5;
 }
-.toolkit-page .main-container .start-here .campaigning .col-inner h3:before {
+.toolkit-page .main-container .start-here .campaigning .col-inner h2:before {
   background-image: url(../images/toolkit-campaigning.png);
 }
-.toolkit-page .main-container .start-here .plane-campaign .col-inner h3:before {
+.toolkit-page .main-container .start-here .plane-campaign .col-inner h2:before {
   background-image: url(../images/toolkit-plan.png);
 }
-.toolkit-page .main-container .start-here .resources-networks .col-inner h3:before {
+.toolkit-page .main-container .start-here .resources-networks .col-inner h2:before {
   background-image: url(../images/toolkit-resources.png);
 }
 .toolkit-page .main-container .field-name-field-tk-topics .field-items .field-item {
@@ -20087,7 +20083,6 @@ input#edit-field-image-und-0-upload::before {
   padding: 30px 60px;
   margin-bottom: 80px;
   position: relative;
-  margin-top: 30px;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-indicators {
   bottom: -45px;
@@ -20114,11 +20109,15 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right {
   width: 75%;
 }
-.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right h3 {
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right .slider-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #003399;
   margin-top: 0px;
-  margin-bottom: 25px;
+  padding-bottom: 25px;
+  display: block;
 }
-.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right h3 a {
+.toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right .slider-title a {
   text-decoration: none;
 }
 .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right .field-name-field-organisation,
