@@ -26468,9 +26468,6 @@ input#edit-field-image-und-0-upload::before {
   .pane-good-practice-exchange-introduction .views-row .title {
     font-size: 1.4em;
   }
-  .toolkit-page .above_title {
-    display: none;
-  }
   .toolkit-page #block-hwc-toolkit-toolkit-nav {
     margin-bottom: 0px;
     display: inline-block;
@@ -26503,6 +26500,7 @@ input#edit-field-image-und-0-upload::before {
   .toolkit-page .main-container .above_title {
     margin-left: 0px;
     margin-right: 0px;
+    margin-bottom: 15px;
   }
   .toolkit-page #block-hwc-toolkit-toolkit-go-back {
     /*display: none;*/
@@ -26571,6 +26569,22 @@ input#edit-field-image-und-0-upload::before {
   }
   .toolkit-page .main-container .carousel.slide .toolkit_examples .carousel-inner .views-row .group-right .field-name-node-link {
     text-align: center;
+  }
+  .toolkit-page .main-container .above_title .field-name-title-field {
+    display: block;
+    position: static;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+  }
+  .toolkit-page .main-container .above_title .field-name-title-field .campaign-toolkit {
+    text-shadow: 0 0;
+    font-size: 2.5em;
+    color: #749b00;
+    text-align: left;
+  }
+  .toolkit-page .main-container .above_title .field-name-field-image {
+    display: none;
   }
   .node-type-tk-example .above_title {
     margin-bottom: 50px !important;
