@@ -1,7 +1,7 @@
 name = HWC Workflow
 core = 7.x
 package = HWC
-version = 7.x-0.5
+version = 7.x-1.0
 project = hwc_workflow
 dependencies[] = ctools
 dependencies[] = entity
