@@ -2,10 +2,78 @@
 
 @media only screen and (max-width : 767px) {
 
-#sliding-popup.sliding-popup-top{
-	height: 1%!important;
-    overflow: hidden;
-}
+ /*Toolkit menu*/
+
+  body.toolkit-page{
+    padding-top: 0px!important;
+  }
+
+  body.toolkit-page header.navbar-default{
+    position: relative;
+  }
+
+  body.toolkit-page #sliding-popup.sliding-popup-top{
+    display: none;
+  }
+
+  .toolkit-page .main-container .above_title.sticky-toolkit{
+      position: fixed;
+      top: 0;
+      z-index: 999999987;
+      background: #FFF;
+      padding-bottom: 1em;
+      padding-top: 1em;
+      width: 100%;
+      margin-bottom: 0;
+  }
+
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu.sticky-toolkit{
+    position: fixed;
+    top:70px;
+    z-index: 99999999;
+    background:transparent;
+    width: 100%;
+    padding-bottom: 1em;
+    height: 75%;
+    overflow-y:scroll;
+  }
+
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+   .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu.sticky-toolkit ul{
+    background: #FFF;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu.sticky-toolkit ul{
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+
+  .toolkit-page .reset-sticky{
+    position: relative !important;
+  }
+
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu.nav-down.reset-sticky{
+      top: 0!important;
+  }
+
+  .toolkit-page .main-container h1.add-h1-padding.reset-sticky {
+      padding-top: 0;
+      background: #FFF;
+  }
+
+  .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
 
 /*Header*/
 
@@ -3088,4 +3156,3 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 
 
 }
-
