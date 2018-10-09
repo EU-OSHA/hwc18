@@ -159,3 +159,10 @@ function hwc_toolkit_update_7021() {
 function hwc_toolkit_update_7022() {
   features_revert(array('hwc_toolkit' => array('field_instance', 'image')));
 }
+
+/**
+ * MDR-2204 change the breadcrumb for the toolkit.
+ */
+function hwc_toolkit_update_7023() {
+  features_revert(array('hwc_toolkit' => array('path_breadcrumbs')));
+}
