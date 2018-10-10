@@ -282,16 +282,10 @@ function hwc_block_view($delta = '') {
     $block['subject'] = "<none>";
     $block['content'] = theme('hwc_print_friendly_block');
   }
-  if ($delta == 'hwc_footer_data') {
+  if ($delta == 'hwc_footer_data') {//todo remove
     $block['title'] = '<none>';
     $block['subject'] = "<none>";
     $block['content'] = NULL;
-    if (isset($_SESSION['masquerading'])) {
-    }
-    elseif (user_access('masquerade as any user')) {
-      $form = drupal_get_form('masquerade_block_1');
-      $block['content'] = theme('hwc_partner_act_as_partner_block_footer', array('content' => drupal_render($form)));
-    }
   }
   return $block;
 }

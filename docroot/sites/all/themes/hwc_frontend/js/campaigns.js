@@ -146,24 +146,45 @@ jQuery(document).ready(function() {
 	}, 110);
 
 	function hasScrolled() {
-	    var st = jQuery(this).scrollTop();
+		//If we are in toolit page, no sticky the main menu, and fixed toolkit menu
+	    if (jQuery("body.toolkit-page")[0]){
+		    // Do something if class exists
+		    
+		    jQuery(window).scroll(function (event) {
+			    var scroll = jQuery(window).scrollTop();
+			    if (scroll == 0){
+			    	jQuery('.toolkit-page .above_title').addClass('reset-sticky').removeClass('sticky-toolkit');
+			    	jQuery('.toolkit-page #block-hwc-toolkit-toolkit-left-menu').addClass('reset-sticky').removeClass('sticky-toolkit');
+		        	jQuery('.toolkit-page h1').addClass('reset-sticky').removeClass('sticky-toolkit');
+			    }
+			    if (scroll > 160){
+			    	jQuery('.toolkit-page .above_title').removeClass('reset-sticky').addClass('sticky-toolkit');
+			    	jQuery('.toolkit-page #block-hwc-toolkit-toolkit-left-menu').removeClass('reset-sticky').addClass('sticky-toolkit');
+		        	jQuery('.toolkit-page h1').removeClass('reset-sticky').addClass('sticky-toolkit');
+			    }
+			});
+
+		//If we are not in toolkit page    
+		} else {
+		    // Do something if class does not exist
+		    var st = jQuery(this).scrollTop();
 	    
-	    // Make sure they scroll more than delta
-	    if(Math.abs(lastScrollTop - st) <= delta)
-	        return;
-	    
-	    // If they scrolled down and are past the navbar, add class .nav-up.
-	    // This is necessary so you never see what is "behind" the navbar.
-	    if (st > lastScrollTop && st > navbarHeight){
-	        // Scroll Down
-	        jQuery('header').removeClass('nav-down').addClass('nav-up');
-	    } else {
-	        // Scroll Up
-	        if(st + jQuery(window).height() < jQuery(document).height()) {
-	            jQuery('header').removeClass('nav-up').addClass('nav-down');
-	        }
-	    }
-	    
+		    // Make sure they scroll more than delta
+		    if(Math.abs(lastScrollTop - st) <= delta)
+		        return;
+		    
+		    // If they scrolled down and are past the navbar, add class .nav-up.
+		    // This is necessary so you never see what is "behind" the navbar.
+		    if (st > lastScrollTop && st > navbarHeight){
+		        // Scroll Down
+		        jQuery('header').removeClass('nav-down').addClass('nav-up');		        
+		    } else {
+		        // Scroll Up
+		        if(st + jQuery(window).height() < jQuery(document).height()) {
+		            jQuery('header').removeClass('nav-up').addClass('nav-down');		            
+		        }
+		    }
+		}
 	    lastScrollTop = st;
 	}
 
