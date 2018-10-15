@@ -1667,23 +1667,15 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $display->content['new-f2b8dcc5-13ec-44a6-85dc-6185f0fbeeee'] = $pane;
   $display->panels['right_'][7] = 'new-f2b8dcc5-13ec-44a6-85dc-6185f0fbeeee';
   $pane = new stdClass();
-  $pane->pid = 'new-22050c50-2a04-49d6-b147-ee7e3f0b7183';
+  $pane->pid = 'new-51f425e0-af15-4ffc-86c9-6511a8d06b61';
   $pane->panel = 'right__';
   $pane->type = 'views';
   $pane->subtype = 'partner_content';
   $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'hwc_partner_detail_only',
-        'settings' => NULL,
-        'not' => FALSE,
-      ),
-    ),
-  );
+  $pane->access = array();
   $pane->configuration = array(
     'override_pager_settings' => 0,
-    'use_pager' => 0,
+    'use_pager' => 1,
     'nodes_per_page' => '4',
     'pager_id' => '0',
     'offset' => '0',
@@ -1693,7 +1685,7 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
     'link_to_view' => 0,
     'args' => '',
     'url' => '',
-    'display' => 'latest_partner_events',
+    'display' => 'block_1',
     'context' => array(
       0 => '',
     ),
@@ -1709,55 +1701,9 @@ return (!empty($data->field_facebook_profile) || !empty($data->field_linkedin_pr
   $pane->extras = array();
   $pane->position = 0;
   $pane->locks = array();
-  $pane->uuid = '22050c50-2a04-49d6-b147-ee7e3f0b7183';
-  $display->content['new-22050c50-2a04-49d6-b147-ee7e3f0b7183'] = $pane;
-  $display->panels['right__'][0] = 'new-22050c50-2a04-49d6-b147-ee7e3f0b7183';
-  $pane = new stdClass();
-  $pane->pid = 'new-b97f52ee-3468-4779-acb1-5b1ece1c7c28';
-  $pane->panel = 'right__';
-  $pane->type = 'views';
-  $pane->subtype = 'partner_content';
-  $pane->shown = TRUE;
-  $pane->access = array(
-    'plugins' => array(
-      0 => array(
-        'name' => 'hwc_partner_detail_only',
-        'settings' => NULL,
-        'not' => FALSE,
-      ),
-    ),
-  );
-  $pane->configuration = array(
-    'override_pager_settings' => 0,
-    'use_pager' => 1,
-    'nodes_per_page' => '4',
-    'pager_id' => '0',
-    'offset' => '0',
-    'more_link' => 0,
-    'feed_icons' => 0,
-    'panel_args' => 0,
-    'link_to_view' => 0,
-    'args' => '',
-    'url' => '',
-    'display' => 'past_events',
-    'context' => array(
-      0 => '',
-    ),
-    'override_title' => 0,
-    'override_title_text' => '',
-    'override_title_heading' => 'h2',
-  );
-  $pane->cache = array();
-  $pane->style = array(
-    'settings' => NULL,
-  );
-  $pane->css = array();
-  $pane->extras = array();
-  $pane->position = 1;
-  $pane->locks = array();
-  $pane->uuid = 'b97f52ee-3468-4779-acb1-5b1ece1c7c28';
-  $display->content['new-b97f52ee-3468-4779-acb1-5b1ece1c7c28'] = $pane;
-  $display->panels['right__'][1] = 'new-b97f52ee-3468-4779-acb1-5b1ece1c7c28';
+  $pane->uuid = '51f425e0-af15-4ffc-86c9-6511a8d06b61';
+  $display->content['new-51f425e0-af15-4ffc-86c9-6511a8d06b61'] = $pane;
+  $display->panels['right__'][0] = 'new-51f425e0-af15-4ffc-86c9-6511a8d06b61';
   $pane = new stdClass();
   $pane->pid = 'new-77cc5bf8-5bbc-40ce-8d91-e31ff9f96577';
   $pane->panel = 'statement_';
