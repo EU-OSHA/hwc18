@@ -364,3 +364,12 @@ function osha_update_7028() {
   variable_set('hwc_migration_news_url', '/export/news/list');
   variable_set('hwc_migration_events_url', '/export/events/list');
 }
+
+/**
+ * MDR-2207 HWC: add pictures copyright.
+ */
+function osha_update_7029() {
+  features_revert(array('osha' => array('field_instance')));
+  features_revert(array('campaign_materials' => array('field_instance')));
+  features_revert(array('osha_news' => array('field_instance')));
+}
