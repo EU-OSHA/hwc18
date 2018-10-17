@@ -8,7 +8,7 @@ module_load_include('inc', 'ncw_migration', 'ncw_migration.admin');
 function ncw_migration_menu() {
   $items = array();
   $items['admin/config/system/ncw_migration'] = array(
-    'title' => 'EU-OSHA synchronisation notification',
+    'title' => 'EU-OSHA synchronization notification',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('ncw_migration_admin_form'),
     'access arguments' => array('administer site configuration'),
@@ -66,13 +66,17 @@ function ncw_migration_synchronisation_notification_cron() {
       $stuck[] = $machine_name;
     }
   }
-
+  watchdog('synchronisation_notification',
+    '[ncw_migration_synchronisation_notification_cron] Stat: outdated = !outdated, stuck = !stuck',
+    array('!outdated' => count($outdated), '!stuck' => count($stuck)), WATCHDOG_INFO);
   $mails = [];
   $default_value = variable_get('ncw_migration_synchronisation_mails', '');
   if ($default_value) {
     $mails = explode("\n", $default_value);
   }
   if (empty($mails)) {
+    watchdog('synchronisation_notification',
+      '[ncw_migration_synchronisation_notification_cron] There are no users to notify about synchronisation problems.', array(), WATCHDOG_ERROR);
     drupal_set_message('There are no users to notify about synchronisation problems.', 'warning');
     return;
   }
@@ -81,6 +85,10 @@ function ncw_migration_synchronisation_notification_cron() {
       $params['outdated'] = $outdated;
       $params['stuck'] = $stuck;
       drupal_mail('ncw_migration', 'ncw_migration_synchronisation', $mail, $language, $params);
+
+      watchdog('synchronisation_notification',
+        '[ncw_migration_synchronisation_notification_cron] notification sent to !mail',
+        array('!mail' => $mail), WATCHDOG_INFO);
     }
   }
 }

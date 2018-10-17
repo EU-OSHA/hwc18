@@ -21,7 +21,7 @@ function social_dashboard_panels_pre_render($panels_display, $renderer) {
 
 function social_dashboard_media_centre_form($form, $form_state) {
   $form = array(
-    '#action' => 'media-centre/social-media-centre',
+    '#action' => url('media-centre/social-media-centre'),
     '#method' => 'GET',
     '#token' => FALSE,
   );
