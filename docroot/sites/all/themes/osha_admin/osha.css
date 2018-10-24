@@ -165,3 +165,17 @@ ul.primary {
   margin-top: 3px;
 }
 
+/*MDR-2215 HWC: "Path: p" line and explanation in the summary and the body of news and events*/
+#edit-body-und-0-value_path_row ,
+#edit-field-summary-und-0-value_path_row ,
+#edit-field-summary-en-0-value_path_row ,
+#edit-body-en-0-value_path_row{
+  display: none;
+}
+
+#edit-body-und-0-format > div.description , 
+#edit-field-summary-und-0-format > div.description,
+#edit-field-summary-en-0-format > div.description,
+#edit-body-en-0-format > div.description {
+  padding-left: 1em;
+}

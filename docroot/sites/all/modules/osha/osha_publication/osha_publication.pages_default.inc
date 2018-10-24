@@ -773,7 +773,7 @@ function osha_publication_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Tools&Publications';
   $page->admin_description = '';
-  $page->path = 'tools_and_publications';
+  $page->path = 'tools-and-publications';
   $page->access = array();
   $page->menu = array();
   $page->arguments = array();
