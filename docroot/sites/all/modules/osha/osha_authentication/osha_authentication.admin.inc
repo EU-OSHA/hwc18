@@ -15,7 +15,7 @@ function osha_authentication_extract_user_roles($proposed_roles) {
   $roles_names = array('authenticated user');
   $roles_names = array_merge($roles_names, array_values($proposed_roles));
   // Load the actual roles from DB
-  foreach($roles_names as $role_name) {
+  foreach ($roles_names as $role_name) {
     if ($r = user_role_load_by_name($role_name)) {
       $ret[$r->rid] = $role_name;
     }
@@ -34,7 +34,7 @@ function osha_authentication_extract_user_roles($proposed_roles) {
  * @return array
  *  array with role, language. May be null
  */
-function osha_authentication_get_role_from_dn($group_dn) {
+function osha_authentication_get_role_from_dn($group_dn, $user) {
   $role = NULL;
   $language = NULL;
   if ($group_dn == 'cn=ADMIN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
@@ -90,7 +90,7 @@ function osha_authentication_get_role_from_dn($group_dn) {
       // Do nothing ...
     }
     else {
-      watchdog('osha_authentication', 'Unknown DN: !dn', array('!dn' => $group_dn), WATCHDOG_WARNING);
+      watchdog('osha_authentication', 'Unknown user !user DN: !dn', array('!dn' => $group_dn, '!user' => $user->name), WATCHDOG_WARNING);
     }
   }
   return array($role, $language);
@@ -104,7 +104,7 @@ function osha_authentication_ldap_fetch_user_groups($username, $ldap_server) {
     return $ret;
   }
   unset($ldap_groups['count']);
-  foreach($ldap_groups as $group) {
+  foreach ($ldap_groups as $group) {
     $ret[$group['dn']] = $group['dn'];
   }
   return $ret;
@@ -177,14 +177,14 @@ function osha_authentication_ldap_get_site_users($ldap_server) {
   }
   unset($ldap_groups['count']);
   $uids = array();
-  foreach($ldap_groups as $group) {
+  foreach ($ldap_groups as $group) {
     if (isset($group['memberuid']) && $group['memberuid']['count'] > 0) {
       unset($group['memberuid']['count']);
       $uids = array_merge($uids, $group['memberuid']);
     }
   }
   $uids = array_unique($uids);
-  foreach($uids as $uid) {
+  foreach ($uids as $uid) {
     if ($ldap_account = $ldap_server->search('ou=people,dc=osha,dc=europa,dc=eu', 'uid=' . $uid, array('dn', 'mail'))) {
       if (empty($ldap_account[0]['mail'][0])) {
         $mail = $uid . '@fake-domain.com';
@@ -216,34 +216,33 @@ function osha_authentication_ldap_get_site_users($ldap_server) {
  *   Server to query
  */
 function osha_authentication_ldap_sync($ldap_server) {
-  // Handle LDAP accounts synchronization
+  // Handle LDAP accounts synchronization.
   $accounts = osha_authentication_ldap_get_site_users($ldap_server);
-
-  // Block disabled accounts
+  // Block disabled accounts.
   osha_authentication_block_disabled_ldap_accounts($ldap_server, $accounts);
 
-  foreach($accounts as $username => $ldap_account) {
+  foreach ($accounts as $username => $ldap_account) {
     if (!$account = user_load_by_name($username)) {
-      // Set a random password
+      // Set a random password.
       $ldap_account->password = user_password(32);
       $ldap_account->status = 1;
       $ldap_account->timezone = NULL;
       if ($account = user_save($ldap_account)) {
         watchdog('osha_authentication', 'Creating Drupal account <em>!uid</em> from LDAP dn: !dn', array(
           '!dn' => $ldap_account->dn,
-          '!uid' => $username
+          '!uid' => $username,
         ), WATCHDOG_WARNING);
       }
       else {
         watchdog('osha_authentication', 'Failed to save new Drupal account <em>!uid</em> from LDAP dn: !dn', array(
           '!dn' => $ldap_account->dn,
-          '!uid' => $username
+          '!uid' => $username,
         ), WATCHDOG_ERROR);
       }
     }
     if ($account && $account->status == 1) {
       $edit = array();
-      // Simulate login to update user data
+      // Simulate login to update user data.
       user_module_invoke('login', $edit, $account);
     }
   }

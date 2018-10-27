@@ -24,7 +24,7 @@ function ncw_cronapi() {
   return array(
     'ncw_cron' => array(
       'description' => 'Update first publication date',
-      'rule' => '*/5 * * * *', // Every 5 minutes
+      'rule' => '*/5 * * * *',
     ),
   );
 }
@@ -35,7 +35,7 @@ function ncw_cronapi() {
 function hwc_cron() {
   $nid_stamp = [];
   $result = views_get_view_result('first_publication_date_update');
-  foreach($result as $row) {
+  foreach ($result as $row) {
 
     if (isset($nid_stamp[$row->nid])) {
       $nid_stamp[$row->nid] = min($nid_stamp[$row->nid], $row->workbench_moderation_node_history_stamp);
@@ -45,7 +45,7 @@ function hwc_cron() {
     }
   }
   $max = 75;
-  foreach($nid_stamp as $nid => $stamp) {
+  foreach ($nid_stamp as $nid => $stamp) {
     $max--;
     if (!$max) {
       break;
