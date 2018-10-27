@@ -74,6 +74,7 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_number_of_attendees']['#access'] = TRUE;
     $form['field_color']['#access'] = TRUE;
     $form['field_show_in_ncw']['#access'] = TRUE;
+    $form['field_show_eu_flag']['#access'] = TRUE;
   }
   else {
     if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
@@ -93,6 +94,7 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_number_of_attendees']['#access'] = FALSE;
     $form['field_color']['#access'] = FALSE;
     $form['field_show_in_ncw']['#access'] = FALSE;
+    $form['field_show_eu_flag']['#access'] = FALSE;
   }
 
   $form['#validate'][] = 'osha_events_form_validate';

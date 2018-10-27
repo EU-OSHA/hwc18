@@ -947,12 +947,13 @@ ul.tabs--primary.nav.nav-tabs{
 				width: auto;
 				height: auto;
 			}
-			.node-article .field.field-name-field-image {
+			.node-article .field.field-name-field-image, .node-internal-url  .field.field-name-field-image{
 				float: left;
 				margin-right: 1em;
 				margin-bottom: 1em;
 				margin-bottom: 1em;
 				width: auto;
+				width: 150px;
 				height: auto;
 				overflow: hidden;
 				a:before{
@@ -1184,7 +1185,7 @@ ul.tabs--primary.nav.nav-tabs{
 	}
 	
 	/* Node-XXX */
-	div[class*='node-'], div[class*='view-']{
+	div[class*='node-']{
 		h1{
 			text-align: center;
 			font-style: italic;
@@ -1201,6 +1202,19 @@ ul.tabs--primary.nav.nav-tabs{
 			background-color: transparent;
 			font-weight: bold;
 			font-style: italic;
+		}
+	}
+	div[class*='view-']{
+		h1{
+			text-align: center;
+			font-style: italic;
+			font-weight: lighter;
+			color: @h1-color-2;
+			font-size: @h1-size-2;
+			border-bottom: none;
+		}
+		.field-name-field-summary{
+			font-weight: bold;
 		}
 	}
 	.field-name-field-publication-date{
@@ -3028,6 +3042,9 @@ ul.tabs--primary.nav.nav-tabs{
 			.code_CY{
 				background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
 			}
+			.code_US{
+				background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
+			}
 		}
 	}
 	.panels-flexible-region-new-home_right{
@@ -3321,15 +3338,86 @@ article{
 			font-size: 1.2rem;
 			text-align: center;
 			background-color: @bg-color-3;
+		  border-left: 0;
 		}
 }
+.view-tk-tools{
+	.field-name-field-image{
+		.image-field-caption {
+		  font-size: 1.2rem;
+  		background-color: rgba(138, 152, 197, 0.6);
+		  position: absolute;
+		  bottom: 0px;
+		  width: 100%;
+		  text-align: left;
+		  padding: 3px 15px;
+		  color: #FFF;
+		  border-left: 0;
+		  margin-bottom: 0px;
+		}		
+	}
+}
+
+.group-left.col-sm-4{
+	.field-name-field-image {
+			.image-field-caption{
+			  display: block;
+			}
+	}
+}
+.views-row{
+	.group-left{
+		.field-name-field-image {
+				.image-field-caption{
+					//display:none;
+					background-color: #FFF;
+					text-align: center;
+  				color: #666;
+  				padding: 3px 0;
+				}
+		}
+	}	
+}
+.carousel {
+	.views-row{
+		.group-left{
+			.field-name-field-image {
+					.image-field-caption{
+						//display:none;
+						background-color: transparent !important;
+					}
+			}
+		}	
+	}
+}
+
 .group-left{
-.field-name-field-image {
-		.image-field-caption{
-			display:none; 
-		}
+	.field-name-field-image {
+		position: relative;
+		overflow: auto;
+			.image-field-caption{
+				//display:none; 
+			  font-size: 1.2rem;
+	  		background-color: rgba(138, 152, 197, 0.6);
+			  position: absolute;
+			  bottom: 0px;
+			  width: 100%;
+			  text-align: left;
+			  padding: 3px 15px;
+			  color: #FFF;
+			  border-left: 0;
+			  margin-bottom: 0px;
+			  p{
+			  	margin: 0 !important;
+			  }
+			}
+	}
 }
+
+.node-type-tk-article .field-name-field-tk-topics .node-tk-topic .group-left .image-field-caption{
+    bottom: 30px;
 }
+
 .container .field.field-name-body{
 	p{
 		a{
@@ -3914,6 +4002,9 @@ p.no-results{
 						}
 						.code_CY{
 							background: url(../images/events/big/Republic-of-Cyprus-180x180.png) no-repeat center;
+						}
+						.code_US{
+							background: url(../images/events/big/eeuu-180x180.png) no-repeat center;
 						}
 					}
 				}
@@ -4580,6 +4671,15 @@ p.no-results{
 .pane-osha-publication-osha-case-studies-listing.container{
 	width: 100%;
 	padding-left: 0;
+	#edit-field-priority-area > ul{
+		padding-left: 0;
+	}
+}
+
+.pane-osha-publication{
+	#edit-field-priority-area > ul{
+		padding-left: 0;
+	}
 }
 /*End case-studies*/
 
@@ -5169,17 +5269,24 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 .profile-edit-links-container{
 	margin-left: @margin2;
 	margin-right: @margin2;
+	.panels-flexible-region-inside-first{
+		justify-content: center;
+		display: flex;
+		flex-flow: row wrap;
+	  margin: 1rem 0 3rem;
+	}
 	.pane-hwc-partner-hwc-partner-private-link-0,
 	.pane-hwc-partner-hwc-partner-private-link-1,
 	.pane-hwc-partner-hwc-partner-private-link-2,
 	.pane-hwc-partner-hwc-partner-private-link-3,
 	.pane-node-profile-update-link{
-	  width: 33.3%;
+	  width: 20%;
 		.pane-content{
-			border: 1px dotted @color3;
-			text-align: center;
-		  margin: 3rem auto 10rem;
-		  width: 65%;
+		border: 1px dotted #749b00;
+		min-height: 130px;
+		text-align: center;
+		padding: 20px 10px !important;
+		margin: 10px;
 			.hwc-partner-private-link-block-title{
 				//margin-bottom: 15px;
 				a{
@@ -5188,9 +5295,8 @@ html:lang(hu) , html:lang(nl), html:lang(mt) {
 					font-style: italic;
 					font-size: 1.4em;
 					cursor: pointer;
-					display: block;
-					min-height: 111px;
-					padding: 20px 10px !important;
+				  padding: 0px 0px 20px !important;
+				  display: block;
 					&:before{
 						content: "> ";
 					}
@@ -10408,11 +10514,7 @@ input#edit-field-image-und-0-upload::before {
 							text-decoration: none;
 							cursor: pointer;
 							color:@colorNormalText;
-							&.active{
-								background-color: green;
-								color: white;
-
-							}
+							
 
 						}
 						//para el jquery
@@ -10465,14 +10567,16 @@ input#edit-field-image-und-0-upload::before {
 								vertical-align: middle;
 							}
 						}
-						.key-start-here{
-							border-color: @color-menu-1;
-							color: @color-menu-1;
+
+
+						.key-welcome{
+							border-color: #10a748;
+							color: #10a748;
 							&:after{
-								color: @color-menu-1;
+								color: #10a748;
 							}
 							&.active{
-								background-color: @color-menu-1;
+								background-color: #10a748;
 								color: white;
 							}
 						}
@@ -10490,28 +10594,28 @@ input#edit-field-image-und-0-upload::before {
 								}
 							}
 						}
-						.key-tools---examples{
-							border-color: @color-menu-3;
-							color: @color-menu-3;
+						.key-campaign-examples-and-tools{
+							border-color: #213097;
+							color: #213097;
 							&:after{
-								color: @color-menu-3;
+								color: #213097;
 							}
 							&.active{
-								background-color: @color-menu-3;
+								background-color: #213097;
 								color: white;
 								&:after{
 									color: white;
 								}
 							}
 						}
-						.key-about{
-							border-color: @color-menu-4;
-							color: @color-menu-4;
+						.key-about-the-toolkit{
+							border-color: #10aaaa;
+							color: #10aaaa;
 							&:after{
-								color: @color-menu-4;
+								color: #10aaaa;
 							}
 							&.active{
-								background-color: @color-menu-4;
+								background-color: #10aaaa;
 								color: white;
 							}
 						}
@@ -10628,14 +10732,6 @@ input#edit-field-image-und-0-upload::before {
 			color: @color-h2-toolkit;
 		    margin-bottom: 10px;
 		    font-style: normal;
-
-  font-style: normal;
-  color: #749b00;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 2em;
-
-
 			& a:before{
 				content: '';
 				padding-left: 0;
@@ -10653,8 +10749,10 @@ input#edit-field-image-und-0-upload::before {
 		h3:first-child{
 			margin-top: 15px;
 		}
+
+		
 		.field-name-body.field-type-text-with-summary{
-			h3{
+			h2{
 				margin-bottom: 25px;
 			}
 		}
@@ -10697,7 +10795,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 		}
 		//start here page
-		h3.p2{
+		h2.p2{
 				clear: both;
 				margin-bottom: 5px;
 			    margin-top: 20px;
@@ -10722,6 +10820,7 @@ input#edit-field-image-und-0-upload::before {
 				text-align: center;
 			    padding: 30px 15px 50px;
 			    position: relative;
+			    margin-bottom: 1em;
 			    &:hover{
 			    	background-color: @gray-lighter;
 			    	cursor: pointer;
@@ -10774,7 +10873,7 @@ input#edit-field-image-und-0-upload::before {
 					}
 				} 
 			} 
-			h3{
+			h2{
 				font-size: 1.1em;
 				margin-bottom: 15px;
 				margin-top: 0px;
@@ -10792,7 +10891,7 @@ input#edit-field-image-und-0-upload::before {
 			}		
 			.campaigning{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-campaigning.png);
 						}
@@ -10801,7 +10900,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.plane-campaign{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-plan.png);
 						}
@@ -10810,7 +10909,7 @@ input#edit-field-image-und-0-upload::before {
 			}
 			.resources-networks{
 				.col-inner{
-					h3{
+					h2{
 						&:before{
 							background-image: url(../images/toolkit-resources.png);
 						}
@@ -10885,6 +10984,7 @@ input#edit-field-image-und-0-upload::before {
 					width: 100%;
 					height: 250px;
 					overflow: hidden;
+					position: relative;
 					img{
 						width: 100%;
 					    max-width: inherit;
@@ -11022,7 +11122,6 @@ input#edit-field-image-und-0-upload::before {
 				padding: 30px 60px;
 				margin-bottom: 80px;
 				position: relative;
-				margin-top: 30px;
 				.carousel-indicators{
 					bottom: -45px;
 					margin-bottom: 0px;
@@ -11050,9 +11149,13 @@ input#edit-field-image-und-0-upload::before {
 						}
 						.group-right{
 							width: 75%;
-							h3{
-								margin-top: 0px;
-								margin-bottom: 25px;
+							.slider-title{
+								font-size: 1.3em;
+					    		font-weight: 600;
+					    		color: @color-h2-toolkit;
+					    		margin-top: 0px;
+					    		padding-bottom: 25px;
+					    		display: block;
 								a{
 									text-decoration: none;
 								}

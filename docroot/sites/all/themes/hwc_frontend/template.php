@@ -97,11 +97,13 @@ function hwc_frontend_preprocess_html(&$vars) {
         break;
     }
   }
-  elseif (arg(2) == 'search-toolkit-examples') {
+  elseif ((arg(2) == 'search-toolkit-examples') || (arg(3) == 'search-toolkit-examples')) {
     $vars['classes_array'][] = 'toolkit-page';
   }
   elseif ($term = menu_get_object('taxonomy_term', 2)) {
-    $vars['classes_array'][] = 'toolkit-page';
+    if ($term->vocabulary_machine_name == 'tools_and_examples') {
+      $vars['classes_array'][] = 'toolkit-page';
+    }
   }
 
   if (!empty($vars['is_front'])) {

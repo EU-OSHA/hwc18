@@ -336,7 +336,12 @@ function hwc_partner_block_view($delta = '') {
   elseif ($delta == 'hwc_partner_act_as_partner') {
     $block['title'] = '<none>';
     if (user_access('masquerade as any user')) {
-      $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => ''));
+      if (isset($_SESSION['masquerading'])) {
+      }
+      elseif (user_access('masquerade as any user')) {
+        $form = drupal_get_form('masquerade_block_1');
+        $block['content'] = theme('hwc_partner_act_as_partner_block', array('content' => drupal_render($form)));
+      }
     }
   }
   elseif ($delta == 'hwc_partner_mostra_masquerade') {
@@ -517,12 +522,6 @@ function hwc_partner_theme() {
   );
   $theme['hwc_partner_act_as_partner_block'] = array(
     'template' => 'templates/hwc_partner_act_as_partner_block',
-    'variables' => array(
-      'content' => '',
-    ),
-  );
-  $theme['hwc_partner_act_as_partner_block_footer'] = array(
-    'template' => 'templates/hwc_partner_act_as_partner_block_footer',
     'variables' => array(
       'content' => '',
     ),

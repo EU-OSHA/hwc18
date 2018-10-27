@@ -152,3 +152,17 @@ function hwc_toolkit_update_7021() {
   features_revert(array('hwc_toolkit' => array('views_view', 'context', 'field_instance')));
   variable_set('toolkit_search_toolkit_examples', 'tools-and-publications/campaign-toolkit/tools-and-examples/search-toolkit-examples');
 }
+
+/**
+ * TKIT-104 Review and crop the cover picture of the examples.
+ */
+function hwc_toolkit_update_7022() {
+  features_revert(array('hwc_toolkit' => array('field_instance', 'image')));
+}
+
+/**
+ * MDR-2204 change the breadcrumb for the toolkit.
+ */
+function hwc_toolkit_update_7023() {
+  features_revert(array('hwc_toolkit' => array('path_breadcrumbs')));
+}

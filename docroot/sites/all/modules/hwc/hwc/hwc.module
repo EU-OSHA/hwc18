@@ -71,10 +71,50 @@ function hwc_views_query_alter(&$view, &$query) {
 }
 
 /**
+ * Implements hook_translated_menu_link_alter().
+ *
+ * Dynamically add the CSRF protection token to the Masquerade menu items.
+ */
+function hwc_translated_menu_link_alter(&$item, $map) {
+  if (isset($item['page_callback'])) {
+    if ($item['page_callback'] == 'hwc_masquerade_switch_back_page') {
+      $item['localized_options']['query']['token'] = drupal_get_token('masquerade/unswitch');
+    }
+  }
+}
+
+/*
+ * Override switch back page callback.
+ */
+function hwc_masquerade_switch_back_page() {
+  if (isset($_GET['token']) && drupal_valid_token($_GET['token'], 'masquerade/unswitch')) {
+    global $user;
+    $olduser = $user;
+    masquerade_switch_back();
+    drupal_set_message(t('You are no longer masquerading as !masq_as and are now logged in as !user.',
+      array(
+        '!user' => theme('username', array('account' => $user)),
+        '!masq_as' => theme('username', array('account' => $olduser)),
+      )
+    ));
+    if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles)) {
+      drupal_goto($_SERVER['HTTP_REFERER']);
+    }
+    else {
+      drupal_goto('private_workbench');
+    }
+  }
+  else {
+    drupal_access_denied();
+  }
+}
+
+/**
  * Implements hook_menu_alter().
  */
 function hwc_menu_alter(&$items) {
 
+  $items['masquerade/unswitch']['page callback'] = 'hwc_masquerade_switch_back_page';
   $items['taxonomy/term/%taxonomy_term/feed']['page callback'] = 'hwc_disable_taxonomy_term_feed';
 
   $items['user/password']['title'] = t('Create / Forgot password');
@@ -287,16 +327,10 @@ function hwc_block_view($delta = '') {
     $block['subject'] = "<none>";
     $block['content'] = theme('hwc_print_friendly_block');
   }
-  if ($delta == 'hwc_footer_data') {
+  if ($delta == 'hwc_footer_data') {//todo remove
     $block['title'] = '<none>';
     $block['subject'] = "<none>";
     $block['content'] = NULL;
-    if (isset($_SESSION['masquerading'])) {
-    }
-    elseif (user_access('masquerade as any user')) {
-      $form = drupal_get_form('masquerade_block_1');
-      $block['content'] = theme('hwc_partner_act_as_partner_block_footer', array('content' => drupal_render($form)));
-    }
   }
   return $block;
 }

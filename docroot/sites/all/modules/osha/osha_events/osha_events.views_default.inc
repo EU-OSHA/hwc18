@@ -182,8 +182,8 @@ function osha_events_views_default_views() {
   $handler->display->display_options['style_options']['columns'] = array(
     'field_color' => 'field_color',
     'title_field' => 'title_field',
+    'field_organizer' => 'field_organizer',
     'field_for_the_web' => 'field_for_the_web',
-    'field_organization' => 'field_organization',
     'field_country_code' => 'field_country_code',
     'field_city' => 'field_city',
     'field_start_date' => 'field_start_date',
@@ -192,20 +192,19 @@ function osha_events_views_default_views() {
     'field_adonis' => 'field_adonis',
     'field_unit_ref' => 'field_unit_ref',
     'field_activity' => 'field_activity',
+    'field_tags' => 'field_tags',
     'field_agency_role' => 'field_agency_role',
     'field_agency_initial_contact' => 'field_agency_initial_contact',
     'field_agency_rep_confirmed' => 'field_agency_rep_confirmed',
-    'field_organised_by' => 'field_organised_by',
     'field_event_in_amp' => 'field_event_in_amp',
     'field_agency_contact_reply' => 'field_agency_contact_reply',
-    'field_comments_summary_after_eve' => 'field_comments_summary_after_eve',
     'field_number_of_attendees' => 'field_number_of_attendees',
     'field_satisfaction_rate' => 'field_satisfaction_rate',
     'edit_node' => 'edit_node',
     'delete_node' => 'delete_node',
     'nothing' => 'nothing',
     'name' => 'name',
-    'field_agency_rep_confirmed_1' => 'field_agency_rep_confirmed_1',
+    'status' => 'status',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
@@ -223,14 +222,14 @@ function osha_events_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_for_the_web' => array(
+    'field_organizer' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_organization' => array(
+    'field_for_the_web' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -287,6 +286,11 @@ function osha_events_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'field_tags' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'field_agency_role' => array(
       'align' => '',
       'separator' => '',
@@ -306,11 +310,6 @@ function osha_events_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_organised_by' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'field_event_in_amp' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
@@ -319,13 +318,6 @@ function osha_events_views_default_views() {
       'empty_column' => 0,
     ),
     'field_agency_contact_reply' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_comments_summary_after_eve' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -368,7 +360,7 @@ function osha_events_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_agency_rep_confirmed_1' => array(
+    'status' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -438,6 +430,13 @@ function osha_events_views_default_views() {
     'title_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: Organiser */
+  $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['field'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: For the web / Public */
   $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
   $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
@@ -1030,6 +1029,14 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Organiser */
+  $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['field'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['ui_name'] = 'Organiser';
+  $handler->display->display_options['fields']['field_organizer']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: For the web */
   $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
   $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
@@ -1608,6 +1615,7 @@ function osha_events_views_default_views() {
     t('Color'),
     t('[field_color]'),
     t('Title'),
+    t('Organiser'),
     t('End date'),
     t('Activity'),
     t('Category'),

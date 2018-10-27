@@ -1,5 +1,21 @@
 <?php
 
+module_load_include('inc', 'ncw_migration', 'ncw_migration.admin');
+
+/**
+ * Implements hook_menu().
+ */
+function ncw_migration_menu() {
+  $items = array();
+  $items['admin/config/system/ncw_migration'] = array(
+    'title' => 'EU-OSHA synchronization notification',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ncw_migration_admin_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
 /**
  * Implements Elysia hook_cronapi().
  */
@@ -9,7 +25,100 @@ function ncw_migration_cronapi() {
       'description' => 'Migrate NCW content',
       'rule' => '0 3 * * *',
     ),
+    'ncw_migration_synchronisation_notification_cron' => array(
+      'description' => 'Send synchronisation notification',
+      'rule' => '0 9 * * *',
+    ),
+
   );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ncw_migration_synchronisation_notification_cron() {
+  $language = language_default();
+  $stuck = [];
+  $outdated = [];
+  $days_limit = 1;
+  foreach (migrate_migrations() as $machine_name => $meta) {
+    $migration = MigrationBase::getInstance($machine_name);
+    if ($group = $migration->getGroup()) {
+      if ('ncw' != $group->getName()) {
+        continue;
+      }
+    }
+    $last_imported = db_select('migrate_log', 'ml')
+      ->fields('ml', array('endtime'))
+      ->condition('machine_name', $machine_name)
+      ->isNotNull('endtime')
+      ->orderBy('endtime', 'DESC')
+      ->execute()
+      ->fetchField();
+
+    if (MigrationBase::STATUS_IDLE == $migration->getStatus()) {
+      $days = (time() - ($last_imported / 1000) / (3600 * 12));
+      if ($last_imported && $days > $days_limit) {
+        $outdated[] = $machine_name;
+      }
+    }
+    else {
+      $stuck[] = $machine_name;
+    }
+  }
+  watchdog('synchronisation_notification',
+    '[ncw_migration_synchronisation_notification_cron] Stat: outdated = !outdated, stuck = !stuck',
+    array('!outdated' => count($outdated), '!stuck' => count($stuck)), WATCHDOG_INFO);
+  $mails = [];
+  $default_value = variable_get('ncw_migration_synchronisation_mails', '');
+  if ($default_value) {
+    $mails = explode("\n", $default_value);
+  }
+  if (empty($mails)) {
+    watchdog('synchronisation_notification',
+      '[ncw_migration_synchronisation_notification_cron] There are no users to notify about synchronisation problems.', array(), WATCHDOG_ERROR);
+    drupal_set_message('There are no users to notify about synchronisation problems.', 'warning');
+    return;
+  }
+  if ($outdated || $stuck) {
+    foreach ($mails as $mail) {
+      $params['outdated'] = $outdated;
+      $params['stuck'] = $stuck;
+      drupal_mail('ncw_migration', 'ncw_migration_synchronisation', $mail, $language, $params);
+
+      watchdog('synchronisation_notification',
+        '[ncw_migration_synchronisation_notification_cron] notification sent to !mail',
+        array('!mail' => $mail), WATCHDOG_INFO);
+    }
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ncw_migration_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'ncw_migration_synchronisation':
+      $subject = variable_get('ncw_migration_template_synchronisation_subject', '');
+      $body = variable_get('ncw_migration_template_synchronisation_body', '');
+      $stuck = implode(', ', $params['stuck']);
+      $outdated = implode(', ', $params['outdated']);
+      $stuck_info = '';
+      $outdated_info = '';
+      if ($stuck) {
+        $stuck_info = 'Stuck = ' . $stuck;
+      }
+      if ($outdated) {
+        $outdated_info = 'Outdated = ' . $outdated;
+      }
+      $body = str_replace('[stuck]', $stuck, $body);
+      $body = str_replace('[outdated]', $outdated, $body);
+      $body = str_replace('[stuck_info]', $stuck_info, $body);
+      $body = str_replace('[outdated_info]', $outdated_info, $body);
+      $message['subject'] = token_replace($subject, $params);
+      $message['body'][] = token_replace($body, $params);
+      break;
+  }
 }
 
 /**
