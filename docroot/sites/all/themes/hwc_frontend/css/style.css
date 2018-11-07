@@ -11218,6 +11218,17 @@ article .hwc-share-widget ul {
 }
 /* End news*/
 /*gallery*/
+.view-id-flickr_albums .view-content {
+  display: flex;
+  flex-flow: row wrap;
+}
+.view-id-flickr_albums .view-content .gallery-row {
+  background: #063397;
+}
+.view-id-flickr_albums .view-content .gallery-row .views-field-field-flickr {
+  height: 250px;
+  overflow: hidden;
+}
 .page-media-center-photo-gallery .views-field-title-field,
 .view-photo-gallery .views-field-title-field,
 .page-photo-gallery .views-field-title-field,
@@ -11276,23 +11287,25 @@ article .hwc-share-widget ul {
 .view-photo-gallery .view-content .views-row[class*="col-"],
 .page-photo-gallery .view-content .views-row[class*="col-"] {
   margin-bottom: 1em;
+  margin-right: 1em;
+  width: 32%;
 }
 .page-media-center-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+1),
 .view-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+1),
 .page-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+1) {
-  padding-right: 15px;
+  padding-right: 0;
   clear: both;
 }
 .page-media-center-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+2),
 .view-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+2),
 .page-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n+2) {
-  padding-right: 7px;
-  padding-left: 8px;
+  padding: 0;
 }
 .page-media-center-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n),
 .view-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n),
 .page-photo-gallery .view-content .views-row[class*="col-"]:nth-child(3n) {
-  padding-left: 15px;
+  padding: 0;
+  margin-right: 0;
 }
 .page-media-center-photo-gallery .view-content .views-row[class*="col-"] blockquote.image-field-caption,
 .view-photo-gallery .view-content .views-row[class*="col-"] blockquote.image-field-caption,

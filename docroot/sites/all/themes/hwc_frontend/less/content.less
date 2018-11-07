@@ -3465,6 +3465,19 @@ article{
 /* End news*/
 
 /*gallery*/
+.view-id-flickr_albums{		
+	.view-content{
+		display: flex;
+	  flex-flow: row wrap;
+		.gallery-row{
+			background: #063397;
+			.views-field-field-flickr{
+				height: 250px;
+				overflow: hidden;
+			}
+		}
+	}		
+}
 .page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
 	.views-field-title-field, .gallery_list_detail_container, .attachment.attachment-before .views-field-nothing{
 		background-color: @bg-color-2;
@@ -3499,17 +3512,19 @@ article{
 		}
 	}
 	.view-content .views-row[class*="col-"]{
-		margin-bottom: 1em;
+		 margin-bottom: 1em;
+		 margin-right: 1em;
+		 width: 32%;
 		&:nth-child(3n+1){
-			padding-right: 15px;
+			padding-right: 0;
 			clear: both;
 		}
 		&:nth-child(3n+2){
-			padding-right: 7px;
-			padding-left: 8px;
+			padding:0; 
 		}
 		&:nth-child(3n){
-			padding-left: 15px;
+			padding:0;
+			margin-right:0; 
 		}
 		blockquote.image-field-caption{
 			display: none;
