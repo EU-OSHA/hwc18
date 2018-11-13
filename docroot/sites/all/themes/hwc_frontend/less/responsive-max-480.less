@@ -298,6 +298,24 @@ header{
 		}
 	}
 }
+/*gallery*/
+.page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
+	.view-content{
+		margin-left: @margin-movil;
+		margin-right: 0;
+		.views-row[class*="col-"]{
+			margin-bottom: 1em;
+			margin-right:1em;
+			width: 98%;
+			&:nth-child(2n+1), &:nth-child(2n){
+				margin-right:1em;
+				padding: 0px;
+				//padding-right: @margin-movil;
+			}
+		}
+	}
+}
+/*End gallery*/
 .node-type-flickr-gallery,
 .node-type-hwc-gallery{
 	.hwc-share-widget{

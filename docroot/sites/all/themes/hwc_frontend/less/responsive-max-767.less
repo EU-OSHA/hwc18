@@ -1525,6 +1525,19 @@ header.navbar-default{
 /*FIn container*/
 
 /*gallery*/
+.view-id-flickr_albums{		
+	.view-content{
+		.gallery-row{
+			.views-field-field-flickr{
+				height:230px;
+				overflow: hidden;
+				img{
+					min-height: auto;
+				}
+			}
+		}
+	}		
+}
 .page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
 	.attachment.attachment-before{
 		margin-top: 25px;
@@ -1533,9 +1546,16 @@ header.navbar-default{
 		margin-left: @margin-movil;
 		margin-right: 0;
 		.views-row[class*="col-"]{
+			margin-bottom: 1em;
+			margin-right:1em;
+			width: 47%;
+			img{
+				min-height: auto;
+			}
 			&:nth-child(2n+1), &:nth-child(2n){
-				padding-left: 0px;
-				padding-right: @margin-movil;
+				margin-right:1em;
+				padding: 0px;
+				//padding-right: @margin-movil;
 			}
 		}
 	}
@@ -3156,3 +3176,38 @@ header.navbar-default .campaigns-header .navbar-header #block-menu-menu-header-l
 
 
 }
+
+
+
+@media only screen and (max-width : 600px) {
+.view-id-flickr_albums{		
+	.view-content{
+		.gallery-row{
+			.views-field-field-flickr{
+				height:auto;
+				overflow: initial;
+				img{
+					min-height: auto;
+				}
+			}
+		}
+	}		
+}
+.page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
+		.view-content{
+			margin-left: @margin-movil;
+			margin-right: 0;
+			.views-row[class*="col-"]{
+				margin-bottom: 1em;
+				margin-right:1em;
+				width: 98%;
+				&:nth-child(2n+1), &:nth-child(2n){
+					margin-right:1em;
+					padding: 0px;
+					//padding-right: @margin-movil;
+				}
+			}
+		}
+	}
+}
+
