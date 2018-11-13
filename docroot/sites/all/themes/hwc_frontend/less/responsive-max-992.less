@@ -649,19 +649,39 @@ header{
 /*fin events*/
 
 /*gallery*/
+.view-id-flickr_albums{		
+	.view-content{
+		display: flex;
+	  flex-flow: row wrap;
+		.gallery-row{
+			background: #063397;
+			.views-field-field-flickr{
+				height: 250px;
+				overflow: hidden;
+			}
+		}
+	}		
+}
 .page-media-center-photo-gallery, .view-photo-gallery, .page-photo-gallery{
 	.view-content{
 		margin-left: @margin-tablet2;
 		margin-right: @margin-tablet2;
 		.views-row[class*="col-"]{
+		 margin-bottom: 1em;
+		 margin-right: 1em;
+		 width: 49%;
 			&:nth-child(2n+1){
-				padding-left: 0px;
-				padding-right: 15px;
+				padding-right: 0;
+				margin-right: 1em;
 				clear: both;
 			}
 			&:nth-child(2n){
-				padding-left: 15px;
-				padding-right: 0px;
+				padding:0;
+				margin-right:0;
+				clear: none;
+			}
+			&:nth-child(2n){
+				padding:0;
 				clear: none;
 			}
 		}
