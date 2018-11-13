@@ -47,12 +47,199 @@ function hwc_workflow_rules_event_info() {
   return $items;
 }
 
+function hwc_workflow_settings_options() {
+  return [
+    'approved' => 'Approved',
+    'rejection' => 'Rejection',
+    'supervisor' => 'Supervisor',
+  ];
+}
+
+/**
+ * Action Implementation: Send mail.
+ */
+function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL, $langcode, $settings, RulesState $state, RulesPlugin $element) {
+  reset($settings_type);
+  $type = current($settings_type);
+  $subject = hwc_workflow_get_mail_subject_text($node, $type);
+  $message = hwc_workflow_get_mail_body_text($node, $type);
+
+  $to = str_replace(array("\r", "\n"), '', $to);
+  $from = !empty($from) ? str_replace(array("\r", "\n"), '', $from) : NULL;
+  $params = array(
+    'subject' => $subject,
+    'message' => $message,
+    'langcode' => $langcode,
+  );
+  // Set a unique key for this mail.
+  $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
+  $key = 'rules_action_mail_' . $name . '_' . $element->elementId();
+  $languages = language_list();
+  $language = isset($languages[$langcode]) ? $languages[$langcode] : language_default();
+
+  $message = drupal_mail('rules', $key, $to, $language, $params, $from);
+  if ($message['result']) {
+    watchdog('rules', 'Successfully sent email to %recipient', array('%recipient' => $to));
+  }
+}
+
+/**
+ * Action: Send mail to all users of a specific role group(s).
+ */
+function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $settings_type, $from = NULL, $settings, RulesState $state, RulesPlugin $element) {
+  reset($settings_type);
+  $type = current($settings_type);
+  $subject = hwc_workflow_get_mail_subject_text($node, $type);
+  $message = hwc_workflow_get_mail_body_text($node, $type);
+  $subject .= ' =>' . $message;
+
+  $from = !empty($from) ? str_replace(array("\r", "\n"), '', $from) : NULL;
+
+  // All authenticated users, which is everybody.
+  if (in_array(DRUPAL_AUTHENTICATED_RID, $roles)) {
+    $result = db_query('SELECT mail FROM {users} WHERE uid > 0');
+  }
+  else {
+    $rids = implode(',', $roles);
+    // Avoid sending emails to members of two or more target role groups.
+    $result = db_query('SELECT DISTINCT u.mail FROM {users} u INNER JOIN {users_roles} r ON u.uid = r.uid WHERE r.rid IN (' . $rids . ')');
+  }
+
+  // Now, actually send the mails.
+  $params = array(
+    'subject' => $subject,
+    'message' => $message,
+  );
+  // Set a unique key for this mail.
+  $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
+  $key = 'rules_action_mail_to_users_of_role_' . $name . '_' . $element->elementId();  $languages = language_list();
+
+  $message = array('result' => TRUE);
+  foreach ($result as $row) {
+    $message = drupal_mail('rules', $key, $row->mail, language_default(), $params, $from);
+    // If $message['result'] is FALSE, then it's likely that email sending is
+    // failing at the moment, and we should just abort sending any more. If
+    // however, $mesage['result'] is NULL, then it's likely that a module has
+    // aborted sending this particular email to this particular user, and we
+    // should just keep on sending emails to the other users.
+    // For more information on the result value, see drupal_mail().
+    if ($message['result'] === FALSE) {
+      break;
+    }
+  }
+  if ($message['result'] !== FALSE) {
+    $role_names = array_intersect_key(user_roles(TRUE), array_flip($roles));
+    watchdog('rules', 'Successfully sent email to the role(s) %roles.', array('%roles' => implode(', ', $role_names)));
+  }
+}
 
 /**
  * Implements hook_rules_action_info() on behalf of the system module.
  */
 function hwc_workflow_rules_action_info() {
   return array(
+    'hwc_mail' => array(
+      'label' => t('Send custom mail'),
+      'group' => t('HWC workflow'),
+      'parameter' => array(
+        'node' => array(
+          'type' => 'node',
+          'label' => t('Node'),
+          'description' => t("The current node"),
+        ),
+        'to' => array(
+          'type' => 'text',
+          'label' => t('To'),
+          'description' => t('The e-mail address or addresses where the message will be sent to. The formatting of this string must comply with RFC 2822.'),
+        ),
+        'settings_type' => array(
+          'type' => 'list<text>',
+          'label' => t('Settings type'),
+          'restriction' => 'input',
+          'options list' => 'hwc_workflow_settings_options',
+        ),
+        'from' => array(
+          'type' => 'text',
+          'label' => t('From'),
+          'description' => t("The mail's from address. Leave it empty to use the site-wide configured address."),
+          'optional' => TRUE,
+        ),
+        'language' => array(
+          'type' => 'token',
+          'label' => t('Language'),
+          'description' => t('If specified, the language used for getting the mail message and subject.'),
+          'options list' => 'entity_metadata_language_list',
+          'optional' => TRUE,
+          'default value' => LANGUAGE_NONE,
+          'default mode' => 'selector',
+        ),
+      ),
+      'base' => 'hwc_workflow_rules_action_mail',
+      'access callback' => 'rules_system_integration_access',
+    ),
+
+    'hwc_mail_to_users_of_role' => array(
+      'label' => t('Send custom mail to all users of a role'),
+      'group' => t('HWC workflow'),
+      'parameter' => array(
+        'node' => array(
+          'type' => 'node',
+          'label' => t('Node'),
+          'description' => t("The current node"),
+        ),
+        'roles' => array(
+          'type' => 'list<integer>',
+          'label' => t('Roles'),
+          'options list' => 'entity_metadata_user_roles',
+          'description' => t('Select the roles whose users should receive the mail.'),
+        ),
+        'settings_type' => array(
+          'type' => 'list<text>',
+          'label' => t('Settings type'),
+          'restriction' => 'input',
+          'options list' => 'hwc_workflow_settings_options',
+        ),
+        'from' => array(
+          'type' => 'text',
+          'label' => t('From'),
+          'description' => t("The mail's from address. Leave it empty to use the site-wide configured address."),
+          'optional' => TRUE,
+        ),
+      ),
+      'base' => 'hwc_workflow_rules_action_mail_to_users_of_role',
+      'access callback' => 'rules_system_integration_access',
+    ),
+
+    'hwc_workflow_mail' => array(
+      'label' => t('Send mail to ...'),
+      'group' => t('HWC workflow'),
+      'parameter' => array(
+        'node' => array(
+          'type' => 'node',
+          'label' => t('Node'),
+          'description' => t("The current node"),
+        ),
+        'settings_type' => array(
+          'type' => 'list<text>',
+          'label' => t('Settings type'),
+          'restriction' => 'input',
+          'options list' => 'hwc_workflow_settings_options',
+        ),
+        'subject' => array(
+          'type' => 'text',
+          'label' => t('Subject'),
+          'description' => t("The mail's subject."),
+        ),
+        'message' => array(
+          'type' => 'text',
+          'label' => t('Message'),
+          'description' => t("The mail's message body."),
+        ),
+      ),
+      'base' => 'hwc_workflow_rules_mail_to_partners',
+      'access callback' => 'rules_system_integration_access',
+    ),
+
     'hwc_mail_to_users_of_partner' => array(
       'label' => t('Send mail to all users of a partner'),
       'group' => t('HWC workflow'),

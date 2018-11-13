@@ -58,7 +58,7 @@ function osha_js_alter(&$javascript) {
   if (empty($javascript['settings']['data'])) {
     return;
   }
-  foreach($javascript['settings']['data'] as $k => &$v) {
+  foreach ($javascript['settings']['data'] as $k => &$v) {
     if (array_key_exists('eu_cookie_compliance', $v)) {
       $popup_en = variable_get('eu_cookie_compliance_en', array());
 

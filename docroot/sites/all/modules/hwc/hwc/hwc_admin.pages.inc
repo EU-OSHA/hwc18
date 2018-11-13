@@ -1,10 +1,5 @@
 <?php
 
-function hwc_toolkit_update_aliases() {
-  drupal_set_message('Toolkit aliases updated');
-  hwc_update_toolkit_menu_content_links();
-}
-
 function hwc_admin_config_form() {
   $form['title'] = array(
     '#markup' => '<h1>HWC website configuration</h1>',
@@ -152,10 +147,47 @@ function hwc_admin_config_form() {
     '#title' => 'Toolkit about page node nid',
   );
 
-  $form['hwc_toolkit_update_aliases'] = array(
-    '#type' => 'submit',
-    '#value' => t('Update toolkit aliases'),
-    '#submit' => array('hwc_toolkit_update_aliases'),
+  $form['workflow'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Workflow mail settings',
+    '#collapsible' => TRUE,
+    '#weight' => 101,
+  );
+
+  $form['workflow']['hwc_workflow_approved_subject'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('hwc_workflow_approved_subject', ''),
+    '#title' => 'Approved subject',
+  );
+
+  $form['workflow']['hwc_workflow_approved_body'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_workflow_approved_body', ''),
+    '#title' => 'Approved body',
+  );
+
+  $form['workflow']['hwc_workflow_rejection_subject'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('hwc_workflow_rejection_subject', ''),
+    '#title' => 'Rejection subject',
+  );
+
+  $form['workflow']['hwc_workflow_rejection_body'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_workflow_rejection_body', ''),
+    '#title' => 'Rejection body',
+  );
+
+  $form['workflow']['hwc_workflow_supervisor_subject'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('hwc_workflow_supervisor_subject', ''),
+    '#title' => 'Supervisor subject',
+  );
+
+  $form['workflow']['hwc_workflow_supervisor_body'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_workflow_supervisor_body', ''),
+    '#title' => 'Supervisor body',
   );
 
   $form = system_settings_form($form);
