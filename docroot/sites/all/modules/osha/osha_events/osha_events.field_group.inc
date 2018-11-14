@@ -177,6 +177,8 @@ function osha_events_field_group_info() {
       3 => 'field_rejection_body',
       4 => 'field_supervisor_subject',
       5 => 'field_supervisor_body',
+      6 => 'field_reviewer_subject',
+      7 => 'field_reviewer_body',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -210,6 +212,8 @@ function osha_events_field_group_info() {
       3 => 'field_rejection_body',
       4 => 'field_supervisor_subject',
       5 => 'field_supervisor_body',
+      6 => 'field_reviewer_subject',
+      7 => 'field_reviewer_body',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

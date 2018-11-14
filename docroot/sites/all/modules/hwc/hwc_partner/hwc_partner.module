@@ -714,7 +714,8 @@ function hwc_partner_get_partners_user_options() {
   $tids = [];
   if (
     (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) ||
-    (in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles))) {
+    (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles)) ||
+    (in_array(HWC_ROLE_SUPERVISOR, $user->roles))) {
     $op = '!=';
     if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
       $op = '=';

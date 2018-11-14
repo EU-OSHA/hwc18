@@ -33,6 +33,11 @@ function hwc_workflow_get_mail_subject_text($node, $settings_type) {
       $field = 'field_supervisor_subject';
       $variable = 'hwc_workflow_supervisor_subject';
       break;
+
+    case 'reviewer':
+      $field = 'field_supervisor_subject';
+      $variable = 'hwc_workflow_reviewer_subject';
+      break;
   }
   $value = $node->$field;
   $subject = $value[LANGUAGE_NONE][0]['value'];
@@ -62,6 +67,11 @@ function hwc_workflow_get_mail_body_text($node, $settings_type) {
       $field = 'field_supervisor_body';
       $variable = 'hwc_workflow_supervisor_body';
       break;
+
+    case 'reviewer':
+      $field = 'field_supervisor_body';
+      $variable = 'hwc_workflow_reviewer_body';
+      break;
   }
   $value = $node->$field;
   $message = $value[LANGUAGE_NONE][0]['value'];
@@ -75,16 +85,31 @@ function hwc_workflow_get_mail_body_text($node, $settings_type) {
  * News and events visibility.
  */
 function hwc_workflow_news_events_visibility(&$form) {
-//  $form['field_approved_subject']['#access'] = FALSE;
-//  $form['field_approved_body']['#access'] = FALSE;
-//
-//  $form['field_rejection_subject']['#access'] = FALSE;
-//  $form['field_rejection_body']['#access'] = FALSE;
-//
-//  $form['field_supervisor_subject']['#access'] = FALSE;
-//  $form['field_supervisor_body']['#access'] = FALSE;
+  global  $user;
+  $access = FALSE;
+  if (
+    in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles) ||
+    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
+  ) {
+    $access = TRUE;
+  }
+  $form['field_approved_subject']['#access'] = $access;
+  $form['field_approved_body']['#access'] = $access;
 
-  $form['reviewers_list']['#access'] = FALSE;
+  $form['field_rejection_subject']['#access'] = $access;
+  $form['field_rejection_body']['#access'] = $access;
+
+  $form['field_supervisor_subject']['#access'] = FALSE;
+  $form['field_supervisor_body']['#access'] = FALSE;
+
+
+  $access = FALSE;
+  if (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles)) {
+    $access = TRUE;
+  }
+  $form['reviewers_list']['#access'] = $access;
+  $form['field_reviewer_subject']['#access'] = $access;
+  $form['field_reviewer_body']['#access'] = $access;
 }
 
 /**

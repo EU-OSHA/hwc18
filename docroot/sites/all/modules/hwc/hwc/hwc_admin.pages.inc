@@ -190,6 +190,18 @@ function hwc_admin_config_form() {
     '#title' => 'Supervisor body',
   );
 
+  $form['workflow']['hwc_workflow_reviewer_subject'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('hwc_workflow_reviewer_subject', ''),
+    '#title' => 'Reviewer subject',
+  );
+
+  $form['workflow']['hwc_workflow_reviewer_body'] = array(
+    '#type' => 'textarea',
+    '#default_value' => variable_get('hwc_workflow_reviewer_body', ''),
+    '#title' => 'Reviewer body',
+  );
+
   $form = system_settings_form($form);
   $form['actions']['#weight'] = 150;
   // Prepend this hook to the beginning of array because we need the unchanged
