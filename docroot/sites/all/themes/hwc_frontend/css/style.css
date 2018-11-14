@@ -11698,6 +11698,9 @@ article .hwc-share-widget ul {
 }
 /*End pressroom */
 /* Events*/
+.without-path .defaultSkin .mceStatusbar {
+  display: none !important;
+}
 .page-past-events h1.page-header,
 .page-events h1.page-header {
   border-bottom: none;
