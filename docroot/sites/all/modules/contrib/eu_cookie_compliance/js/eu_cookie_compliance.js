@@ -156,7 +156,7 @@
       $popup.show()
         .attr({ class: 'sliding-popup-top clearfix' })
         .css({ top: -1 * height })
-        .animate({ top: 0 }, Drupal.settings.eu_cookie_compliance.popup_delay, null, function () {
+        .animate({ top: -210 }, Drupal.settings.eu_cookie_compliance.popup_delay, null, function () {
           $popup.trigger('eu_cookie_compliance_popup_open');
         });
     } else {
@@ -252,7 +252,7 @@
     Drupal.eu_cookie_compliance.setStatus(0);
     let popup = $('#sliding-popup');
     if (popup.hasClass('sliding-popup-top')) {
-      popup.animate({ top: popup.outerHeight() * -1 }).trigger('eu_cookie_compliance_popup_close');
+      popup.animate({ top: (popup.outerHeight() + 210) * -1 }).trigger('eu_cookie_compliance_popup_close');
     }
     else {
       popup.animate({ bottom: popup.outerHeight() * -1 }).trigger('eu_cookie_compliance_popup_close');
