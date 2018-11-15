@@ -5,7 +5,7 @@ include_once 'hwc.features.inc';
 define('HWC_ROLE_ADMIN', 'administrator');
 // Website Managers - Editorial Team.
 define('HWC_ROLE_WEBSITE_MANAGERS', 'Website Managers');
-define('HWC_ROLE_EEN_REVIEW_MANAGER', 'EEN Review Manager');
+define('HWC_ROLE_EEN_REVIEW_MANAGER', 'EU-OSHA EEN Reviewers');
 define('HWC_ROLE_HWC_STAFF_REVIEWERS', 'HWC Staff - Reviewers');
 
 define('HWC_ROLE_CAMPAIGN_PARTNER', 'campaign partner');

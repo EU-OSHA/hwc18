@@ -67,7 +67,7 @@ function osha_authentication_get_role_from_dn($group_dn, $user) {
     $role = HWC_ROLE_WEBSITE_MANAGERS;
   }
   elseif ($group_dn == 'cn=OSHAMB_RVM,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
-    // EU-OSHA EEN reviewers.
+    // EU-OSHA EEN Reviewers.
     $role = HWC_ROLE_EEN_REVIEW_MANAGER;
   }
   elseif ($group_dn == 'cn=TRLIAS,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
