@@ -7184,7 +7184,7 @@ table .checkbox input[type="checkbox"] {
 #sliding-popup {
   height: auto !important;
   overflow: hidden;
-  top: -210px !important;
+  top: -210px;
 }
 #sliding-popup .eu-cookie-compliance-secondary-button,
 #sliding-popup .eu-cookie-compliance-more-button {
@@ -11768,6 +11768,9 @@ article .hwc-share-widget ul {
 }
 /*End pressroom */
 /* Events*/
+.without-path .defaultSkin .mceStatusbar {
+  display: none !important;
+}
 .page-past-events h1.page-header,
 .page-events h1.page-header {
   border-bottom: none;
