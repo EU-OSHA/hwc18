@@ -51,7 +51,8 @@ function hwc_workflow_default_rules_configuration() {
         { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
         { "disable_masquerading_notifications" : [] },
         { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
-        { "NOT node_een_partner" : { "entity" : [ "node" ] } }
+        { "NOT node_een_partner" : { "entity" : [ "node" ] } },
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "final_draft" } }
       ],
       "DO" : [
         { "mail_to_users_of_role" : {
@@ -229,6 +230,12 @@ function hwc_workflow_default_rules_configuration() {
             "message" : "No action is required. This message is just to inform you that this content has been published: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E",
             "language" : [ "" ]
           }
+        },
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "roles" : { "value" : { "14" : "14" } },
+            "settings_type" : { "value" : { "approved" : "approved" } }
+          }
         }
       ]
     }
@@ -268,7 +275,7 @@ function hwc_workflow_default_rules_configuration() {
       "LABEL" : "Notification when to be reviewed (RM_US_02, SU_US_04)",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "workbench_moderation" ],
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
       "IF" : [ { "data_is" : { "data" : [ "new-state" ], "value" : "needs_review" } } ],
       "DO" : [
@@ -283,6 +290,12 @@ function hwc_workflow_default_rules_configuration() {
             "subject" : "[HWC Website] CMW: ([node:nid]) [node:title-field]",
             "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E",
             "language" : [ "" ]
+          }
+        },
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "roles" : { "value" : { "14" : "14" } },
+            "settings_type" : { "value" : { "rejection" : "rejection" } }
           }
         }
       ]

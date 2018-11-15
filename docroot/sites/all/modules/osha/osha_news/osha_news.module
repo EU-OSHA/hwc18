@@ -52,18 +52,7 @@ function osha_news_osha_tmgmt_i18n_string_list() {
  * Implements hook_form_FORM_ID_alter().
  */
 function osha_news_form_news_node_form_alter(&$form, &$form_state) {
-  hwc_workflow_add_default_notification($form);
-
-  $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_REVIEW_MANAGER);
-  $form['reviewers_list'] = array(
-    '#type' => 'select',
-    '#title' => t('Reviewers list'),
-    '#options' => $options,
-    '#multiple' => TRUE,
-    '#description' => t('Additional reviewer can be added to the list, just selecting him/her from the list'),
-  );
-
-  hwc_workflow_news_events_visibility($form);
+  hwc_workflow_add_extra_fields($form, $form_state);
 }
 
 /**

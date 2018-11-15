@@ -13,13 +13,13 @@ function hwc_workflow_node_ep_assign_form($form, &$form_state, $node) {
   $can_edit = _hwc_workflow_can_edit_ep($node);
   $form['#node'] = $node;
   $form['#can_edit'] = $can_edit;
-  $eps = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_SUPERVISOR);//todo
+  $eps = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_HWC_STAFF_REVIEWERS);
   $options = array('' => t('-- Please select --'));
   foreach ($eps as $uid => $ep) {
     $options[$uid] = $ep->name;
   }
-  $external_providers = _hwc_workflow_get_external_providers($node->nid);//todo
-  $ep_entries = _hwc_workflow_get_external_providers_entries($node->nid);//todo
+  $external_providers = _hwc_workflow_get_external_providers($node->nid);
+  $ep_entries = _hwc_workflow_get_external_providers_entries($node->nid);
   if (!empty($ep_entries)) {
     $weight = 0;
     $form['rows']['#tree'] = TRUE;
@@ -91,7 +91,7 @@ function hwc_workflow_node_ep_assign_form($form, &$form_state, $node) {
     ),
   );
 
-  hwc_workflow_node_ep_actions_append($form, $node);//todo
+  hwc_workflow_node_ep_actions_append($form, $node);
 
   return $form;
 }
@@ -142,8 +142,8 @@ function hwc_workflow_ep_reject_submit($form, &$form_submit) {
   if (!empty($row)) {
     $row->approved = 'rejected';
     $row->message = t('!user rejected on !date', array('!user' => $user->name, '!date' => date('d-m-Y H:i:s')));
-    _hwc_workflow_admin_ep_save_row($row);//todo
-    workbench_moderation_moderate($form['#node'], 'needs_review');//todo
+    _hwc_workflow_admin_ep_save_row($row);
+    workbench_moderation_moderate($form['#node'], 'needs_review');
   }
   else {
     drupal_set_message('No current ep found.');
@@ -155,7 +155,7 @@ function hwc_workflow_ep_reject_submit($form, &$form_submit) {
  */
 function hwc_workflow_ep_approve_submit($form, &$form_submit) {
   global $user;
-  $row = _hwc_workflow_get_current_ep_approver_entry($form['#node']->nid);//todo
+  $row = _hwc_workflow_get_current_ep_approver_entry($form['#node']->nid);
   if (!empty($row)) {
     $row->approved = 'approved';
     if ($user->uid == $row->uid) {
@@ -166,20 +166,20 @@ function hwc_workflow_ep_approve_submit($form, &$form_submit) {
       $message = t('!user approved on behalf of !approver on !date', array('!user' => $user->name, '!date' => date('d-m-Y H:i:s'), '!approver' => $curr_approver->name));
     }
     $row->message = $message;
-    _hwc_workflow_admin_ep_save_row($row);//todo
+    _hwc_workflow_admin_ep_save_row($row);
 
-    $next_approver = _hwc_workflow_get_current_ep_approver($form['#node']->nid);//todo
+    $next_approver = _hwc_workflow_get_current_ep_approver($form['#node']->nid);
     if (empty($next_approver)) {
       // If no any approver, publish the content.
       workbench_moderation_moderate($form['#node'], 'published');
       drupal_set_message(t('The content has been published'));
     }
     else {
-      $remaining_approvers = _hwc_workflow_get_remaining_ep_approvers($form['#node']->nid);//todo
+      $remaining_approvers = _hwc_workflow_get_remaining_ep_approvers($form['#node']->nid);
       reset($remaining_approvers);
       $next_approver = array_shift($remaining_approvers);
       // Invoke the rule event
-      rules_invoke_event('node_ep_approve', $form['#node'], $next_approver, $remaining_approvers);//todo
+      rules_invoke_event('node_ep_approve', $form['#node'], $next_approver, $remaining_approvers);
     }
   }
   else {
@@ -236,7 +236,6 @@ function theme_hwc_workflow_node_ep_assign_form($variables) {
   return $output;
 }
 
-//todo
 /**
  * Submit callback for remove button from a row.
  */
@@ -251,6 +250,34 @@ function hwc_workflow_admin_ep_remove_row_submit($form, &$form_state) {
         ->execute();
     }
   }
+}
+
+/**
+ * Add external providers to node.
+ */
+function hwc_workflow_adde_ep_to_node($uid, $nid) {
+  $existing_entries = _hwc_workflow_get_external_providers_entries($nid);
+  $weight = 0;
+  if (!empty($existing_entries)) {
+    $last = end($existing_entries);
+    $weight = $last->weight > 0 ? $last->weight + 1 : $last->weight - 1;
+  }
+  $row = array(
+    'nid' => $nid,
+    'uid' => $uid,
+    'weight' => $weight,
+  );
+  _hwc_workflow_admin_ep_save_row($row);
+}
+
+/**
+ * Remove external providers from node.
+ */
+function hwc_workflow_remove_ep_from_node($uid, $nid) {
+  db_delete('osha_workflow_node_external_providers')
+    ->condition('nid', $nid)
+    ->condition('uid', $uid)
+    ->execute();
 }
 
 /**
@@ -287,7 +314,6 @@ function _hwc_workflow_get_external_providers($nid) {
   return user_load_multiple(array_keys(_hwc_workflow_get_external_providers_entries($nid)));
 }
 
-//todo
 /**
  * Get database entries for a node from osha_workflow_node_external_providers.
  */
@@ -304,7 +330,6 @@ function _hwc_workflow_get_external_providers_entries($nid) {
   return $data[$nid];
 }
 
-//todo
 /**
  * Insert or update an osha_workflow_node_external_providers entry.
  */
@@ -328,8 +353,6 @@ function _hwc_workflow_node_has_ep($node, $account) {
 function _hwc_workflow_can_edit_ep($node, $account = NULL) {
   if (!empty($node->workbench_moderation['current']) &&
     $node->workbench_moderation['current']->state != OSHA_WORKFLOW_STATE_TO_BE_REVIEWED) {
-//    krumo('false', empty($node->workbench_moderation['current']), $node->workbench_moderation['current']->state);
-//    return FALSE;
   }
   if (empty($account)) {
     global $user;
@@ -357,7 +380,6 @@ function _hwc_workflow_get_current_ep_approver_entry($nid) {
   return NULL;
 }
 
-//todo
 function _hwc_workflow_get_remaining_ep_approvers($nid) {
   $remaining = db_select('osha_workflow_node_project_managers', 'pm')
     ->fields('pm')
@@ -371,7 +393,6 @@ function _hwc_workflow_get_remaining_ep_approvers($nid) {
   return NULL;
 }
 
-//todo...
 function _hwc_workflow_can_ep_approve($node, $account = NULL) {
   global $user;
   if (empty($account)) {
@@ -387,7 +408,7 @@ function _hwc_workflow_can_ep_approve($node, $account = NULL) {
   if ($is_admin) {
     return TRUE;
   }
-  if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account)
+  if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_HWC_STAFF_REVIEWERS, $account)
     && _hwc_workflow_node_has_ep($node, $account)) {
     return TRUE;
   }

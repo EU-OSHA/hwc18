@@ -58,18 +58,7 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
 
   $is_admin = count(array_intersect(array(HWC_ROLE_ADMIN), $user->roles));
 
-  hwc_workflow_add_default_notification($form);
-
-  $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_REVIEW_MANAGER);
-  $form['reviewers_list'] = array(
-    '#type' => 'select',
-    '#title' => t('Reviewers list'),
-    '#options' => $options,
-    '#multiple' => TRUE,
-    '#description' => t('Additional reviewer can be added to the list, just selecting him/her from the list'),
-  );
-
-  hwc_workflow_news_events_visibility($form);
+  hwc_workflow_add_extra_fields($form, $form_state);
 
   if ($is_admin) {
     $form['body'][LANGUAGE_NONE][0]['#required'] = FALSE;

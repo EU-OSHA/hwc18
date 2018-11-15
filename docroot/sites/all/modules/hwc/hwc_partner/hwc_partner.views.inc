@@ -90,7 +90,7 @@ class hwc_partner_handler_filter_node_is_cpm_assigned extends views_handler_filt
       workbench_access_user_load_data($user);
     }
     $is_admin = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
-    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_SUPERVISOR, $user);
+    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user);
     if ($is_admin || $is_supervisor) {
 //      return;
     }
@@ -131,9 +131,8 @@ class hwc_partner_handler_filter_node_is_ep_assigned extends views_handler_filte
     if (empty($user->workbench_access)) {
       workbench_access_user_load_data($user);
     }
-    //todo
     $is_admin = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
-    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_SUPERVISOR, $user);
+    $is_supervisor = OshaWorkflowPermissions::userHasRole(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user);
     if ($is_admin || $is_supervisor) {
       //      return;
     }

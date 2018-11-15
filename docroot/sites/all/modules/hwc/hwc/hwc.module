@@ -4,17 +4,16 @@ include_once 'hwc.features.inc';
 
 define('HWC_ROLE_ADMIN', 'administrator');
 // Website Managers - Editorial Team.
-define('HWC_ROLE_REVIEW_MANAGER', 'Review Manager');
-// EU-OSHA EEN reviewers.
+define('HWC_ROLE_WEBSITE_MANAGERS', 'Website Managers');
 define('HWC_ROLE_EEN_REVIEW_MANAGER', 'EEN Review Manager');
-// HWC Staff - reviewers.
-define('HWC_ROLE_CAMPAIGN_PROJECT_MANAGER', 'Campaign Project Manager');
+define('HWC_ROLE_HWC_STAFF_REVIEWERS', 'HWC Staff - Reviewers');
+
 define('HWC_ROLE_CAMPAIGN_PARTNER', 'campaign partner');
 // Mostra = supervisor.
-define('HWC_ROLE_SUPERVISOR', 'supervisor');
+define('HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR', 'External Provider - Supervisor');
 define('HWC_ROLE_SUPERADMIN', 'Superadministrators');
-define('HWC_SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
 
+define('HWC_SOLR_SEARCH_INDEX', 'default_multilingual_node_index');
 define('HWC_NAPO_WEBSITE', 'https://www.napofilm.net/');
 
 /**
@@ -367,10 +366,10 @@ function hwc_user_login(&$edit, $account) {
     }
     // Role based login redirect.
     if (
-      (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)) ||
+      (in_array(HWC_ROLE_WEBSITE_MANAGERS, $account->roles)) ||
       (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)) ||
-      (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)) ||
-      (in_array(HWC_ROLE_SUPERVISOR, $account->roles))
+      (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $account->roles)) ||
+      (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles))
     ) {
       $edit['redirect'] = 'good-practice-exchange-platform';
     }

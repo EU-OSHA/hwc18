@@ -45,11 +45,11 @@ function osha_authentication_get_role_from_dn($group_dn, $user) {
   }
   elseif ($group_dn == 'cn=NEWS_EVEN_EDT,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     // HWC Staff - reviewers.
-    $role = HWC_ROLE_CAMPAIGN_PROJECT_MANAGER;
+    $role = HWC_ROLE_HWC_STAFF_REVIEWERS;
   }
   elseif ($group_dn == 'cn=NEWS_EVEN_SUP,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     // Mostra users.
-    $role = HWC_ROLE_SUPERVISOR;
+    $role = HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR;
   }
   elseif (
     in_array($group_dn,
@@ -64,9 +64,9 @@ function osha_authentication_get_role_from_dn($group_dn, $user) {
   }
   elseif ($group_dn == 'cn=RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     // Website Managers - Editorial Team.
-    $role = HWC_ROLE_REVIEW_MANAGER;
+    $role = HWC_ROLE_WEBSITE_MANAGERS;
   }
-  elseif ($group_dn == 'cn=OSHAMB_RVMN,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
+  elseif ($group_dn == 'cn=OSHAMB_RVM,ou=HWC_18-19,ou=Sites,dc=osha,dc=europa,dc=eu') {
     // EU-OSHA EEN reviewers.
     $role = HWC_ROLE_EEN_REVIEW_MANAGER;
   }

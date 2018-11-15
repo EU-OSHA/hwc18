@@ -338,7 +338,7 @@ function osha_workflow_node_access($node, $operation, $user) {
   // @TODO implement other stuff in hwc_workflow.
   return NODE_ACCESS_IGNORE;
 
-  $is_rm = OshaWorkflowPermissions::userHasRole(HWC_ROLE_REVIEW_MANAGER, $user);
+  $is_rm = OshaWorkflowPermissions::userHasRole(HWC_ROLE_WEBSITE_MANAGERS, $user);
   $is_pm = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_PROJECT_MANAGER, $user);
   $is_editor = OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_EDITOR, $user);
 
@@ -707,7 +707,7 @@ function osha_workflow_user_get_all_sections($user) {
   if (OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_PROJECT_MANAGER, $user)) {
     $user_sections = array_merge($user_sections, osha_workflow_access_get_pm_sections($user->uid));
   }
-  if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_REVIEW_MANAGER, $user)) {
+  if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_WEBSITE_MANAGERS, $user)) {
     $user_sections = array_merge($user_sections, osha_workflow_access_get_rm_sections($user->uid));
   }
   if (OshaWorkflowPermissions::userHasRole(OSHA_WORKFLOW_ROLE_EDITOR, $user)) {

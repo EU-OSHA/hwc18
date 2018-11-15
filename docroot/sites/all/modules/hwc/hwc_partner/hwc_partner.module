@@ -252,7 +252,7 @@ function hwc_partner_block_view($delta = '') {
       $visible =
         count(array_intersect(array(
           HWC_ROLE_ADMIN,
-          HWC_ROLE_SUPERVISOR
+          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR
         ), $user->roles))
         || (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && hwc_partner_match_user_partner($node))
         || $user->uid == 1;
@@ -260,7 +260,7 @@ function hwc_partner_block_view($delta = '') {
         $url_options = array();
         if (count(array_intersect(array(
           HWC_ROLE_ADMIN,
-          HWC_ROLE_SUPERVISOR
+          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR
         ), $user->roles))) {
           reset($node->workbench_access);
           $id_section = current($node->workbench_access);
@@ -714,8 +714,8 @@ function hwc_partner_get_partners_user_options() {
   $tids = [];
   if (
     (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) ||
-    (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles)) ||
-    (in_array(HWC_ROLE_SUPERVISOR, $user->roles))) {
+    (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) ||
+    (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user->roles))) {
     $op = '!=';
     if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
       $op = '=';
@@ -749,13 +749,22 @@ function hwc_partner_get_partners_user_options() {
   return $matches;
 }
 
+/*
+ *
+ */
 function hwc_check_reviewer_node_access($tid, $roles) {
   $rm_types = [HWC_PARTNER_TYPE_OCP, HWC_PARTNER_TYPE_MP, HWC_PARTNER_TYPE_FOP];
-  if (in_array(HWC_ROLE_REVIEW_MANAGER, $roles) && in_array($tid, $rm_types)) {
+  if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $roles) && in_array($tid, $rm_types)) {
     return NODE_ACCESS_IGNORE;
   }
-  elseif (($tid == HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR) &&
-    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $roles)) {
+  elseif (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $roles) && in_array($tid, $rm_types)) {
+    return NODE_ACCESS_IGNORE;
+  }
+  elseif (
+    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $roles)
+    &&
+    ($tid == HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR)
+  ) {
     return NODE_ACCESS_IGNORE;
   }
   return NODE_ACCESS_DENY;
@@ -768,11 +777,11 @@ function hwc_partner_node_access($node, $op, $account) {
   $type = is_string($node) ? $node : $node->type;
   if (($type == 'document') && ($op == 'view')) {
     if (
-      !in_array(HWC_ROLE_SUPERVISOR, $account->roles)
+      !in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles)
       && !in_array(HWC_ROLE_ADMIN, $account->roles)
-      && !in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles)
+      && !in_array(HWC_ROLE_WEBSITE_MANAGERS, $account->roles)
       && !in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
-      && !in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)
+      && !in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $account->roles)
       && !in_array(HWC_ROLE_SUPERADMIN, $account->roles)
     ) {
       $partner_type_tid = hwc_good_practice_exchange_user_get_partner_type();
@@ -805,7 +814,7 @@ function hwc_partner_node_access($node, $op, $account) {
   }
   if ($op == 'view' && $node->nid == 253 && (
       !in_array(HWC_ROLE_CAMPAIGN_PARTNER, $account->roles) &&
-      !in_array(HWC_ROLE_SUPERVISOR, $account->roles) &&
+      !in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles) &&
       !in_array(HWC_ROLE_ADMIN, $account->roles) &&
       !in_array(HWC_ROLE_SUPERADMIN, $account->roles))
   ) {
@@ -815,7 +824,8 @@ function hwc_partner_node_access($node, $op, $account) {
   if (($op != 'view') &&
     (in_array($type, ['news', 'events'])) &&
     (
-      in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles) ||
+      in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles) ||
+      in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $account->roles) ||
       in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
     )) {
     $nid = FALSE;
@@ -863,7 +873,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     }
     $user_is_partner = hwc_partner_match_user_partner($node);
     $show_update_profile = $user_is_partner
-      || in_array(HWC_ROLE_SUPERVISOR, $user->roles)
+      || in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user->roles)
       || in_array(HWC_ROLE_ADMIN, $user->roles)
       || in_array(HWC_ROLE_SUPERADMIN, $user->roles);
     if ($show_update_profile) {
@@ -1044,7 +1054,7 @@ function _hwc_partner_show_editing_time_to_partners($node) {
   if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
     $p_account = hwc_partner_get_account_partner();
     if ($p_account != NULL) {
-      if (in_array($type = $node->type, array('news', 'events')) && $node->workbench_moderation_state_new == 'final_draft') {
+      if (in_array($type = $node->type, array('news', 'events')) && $node->workbench_moderation_state_new == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
         $time = variable_get('hwc_workflow_partner_content_minutes_gap_autosubmit', 30);
         $text = $type == 'news' ? 'news' : 'an event';
         drupal_set_message(

@@ -7,6 +7,78 @@
 include_once 'hwc_workflow.features.inc';
 
 /**
+ * Implements hook_form_node_submit().
+ */
+function hwc_workflow_node_submit($node, $form, &$form_state) {
+  global  $user;
+  if (!in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+    return;
+  }
+  $node = $form_state['node'];
+  if (!$node) {
+    return;
+  }
+  if ($node->type != 'news' && $node->type != 'events') {
+    return;
+  }
+  if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+    $nid = $node->nid;
+    module_load_include('inc', 'hwc_workflow', 'hwc_workflow.ep');
+    $new = $form_state['values']['reviewers_list'];
+    $old = _hwc_workflow_get_external_providers_entries($form['nid']['#value']);
+
+    foreach ($new as $uid) {
+      // Check if already exists.
+      if ($old[$uid]) {
+        unset($old[$uid]);
+        continue;
+      }
+      // Add new HWC Staff - Reviewers .
+      hwc_workflow_adde_ep_to_node($uid, $nid);
+      $account = user_load($uid);
+      OshaWorkflowNotifications::sendEmail([$account], array('node' => $node), 'hwc_workflow', 'hwc_workflow_personalize_reviewer_notification');
+    }
+
+    foreach ($old as $uid => $ep) {
+      // Remove old HWC Staff - Reviewers.
+      hwc_workflow_remove_ep_from_node($uid, $nid);
+    }
+  }
+}
+
+/**
+ * Extra notification and reviewer fields.
+ */
+function hwc_workflow_add_extra_fields(&$form, &$form_state) {
+  global $user;
+  if (!empty($form['nid']['#value'])) {
+    hwc_workflow_add_default_notification($form);
+    $node = $form_state['node'];
+    if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
+      module_load_include('inc', 'hwc_workflow', 'hwc_workflow.ep');
+      $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_HWC_STAFF_REVIEWERS);
+      $ep = _hwc_workflow_get_external_providers_entries($form['nid']['#value']);
+      if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+        // Add reviewer as default.
+        if (empty($ep[$user->uid])) {
+          $ep[$user->uid] = $user;
+          hwc_workflow_adde_ep_to_node($user->uid, $form['nid']['#value']);
+        }
+      }
+      $form['reviewers_list'] = array(
+        '#type' => 'select',
+        '#title' => t('Reviewers list'),
+        '#options' => $options,
+        '#default_value' => array_keys($ep),
+        '#multiple' => TRUE,
+        '#description' => t('Additional reviewer can be added to the list, just selecting him/her from the list'),
+      );
+    }
+    hwc_workflow_news_events_visibility($form);
+  }
+}
+
+/**
  * Implements hook_menu_alter().
  */
 function hwc_workflow_menu_alter(&$items) {
@@ -35,7 +107,7 @@ function hwc_workflow_get_mail_subject_text($node, $settings_type) {
       break;
 
     case 'reviewer':
-      $field = 'field_supervisor_subject';
+      $field = 'field_reviewer_subject';
       $variable = 'hwc_workflow_reviewer_subject';
       break;
   }
@@ -69,7 +141,7 @@ function hwc_workflow_get_mail_body_text($node, $settings_type) {
       break;
 
     case 'reviewer':
-      $field = 'field_supervisor_body';
+      $field = 'field_reviewer_body';
       $variable = 'hwc_workflow_reviewer_body';
       break;
   }
@@ -88,7 +160,7 @@ function hwc_workflow_news_events_visibility(&$form) {
   global  $user;
   $access = FALSE;
   if (
-    in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles) ||
+    in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles) ||
     in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
   ) {
     $access = TRUE;
@@ -102,14 +174,15 @@ function hwc_workflow_news_events_visibility(&$form) {
   $form['field_supervisor_subject']['#access'] = FALSE;
   $form['field_supervisor_body']['#access'] = FALSE;
 
-
-  $access = FALSE;
-  if (in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $user->roles)) {
-    $access = TRUE;
+  if (!empty($form['reviewers_list'])) {
+    $access = FALSE;
+    if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+      $access = TRUE;
+    }
+    $form['reviewers_list']['#access'] = $access;
+    $form['field_reviewer_subject']['#access'] = $access;
+    $form['field_reviewer_body']['#access'] = $access;
   }
-  $form['reviewers_list']['#access'] = $access;
-  $form['field_reviewer_subject']['#access'] = $access;
-  $form['field_reviewer_body']['#access'] = $access;
 }
 
 /**
@@ -140,28 +213,28 @@ function hwc_workflow_add_default_notification(&$form) {
  */
 function hwc_workflow_menu() {
   $items = array();
-  $items['node/%node/cpm-review'] = array(
-    'title' => 'Review',
-    'description' => 'Review page for the OSHA reviewing workflow.',
-    'type' => MENU_LOCAL_TASK,
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('hwc_workflow_node_cpm_assign_form', 1),
-    'access callback' => '_hwc_workbench_cpm_review_access',
-    'access arguments' => array(1),
-    'file' => 'hwc_workflow.cpm.inc',
-    'weight' => 9,
-  );
-  $items['node/%node/ep-review'] = array(
-    'title' => 'Review',
-    'description' => 'Review page for the OSHA ep reviewing workflow.',
-    'type' => MENU_LOCAL_TASK,
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('hwc_workflow_node_ep_assign_form', 1),
-    'access callback' => '_hwc_workbench_ep_review_access',
-    'access arguments' => array(1),
-    'file' => 'hwc_workflow.ep.inc',
-    'weight' => 9,
-  );
+//  $items['node/%node/cpm-review'] = array(
+//    'title' => 'Review',
+//    'description' => 'Review page for the OSHA reviewing workflow.',
+//    'type' => MENU_LOCAL_TASK,
+//    'page callback' => 'drupal_get_form',
+//    'page arguments' => array('hwc_workflow_node_cpm_assign_form', 1),
+//    'access callback' => '_hwc_workbench_cpm_review_access',
+//    'access arguments' => array(1),
+//    'file' => 'hwc_workflow.cpm.inc',
+//    'weight' => 9,
+//  );
+//  $items['node/%node/ep-review'] = array(
+//    'title' => 'Review',
+//    'description' => 'Review page for the OSHA ep reviewing workflow.',
+//    'type' => MENU_LOCAL_TASK,
+//    'page callback' => 'drupal_get_form',
+//    'page arguments' => array('hwc_workflow_node_ep_assign_form', 1),
+//    'access callback' => '_hwc_workbench_ep_review_access',
+//    'access arguments' => array(1),
+//    'file' => 'hwc_workflow.ep.inc',
+//    'weight' => 9,
+//  );
   return $items;
 }
 
@@ -171,7 +244,7 @@ function _hwc_workbench_ep_review_access($node) {
   // Check reviewer permissions.
   if ((in_array($type, ['news', 'events'])) &&
     (
-      in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles) ||
+      in_array(HWC_ROLE_WEBSITE_MANAGERS, $user->roles) ||
       in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
     )) {
     $nid = FALSE;
@@ -209,7 +282,7 @@ function _hwc_workbench_cpm_review_access($node) {
   // Check reviewer permissions.
   if ((in_array($type, ['news', 'events'])) &&
     (
-      in_array(HWC_ROLE_REVIEW_MANAGER, $user->roles) ||
+      in_array(HWC_ROLE_WEBSITE_MANAGERS, $user->roles) ||
       in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
     )) {
     $nid = FALSE;
@@ -245,10 +318,10 @@ function _hwc_workbench_cpm_review_access($node) {
  */
 function hwc_workflow_theme() {
   return array(
-    'hwc_workflow_node_cpm_assign_form' => array(
-      'render element' => 'form',
-      'file' => 'hwc_workflow.cpm.inc',
-    ),
+//    'hwc_workflow_node_cpm_assign_form' => array(
+//      'render element' => 'form',
+//      'file' => 'hwc_workflow.cpm.inc',
+//    ),
     'hwc_workflow_node_ep_assign_form' => array(
       'render element' => 'form',
       'file' => 'hwc_workflow.ep.inc',
@@ -312,7 +385,7 @@ function hwc_workflow_partner_content_cron() {
   // Getting the nids that have passed the final draft state.
   $subquery = db_select('workbench_moderation_node_history', 'wm')
     ->fields('wm', array('nid'))
-    ->condition('wm.state', 'final_draft')
+    ->condition('wm.state', OSHA_WORKFLOW_STATE_FINAL_DRAFT)
     ->condition('wm.current', 1);
 
   $time_limit = _hwc_workflow_partner_content_get_time_limit();
@@ -321,7 +394,7 @@ function hwc_workflow_partner_content_cron() {
     ->fields('wmh', array('nid'))
     ->distinct()
     ->condition('wmh.from_state', 'draft')
-    ->condition('wmh.state', 'final_draft')
+    ->condition('wmh.state', OSHA_WORKFLOW_STATE_FINAL_DRAFT)
     ->condition('wmh.nid', $subquery, 'IN')
     ->condition('wmh.uid', $uids, 'IN')
     ->condition('wmh.stamp', $time_limit, '<=')
@@ -333,7 +406,7 @@ function hwc_workflow_partner_content_cron() {
     if (!empty($node)) {
       $current_node = workbench_moderation_node_current_load($node);
       if (!empty($current_node->workbench_moderation['current'])
-        && $current_node->workbench_moderation['current']->state == 'final_draft') {
+        && $current_node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
         // Moderate the content.
         if (in_array($node->type, ['events', 'news'])) {
           workbench_moderation_moderate($current_node, OSHA_WORKFLOW_STATE_TO_BE_APPROVED);
@@ -359,6 +432,24 @@ function hwc_workflow_permission() {
   $permissions['access hwc review tab'] = array('title' => t("Access Review tab on a node"));
 
   return $permissions;
+}
+
+/**
+ * Implements hook_mail().
+ *
+ * {@inheritdoc}
+ */
+function hwc_workflow_mail($key, &$message, $params) {
+  $subject = '';
+  $body = '';
+  if ($key == 'hwc_workflow_personalize_reviewer_notification') {
+    $node = $params['node'];
+    $type = 'reviewer';
+    $subject = hwc_workflow_get_mail_subject_text($node, $type);
+    $body = hwc_workflow_get_mail_body_text($node, $type);
+  }
+  $message['subject'] = token_replace($subject, $params);
+  $message['body'][] = token_replace($body, $params);
 }
 
 /**
@@ -430,7 +521,7 @@ function hwc_workflow_node_submit_form($form, &$form_state, $node) {
 }
 
 function hwc_workflow_node_simple_submit($form, &$form_state) {
-  workbench_moderation_moderate($form['#node'], 'final_draft');
+  workbench_moderation_moderate($form['#node'], OSHA_WORKFLOW_STATE_FINAL_DRAFT);
 }
 
 function hwc_worklow_node_belongs_to_partner_user($node) {
@@ -531,29 +622,16 @@ function hwc_workflow_node_access($node, $op, $account) {
 
   // Review Managers have access based on perm.
   // skip additional validations..
-  // todo check...
-  if (in_array(HWC_ROLE_REVIEW_MANAGER, $account->roles) ||
+  if (in_array(HWC_ROLE_WEBSITE_MANAGERS, $account->roles) ||
     in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)) {
     return NODE_ACCESS_IGNORE;
   }
 
   // Supervisors have access based on perm.
   // skip additional validations..
-  if (in_array(HWC_ROLE_SUPERVISOR, $account->roles)) {
+  if (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles)) {
     return NODE_ACCESS_IGNORE;
   }
-
-  // Don't allow CPM if not assign to node.
-  if ($op == 'update' && in_array(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER, $account->roles)) {
-    module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
-    if (!_hwc_workflow_node_has_cpm($node, $account)) {
-      if ($type == 'document') {
-        return NODE_ACCESS_IGNORE;
-      }
-      return NODE_ACCESS_DENY;
-    }
-  }
-
   return NODE_ACCESS_IGNORE;
 }
 
@@ -579,7 +657,7 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
         user_access("delete any {$node->type} content") ||
         user_access("delete own {$node->type} content")
       );
-    if ($node->workbench_moderation['current']->state == 'final_draft') {
+    if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
       $can_delete = $can_delete && user_access('delete any content in final_draft');
     }
 
@@ -593,20 +671,20 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 
-  if ($form_id == 'workbench_moderation_moderate_form' && isset($form['node']['#value'])) {
-    // Append the approval buttons in workbench moderation (on node view).
-    module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
-    $form['#node'] = $form['node']['#value'];
-    hwc_workflow_node_cpm_actions_append($form, $form['node']['#value']);
-    if (!empty($form['cpm_actions'])) {
-      $form['review'] = array(
-        '#type' => 'markup',
-        '#markup' => '<p>You can Review the content using the Review tab or using the buttons below.</p>',
-        '#weight' => 5,
-      );
-      $form['cpm_actions']['#weight'] = 6;
-    }
-  }
+//  if ($form_id == 'workbench_moderation_moderate_form' && isset($form['node']['#value'])) {
+//    // Append the approval buttons in workbench moderation (on node view).
+//    module_load_include('inc', 'hwc_workflow', 'hwc_workflow.cpm');
+//    $form['#node'] = $form['node']['#value'];
+//    hwc_workflow_node_cpm_actions_append($form, $form['node']['#value']);
+//    if (!empty($form['cpm_actions'])) {
+//      $form['review'] = array(
+//        '#type' => 'markup',
+//        '#markup' => '<p>You can Review the content using the Review tab or using the buttons below.</p>',
+//        '#weight' => 5,
+//      );
+//      $form['cpm_actions']['#weight'] = 6;
+//    }
+//  }
 
   // Implements permission select content section.
   if (isset($form['#node_edit_form']) && !empty($form['workbench_access']['workbench_access'])) {
@@ -635,7 +713,7 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'entity_collection_content_add_form') {
     if ($collection = $form_state['entity_collection']) {
       if ($collection->bundle == 'campaigns_partner_list') {
-        $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER);
+        $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_HWC_STAFF_REVIEWERS);
         $users = array();
         foreach ($options as $uid => $account) {
           $users['user:' . $uid] = $account;
@@ -689,7 +767,7 @@ function hwc_workflow_form_document_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -722,7 +800,7 @@ function hwc_workflow_form_news_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -757,7 +835,7 @@ function hwc_workflow_form_events_node_form_alter(&$form, &$form_state) {
 
     _hwc_workflow_partner_node_form_alter($form, $form_state);
   }
-  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_SUPERVISOR), $user->roles))) {
+  elseif (count(array_intersect(array(HWC_ROLE_ADMIN, HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR), $user->roles))) {
     if (!empty($_GET['workbench_access']) && intval($_GET['workbench_access'])) {
       $form['workbench_access']['workbench_access']['#default_value'] = intval($_GET['workbench_access']);
     }
@@ -861,8 +939,8 @@ function hwc_workflow_set_validation_reminder($message = NULL) {
  * Submit callback for Partner's Send to approve button.
  */
 function hwc_workflow_node_form_submit_send($form, &$form_state) {
-  $form_state['values']['workbench_moderation_state_new'] = 'final_draft';
-  $form_state['input']['workbench_moderation_state_new'] = 'final_draft';
+  $form_state['values']['workbench_moderation_state_new'] = OSHA_WORKFLOW_STATE_FINAL_DRAFT;
+  $form_state['input']['workbench_moderation_state_new'] = OSHA_WORKFLOW_STATE_FINAL_DRAFT;
   node_form_submit($form, $form_state);
 }
 
@@ -870,7 +948,7 @@ function _hwc_workflow_get_node_final_draft_time($node) {
   $transition = db_select('workbench_moderation_node_history', 'wmh')
     ->condition('wmh.nid', $node->nid)
     ->condition('wmh.from_state', 'draft')
-    ->condition('wmh.state', 'final_draft')
+    ->condition('wmh.state', OSHA_WORKFLOW_STATE_FINAL_DRAFT)
     ->orderBy('wmh.hid', 'DESC')
     ->execute()
     ->fetchAssoc();

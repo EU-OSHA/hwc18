@@ -1,7 +1,7 @@
 name = HWC Workflow
 core = 7.x
 package = HWC
-version = 7.x-1.1
+version = 7.x-1.2
 project = hwc_workflow
 dependencies[] = ctools
 dependencies[] = entity
@@ -42,7 +42,7 @@ features[workbench_moderation_transitions][] = final_draft:to_be_approved
 features[workbench_moderation_transitions][] = needs_review:draft
 features[workbench_moderation_transitions][] = needs_review:published
 features[workbench_moderation_transitions][] = needs_review:to_be_approved
-features[workbench_moderation_transitions][] = to_be_approved:draft
+features[workbench_moderation_transitions][] = to_be_approved:final_draft
 features[workbench_moderation_transitions][] = to_be_approved:needs_review
 features[workbench_moderation_transitions][] = to_be_approved:published
 files[] = hwc_workflow.permissions.inc
