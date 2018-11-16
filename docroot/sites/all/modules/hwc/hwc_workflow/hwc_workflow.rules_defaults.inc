@@ -275,7 +275,7 @@ function hwc_workflow_default_rules_configuration() {
       "LABEL" : "Notification when to be reviewed (RM_US_02, SU_US_04)",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "REQUIRES" : [ "rules", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
       "IF" : [ { "data_is" : { "data" : [ "new-state" ], "value" : "needs_review" } } ],
       "DO" : [
@@ -291,12 +291,6 @@ function hwc_workflow_default_rules_configuration() {
             "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E",
             "language" : [ "" ]
           }
-        },
-        { "hwc_mail_to_users_of_role" : {
-            "node" : [ "node" ],
-            "roles" : { "value" : { "14" : "14" } },
-            "settings_type" : { "value" : { "rejection" : "rejection" } }
-          }
         }
       ]
     }
@@ -304,6 +298,7 @@ function hwc_workflow_default_rules_configuration() {
   $items['rules_notification_partner_to_be_reviewed_by_partner'] = entity_import('rules_config', '{ "rules_notification_partner_to_be_reviewed_by_partner" : {
       "LABEL" : "Notification to be reviewed by the partner",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
