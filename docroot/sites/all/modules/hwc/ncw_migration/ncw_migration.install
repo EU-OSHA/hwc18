@@ -58,3 +58,21 @@ function ncw_migration_update_7004() {
 function ncw_migration_update_7005() {
   variable_set('ncw_migration_ds_check_date', TRUE);
 }
+
+/**
+ * MDR-2350 events - change anonymous by EU-OSHA.
+ */
+function ncw_migration_update_7006() {
+  $mail = 'no-reply@osha.europa.eu';
+  $newUser = array(
+    'name' => 'EU-OSHA',
+    'pass' => drupal_random_key(8),
+    'mail' => $mail,
+    'status' => 0,
+    'init' => $mail,
+  );
+  $user = user_save(null, $newUser);
+  if ($user && $user->uid) {
+    variable_set('ncw_migration_default_uid', $user->uid);
+  }
+}
