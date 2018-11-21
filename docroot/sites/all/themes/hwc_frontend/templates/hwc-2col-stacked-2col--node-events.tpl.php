@@ -17,7 +17,7 @@
 <?php print $right; ?>
 </<?php print $right_wrapper ?>>
 
-<<?php print $center_wrapper ?> class="group-center<?php print $center_classes; ?>">
+<<?php print $center_wrapper ?> class="group-center without-path<?php print $center_classes; ?>">
 <?php print $center; ?>
 </<?php print $center_wrapper ?>>
 
