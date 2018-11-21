@@ -391,11 +391,11 @@ function hwc_workflow_is_een_partner_type($node) {
  */
 function hwc_workflow_partner_content_cron() {
   // Moderate content created by a partner, that is in Final Draft for some time.
-  $users = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_CAMPAIGN_PARTNER);
-  $uids = array();
-  foreach ($users as $usr) {
-    $uids[] = $usr->uid;
-  }
+//  $users = OshaWorkflowPermissions::getUsersByRole(HWC_ROLE_CAMPAIGN_PARTNER);
+//  $uids = array();
+//  foreach ($users as $usr) {
+//    $uids[] = $usr->uid;
+//  }
 
   // Getting the nids that have passed the final draft state.
   $subquery = db_select('workbench_moderation_node_history', 'wm')
@@ -411,7 +411,7 @@ function hwc_workflow_partner_content_cron() {
     ->condition('wmh.from_state', 'draft')
     ->condition('wmh.state', OSHA_WORKFLOW_STATE_FINAL_DRAFT)
     ->condition('wmh.nid', $subquery, 'IN')
-    ->condition('wmh.uid', $uids, 'IN')
+//    ->condition('wmh.uid', $uids, 'IN')
     ->condition('wmh.stamp', $time_limit, '<=')
     ->orderBy('wmh.hid', 'DESC')
     ->execute();
@@ -610,7 +610,7 @@ function hwc_workflow_assign_default_cpm($node) {
     _hwc_workflow_admin_approvers_save_row($row);
     $weight++;
   }
-  drupal_set_message('Default Campaign Project Managers were set for this node');
+  drupal_set_message('Default HWC Staff - Reviewers were set for this node');
   return $default_cpms;
 }
 
