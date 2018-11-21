@@ -89,8 +89,36 @@ function osha_workflow_views_data_alter(&$data) {
   $data['workbench_access']['access_id']['argument'] = array(
     'handler' => 'osha_workflow_access_handler_argument_access',
   );
-}
 
+  // Filters nodes that are in current users RM section.
+  $data['osha_workflow']['roles_based_partner_type_filter'] = array(
+    'title' => t('Roles based partner type filter'),
+    'help' => t('Roles based partner type filter'),
+    'filter' => array(
+      'label' => t('Roles based partner type filter'),
+      'handler' => 'osha_workflow_handler_filter_roles_based_partner_type',
+    ),
+  );
+  // Filters nodes that are in current users RM section.
+  $data['osha_workflow']['section_in_een'] = array(
+    'title' => t('If section in EEN section'),
+    'help' => t('If section in EEN section'),
+    'filter' => array(
+      'label' => t('Section in EEN section'),
+      'handler' => 'osha_workflow_handler_filter_section_in_een_section',
+    ),
+  );
+  // Filters nodes that are in current users RM section.
+  $data['osha_workflow']['section_in_regular_section'] = array(
+    'title' => t('If section in OCP/MP/FOP section'),
+    'help' => t('If section in OCP/MP/FOP section'),
+    'filter' => array(
+      'label' => t('Section in OCP/MP/FOP section'),
+      'handler' => 'osha_workflow_handler_filter_section_in_regular_section',
+    ),
+  );
+
+}
 
 /**
  * Filters nodes that are in current users RM sections.
@@ -110,4 +138,73 @@ class osha_workflow_handler_filter_section_in_rm_section extends views_handler_f
     $subquery->condition('workbench_access_node.access_id', $sections, 'IN');
     $this->query->add_where($group, "{$this->query->base_table}.nid", $subquery, 'IN');
   }
+}
+
+
+/**
+ * Filters nodes that are in current users EEN sections.
+ */
+class osha_workflow_handler_filter_section_in_een_section extends views_handler_filter_boolean_operator {
+
+  /**
+   * Overrides views_handler_field::query().
+   */
+  public function query() {
+    $sections = hwc_workflow_get_partners_sections(TRUE);
+    $group = $this->query->set_where_group('AND');
+    $subquery = db_select('workbench_access_node', 'workbench_access_node');
+    $subquery->addField('workbench_access_node', 'nid');
+    $subquery->distinct();
+    $subquery->condition('workbench_access_node.access_id', $sections, 'IN');
+    $this->query->add_where($group, "{$this->query->base_table}.nid", $subquery, 'IN');
+  }
+
+}
+
+/**
+ * Filters nodes that are in current users OCP/MP/FOP sections.
+ */
+class osha_workflow_handler_filter_section_in_regular_section extends views_handler_filter_boolean_operator {
+
+  /**
+   * Overrides views_handler_field::query().
+   */
+  public function query() {
+    $sections = hwc_workflow_get_partners_sections(TRUE);
+    $group = $this->query->set_where_group('AND');
+    $subquery = db_select('workbench_access_node', 'workbench_access_node');
+    $subquery->addField('workbench_access_node', 'nid');
+    $subquery->distinct();
+    $subquery->condition('workbench_access_node.access_id', $sections, 'NOT IN');
+    $this->query->add_where($group, "{$this->query->base_table}.nid", $subquery, 'IN');
+  }
+
+}
+
+
+/**
+ * Filters nodes that are in current users EEN or/and OCP/MP/FOP sections.
+ */
+class osha_workflow_handler_filter_roles_based_partner_type extends views_handler_filter_boolean_operator {
+
+  /**
+   * Overrides views_handler_field::query().
+   */
+  public function query() {
+    global  $user;
+    if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles) || in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+      $is_een = FALSE;
+      if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
+        $is_een = TRUE;
+      }
+      $sections = hwc_workflow_get_partners_sections($is_een);
+      $group = $this->query->set_where_group('AND');
+      $subquery = db_select('workbench_access_node', 'workbench_access_node');
+      $subquery->addField('workbench_access_node', 'nid');
+      $subquery->distinct();
+      $subquery->condition('workbench_access_node.access_id', $sections, 'NOT IN');
+      $this->query->add_where($group, "{$this->query->base_table}.nid", $subquery, 'IN');
+    }
+  }
+
 }

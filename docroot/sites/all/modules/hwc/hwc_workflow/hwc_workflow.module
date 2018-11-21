@@ -276,6 +276,21 @@ function _hwc_workbench_ep_review_access($node) {
 /*
  *
  */
+function hwc_workflow_get_partners_sections($is_een = FALSE) {
+  $operator = '!=';
+  if ($is_een) {
+    $operator = NULL;
+  }
+  $q = db_select('workbench_access_node', 'w');
+  $q->fields('w', ['access_id']);
+  $q->innerJoin('field_data_field_partner_type', 't', 't.entity_id = w.nid');
+  $q->condition('t.field_partner_type_tid', HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR, $operator);
+  return $q->execute()->fetchAllKeyed(0,0);
+}
+
+/*
+ *
+ */
 function _hwc_workbench_cpm_review_access($node) {
   global  $user;
   $type = is_string($node) ? $node : $node->type;
