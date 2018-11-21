@@ -193,9 +193,9 @@ class osha_workflow_handler_filter_roles_based_partner_type extends views_handle
   public function query() {
     global  $user;
     if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles) || in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
-      $is_een = FALSE;
+      $is_een = TRUE;
       if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
-        $is_een = TRUE;
+        $is_een = FALSE;
       }
       $sections = hwc_workflow_get_partners_sections($is_een);
       $group = $this->query->set_where_group('AND');
