@@ -51,9 +51,15 @@ function hwc_workflow_node_submit($node, $form, &$form_state) {
  */
 function hwc_workflow_add_extra_fields(&$form, &$form_state) {
   global $user;
+
+  $state = NULL;
+  $form['field_reviewer_body']['#access'] = FALSE;
+  $form['field_reviewer_subject']['#access'] = FALSE;
+
   if (!empty($form['nid']['#value'])) {
     hwc_workflow_add_default_notification($form);
     $node = $form_state['node'];
+    $state = $node->workbench_moderation['current']->state;
     if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
       module_load_include('inc', 'hwc_workflow', 'hwc_workflow.ep');
       $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_HWC_STAFF_REVIEWERS);
@@ -73,9 +79,10 @@ function hwc_workflow_add_extra_fields(&$form, &$form_state) {
         '#multiple' => TRUE,
         '#description' => t('Additional reviewer can be added to the list, just selecting him/her from the list'),
       );
+      hwc_workflow_news_events_reviewers_list_visibility($form);
     }
-    hwc_workflow_news_events_visibility($form);
   }
+  hwc_workflow_news_events_mail_fields_visibility($form, $state);
 }
 
 /**
@@ -156,12 +163,13 @@ function hwc_workflow_get_mail_body_text($node, $settings_type) {
 /**
  * News and events visibility.
  */
-function hwc_workflow_news_events_visibility(&$form) {
+function hwc_workflow_news_events_mail_fields_visibility(&$form, $state) {
   global  $user;
   $access = FALSE;
   if (
-    in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles) ||
+    (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles) ||
     in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
+    ) && ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED)
   ) {
     $access = TRUE;
   }
@@ -173,7 +181,12 @@ function hwc_workflow_news_events_visibility(&$form) {
 
   $form['field_supervisor_subject']['#access'] = FALSE;
   $form['field_supervisor_body']['#access'] = FALSE;
-
+}
+/**
+ * News and events visibility.
+ */
+function hwc_workflow_news_events_reviewers_list_visibility(&$form) {
+  global  $user;
   if (!empty($form['reviewers_list'])) {
     $access = FALSE;
     if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
@@ -198,6 +211,9 @@ function hwc_workflow_add_default_notification(&$form) {
 
     'field_supervisor_subject' => 'hwc_workflow_supervisor_subject',
     'field_supervisor_body' => 'hwc_workflow_supervisor_body',
+
+    'field_reviewer_subject' => 'hwc_workflow_reviewer_subject',
+    'field_reviewer_body' => 'hwc_workflow_reviewer_body',
   ];
 
   foreach ($map as $field => $variable) {
