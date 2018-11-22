@@ -7215,7 +7215,6 @@ table .checkbox input[type="checkbox"] {
   text-decoration: none;
   text-shadow: 1px 1px 0 #ffffff;
 }
-
 #sliding-popup .eu-cookie-compliance-secondary-button:hover,
 #sliding-popup .eu-cookie-compliance-more-button {
   background-color: #dfdfdf;
@@ -7226,13 +7225,11 @@ table .checkbox input[type="checkbox"] {
   background-image: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
   background-image: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 }
-
 #sliding-popup .popup-content #popup-text {
   text-align: center;
   width: 100%!important;
   max-width: 100%!important;
 }
-
 #popup-buttons {
   clear: both;
   text-align: center;
@@ -7240,18 +7237,15 @@ table .checkbox input[type="checkbox"] {
   max-width: 100%!important;
   font-size: 0.8em;
 }
-
 #popup-buttons button {
   padding: 1px 5px!important;
 }
-
 #sliding-popup .popup-content #popup-buttons {
   float: right;
   margin: 0 0 1em 0;
   width: 100%;
   padding: 2px 5px!important;
 }
-
 #sliding-popup .popup-content #popup-text h2 {
   font-size: 0.9em;
   padding-top: 1em;
@@ -17025,6 +17019,7 @@ fieldset.captcha div {
   width: auto;
   height: auto;
   overflow: hidden;
+  position: relative;
 }
 .field-name-field-recommended-resources .node-article .field.field-name-field-image a:before,
 .field-name-field-recommended-articles .node-article .field.field-name-field-image a:before,
@@ -18051,6 +18046,19 @@ span.date-display-single {
 }
 .node-article .field-type-text-with-summary p.text-center {
   padding-top: 1em;
+}
+.node-article .field.field-name-field-image {
+  position: relative;
+}
+.node-article .field.field-name-field-image .image-field-caption {
+  position: absolute;
+  top: 322px;
+  color: #FFF !important;
+  background: transparent;
+  opacity: 1;
+  z-index: 40;
+  right: 0%;
+  text-shadow: 1px 1px #000;
 }
 .page-user-login .block-system form {
   float: left;
