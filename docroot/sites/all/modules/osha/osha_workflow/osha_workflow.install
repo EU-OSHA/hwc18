@@ -434,3 +434,10 @@ function osha_workflow_update_7003() {
     db_add_field('osha_workflow_node_project_managers', 'message', $schema['osha_workflow_node_project_managers']['fields']['message']);
   }
 }
+
+/**
+ * MDR-2027 HWC: Changes in the workflow of news and events.
+ */
+function osha_workflow_update_7004() {
+  features_revert(array('osha_workflow' => array('views_view')));
+}

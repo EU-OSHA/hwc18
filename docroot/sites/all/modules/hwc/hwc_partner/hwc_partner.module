@@ -820,7 +820,7 @@ function hwc_partner_node_access($node, $op, $account) {
   ) {
     return NODE_ACCESS_DENY;
   }
-  // Check reviewers access for news and events editing.
+  // Check reviewers access for news, events and documents editing.
   if (($op != 'view') &&
     (in_array($type, ['news', 'events', 'document'])) &&
     (
@@ -829,16 +829,18 @@ function hwc_partner_node_access($node, $op, $account) {
       in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
     )) {
     $nid = FALSE;
-    foreach ($node->workbench_access as $tid) {
-      if ($tid == 'section') {
-        continue;
+    if (!empty($node->workbench_access)) {
+      foreach ($node->workbench_access as $tid) {
+        if ($tid == 'section') {
+          continue;
+        }
+        $q = db_select('workbench_access_node', 'w');
+        $q->innerJoin('node', 'n', 'w.nid = n.nid');
+        $q->fields('w', ['nid'])
+          ->condition('w.access_id', $tid)
+          ->condition('n.type', 'partner', '=');
+        $nid = $q->execute()->fetchField();
       }
-      $q = db_select('workbench_access_node', 'w');
-      $q->innerJoin('node', 'n', 'w.nid = n.nid');
-      $q->fields('w', ['nid'])
-        ->condition('w.access_id', $tid)
-        ->condition('n.type', 'partner', '=');
-      $nid = $q->execute()->fetchField();
     }
     if ($nid) {
       $partner = node_load($nid);

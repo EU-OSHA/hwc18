@@ -9,6 +9,7 @@ dependencies[] = entity_collection
 dependencies[] = features
 dependencies[] = osha_taxonomies
 dependencies[] = strongarm
+dependencies[] = text
 dependencies[] = views
 dependencies[] = workbench_access
 dependencies[] = workbench_moderation
