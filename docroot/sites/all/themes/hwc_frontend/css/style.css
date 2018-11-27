@@ -7215,6 +7215,7 @@ table .checkbox input[type="checkbox"] {
   text-decoration: none;
   text-shadow: 1px 1px 0 #ffffff;
 }
+
 #sliding-popup .eu-cookie-compliance-secondary-button:hover,
 #sliding-popup .eu-cookie-compliance-more-button {
   background-color: #dfdfdf;
@@ -7225,6 +7226,7 @@ table .checkbox input[type="checkbox"] {
   background-image: -ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
   background-image: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
 }
+
 #sliding-popup .popup-content #popup-text {
   text-align: center;
   width: 100%!important;

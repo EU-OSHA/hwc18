@@ -274,11 +274,12 @@ abstract class AbstractNCWNodeMigration extends Migration {
   }
 
   /**
-   * Configure field mappings, reads bundle field information
+   * Configure field mappings, reads bundle field information.
    */
   protected function addFieldMappings() {
     // Node base fields.
-    $this->addFieldMapping('uid')->defaultValue(0);
+    $uid = variable_get('ncw_migration_default_uid', 0);
+    $this->addFieldMapping('uid')->defaultValue($uid);
     $this->addFieldMapping('comment')->defaultValue(0);
     $this->addFieldMapping('status', 'status');
     $this->addFieldMapping('title', 'title');
@@ -289,7 +290,8 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $this->addFieldMapping('log', 'log');
     $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('path', 'path');
-    $this->addFieldMapping('workbench_access')->defaultValue('section'); // Assign default section
+    // Assign default section.
+    $this->addFieldMapping('workbench_access')->defaultValue('section');
 
     // Handle field migration in a generic way.
     $fields = field_info_instances('node', $this->bundle);
@@ -480,7 +482,7 @@ abstract class AbstractNCWNodeMigration extends Migration {
     $node->title = format_string(MIGRATE_STUB_MARKER . ' stub for original nid: !id', array('!id' => $source_id[0]));
     $node->language = 'en';
     $node->type = $this->destination->getBundle();
-    $node->uid = 0;
+    $node->uid = osha_migration_author_uid();
     $node->status = 1;
     $node->path['pathauto'] = 0;
     $node->path['alias'] = '';
@@ -936,11 +938,12 @@ function ncw_migration_file_get_contents($url) {
   return $result;
 }
 
-
+/**
+ * Default author uid.
+ */
 function osha_migration_author_uid() {
-  return 0;
+  return variable_get('ncw_migration_default_uid', 0);
 }
-
 
 ////////////////////////////// Normalization functions /////////////////////////
 function osha_migration_normalize_field_list_text($row, $field_name, $field_info, $filter_languages) {
