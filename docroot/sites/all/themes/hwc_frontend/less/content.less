@@ -8268,6 +8268,7 @@ fieldset.captcha {
 			width: auto;
 			height: auto;
 			overflow: hidden;
+			position: relative;
 			a:before{
 				content:"";
 			}
@@ -8773,8 +8774,24 @@ span.date-display-single{
 	border-bottom: 0px!important;
 }
 
-.node-article  .field-type-text-with-summary p.text-center{
-	padding-top: 1em;
+
+.node-article{
+	.field-type-text-with-summary p.text-center{
+		padding-top: 1em;
+	}
+	.field.field-name-field-image{
+		position: relative;
+		.image-field-caption{
+		  position: absolute;
+		  top: 322px;
+		  color: #FFF !important;
+		  background: transparent;
+		  opacity: 1;
+		  z-index: 40;
+		  right: 0%;
+		  text-shadow: 1px 1px #000;
+		}	
+	}
 }
 
 .page-user-login .block-system form{

@@ -749,6 +749,13 @@ function hwc_views_default_views() {
   $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
     'ncw' => 'ncw',
   );
+  /* Filter criterion: Content: Show in NCW (field_show_in_ncw) */
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['id'] = 'field_show_in_ncw_value';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['table'] = 'field_data_field_show_in_ncw';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['field'] = 'field_show_in_ncw_value';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
