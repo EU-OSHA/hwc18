@@ -389,22 +389,6 @@ function osha_workflow_needs_last_approver($node, $user = NULL) {
   return $ret;
 }
 
-/**
- * Verifies if user has approved the workflow.
- * @param $nid
- * @param $uid
- * @return bool
- */
-function osha_workflow_has_approved($nid, $uid) {
-  $query = new EntityFieldQuery();
-  $rows = $query->entityCondition('entity_type', 'node_approval')
-    ->propertyCondition('nid', $nid)
-    ->propertyCondition('uid', $uid)
-    ->propertyCondition('approved', array(OSHA_WORKFLOW_STATE_APPROVED, OSHA_WORKFLOW_STATE_REJECTED))
-    ->execute();
-  return !empty($rows['node_approval']);
-}
-
 
 /**
  * Record the user's vote and move the record to the next in queue.

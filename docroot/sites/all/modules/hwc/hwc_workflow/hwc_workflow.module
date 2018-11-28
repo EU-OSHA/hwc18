@@ -11,7 +11,9 @@ include_once 'hwc_workflow.features.inc';
  */
 function hwc_workflow_node_submit($node, $form, &$form_state) {
   global  $user;
-  if (!in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+  $is_hwc_staff = in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles);
+  $is_een_review = in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles);
+  if (!$is_hwc_staff && !$is_een_review) {
     return;
   }
   $node = $form_state['node'];
@@ -26,21 +28,21 @@ function hwc_workflow_node_submit($node, $form, &$form_state) {
     module_load_include('inc', 'hwc_workflow', 'hwc_workflow.ep');
     $new = $form_state['values']['reviewers_list'];
     $old = _hwc_workflow_get_external_providers_entries($form['nid']['#value']);
-
+    $accounts = [];
     foreach ($new as $uid) {
-      // Check if already exists.
       if ($old[$uid]) {
         unset($old[$uid]);
         continue;
       }
-      // Add new HWC Staff - Reviewers .
+      // Add new Reviewer.
       hwc_workflow_adde_ep_to_node($uid, $nid);
-      $account = user_load($uid);
-      OshaWorkflowNotifications::sendEmail([$account], array('node' => $node), 'hwc_workflow', 'hwc_workflow_personalize_reviewer_notification');
+      $accounts[] = user_load($uid);
     }
-
+    if ($accounts) {
+      OshaWorkflowNotifications::sendEmail($accounts, array('node' => $node), 'hwc_workflow', 'hwc_workflow_personalize_reviewer_notification');
+    }
+    // Remove old HWC Staff - Reviewers.
     foreach ($old as $uid => $ep) {
-      // Remove old HWC Staff - Reviewers.
       hwc_workflow_remove_ep_from_node($uid, $nid);
     }
   }
@@ -62,7 +64,7 @@ function hwc_workflow_add_extra_fields(&$form, &$form_state) {
     $state = $node->workbench_moderation['current']->state;
     if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED) {
       module_load_include('inc', 'hwc_workflow', 'hwc_workflow.ep');
-      $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_HWC_STAFF_REVIEWERS);
+
       $ep = _hwc_workflow_get_external_providers_entries($form['nid']['#value']);
       if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
         // Add reviewer as default.
@@ -70,6 +72,15 @@ function hwc_workflow_add_extra_fields(&$form, &$form_state) {
           $ep[$user->uid] = $user;
           hwc_workflow_adde_ep_to_node($user->uid, $form['nid']['#value']);
         }
+        $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_HWC_STAFF_REVIEWERS);
+      }
+      elseif (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
+        // Add reviewer as default.
+        if (empty($ep[$user->uid])) {
+          $ep[$user->uid] = $user;
+          hwc_workflow_adde_ep_to_node($user->uid, $form['nid']['#value']);
+        }
+        $options = osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_EEN_REVIEW_MANAGER);
       }
       $form['reviewers_list'] = array(
         '#type' => 'select',
@@ -167,8 +178,10 @@ function hwc_workflow_news_events_mail_fields_visibility(&$form, $state) {
   global  $user;
   $access = FALSE;
   if (
-    (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles) ||
-    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)
+    (
+      in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles) ||
+      in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles) ||
+      in_array(HWC_ROLE_ADMIN, $user->roles)
     ) && ($state == OSHA_WORKFLOW_STATE_TO_BE_APPROVED)
   ) {
     $access = TRUE;
@@ -190,6 +203,12 @@ function hwc_workflow_news_events_reviewers_list_visibility(&$form) {
   if (!empty($form['reviewers_list'])) {
     $access = FALSE;
     if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) {
+      $access = TRUE;
+    }
+    if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
+      $access = TRUE;
+    }
+    if (in_array(HWC_ROLE_ADMIN, $user->roles)) {
       $access = TRUE;
     }
     $form['reviewers_list']['#access'] = $access;
@@ -593,9 +612,9 @@ function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
     // If to be reviewed it's skipped - assign default cpms.
     $existing_cpms = _hwc_workflow_get_project_managers_entries($node->nid);
     if (empty($existing_cpms)) {
-      $remaining_approvers = hwc_workflow_assign_default_cpm($node);
-      reset($remaining_approvers);
-      $next_approver = array_shift($remaining_approvers);
+//      $remaining_approvers = hwc_workflow_assign_default_cpm($node);
+//      reset($remaining_approvers);
+//      $next_approver = array_shift($remaining_approvers);
     }
     else {
       // Reset approver votes (if node rejected and it's second time reviewed).
@@ -616,17 +635,17 @@ function hwc_workflow_workbench_moderation_transition($node, $old, $new) {
  */
 function hwc_workflow_assign_default_cpm($node) {
   $default_cpms = _hwc_workflow_get_default_cpm();
-  $weight = 0;
-  foreach ($default_cpms as $cpm) {
-    $row = array(
-      'uid' => $cpm->uid,
-      'weight' => $weight,
-      'nid' => $node->nid,
-    );
-    _hwc_workflow_admin_approvers_save_row($row);
-    $weight++;
-  }
-  drupal_set_message('Default HWC Staff - Reviewers were set for this node');
+//  $weight = 0;
+//  foreach ($default_cpms as $cpm) {
+//    $row = array(
+//      'uid' => $cpm->uid,
+//      'weight' => $weight,
+//      'nid' => $node->nid,
+//    );
+//    _hwc_workflow_admin_approvers_save_row($row);
+//    $weight++;
+//  }
+//  drupal_set_message('Default HWC Staff - Reviewers were set for this node');
   return $default_cpms;
 }
 
