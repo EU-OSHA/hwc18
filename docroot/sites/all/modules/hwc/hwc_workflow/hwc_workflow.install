@@ -257,3 +257,10 @@ function hwc_workflow_update_7014() {
   drupal_write_record('workbench_access_role', $role);
   variable_set('chosen_minimum_multiple', 5);
 }
+
+/**
+ * Revert workflow rules.
+ */
+function hwc_workflow_update_7015() {
+  features_revert_module('hwc_workflow');
+}
