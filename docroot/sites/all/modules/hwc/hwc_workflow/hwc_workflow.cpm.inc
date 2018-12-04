@@ -306,17 +306,17 @@ function _hwc_workflow_get_project_managers_entries($nid) {
 /**
  * Insert or update an osha_workflow_node_project_managers entry.
  */
-function _hwc_workflow_admin_approvers_save_row($row) {
-  if (is_object($row)) {
-    $row = (array) $row;
-  }
-  if (isset($row['npmid'])) {
-    return drupal_write_record('osha_workflow_node_project_managers', $row, array('npmid'));
-  }
-  else {
-    return drupal_write_record('osha_workflow_node_project_managers', $row);
-  }
-}
+//function _hwc_workflow_admin_approvers_save_row($row) {
+//  if (is_object($row)) {
+//    $row = (array) $row;
+//  }
+//  if (isset($row['npmid'])) {
+//    return drupal_write_record('osha_workflow_node_project_managers', $row, array('npmid'));
+//  }
+//  else {
+//    return drupal_write_record('osha_workflow_node_project_managers', $row);
+//  }
+//}
 
 //function _hwc_workflow_node_has_cpm($node, $account) {
 //  $cpms = _hwc_workflow_get_project_managers_entries($node->nid);

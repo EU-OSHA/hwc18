@@ -72,37 +72,7 @@ function hwc_workflow_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_cpm_notification_to_be_approved'] = entity_import('rules_config', '{ "rules_cpm_notification_to_be_approved" : {
-      "LABEL" : "HWC Staff Reviewer notification to be Approved",
-      "PLUGIN" : "reaction rule",
-      "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
-      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
-      "IF" : [
-        { "entity_is_of_bundle" : {
-            "entity" : [ "node" ],
-            "type" : "node",
-            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
-          }
-        },
-        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
-        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
-        { "disable_masquerading_notifications" : [] },
-        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
-        { "NOT node_een_partner" : { "entity" : [ "node" ] } },
-        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
-      ],
-      "DO" : [
-        { "mail_to_users_of_role" : {
-            "roles" : { "value" : { "15" : "15" } },
-            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
-            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
-          }
-        }
-      ]
-    }
-  }');
-  $items['rules_een_notification_to_be_approved'] = entity_import('rules_config', '{ "rules_een_notification_to_be_approved" : {
+  $items['hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved" : {
       "LABEL" : "EU-OSHA EEN Reviewer notification to be Approved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
@@ -125,6 +95,36 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "17" : "17" } },
+            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
+  $items['hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved" : {
+      "LABEL" : "HWC Staff Reviewer notification to be Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "NOT node_een_partner" : { "entity" : [ "node" ] } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+      ],
+      "DO" : [
+        { "mail_to_users_of_role" : {
+            "roles" : { "value" : { "15" : "15" } },
             "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
             "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }

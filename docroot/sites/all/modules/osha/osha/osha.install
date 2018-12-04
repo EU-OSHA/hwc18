@@ -373,3 +373,10 @@ function osha_update_7029() {
   features_revert(array('campaign_materials' => array('field_instance')));
   features_revert(array('osha_news' => array('field_instance')));
 }
+
+/**
+ * MDR-2027 HWC: Changes in the workflow of news and events.
+ */
+function osha_update_7030() {
+  features_revert(array('osha' => array('views_view')));
+}

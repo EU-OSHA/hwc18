@@ -119,6 +119,9 @@ function linguatools_access() {
     if ($userrol == HWC_ROLE_ADMIN) {
       return TRUE;
     }
+    if ($userrol == HWC_ROLE_WEBSITE_MANAGERS) {
+      return TRUE;
+    }
   }
 
   return FALSE;

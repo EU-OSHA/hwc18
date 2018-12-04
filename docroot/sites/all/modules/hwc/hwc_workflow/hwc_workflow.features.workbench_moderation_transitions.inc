@@ -54,6 +54,11 @@ function hwc_workflow_workbench_moderation_export_transitions() {
       'to_name' => 'to_be_approved',
       'name' => 'Requesting Approval',
     ),
+    'published:draft' => array(
+      'from_name' => 'published',
+      'to_name' => 'draft',
+      'name' => 'Unpublish',
+    ),
     'to_be_approved:draft' => array(
       'from_name' => 'to_be_approved',
       'to_name' => 'draft',
