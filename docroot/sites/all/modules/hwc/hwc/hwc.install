@@ -896,3 +896,10 @@ function hwc_update_7056() {
   variable_set('piwik_translation_set', 1);
   variable_set('piwik_query_parameters', 1);
 }
+
+/**
+ * MDR-2253 Events migration from HWC to NCW.
+ */
+function hwc_update_7057() {
+  features_revert(['hwc' => ['views_view']]);
+}
