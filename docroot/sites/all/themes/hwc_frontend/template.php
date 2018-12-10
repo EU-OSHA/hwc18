@@ -6,6 +6,22 @@ function bootstrap_menu_tree__menu_footer_menu(&$variables) {
   return '<ul class="menu nav nav-pills">' . $variables['tree'] . '</ul>';
 }
 
+function hwc_frontend_html_head_alter(&$head_elements) {
+  global $language;
+  if (
+    arg(0) == 'node' &&
+    is_numeric(arg(1)) &&
+    isset($head_elements['metatag_canonical']['#value'])
+  ) {
+    $n = menu_get_object('node');
+    if ($n && isset($n->field_migration_path_alias) && $n->field_migration_path_alias) {
+      $head_elements['metatag_canonical']['#value'] = variable_get('hwc_migration_root_url') .
+        '/' . $language->language .
+        '/' . $n->field_migration_path_alias[LANGUAGE_NONE][0]['value'];
+    }
+  }
+}
+
 /**
  * Implements theme_menu_link__menu_block().
  */

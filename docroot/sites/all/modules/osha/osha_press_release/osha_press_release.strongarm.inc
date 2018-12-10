@@ -239,6 +239,9 @@ function osha_press_release_strongarm() {
         'workbench_access' => array(
           'weight' => '0',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

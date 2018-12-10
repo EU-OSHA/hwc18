@@ -50,12 +50,21 @@ class NCWInfographicsMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
+    // Disable NCW alias.
+    $row->path = NULL;
     // field_twin_infographics
     $fi = field_info_field('field_twin_infographics');
     osha_migration_normalize_field_entityreference($row, 'field_twin_infographics', $fi);
@@ -92,7 +101,8 @@ class NCWInfographicsSource extends AbstractNCWNodeSource {
       'field_thumbnail_language',
       'field_file',
       'field_file_language',
-      'field_twin_infographics'
+      'field_twin_infographics',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }

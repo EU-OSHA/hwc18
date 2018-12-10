@@ -9,6 +9,9 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
 
   public $new_providers = array();
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($arguments) {
     parent::__construct($arguments, 'NCWDangerousSubstancesSource', 'practical_tool');
     $this->description = 'Import DS from NCW';
@@ -32,6 +35,9 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   function addFieldMappings() {
     parent::addFieldMappings();
     $unmigrated_destinations = [];
@@ -49,6 +55,9 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     $map = array_keys($this->getTermReferenceFieldsMap());
     $map[] = 'field_fc_provider';
@@ -56,6 +65,9 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     return $map;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function prepare($entity, stdClass $row) {
     parent::prepare($entity, $row);
     $this->new_providers = [];
@@ -129,9 +141,20 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   function prepareRow($row) {
     $row->field_country = $row->field_material_country;
     parent::prepareRow($row);
+    if ($row->path) {
+      $row->field_migration_path_alias = $row->path;
+    }
+    else {
+      $row->field_migration_path_alias = 'node/' . $row->nid;
+    }
+    // Disable NCW alias.
+    $row->path = NULL;
     foreach ($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
       if ($row->{$taxonomy}) {
         $orig_taxonomies = $row->{$taxonomy};
@@ -210,14 +233,23 @@ class NCWDangerousSubstancesMigration extends AbstractNCWNodeMigration {
 
 class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
 
+  /**
+   * @var array
+   */
   protected $source_ids;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($options) {
     parent::__construct($options);
     $this->source_ids = [];
     $this->endpoint_url .= '?' . rand(100, 200);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getNextRow() {
     if (empty($this->rows)) {
       $this->readData();
@@ -254,7 +286,7 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
   /**
    * Get modified dates.
    */
-  function getPracticalToolModifiedDates() {
+  public function getPracticalToolModifiedDates() {
     $q = db_select('migrate_map_dangerous_substances', 'mm');
     $q->fields('mm', ['sourceid1']);
     $q->fields('md', ['field_modified_date_value']);
@@ -355,8 +387,10 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
       'field_fc_provider' => '',
       'field_modified_date' => '',
       'title_field_language' => '',
+      'field_migration_path_alias' => '',
     ];
     $fields += $text;
     return $fields;
   }
+
 }

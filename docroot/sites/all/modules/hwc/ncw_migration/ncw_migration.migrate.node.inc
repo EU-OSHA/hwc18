@@ -47,10 +47,16 @@ class NCWSingleArticleMigration extends AbstractNCWNodeMigration {
     ));
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   function prepareRow($row) {
     parent::prepareRow($row);
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');

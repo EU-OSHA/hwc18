@@ -121,7 +121,7 @@ function osha_press_release_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'hwc_frontend',
-        'weight' => -54,
+        'weight' => 11,
       ),
       'seven' => array(
         'region' => '',
