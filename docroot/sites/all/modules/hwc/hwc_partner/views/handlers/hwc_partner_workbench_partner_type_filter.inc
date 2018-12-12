@@ -87,6 +87,9 @@ class hwc_partner_workbench_partner_type_filter extends views_handler_filter_man
     $active = workbench_access_get_active_tree();
 
     $ids = array_keys($uids);
+    if (!$ids) {
+      return;
+    }
     $table = $active['access_scheme']['field_table'];
     $subquery = db_select($table, $table);
     $subquery->addField($table, 'nid');
@@ -97,6 +100,8 @@ class hwc_partner_workbench_partner_type_filter extends views_handler_filter_man
     $group = $this->query->set_where_group('AND');
     $this->query->add_where($group, "{$this->query->base_table}.nid", $subquery, 'IN');
 
+    $group = $this->query->set_where_group('AND');
+    $this->query->add_where($group, "{$this->query->base_table}.type", 'partner', '!=');
   }
 
 }
