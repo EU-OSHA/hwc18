@@ -34,6 +34,7 @@ features[field_instance][] = node-news-field_character_count
 features[field_instance][] = node-news-field_first_publication_date
 features[field_instance][] = node-news-field_image
 features[field_instance][] = node-news-field_image_caption
+features[field_instance][] = node-news-field_migration_path_alias
 features[field_instance][] = node-news-field_migration_source
 features[field_instance][] = node-news-field_modified_by
 features[field_instance][] = node-news-field_modified_on

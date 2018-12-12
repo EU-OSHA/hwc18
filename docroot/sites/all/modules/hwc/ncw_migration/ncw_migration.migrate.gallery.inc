@@ -36,7 +36,10 @@ class NCWGalleryMigration extends AbstractNCWNodeMigration {
     parent::prepare($entity, $row);
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
     foreach ($this->getTermReferenceFieldsMap() as $taxonomy => $vocabulary) {
       if ($row->{$taxonomy}) {

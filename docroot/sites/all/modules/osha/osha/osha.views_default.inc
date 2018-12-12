@@ -562,17 +562,17 @@ function osha_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  /* Filter criterion: Content: Type (field_partner_type) */
-  $handler->display->display_options['filters']['field_partner_type_tid']['id'] = 'field_partner_type_tid';
-  $handler->display->display_options['filters']['field_partner_type_tid']['table'] = 'field_data_field_partner_type';
-  $handler->display->display_options['filters']['field_partner_type_tid']['field'] = 'field_partner_type_tid';
-  $handler->display->display_options['filters']['field_partner_type_tid']['group'] = 1;
-  $handler->display->display_options['filters']['field_partner_type_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator_id'] = 'field_partner_type_tid_op';
-  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['label'] = 'Type of partner';
-  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['operator'] = 'field_partner_type_tid_op';
-  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['identifier'] = 'field_partner_type_tid';
-  $handler->display->display_options['filters']['field_partner_type_tid']['expose']['remember_roles'] = array(
+  /* Filter criterion: Workbench Access: Access filter */
+  $handler->display->display_options['filters']['partner_type_tid']['id'] = 'partner_type_tid';
+  $handler->display->display_options['filters']['partner_type_tid']['table'] = 'workbench_access';
+  $handler->display->display_options['filters']['partner_type_tid']['field'] = 'partner_type_tid';
+  $handler->display->display_options['filters']['partner_type_tid']['group'] = 1;
+  $handler->display->display_options['filters']['partner_type_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['partner_type_tid']['expose']['operator_id'] = 'partner_type_tid_op';
+  $handler->display->display_options['filters']['partner_type_tid']['expose']['label'] = 'Type of partner';
+  $handler->display->display_options['filters']['partner_type_tid']['expose']['operator'] = 'partner_type_tid_op';
+  $handler->display->display_options['filters']['partner_type_tid']['expose']['identifier'] = 'partner_type_tid';
+  $handler->display->display_options['filters']['partner_type_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -589,9 +589,9 @@ function osha_views_default_views() {
     16 => 0,
     14 => 0,
     15 => 0,
+    17 => 0,
   );
-  $handler->display->display_options['filters']['field_partner_type_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_partner_type_tid']['vocabulary'] = 'partner_types';
+  $handler->display->display_options['filters']['partner_type_tid']['partner_type_tid'] = 'All';
   /* Filter criterion: Entity translation: Translation exists */
   $handler->display->display_options['filters']['translation_exists']['id'] = 'translation_exists';
   $handler->display->display_options['filters']['translation_exists']['table'] = 'entity_translation';

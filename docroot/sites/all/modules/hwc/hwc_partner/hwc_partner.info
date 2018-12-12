@@ -183,3 +183,4 @@ features[views_view][] = partner_content
 features[views_view][] = partner_draft_content
 features[views_view][] = partners_list
 files[] = includes/workbench_moderation_handler_field_state.inc
+files[] = views/handlers/hwc_partner_workbench_partner_type_filter.inc

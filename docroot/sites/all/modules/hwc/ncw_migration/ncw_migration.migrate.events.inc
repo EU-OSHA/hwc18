@@ -42,12 +42,19 @@ class NCWEventsMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
     // Disable NCW alias.
     $row->path = NULL;
     // Trim title.
@@ -104,6 +111,7 @@ class NCWEventsSource extends AbstractNCWNodeSource {
       'field_related_documents',
       'field_related_documents_language',
       'field_migration_source',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }

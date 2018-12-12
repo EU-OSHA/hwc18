@@ -45,12 +45,19 @@ class NCWHighlightMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags', 'field_aditional_resources');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
     // Disable NCW alias.
     $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
@@ -95,6 +102,7 @@ class NCWHighlightSource extends AbstractNCWNodeSource {
       'field_character_count',
       'field_page_count',
       'field_aditional_resources',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }

@@ -27,8 +27,14 @@ class NCWNoteMigration extends AbstractNCWNodeMigration {
     return array('field_tags');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
+    // Disable NCW alias.
+    $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
   }
 }
@@ -49,6 +55,7 @@ class NCWNoteSource extends AbstractNCWNodeSource {
       'body_format',
       'field_character_count',
       'field_page_count',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }

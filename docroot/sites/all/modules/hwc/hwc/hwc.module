@@ -1001,7 +1001,7 @@ function hwc_field_widget_form_alter(&$element, &$form_state, $context) {
   $is_news_form = $is_edit_form &&
     $context['form']['type']['#value'] == 'news';
 
-  if (($is_events_form) && (isset($element['#field_name']))) {
+  if ($is_events_form && !empty($element['#field_name'])) {
     switch ($element['#field_name']) {
       case 'title_field':
         $placeholder = 'Event title. Max 150 characters.';

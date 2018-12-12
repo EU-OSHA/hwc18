@@ -131,6 +131,7 @@ function osha_news_ds_layout_settings_info() {
         22 => 'field_migration_source',
         23 => 'field_first_publication_date',
         32 => '_add_existing_field',
+        33 => 'field_migrate_path_alias',
       ),
     ),
     'fields' => array(
@@ -157,6 +158,7 @@ function osha_news_ds_layout_settings_info() {
       'xmlsitemap' => 'hidden',
       'field_wf_notification' => 'hidden',
       'field_migration_source' => 'hidden',
+      'field_migrate_path_alias' => 'hidden',
       'field_first_publication_date' => 'hidden',
       'field_approved_subject' => 'footer',
       'field_approved_body' => 'footer',

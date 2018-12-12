@@ -128,6 +128,7 @@ features[field_instance][] = node-events-field_first_publication_date
 features[field_instance][] = node-events-field_for_the_web
 features[field_instance][] = node-events-field_gallery
 features[field_instance][] = node-events-field_location
+features[field_instance][] = node-events-field_migration_path_alias
 features[field_instance][] = node-events-field_migration_source
 features[field_instance][] = node-events-field_modified_by
 features[field_instance][] = node-events-field_modified_on

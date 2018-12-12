@@ -36,8 +36,16 @@ function hwc_partner_views_data_alter(&$data) {
     ),
   );
   $data['workbench_moderation_node_history']['state']['field']['handler'] = 'hwc_partner_workbench_moderation_handler_field_state';
-}
 
+  $data['workbench_access']['partner_type_tid'] = array(
+    'real field' => 'access_id',
+    'title' => t('Access filter'),
+    'help' => t('Filter nodes by partner type.'),
+    'filter' => array(
+      'handler' => 'hwc_partner_workbench_partner_type_filter',
+    ),
+  );
+}
 
 /**
  * Filters nodes that belongs to users partner or the user is author.
