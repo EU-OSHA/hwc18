@@ -1,19 +1,25 @@
 <?php
 
 /**
- * Class NCWPressContactMigration migrates press contacts
+ * Class NCWPressContactMigration migrates press contacts.
  *
  * Set hwc_migration_press_contacts_url variable for explicit source URL.
  */
 class NCWPressContactMigration extends AbstractNCWNodeMigration {
   public static $nodequeue = array();
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($arguments) {
     parent::__construct($arguments, 'NCWPressContactSource', 'press_contact');
     $this->description = 'Import press contacts from NCW';
   }
 
-  function addFieldMappings() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function addFieldMappings() {
     parent::addFieldMappings();
 
     $this->addFieldMapping('field_contact_type')->defaultValue('Press Contact');
@@ -41,7 +47,17 @@ class NCWPressContactMigration extends AbstractNCWNodeMigration {
   }
 
   /**
-   * Implements Migration::complete() to configure translations
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
+    parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
+    // Disable NCW alias.
+    $row->path = NULL;
+  }
+
+  /**
+   * Implements Migration::complete() to configure translations.
    */
   public function complete($entity, stdClass $row) {
     parent::complete($entity, $row);
@@ -100,8 +116,7 @@ class NCWPressContactSource extends AbstractNCWNodeSource {
       'field_website',
       'field_website_title',
       'field_website_attributes',
-      //@todo: 'field_press_contact_declaration',
-      //@todo: 'field_press_contact_cv',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }
