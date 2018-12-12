@@ -29,6 +29,8 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
     12 => '12',
+    15 => '15',
+    17 => '17',
     14 => '14',
     11 => '11',
     13 => '13',
@@ -36,6 +38,7 @@ function hwc_good_practice_exchange_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';

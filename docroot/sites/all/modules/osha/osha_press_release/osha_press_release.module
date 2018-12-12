@@ -18,7 +18,7 @@ function osha_press_release_post_features_enable_feature($component) {
   if ($component == 'variable') {
     menu_rebuild();
     drupal_static_reset();
-    if ($role = user_role_load_by_name('administrator')) {
+    if ($role = user_role_load_by_name(HWC_ROLE_ADMIN)) {
       $permissions = array(
         'create press_release content',
         'edit own press_release content',

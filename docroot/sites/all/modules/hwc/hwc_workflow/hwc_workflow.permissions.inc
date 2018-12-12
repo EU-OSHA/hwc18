@@ -61,7 +61,7 @@ function hwc_workflow_permissions_role_supervisor() {
     'assign cpm to node',
 
     'view moderation history',
-    'view moderation messages'
+    'view moderation messages',
   );
 }
 
@@ -69,6 +69,10 @@ function hwc_workflow_permission_role_review_manager() {
   return hwc_workflow_permissions_role_supervisor() + array(
     'use workbench_moderation needs review tab',
   );
+}
+
+function hwc_workflow_permission_role_een_rm() {
+  return hwc_workflow_permission_role_cpm();
 }
 
 function hwc_workflow_permission_role_cpm() {

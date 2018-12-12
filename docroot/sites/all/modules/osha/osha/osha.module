@@ -58,7 +58,6 @@ function osha_js_alter(&$javascript) {
   if (empty($javascript['settings']['data'])) {
     return;
   }
-
   foreach ($javascript['settings']['data'] as $k => &$v) {
     if (array_key_exists('eu_cookie_compliance', $v)) {
       $popup_settings = variable_get('eu_cookie_compliance', array());
@@ -485,7 +484,7 @@ function osha_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['field_character_count']['#access'] = FALSE;
   }
 
-  if (!in_array('administrator', $user->roles)) {
+  if (!in_array(HWC_ROLE_ADMIN, $user->roles)) {
     $form['field_archived']['#access'] = FALSE;
   }
   // Hide Delete button for all roles
@@ -501,7 +500,7 @@ function osha_form_alter(&$form, &$form_state, $form_id){
   global $user;
 
   if($form_id == 'views_form_administration_content_main_page' &&
-    !in_array('administrator', $user->roles)){
+    !in_array(HWC_ROLE_ADMIN, $user->roles)) {
     $form_state['build_info']['args'][0]->field = array();
     $form['views_bulk_operations'] = FALSE;
   } else if ($form_id == 'lang_dropdown_form') {

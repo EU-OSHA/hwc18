@@ -15,7 +15,7 @@ function hwc_partner_update_7001() {
  * Update permissions for Review Manager role
  */
 function hwc_partner_update_7002() {
-  if ($role = user_role_load_by_name('Review Manager')) {
+  if ($role = user_role_load_by_name(HWC_ROLE_WEBSITE_MANAGERS)) {
     user_role_grant_permissions($role->rid, array('use text format filtered_html'));
   }
 }
@@ -24,7 +24,7 @@ function hwc_partner_update_7002() {
  * Give Supervisor role perm to masquerade.
  */
 function hwc_partner_update_7003() {
-  if ($role = user_role_load_by_name(ROLE_SUPERVISOR)) {
+  if ($role = user_role_load_by_name(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR)) {
     user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
   }
 }
@@ -233,13 +233,13 @@ function hwc_partner_update_7029() {
 }
 
 /**
- * MDR-1726 HWC18: Reviewers and Campaign Project Manager should be able to act as a partner.
+ * MDR-1726 HWC18: Reviewers and HWC Staff - Reviewers should be able to act as a partner.
  */
 function hwc_partner_update_7030() {
-  if ($role = user_role_load_by_name(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER)) {
+  if ($role = user_role_load_by_name(HWC_ROLE_WEBSITE_MANAGERS)) {
     user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
   }
-  if ($role = user_role_load_by_name(HWC_ROLE_CAMPAIGN_PROJECT_MANAGER)) {
+  if ($role = user_role_load_by_name(HWC_ROLE_HWC_STAFF_REVIEWERS)) {
     user_role_grant_permissions($role->rid, array('masquerade as any user', 'masquerade as user'));
   }
 }

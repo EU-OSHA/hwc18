@@ -13,7 +13,7 @@ function osha_tmgmt_workflow_create_roles() {
     OSHA_WORKFLOW_ROLE_LAYOUT_VALIDATOR => osha_tmgmt_workflow_permissions_role_layout_validator(),
     OSHA_WORKFLOW_ROLE_CONTENT_VALIDATOR => osha_tmgmt_workflow_permissions_role_content_validator(),
     OSHA_WORKFLOW_ROLE_PROJECT_MANAGER => osha_tmgmt_pm_permissions(),
-    'administrator' => array_keys(osha_tmgmt_extra_permissions()),
+    HWC_ROLE_ADMIN => array_keys(osha_tmgmt_extra_permissions()),
   );
 
   foreach ($roles as $role_name => $permissions) {
@@ -34,7 +34,7 @@ function osha_tmgmt_workflow_create_roles() {
  */
 function osha_tmgmt_user_can_edit_job_item($job_item) {
   global $user;
-  if (OshaWorkflowPermissions::userHasRole('administrator', $user)) {
+  if (OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user)) {
     return TRUE;
   }
 
