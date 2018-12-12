@@ -120,6 +120,7 @@ function osha_news_ds_layout_settings_info() {
         18 => 'xmlsitemap',
         19 => 'field_wf_notification',
         20 => 'field_migration_source',
+        32 => 'field_migrate_path_alias',
         22 => '_add_existing_field',
       ),
     ),
@@ -146,6 +147,7 @@ function osha_news_ds_layout_settings_info() {
       'field_wf_notification' => 'hidden',
       'field_migration_source' => 'hidden',
       'field_show_in_ncw' => 'footer',
+      'field_migrate_path_alias' => 'hidden',
       '_add_existing_field' => 'hidden',
     ),
     'classes' => array(
