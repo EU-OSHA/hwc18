@@ -7,12 +7,18 @@
  */
 class NCWPressMigration extends AbstractNCWNodeMigration {
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($arguments) {
     parent::__construct($arguments, 'NCWPressSource', 'press_release');
     $this->description = 'Import press releases from NCW';
   }
 
-  function addFieldMappings() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function addFieldMappings() {
     parent::addFieldMappings();
 
     $this->addFieldMapping('field_tags:source_type')->defaultValue('tid');
@@ -42,11 +48,17 @@ class NCWPressMigration extends AbstractNCWNodeMigration {
     return array('field_tags', 'field_aditional_resources', 'field_pr_notes_to_editor');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
+    // Disable NCW alias.
+    $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
 
-    // field_aditional_resources
+    // field_aditional_resources.
     $fi = field_info_field('field_aditional_resources');
     osha_migration_normalize_field_entityreference($row, 'field_aditional_resources', $fi);
     $additional_resources = $row->field_aditional_resources;
@@ -57,17 +69,18 @@ class NCWPressMigration extends AbstractNCWNodeMigration {
       }
     }
 
-    // field_pr_notes_to_editor
+    // field_pr_notes_to_editor.
     if (!empty($row->field_pr_notes_to_editor)) {
       $source_press_releases = $row->field_pr_notes_to_editor[LANGUAGE_NONE];
       $row->notes_to_editor = array();
-      foreach($source_press_releases as $original) {
+      foreach ($source_press_releases as $original) {
         if ($destid1 = ncw_migration_find_migrated_item_id($original['target_id'], 'notes_to_editor')) {
           $row->field_pr_notes_to_editor[] = $destid1;
         }
       }
     }
   }
+
 }
 
 
@@ -107,7 +120,9 @@ class NCWPressSource extends AbstractNCWNodeSource {
       'field_page_count',
       'field_pr_notes_to_editor',
       'field_aditional_resources',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }
+
 }

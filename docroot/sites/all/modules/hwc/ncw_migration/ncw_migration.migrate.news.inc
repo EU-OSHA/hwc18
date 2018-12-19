@@ -36,17 +36,22 @@ class NCWNewsMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags', 'field_aditional_resources');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
     // Disable NCW alias.
     $row->path = NULL;
     $row->field_tags = osha_migration_normalize_migrated_term_reference($row->field_tags, 'tax_tags');
-
-    // field_aditional_resources
     $fi = field_info_field('field_aditional_resources');
     osha_migration_normalize_field_entityreference($row, 'field_aditional_resources', $fi);
     $additional_resources = $row->field_aditional_resources;
@@ -90,6 +95,7 @@ class NCWNewsSource extends AbstractNCWNodeSource {
       'field_page_count',
       'field_aditional_resources',
       'field_migration_source',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }

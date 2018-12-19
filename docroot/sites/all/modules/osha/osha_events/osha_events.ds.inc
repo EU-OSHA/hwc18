@@ -184,6 +184,7 @@ function osha_events_ds_layout_settings_info() {
         36 => 'xmlsitemap',
         37 => 'field_wf_notification',
         38 => 'field_migration_source',
+        51 => 'field_migrate_path_alias',
         41 => '_add_existing_field',
       ),
     ),
@@ -229,6 +230,7 @@ function osha_events_ds_layout_settings_info() {
       'field_migration_source' => 'hidden',
       'field_show_in_ncw' => 'footer',
       'field_show_eu_flag' => 'footer',
+      'field_migrate_path_alias' => 'hidden',
       '_add_existing_field' => 'hidden',
     ),
     'classes' => array(

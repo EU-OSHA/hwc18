@@ -903,3 +903,13 @@ function hwc_update_7056() {
 function hwc_update_7057() {
   features_revert(['hwc' => ['views_view']]);
 }
+
+/**
+ * MDR-2413 add canonicals for imported items on the campaign.
+ */
+function hwc_update_7058() {
+  features_revert(array('osha_press_release' => array('field_base', 'field_instance')));
+  features_revert(array('osha_note_to_editor' => array('field_base', 'field_instance')));
+  features_revert(array('osha_publication' => array('field_base', 'field_instance')));
+  features_revert(array('hwc_practical_tool' => array('field_base', 'field_instance')));
+}

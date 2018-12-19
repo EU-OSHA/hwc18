@@ -7,12 +7,18 @@
  */
 class NCWPublicationsMigration extends AbstractNCWNodeMigration {
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($arguments) {
     parent::__construct($arguments, 'NCWPublicationsSource', 'publication');
     $this->description = 'Import publications from NCW';
   }
 
-  function addFieldMappings() {
+  /**
+   * {@inheritdoc}
+   */
+  protected function addFieldMappings() {
     parent::addFieldMappings();
 
     $this->addFieldMapping('field_tags:source_type')->defaultValue('tid');
@@ -61,12 +67,21 @@ class NCWPublicationsMigration extends AbstractNCWNodeMigration {
     $this->ignoreMetatagMigration();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function getManuallyMigratedFields() {
     return array('field_tags', 'field_publication_type', 'field_aditional_resources');
   }
 
-  function prepareRow($row) {
+  /**
+   * {@inheritdoc}
+   */
+  public function prepareRow($row) {
     parent::prepareRow($row);
+    $row->field_migration_path_alias = $row->path;
+    // Disable NCW alias.
+    $row->path = NULL;
 
     // field_related_publications.
     $fi = field_info_field('field_related_publications');
@@ -140,6 +155,7 @@ class NCWPublicationsMigration extends AbstractNCWNodeMigration {
       }
     }
   }
+
 }
 
 
@@ -179,6 +195,7 @@ class NCWPublicationsSource extends AbstractNCWNodeSource {
       'field_tags',
       'field_related_publications',
       'field_aditional_resources',
+      'field_migration_path_alias',
     );
     return array_combine($fields, $fields);
   }
@@ -246,4 +263,5 @@ class NCWPublicationsSource extends AbstractNCWNodeSource {
       }
     }
   }
+
 }

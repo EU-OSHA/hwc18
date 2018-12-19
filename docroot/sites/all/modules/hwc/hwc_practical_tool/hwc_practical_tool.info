@@ -1,7 +1,7 @@
 name = HWC Practical tool
 core = 7.x
 package = HWC
-version = 7.x-1.15
+version = 7.x-1.16
 project = hwc_practical_tool
 dependencies[] = ctools
 dependencies[] = date
@@ -130,6 +130,7 @@ features[field_instance][] = node-practical_tool-field_item_type
 features[field_instance][] = node-practical_tool-field_languages_other
 features[field_instance][] = node-practical_tool-field_material_purpose_other
 features[field_instance][] = node-practical_tool-field_material_purpose_type
+features[field_instance][] = node-practical_tool-field_migration_path_alias
 features[field_instance][] = node-practical_tool-field_modified_date
 features[field_instance][] = node-practical_tool-field_objective
 features[field_instance][] = node-practical_tool-field_prevention_measure_type

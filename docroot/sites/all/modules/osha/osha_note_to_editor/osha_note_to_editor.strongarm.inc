@@ -151,6 +151,9 @@ function osha_note_to_editor_strongarm() {
         'language' => array(
           'weight' => '1',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
