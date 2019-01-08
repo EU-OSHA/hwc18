@@ -83,7 +83,7 @@ if (!empty($campaign_id)) {
                                 'width' => 220,
                                 'alt' => (isset($field_image) && !empty($field_image)) ? $field_image['alt'] : '',
                                 'attributes' => array(
-                                  'style' => 'background-color:red;vertical-align:middle;max-width: initial!important;',
+                                  'style' => 'vertical-align:middle;max-width: initial!important;',
                                   'align' => 'left',
                                 
                                 ),
