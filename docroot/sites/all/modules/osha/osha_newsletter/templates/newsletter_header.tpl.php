@@ -145,7 +145,13 @@ $directory = drupal_get_path('module','osha_newsletter');
                 </td>
               </tr>
             <tr class="intro"><td colspan="2">
-                    <p style="font-style: italic; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif;"><?php print t($newsletter_intro);?></p>
+                    <p style="font-style: italic; color: #ffffff; font-size: 12px; font-family: Arial,sans-serif;">
+                      <?php 
+                        if ($newsletter_intro != ''){
+                          print t($newsletter_intro);
+                        }
+                      ?>
+                    </p>
                 </td></tr>
             </tbody>
           </table>
