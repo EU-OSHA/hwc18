@@ -26,11 +26,11 @@ jQuery(document).ready(function() {
     jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu >.menu__item.expanded >span").click(function(){
     	if(jQuery(this).siblings("ul").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
-    		//jQuery(this).removeClass("active");
+    		jQuery('#block-hwc-toolkit-toolkit-left-menu').removeClass("opened");
     		jQuery(this).siblings("ul").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
-    		//jQuery(this).addClass("active");
+    		jQuery('#block-hwc-toolkit-toolkit-left-menu').addClass("opened");
     		jQuery(this).siblings("ul").slideDown();
     	}
     	
@@ -40,11 +40,11 @@ jQuery(document).ready(function() {
     jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu-index").click(function(){
     	if(jQuery(this).siblings(".menu").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
-    		//jQuery(this).removeClass("active");
+    		jQuery('#block-hwc-toolkit-toolkit-left-menu').removeClass("opened");
     		jQuery(this).siblings(".menu").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
-    		//jQuery(this).addClass("active");
+    		jQuery('#block-hwc-toolkit-toolkit-left-menu').addClass("opened");
     		jQuery(this).siblings(".menu").slideDown();
     	}
     	
@@ -54,11 +54,9 @@ jQuery(document).ready(function() {
     jQuery(".node-type-tk-example .node-tk-example .group-left .field-name-field-download-pdf .field-label, .node-type-tk-example .node-tk-example .group-left .field-name-field-external-link .field-label").click(function(){
     	if(jQuery(this).siblings(".field-items").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
-    		//jQuery(this).removeClass("active");
     		jQuery(this).siblings(".field-items").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
-    		//jQuery(this).addClass("active");
     		jQuery(this).siblings(".field-items").slideDown();
     	}
     });
@@ -369,10 +367,7 @@ jQuery(document).ready(function() {
 				
 		    	jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu').css("display", "block");
 
-			}else{
-				jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu').css("display", "none");
-				jQuery('#block-hwc-toolkit-toolkit-left-menu .key-menu-container > .menu-index').removeClass("up-arrow");
-			}//<-----End: functions for desktop
+			}
 		});
 		
 	}
