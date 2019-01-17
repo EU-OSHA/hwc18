@@ -186,19 +186,22 @@ jQuery(document).ready(function() {
 	    lastScrollTop = st;
 	}
 
-	//fixing sticky menu
-	var num = 150; //number of pixels before modifying styles
-	if(jQuery("body").height()>=550){
-		jQuery(window).bind('scroll', function () {
-		    if (jQuery(window).scrollTop() > num) {
-		    	if( toolkitPages < 0 ){
-		        	jQuery("#navbar").addClass("sticky-menu");
-		    	}
-		    } else {
-		        jQuery('#navbar').removeClass('sticky-menu');
-		    }
-		});
-	};
+	//If the page haver he external Infographic, disable sticky-menu
+	if (:$(".dialog-off-canvas-main-canvas")[0]){
+		//fixing sticky menu
+		var num = 150; //number of pixels before modifying styles
+		if(jQuery("body").height()>=550){
+			jQuery(window).bind('scroll', function () {
+			    if (jQuery(window).scrollTop() > num) {
+			    	if( toolkitPages < 0 ){
+			        	jQuery("#navbar").addClass("sticky-menu");
+			    	}
+			    } else {
+			        jQuery('#navbar').removeClass('sticky-menu');
+			    }
+			});
+		};
+	}
 
 	//removing the sticky only for this app form page
 	/*if(jQuery("body").height()>=1250){
