@@ -630,14 +630,27 @@ function entity_collection_block_info() {
   $blocks = array();
   // Load all entity collections and add them.
   $entity_collections = entity_load('entity_collection');
+  $hashes = array();
   foreach ($entity_collections as $entity_collection) {
     // We only support entity collections without required contexts here.
     if (!count($entity_collection->requiredcontexts)) {
-      $blocks[$entity_collection->name] = array(
+      $delta = $entity_collection->name;
+      if (strlen($delta) >= 32) {
+        $hash = md5($delta);
+        $hashes[$hash] = $delta;
+        $delta = $hash;
+      }
+
+      $blocks[$delta] = array(
         'info' => $entity_collection->title,
         'cache' => 0,
       );
     }
+  }
+  // Only save hashes if they have changed.
+  $old_hashes = variable_get('entity_collection_block_hashes', array());
+  if ($hashes != $old_hashes) {
+    variable_set('entity_collection_block_hashes', $hashes);
   }
   return $blocks;
 }
@@ -646,6 +659,13 @@ function entity_collection_block_info() {
  * Implements hook_block_view().
  */
 function entity_collection_block_view($delta) {
+  if (strlen($delta) == 32) {
+    $hashes = variable_get('entity_collection_block_hashes', array());
+    if (!empty($hashes[$delta])) {
+      $delta = $hashes[$delta];
+    }
+  }
+
   $block = array();
   // The delta is always the same as the machine name of the
   // entity block, so it's fairly easy to load.
