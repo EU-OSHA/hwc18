@@ -19666,7 +19666,7 @@ input#edit-field-image-und-0-upload::before {
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span {
-  border: 2px solid green;
+  border: 2px solid;
   padding: 10px 15px;
   display: block;
   margin-bottom: 15px;
@@ -19674,7 +19674,6 @@ input#edit-field-image-und-0-upload::before {
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
-  color: #333333;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > a.up-arrow:after,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li > span.up-arrow:after {
@@ -19693,6 +19692,11 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > a.active:after,
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > span.active:after {
   content: "\e252";
+  font-family: "Glyphicons Halflings";
+}
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > a.active.closed-down-arrow:after,
+.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > span.active.closed-down-arrow:after {
+  content: "\e250" !important;
   font-family: "Glyphicons Halflings";
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li.expanded > .menu {
@@ -19715,56 +19719,6 @@ input#edit-field-image-und-0-upload::before {
   font-family: "Glyphicons Halflings";
   float: right;
   vertical-align: middle;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome {
-  border-color: #10a748;
-  color: #10a748;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome:after {
-  color: #10a748;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-welcome.active {
-  background-color: #10a748;
-  color: white;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign {
-  border-color: #98c93c;
-  color: #98c93c;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign:after {
-  color: #98c93c;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign.active {
-  background-color: #98c93c;
-  color: white;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-how-to-run-a-campaign.active:after {
-  color: white;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools {
-  border-color: #213097;
-  color: #213097;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools:after {
-  color: #213097;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools.active {
-  background-color: #213097;
-  color: white;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-campaign-examples-and-tools.active:after {
-  color: white;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit {
-  border-color: #10aaaa;
-  color: #10aaaa;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit:after {
-  color: #10aaaa;
-}
-.toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li .key-about-the-toolkit.active {
-  background-color: #10aaaa;
-  color: white;
 }
 .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu .key-menu-container > ul > li ul li {
   margin-left: 15px;
@@ -20649,6 +20603,56 @@ input#edit-field-image-und-0-upload::before {
 .toolkit-page #block-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button .nav-info,
 .toolkit-page .pane-hwc-toolkit-toolkit-nav .key-next-prev-buttons .next-button.green .nexting-button .nav-info {
   color: #749b00;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(1) a {
+  border-color: #10a748;
+  color: #10a748;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(1) a:after {
+  color: #10a748;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(1) a.active {
+  background-color: #10a748;
+  color: white;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(2) span {
+  border-color: #98c93c;
+  color: #98c93c;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(2) span:after {
+  color: #98c93c;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(2) span.active {
+  background-color: #98c93c;
+  color: white;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(2) span.active:after {
+  color: white;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(3) span {
+  border-color: #213097;
+  color: #213097;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(3) span:after {
+  color: #213097;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(3) span.active {
+  background-color: #213097;
+  color: white;
+}
+.toolkit-page .tk-menu-second-ul .tk-parent-li:nth-child(3) span.active:after {
+  color: white;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(4) a {
+  border-color: #10aaaa;
+  color: #10aaaa;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(4) a:after {
+  color: #10aaaa;
+}
+.toolkit-page .tk-menu-second-ul li.tk-parent-li:nth-child(4) a.active {
+  background-color: #10aaaa;
+  color: white;
 }
 .node-type-tk-topic .node-tk-topic .group-left {
   width: 70%;

@@ -26,10 +26,12 @@ jQuery(document).ready(function() {
     jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu >.menu__item.expanded >span").click(function(){
     	if(jQuery(this).siblings("ul").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
+    		jQuery(this).addClass("closed-down-arrow");
     		jQuery('#block-hwc-toolkit-toolkit-left-menu').removeClass("opened");
     		jQuery(this).siblings("ul").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
+    		jQuery(this).removeClass("closed-down-arrow");
     		jQuery('#block-hwc-toolkit-toolkit-left-menu').addClass("opened");
     		jQuery(this).siblings("ul").slideDown();
     	}
@@ -40,10 +42,12 @@ jQuery(document).ready(function() {
     jQuery("#block-hwc-toolkit-toolkit-left-menu .key-menu-container >.menu-index").click(function(){
     	if(jQuery(this).siblings(".menu").is(":visible")){
     		jQuery(this).removeClass("up-arrow");
+    		jQuery(this).addClass("closed-down-arrow");
     		jQuery('#block-hwc-toolkit-toolkit-left-menu').removeClass("opened");
     		jQuery(this).siblings(".menu").slideUp();
     	}else{
     		jQuery(this).addClass("up-arrow");
+    		jQuery(this).removeClass("closed-down-arrow");
     		jQuery('#block-hwc-toolkit-toolkit-left-menu').addClass("opened");
     		jQuery(this).siblings(".menu").slideDown();
     	}
@@ -186,8 +190,8 @@ jQuery(document).ready(function() {
 	    lastScrollTop = st;
 	}
 
-	//If the page haver he external Infographic, disable sticky-menu
-	if (:$(".dialog-off-canvas-main-canvas")[0]){
+	//If the page have the external Infographic, disable sticky-menu
+	if (!jQuery(".dialog-off-canvas-main-canvas")[0]){
 		//fixing sticky menu
 		var num = 150; //number of pixels before modifying styles
 		if(jQuery("body").height()>=550){

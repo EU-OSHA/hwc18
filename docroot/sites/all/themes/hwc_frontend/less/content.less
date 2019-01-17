@@ -10543,7 +10543,7 @@ input#edit-field-image-und-0-upload::before {
 						}
 
 						>a, >span{
-							border: 2px solid green;
+							border: 2px solid;
 							padding: 10px 15px;
 							display: block;
 							margin-bottom: 15px;
@@ -10551,9 +10551,6 @@ input#edit-field-image-und-0-upload::before {
 							font-weight: bold;
 							text-decoration: none;
 							cursor: pointer;
-							color:@colorNormalText;
-							
-
 						}
 						//para el jquery
 						>a, >span{
@@ -10580,6 +10577,14 @@ input#edit-field-image-und-0-upload::before {
 										font-family: "Glyphicons Halflings";
 									}
 								}
+								&.active.closed-down-arrow{
+									&:after{
+										content:"\e250" !important;
+										font-family: "Glyphicons Halflings";
+									}
+								}
+
+
 							}
 							>.menu{
 								display: none;
@@ -10607,57 +10612,6 @@ input#edit-field-image-und-0-upload::before {
 							}
 						}
 
-
-						.key-welcome{
-							border-color: #10a748;
-							color: #10a748;
-							&:after{
-								color: #10a748;
-							}
-							&.active{
-								background-color: #10a748;
-								color: white;
-							}
-						}
-						.key-how-to-run-a-campaign{
-							border-color: @color-menu-2;
-							color: @color-menu-2;
-							&:after{
-								color: @color-menu-2;
-							}
-							&.active{
-								background-color: @color-menu-2;
-								color: white;
-								&:after{
-									color: white;
-								}
-							}
-						}
-						.key-campaign-examples-and-tools{
-							border-color: #213097;
-							color: #213097;
-							&:after{
-								color: #213097;
-							}
-							&.active{
-								background-color: #213097;
-								color: white;
-								&:after{
-									color: white;
-								}
-							}
-						}
-						.key-about-the-toolkit{
-							border-color: #10aaaa;
-							color: #10aaaa;
-							&:after{
-								color: #10aaaa;
-							}
-							&.active{
-								background-color: #10aaaa;
-								color: white;
-							}
-						}
 						/*second sublevel*/
 						ul{
 							li{
@@ -11645,6 +11599,63 @@ input#edit-field-image-und-0-upload::before {
 		}
 	}
 }
+
+.toolkit-page .tk-menu-second-ul{
+	.tk-parent-li:nth-child(1) a{
+		border-color: #10a748;
+		color: #10a748;
+		&:after{
+			color: #10a748;
+		}
+		&.active{
+			background-color: #10a748;
+			color: white;
+		}
+	}
+
+	li.tk-parent-li:nth-child(2) span{
+		border-color: @color-menu-2;
+		color: @color-menu-2;
+		&:after{
+			color: @color-menu-2;
+		}
+		&.active{
+			background-color: @color-menu-2;
+			color: white;
+			&:after{
+				color: white;
+			}
+		}
+	}
+	
+	.tk-parent-li:nth-child(3) span{
+		border-color: #213097;
+		color: #213097;
+		&:after{
+			color: #213097;
+		}
+		&.active{
+			background-color: #213097;
+			color: white;
+			&:after{
+				color: white;
+			}
+		}
+	}
+
+	li.tk-parent-li:nth-child(4) a{
+		border-color: #10aaaa;
+		color: #10aaaa;
+		&:after{
+			color: #10aaaa;
+		}
+		&.active{
+			background-color: #10aaaa;
+			color: white;
+		}
+	}
+}
+
 .node-type-tk-topic{
 	.node-tk-topic{
 		.group-left{
