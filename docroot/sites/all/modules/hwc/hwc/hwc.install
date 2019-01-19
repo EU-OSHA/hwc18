@@ -913,3 +913,10 @@ function hwc_update_7058() {
   features_revert(array('osha_publication' => array('field_base', 'field_instance')));
   features_revert(array('hwc_practical_tool' => array('field_base', 'field_instance')));
 }
+
+/**
+ * MDR-2522 Migration process from HWC18 to NCW.
+ */
+function hwc_update_7059() {
+  features_revert(['hwc' => ['views_view']]);
+}
