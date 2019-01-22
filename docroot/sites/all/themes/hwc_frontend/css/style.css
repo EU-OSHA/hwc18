@@ -20975,6 +20975,15 @@ input#edit-field-image-und-0-upload::before {
 }
 /*end toolkit styles*/
 /*External Infographic*/
+.field-external-infographic-content {
+  width: 62%;
+}
+.label-external-infographic-open {
+  height: 64px;
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
 .link-infographic-custom a {
   text-transform: uppercase;
   text-decoration: none;
@@ -23511,6 +23520,9 @@ input#edit-field-image-und-0-upload::before {
   .toolkit-page .well #block-hwc-toolkit-toolkit-left-menu {
     padding-left: 0;
     padding-right: 0;
+  }
+  .field-external-infographic-content {
+    padding: 1em;
   }
   /*Header*/
   html:lang(en) #homepage_slider .views-field-title span {

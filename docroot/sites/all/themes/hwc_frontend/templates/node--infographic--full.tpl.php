@@ -34,10 +34,10 @@
           
         </h2>
   
-        <div class="field field-name-field-image field-type-image field-label-hidden">
+        <div class="field field-name-field-image field-type-image field-label-hidden field-external-infographic-content">
           <div class="field-items">
             <div class="field-item even">
-              <span class="label_multilang_file">Open in:</span>
+              <span class="label_multilang_file label-external-infographic-open"><?php print t("Open in"); ?>:</span>
               <?php
                 foreach ($node->field_infographic_url as $key => $value) {
                   if ($key != 'nol' && $key != 'tr' ){
