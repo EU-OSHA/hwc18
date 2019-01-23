@@ -72,6 +72,9 @@
  *
  * @ingroup themeable
  */
+
+global $language;
+
 $theme_dir = drupal_get_path('theme', 'hwc_frontend');
 ?>
 <?php if (!empty($page['above_header'])): ?>
@@ -127,7 +130,55 @@ $theme_dir = drupal_get_path('theme', 'hwc_frontend');
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+      <?php
+        /*If is a external infographic, change the breadcrumbs*/ 
+        $n = menu_get_object('node');
+          if ($n) {
+            switch ($n->type) {
+
+              case "article":
+                $external_infographic = variable_get('hwc_external_infographic_nid', 7150);
+                if ($n->nid == $external_infographic) {
+      ?>
+                  <div class="breadcrumb breadcrumb-external-infographic contextual-links-region">
+                    <span class="inline odd first">
+                      <?php print '<a href="/' . $language->language . '">'. t("Home") .'</a>' ?>
+                    </span> 
+                    <span class="delimiter">»</span> 
+                    <span class="inline even">
+                      <?php print '<a href="/' . $language->language . '/tools-and-publications">'. t("Tools and Publications") .'</a>' ?>
+                    </span> 
+                    <span class="delimiter">»</span>
+                    <span class="inline even">
+                      <?php print '<a href="/' . $language->language . '/tools-and-publications/infographics">'. t("Infographics") .'</a>' ?>
+                    </span> 
+                    <span class="delimiter">»</span>
+                    <span class="inline odd last"><?php print $node->title; ?></span>
+                  </div>
+      <?php
+                }
+              case "infographic":
+              if ($node->type == 'infographic') {
+      ?>
+                <div class="breadcrumb breadcrumb-external-infographic contextual-links-region">
+                    <span class="inline odd first">
+                      <?php print '<a href="/' . $language->language . '">'. t("Home") .'</a>' ?>
+                    </span> 
+                    <span class="delimiter">»</span> 
+                    <span class="inline even">
+                      <?php print '<a href="/' . $language->language . '/tools-and-publications">'. t("Tools and Publications") .'</a>' ?>
+                    </span> 
+                    <span class="delimiter">»</span>
+                    <span class="inline odd last">
+                       <?php print t("Infographics"); ?>
+                    </span>
+                  </div>
+      <?php
+              }
+            }
+          }
+      ?>
+      <?php if (!empty($breadcrumb && $n->nid != $external_infographic && $node->type != 'infographic' )): print $breadcrumb; endif;?>
       <?php if (!empty($back_to_pz)): print $back_to_pz; endif;?>
       <a id="main-content"></a>
 		<?php print render($title_prefix); ?>
