@@ -48,6 +48,10 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
   margin-top: 1em;
 }
 
+.main-container h2 a:before{
+  display: none;
+}
+
 #infogrphics > div.middle-region > div > div.center-region.visible > div.block-region-center > div > div.nid-1.views-row.active > div > div > div > div.col-8 > h2 > a:before{
   display: none!important;
 }
@@ -464,10 +468,10 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
   border: 1px solid white;
   border-radius: 50%;
   max-width: 21px;
-  margin-left: 2rem;
+  margin-left: 4px;
   padding: 3px 4px 3px 3px;
   position: relative;
-  top: 3px; }
+  top: -2px; }
   .info-link img:hover {
     background: #062b60; }
 
