@@ -34,20 +34,21 @@
           
         </h2>
   
-        <div class="field field-name-field-image field-type-image field-label-hidden">
+        <div class="field field-name-field-image field-type-image field-label-hidden field-external-infographic-content">
           <div class="field-items">
             <div class="field-item even">
-              <span class="label_multilang_file">Open in:</span>
+              <span class="label_multilang_file label-external-infographic-open"><?php print t("Open in"); ?>:</span>
               <?php
-               foreach ($node->field_infographic_url as $key => $value) {
-
+                foreach ($node->field_infographic_url as $key => $value) {
+                  if ($key != 'nol' && $key != 'tr' ){
               ?>
-                <span class="link-infographic-custom">
-                  <a href='/<?php print  $key ?><?php print $content['field_infographic_url']['#items'][0]['url'] ?>?lan=<?php echo $key ?>'>
-                    <?php echo $key ?> <span class="separator-infographic">|</span> 
-                  </a>
-                </span> 
+                    <span class="link-infographic-custom">
+                      <a href='/<?php print  $key ?><?php print $content['field_infographic_url']['#items'][0]['url'] ?>?lan=<?php echo $key ?>'>
+                        <?php echo $key ?> <span class="separator-infographic">|</span> 
+                      </a>
+                    </span> 
               <?php   
+                  }
                 }
               ?>
             </div>
