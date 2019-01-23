@@ -380,3 +380,22 @@ function osha_update_7029() {
 function osha_update_7030() {
   features_revert(array('osha' => array('views_view')));
 }
+
+/**
+ * MDR-2432 HWC - Display infographics.
+ */
+function osha_update_7031() {
+  features_revert(array('osha' => array('field_instance')));
+}
+
+/**
+ * MDR-2432 HWC - Display infographics.
+ */
+function osha_update_7032() {
+  $nid = variable_get('hwc_external_infographic_nid', FALSE);
+  if ($nid) {
+    $node = node_load($nid);
+    $node->field_migration_path_alias[LANGUAGE_NONE][0]['value'] = 'tools-and-publications/infographics/how-to-manage-dangerous-substances/how-to-manage-dangerous-substances-infographic';
+    node_save($node);
+  }
+}
