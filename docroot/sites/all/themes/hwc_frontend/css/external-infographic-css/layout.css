@@ -48,6 +48,10 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
   margin-top: 1em;
 }
 
+#infogrphics > div.middle-region > div > div.center-region.visible > div.block-region-center > div > div.nid-1.views-row.active > div > div > div > div.col-8 > h2 > a:before{
+  display: none!important;
+}
+
 #infogrphics {
   width: 914px;
   margin: 0 auto;
@@ -141,7 +145,7 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
   #infogrphics .bottom-region .views-row {
     display: block;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 22.4px;
     vertical-align: middle;
     user-select: none;
     border: 6px solid #ACC700;
@@ -248,10 +252,10 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
     -moz-transform-origin: 100% 0;
     -o-transform-origin: 100% 0;
     transform-origin: 100% 0;
-    -webkit-transform: rotate(90deg) translate(130px, -269px);
-    -moz-transform: rotate(90deg) translate(130px, -269px);
-    -o-transform: rotate(90deg) translate(130px, -269px);
-    transform: rotate(90deg) translate(130px, -269px); }
+    -webkit-transform: rotate(90deg) translate(139px, -274px);
+    -moz-transform: rotate(90deg) translate(139px, -274px);
+    -o-transform: rotate(90deg) translate(139px, -274px);
+    transform: rotate(90deg) translate(139px, -274px); }
   #infogrphics .block-region-center .views-row {
     position: absolute;
     top: 0;
@@ -346,7 +350,7 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
     font-size: 20px; }
   .layout-highlighted p {
     margin-bottom: 0;
-    font-size: .85rem; }
+    font-size: 13.6px; }
   .layout-highlighted h1, .layout-highlighted p {
     margin: 0 13% 0 20%;
     max-width: 67%; }
@@ -398,16 +402,16 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
   .big-number-chart strong {
     background-color: #062B60;
     color: #FFFFFF;
-    font-size: 1.2rem;
+    font-size: 19.2px;
     display: block;
     padding: 1rem;
     margin: -1rem -1.2rem .5rem;
     display: block;
-    line-height: 1.5rem;
+    line-height: 2.5rem;
     padding: 1.2rem 1.2rem .9rem;
     border-radius: 6px; }
     .big-number-chart strong .number {
-      font-size: 1.7rem;
+      font-size: 27.2px;
       text-transform: uppercase; }
 
 .big-list {
@@ -419,7 +423,7 @@ body.no-sticky.logged-in:lang(bg), body.no-sticky.logged-in:lang(el), body.no-st
     color: #003399;
     border-radius: 6px 10px 10px 6px;
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 19.2px;
     padding-left: .5rem; }
     .big-list li span {
       background: #062B60;
@@ -540,7 +544,7 @@ span.link {
     display: block;
     z-index: -5;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 22.4px;
     vertical-align: middle;
     user-select: none;
     border: 6px solid #ACC700;
