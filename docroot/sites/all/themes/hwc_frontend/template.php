@@ -181,12 +181,15 @@ function hwc_get_views_class_map() {
 }
 
 function hwc_frontend_preprocess_page(&$vars) {
+
   if (arg(0) == 'good-practice-exchange-platform') {
     $breadcrumb = [];
     $breadcrumb[] = l(t('Home'), '<front>');
     $breadcrumb[] = drupal_get_title();
     drupal_set_breadcrumb($breadcrumb);
   }
+
+
 
   $vars['back_to_pz'] = hwc_partner_back_to_private_zone();
   $vars['page']['content']['#post_render'] = ['hwc_content_post_render'];
@@ -603,6 +606,18 @@ function hwc_frontend_preprocess_node(&$vars) {
 
     if (context_isset('context', 'segmentation_page')) {
       $vars['theme_hook_suggestions'][] = 'node__article_segment';
+    }
+  }
+
+  //Add template to external infographic code. node--external-infographic.tpl.php - MDR-2432
+  $n = menu_get_object('node');
+  if ($n) {
+    switch ($n->type) {
+      case "article":
+        $external_infographic = variable_get('hwc_external_infographic_nid', 7150);
+        if ($n->nid == $external_infographic) {
+          $vars['theme_hook_suggestions'][] = 'node__external_infographic';
+        }
     }
   }
 

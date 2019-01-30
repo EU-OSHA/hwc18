@@ -50,7 +50,7 @@ function form_lingua_form($form, &$form_state) {
       $fieldintname = $field['field_name'];
       $arrayfield = $node->$fieldintname;
 
-      //TODO Check that the field has data.
+      // TODO Check that the field has data.
       $numdatosfield = count($arrayfield) + 1;
       $fieldid = $field['field_id'];
       $transfield = istranslatable($fieldid);
@@ -188,14 +188,24 @@ function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $
     $table_rev_name = 'field_revision_body';
     $field_name = 'body_value';
   }
+  elseif (($fieldintname == 'field_external_url') || ($fieldintname == 'field_banner_link')) {
+    $table_name = 'field_data_' . $fieldintname;
+    $table_rev_name = 'field_revision_' . $fieldintname;
+    $field_name = $fieldintname . '_url';
+  }
+  elseif (($fieldintname == 'field_youtube')) {
+    $table_name = 'field_data_' . $fieldintname;
+    $table_rev_name = 'field_revision_' . $fieldintname;
+    $field_name = $fieldintname . '_input';
+  }
   else {
     $table_name = 'field_data_' . $fieldintname;
     $table_rev_name = 'field_revision_' . $fieldintname;
     $field_name = $fieldintname . '_value';
   }
 
-  //If the status of the node is published then We get the value to spread from the data field else we get the data from the revision field.
-  If ($ispublished == 1) {
+  // If the status of the node is published then We get the value to spread from the data field else we get the data from the revision field.
+  if ($ispublished == 1) {
     $result = db_select($table_name, 'f')
       ->fields('f', array($field_name))
       ->condition('entity_id', $intnodeid, '=')
@@ -215,27 +225,22 @@ function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $
   }
   $propvalue = $result[$field_name];
 
-
   if ($propvalue == "" || $propvalue == NULL) {
     return FALSE;
   }
 
-  // Update the field_data fields.
-  $data = db_update($table_name)
-    ->fields(array(
-      $field_name => $propvalue,
-    ))
-    ->condition('entity_id', $intnodeid)
-    ->execute();
+  $new_node = new stdClass();
+  $new_node->id = $node->nid;
+  $new_node->nid = $node->nid;
+  $new_node->vid = $node->vid;
+  $new_node->type = $node->type;
+  $new_node->bundle = $node->type;
+  $new_node->translations = $node->translations;
+  foreach ($node->translations->data as $lang_code => $value) {
+    $new_node->{$fieldintname}[$lang_code] = $node->{$fieldintname}[$node->language];
+  }
+  field_attach_update('node', $new_node);
 
-  // Update the field_revision fields.
-  $data2 = db_update($table_rev_name)
-    ->fields(array(
-      $field_name => $propvalue,
-    ))
-    ->condition('entity_id', $intnodeid)
-    ->condition('revision_id', $intrevid)
-    ->execute();
   drupal_set_message(t("Field " . $field_name . " updated"), 'status');
 
 }
@@ -243,7 +248,9 @@ function propage_translation($field_name, $intnodeid, $intrevid, $ispublished, $
 function propage_url($intnodeid) {
   $node = node_load($intnodeid);
   $propvalue = $node->path['alias'];
-
+  if (!$propvalue) {
+    return;
+  }
   $aliasurl = "node/" . $intnodeid;
   // Update the url field.
   $data = db_update('url_alias')
@@ -261,7 +268,8 @@ function osha_lingua_tools_create_translations($form, &$form_state) {
   $node = menu_get_object();
   $source_lang = $node->translations->original;
   $translation_handler = entity_translation_get_handler('node', $node);
-
+  $type = $node->type;
+  $fields = _osha_lingua_tools_translatable_field_instances($type);
   foreach ($languages as $lang_code => $value) {
     if ($value) {
       $translation_handler->setTranslation(
@@ -276,6 +284,25 @@ function osha_lingua_tools_create_translations($form, &$form_state) {
     }
   }
   $translation_handler->saveTranslations();
+
+  $node = workbench_moderation_node_current_load($node);
+  $new_node = new stdClass();
+  $new_node->id = $node->nid;
+  $new_node->nid = $node->nid;
+  $new_node->vid = $node->vid;
+  $new_node->type = $type;
+  $new_node->bundle = $type;
+  $new_node->translations = $node->translations;
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      foreach ($fields as $field) {
+        // MC-73 Copy values for translatable file fields.
+        $new_node->{$field['field_name']}[$lang_code] = $node->{$field['field_name']}[$source_lang];
+      }
+    }
+  }
+  field_attach_update('node', $new_node);
+
   // Clone url_aliases.
   foreach ($languages as $lang_code => $value) {
     if ($value) {
@@ -288,3 +315,28 @@ function osha_lingua_tools_create_translations($form, &$form_state) {
     }
   }
 }
+
+/**
+ * Helper function to get translatable fields with cardinality > 1.
+ *
+ * @param $bundle
+ *  The type of the node to call field_info_instances().
+ * @return array
+ *  Array of fields.
+ */
+function _osha_lingua_tools_translatable_field_instances($bundle) {
+  $translatable_fields = array();
+  $fields = field_info_instances('node', $bundle);
+  foreach ($fields as $field) {
+    $fieldname = $field['field_name'];
+    $transfield = istranslatable($field['field_id']);
+    $info = field_info_field($fieldname);
+    if ($transfield == 1
+      && $field['widget']['module'] == 'file'
+      && ($info['cardinality'] > 1 || $info['cardinality'] == FIELD_CARDINALITY_UNLIMITED)) {
+      $translatable_fields[] = $field;
+    }
+  }
+  return $translatable_fields;
+}
+
