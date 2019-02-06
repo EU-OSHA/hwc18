@@ -1,6 +1,6 @@
 <div class="key-menu-container">
     <ul class="menu-index hidden-md hidden-lg clearfix"><li class="menu__item"><span class="index-button"><?php echo t('Index')?></span></li></ul>
-    <ul class="menu clearfix"><?php
+    <ul class="menu clearfix tk-menu-second-ul"><?php
   foreach ($menu as $menu_nid => $menu_item1) {
     $class = "menu__item";
     if ($menu_item1['children']) {
@@ -10,7 +10,7 @@
       $class .= " active";
     }
     ?>
-      <li class="<?php print $class; ?>">
+      <li class="tk-parent-li <?php print $class; ?>">
         <?php
         if (!$menu_item1['children']) {
             ?>

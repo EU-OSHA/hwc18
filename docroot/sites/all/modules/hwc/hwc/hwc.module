@@ -825,6 +825,10 @@ function hwc_form_node_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['field_migration_source'])) {
     $form['field_migration_source']['#access'] = FALSE;
   }
+  // Hide migration migration path alias field.
+  if (isset($form['field_migration_path_alias'])) {
+    $form['field_migration_path_alias']['#access'] = FALSE;
+  }
 
   if (isset($form['field_show_in_ncw'])) {
     $form['field_show_in_ncw']['#access'] = OshaWorkflowPermissions::userHasRole(HWC_ROLE_ADMIN, $user);
