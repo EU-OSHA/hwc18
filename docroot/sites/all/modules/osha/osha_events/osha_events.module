@@ -328,14 +328,20 @@ function osha_events_node_view($node, $view_mode, $langcode) {
 
 function osha_events_popup_date_validate($element, &$form_state, $form) {
   if ($element['#name'] == 'field_start_date[und][0][value]') {
-    list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    $date_format = trim($element['#date_format']);
+    if (strpos($date_format, ' ')) {
+      list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    }
     $element['#date_format'] = trim($date_format);
     if (empty($form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value']['time'])) {
       $form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value']['time'] = '00:00';
     }
   }
   if ($element['#name'] == 'field_start_date[und][0][value2]') {
-    list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    $date_format = trim($element['#date_format']);
+    if (strpos($date_format, ' ')) {
+      list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    }
     $element['#date_format'] = trim($date_format);
     if (empty($form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value2']['time'])) {
       $form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value2']['time'] = '00:00';
