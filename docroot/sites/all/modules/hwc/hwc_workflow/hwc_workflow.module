@@ -706,7 +706,7 @@ function hwc_workflow_form_alter(&$form, &$form_state, $form_id) {
         user_access("delete any {$node->type} content") ||
         user_access("delete own {$node->type} content")
       );
-    if ($node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
+    if (!empty($node->workbench_moderation) && $node->workbench_moderation['current']->state == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
       $can_delete = $can_delete && user_access('delete any content in final_draft');
     }
 

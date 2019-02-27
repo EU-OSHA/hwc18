@@ -757,7 +757,7 @@ function hwc_check_reviewer_node_access($tid, $roles) {
   if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $roles) && in_array($tid, $rm_types)) {
     return NODE_ACCESS_IGNORE;
   }
-  elseif (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $roles) && in_array($tid, $rm_types)) {
+  elseif (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $roles)) {
     return NODE_ACCESS_IGNORE;
   }
   elseif (
@@ -867,7 +867,7 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     $session_id = $w->field_guid_main_contact->value();
     $auth = $wu->field_crm_guid->value();
     // If current admin is masquerading another user (Act as partner feature)
-    // send the loginshell attribute of the original user.
+    // send the login shell attribute of the original user.
     if (!empty($_SESSION['masquerading'])) {
       $masq_user = user_load($_SESSION['masquerading']);
       $mqsq_wu = entity_metadata_wrapper('user', $masq_user);
@@ -881,13 +881,10 @@ function hwc_partner_node_view($node, $view_mode, $langcode) {
     if ($show_update_profile) {
       $link_parameters['query']['session_id'] = $session_id;
       $link_parameters['query']['auth'] = $auth;
-      $update_title = '<div class="hwc-partner-private-link-block-title">' . l('Update profile', 'private/profile/update', $link_parameters) . '</div>';
-/*      $update_content = '<div class="hwc-partner-private-link-block-description">'
-        . strtr('Any modifications in your public profile? <a href="!link">Click here to update it.</a>', array('!link' => url('private/profile/update', $link_parameters)))
-        . '</div>';*/
+      $update_title = '<div class="hwc-partner-private-link-block-title">' . l(t('Update profile'), 'private/profile/update', $link_parameters) . '</div>';
       $node->content['profile_update_link'] = array(
         '#type' => 'markup',
-        '#markup' => $update_title,// . $update_content,
+        '#markup' => $update_title,
       );
 
     }

@@ -73,7 +73,7 @@ function hwc_workflow_default_rules_configuration() {
     }
   }');
   $items['hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved" : {
-      "LABEL" : "EU-OSHA EEN Reviewer notification to be Approved",
+      "LABEL" : "EU-OSHA EEN Reviewer Notification to be Approved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
@@ -95,15 +95,15 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "17" : "17" } },
-            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
-            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "subject" : "HWC News and Events revision: Please review this item created by an EEN OSH Ambassador",
+            "message" : "\\u003Cp\\u003EDear EEN OSH Ambassadors Reviewer,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThe partner has submitted an item to be validated by EU-OSHA before being published. Please could you check it?\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you \\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EBest regards \\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
     }
   }');
   $items['hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved" : {
-      "LABEL" : "HWC Staff Reviewer notification to be Approved",
+      "LABEL" : "HWC Staff Reviewer Notification to be Approved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
