@@ -24,8 +24,8 @@ function xmlsitemap_node_cron() {
   while ($limit > 0 && $item = $queue->claimItem()) {
     $limit--;
     try {
-      $node = node_load($item->data);
-      $link = xmlsitemap_node_create_link($node);
+      $node = node_load($item->data['nid']);
+      $link = xmlsitemap_node_create_link($node, $item->data['language']);
       xmlsitemap_link_save($link, array($link['type'] => $node));
       $queue->deleteItem($item);
     }
@@ -60,8 +60,16 @@ function xmlsitemap_node_xmlsitemap_index_links($limit) {
 function xmlsitemap_node_xmlsitemap_process_node_links(array $nids) {
   $nodes = node_load_multiple($nids);
   foreach ($nodes as $node) {
-    $link = xmlsitemap_node_create_link($node);
+    if (!empty($node->translations->data)) {
+      foreach (array_keys($node->translations->data) as $lang) {
+        $link = xmlsitemap_node_create_link($node, $lang);
+        xmlsitemap_link_save($link, array($link['type'] => $node));
+      }
+    }
+  else {
+    $link = xmlsitemap_node_create_link($node, $node->language);
     xmlsitemap_link_save($link, array($link['type'] => $node));
+    }
   }
 }
 
@@ -76,11 +84,12 @@ function xmlsitemap_node_node_insert(stdClass $node) {
  * Implements hook_node_update().
  */
 function xmlsitemap_node_node_update(stdClass $node) {
+  global $language;
   // Node access can not be accurately determined in hook_node_update() because
   // node grants have not yet been written to the table, so we defer creation of
   // a sitemap link and process during cron.
   $queue = DrupalQueue::get('xmlsitemap_node');
-  $queue->createItem($node->nid);
+  $queue->createItem(['nid' => $node->nid, 'language' => $language->language]);
 }
 
 /**
@@ -191,10 +200,10 @@ function xmlsitemap_node_get_timestamps(stdClass $node) {
  * @param $node
  *   A node object.
  */
-function xmlsitemap_node_create_link(stdClass $node) {
+function xmlsitemap_node_create_link(stdClass $node, $lang = LANGUAGE_NONE) {
   if (!isset($node->xmlsitemap) || !is_array($node->xmlsitemap)) {
     $node->xmlsitemap = array();
-    if ($node->nid && $link = xmlsitemap_link_load('node', $node->nid)) {
+    if ($node->nid && $link = xmlsitemap_link_load('node', $node->nid, array('language' => $lang))) {
       $node->xmlsitemap = $link;
     }
   }
@@ -219,11 +228,16 @@ function xmlsitemap_node_create_link(stdClass $node) {
   $node->xmlsitemap['changefreq'] = $node->nid ? xmlsitemap_calculate_changefreq($timestamps) : 0;
   $node->xmlsitemap['changecount'] = $node->nid ? count($timestamps) - 1 : 0;
 
+  // Node access must be reset since it a user may have changed published status, etc.
+  //$access = &drupal_static('node_access');
+  //unset($access[0][$node->nid]);
+  //node_access_acquire_grants($node);
+
   // The following values must always be checked because they are volatile.
   $node->xmlsitemap['loc'] = $uri['path'];
   $node->xmlsitemap['lastmod'] = count($timestamps) ? max($timestamps) : 0;
   $node->xmlsitemap['access'] = $node->nid ? xmlsitemap_node_view_access($node, drupal_anonymous_user()) : 1;
-  $node->xmlsitemap['language'] = isset($node->language) ? $node->language : LANGUAGE_NONE;
+  $node->xmlsitemap['language'] = $lang;
 
   return $node->xmlsitemap;
 }
