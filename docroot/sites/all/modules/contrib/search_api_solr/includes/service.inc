@@ -1843,6 +1843,15 @@ class SearchApiSolrService extends SearchApiAbstractService {
         return "$field:[{$value[0]} TO {$value[1]}]";
       case 'NOT BETWEEN':
         return "*:* AND -$field:[{$value[0]} TO {$value[1]}]";
+      case 'IN':
+        // Group values and use OR conjunction is basically an IN operation.
+        $conditions = implode(' OR ', $value);
+        return "*:* AND ($field:($conditions))";
+      case 'NOT IN':
+        // Group values and use OR conjunction is basically an IN operation. But
+        // negate it to get NOT IN.
+        $conditions = implode(' OR ', $value);
+        return "*:* AND -($field:($conditions))";
 
       default:
         return "$field:$value";
