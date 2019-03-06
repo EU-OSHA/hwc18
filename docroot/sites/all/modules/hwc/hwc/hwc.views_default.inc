@@ -716,16 +716,6 @@ function hwc_views_default_views() {
   $handler->display->display_options['sorts']['changed']['id'] = 'changed';
   $handler->display->display_options['sorts']['changed']['table'] = 'node';
   $handler->display->display_options['sorts']['changed']['field'] = 'changed';
-  /* Contextual filter: Content: Type */
-  $handler->display->display_options['arguments']['type']['id'] = 'type';
-  $handler->display->display_options['arguments']['type']['table'] = 'node';
-  $handler->display->display_options['arguments']['type']['field'] = 'type';
-  $handler->display->display_options['arguments']['type']['default_action'] = 'access denied';
-  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['type']['limit'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -739,7 +729,6 @@ function hwc_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'events' => 'events',
-    'news' => 'news',
   );
   /* Filter criterion: Content: Migrate Source (field_migration_source) */
   $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
@@ -750,9 +739,68 @@ function hwc_views_default_views() {
     'ncw' => 'ncw',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'ncw-export';
+  /* Display: Events */
+  $handler = $view->new_display('page', 'Events', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'events' => 'events',
+  );
+  /* Filter criterion: Content: Migrate Source (field_migration_source) */
+  $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['table'] = 'field_data_field_migration_source';
+  $handler->display->display_options['filters']['field_migration_source_value']['field'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
+    'ncw' => 'ncw',
+  );
+  /* Filter criterion: Content: Show in NCW (field_show_in_ncw) */
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['id'] = 'field_show_in_ncw_value';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['table'] = 'field_data_field_show_in_ncw';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['field'] = 'field_show_in_ncw_value';
+  $handler->display->display_options['filters']['field_show_in_ncw_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['path'] = 'ncw-export/events';
+
+  /* Display: News */
+  $handler = $view->new_display('page', 'News', 'page_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news' => 'news',
+  );
+  /* Filter criterion: Content: Migrate Source (field_migration_source) */
+  $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['table'] = 'field_data_field_migration_source';
+  $handler->display->display_options['filters']['field_migration_source_value']['field'] = 'field_migration_source_value';
+  $handler->display->display_options['filters']['field_migration_source_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
+    'ncw' => 'ncw',
+  );
+  $handler->display->display_options['path'] = 'ncw-export/news';
   $translatables['ncw_export'] = array(
     t('Master'),
     t('NCW Export'),
@@ -763,8 +811,8 @@ function hwc_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('nid'),
-    t('All'),
-    t('Page'),
+    t('Events'),
+    t('News'),
   );
   $export['ncw_export'] = $view;
 

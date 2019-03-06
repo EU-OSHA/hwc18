@@ -920,3 +920,10 @@ function hwc_update_7058() {
 function hwc_update_7059() {
   features_revert(['hwc' => ['views_view']]);
 }
+
+/**
+ * MDR-2636 News items and events migration from HWC to Corporate.
+ */
+function hwc_update_7060() {
+  features_revert(['hwc' => ['views_view']]);
+}
