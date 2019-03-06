@@ -95,8 +95,8 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "17" : "17" } },
-            "subject" : "HWC News and Events revision: Please review this item created by an EEN OSH Ambassador",
-            "message" : "\\u003Cp\\u003EDear EEN OSH Ambassadors Reviewer,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThe partner has submitted an item to be validated by EU-OSHA before being published. Please could you check it?\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you \\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EBest regards \\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "subject" : "New news\\/events item uploaded by HWC partner",
+            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
           }
         }
       ]
@@ -125,8 +125,8 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "15" : "15" } },
-            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
-            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "subject" : "New news\\/events item uploaded by HWC partner",
+            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
           }
         }
       ]
@@ -312,8 +312,8 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "13" : "13" } },
-            "subject" : "[HWC Website] CMW: ([node:nid]) [node:title-field]",
-            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "subject" : "Please review news\\/events item uploaded on HWC website",
+            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E"
           }
         }
       ]
