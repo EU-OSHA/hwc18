@@ -148,7 +148,8 @@ function osha_search_search_api_solr_query_alter(array &$call_args, SearchApiQue
 function osha_search_views_post_render(&$view, &$output, &$cache) {
   if ($view->name == 'search') {
     drupal_add_js(drupal_get_path('module', 'osha_search') . '/sort.js', array('weight' => 20));
-    $order_html = '<div class="sort-container col-xs-3">' . drupal_render(drupal_get_form('osha_search_sort_form')) . '</div><span class="count-container pull-right">';
+    $form = drupal_get_form('osha_search_sort_form');
+    $order_html = '<div class="sort-container col-xs-3">' . drupal_render($form) . '</div><span class="count-container pull-right">';
     $output = trim(str_replace('@order', $order_html, $output)) . '</span>';
   }
 }
@@ -166,7 +167,10 @@ function osha_search_sort_form($form, $form_state) {
       'title2' => t('Title'),
     ],
   ];
-  $form['sort_by']['#value'] = $_REQUEST['sort_by'];
+  $form['sort_by']['#value'] = 'search_api_relevance';
+  if (!empty($_REQUEST['sort_by'])) {
+    $form['sort_by']['#value'] = $_REQUEST['sort_by'];
+  }
   return $form;
 }
 
