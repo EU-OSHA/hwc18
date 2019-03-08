@@ -72,6 +72,36 @@ function hwc_workflow_default_rules_configuration() {
       ]
     }
   }');
+  $items['hwc_workflow_rules_hwc_workflow_een_from_reviewed'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_from_reviewed" : {
+      "LABEL" : "EU-OSHA EEN Reviewer Notification from Reviewed to Approved ",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "node_een_partner" : { "entity" : [ "node" ] } },
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
+      ],
+      "DO" : [
+        { "mail_to_users_of_role" : {
+            "roles" : { "value" : { "17" : "17" } },
+            "subject" : "HWC news\\/events item is back from contractor\\u2019s review",
+            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
+          }
+        }
+      ]
+    }
+  }');
   $items['hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved" : {
       "LABEL" : "EU-OSHA EEN Reviewer Notification to be Approved",
       "PLUGIN" : "reaction rule",
@@ -90,12 +120,43 @@ function hwc_workflow_default_rules_configuration() {
         { "disable_masquerading_notifications" : [] },
         { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
         { "node_een_partner" : { "entity" : [ "node" ] } },
-        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
         { "mail_to_users_of_role" : {
             "roles" : { "value" : { "17" : "17" } },
             "subject" : "New news\\/events item uploaded by HWC partner",
+            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
+          }
+        }
+      ]
+    }
+  }');
+  $items['hwc_workflow_rules_hwc_workflow_staff_from_reviewed'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_from_reviewed" : {
+      "LABEL" : "HWC Staff Reviewer Notification from Reviewed to Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "NOT node_een_partner" : { "entity" : [ "node" ] } },
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
+      ],
+      "DO" : [
+        { "mail_to_users_of_role" : {
+            "roles" : { "value" : { "15" : "15" } },
+            "subject" : "HWC news\\/events item is back from contractor\\u2019s review",
             "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
           }
         }
@@ -120,7 +181,8 @@ function hwc_workflow_default_rules_configuration() {
         { "disable_masquerading_notifications" : [] },
         { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
         { "NOT node_een_partner" : { "entity" : [ "node" ] } },
-        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
         { "mail_to_users_of_role" : {

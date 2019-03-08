@@ -252,7 +252,7 @@ function hwc_partner_block_view($delta = '') {
       $visible =
         count(array_intersect(array(
           HWC_ROLE_ADMIN,
-          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR
+          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR,
         ), $user->roles))
         || (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && hwc_partner_match_user_partner($node))
         || $user->uid == 1;
@@ -260,7 +260,7 @@ function hwc_partner_block_view($delta = '') {
         $url_options = array();
         if (count(array_intersect(array(
           HWC_ROLE_ADMIN,
-          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR
+          HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR,
         ), $user->roles))) {
           reset($node->workbench_access);
           $id_section = current($node->workbench_access);
@@ -714,8 +714,8 @@ function hwc_partner_get_partners_user_options() {
   $tids = [];
   if (
     (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) ||
-    (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles)) ||
-    (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user->roles))) {
+    (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $user->roles))
+  ) {
     $op = '!=';
     if (in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $user->roles)) {
       $op = '=';
@@ -754,15 +754,17 @@ function hwc_partner_get_partners_user_options() {
  */
 function hwc_check_reviewer_node_access($tid, $roles) {
   $rm_types = [HWC_PARTNER_TYPE_OCP, HWC_PARTNER_TYPE_MP, HWC_PARTNER_TYPE_FOP];
-  if (in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $roles) && in_array($tid, $rm_types)) {
+  if (
+    in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $roles) &&
+    in_array($tid, $rm_types)
+  ) {
     return NODE_ACCESS_IGNORE;
   }
   elseif (in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $roles)) {
     return NODE_ACCESS_IGNORE;
   }
   elseif (
-    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $roles)
-    &&
+    in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $roles) &&
     ($tid == HWC_PARTNER_TYPE_EEN_OSH_AMBASSADOR)
   ) {
     return NODE_ACCESS_IGNORE;
@@ -777,12 +779,12 @@ function hwc_partner_node_access($node, $op, $account) {
   $type = is_string($node) ? $node : $node->type;
   if (($type == 'document') && ($op == 'view')) {
     if (
-      !in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles)
-      && !in_array(HWC_ROLE_ADMIN, $account->roles)
-      && !in_array(HWC_ROLE_WEBSITE_MANAGERS, $account->roles)
-      && !in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles)
-      && !in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $account->roles)
-      && !in_array(HWC_ROLE_SUPERADMIN, $account->roles)
+      !in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $account->roles) &&
+      !in_array(HWC_ROLE_ADMIN, $account->roles) &&
+      !in_array(HWC_ROLE_WEBSITE_MANAGERS, $account->roles) &&
+      !in_array(HWC_ROLE_EEN_REVIEW_MANAGER, $account->roles) &&
+      !in_array(HWC_ROLE_HWC_STAFF_REVIEWERS, $account->roles) &&
+      !in_array(HWC_ROLE_SUPERADMIN, $account->roles)
     ) {
       $partner_type_tid = hwc_good_practice_exchange_user_get_partner_type();
       if ($partner_type_tid) {

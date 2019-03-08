@@ -158,6 +158,11 @@ function ncw_migration_run_single($machine_name) {
   $migration->prepareUpdate();
   $result = $migration->processImport();
   if ($result == MigrationBase::RESULT_COMPLETED) {
+    watchdog(
+      'ncw_migration',
+      '[CRON](machine:!machine_name) finished successfully ',
+      array('!machine_name' => $machine_name)
+    );
     return TRUE;
   }
   else {
