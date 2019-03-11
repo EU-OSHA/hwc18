@@ -477,8 +477,8 @@ function hwc_workflow_permission() {
  * {@inheritdoc}
  */
 function hwc_workflow_mail($key, &$message, $params) {
-  $subject = '';
-  $body = '';
+  $subject = str_replace(array("\r", "\n"), '', $params['subject']);
+  $body = $params['message'];
   if ($key == 'hwc_workflow_personalize_reviewer_notification') {
     $node = $params['node'];
     $type = 'reviewer';

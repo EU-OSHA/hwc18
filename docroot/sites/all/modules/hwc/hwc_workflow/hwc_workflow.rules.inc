@@ -77,9 +77,9 @@ function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL
   $languages = language_list();
   $language = isset($languages[$langcode]) ? $languages[$langcode] : language_default();
 
-  $message = drupal_mail('rules', $key, $to, $language, $params, $from);
+  $message = drupal_mail('hwc_workflow', $key, $to, $language, $params, $from);
   if ($message['result']) {
-    watchdog('rules', 'Successfully sent email to %recipient', array('%recipient' => $to));
+    watchdog('hwc_workflow', 'Successfully sent email to %recipient', array('%recipient' => $to));
   }
 }
 
@@ -115,7 +115,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
 
   $message = array('result' => TRUE);
   foreach ($result as $row) {
-    $message = drupal_mail('rules', $key, $row->mail, language_default(), $params, $from);
+    $message = drupal_mail('hwc_workflow', $key, $row->mail, language_default(), $params, $from);
     // If $message['result'] is FALSE, then it's likely that email sending is
     // failing at the moment, and we should just abort sending any more. If
     // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -128,7 +128,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
   }
   if ($message['result'] !== FALSE) {
     $role_names = array_intersect_key(user_roles(TRUE), array_flip($roles));
-    watchdog('rules', 'Successfully sent email to the role(s) %roles.', array('%roles' => implode(', ', $role_names)));
+    watchdog('hwc_workflow', 'Successfully sent email to the role(s) %roles.', array('%roles' => implode(', ', $role_names)));
   }
 }
 
@@ -461,7 +461,7 @@ function hwc_workflow_rules_mail_to_related_partners($node, $subject, $message, 
 
   $message = array('result' => TRUE);
   foreach ($users as $user) {
-    $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+    $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
     // If $message['result'] is FALSE, then it's likely that email sending is
     // failing at the moment, and we should just abort sending any more. If
     // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -474,7 +474,7 @@ function hwc_workflow_rules_mail_to_related_partners($node, $subject, $message, 
   }
 
   if ($message['result'] !== FALSE) {
-    watchdog('rules', 'Successfully sent email to the users of the partners.', array());
+    watchdog('hwc_workflow', 'Successfully sent email to the users of the partners.', array());
   }
 }
 
@@ -501,7 +501,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
 
       $message = array('result' => TRUE);
       foreach ($users as $user) {
-        $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+        $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
         // If $message['result'] is FALSE, then it's likely that email sending is
         // failing at the moment, and we should just abort sending any more. If
         // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -513,7 +513,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
         }
       }
       if ($message['result'] !== FALSE) {
-        watchdog('rules', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
+        watchdog('hwc_workflow', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
       }
     }
   }
@@ -539,7 +539,7 @@ function hwc_workflow_rules_mail_to_partners($node, $subject, $message, $setting
 
       $message = array('result' => TRUE);
       foreach ($users as $user) {
-        $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+        $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
         // If $message['result'] is FALSE, then it's likely that email sending is
         // failing at the moment, and we should just abort sending any more. If
         // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -551,7 +551,7 @@ function hwc_workflow_rules_mail_to_partners($node, $subject, $message, $setting
         }
       }
       if ($message['result'] !== FALSE) {
-        watchdog('rules', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
+        watchdog('hwc_workflow', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
       }
     }
   }
