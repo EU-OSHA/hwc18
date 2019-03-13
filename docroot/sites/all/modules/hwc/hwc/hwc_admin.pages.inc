@@ -1,10 +1,5 @@
 <?php
 
-function hwc_toolkit_update_aliases() {
-  drupal_set_message('Toolkit aliases updated');
-  hwc_update_toolkit_menu_content_links();
-}
-
 function hwc_admin_config_form() {
   $form['title'] = array(
     '#markup' => '<h1>HWC website configuration</h1>',
@@ -152,11 +147,6 @@ function hwc_admin_config_form() {
     '#title' => 'Toolkit about page node nid',
   );
 
-  $form['hwc_toolkit_update_aliases'] = array(
-    '#type' => 'submit',
-    '#value' => t('Update toolkit aliases'),
-    '#submit' => array('hwc_toolkit_update_aliases'),
-  );
 
   $form = system_settings_form($form);
   $form['actions']['#weight'] = 150;

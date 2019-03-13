@@ -1291,6 +1291,9 @@ ul.tabs--primary.nav.nav-tabs{
 	}
 	.page-node .node-news{
 		.field.field-name-field-image{
+			margin-right: 1em;
+			float: left;
+			width:222px;
 			.field-items{
 				height: 100%;
 				div{
@@ -3174,7 +3177,7 @@ ul.tabs--primary.nav.nav-tabs{
 		float: left;
 		margin-top: 1.2em;
 		margin-right: 1em;
-		margin-bottom: 1em;
+		margin-bottom: 2px;
 	}
 	.group-left{
 		padding-left: 0;
@@ -3333,90 +3336,6 @@ article{
 .field.field-name-field-image{
 	margin-bottom: 1em;
 }
-.field-name-field-image {
-		.image-field-caption{
-			font-size: 1.2rem;
-			text-align: center;
-			background-color: @bg-color-3;
-		  border-left: 0;
-		}
-}
-.view-tk-tools{
-	.field-name-field-image{
-		.image-field-caption {
-		  font-size: 1.2rem;
-  		background-color: rgba(138, 152, 197, 0.6);
-		  position: absolute;
-		  bottom: 0px;
-		  width: 100%;
-		  text-align: left;
-		  padding: 3px 15px;
-		  color: #FFF;
-		  border-left: 0;
-		  margin-bottom: 0px;
-		}		
-	}
-}
-
-.group-left.col-sm-4{
-	.field-name-field-image {
-			.image-field-caption{
-			  display: block;
-			}
-	}
-}
-.views-row{
-	.group-left{
-		.field-name-field-image {
-				.image-field-caption{
-					//display:none;
-					background-color: #FFF;
-					text-align: center;
-  				color: #666;
-  				padding: 3px 0;
-				}
-		}
-	}	
-}
-.carousel {
-	.views-row{
-		.group-left{
-			.field-name-field-image {
-					.image-field-caption{
-						//display:none;
-						background-color: transparent !important;
-					}
-			}
-		}	
-	}
-}
-
-.group-left{
-	.field-name-field-image {
-		position: relative;
-		overflow: auto;
-			.image-field-caption{
-				//display:none; 
-			  font-size: 1.2rem;
-	  		background-color: rgba(138, 152, 197, 0.6);
-			  position: absolute;
-			  bottom: 0px;
-			  width: 100%;
-			  text-align: left;
-			  padding: 3px 15px;
-			  color: #FFF;
-			  border-left: 0;
-			  margin-bottom: 0px;
-			  p{
-			  	margin: 0 !important;
-			  }
-			}
-	}
-}
-
-.node-type-tk-article .field-name-field-tk-topics .node-tk-topic .group-left .image-field-caption{
-    bottom: 30px;
-}
 
 .container .field.field-name-body{
 	p{
@@ -3503,13 +3422,6 @@ article{
 		img{
 			width: 100%;
 		}
-		blockquote.image-field-caption{
-			font-size: 1.2rem;
-			padding-left: 0px;
-			padding-right: 0px;
-			border-left: none;
-			margin-bottom: 0;
-		}
 	}
 	.view-content .views-row[class*="col-"]{
 		 margin-bottom: 1em;
@@ -3525,9 +3437,6 @@ article{
 		&:nth-child(3n){
 			padding:0;
 			margin-right:0; 
-		}
-		blockquote.image-field-caption{
-			display: none;
 		}
 	}
 	.views-field-field-images img, .views-field-field-flickr img {
@@ -3618,9 +3527,6 @@ article{
 			}
 			&:nth-child(3n){
 				padding-left: 15px;
-			}
-			blockquote.image-field-caption{
-				display: none;
 			}
 		}
 		.pager{
@@ -8774,26 +8680,6 @@ span.date-display-single{
 	border-bottom: 0px!important;
 }
 
-
-.node-article{
-	.field-type-text-with-summary p.text-center{
-		padding-top: 1em;
-	}
-	.field.field-name-field-image{
-		position: relative;
-		.image-field-caption{
-		  position: absolute;
-		  top: 322px;
-		  color: #FFF !important;
-		  background: transparent;
-		  opacity: 1;
-		  z-index: 40;
-		  right: 0%;
-		  text-shadow: 1px 1px #000;
-		}	
-	}
-}
-
 .page-user-login .block-system form{
 	float: left;
 	padding-left: 3em;
@@ -11982,4 +11868,85 @@ input#edit-field-image-und-0-upload::before {
 
 .node-type-infographic .above_title .back-to-link{
   display: none;
+}
+
+/*Caption*/
+
+blockquote.image-field-caption {
+    border-left: 0;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    p{
+	  	z-index: 999;
+	    position: relative;
+	    width: 100%;
+	    margin: 0;
+	    padding: 0;
+	    font-size: 10px;
+	    color: #000;
+	    float: left;
+    }
+}
+
+.view-publication-type .views-row:hover .views-field-field-image a{
+	text-decoration:none;
+	color:transparent;
+}
+
+.view-publication-type .views-row .views-field-field-image a p{
+	text-shadow: 1px 1px #000;
+	background: transparent;
+}
+
+body.front .homepage-slider blockquote.image-field-caption p{
+    top: 287px;
+    color: #FFF !important;
+    background: transparent;
+    opacity: 1;
+    z-index: 40;
+    right: 0%;
+    text-shadow: 1px 1px #000;
+    font-size: 10px;
+    border-left: 0;
+    padding: 10px 20px;
+    margin: 0;
+    text-align: right;
+}
+
+.field.field-name-field-image{
+	position: relative;
+}
+
+.node-type-article blockquote.image-field-caption {
+    position: absolute;
+    width: 100%;
+    top: 335px;
+    p{
+   		background: transparent;
+    	right: 1%;
+    	text-align: right;
+    	color:#FFF;
+    	text-shadow:1px 1px #000;
+    }
+}
+
+.page-tools-and-publications .view-view-campaign-materials .group-left .field-name-field-image{
+	overflow: initial;
+}
+
+.view blockquote.image-field-caption{
+	display: none;
+}
+
+.field-name-field-recommended-resources , 
+.field-name-field-recommended-articles{
+	blockquote.image-field-caption {
+    	display: none;
+    }
+}
+
+.node-type-tk-article .group-left blockquote.image-field-caption {
+	display: none;
 }

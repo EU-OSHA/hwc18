@@ -7,18 +7,37 @@
 include_once 'osha_flickr.features.inc';
 
 /**
+ * Implements Elysia hook_cronapi().
+ */
+function osha_flickr_cronapi() {
+  return array(
+    'osha_flickr_cron' => array(
+      'description' => 'Migrate NCW Gallery content',
+      'rule' => '10 4 * * *',
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function osha_flickr_cron() {
+  ncw_migration_run_single('gallery');
+}
+
+/**
  * Implements hook_form_alter().
  */
 function osha_flickr_form_alter(&$form, &$form_state, $form_id) {
   if ($form_id == 'flickr_gallery_node_form') {
-    drupal_add_css(drupal_get_path('module', 'osha_flickr') .'/css/osha_flickr.css');
+    drupal_add_css(drupal_get_path('module', 'osha_flickr') . '/css/osha_flickr.css');
   }
 }
 
 function osha_flickr_preprocess_views_view(&$vars) {
   $view = $vars['view'];
-  if($view->name == 'flickr_albums') {
-    drupal_add_css(drupal_get_path('module', 'osha_flickr') .'/css/osha_flickr.css');
+  if ($view->name == 'flickr_albums') {
+    drupal_add_css(drupal_get_path('module', 'osha_flickr') . '/css/osha_flickr.css');
   }
 }
 
