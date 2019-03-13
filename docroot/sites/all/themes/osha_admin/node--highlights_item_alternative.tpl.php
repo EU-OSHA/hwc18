@@ -8,6 +8,18 @@
  * @see template_preprocess_node()
  * @see template_process()
  */
+$campaign_id = '';
+if (!empty($variables['elements']['#campaign_id'])) {
+  $campaign_id = $variables['elements']['#campaign_id'];
+}
+elseif (!empty($variables['campaign_id'])) {
+  $campaign_id = $variables['campaign_id'];
+}
+
+$url_query = array();
+if (!empty($campaign_id)) {
+  $url_query = array('pk_campaign' => $campaign_id);
+}
 ?>
 
 <table id="node-<?php print $node->nid; ?>" border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 0px; margin-left: 0px;">
@@ -27,7 +39,8 @@
               'attributes' => array('style' => 'border: 0px; width: 100px; max-width: 100px; padding-right: 5px; padding-bottom: 5px; margin: 0;', 'align' => 'left', 'hspace' => '20', 'vspace' => '20')
             )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
               'html' => TRUE,
-              'external' => TRUE
+              'query' => $url_query,
+              'external' => TRUE,
             ));
             ?>
           </td>
@@ -40,22 +53,17 @@
             </b>
             <p style="padding-top: 10px; padding-bottom: 10px;">
               <?php
-              if (isset($variables['elements']['#campaign_id'])) {
-                $url_query = array('pk_campaign' => $variables['elements']['#campaign_id']);
-              } else {
-                $url_query = array();
-              }
               if ($node->type == 'publication') {
                 print l($title, url('node/' . $node->nid . '/view', array('absolute' => TRUE)), array(
                   'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
                   'query' => $url_query,
-                  'external' => TRUE
+                  'external' => TRUE,
                 ));
               } else {
                 print l($title, url('node/' . $node->nid, array('absolute' => TRUE)), array(
                   'attributes' => array('style' => 'font-family: Arial, sans-serif; color: #003399; padding-bottom: 10px; padding-left: 0px; padding-right: 0px; font-family: Oswald, Arial, sans-serif; font-size: 18px; vertical-align: top; text-decoration: none;'),
                   'query' => $url_query,
-                  'external' => TRUE
+                  'external' => TRUE,
                 ));
               }
               ?>
