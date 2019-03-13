@@ -320,8 +320,6 @@ class NCWDangerousSubstancesSource extends AbstractNCWNodeSource {
         $node_url = $this->itemURL($id);
         ncw_migration_debug('!klass:      * Reading item: !url', array('!klass' => get_class($this), '!url' => $node_url));
         $this->rows[$id] = $node_url;
-        $msg = format_string('Updating from !url', array('!url' => $node_url));
-        watchdog('ncw_migration', $msg, [], WATCHDOG_INFO);
       }
     }
     else {

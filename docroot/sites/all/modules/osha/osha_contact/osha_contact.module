@@ -121,7 +121,7 @@ function contact_form_send($form, &$form_state) {
 }
 
 /**
- * Implements hook_mail_alter(&$message).
+ * Implements hook_mail_alter().
  */
 function osha_contact_mail_alter(&$message) {
   global $language;
