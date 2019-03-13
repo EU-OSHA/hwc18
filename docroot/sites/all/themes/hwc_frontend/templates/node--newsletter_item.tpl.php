@@ -85,14 +85,12 @@ if (!empty($campaign_id)) {
                                 'attributes' => array(
                                   'style' => 'vertical-align:middle;max-width: initial!important;',
                                   'align' => 'left',
-                                
                                 ),
                               )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                                 'html' => TRUE,
                                 'external' => TRUE,
-                                'attributes' => array(
-                                      'style' => '',
-                                    ),
+                                'query' => $url_query,
+                                'attributes' => array('style' => ''),
                               ));
                           }
                           ?>
@@ -116,10 +114,8 @@ if (!empty($campaign_id)) {
                       <tr>
                         <td style="padding-top: 8px;color:#000;font-size: 13px;line-height: 18px;">
                           <?php
-                            
                             $is_empty = FALSE;
                             $summary = render($elements['field_summary']);
-                            
                             if (!trim(strip_tags($summary))) {
                               $is_empty = TRUE;
                             }
@@ -167,8 +163,8 @@ if (!empty($campaign_id)) {
                                 'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
                               )), $node_url, array(
                                 'html' => TRUE,
-                                'external' => TRUE,
                                 'query' => $url_query,
+                                'external' => TRUE,
                               ));
 
                               print '</div>';
@@ -184,8 +180,8 @@ if (!empty($campaign_id)) {
                                 'attributes' => array('style' => 'border:0px;width:20px;height:20px;'),
                               )), $node_url, array(
                                 'html' => TRUE,
-                                'external' => TRUE,
                                 'query' => $url_query + ['action' => 'share'],
+                                'external' => TRUE,
                               ));
                               ?>
 

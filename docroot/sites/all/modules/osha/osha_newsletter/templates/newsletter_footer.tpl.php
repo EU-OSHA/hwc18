@@ -57,10 +57,10 @@ global $language;
                         'path' => 'https://www.youtube.com/user/EUOSHA',
                         'alt' => t('Youtube'),
                       ),
-                       'flickr' => array(
-                         'path' => 'https://www.flickr.com/photos/euosha/albums',
-                         'alt' => t('Flickr'),
-                       ),
+                      'flickr' => array(
+                        'path' => 'https://www.flickr.com/photos/euosha/albums',
+                        'alt' => t('Flickr'),
+                      ),
                       'blog' => array(
                         'path' => url('tools-and-publications/blog', array('alias' => TRUE, 'absolute' => TRUE, 'query' => $url_query)),
                         'alt' => t('Blog'),
