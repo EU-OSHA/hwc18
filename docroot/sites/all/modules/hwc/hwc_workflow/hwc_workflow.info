@@ -1,16 +1,13 @@
 name = HWC Workflow
 core = 7.x
 package = HWC
-version = 7.x-1.7
+version = 7.x-1.8
 project = hwc_workflow
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = entity_collection
-dependencies[] = hwc_workflow
 dependencies[] = rules
 dependencies[] = strongarm
-dependencies[] = workbench_moderation
-dependencies[] = workbench_moderation
 dependencies[] = workbench_moderation
 features[ctools][] = entity_collection:entity_collection_bundles_default:1
 features[ctools][] = strongarm:strongarm:1

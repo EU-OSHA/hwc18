@@ -51,6 +51,7 @@ function hwc_workflow_settings_options() {
   return [
     'approved' => 'Approved',
     'rejection' => 'Rejection',
+    'reviewer' => 'Reviewer',
     'supervisor' => 'Supervisor',
   ];
 }

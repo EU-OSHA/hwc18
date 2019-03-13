@@ -93,10 +93,10 @@ function hwc_workflow_default_rules_configuration() {
         { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
             "roles" : { "value" : { "17" : "17" } },
-            "subject" : "HWC news\\/events item is back from contractor\\u2019s review",
-            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
+            "settings_type" : { "value" : { "supervisor" : "supervisor" } }
           }
         }
       ]
@@ -154,10 +154,10 @@ function hwc_workflow_default_rules_configuration() {
         { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
             "roles" : { "value" : { "15" : "15" } },
-            "subject" : "HWC news\\/events item is back from contractor\\u2019s review",
-            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E\\r\\n"
+            "settings_type" : { "value" : { "supervisor" : "supervisor" } }
           }
         }
       ]
@@ -365,17 +365,17 @@ function hwc_workflow_default_rules_configuration() {
       "LABEL" : "External Provider notification  when to be Reviewed",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "workbench_moderation" ],
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "new-state" ], "value" : "needs_review" } },
         { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
             "roles" : { "value" : { "13" : "13" } },
-            "subject" : "Please review news\\/events item uploaded on HWC website",
-            "message" : "\\u003Cp\\u003EPlease go to the back-office of the HWC website at \\u003Ca href=\\u0022https:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u0022\\u003Ehttps:\\/\\/healthy-workplaces.eu\\/en\\/admin\\/content\\u003C\\/a\\u003E and check the news\\/events item created by a HWC partner.\\u003C\\/p\\u003E"
+            "settings_type" : { "value" : { "reviewer" : "reviewer" } }
           }
         }
       ]
