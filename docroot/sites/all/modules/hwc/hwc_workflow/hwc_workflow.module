@@ -514,7 +514,11 @@ function hwc_workflow_mail($key, &$message, $params) {
     $body = hwc_workflow_get_mail_body_text($node, $type);
   }
   $message['subject'] = token_replace($subject, $params);
-  $message['body'][] = token_replace($body, $params);
+  $body = token_replace($body, $params);
+  if (variable_get('hwc_workflow_mail_nl2br', TRUE)) {
+    $body = nl2br($body);
+  }
+  $message['body'][] = $body;
 }
 
 /**
