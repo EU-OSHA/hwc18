@@ -57,10 +57,10 @@ global $language;
                         'path' => 'https://www.youtube.com/user/EUOSHA',
                         'alt' => t('Youtube'),
                       ),
-                       'flickr' => array(
-                         'path' => 'https://www.flickr.com/photos/euosha/albums',
-                         'alt' => t('Flickr'),
-                       ),
+                      'flickr' => array(
+                        'path' => 'https://www.flickr.com/photos/euosha/albums',
+                        'alt' => t('Flickr'),
+                      ),
                       'blog' => array(
                         'path' => url('tools-and-publications/blog', array('alias' => TRUE, 'absolute' => TRUE, 'query' => $url_query)),
                         'alt' => t('Blog'),
@@ -102,7 +102,7 @@ global $language;
     </tr>
     <tr class="footer-unsubscribe">
       <td>
-        <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>', array('@style' => 'color: #003399; text-decoration: none;', '@url' => url($base_url.'/'.$language->language.'/oshmail-newsletter', array('query' => $url_query)))); ?>
+        <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>', array('@style' => 'color: #003399; text-decoration: none;', '@url' => url('node/129', array('query' => $url_query, 'absolute' => TRUE)))); ?>
         </p>
       </td>
     </tr>
