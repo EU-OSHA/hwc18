@@ -232,10 +232,17 @@ function osha_events_update_7020() {
 }
 
 /**
- * .
+ * MDR-2027 Changes in the workflow of news and events.
  */
 function osha_events_update_7021() {
   features_revert(array('osha_events' => 'field_base'));
   features_revert(array('osha_events' => 'field_instance'));
   features_revert(array('osha_news' => 'field_instance'));
+}
+
+/**
+ * MDR-2659 HWC18 Backend Events List- several improvements (Dev).
+ */
+function osha_events_update_7022() {
+  features_revert_module('osha_events');
 }

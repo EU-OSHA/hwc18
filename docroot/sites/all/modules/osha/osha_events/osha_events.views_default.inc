@@ -87,7 +87,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_website_of_event']['field'] = 'field_website_of_event';
   $handler->display->display_options['fields']['field_website_of_event']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
-  /* Field: Content: Adonis */
+  /* Field: Content: Ares/Adonis */
   $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
   $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
   $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
@@ -418,6 +418,30 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_color']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_color']['alter']['text'] = '[field_color]';
   $handler->display->display_options['fields']['field_color']['element_label_colon'] = FALSE;
+  /* Field: Content: For the web / Public */
+  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Content: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['element_label_colon'] = FALSE;
+  /* Field: Content: Type of event */
+  $handler->display->display_options['fields']['field_type_event']['id'] = 'field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['table'] = 'field_data_field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['field'] = 'field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Organiser */
+  $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['field'] = 'field_organizer';
+  $handler->display->display_options['fields']['field_organizer']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
@@ -430,24 +454,14 @@ function osha_events_views_default_views() {
     'title_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
-  /* Field: Content: Organiser */
-  $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
-  $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
-  $handler->display->display_options['fields']['field_organizer']['field'] = 'field_organizer';
-  $handler->display->display_options['fields']['field_organizer']['settings'] = array(
-    'field_formatter_class' => '',
-  );
-  /* Field: Content: For the web / Public */
-  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
   /* Field: Content: Country */
   $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
   $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
   $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
-  $handler->display->display_options['fields']['field_country_code']['label'] = 'Country code';
   $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_code']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
@@ -457,6 +471,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_start_date']['id'] = 'field_start_date';
   $handler->display->display_options['fields']['field_start_date']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['fields']['field_start_date']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date']['label'] = 'Start date';
   $handler->display->display_options['fields']['field_start_date']['settings'] = array(
     'format_type' => 'long',
     'fromto' => 'value',
@@ -464,6 +479,7 @@ function osha_events_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
     'osha_date_theme' => '',
+    'field_formatter_class' => '',
   );
   /* Field: Content: Starting date */
   $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
@@ -484,71 +500,89 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_website_of_event']['field'] = 'field_website_of_event';
   $handler->display->display_options['fields']['field_website_of_event']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
-  /* Field: Content: Adonis */
-  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
-  /* Field: Content: Unit Ref */
-  $handler->display->display_options['fields']['field_unit_ref']['id'] = 'field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['table'] = 'field_data_field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['field'] = 'field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['element_label_colon'] = FALSE;
-  /* Field: Content: Activity */
-  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
-  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
-  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
-  $handler->display->display_options['fields']['field_activity']['element_label_colon'] = FALSE;
-  /* Field: Field: Tags */
-  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
-  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
-  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
-  $handler->display->display_options['fields']['field_tags']['label'] = 'Category';
-  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  /* Field: Content: Agenda */
+  $handler->display->display_options['fields']['field_agenda']['id'] = 'field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['table'] = 'field_data_field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['field'] = 'field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Agency Role */
   $handler->display->display_options['fields']['field_agency_role']['id'] = 'field_agency_role';
   $handler->display->display_options['fields']['field_agency_role']['table'] = 'field_data_field_agency_role';
   $handler->display->display_options['fields']['field_agency_role']['field'] = 'field_agency_role';
+  $handler->display->display_options['fields']['field_agency_role']['label'] = 'Agency role';
   $handler->display->display_options['fields']['field_agency_role']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_role']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   $handler->display->display_options['fields']['field_agency_role']['delta_offset'] = '0';
-  /* Field: Content: Agency Initial Contact */
-  $handler->display->display_options['fields']['field_agency_initial_contact']['id'] = 'field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['table'] = 'field_data_field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['field'] = 'field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['element_label_colon'] = FALSE;
   /* Field: Content: Agency Rep confirmed */
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['id'] = 'field_agency_rep_confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['table'] = 'field_data_field_agency_rep_confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['field'] = 'field_agency_rep_confirmed';
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['label'] = 'Agency rep confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['element_label_colon'] = FALSE;
-  /* Field: Content: Event in AMP */
-  $handler->display->display_options['fields']['field_event_in_amp']['id'] = 'field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_rep_confirmed']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Publications/exhibition support */
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['id'] = 'field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['table'] = 'field_data_field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['field'] = 'field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Media/promotion */
+  $handler->display->display_options['fields']['field_media_promotion']['id'] = 'field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['table'] = 'field_data_field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['field'] = 'field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Content: Agency contact / Reply / Comments */
   $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
-  $handler->display->display_options['fields']['field_agency_contact_reply']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_contact_reply']['label'] = 'Comments';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Key Performance Indicator */
+  $handler->display->display_options['fields']['field_key_performance']['id'] = 'field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['table'] = 'field_data_field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['field'] = 'field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Ares/Adonis */
+  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
   /* Field: Content: Number of attendees */
   $handler->display->display_options['fields']['field_number_of_attendees']['id'] = 'field_number_of_attendees';
   $handler->display->display_options['fields']['field_number_of_attendees']['table'] = 'field_data_field_number_of_attendees';
   $handler->display->display_options['fields']['field_number_of_attendees']['field'] = 'field_number_of_attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['label'] = 'Number of participants';
   $handler->display->display_options['fields']['field_number_of_attendees']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_number_of_attendees']['settings'] = array(
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
+    'field_formatter_class' => '',
   );
-  /* Field: Content: Satisfaction rate */
-  $handler->display->display_options['fields']['field_satisfaction_rate']['id'] = 'field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['table'] = 'field_data_field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['field'] = 'field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_satisfaction_rate']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
-  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Created by';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -567,25 +601,22 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Operations';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Action';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<ul class="links inline">
 <li>[edit_node]</li>
 <li>[delete_node]</li>
 </ul>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
-  /* Field: Content: Published */
-  $handler->display->display_options['fields']['status']['id'] = 'status';
-  $handler->display->display_options['fields']['status']['table'] = 'node';
-  $handler->display->display_options['fields']['status']['field'] = 'status';
-  $handler->display->display_options['fields']['status']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'events' => 'events',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Color (field_color) */
   $handler->display->display_options['filters']['field_color_value']['id'] = 'field_color_value';
   $handler->display->display_options['filters']['field_color_value']['table'] = 'field_data_field_color';
@@ -637,14 +668,6 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'events' => 'events',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -668,6 +691,35 @@ function osha_events_views_default_views() {
     9 => 0,
     10 => 0,
     11 => 0,
+  );
+  /* Filter criterion: Content: Organiser (field_organizer) */
+  $handler->display->display_options['filters']['field_organizer_value']['id'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['table'] = 'field_data_field_organizer';
+  $handler->display->display_options['filters']['field_organizer_value']['field'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_organizer_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['operator_id'] = 'field_organizer_value_op';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['label'] = 'Organiser';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['operator'] = 'field_organizer_value_op';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['identifier'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
   );
   /* Filter criterion: Content: Country (field_country_code) */
   $handler->display->display_options['filters']['field_country_code_value']['id'] = 'field_country_code_value';
@@ -772,7 +824,7 @@ function osha_events_views_default_views() {
     12 => 0,
   );
   $handler->display->display_options['filters']['field_start_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Adonis (field_adonis) */
+  /* Filter criterion: Content: Ares/Adonis (field_adonis) */
   $handler->display->display_options['filters']['field_adonis_value']['id'] = 'field_adonis_value';
   $handler->display->display_options['filters']['field_adonis_value']['table'] = 'field_data_field_adonis';
   $handler->display->display_options['filters']['field_adonis_value']['field'] = 'field_adonis_value';
@@ -780,7 +832,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_adonis_value']['group'] = 1;
   $handler->display->display_options['filters']['field_adonis_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_adonis_value']['expose']['operator_id'] = 'field_adonis_value_op';
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Ares/Adonis';
   $handler->display->display_options['filters']['field_adonis_value']['expose']['operator'] = 'field_adonis_value_op';
   $handler->display->display_options['filters']['field_adonis_value']['expose']['identifier'] = 'field_adonis_value';
   $handler->display->display_options['filters']['field_adonis_value']['expose']['remember_roles'] = array(
@@ -797,6 +849,10 @@ function osha_events_views_default_views() {
     11 => 0,
     12 => 0,
     13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
   );
   /* Filter criterion: Content: Activity (field_activity) */
   $handler->display->display_options['filters']['field_activity_tid']['id'] = 'field_activity_tid';
@@ -849,18 +905,17 @@ function osha_events_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  /* Filter criterion: Content: Unit Ref (field_unit_ref) */
-  $handler->display->display_options['filters']['field_unit_ref_value']['id'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['table'] = 'field_data_field_unit_ref';
-  $handler->display->display_options['filters']['field_unit_ref_value']['field'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_unit_ref_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator_id'] = 'field_unit_ref_value_op';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['label'] = 'Unit Ref';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator'] = 'field_unit_ref_value_op';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['identifier'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Agenda (field_agenda) */
+  $handler->display->display_options['filters']['field_agenda_value']['id'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['table'] = 'field_data_field_agenda';
+  $handler->display->display_options['filters']['field_agenda_value']['field'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_agenda_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['operator_id'] = 'field_agenda_value_op';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['label'] = 'Agenda';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['operator'] = 'field_agenda_value_op';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['identifier'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -872,18 +927,24 @@ function osha_events_views_default_views() {
     9 => 0,
     10 => 0,
     11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
   );
-  /* Filter criterion: Content: Event in AMP (field_event_in_amp) */
-  $handler->display->display_options['filters']['field_event_in_amp_value']['id'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['table'] = 'field_data_field_event_in_amp';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['field'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_event_in_amp_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator_id'] = 'field_event_in_amp_value_op';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['label'] = 'Event in AMP';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator'] = 'field_event_in_amp_value_op';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['identifier'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Publications/exhibition support (field_publications_exhibition_su) */
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['id'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['table'] = 'field_data_field_publications_exhibition_su';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['field'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['operator_id'] = 'field_publications_exhibition_su_value_op';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['label'] = 'Publications/exhibition support';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['operator'] = 'field_publications_exhibition_su_value_op';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['identifier'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -895,6 +956,70 @@ function osha_events_views_default_views() {
     9 => 0,
     10 => 0,
     11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Media/promotion (field_media_promotion) */
+  $handler->display->display_options['filters']['field_media_promotion_value']['id'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['table'] = 'field_data_field_media_promotion';
+  $handler->display->display_options['filters']['field_media_promotion_value']['field'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_media_promotion_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['operator_id'] = 'field_media_promotion_value_op';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['label'] = 'Media/promotion';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['operator'] = 'field_media_promotion_value_op';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['identifier'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Key Performance Indicator (field_key_performance) */
+  $handler->display->display_options['filters']['field_key_performance_value']['id'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['table'] = 'field_data_field_key_performance';
+  $handler->display->display_options['filters']['field_key_performance_value']['field'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_key_performance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['operator_id'] = 'field_key_performance_value_op';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['label'] = 'Key Performance Indicator';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['operator'] = 'field_key_performance_value_op';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['identifier'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
   );
   /* Filter criterion: Content: Agency Rep confirmed (field_agency_rep_confirmed) */
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['id'] = 'field_agency_rep_confirmed_value';
@@ -922,6 +1047,35 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
+  /* Filter criterion: Content: Type of event (field_type_event) */
+  $handler->display->display_options['filters']['field_type_event_value']['id'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['table'] = 'field_data_field_type_event';
+  $handler->display->display_options['filters']['field_type_event_value']['field'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_type_event_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['operator_id'] = 'field_type_event_value_op';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['label'] = 'Type of event';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['operator'] = 'field_type_event_value_op';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['identifier'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
   /* Filter criterion: Content: Migrate Source (field_migration_source) */
   $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
   $handler->display->display_options['filters']['field_migration_source_value']['table'] = 'field_data_field_migration_source';
@@ -930,6 +1084,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_migration_source_value']['value'] = array(
     'hwc' => 'hwc',
   );
+  $handler->display->display_options['filters']['field_migration_source_value']['group'] = 1;
   $handler->display->display_options['filters']['field_migration_source_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator_id'] = 'field_migration_source_value_op';
   $handler->display->display_options['filters']['field_migration_source_value']['expose']['label'] = 'Not from';
@@ -976,6 +1131,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_for_the_web_value']['id'] = 'field_for_the_web_value';
   $handler->display->display_options['filters']['field_for_the_web_value']['table'] = 'field_data_field_for_the_web';
   $handler->display->display_options['filters']['field_for_the_web_value']['field'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['group'] = 1;
   $handler->display->display_options['filters']['field_for_the_web_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_for_the_web_value']['expose']['operator_id'] = 'field_for_the_web_value_op';
   $handler->display->display_options['filters']['field_for_the_web_value']['expose']['label'] = 'For the web';
@@ -998,6 +1154,37 @@ function osha_events_views_default_views() {
     14 => 0,
   );
   $handler->display->display_options['filters']['field_for_the_web_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Field: Tags (field_tags) */
+  $handler->display->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator_id'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['identifier'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['field_tags_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'admin/content/events';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Events';
@@ -1014,21 +1201,26 @@ function osha_events_views_default_views() {
   $handler->display->display_options['style_options']['filename'] = 'events.xls';
   $handler->display->display_options['style_options']['parent_sort'] = 1;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Color */
-  $handler->display->display_options['fields']['field_color']['id'] = 'field_color';
-  $handler->display->display_options['fields']['field_color']['table'] = 'field_data_field_color';
-  $handler->display->display_options['fields']['field_color']['field'] = 'field_color';
-  $handler->display->display_options['fields']['field_color']['ui_name'] = 'Color';
-  $handler->display->display_options['fields']['field_color']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_color']['alter']['text'] = '[field_color]';
-  /* Field: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['ui_name'] = 'Title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: For the web */
+  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
+  $handler->display->display_options['fields']['field_for_the_web']['ui_name'] = 'For the web';
+  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Activity */
+  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
+  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
+  $handler->display->display_options['fields']['field_activity']['ui_name'] = 'Activity';
+  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_activity']['delta_offset'] = '0';
+  /* Field: Content: Type of event */
+  $handler->display->display_options['fields']['field_type_event']['id'] = 'field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['table'] = 'field_data_field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['field'] = 'field_type_event';
+  $handler->display->display_options['fields']['field_type_event']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Organiser */
   $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
   $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
@@ -1037,19 +1229,23 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_organizer']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: For the web */
-  $handler->display->display_options['fields']['field_for_the_web']['id'] = 'field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['table'] = 'field_data_field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['field'] = 'field_for_the_web';
-  $handler->display->display_options['fields']['field_for_the_web']['ui_name'] = 'For the web';
-  $handler->display->display_options['fields']['field_for_the_web']['element_label_colon'] = FALSE;
+  /* Field: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['ui_name'] = 'Title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Country */
   $handler->display->display_options['fields']['field_country_code']['id'] = 'field_country_code';
   $handler->display->display_options['fields']['field_country_code']['table'] = 'field_data_field_country_code';
   $handler->display->display_options['fields']['field_country_code']['field'] = 'field_country_code';
   $handler->display->display_options['fields']['field_country_code']['ui_name'] = 'Country';
-  $handler->display->display_options['fields']['field_country_code']['label'] = 'Country code';
   $handler->display->display_options['fields']['field_country_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_code']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
@@ -1070,6 +1266,20 @@ function osha_events_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
+  /* Field: Content: Starting date */
+  $handler->display->display_options['fields']['field_start_date_1']['id'] = 'field_start_date_1';
+  $handler->display->display_options['fields']['field_start_date_1']['table'] = 'field_data_field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['field'] = 'field_start_date';
+  $handler->display->display_options['fields']['field_start_date_1']['label'] = 'End date';
+  $handler->display->display_options['fields']['field_start_date_1']['settings'] = array(
+    'format_type' => 'long',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'osha_date_theme' => '',
+    'field_formatter_class' => '',
+  );
   /* Field: Website of event */
   $handler->display->display_options['fields']['field_website_of_event']['id'] = 'field_website_of_event';
   $handler->display->display_options['fields']['field_website_of_event']['table'] = 'field_data_field_website_of_event';
@@ -1079,34 +1289,13 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_website_of_event']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_website_of_event']['type'] = 'link_plain';
   $handler->display->display_options['fields']['field_website_of_event']['delta_offset'] = '0';
-  /* Field: Adonis */
-  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
-  $handler->display->display_options['fields']['field_adonis']['ui_name'] = 'Adonis';
-  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
-  /* Field: Unit Ref */
-  $handler->display->display_options['fields']['field_unit_ref']['id'] = 'field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['table'] = 'field_data_field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['field'] = 'field_unit_ref';
-  $handler->display->display_options['fields']['field_unit_ref']['ui_name'] = 'Unit Ref';
-  $handler->display->display_options['fields']['field_unit_ref']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_unit_ref']['delta_offset'] = '0';
-  /* Field: Activity */
-  $handler->display->display_options['fields']['field_activity']['id'] = 'field_activity';
-  $handler->display->display_options['fields']['field_activity']['table'] = 'field_data_field_activity';
-  $handler->display->display_options['fields']['field_activity']['field'] = 'field_activity';
-  $handler->display->display_options['fields']['field_activity']['ui_name'] = 'Activity';
-  $handler->display->display_options['fields']['field_activity']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_activity']['delta_offset'] = '0';
-  /* Field: Category */
-  $handler->display->display_options['fields']['field_tags']['id'] = 'field_tags';
-  $handler->display->display_options['fields']['field_tags']['table'] = 'field_data_field_tags';
-  $handler->display->display_options['fields']['field_tags']['field'] = 'field_tags';
-  $handler->display->display_options['fields']['field_tags']['ui_name'] = 'Category';
-  $handler->display->display_options['fields']['field_tags']['label'] = 'Category';
-  $handler->display->display_options['fields']['field_tags']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_tags']['delta_offset'] = '0';
+  /* Field: Content: Agenda */
+  $handler->display->display_options['fields']['field_agenda']['id'] = 'field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['table'] = 'field_data_field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['field'] = 'field_agenda';
+  $handler->display->display_options['fields']['field_agenda']['settings'] = array(
+    'field_formatter_class' => '',
+  );
   /* Field: Agency role */
   $handler->display->display_options['fields']['field_agency_role']['id'] = 'field_agency_role';
   $handler->display->display_options['fields']['field_agency_role']['table'] = 'field_data_field_agency_role';
@@ -1114,49 +1303,58 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_agency_role']['ui_name'] = 'Agency role';
   $handler->display->display_options['fields']['field_agency_role']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_agency_role']['delta_offset'] = '0';
-  /* Field: Agency initial contact */
-  $handler->display->display_options['fields']['field_agency_initial_contact']['id'] = 'field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['table'] = 'field_data_field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['field'] = 'field_agency_initial_contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['ui_name'] = 'Agency initial contact';
-  $handler->display->display_options['fields']['field_agency_initial_contact']['element_label_colon'] = FALSE;
   /* Field: Agency rep confirmed */
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['id'] = 'field_agency_rep_confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['table'] = 'field_data_field_agency_rep_confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['field'] = 'field_agency_rep_confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['ui_name'] = 'Agency rep confirmed';
   $handler->display->display_options['fields']['field_agency_rep_confirmed']['element_label_colon'] = FALSE;
-  /* Field: Event in AMP */
-  $handler->display->display_options['fields']['field_event_in_amp']['id'] = 'field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
-  $handler->display->display_options['fields']['field_event_in_amp']['ui_name'] = 'Event in AMP';
-  $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
-  /* Field: Agency contact / reply */
+  /* Field: Content: Publications/exhibition support */
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['id'] = 'field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['table'] = 'field_data_field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['field'] = 'field_publications_exhibition_su';
+  $handler->display->display_options['fields']['field_publications_exhibition_su']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Media/promotion */
+  $handler->display->display_options['fields']['field_media_promotion']['id'] = 'field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['table'] = 'field_data_field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['field'] = 'field_media_promotion';
+  $handler->display->display_options['fields']['field_media_promotion']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Agency contact / Reply / Comments */
   $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
-  $handler->display->display_options['fields']['field_agency_contact_reply']['ui_name'] = 'Agency contact / reply';
-  $handler->display->display_options['fields']['field_agency_contact_reply']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_agency_contact_reply']['label'] = 'Comments';
+  $handler->display->display_options['fields']['field_agency_contact_reply']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Content: Key Performance Indicator */
+  $handler->display->display_options['fields']['field_key_performance']['id'] = 'field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['table'] = 'field_data_field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['field'] = 'field_key_performance';
+  $handler->display->display_options['fields']['field_key_performance']['settings'] = array(
+    'field_formatter_class' => '',
+  );
+  /* Field: Adonis */
+  $handler->display->display_options['fields']['field_adonis']['id'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['field'] = 'field_adonis';
+  $handler->display->display_options['fields']['field_adonis']['ui_name'] = 'Adonis';
+  $handler->display->display_options['fields']['field_adonis']['element_label_colon'] = FALSE;
   /* Field: Number of attendees */
   $handler->display->display_options['fields']['field_number_of_attendees']['id'] = 'field_number_of_attendees';
   $handler->display->display_options['fields']['field_number_of_attendees']['table'] = 'field_data_field_number_of_attendees';
   $handler->display->display_options['fields']['field_number_of_attendees']['field'] = 'field_number_of_attendees';
   $handler->display->display_options['fields']['field_number_of_attendees']['ui_name'] = 'Number of attendees';
+  $handler->display->display_options['fields']['field_number_of_attendees']['label'] = 'Number of participants';
   $handler->display->display_options['fields']['field_number_of_attendees']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_number_of_attendees']['settings'] = array(
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
-  );
-  /* Field: Satisfaction rate */
-  $handler->display->display_options['fields']['field_satisfaction_rate']['id'] = 'field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['table'] = 'field_data_field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['field'] = 'field_satisfaction_rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['ui_name'] = 'Satisfaction rate';
-  $handler->display->display_options['fields']['field_satisfaction_rate']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_satisfaction_rate']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 1,
+    'field_formatter_class' => '',
   );
   /* Field: Username */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -1164,7 +1362,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['ui_name'] = 'Username';
-  $handler->display->display_options['fields']['name']['label'] = 'Username';
+  $handler->display->display_options['fields']['name']['label'] = 'Created by';
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Field: Published */
   $handler->display->display_options['fields']['status']['id'] = 'status';
@@ -1182,6 +1380,31 @@ function osha_events_views_default_views() {
     'events' => 'events',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Color (field_color) */
+  $handler->display->display_options['filters']['field_color_value']['id'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['table'] = 'field_data_field_color';
+  $handler->display->display_options['filters']['field_color_value']['field'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_color_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator_id'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['label'] = 'Color (field_color)';
+  $handler->display->display_options['filters']['field_color_value']['expose']['operator'] = 'field_color_value_op';
+  $handler->display->display_options['filters']['field_color_value']['expose']['identifier'] = 'field_color_value';
+  $handler->display->display_options['filters']['field_color_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1208,36 +1431,12 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
-  /* Filter criterion: Content: Color (field_color) */
-  $handler->display->display_options['filters']['field_color_value']['id'] = 'field_color_value';
-  $handler->display->display_options['filters']['field_color_value']['table'] = 'field_data_field_color';
-  $handler->display->display_options['filters']['field_color_value']['field'] = 'field_color_value';
-  $handler->display->display_options['filters']['field_color_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_color_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_color_value']['expose']['operator_id'] = 'field_color_value_op';
-  $handler->display->display_options['filters']['field_color_value']['expose']['label'] = 'Color (field_color)';
-  $handler->display->display_options['filters']['field_color_value']['expose']['operator'] = 'field_color_value_op';
-  $handler->display->display_options['filters']['field_color_value']['expose']['identifier'] = 'field_color_value';
-  $handler->display->display_options['filters']['field_color_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-  );
   /* Filter criterion: Content: Title (title_field) */
   $handler->display->display_options['filters']['title_field_value']['id'] = 'title_field_value';
   $handler->display->display_options['filters']['title_field_value']['table'] = 'field_data_title_field';
   $handler->display->display_options['filters']['title_field_value']['field'] = 'title_field_value';
   $handler->display->display_options['filters']['title_field_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title_field_value']['group'] = 1;
   $handler->display->display_options['filters']['title_field_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title_field_value']['expose']['operator_id'] = 'title_field_value_op';
   $handler->display->display_options['filters']['title_field_value']['expose']['label'] = 'Title';
@@ -1258,11 +1457,92 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
+  /* Filter criterion: Content: Organiser (field_organizer) */
+  $handler->display->display_options['filters']['field_organizer_value']['id'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['table'] = 'field_data_field_organizer';
+  $handler->display->display_options['filters']['field_organizer_value']['field'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_organizer_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['operator_id'] = 'field_organizer_value_op';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['label'] = 'Organiser';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['operator'] = 'field_organizer_value_op';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['identifier'] = 'field_organizer_value';
+  $handler->display->display_options['filters']['field_organizer_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Country (field_country_code) */
+  $handler->display->display_options['filters']['field_country_code_value']['id'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['table'] = 'field_data_field_country_code';
+  $handler->display->display_options['filters']['field_country_code_value']['field'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_country_code_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator_id'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['label'] = 'Country';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator'] = 'field_country_code_value_op';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['identifier'] = 'field_country_code_value';
+  $handler->display->display_options['filters']['field_country_code_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: City (field_city) */
+  $handler->display->display_options['filters']['field_city_value']['id'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['table'] = 'field_data_field_city';
+  $handler->display->display_options['filters']['field_city_value']['field'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_city_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_city_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator_id'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['label'] = 'City';
+  $handler->display->display_options['filters']['field_city_value']['expose']['operator'] = 'field_city_value_op';
+  $handler->display->display_options['filters']['field_city_value']['expose']['identifier'] = 'field_city_value';
+  $handler->display->display_options['filters']['field_city_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
   /* Filter criterion: Content: Starting date -  start date (field_start_date) */
   $handler->display->display_options['filters']['field_start_date_value']['id'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['filters']['field_start_date_value']['field'] = 'field_start_date_value';
   $handler->display->display_options['filters']['field_start_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_start_date_value']['group'] = 1;
   $handler->display->display_options['filters']['field_start_date_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_start_date_value']['expose']['operator_id'] = 'field_start_date_value_op';
   $handler->display->display_options['filters']['field_start_date_value']['expose']['label'] = 'Start date';
@@ -1289,6 +1569,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_start_date_value2']['table'] = 'field_data_field_start_date';
   $handler->display->display_options['filters']['field_start_date_value2']['field'] = 'field_start_date_value2';
   $handler->display->display_options['filters']['field_start_date_value2']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_start_date_value2']['group'] = 1;
   $handler->display->display_options['filters']['field_start_date_value2']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_start_date_value2']['expose']['operator_id'] = 'field_start_date_value2_op';
   $handler->display->display_options['filters']['field_start_date_value2']['expose']['label'] = 'End date';
@@ -1310,66 +1591,18 @@ function osha_events_views_default_views() {
     13 => 0,
   );
   $handler->display->display_options['filters']['field_start_date_value2']['form_type'] = 'date_popup';
-  /* Filter criterion: Content: Agency Role (field_agency_role) */
-  $handler->display->display_options['filters']['field_agency_role_value']['id'] = 'field_agency_role_value';
-  $handler->display->display_options['filters']['field_agency_role_value']['table'] = 'field_data_field_agency_role';
-  $handler->display->display_options['filters']['field_agency_role_value']['field'] = 'field_agency_role_value';
-  $handler->display->display_options['filters']['field_agency_role_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator_id'] = 'field_agency_role_value_op';
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['label'] = 'Agency role';
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator'] = 'field_agency_role_value_op';
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['identifier'] = 'field_agency_role_value';
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_agency_role_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-  );
-  /* Filter criterion: Content: Unit Ref (field_unit_ref) */
-  $handler->display->display_options['filters']['field_unit_ref_value']['id'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['table'] = 'field_data_field_unit_ref';
-  $handler->display->display_options['filters']['field_unit_ref_value']['field'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator_id'] = 'field_unit_ref_value_op';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['label'] = 'Unit Ref (field_unit_ref)';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['operator'] = 'field_unit_ref_value_op';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['identifier'] = 'field_unit_ref_value';
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_unit_ref_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-  );
-  /* Filter criterion: Content: Event in AMP (field_event_in_amp) */
-  $handler->display->display_options['filters']['field_event_in_amp_value']['id'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['table'] = 'field_data_field_event_in_amp';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['field'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator_id'] = 'field_event_in_amp_value_op';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['label'] = 'Event in AMP';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['operator'] = 'field_event_in_amp_value_op';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['identifier'] = 'field_event_in_amp_value';
-  $handler->display->display_options['filters']['field_event_in_amp_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Ares/Adonis (field_adonis) */
+  $handler->display->display_options['filters']['field_adonis_value']['id'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['table'] = 'field_data_field_adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['field'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['operator'] = 'starts';
+  $handler->display->display_options['filters']['field_adonis_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_adonis_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator_id'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Adonis';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator'] = 'field_adonis_value_op';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['identifier'] = 'field_adonis_value';
+  $handler->display->display_options['filters']['field_adonis_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -1388,6 +1621,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_activity_tid']['id'] = 'field_activity_tid';
   $handler->display->display_options['filters']['field_activity_tid']['table'] = 'field_data_field_activity';
   $handler->display->display_options['filters']['field_activity_tid']['field'] = 'field_activity_tid';
+  $handler->display->display_options['filters']['field_activity_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_activity_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_activity_tid']['expose']['operator_id'] = 'field_activity_tid_op';
   $handler->display->display_options['filters']['field_activity_tid']['expose']['label'] = 'Activity';
@@ -1411,11 +1645,154 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_activity_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_activity_tid']['vocabulary'] = 'activity';
   $handler->display->display_options['filters']['field_activity_tid']['hierarchy'] = 1;
+  /* Filter criterion: Content: Agency Role (field_agency_role) */
+  $handler->display->display_options['filters']['field_agency_role_value']['id'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['table'] = 'field_data_field_agency_role';
+  $handler->display->display_options['filters']['field_agency_role_value']['field'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_agency_role_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator_id'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['label'] = 'Agency role';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['operator'] = 'field_agency_role_value_op';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['identifier'] = 'field_agency_role_value';
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_agency_role_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+  );
+  /* Filter criterion: Content: Agenda (field_agenda) */
+  $handler->display->display_options['filters']['field_agenda_value']['id'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['table'] = 'field_data_field_agenda';
+  $handler->display->display_options['filters']['field_agenda_value']['field'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_agenda_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['operator_id'] = 'field_agenda_value_op';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['label'] = 'Agenda';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['operator'] = 'field_agenda_value_op';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['identifier'] = 'field_agenda_value';
+  $handler->display->display_options['filters']['field_agenda_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Publications/exhibition support (field_publications_exhibition_su) */
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['id'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['table'] = 'field_data_field_publications_exhibition_su';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['field'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['operator_id'] = 'field_publications_exhibition_su_value_op';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['label'] = 'Publications/exhibition support';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['operator'] = 'field_publications_exhibition_su_value_op';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['identifier'] = 'field_publications_exhibition_su_value';
+  $handler->display->display_options['filters']['field_publications_exhibition_su_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Media/promotion (field_media_promotion) */
+  $handler->display->display_options['filters']['field_media_promotion_value']['id'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['table'] = 'field_data_field_media_promotion';
+  $handler->display->display_options['filters']['field_media_promotion_value']['field'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_media_promotion_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['operator_id'] = 'field_media_promotion_value_op';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['label'] = 'Media/promotion';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['operator'] = 'field_media_promotion_value_op';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['identifier'] = 'field_media_promotion_value';
+  $handler->display->display_options['filters']['field_media_promotion_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Key Performance Indicator (field_key_performance) */
+  $handler->display->display_options['filters']['field_key_performance_value']['id'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['table'] = 'field_data_field_key_performance';
+  $handler->display->display_options['filters']['field_key_performance_value']['field'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_key_performance_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['operator_id'] = 'field_key_performance_value_op';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['label'] = 'Key Performance Indicator';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['operator'] = 'field_key_performance_value_op';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['identifier'] = 'field_key_performance_value';
+  $handler->display->display_options['filters']['field_key_performance_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
   /* Filter criterion: Content: Agency Rep confirmed (field_agency_rep_confirmed) */
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['id'] = 'field_agency_rep_confirmed_value';
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['table'] = 'field_data_field_agency_rep_confirmed';
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['field'] = 'field_agency_rep_confirmed_value';
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['group'] = 1;
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['operator_id'] = 'field_agency_rep_confirmed_value_op';
   $handler->display->display_options['filters']['field_agency_rep_confirmed_value']['expose']['label'] = 'Agency rep confirmed';
@@ -1436,17 +1813,17 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
-  /* Filter criterion: Content: City (field_city) */
-  $handler->display->display_options['filters']['field_city_value']['id'] = 'field_city_value';
-  $handler->display->display_options['filters']['field_city_value']['table'] = 'field_data_field_city';
-  $handler->display->display_options['filters']['field_city_value']['field'] = 'field_city_value';
-  $handler->display->display_options['filters']['field_city_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_city_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_city_value']['expose']['operator_id'] = 'field_city_value_op';
-  $handler->display->display_options['filters']['field_city_value']['expose']['label'] = 'City';
-  $handler->display->display_options['filters']['field_city_value']['expose']['operator'] = 'field_city_value_op';
-  $handler->display->display_options['filters']['field_city_value']['expose']['identifier'] = 'field_city_value';
-  $handler->display->display_options['filters']['field_city_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Type of event (field_type_event) */
+  $handler->display->display_options['filters']['field_type_event_value']['id'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['table'] = 'field_data_field_type_event';
+  $handler->display->display_options['filters']['field_type_event_value']['field'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_type_event_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['operator_id'] = 'field_type_event_value_op';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['label'] = 'Type of event';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['operator'] = 'field_type_event_value_op';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['identifier'] = 'field_type_event_value';
+  $handler->display->display_options['filters']['field_type_event_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,
@@ -1460,55 +1837,10 @@ function osha_events_views_default_views() {
     11 => 0,
     12 => 0,
     13 => 0,
-  );
-  /* Filter criterion: Content: Country (field_country_code) */
-  $handler->display->display_options['filters']['field_country_code_value']['id'] = 'field_country_code_value';
-  $handler->display->display_options['filters']['field_country_code_value']['table'] = 'field_data_field_country_code';
-  $handler->display->display_options['filters']['field_country_code_value']['field'] = 'field_country_code_value';
-  $handler->display->display_options['filters']['field_country_code_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator_id'] = 'field_country_code_value_op';
-  $handler->display->display_options['filters']['field_country_code_value']['expose']['label'] = 'Country';
-  $handler->display->display_options['filters']['field_country_code_value']['expose']['operator'] = 'field_country_code_value_op';
-  $handler->display->display_options['filters']['field_country_code_value']['expose']['identifier'] = 'field_country_code_value';
-  $handler->display->display_options['filters']['field_country_code_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
-  );
-  /* Filter criterion: Content: Adonis (field_adonis) */
-  $handler->display->display_options['filters']['field_adonis_value']['id'] = 'field_adonis_value';
-  $handler->display->display_options['filters']['field_adonis_value']['table'] = 'field_data_field_adonis';
-  $handler->display->display_options['filters']['field_adonis_value']['field'] = 'field_adonis_value';
-  $handler->display->display_options['filters']['field_adonis_value']['operator'] = 'starts';
-  $handler->display->display_options['filters']['field_adonis_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator_id'] = 'field_adonis_value_op';
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['label'] = 'Adonis';
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['operator'] = 'field_adonis_value_op';
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['identifier'] = 'field_adonis_value';
-  $handler->display->display_options['filters']['field_adonis_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-    8 => 0,
-    9 => 0,
-    10 => 0,
-    11 => 0,
-    12 => 0,
-    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
   );
   /* Filter criterion: Content: Migrate Source (field_migration_source) */
   $handler->display->display_options['filters']['field_migration_source_value']['id'] = 'field_migration_source_value';
@@ -1520,6 +1852,7 @@ function osha_events_views_default_views() {
     'oira' => 'oira',
     'napo' => 'napo',
   );
+  $handler->display->display_options['filters']['field_migration_source_value']['group'] = 1;
   $handler->display->display_options['filters']['field_migration_source_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_migration_source_value']['expose']['operator_id'] = 'field_migration_source_value_op';
   $handler->display->display_options['filters']['field_migration_source_value']['expose']['label'] = 'Source not in';
@@ -1563,6 +1896,66 @@ function osha_events_views_default_views() {
       ),
     ),
   );
+  /* Filter criterion: Content: For the web / Public (field_for_the_web) */
+  $handler->display->display_options['filters']['field_for_the_web_value']['id'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['table'] = 'field_data_field_for_the_web';
+  $handler->display->display_options['filters']['field_for_the_web_value']['field'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_for_the_web_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['operator_id'] = 'field_for_the_web_value_op';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['label'] = 'For the web / Public';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['operator'] = 'field_for_the_web_value_op';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['identifier'] = 'field_for_the_web_value';
+  $handler->display->display_options['filters']['field_for_the_web_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Field: Tags (field_tags) */
+  $handler->display->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator_id'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['identifier'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+    8 => 0,
+    9 => 0,
+    10 => 0,
+    11 => 0,
+    12 => 0,
+    13 => 0,
+    16 => 0,
+    14 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['field_tags_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
   $handler->display->display_options['path'] = 'admin/content/events-export';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
@@ -1591,7 +1984,7 @@ function osha_events_views_default_views() {
     t('City'),
     t('Starting date'),
     t('Website of event'),
-    t('Adonis'),
+    t('Ares/Adonis'),
     t('Unit Ref'),
     t('Agency Role'),
     t('Agency Initial Contact'),
@@ -1614,28 +2007,34 @@ function osha_events_views_default_views() {
     t('<span class="result_summary">Displaying @start - @end of @total</span>'),
     t('Color'),
     t('[field_color]'),
-    t('Title'),
-    t('Organiser'),
-    t('End date'),
     t('Activity'),
-    t('Category'),
-    t('Operations'),
+    t('Type of event'),
+    t('Organiser'),
+    t('Title'),
+    t('Country'),
+    t('Start date'),
+    t('End date'),
+    t('Agenda'),
+    t('Agency role'),
+    t('Agency rep confirmed'),
+    t('Publications/exhibition support'),
+    t('Media/promotion'),
+    t('Comments'),
+    t('Key Performance Indicator'),
+    t('Number of participants'),
+    t('Created by'),
+    t('Action'),
     t('<ul class="links inline">
 <li>[edit_node]</li>
 <li>[delete_node]</li>
 </ul>'),
-    t('Name'),
-    t('Country'),
-    t('Start date'),
-    t('Agency role'),
-    t('Agency rep confirmed'),
     t('Not from'),
     t('Source'),
     t('For the web'),
+    t('Tags'),
     t('Data export'),
-    t('Username'),
     t('Color (field_color)'),
-    t('Unit Ref (field_unit_ref)'),
+    t('Adonis'),
     t('Source not in'),
   );
   $export['admin_events'] = $view;

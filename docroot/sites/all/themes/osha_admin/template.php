@@ -16,9 +16,9 @@ function osha_admin_preprocess_file_icon(&$variables) {
 function osha_admin_preprocess_views_view(&$vars) {
   $view = &$vars['view'];
   // Make sure it's the correct view.
-  if ($view->name == 'events') {
+  if ($view->name == 'admin_events') {
     // Add needed javascript.
-    drupal_add_js(drupal_get_path('theme', 'osha_admin') . '/../hwc_frontend/js/color_events_backend.js');
+    drupal_add_js(drupal_get_path('theme', 'osha_admin') . '/js/color_events_backend.js');
   }
 }
 
