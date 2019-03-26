@@ -667,7 +667,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the appropriate EU-OSHA activity.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -855,7 +855,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add here any information, which could be useful for decision-making purposes.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -914,7 +914,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_agency_contact_reply',
-    'label' => 'Agency contact / Reply / Comments',
+    'label' => 'Comments',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -1035,7 +1035,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add here the initials of the staff member attending the event.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -1125,7 +1125,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the role that the Agency is playing in this event.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -2185,91 +2185,6 @@ Grey - Only web or not attendance',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-events-field_fast'.
-  $field_instances['node-events-field_fast'] = array(
-    'bundle' => 'events',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Please indicate if this event is supported by the Agency via the FAST scheme or not.',
-    'display' => array(
-      'body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(
-          'field_formatter_class' => '',
-        ),
-        'type' => 'list_default',
-        'weight' => 63,
-      ),
-      'highlights_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'hwc_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'newsletter_item' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'osha_resources' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'priority_areas' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'title_body' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_fast',
-    'label' => 'FAST',
-    'required' => 0,
-    'settings' => array(
-      'entity_translation_sync' => FALSE,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
-      'type' => 'options_select',
-      'weight' => 28,
-    ),
-    'workbench_access_field' => 0,
-  );
-
   // Exported field_instance: 'node-events-field_first_publication_date'.
   $field_instances['node-events-field_first_publication_date'] = array(
     'bundle' => 'events',
@@ -2749,7 +2664,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'If you want some special promotion for this event, please contact the editorial team at urrutia@osha.europa.eu at least 4 weeks before the event is taking place.',
+    'description' => 'If you want some special promotion for this event, please contact the editorial team at <a href="mailto:urrutia@osha.europa.eu">urrutia@osha.europa.eu</a> at least 4 weeks before the event is taking place.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -3345,7 +3260,7 @@ Grey - Only web or not attendance',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_organizer',
-    'label' => 'Organiser',
+    'label' => 'Organisation',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -5574,7 +5489,6 @@ Grey - Only web or not attendance',
   t('Agency Initial Contact');
   t('Agency Rep confirmed');
   t('Agency Role');
-  t('Agency contact / Reply / Comments');
   t('Agenda');
   t('Approved body');
   t('Approved subject');
@@ -5582,6 +5496,7 @@ Grey - Only web or not attendance',
   t('Category / Tag');
   t('City');
   t('Color');
+  t('Comments');
   t('Conference Room');
   t('Contact Email');
   t('Contact Name');
@@ -5590,10 +5505,9 @@ Grey - Only web or not attendance',
   t('Description');
   t('Disable notifications');
   t('Event in AMP');
-  t('FAST');
   t('First publication date');
   t('For the web / Public');
-  t('If you want some special promotion for this event, please contact the editorial team at urrutia@osha.europa.eu at least 4 weeks before the event is taking place.');
+  t('If you want some special promotion for this event, please contact the editorial team at <a href="mailto:urrutia@osha.europa.eu">urrutia@osha.europa.eu</a> at least 4 weeks before the event is taking place.');
   t('Image');
   t('Key Performance Indicator');
   t('Location');
@@ -5605,15 +5519,16 @@ Grey - Only web or not attendance',
   t('Name');
   t('Name of the speaker');
   t('Number of attendees');
-  t('Organiser');
+  t('Organisation');
   t('Partner ID');
   t('Photo gallery');
   t('Place where the event takes place.');
+  t('Please add here any information, which could be useful for decision-making purposes.');
+  t('Please add here the initials of the staff member attending the event.');
   t('Please add here the official title of the event. Please do not use ALL CAPS, but sentence case (i.e. Towards Better Work and Well-being)');
   t('Please choose the appropriate type of event.');
   t('Please download the publications request form and send it to the publications team at least 4 weeks before the event is taking place.');
   t('Please indicate here the organisation responsible for the organisation of the event. If an acronym exists for the organisation, please include “acronym (UPPERCASE) ‘-‘complete name (sentence case)”: (i.e.. HSE – Health and Safety Executive)');
-  t('Please indicate if this event is supported by the Agency via the FAST scheme or not.');
   t('Please indicate, if event’s item should be published on the website or not.');
   t('Please indicate, if the agenda of the event is available.');
   t('Please indicate, if this event is to be counted in the framework of the KPI monitoring framework.');
@@ -5628,6 +5543,7 @@ Grey - Only web or not attendance',
   t('Please see below the default supervisor notification. You can sent it as it or modify it
 ');
   t('Please select the appropriate EU-OSHA unit.');
+  t('Please select the role that the Agency is playing in this event.');
   t('Presentation');
   t('Publications/exhibition support');
   t('Publish body');
@@ -5643,6 +5559,7 @@ Grey - Only web or not attendance');
   t('Reviewer subject');
   t('Satisfaction rate');
   t('Schedule');
+  t('Select the appropriate EU-OSHA activity.');
   t('Select the date from the calendar.');
   t('Show EU flag');
   t('Show in NCW');
