@@ -418,10 +418,17 @@ function hwc_good_practice_exchange_block_view($delta = '') {
     $prefix = '<div class="col-xs-12 col-sm-4">';
     $suffix = '</div>';
     $items = [];
-    $items[] = l(
-      '<span class="link-img"></span><span class="title">' . t('Become a campaign partner') . '</span>',
-      'partner/register',
-      ['html' => TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);
+    if (!hwc_partner_registration_allowed()) {
+      $items[] = '<a href="#" onclick="return false;" class="registration-over become-campaign-partner"><span class="link-img"></span>' .
+        '<span class="title">' . t('Become a campaign partner') . '</span>' . '</a>' .
+        '<div class="alert text-center">' . t(variable_get('hwc_partner_registration_deadline_message')) . '</div>';
+    }
+    else {
+      $items[] = l(
+          '<span class="link-img"></span><span class="title">' . t('Become a campaign partner') . '</span>',
+          'partner/register',
+          ['html' => TRUE, 'attributes' => ['class' => 'become-campaign-partner']]);
+    }
     $items[] = l(
       '<span class="link-img"></span><span class="title">' . t('Get involved in Good Practice exchange initiative') . '</span>',
       '/good-practice-exchange-initiative',
