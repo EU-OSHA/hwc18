@@ -132,13 +132,5 @@ function campaigns_newsletter_subscribe_captcha_form_submit($form, &$form_state)
     drupal_set_message('You have sent the form without captcha.', 'error');
     return;
   }
-
-  osha_newsletter_send_email(
-    'campaigns_subscribe_email',
-    $to,
-    $email,
-    $form_state,
-    t('Your subscription has been submitted succesfully.')
-  );
-
+  osha_newsletter_crm_subscribe($email);
 }

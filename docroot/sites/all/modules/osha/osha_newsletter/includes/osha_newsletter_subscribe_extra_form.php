@@ -93,24 +93,5 @@ function osha_newsletter_subscribe_extra_form_validate($form, &$form_state) {
  */
 function osha_newsletter_subscribe_extra_form_submit($form, &$form_state) {
   $email = $form_state['values']['email'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
-
-  osha_newsletter_send_email(
-    'campaigns_subscribe_email',
-    $to,
-    $email,
-    $form_state,
-    t('Your subscription has been submitted succesfully.')
-  );
-  /* Remove comment for subscription on OSHA Newsletter - HCW-1005
-  if (isset($form_state['values']['subscribe-to-OSHMail-newsletter'])) {
-    osha_newsletter_send_email(
-      'subscribe_email',
-      $to,
-      $email,
-      $form_state,
-      t('Your subscription has been submitted succesfully.')
-    );
-  }
-  */
+  osha_newsletter_crm_subscribe($email);
 }
