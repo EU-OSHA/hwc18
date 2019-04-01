@@ -120,7 +120,6 @@ function campaigns_newsletter_subscribe_captcha_form_validate($form, &$form_stat
  */
 function campaigns_newsletter_subscribe_captcha_form_submit($form, &$form_state) {
   $email = $form_state['values']['email'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
 
   // Need to redirect due to Ajax handling.
   $referer = empty($_SERVER['HTTP_REFERER']) ? '/' : $_SERVER['HTTP_REFERER'];
