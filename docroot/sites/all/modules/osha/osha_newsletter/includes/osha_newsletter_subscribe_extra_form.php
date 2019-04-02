@@ -49,14 +49,6 @@ function osha_newsletter_subscribe_extra_form() {
   $form['unsubscribe_details'] = array(
     '#type' => 'container',
   );
-  $form['unsubscribe_details']['unsubscribe_text'] = array(
-    '#markup' => '<span>' . t('Not interested any more?') . '</span>',
-  );
-  $form['unsubscribe_details']['unsubscribe'] = array(
-    '#type' => 'submit',
-    '#value' => t('Unsubscribe'),
-    '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
-  );
 
   $form['details_link'] = array(
     '#markup' => '<a class="privacy-policy-oshmail" title="Subscribe to newsletter" href=' . url($link_url) . '>' . $link_label . '</a><br/>',
