@@ -34,13 +34,12 @@ function ncw_migration_cronapi() {
 }
 
 /**
- * Implements hook_cron().
  */
 function ncw_migration_synchronisation_notification_cron() {
   $language = language_default();
   $stuck = [];
   $outdated = [];
-  $days_limit = 1;
+  $max_hours = intval(variable_get('ncw_migration_synchronisation_notification_hours', 12));
   foreach (migrate_migrations() as $machine_name => $meta) {
     $migration = MigrationBase::getInstance($machine_name);
     if ($group = $migration->getGroup()) {
@@ -57,8 +56,9 @@ function ncw_migration_synchronisation_notification_cron() {
       ->fetchField();
 
     if (MigrationBase::STATUS_IDLE == $migration->getStatus()) {
-      $days = (time() - ($last_imported / 1000) / (3600 * 12));
-      if ($last_imported && $days > $days_limit) {
+      $hours = (time() - ($last_imported / 1000)) / 3600;
+      if ($last_imported && $hours > $max_hours) {
+        drupal_set_message($machine_name . ' date = ' . date('Y-m-d H:i:s', ($last_imported / 1000)) .', hours = ' . $hours);
         $outdated[] = $machine_name;
       }
     }
@@ -67,7 +67,7 @@ function ncw_migration_synchronisation_notification_cron() {
     }
   }
   watchdog('synchronisation_notification',
-    '[ncw_migration_synchronisation_notification_cron] Stat: outdated = !outdated, stuck = !stuck',
+    '[ncw_migration] Stat: outdated = !outdated, stuck = !stuck',
     array('!outdated' => count($outdated), '!stuck' => count($stuck)), WATCHDOG_INFO);
   $mails = [];
   $default_value = variable_get('ncw_migration_synchronisation_mails', '');
@@ -76,19 +76,29 @@ function ncw_migration_synchronisation_notification_cron() {
   }
   if (empty($mails)) {
     watchdog('synchronisation_notification',
-      '[ncw_migration_synchronisation_notification_cron] There are no users to notify about synchronisation problems.', array(), WATCHDOG_ERROR);
+      '[ncw_migration] There are no users to notify about synchronisation problems.', array(), WATCHDOG_ERROR);
     drupal_set_message('There are no users to notify about synchronisation problems.', 'warning');
     return;
   }
   if ($outdated || $stuck) {
+    $message = array('result' => TRUE);
     foreach ($mails as $mail) {
       $params['outdated'] = $outdated;
       $params['stuck'] = $stuck;
-      drupal_mail('ncw_migration', 'ncw_migration_synchronisation', $mail, $language, $params);
-
+      $message = drupal_mail('ncw_migration', 'ncw_migration_synchronisation', $mail, $language, $params);
+      if ($message['result'] === FALSE) {
+        break;
+      }
+    }
+    if ($message['result'] === FALSE) {
       watchdog('synchronisation_notification',
-        '[ncw_migration_synchronisation_notification_cron] notification sent to !mail',
-        array('!mail' => $mail), WATCHDOG_INFO);
+        '[ncw_migration] Error sending notification',
+        array(), WATCHDOG_ERROR);
+    }
+    else {
+      watchdog('synchronisation_notification',
+        '[ncw_migration] Notification sent',
+        array(), WATCHDOG_INFO);
     }
   }
 }
@@ -158,6 +168,11 @@ function ncw_migration_run_single($machine_name) {
   $migration->prepareUpdate();
   $result = $migration->processImport();
   if ($result == MigrationBase::RESULT_COMPLETED) {
+    watchdog(
+      'ncw_migration',
+      '[CRON](machine:!machine_name) finished successfully ',
+      array('!machine_name' => $machine_name)
+    );
     return TRUE;
   }
   else {

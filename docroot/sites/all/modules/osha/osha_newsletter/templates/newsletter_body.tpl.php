@@ -202,16 +202,17 @@ td{
                           <?php print l(t('More events'), url('oshevents', array('absolute' => TRUE)), array(
                             'attributes' => array('style' => 'color: #003399; text-decoration: none;'),
                             'query' => $url_query,
-                            'external' => TRUE)
+                            'external' => TRUE,
+                            )
                           );
-                          $directory = drupal_get_path('module','osha_newsletter');
+                          $directory = drupal_get_path('module', 'osha_newsletter');
                           print l(theme('image', array(
                             'path' => $directory . '/images/pink-arrow.png',
                             'width' => 19,
                             'height' => 11,
                             'alt' => 'link arrow',
-                            'attributes' => array('style' => 'border:0px;width:19px;height:11px;')
-                          )), $base_url.'/'.$language->language, array(
+                            'attributes' => array('style' => 'border:0px;width:19px;height:11px;'),
+                          )), $base_url . '/' . $language->language, array(
                             'html' => TRUE,
                             'external' => TRUE,
                           ));

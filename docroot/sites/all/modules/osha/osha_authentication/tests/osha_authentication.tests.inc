@@ -347,7 +347,7 @@ class OSHALDAPTests {
     $this->login($username);
 
     // User has gained Review Manager role in Drupal
-    if (count($user->roles) != 2 || !in_array('Review Manager', $user->roles) || !in_array('authenticated user', $user->roles)) {
+    if (count($user->roles) != 2 || !in_array(HWC_ROLE_WEBSITE_MANAGERS, $user->roles) || !in_array('authenticated user', $user->roles)) {
       throw new Exception('User has wrong roles:' . print_r(array_values($user->roles), TRUE));
     }
     // Check Review manager section assignment
@@ -362,7 +362,7 @@ class OSHALDAPTests {
     $this->ldapCreateUser($username);
 
     $this->login($username);
-    if (count($user->roles) != 1 || in_array('Review Manager', $user->roles)) {
+    if (count($user->roles) != 1 || in_array(HWC_ROLE_WEBSITE_MANAGERS, $user->roles)) {
       throw new Exception('User is still Review Manager:' . print_r(array_values($user->roles), TRUE));
     }
   }

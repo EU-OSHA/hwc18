@@ -376,6 +376,7 @@ function osha_update_7029() {
 
 /**
  * MDR-2419 Include a new filter in the back end, in 'Content' section.
+ * MDR-2027 HWC: Changes in the workflow of news and events.
  */
 function osha_update_7030() {
   features_revert(array('osha' => array('views_view')));

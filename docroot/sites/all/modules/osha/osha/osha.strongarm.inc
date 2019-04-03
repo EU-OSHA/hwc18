@@ -872,6 +872,9 @@ el.remove();
       'highlights_item_alternative' => array(
         'custom_settings' => TRUE,
       ),
+      'hwc_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

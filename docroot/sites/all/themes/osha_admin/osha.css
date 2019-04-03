@@ -179,3 +179,62 @@ ul.primary {
 #edit-body-en-0-format > div.description {
   padding-left: 1em;
 }
+
+#block-system-main .view-admin-events .red {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: red;
+  margin-top: 3px;
+}
+
+#block-system-main .view-admin-events .grey {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: grey;
+  margin-top: 3px;
+}
+
+#block-system-main .view-admin-events .black {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: black;
+  margin-top: 3px;
+}
+
+#block-system-main .view-admin-events .blue {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: blue;
+  margin-top: 3px;
+}
+
+#block-system-main .view-admin-events .yellow {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: yellow;
+  margin-top: 3px;
+}
+
+#block-system-main .view-admin-events .green {
+  height: 15px;
+  width: 15px;
+  float: left;
+  margin-right: 1em;
+  background: green;
+  margin-top: 3px;
+}
+
+#block-system-main .views-field-field-color {
+  visibility: hidden;
+  display: none;
+}

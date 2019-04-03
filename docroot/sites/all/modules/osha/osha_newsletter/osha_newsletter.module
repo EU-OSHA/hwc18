@@ -61,7 +61,7 @@ function osha_newsletter_post_features_enable_feature($component) {
     user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array(
       'view newsletter_content_collection entity collections',
     ));
-    if ($role = user_role_load_by_name('administrator')) {
+    if ($role = user_role_load_by_name(HWC_ROLE_ADMIN)) {
       $permissions = array(
         'create newsletter_content_collection entity collections',
         'edit newsletter_content_collection entity collections',
@@ -1305,7 +1305,7 @@ function osha_newsletter_preprocess_node(&$vars) {
   if ($vars['view_mode'] == 'newsletter_item') {
     if (array_key_exists('links', $vars)) {
       unset($vars['links']);
-  }
+    }
 
     $vars['theme_hook_suggestions'][] = 'node__newsletter_item';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__newsletter_item';
@@ -1327,7 +1327,10 @@ function osha_newsletter_osha_tmgmt_i18n_string_list() {
 function osha_newsletter_vbo_action_access_alter(&$has_access, $operation) {
   global $user;
   // Allow Review Manager, supervisor(mostra) and administrators to add items to newsletter.
-  if ((in_array('Review Manager', $user->roles) || in_array('administrator', $user->roles) || in_array('supervisor', $user->roles))
+  if ((
+    in_array(HWC_ROLE_WEBSITE_MANAGERS, $user->roles) ||
+    in_array(HWC_ROLE_ADMIN, $user->roles) ||
+    in_array(HWC_ROLE_EXTERNAL_PROVIDER_SUPERVISOR, $user->roles))
     && $operation->operationId == 'action::osha_newsletter_add_to_newsletter_action') {
     $has_access = TRUE;
   }
