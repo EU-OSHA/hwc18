@@ -146,7 +146,7 @@ function osha_events_field_default_field_bases() {
       'allowed_values' => array(
         'Yes' => 'Yes',
         'No' => 'No',
-        'Don\'t know' => 'Don\'t know',
+        'Don’t know' => 'Don’t know yet',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
@@ -697,7 +697,7 @@ function osha_events_field_default_field_bases() {
       'allowed_values' => array(
         'Yes' => 'Yes',
         'No' => 'No',
-        'Don’t know' => 'Don’t know',
+        'Don’t know' => 'Don’t know yet',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
@@ -785,7 +785,7 @@ function osha_events_field_default_field_bases() {
       'allowed_values' => array(
         'Yes' => 'Yes',
         'No' => 'No',
-        'Don\'t know' => 'Don\'t know',
+        'Don’t know' => 'Don’t know yet',
       ),
       'allowed_values_function' => '',
       'entity_translation_sync' => FALSE,
