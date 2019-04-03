@@ -250,7 +250,9 @@ function osha_newsletter_update_7011() {
  */
 function osha_newsletter_update_7012() {
   $source = entity_collection_load('hwc_2018_19_newsletter_5_january_2019');
-  $source->field_newsletter_sent[LANGUAGE_NONE][0]['value'] = 1;
-  $source->requiredcontexts = array();
-  entity_save('entity_collection', $source);
+  if ($source) {
+    $source->field_newsletter_sent[LANGUAGE_NONE][0]['value'] = 1;
+    $source->requiredcontexts = array();
+    entity_save('entity_collection', $source);
+  }
 }
