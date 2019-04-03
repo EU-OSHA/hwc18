@@ -391,11 +391,11 @@ function osha_newsletter_block_save($delta = '', $edit = array()) {
  * @return array
  */
 function osha_newsletter_block_view($delta = '') {
-  switch($delta) {
+  switch ($delta) {
     case 'osha_newsletter_subscribe':
       if (user_access('access content')) {
         $block['subject'] = t('OSHMail newsletter');
-        // subscribe form
+        // Subscribe form.
         $markup = '<div>';
         $markup .= t(variable_get('subscribe_block_intro_text', 'Once a month, OSHmail keeps you updated on occupational safety and health in general.'));
         $markup .= '<p style="color : #dc2f82;">';
@@ -474,7 +474,7 @@ function osha_newsletter_block_view($delta = '') {
 
 
 /**
- * content of the latest newsletters custom block
+ * Content of the latest newsletters custom block.
  */
 function _osha_newsletter_latest_block_content() {
 
@@ -508,7 +508,7 @@ function _osha_newsletter_latest_block_content() {
       $items[$item->name]['title'] = empty($sent_date)? $item->title : $item->title . ' - ' . format_date(strtotime($publication_date), 'custom', 'F Y');
       $items[$item->name]['url'] = 'entity-collection/' . $item->eid;
 
-      // Retrive elements from collection if needed.
+      // Retrieve elements from collection if needed.
       if ($newsletter_items_no > 0) {
         $elements = entity_collection_load_content($item->bundle, $item)->children;
         if (sizeof($elements) > 0) {
@@ -539,14 +539,13 @@ function _osha_newsletter_latest_block_content() {
 function _get_listserv_subscription_email() {
   global $user;
 
-  $listserv = explode("@", variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu'));
+  $listserv = explode("@", variable_get('osha_newsletter_listserv', 'crm-campaign@osha.europa.eu'));
   $listserv_domain = '';
 
   if (isset($listserv[1])) {
     $listserv_domain = $listserv[1];
   }
-
-  $list_name = variable_get('campaigns_newsletter_list_name', 'CAMPAIGN-NEWS-TEST');
+  $list_name = variable_get('campaigns_newsletter_list_name', 'crm-campaign');
 
   if ($listserv_domain != '') {
     return $list_name . '@' . $listserv_domain;
@@ -699,6 +698,7 @@ function osha_newsletter_form_alter(&$form, &$form_state, $form_id) {
 
     case  'osha_newsletter_subscribe_extra_form':
       break;
+
     case  'osha_newsletter_block_subscribe_form':
       $form['#attributes']['class'][] = 'container';
       break;
@@ -729,7 +729,7 @@ function osha_newsletter_entity_collection_form_validate($form, &$form_state) {
   if (($intro_length = strlen($form_state['values']['field_newsletter_intro_text'][LANGUAGE_NONE][0]['value'])) > 240) {
     form_set_error(
       'field_newsletter_intro_text',
-      t('Introduction text is too long. Limit is 240 characters, but you entered !limit characters!', array('!limit' =>  $intro_length))
+      t('Introduction text is too long. Limit is 240 characters, but you entered !limit characters!', array('!limit' => $intro_length))
     );
   }
 }
@@ -809,7 +809,7 @@ function osha_newsletter_fix_entity_collection_add_form(&$form, &$form_state) {
     ),
   );
   $form_state['values']['settings']['allowed_bundles'] = $allowed_bundles;
-  //Set value and hide Style.
+  // Set value and hide Style.
   $form['style']['#default_value'] = $default_style;
   $form['style']['#value'] = $default_style;
 
@@ -859,8 +859,6 @@ function osha_newsletter_fix_entity_collection_add_form(&$form, &$form_state) {
   // Hide fields set above to their default values.
   $form['style']['#access'] = FALSE;
   $form['row']['#access'] = FALSE;
-  // $form['settings']['row_settings']['#access'] = FALSE;
-  // $form['settings']['allowed_bundles']['#access'] = FALSE;
   $form['settings']['style_settings']['#access'] = FALSE;
   $form['field_newsletter_sent']['#access'] = FALSE;
   $form['field_created']['#access'] = FALSE;
@@ -883,7 +881,6 @@ function osha_newsletter_entity_insert($entity_collection, $type) {
     // - Blog
     // - News
     // - Events.
-
     $weights = array();
     // Max number of nodes pre-inserted for each section (term).
     $max_nodes = variable_get('osha_newsletter_after_max_nodes', 19);
@@ -993,6 +990,27 @@ function _init_node_view_mode($content_type) {
   }
 }
 
+function osha_newsletter_file_get_contents($url) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+  $result = curl_exec($ch);
+  curl_close($ch);
+  return $result;
+}
+
+function osha_newsletter_crm_subscribe($email) {
+  $type = variable_get('crm_subscribe_type', 'CAMPAIGN');
+  $port = variable_get('crm_subscribe_port', '8081'); // 8082
+  $url = 'https://jira.osha.europa.eu:' . $port . '/OSHAService/ServiceApp.svc/subscriber?email=' . $email . '&type=' . $type;
+  $result = osha_newsletter_file_get_contents($url);
+  if (strpos($result, 'Succeed')) {
+    watchdog('osha_newsletter', 'Successfully subscribed %email.', array('%email' => $email));
+  }
+}
+
 /**
  * Implements hook_mail().
  *
@@ -1034,20 +1052,8 @@ function osha_newsletter_mail($key, &$message, $params) {
       entity_save('entity_collection', $source);
       break;
 
-    case 'subscribe_email':
-      osha_newsletter_build_subscribe_mail($message);
-      break;
-
-    case 'campaigns_subscribe_email':
-      osha_newsletter_build_campaigns_subscribe_mail($message);
-      break;
-
-    case 'unsubscribe_email':
-      osha_newsletter_build_unsubscribe_mail($message);
-      break;
   }
 }
-
 
 /**
  * Send test version of newsletter.
@@ -1065,7 +1071,7 @@ function osha_newsletter_send_test_email(&$form_state) {
 
   $from = variable_get('osha_newsletter_listserv_from', $user->mail);
 
-  osha_newsletter_send_email('test_newsletter', $to, $from ,$form_state,
+  osha_newsletter_send_email('test_newsletter', $to, $from, $form_state,
     'Test newsletter was sent to ' . $to);
 }
 
@@ -1086,7 +1092,7 @@ function osha_newsletter_send_email_to_subscribers(&$form_state) {
 
 /**
  * Send email.
- *  $test_addresses - the email address for test
+ *  $test_addresses - the email address for test.
  */
 function osha_newsletter_send_email($key, $to, $from, $form_values, $message) {
   // All system mails need to specify the module and template key (mirrored from
@@ -1134,13 +1140,13 @@ function osha_newsletter_send_email($key, $to, $from, $form_values, $message) {
  * Implements hook_menu_alter().
  */
 function osha_newsletter_mail_alter(&$message) {
-    if ($message['id'] == 'osha_newsletter_subscribe_email' ||
-      $message['id'] == 'osha_newsletter_unsubscribe_email' ||
-      $message['id'] == 'osha_newsletter_campaigns_subscribe_email') {
-        $sender = $message['headers']['From'];
-        $message['headers']['Sender'] = $sender;
-        $message['headers']['Return-Path'] = $sender;
-    }
+  if ($message['id'] == 'osha_newsletter_subscribe_email' ||
+    $message['id'] == 'osha_newsletter_unsubscribe_email' ||
+    $message['id'] == 'osha_newsletter_campaigns_subscribe_email') {
+    $sender = $message['headers']['From'];
+    $message['headers']['Sender'] = $sender;
+    $message['headers']['Return-Path'] = $sender;
+  }
 }
 
 /**
@@ -1181,51 +1187,6 @@ function osha_newsletter_format_body($text) {
 }
 
 /**
- * Implements hook_mail().
- */
-function osha_newsletter_build_subscribe_mail(&$message) {
-  //Get list name
-  $list = variable_get('osha_newsletter_list_name', 'OSHMail-Test');
-
-  // Get message data from source.
-  $message['subject'] = '';
-  $message['body']['body'] = 'subscribe ' . $list . ' anonymous';
-
-  // Optional params for HTML mails.
-  $message['params']['plain'] = NULL;
-}
-
-/**
- * Implements hook_mail().
- */
-function osha_newsletter_build_campaigns_subscribe_mail(&$message) {
-  //Get list name
-  $list = variable_get('campaigns_newsletter_list_name', 'CAMPAIGN-NEWS-TEST');
-
-  // Get message data from source.
-  $message['subject'] = '';
-  $message['body']['body'] = 'subscribe ' . $list . ' anonymous';
-
-  // Optional params for HTML mails.
-  $message['params']['plain'] = NULL;
-}
-
-/**
- * Implements hook_mail().
- */
-function osha_newsletter_build_unsubscribe_mail(&$message) {
-  //Get list name
-  $list = variable_get('campaigns_newsletter_list_name', 'CAMPAIGN-NEWS-TEST');
-
-  // Get message data from source.
-  $message['subject'] = '';
-  $message['body']['body'] = 'unsubscribe ' . $list;
-
-  // Optional params for HTML mails.
-  $message['params']['plain'] = NULL;
-}
-
-/**
  * Implements hook_theme().
  */
 function osha_newsletter_theme() {
@@ -1258,16 +1219,16 @@ function osha_newsletter_theme() {
   $theme['newsletter_footer'] = array(
     'template' => 'newsletter_footer',
     'variables' => array(
-      'campaign_id' => NULL
+      'campaign_id' => NULL,
     ),
-    'path' => $path . '/templates'
+    'path' => $path . '/templates',
   );
   $theme['subscribe_extra_block'] = array(
     'template' => 'subscribe_extra_block',
     'variables' => array(
-      'subscribe_form' => NULL
+      'subscribe_form' => NULL,
     ),
-    'path' => $path . '/templates'
+    'path' => $path . '/templates',
   );
   $theme['osha_newsletter_image'] = array(
     'template' => 'osha_newsletter_image_block',
@@ -1277,23 +1238,23 @@ function osha_newsletter_theme() {
       'subscribers_no' => NULL,
       'end_text' => NULL,
     ),
-    'path' => $path . '/templates'
+    'path' => $path . '/templates',
   );
   $theme['latest_newsletters_block'] = array(
     'template' => 'latest_newsletters_block',
     'variables' => array(
       'items' => NULL,
       'newsletter_items_no' => NULL,
-      'newsletters_no' => NULL
+      'newsletters_no' => NULL,
     ),
-    'path' => $path . '/templates'
+    'path' => $path . '/templates',
   );
   $theme['newsletter_base_table'] = array(
     'template' => 'newsletter_base_table',
     'variables' => array(
       'content' => NULL,
     ),
-    'path' => $path . '/templates'
+    'path' => $path . '/templates',
   );
 
   return $theme;
@@ -1306,12 +1267,12 @@ function osha_newsletter_theme() {
 function osha_newsletter_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['highlights_item'] = array(
     'label' => t('Newsletter Highlights'),
-    'custom settings' => TRUE
+    'custom settings' => TRUE,
   );
 
   $entity_info['node']['view modes']['newsletter_item'] = array(
     'label' => t('Newsletter Item'),
-    'custom settings' => TRUE
+    'custom settings' => TRUE,
   );
 
   $entity_info['node']['view modes']['highlights_item_alternative'] = array(
@@ -1378,7 +1339,6 @@ function osha_newsletter_vbo_action_access_alter(&$has_access, $operation) {
 function osha_newsletter_get_templates_list() {
   return OSHNewsletter::getTemplatesList();
 }
-
 
 function substrwords($text, $maxchar, $end = '...') {
   if (strlen($text) > $maxchar || $text == '') {
