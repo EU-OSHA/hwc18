@@ -118,7 +118,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_event_in_amp']['table'] = 'field_data_field_event_in_amp';
   $handler->display->display_options['fields']['field_event_in_amp']['field'] = 'field_event_in_amp';
   $handler->display->display_options['fields']['field_event_in_amp']['element_label_colon'] = FALSE;
-  /* Field: Content: Agency contact / Reply / Comments */
+  /* Field: Content: Comments */
   $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
@@ -435,7 +435,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_type_event']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Organiser */
+  /* Field: Content: Organisation */
   $handler->display->display_options['fields']['field_organizer']['id'] = 'field_organizer';
   $handler->display->display_options['fields']['field_organizer']['table'] = 'field_data_field_organizer';
   $handler->display->display_options['fields']['field_organizer']['field'] = 'field_organizer';
@@ -540,7 +540,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_media_promotion']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Agency contact / Reply / Comments */
+  /* Field: Content: Comments */
   $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
@@ -691,7 +691,7 @@ function osha_events_views_default_views() {
     10 => 0,
     11 => 0,
   );
-  /* Filter criterion: Content: Organiser (field_organizer) */
+  /* Filter criterion: Content: Organisation (field_organizer) */
   $handler->display->display_options['filters']['field_organizer_value']['id'] = 'field_organizer_value';
   $handler->display->display_options['filters']['field_organizer_value']['table'] = 'field_data_field_organizer';
   $handler->display->display_options['filters']['field_organizer_value']['field'] = 'field_organizer_value';
@@ -1115,14 +1115,14 @@ function osha_events_views_default_views() {
   $handler->display->display_options['filters']['field_migration_source_value']['group_info']['identifier'] = 'field_migration_source_value';
   $handler->display->display_options['filters']['field_migration_source_value']['group_info']['group_items'] = array(
     1 => array(
-      'title' => 'HWC',
+      'title' => 'HWC event',
       'operator' => 'or',
       'value' => array(
         'hwc' => 'hwc',
       ),
     ),
     2 => array(
-      'title' => 'Osha',
+      'title' => 'Corporate Event',
       'operator' => 'empty',
       'value' => array(
         'hwc' => 'hwc',
@@ -1325,7 +1325,7 @@ function osha_events_views_default_views() {
   $handler->display->display_options['fields']['field_media_promotion']['settings'] = array(
     'field_formatter_class' => '',
   );
-  /* Field: Content: Agency contact / Reply / Comments */
+  /* Field: Content: Comments */
   $handler->display->display_options['fields']['field_agency_contact_reply']['id'] = 'field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['table'] = 'field_data_field_agency_contact_reply';
   $handler->display->display_options['fields']['field_agency_contact_reply']['field'] = 'field_agency_contact_reply';
@@ -1458,7 +1458,7 @@ function osha_events_views_default_views() {
     12 => 0,
     13 => 0,
   );
-  /* Filter criterion: Content: Organiser (field_organizer) */
+  /* Filter criterion: Content: Organisation (field_organizer) */
   $handler->display->display_options['filters']['field_organizer_value']['id'] = 'field_organizer_value';
   $handler->display->display_options['filters']['field_organizer_value']['table'] = 'field_data_field_organizer';
   $handler->display->display_options['filters']['field_organizer_value']['field'] = 'field_organizer_value';
@@ -1994,7 +1994,7 @@ function osha_events_views_default_views() {
     t('Agency Initial Contact'),
     t('Agency Rep confirmed'),
     t('Event in AMP'),
-    t('Agency contact / Reply / Comments'),
+    t('Comments'),
     t('Number of attendees'),
     t('Satisfaction rate'),
     t('Published'),
@@ -2031,7 +2031,6 @@ function osha_events_views_default_views() {
 <li>[edit_node]</li>
 <li>[delete_node]</li>
 </ul>'),
-    t('Organisation'),
     t('Not from'),
     t('Source'),
     t('For the web'),
