@@ -102,12 +102,15 @@ global $language;
     </tr>
     <tr class="footer-unsubscribe">
       <td>
-        <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>',
+        <p><?php $text = t('<a href="@url" style="@style"> > Unsubscribe </a>',
             array(
-              '@style' => 'color: #003399; text-decoration: none;',
+              '@style' => 'color: #003399; text-decoration: none;" target="_blank',
               '@url' => 'https://analytics-eu.clickdimensions.com/oshaeuropaeu-arn3o/pages/wqz3akcceemaabqvrpqfg.html',
             )
-          ); ?>
+          );
+          $text = str_replace('href', 'target="_blank" href', $text);
+          echo $text;
+        ?>
         </p>
       </td>
     </tr>
