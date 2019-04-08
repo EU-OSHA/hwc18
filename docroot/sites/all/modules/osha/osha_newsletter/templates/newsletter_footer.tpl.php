@@ -102,7 +102,12 @@ global $language;
     </tr>
     <tr class="footer-unsubscribe">
       <td>
-        <p><?php print t('<a href="https://analytics-eu.clickdimensions.com/oshaeuropaeu-arn3o/pages/wqz3akcceemaabqvrpqfg.html" style="color: #003399; text-decoration: none;"> > Unsubscribe </a>'); ?>
+        <p><?php print t('<a href="@url" style="@style"> > Unsubscribe </a>',
+            array(
+              '@style' => 'color: #003399; text-decoration: none;',
+              '@url' => 'https://analytics-eu.clickdimensions.com/oshaeuropaeu-arn3o/pages/wqz3akcceemaabqvrpqfg.html',
+            )
+          ); ?>
         </p>
       </td>
     </tr>
