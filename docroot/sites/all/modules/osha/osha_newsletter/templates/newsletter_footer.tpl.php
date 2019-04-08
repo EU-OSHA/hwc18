@@ -100,6 +100,12 @@ global $language;
         <![endif]-->
       </td>
     </tr>
+    <tr class="footer-unsubscribe">
+      <td>
+        <p><?php print t('<a href="https://analytics-eu.clickdimensions.com/oshaeuropaeu-arn3o/pages/wqz3akcceemaabqvrpqfg.html" style="color: #003399; text-decoration: none;"> > Unsubscribe </a>'); ?>
+        </p>
+      </td>
+    </tr>
   </tbody>
 </table>
 <div class="gmailfix" style="white-space:nowrap; font:15px courier; line-height:0;">
