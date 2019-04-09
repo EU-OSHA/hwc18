@@ -39,13 +39,20 @@
     print render($content['field_summary']);
     print render($content['body']);
     print render($content['share_widget']);
-    // Additional resources
+    // Additional resources.
     if (!empty($content['field_recommended_resources']) || !empty($content['field_recommended_articles'])) {
       print '<div class="dot-separator green"></div><div class="icon recommended-resources"></div>' . '<h2>' . t('Recommended resources for you') . '</h2>';
       print render($content['field_recommended_resources']);
-      print render($content['field_recommended_articles']);
+      $recommended = render($content['field_recommended_articles']);
+      if (strpos($recommended, '/node/105')) {
+        $recommended = str_replace('/node/105', 'tools-and-publications/publications', $recommended);
+      }
+      if (strpos($recommended, '/node/161')) {
+        $recommended = str_replace('/node/161', 'tools-and-publications/campaign-toolkit', $recommended);
+      }
+      print $recommended;
     }
-    // Additional resources
+    // Additional resources.
     if (!empty($content['field_aditional_resources'])) {
       print '<div class="dot-separator green"></div><div class="icon additional-resources"></div>' . '<h2>' . t('Additional resources') . '</h2>';
       print render($content['field_aditional_resources']);
@@ -54,8 +61,6 @@
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
-    //  print render($content['links']['#links']['addtoany']['title']);
-    //  unset($content['links']['#links']['addtoany']);
     print render($content);
 
     print render($content['links']);
