@@ -49,14 +49,6 @@ function osha_newsletter_subscribe_extra_form() {
   $form['unsubscribe_details'] = array(
     '#type' => 'container',
   );
-  $form['unsubscribe_details']['unsubscribe_text'] = array(
-    '#markup' => '<span>' . t('Not interested any more?') . '</span>',
-  );
-  $form['unsubscribe_details']['unsubscribe'] = array(
-    '#type' => 'submit',
-    '#value' => t('Unsubscribe'),
-    '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
-  );
 
   $form['details_link'] = array(
     '#markup' => '<a class="privacy-policy-oshmail" title="Subscribe to newsletter" href=' . url($link_url) . '>' . $link_label . '</a><br/>',
@@ -93,24 +85,5 @@ function osha_newsletter_subscribe_extra_form_validate($form, &$form_state) {
  */
 function osha_newsletter_subscribe_extra_form_submit($form, &$form_state) {
   $email = $form_state['values']['email'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
-
-  osha_newsletter_send_email(
-    'campaigns_subscribe_email',
-    $to,
-    $email,
-    $form_state,
-    t('Your subscription has been submitted succesfully.')
-  );
-  /* Remove comment for subscription on OSHA Newsletter - HCW-1005
-  if (isset($form_state['values']['subscribe-to-OSHMail-newsletter'])) {
-    osha_newsletter_send_email(
-      'subscribe_email',
-      $to,
-      $email,
-      $form_state,
-      t('Your subscription has been submitted succesfully.')
-    );
-  }
-  */
+  osha_newsletter_crm_subscribe($email);
 }

@@ -291,7 +291,7 @@ class OSHNewsletter {
       $content['#suffix'] = render($view_all);
     }
     if ($variables['section']->name == 'Events') {
-      $url = url('events', ['absolute' => TRUE]);
+      $url = url('events', ['absolute' => TRUE, 'query' => $url_query]);
       $content['#suffix'] .= '<table><tr><td align="center">
         <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">
@@ -304,7 +304,7 @@ class OSHNewsletter {
         </div></td></tr></table>';
     }
     if ($variables['section']->name == 'Tweets') {
-      $url = url('media-centre/social-media-centre', ['absolute' => TRUE]);
+      $url = url('media-centre/social-media-centre', ['absolute' => TRUE, 'query' => $url_query]);
       $content['#suffix'] .= '<table><tr><td align="center">
         <div class="more-link-newsletter" style="background-color: #003399;display: table;margin: 0px auto;">
         <table style="border: 0; margin: 0;">

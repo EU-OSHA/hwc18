@@ -39,15 +39,6 @@ function osha_newsletter_block_subscribe_form($form, &$form_state) {
     '#value' => t('Subscribe'),
   );
 
-  $form['subscribe_details']['unsubscribe_text'] = array(
-    '#markup' => '<hr><span>' . t('Not interested any more?') . '</span>',
-  );
-  $form['subscribe_details']['unsubscribe'] = array(
-    '#type' => 'submit',
-    '#value' => t('Unsubscribe'),
-    '#submit' => array('osha_newsletter_unsubscribe_form_submit'),
-  );
-
   $form['#validate'] = array('osha_newsletter_block_subscribe_form_validate');
   $form['#submit'] = array('osha_newsletter_block_subscribe_form_submit');
 
@@ -69,24 +60,5 @@ function osha_newsletter_block_subscribe_form_validate($form, &$form_state) {
 
 function osha_newsletter_block_subscribe_form_submit($form, &$form_state) {
   $email = $form_state['values']['email_osh'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
-
-  osha_newsletter_send_email(
-    'subscribe_email',
-    $to,
-    $email,
-    $form_state,
-    t('Your subscription has been submitted succesfully.')
-  );
-}
-
-/**
- * Form submission logic for the subscription form.
- */
-function osha_newsletter_unsubscribe_form_submit($form, &$form_state) {
-  $unsubscribe_email = $form_state['values']['email'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
-
-  osha_newsletter_send_email('unsubscribe_email', $to, $unsubscribe_email, $form_state,
-    t('You have succesfully unsubscribed'));
+  osha_newsletter_crm_subscribe($email);
 }

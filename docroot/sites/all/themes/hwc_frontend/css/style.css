@@ -9282,6 +9282,9 @@ div[class*='view-'] .field-name-field-summary {
 .panels-flexible-column-new-1 h2 {
   background: url("../images/content/news.png") no-repeat center top;
 }
+#newsletter-subscription-frontpage-form-wrapper {
+  padding-bottom: 1em;
+}
 #block-osha-newsletter-osha-newsletter-subscribe,
 #block-osha-newsletter-osha-newsletter-image {
   clear: both;
@@ -20976,6 +20979,10 @@ body.front .homepage-slider blockquote.image-field-caption p {
   display: none;
 }
 .node-type-tk-article .group-left blockquote.image-field-caption {
+  display: none;
+}
+/* Hide newsletter unsubscribe in Frontend MDR-2713 */
+.footer-unsubscribe {
   display: none;
 }
 .footer {
