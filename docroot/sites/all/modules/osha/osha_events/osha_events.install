@@ -246,3 +246,10 @@ function osha_events_update_7021() {
 function osha_events_update_7022() {
   features_revert_module('osha_events');
 }
+
+/**
+ * MDR-2760 HWC18 - Events creation fields - Mandatory fields and value by default.
+ */
+function osha_events_update_7023() {
+  features_revert(array('osha_events' => 'field_instance'));
+}
