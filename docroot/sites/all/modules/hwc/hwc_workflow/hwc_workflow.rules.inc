@@ -71,6 +71,7 @@ function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL
     'subject' => $subject,
     'message' => $message,
     'langcode' => $langcode,
+    'node' => $node,
   );
   // Set a unique key for this mail.
   $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
@@ -109,6 +110,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
   $params = array(
     'subject' => $subject,
     'message' => $message,
+    'node' => $node,
   );
   // Set a unique key for this mail.
   $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
@@ -495,6 +497,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
       $params = array(
         'subject' => $subject,
         'message' => $message,
+        'node' => $node,
       );
       // Set a unique key for this mail.
       $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
