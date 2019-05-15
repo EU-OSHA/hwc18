@@ -100,7 +100,6 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
   $form['field_type_event']['#access'] = $access;
   $form['field_agenda']['#access'] = $access;
   $form['field_key_performance']['#access'] = $access;
-  $form['field_fast']['#access'] = $access;
   $form['field_publications_exhibition_su']['#access'] = $access;
   $form['field_media_promotion']['#access'] = $access;
 
