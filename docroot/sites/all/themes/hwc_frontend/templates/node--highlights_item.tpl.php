@@ -22,7 +22,6 @@ $url_query = array();
 if (!empty($campaign_id)) {
   $url_query = array('pk_campaign' => $campaign_id);
 }
-
 ?>
 <table id="node-<?php print $node->nid; ?>" border="0" cellpadding="0" cellspacing="0" width="100%" class="highlight-item">
   <tbody>
@@ -38,7 +37,7 @@ if (!empty($campaign_id)) {
             ?>
               <th rowspan=<?php print($node->old_newsletter ? '1' : '2'); ?>
                   width="<?php print($highlight_img_width);?>"
-                  style="padding-bottom:10px; vertical-align: top; padding-top:0px; padding-right: 40px; text-align:center; width: <?php print($highlight_img_width);?>px; max-width:<?php print($highlight_img_width);?>px;"
+                  style="padding-bottom:10px; vertical-align: top; padding-top:0; padding-right: 40px; text-align:center; width: <?php print($highlight_img_width);?>px; max-width:<?php print($highlight_img_width);?>px;"
                   <?php if(!$node->old_newsletter) { ?>
                     class="template-column template-image"
                   <?php } ?> >
@@ -64,6 +63,7 @@ if (!empty($campaign_id)) {
                                     'attributes' => array('style' => 'border: 0px;width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';max-width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';height:auto;background-color: #ffffff;vertical-align:middle;')
                                   )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                                     'html' => TRUE,
+                                    'query' => $url_query,
                                     'external' => TRUE,
                                     'attributes' => array(
                                       'style' => 'display:block;border:1px solid #efefef;',
@@ -85,6 +85,7 @@ if (!empty($campaign_id)) {
                               'attributes' => array('style' => 'border: 0px;max-width: 100%;height:auto;background-color: #ffffff;vertical-align:middle;')
                             )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                               'html' => TRUE,
+                              'query' => $url_query,
                               'external' => TRUE,
                               'attributes' => array(
                                 'style' => 'display:block;border:1px solid #efefef;',
@@ -123,7 +124,7 @@ if (!empty($campaign_id)) {
                 ?>
               </th>
             </tr>
-            <tr><th <?php if($node->old_newsletter) { ?> colspan="2"<?php } ?> >
+            <tr><th <?php if ($node->old_newsletter) { ?> colspan="2"<?php } ?> >
               <table border="0" cellpadding="0" cellspacing="0" class="item-summary" width="100%">
                 <tbody>
                   <tr>
@@ -139,7 +140,7 @@ if (!empty($campaign_id)) {
                       $body_text = render($body_text);
                       if (!empty($body_text)) {
                         if (!empty($campaign_id)) {
-                          // CW-1896 Add pk_campaign to links inside the body text
+                          // CW-1896 Add pk_campaign to links inside the body text.
                           $doc = new DOMDocument();
                           $doc->loadHTML(mb_convert_encoding($body_text, 'HTML-ENTITIES', "UTF-8"));
                           $links = $doc->getElementsByTagName('a');
@@ -147,10 +148,10 @@ if (!empty($campaign_id)) {
                             $url = $link->getAttribute('href');
                             $url_comp = parse_url($url);
                             if (preg_match('/(osha.europa.eu|napofilm.net|oshwiki.eu|oiraproject.eu|esener.eu|healthy-workplaces.eu|healthyworkplaces.eu|localhost|eu-osha.bilbomatica.es)/', $url_comp['host'])) {
-                              $link->setAttribute('href', $url.($url_comp['query']?'&':'?').'pk_campaign=' . $campaign_id);
+                              $link->setAttribute('href', $url . ($url_comp['query'] ? '&' : '?') . 'pk_campaign=' . $campaign_id);
                             }
                           }
-                          if ($links->length>0) {
+                          if ($links->length > 0) {
                             $body_text = $doc->saveHTML();
                           }
                         }
@@ -174,18 +175,18 @@ if (!empty($campaign_id)) {
                             'html' => TRUE,
                             'attributes' => array('class' => [$more_link_class]),
                             'query' => $url_query,
-                            'external' => TRUE
+                            'external' => TRUE,
                           ));
-                        $directory = drupal_get_path('module','osha_newsletter');
+                        $directory = drupal_get_path('module', 'osha_newsletter');
                         print l(theme('image', array(
                           'path' => $directory . '/images/' . 'green-arrow.png',
                           'width' => '19',
                           'height' => '11',
-                          'attributes' => array('style' => 'border:0px;width:19px;height:11px;', 'class' => 'hidden-mobile')
+                          'attributes' => array('style' => 'border:0px;width:19px;height:11px;', 'class' => 'hidden-mobile'),
                         )), $node_url, array(
                           'html' => TRUE,
+                          'query' => $url_query,
                           'external' => TRUE,
-                          'query' => $url_query
                         ));
                         ?>
 
@@ -199,11 +200,10 @@ if (!empty($campaign_id)) {
                           'attributes' => array('style' => 'border:0px;width:20px;height:20px;')
                         )), $node_url, array(
                           'html' => TRUE,
-                          'external' => TRUE,
                           'query' => $url_query + ['action' => 'share'],
+                          'external' => TRUE,
                         ));
                         ?>
-
                       </td>
                     </tr>
                   <?php } ?>
