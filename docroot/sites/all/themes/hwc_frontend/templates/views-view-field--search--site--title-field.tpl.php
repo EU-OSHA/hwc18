@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * This template is used to print a single field in a view.
@@ -23,7 +22,10 @@
  */
 ?>
 <?php
-$search = explode(' ', $_REQUEST['search_block_form']);
+$search = [];
+if (!empty($_REQUEST['search_block_form'])) {
+  $search = explode(' ', $_REQUEST['search_block_form']);
+}
 $link_output = $output;
 $output = $orig_output = strip_tags($output);
 foreach($search as $word) {
