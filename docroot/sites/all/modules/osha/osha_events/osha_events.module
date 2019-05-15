@@ -59,9 +59,8 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
   $is_admin = count(array_intersect(array(HWC_ROLE_ADMIN), $user->roles));
 
   hwc_workflow_add_extra_fields($form, $form_state);
-
+  $access = TRUE;
   if ($is_admin) {
-    $form['body'][LANGUAGE_NONE][0]['#required'] = FALSE;
     $form['field_tags']['#access'] = TRUE;
     $form['field_activity']['#access'] = TRUE;
     $form['field_adonis']['#access'] = TRUE;
@@ -78,10 +77,10 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_show_eu_flag']['#access'] = TRUE;
   }
   else {
+    $access = FALSE;
     if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['field_for_the_web']['#access'] = FALSE;
     }
-    $form['body'][LANGUAGE_NONE][0]['#required'] = TRUE;
     $form['field_tags']['#access'] = FALSE;
     $form['field_activity']['#access'] = FALSE;
     $form['field_adonis']['#access'] = FALSE;
@@ -97,6 +96,12 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_show_in_ncw']['#access'] = FALSE;
     $form['field_show_eu_flag']['#access'] = FALSE;
   }
+
+  $form['field_type_event']['#access'] = $access;
+  $form['field_agenda']['#access'] = $access;
+  $form['field_key_performance']['#access'] = $access;
+  $form['field_publications_exhibition_su']['#access'] = $access;
+  $form['field_media_promotion']['#access'] = $access;
 
   $form['#validate'][] = 'osha_events_form_validate';
   $form['actions']['#attributes']['class'] = array('container');
@@ -328,14 +333,20 @@ function osha_events_node_view($node, $view_mode, $langcode) {
 
 function osha_events_popup_date_validate($element, &$form_state, $form) {
   if ($element['#name'] == 'field_start_date[und][0][value]') {
-    list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    $date_format = trim($element['#date_format']);
+    if (strpos($date_format, ' ')) {
+      list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    }
     $element['#date_format'] = trim($date_format);
     if (empty($form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value']['time'])) {
       $form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value']['time'] = '00:00';
     }
   }
   if ($element['#name'] == 'field_start_date[und][0][value2]') {
-    list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    $date_format = trim($element['#date_format']);
+    if (strpos($date_format, ' ')) {
+      list($date_format, $time_format) = explode(" ", $element['#date_format']);
+    }
     $element['#date_format'] = trim($date_format);
     if (empty($form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value2']['time'])) {
       $form_state['input']['field_start_date'][LANGUAGE_NONE][0]['value2']['time'] = '00:00';

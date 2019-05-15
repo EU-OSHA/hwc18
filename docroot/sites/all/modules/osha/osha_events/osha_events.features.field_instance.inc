@@ -631,7 +631,7 @@ function osha_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Description',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'display_summary' => 1,
       'entity_translation_sync' => FALSE,
@@ -657,7 +657,7 @@ function osha_events_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'workbench_access_field' => 0,
   );
@@ -667,7 +667,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the appropriate EU-OSHA activity.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -743,7 +743,7 @@ function osha_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_activity',
     'label' => 'Activity',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'user_register_form' => FALSE,
@@ -755,7 +755,7 @@ function osha_events_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 12,
     ),
     'workbench_access_field' => 0,
   );
@@ -765,7 +765,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'References number of the invitation and the Agency’s reply must be included in this field.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -824,7 +824,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_adonis',
-    'label' => 'Adonis',
+    'label' => 'Ares/Adonis',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -845,7 +845,7 @@ function osha_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 23,
+      'weight' => 25,
     ),
     'workbench_access_field' => 0,
   );
@@ -855,7 +855,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add here any information, which could be useful for decision-making purposes.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -914,7 +914,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_agency_contact_reply',
-    'label' => 'Agency contact / Reply / Comments',
+    'label' => 'Comments',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -935,7 +935,7 @@ function osha_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 30,
+      'weight' => 33,
     ),
     'workbench_access_field' => 0,
   );
@@ -1025,7 +1025,7 @@ function osha_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 26,
+      'weight' => 39,
     ),
     'workbench_access_field' => 0,
   );
@@ -1035,7 +1035,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add here the initials of the staff member attending the event.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -1115,7 +1115,7 @@ function osha_events_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 27,
+      'weight' => 30,
     ),
     'workbench_access_field' => 0,
   );
@@ -1125,7 +1125,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the role that the Agency is playing in this event.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -1195,7 +1195,92 @@ function osha_events_field_default_field_instances() {
       'module' => 'multiple_selects',
       'settings' => array(),
       'type' => 'multiple_selects',
-      'weight' => 25,
+      'weight' => 27,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_agenda'.
+  $field_instances['node-events-field_agenda'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please indicate, if the agenda of the event is available.',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 61,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_agenda',
+    'label' => 'Agenda',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 29,
     ),
     'workbench_access_field' => 0,
   );
@@ -1393,7 +1478,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Use capital letters only for the first letter (ex. Bilbao).',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -1498,10 +1583,12 @@ function osha_events_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -1585,7 +1672,7 @@ Grey - Only web or not attendance',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 32,
+      'weight' => 34,
     ),
     'workbench_access_field' => 0,
   );
@@ -1685,7 +1772,7 @@ Grey - Only web or not attendance',
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 18,
+      'weight' => 19,
     ),
     'workbench_access_field' => 0,
   );
@@ -1794,7 +1881,7 @@ Grey - Only web or not attendance',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 17,
     ),
     'workbench_access_field' => 0,
   );
@@ -1903,7 +1990,7 @@ Grey - Only web or not attendance',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 18,
     ),
     'workbench_access_field' => 0,
   );
@@ -2009,7 +2096,7 @@ Grey - Only web or not attendance',
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -2093,7 +2180,7 @@ Grey - Only web or not attendance',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 29,
+      'weight' => 41,
     ),
     'workbench_access_field' => 0,
   );
@@ -2183,7 +2270,7 @@ Grey - Only web or not attendance',
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 43,
+      'weight' => 48,
     ),
     'workbench_access_field' => 0,
   );
@@ -2197,7 +2284,7 @@ Grey - Only web or not attendance',
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please indicate, if event’s item should be published on the website or not.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -2267,7 +2354,7 @@ Grey - Only web or not attendance',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 23,
     ),
     'workbench_access_field' => 0,
   );
@@ -2374,7 +2461,92 @@ Grey - Only web or not attendance',
         'view_mode' => 'full',
       ),
       'type' => 'options_select',
-      'weight' => 20,
+      'weight' => 21,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_key_performance'.
+  $field_instances['node-events-field_key_performance'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please indicate, if this event is to be counted in the framework of the KPI monitoring framework.',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 60,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_key_performance',
+    'label' => 'Key Performance Indicator',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 24,
     ),
     'workbench_access_field' => 0,
   );
@@ -2384,7 +2556,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Place where the event takes place.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -2477,10 +2649,97 @@ Grey - Only web or not attendance',
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_media_promotion'.
+  $field_instances['node-events-field_media_promotion'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If you want some special promotion for this event, please contact the editorial team at <a href="mailto:urrutia@osha.europa.eu">urrutia@osha.europa.eu</a> at least 4 weeks before the event is taking place.',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 59,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_media_promotion',
+    'label' => 'Media/promotion',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 32,
     ),
     'workbench_access_field' => 0,
   );
@@ -2573,7 +2832,7 @@ Grey - Only web or not attendance',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 52,
+      'weight' => 49,
     ),
     'workbench_access_field' => 0,
   );
@@ -2655,7 +2914,7 @@ Grey - Only web or not attendance',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 42,
+      'weight' => 46,
     ),
     'workbench_access_field' => 0,
   );
@@ -2737,7 +2996,7 @@ Grey - Only web or not attendance',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 37,
+      'weight' => 43,
     ),
     'workbench_access_field' => 0,
   );
@@ -2827,7 +3086,7 @@ Grey - Only web or not attendance',
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 33,
+      'weight' => 35,
     ),
     'workbench_access_field' => 0,
   );
@@ -2911,7 +3170,7 @@ Grey - Only web or not attendance',
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 31,
+      'weight' => 42,
     ),
     'workbench_access_field' => 0,
   );
@@ -2921,7 +3180,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please indicate here the organisation responsible for the organisation of the event. If an acronym exists for the organisation, please include “acronym (UPPERCASE) ‘-‘complete name (sentence case)”: (i.e.. HSE – Health and Safety Executive)',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -3001,7 +3260,7 @@ Grey - Only web or not attendance',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_organizer',
-    'label' => 'Organiser',
+    'label' => 'Organisation',
     'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -3128,7 +3387,92 @@ Grey - Only web or not attendance',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_publications_exhibition_su'.
+  $field_instances['node-events-field_publications_exhibition_su'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please download the publications request form and send it to the publications team at least 4 weeks before the event is taking place.',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 58,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_publications_exhibition_su',
+    'label' => 'Publications/exhibition support',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 31,
     ),
     'workbench_access_field' => 0,
   );
@@ -3458,7 +3802,7 @@ Grey - Only web or not attendance',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 7,
+      'weight' => 8,
     ),
     'workbench_access_field' => 0,
   );
@@ -3732,7 +4076,7 @@ Grey - Only web or not attendance',
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 28,
+      'weight' => 40,
     ),
     'workbench_access_field' => 0,
   );
@@ -3835,7 +4179,7 @@ Grey - Only web or not attendance',
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 8,
+      'weight' => 9,
     ),
     'workbench_access_field' => 0,
   );
@@ -3924,7 +4268,7 @@ Grey - Only web or not attendance',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 35,
+      'weight' => 38,
     ),
     'workbench_access_field' => 0,
   );
@@ -4010,7 +4354,7 @@ Grey - Only web or not attendance',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 34,
+      'weight' => 37,
     ),
     'workbench_access_field' => 0,
   );
@@ -4113,7 +4457,7 @@ Grey - Only web or not attendance',
       'module' => 'multiple_selects',
       'settings' => array(),
       'type' => 'multiple_selects',
-      'weight' => 9,
+      'weight' => 10,
     ),
     'workbench_access_field' => 0,
   );
@@ -4122,7 +4466,7 @@ Grey - Only web or not attendance',
   $field_instances['node-events-field_start_date'] = array(
     'bundle' => 'events',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select the date from the calendar.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -4334,7 +4678,7 @@ Grey - Only web or not attendance',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_supervisor_body',
-    'label' => 'Supervisor body',
+    'label' => 'Publish body',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -4430,7 +4774,7 @@ Grey - Only web or not attendance',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_supervisor_subject',
-    'label' => 'Supervisor subject',
+    'label' => 'Publish subject',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -4549,7 +4893,92 @@ Grey - Only web or not attendance',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 22,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-events-field_type_event'.
+  $field_instances['node-events-field_type_event'] = array(
+    'bundle' => 'events',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please choose the appropriate type of event.',
+    'display' => array(
+      'body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(
+          'field_formatter_class' => '',
+        ),
+        'type' => 'list_default',
+        'weight' => 62,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'priority_areas' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'title_body' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_type_event',
+    'label' => 'Type of event',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
     ),
     'workbench_access_field' => 0,
   );
@@ -4559,7 +4988,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please select the appropriate EU-OSHA unit.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -4631,7 +5060,7 @@ Grey - Only web or not attendance',
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 24,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -4641,7 +5070,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please insert here the URL of the website, where the event is promoted by its organiser and more information about the event can be found.',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -4754,7 +5183,7 @@ Grey - Only web or not attendance',
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 19,
+      'weight' => 20,
     ),
     'workbench_access_field' => 0,
   );
@@ -4840,7 +5269,7 @@ Grey - Only web or not attendance',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 41,
+      'weight' => 44,
     ),
     'workbench_access_field' => 0,
   );
@@ -4850,7 +5279,7 @@ Grey - Only web or not attendance',
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please add here the official title of the event. Please do not use ALL CAPS, but sentence case (i.e. Towards Better Work and Well-being)',
     'display' => array(
       'body' => array(
         'label' => 'above',
@@ -5057,16 +5486,17 @@ Grey - Only web or not attendance',
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
-  t('Adonis');
   t('Agency Initial Contact');
   t('Agency Rep confirmed');
   t('Agency Role');
-  t('Agency contact / Reply / Comments');
+  t('Agenda');
   t('Approved body');
   t('Approved subject');
+  t('Ares/Adonis');
   t('Category / Tag');
   t('City');
   t('Color');
+  t('Comments');
   t('Conference Room');
   t('Contact Email');
   t('Contact Name');
@@ -5077,17 +5507,32 @@ Grey - Only web or not attendance',
   t('Event in AMP');
   t('First publication date');
   t('For the web / Public');
+  t('If you want some special promotion for this event, please contact the editorial team at <a href="mailto:urrutia@osha.europa.eu">urrutia@osha.europa.eu</a> at least 4 weeks before the event is taking place.');
   t('Image');
+  t('Key Performance Indicator');
   t('Location');
+  t('Media/promotion');
   t('Migrate Source');
+  t('Migration Path Alias');
   t('Modified by');
   t('Modified on');
   t('Name');
   t('Name of the speaker');
   t('Number of attendees');
-  t('Organiser');
+  t('Organisation');
   t('Partner ID');
   t('Photo gallery');
+  t('Place where the event takes place.');
+  t('Please add here any information, which could be useful for decision-making purposes.');
+  t('Please add here the initials of the staff member attending the event.');
+  t('Please add here the official title of the event. Please do not use ALL CAPS, but sentence case (i.e. Towards Better Work and Well-being)');
+  t('Please choose the appropriate type of event.');
+  t('Please download the publications request form and send it to the publications team at least 4 weeks before the event is taking place.');
+  t('Please indicate here the organisation responsible for the organisation of the event. If an acronym exists for the organisation, please include “acronym (UPPERCASE) ‘-‘complete name (sentence case)”: (i.e.. HSE – Health and Safety Executive)');
+  t('Please indicate, if event’s item should be published on the website or not.');
+  t('Please indicate, if the agenda of the event is available.');
+  t('Please indicate, if this event is to be counted in the framework of the KPI monitoring framework.');
+  t('Please insert here the URL of the website, where the event is promoted by its organiser and more information about the event can be found.');
   t('Please see below the default approved notification subject. You can sent it as it or modify it');
   t('Please see below the default approved notification. You can sent it as it or modify it');
   t('Please see below the default rejection notification subject. You can sent it as it or modify it');
@@ -5097,10 +5542,16 @@ Grey - Only web or not attendance',
 ');
   t('Please see below the default supervisor notification. You can sent it as it or modify it
 ');
+  t('Please select the appropriate EU-OSHA unit.');
+  t('Please select the role that the Agency is playing in this event.');
   t('Presentation');
+  t('Publications/exhibition support');
+  t('Publish body');
+  t('Publish subject');
   t('Red: TBD - TBC <br />
 Black - Confirmed <br />
 Grey - Only web or not attendance');
+  t('References number of the invitation and the Agency’s reply must be included in this field.');
   t('Rejection body');
   t('Rejection subject');
   t('Related documents');
@@ -5108,16 +5559,18 @@ Grey - Only web or not attendance');
   t('Reviewer subject');
   t('Satisfaction rate');
   t('Schedule');
+  t('Select the appropriate EU-OSHA activity.');
+  t('Select the date from the calendar.');
   t('Show EU flag');
   t('Show in NCW');
   t('Speaker');
   t('Speech date');
   t('Speech title');
   t('Starting date');
-  t('Supervisor body');
-  t('Supervisor subject');
   t('Title');
+  t('Type of event');
   t('Unit Ref');
+  t('Use capital letters only for the first letter (ex. Bilbao).');
   t('Website of event');
   t('Write the general description of your event. This will appear in the body of your event\'s page.');
 

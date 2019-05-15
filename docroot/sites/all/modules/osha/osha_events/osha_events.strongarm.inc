@@ -262,25 +262,25 @@ function osha_events_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'title' => array(
           'weight' => '4',
         ),
         'path' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
           'weight' => '14',
         ),
-        'workbench_access' => array(
+        'redirect' => array(
           'weight' => '15',
+        ),
+        'workbench_access' => array(
+          'weight' => '16',
         ),
         'language' => array(
           'weight' => '4',
         ),
         'xmlsitemap' => array(
-          'weight' => '39',
+          'weight' => '47',
         ),
       ),
       'display' => array(
