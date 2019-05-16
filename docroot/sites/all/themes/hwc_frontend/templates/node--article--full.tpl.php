@@ -45,10 +45,10 @@
       print render($content['field_recommended_resources']);
       $recommended = render($content['field_recommended_articles']);
       if (strpos($recommended, '/node/105')) {
-        $recommended = str_replace('/node/105', 'tools-and-publications/publications', $recommended);
+        $recommended = str_replace('/node/105', '/tools-and-publications/publications', $recommended);
       }
       if (strpos($recommended, '/node/161')) {
-        $recommended = str_replace('/node/161', 'tools-and-publications/campaign-toolkit', $recommended);
+        $recommended = str_replace('/node/161', '/tools-and-publications/campaign-toolkit', $recommended);
       }
       print $recommended;
     }
