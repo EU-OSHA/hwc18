@@ -173,6 +173,9 @@ function osha_news_strongarm() {
       'highlights_item_alternative' => array(
         'custom_settings' => TRUE,
       ),
+      'hwc_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -195,7 +198,7 @@ function osha_news_strongarm() {
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '21',
+          'weight' => '23',
         ),
       ),
       'display' => array(

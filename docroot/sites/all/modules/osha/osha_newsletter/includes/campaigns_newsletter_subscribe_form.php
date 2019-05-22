@@ -48,6 +48,13 @@ function campaigns_newsletter_subscribe_form() {
     drupal_add_library('system', 'drupal.ajax');
     drupal_add_library('system', 'jquery.form');
     drupal_add_js(drupal_get_path('module', 'osha_newsletter') . '/js/ajax.js');
+    drupal_add_js(
+      [
+        'osha_newsletter' => [
+          'agree' => @$_REQUEST['agree'],
+          'email' => @$_REQUEST['email'],
+        ],
+      ], 'setting');
   }
 
   return $form;

@@ -284,3 +284,11 @@ function osha_events_update_7023() {
     }
   }
 }
+
+/**
+ * MDR-2835 HWC Workflow: New changes - Estimation.
+ */
+function osha_events_update_7024() {
+  features_revert_module('osha_events');
+  features_revert_module('osha_news');
+}
