@@ -222,3 +222,9 @@ Allow: /*taxonomy/term/3027
 Allow: /*taxonomy/term/3028
 Allow: /*taxonomy/term/3029
 Allow: /*taxonomy/term/3030
+Disallow: /*search?
+Disallow: /*publications?
+Disallow: /*practical-tools?
+Disallow: /*case-studies?
+Disallow: /*events?
+Disallow: /*past-events?
