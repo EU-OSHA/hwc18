@@ -228,3 +228,4 @@ Disallow: /*practical-tools?
 Disallow: /*case-studies?
 Disallow: /*events?
 Disallow: /*past-events?
+Disallow: /*page=
