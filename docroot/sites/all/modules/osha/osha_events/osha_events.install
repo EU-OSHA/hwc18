@@ -237,7 +237,6 @@ function osha_events_update_7020() {
 function osha_events_update_7021() {
   features_revert(array('osha_events' => 'field_base'));
   features_revert(array('osha_events' => 'field_instance'));
-  features_revert(array('osha_news' => 'field_instance'));
 }
 
 /**
