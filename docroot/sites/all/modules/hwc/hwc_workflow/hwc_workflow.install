@@ -270,4 +270,9 @@ function hwc_workflow_update_7015() {
  */
 function hwc_workflow_update_7016() {
   features_revert_module('hwc_workflow');
+  variable_set('hwc_workflow_append_rejection',FALSE);
+  variable_set('hwc_workflow_append_published',FALSE);
+  variable_set('hwc_workflow_append_reviewer',TRUE);
+  variable_set('hwc_workflow_append_approve_partner',TRUE);
+  variable_set('hwc_workflow_append_approve_mostra',TRUE);
 }
