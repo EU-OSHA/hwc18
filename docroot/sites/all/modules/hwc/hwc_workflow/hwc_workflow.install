@@ -245,8 +245,8 @@ function hwc_workflow_update_7013() {
 function hwc_workflow_update_7014() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
 
-  $role = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
-  user_role_grant_permissions($role->rid, hwc_workflow_permission_role_een_rm());
+//  $role = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
+//  user_role_grant_permissions($role->rid, hwc_workflow_permission_role_een_rm());
 
 //  $r1 = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
 //  $role = array(
