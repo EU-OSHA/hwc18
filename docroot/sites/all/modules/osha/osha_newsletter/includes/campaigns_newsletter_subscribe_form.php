@@ -48,6 +48,13 @@ function campaigns_newsletter_subscribe_form() {
     drupal_add_library('system', 'drupal.ajax');
     drupal_add_library('system', 'jquery.form');
     drupal_add_js(drupal_get_path('module', 'osha_newsletter') . '/js/ajax.js');
+    drupal_add_js(
+      [
+        'osha_newsletter' => [
+          'agree' => @$_REQUEST['agree'],
+          'email' => @$_REQUEST['email'],
+        ],
+      ], 'setting');
   }
 
   return $form;
@@ -110,8 +117,47 @@ function campaigns_newsletter_subscribe_captcha_form_validate($form, &$form_stat
     $has_error = TRUE;
   }
   if ($has_error) {
+    if (strpos($referer, '?')) {
+      $referer = explode('?', $referer);
+      $referer = $referer[0];
+    }
+    $options['query'] = [
+      'agree' => intval($form_state['values']['agree_processing_personal_data']),
+      'email' => $form_state['values']['email'],
+    ];
     $fs['redirect'] = $referer;
-    drupal_redirect_form($fs);
+    osha_newsletter_redirect_form($fs, $options);
+  }
+}
+
+function osha_newsletter_redirect_form($form_state, $options = []) {
+  // Skip redirection for form submissions invoked via drupal_form_submit().
+  if (!empty($form_state['programmed'])) {
+    return;
+  }
+  // Skip redirection if rebuild is activated.
+  if (!empty($form_state['rebuild'])) {
+    return;
+  }
+  // Skip redirection if it was explicitly disallowed.
+  if (!empty($form_state['no_redirect'])) {
+    return;
+  }
+  // Only invoke drupal_goto() if redirect value was not set to FALSE.
+  if (!isset($form_state['redirect']) || $form_state['redirect'] !== FALSE) {
+    if (isset($form_state['redirect'])) {
+      if (is_array($form_state['redirect'])) {
+        call_user_func_array('drupal_goto', $form_state['redirect'], $options);
+      }
+      else {
+        // This function can be called from the installer, which guarantees
+        // that $redirect will always be a string, so catch that case here
+        // and use the appropriate redirect function.
+        $function = drupal_installation_attempted() ? 'install_goto' : 'drupal_goto';
+        $function($form_state['redirect'], $options);
+      }
+    }
+    drupal_goto(current_path(), array('query' => drupal_get_query_parameters()));
   }
 }
 
@@ -120,7 +166,6 @@ function campaigns_newsletter_subscribe_captcha_form_validate($form, &$form_stat
  */
 function campaigns_newsletter_subscribe_captcha_form_submit($form, &$form_state) {
   $email = $form_state['values']['email'];
-  $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
 
   // Need to redirect due to Ajax handling.
   $referer = empty($_SERVER['HTTP_REFERER']) ? '/' : $_SERVER['HTTP_REFERER'];
@@ -132,13 +177,5 @@ function campaigns_newsletter_subscribe_captcha_form_submit($form, &$form_state)
     drupal_set_message('You have sent the form without captcha.', 'error');
     return;
   }
-
-  osha_newsletter_send_email(
-    'campaigns_subscribe_email',
-    $to,
-    $email,
-    $form_state,
-    t('Your subscription has been submitted succesfully.')
-  );
-
+  osha_newsletter_crm_subscribe($email);
 }

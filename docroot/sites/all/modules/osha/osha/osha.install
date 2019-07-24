@@ -400,3 +400,11 @@ function osha_update_7032() {
     node_save($node);
   }
 }
+
+/**
+ * MDR-2713 New process for the HWC18 Newsletter subscribers.
+ */
+function osha_update_7033() {
+  variable_set('osha_newsletter_listserv', 'crm-campaign@osha.europa.eu');
+  variable_set('campaigns_newsletter_list_name', 'crm-campaign');
+}

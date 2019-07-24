@@ -9282,6 +9282,9 @@ div[class*='view-'] .field-name-field-summary {
 .panels-flexible-column-new-1 h2 {
   background: url("../images/content/news.png") no-repeat center top;
 }
+#newsletter-subscription-frontpage-form-wrapper {
+  padding-bottom: 1em;
+}
 #block-osha-newsletter-osha-newsletter-subscribe,
 #block-osha-newsletter-osha-newsletter-image {
   clear: both;
@@ -20924,7 +20927,7 @@ blockquote.image-field-caption p {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 1.1rem;
+  font-size: 10px;
   color: #000;
   float: left;
 }
@@ -20944,7 +20947,7 @@ body.front .homepage-slider blockquote.image-field-caption p {
   z-index: 40;
   right: 0%;
   text-shadow: 1px 1px #000;
-  font-size: 1.1rem;
+  font-size: 10px;
   border-left: 0;
   padding: 10px 20px;
   margin: 0;
@@ -20968,93 +20971,19 @@ body.front .homepage-slider blockquote.image-field-caption p {
 .page-tools-and-publications .view-view-campaign-materials .group-left .field-name-field-image {
   overflow: initial;
 }
+.view blockquote.image-field-caption {
+  display: none;
+}
 .field-name-field-recommended-resources blockquote.image-field-caption,
 .field-name-field-recommended-articles blockquote.image-field-caption {
-  color: #FFFF;
-  z-index: 99;
-  border-left: 0;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  bottom: 0;
-  top: auto;
+  display: none;
 }
-.field-name-field-recommended-resources blockquote.image-field-caption p,
-.field-name-field-recommended-articles blockquote.image-field-caption p {
-  z-index: 999;
-  position: relative;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  margin-top: auto;
-  font-size: 1.1rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  right: auto;
-  text-align: left;
-  bottom: 0;
-  text-shadow: inherit;
-  color: #000;
+.node-type-tk-article .group-left blockquote.image-field-caption {
+  display: none;
 }
-.panels-flexible-region .view blockquote.image-field-caption {
-  position: absolute;
-  bottom: 83px;
-  left: 10px;
-  width: 90%;
-  padding-left: 10px;
-}
-.panels-flexible-region .view blockquote.image-field-caption p {
-  color: #FFF;
-  text-shadow: 1px 1px #000;
-}
-.page-publications .panels-flexible-region .view blockquote.image-field-caption {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
-  width: 90%;
-  padding-left: 5px;
-}
-.page-publications .panels-flexible-region .view blockquote.image-field-caption p {
-  color: #FFF;
-  text-shadow: 1px 1px #000;
-}
-.page-tools-and-publications-campaign-materials .panels-flexible-region .view blockquote.image-field-caption {
-  position: absolute;
-  bottom: -15px;
-  left: 0;
-  width: 90%;
-  padding-left: 0px;
-}
-.page-tools-and-publications-campaign-materials .panels-flexible-region .view blockquote.image-field-caption p {
-  color: #000;
-  text-shadow: 0px 0px #000;
-}
-.view blockquote.image-field-caption {
-  position: relative;
-}
-.view blockquote.image-field-caption p {
-  margin-top: 0;
-  position: relative;
-  background: transparent;
-  color: #000;
-  padding: 0;
-}
-.front .view-news.view blockquote.image-field-caption {
-  position: relative;
-  bottom: auto;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  left: auto;
-}
-.front .view-news.view blockquote.image-field-caption p {
-  position: relative;
-  margin-top: -10px;
-  color: #000;
-  text-shadow: 0px 0px #000;
-  padding: 0;
-  font-size: 10px;
+/* Hide newsletter unsubscribe in Frontend MDR-2713 */
+.footer-unsubscribe {
+  display: none;
 }
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;

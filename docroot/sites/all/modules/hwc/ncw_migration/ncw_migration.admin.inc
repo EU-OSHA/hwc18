@@ -31,8 +31,32 @@ function ncw_migration_admin_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Save'),
   );
+  $form['settings']['test'] = array(
+    '#type' => 'submit',
+    '#value' => t('Test mail'),
+    '#submit' => array('ncw_migration_test_submit'),
+  );
 
   return $form;
+}
+
+
+/**
+ * Submit Callback for button Test mail.
+ */
+function ncw_migration_test_submit($form, &$form_submit) {
+  if ($mail = variable_get('ncw_migration_test_mail', '')) {
+    $language = language_default();
+    $params['outdated'] = [];
+    $params['stuck'] = [];
+    $message = drupal_mail('ncw_migration', 'ncw_migration_synchronisation', $mail, $language, $params);
+    if ($message['result'] === FALSE) {
+      drupal_set_message(t('Error sending test mail to @mail', array('@mail' => $mail)));
+    }
+    else {
+      drupal_set_message(t('Test mail sent to @mail', array('@mail' => $mail)));
+    }
+  }
 }
 
 /**

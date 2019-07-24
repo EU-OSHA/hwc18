@@ -8,6 +8,35 @@ define('OSHA_ARTICLE_CONTENT_TYPE_ARTICLE', 'article');
 define('OSHA', 'OSHA');
 
 /**
+ * Implements Elysia hook_cronapi().
+ */
+function osha_cronapi() {
+  return array(
+    'osha_cron' => array(
+      'description' => 'Migrate NCW content',
+      'rule' => '30 4 * * *',
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function osha_cron() {
+  $migrations = array(
+    'events',
+    'news',
+    'highlights',
+    'notes_to_editor',
+    'press_releases',
+    'publications',
+  );
+  foreach ($migrations as $migration) {
+    ncw_migration_run_single($migration);
+  }
+}
+
+/**
  * Menu callback.
  */
 function osha_admin_redirection_errors() {
