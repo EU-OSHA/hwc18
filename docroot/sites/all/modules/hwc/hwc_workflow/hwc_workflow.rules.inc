@@ -49,20 +49,22 @@ function hwc_workflow_rules_event_info() {
 
 function hwc_workflow_settings_options() {
   return [
-    'approved' => 'Approved',
-    'rejection' => 'Rejection',
-    'supervisor' => 'Supervisor',
+    'approve_partner' => 'Approve after partner (Please approve)',
+    'rejection' => 'After rejection (Please update)',
+    'published' => 'Published (Published)',
+    'reviewer' => 'Review (Please review)',
+    'approve_mostra' => 'Approve after review (Please approve)',
   ];
 }
 
 /**
  * Action Implementation: Send mail.
  */
-function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL, $langcode, $settings, RulesState $state, RulesPlugin $element) {
+function hwc_workflow_rules_action_mail($node, $to, $settings_type, $message, $from = NULL, $langcode, $settings, RulesState $state, RulesPlugin $element) {
   reset($settings_type);
   $type = current($settings_type);
   $subject = hwc_workflow_get_mail_subject_text($node, $type);
-  $message = hwc_workflow_get_mail_body_text($node, $type);
+  $message = hwc_workflow_get_mail_body_text($message, $node, $type);
 
   $to = str_replace(array("\r", "\n"), '', $to);
   $from = !empty($from) ? str_replace(array("\r", "\n"), '', $from) : NULL;
@@ -70,6 +72,7 @@ function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL
     'subject' => $subject,
     'message' => $message,
     'langcode' => $langcode,
+    'node' => $node,
   );
   // Set a unique key for this mail.
   $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
@@ -77,20 +80,20 @@ function hwc_workflow_rules_action_mail($node, $to, $settings_type, $from = NULL
   $languages = language_list();
   $language = isset($languages[$langcode]) ? $languages[$langcode] : language_default();
 
-  $message = drupal_mail('rules', $key, $to, $language, $params, $from);
+  $message = drupal_mail('hwc_workflow', $key, $to, $language, $params, $from);
   if ($message['result']) {
-    watchdog('rules', 'Successfully sent email to %recipient', array('%recipient' => $to));
+    watchdog('hwc_workflow', 'Successfully sent email to %recipient', array('%recipient' => $to));
   }
 }
 
 /**
  * Action: Send mail to all users of a specific role group(s).
  */
-function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $settings_type, $from = NULL, $settings, RulesState $state, RulesPlugin $element) {
+function hwc_workflow_rules_action_mail_to_users_of_role($node, $settings_type, $roles, $message, $from = NULL, $settings, RulesState $state, RulesPlugin $element) {
   reset($settings_type);
   $type = current($settings_type);
   $subject = hwc_workflow_get_mail_subject_text($node, $type);
-  $message = hwc_workflow_get_mail_body_text($node, $type);
+  $message = hwc_workflow_get_mail_body_text($message, $node, $type);
 
   $from = !empty($from) ? str_replace(array("\r", "\n"), '', $from) : NULL;
 
@@ -108,6 +111,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
   $params = array(
     'subject' => $subject,
     'message' => $message,
+    'node' => $node,
   );
   // Set a unique key for this mail.
   $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
@@ -115,7 +119,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
 
   $message = array('result' => TRUE);
   foreach ($result as $row) {
-    $message = drupal_mail('rules', $key, $row->mail, language_default(), $params, $from);
+    $message = drupal_mail('hwc_workflow', $key, $row->mail, language_default(), $params, $from);
     // If $message['result'] is FALSE, then it's likely that email sending is
     // failing at the moment, and we should just abort sending any more. If
     // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -128,7 +132,7 @@ function hwc_workflow_rules_action_mail_to_users_of_role($node, $roles, $setting
   }
   if ($message['result'] !== FALSE) {
     $role_names = array_intersect_key(user_roles(TRUE), array_flip($roles));
-    watchdog('rules', 'Successfully sent email to the role(s) %roles.', array('%roles' => implode(', ', $role_names)));
+    watchdog('hwc_workflow', 'Successfully sent email to the role(s) %roles.', array('%roles' => implode(', ', $role_names)));
   }
 }
 
@@ -156,6 +160,11 @@ function hwc_workflow_rules_action_info() {
           'label' => t('Settings type'),
           'restriction' => 'input',
           'options list' => 'hwc_workflow_settings_options',
+        ),
+        'message' => array(
+          'type' => 'text',
+          'label' => t('Message'),
+          'description' => t("The mail's message body."),
         ),
         'from' => array(
           'type' => 'text',
@@ -186,17 +195,22 @@ function hwc_workflow_rules_action_info() {
           'label' => t('Node'),
           'description' => t("The current node"),
         ),
+        'settings_type' => array(
+          'type' => 'list<text>',
+          'label' => t('Settings type'),
+          'restriction' => 'input',
+          'options list' => 'hwc_workflow_settings_options',
+        ),
         'roles' => array(
           'type' => 'list<integer>',
           'label' => t('Roles'),
           'options list' => 'entity_metadata_user_roles',
           'description' => t('Select the roles whose users should receive the mail.'),
         ),
-        'settings_type' => array(
-          'type' => 'list<text>',
-          'label' => t('Settings type'),
-          'restriction' => 'input',
-          'options list' => 'hwc_workflow_settings_options',
+        'message' => array(
+          'type' => 'text',
+          'label' => t('Message'),
+          'description' => t("The mail's message body."),
         ),
         'from' => array(
           'type' => 'text',
@@ -253,6 +267,11 @@ function hwc_workflow_rules_action_info() {
           'label' => t('Settings type'),
           'restriction' => 'input',
           'options list' => 'hwc_workflow_settings_options',
+        ),
+        'message' => array(
+          'type' => 'text',
+          'label' => t('Message'),
+          'description' => t("The mail's message body."),
         ),
       ),
       'base' => 'hwc_workflow_custom_mail_to_users_of_partner',
@@ -461,7 +480,7 @@ function hwc_workflow_rules_mail_to_related_partners($node, $subject, $message, 
 
   $message = array('result' => TRUE);
   foreach ($users as $user) {
-    $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+    $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
     // If $message['result'] is FALSE, then it's likely that email sending is
     // failing at the moment, and we should just abort sending any more. If
     // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -474,11 +493,11 @@ function hwc_workflow_rules_mail_to_related_partners($node, $subject, $message, 
   }
 
   if ($message['result'] !== FALSE) {
-    watchdog('rules', 'Successfully sent email to the users of the partners.', array());
+    watchdog('hwc_workflow', 'Successfully sent email to the users of the partners.', array());
   }
 }
 
-function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $settings, RulesState $state, RulesPlugin $element) {
+function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $message, $settings, RulesState $state, RulesPlugin $element) {
   if (!empty($node->workbench_access)) {
     reset($node->workbench_access);
     $section_id = current($node->workbench_access);
@@ -486,7 +505,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
 
     $type = current($settings_type);
     $subject = hwc_workflow_get_mail_subject_text($node, $type);
-    $message = hwc_workflow_get_mail_body_text($node, $type);
+    $message = hwc_workflow_get_mail_body_text($message, $node, $type);
 
     // If it's a partner section.
     if ($section_id != 'section') {
@@ -494,6 +513,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
       $params = array(
         'subject' => $subject,
         'message' => $message,
+        'node' => $node,
       );
       // Set a unique key for this mail.
       $name = isset($element->root()->name) ? $element->root()->name : 'unnamed';
@@ -501,7 +521,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
 
       $message = array('result' => TRUE);
       foreach ($users as $user) {
-        $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+        $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
         // If $message['result'] is FALSE, then it's likely that email sending is
         // failing at the moment, and we should just abort sending any more. If
         // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -513,7 +533,7 @@ function hwc_workflow_custom_mail_to_users_of_partner($node, $settings_type, $se
         }
       }
       if ($message['result'] !== FALSE) {
-        watchdog('rules', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
+        watchdog('hwc_workflow', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
       }
     }
   }
@@ -539,7 +559,7 @@ function hwc_workflow_rules_mail_to_partners($node, $subject, $message, $setting
 
       $message = array('result' => TRUE);
       foreach ($users as $user) {
-        $message = drupal_mail('rules', $key, $user->mail, language_default(), $params);
+        $message = drupal_mail('hwc_workflow', $key, $user->mail, language_default(), $params);
         // If $message['result'] is FALSE, then it's likely that email sending is
         // failing at the moment, and we should just abort sending any more. If
         // however, $mesage['result'] is NULL, then it's likely that a module has
@@ -551,7 +571,7 @@ function hwc_workflow_rules_mail_to_partners($node, $subject, $message, $setting
         }
       }
       if ($message['result'] !== FALSE) {
-        watchdog('rules', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
+        watchdog('hwc_workflow', 'Successfully sent email to the users of the partner %partner.', array('%partner' => $section_id));
       }
     }
   }

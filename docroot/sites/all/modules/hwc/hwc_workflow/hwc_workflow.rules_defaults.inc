@@ -41,7 +41,8 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "hwc_custom_mail_to_users_of_partner" : {
             "node" : [ "node" ],
-            "settings_type" : { "value" : { "rejection" : "rejection" } }
+            "settings_type" : { "value" : { "rejection" : "rejection" } },
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThe [node:type] item that you submitted for publication on your organisation\\u2019s profile has been validated by EU-OSHA and has been rejected. Please update.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -72,8 +73,8 @@ function hwc_workflow_default_rules_configuration() {
       ]
     }
   }');
-  $items['hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved" : {
-      "LABEL" : "EU-OSHA EEN Reviewer notification to be Approved",
+  $items['hwc_workflow_rules_hwc_workflow_een_from_reviewed'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_from_reviewed" : {
+      "LABEL" : "EU-OSHA EEN Reviewer Notification from Reviewed to Approved ",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
@@ -90,20 +91,53 @@ function hwc_workflow_default_rules_configuration() {
         { "disable_masquerading_notifications" : [] },
         { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
         { "node_een_partner" : { "entity" : [ "node" ] } },
-        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "settings_type" : { "value" : { "approve_mostra" : "approve_mostra" } },
             "roles" : { "value" : { "17" : "17" } },
-            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
-            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "message" : "\\u003Cp\\u003EDear [list_item:name],\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E[user:name] should approve this content \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
     }
   }');
-  $items['hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved" : {
-      "LABEL" : "HWC Staff Reviewer notification to be Approved",
+  $items['hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_een_notification_to_be_approved" : {
+      "LABEL" : "EU-OSHA EEN Reviewer Notification to be Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "node_een_partner" : { "entity" : [ "node" ] } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
+      ],
+      "DO" : [
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "settings_type" : { "value" : { "approve_partner" : "approve_partner" } },
+            "roles" : { "value" : { "17" : "17" } },
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
+  $items['hwc_workflow_rules_hwc_workflow_staff_from_reviewed'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_from_reviewed" : {
+      "LABEL" : "HWC Staff Reviewer Notification from Reviewed to Approved",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
       "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
@@ -120,13 +154,46 @@ function hwc_workflow_default_rules_configuration() {
         { "disable_masquerading_notifications" : [] },
         { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
         { "NOT node_een_partner" : { "entity" : [ "node" ] } },
-        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } }
+        { "data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "settings_type" : { "value" : { "approve_mostra" : "approve_mostra" } },
             "roles" : { "value" : { "15" : "15" } },
-            "subject" : "HWC Workflow: content in \\u0027ToBeApproved\\u0027",
-            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003ETODO\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+          }
+        }
+      ]
+    }
+  }');
+  $items['hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved'] = entity_import('rules_config', '{ "hwc_workflow_rules_hwc_workflow_staff_notif_to_be_approved" : {
+      "LABEL" : "HWC Staff Reviewer Notification to be Approved",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
+      "ON" : { "workbench_moderation_after_moderation_transition" : [] },
+      "IF" : [
+        { "entity_is_of_bundle" : {
+            "entity" : [ "node" ],
+            "type" : "node",
+            "bundle" : { "value" : { "events" : "events", "news" : "news" } }
+          }
+        },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_wf_notification" } },
+        { "data_is_empty" : { "data" : [ "node:field-wf-notification" ] } },
+        { "disable_masquerading_notifications" : [] },
+        { "data_is" : { "data" : [ "new-state" ], "value" : "to_be_approved" } },
+        { "NOT node_een_partner" : { "entity" : [ "node" ] } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "to_be_approved" } },
+        { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
+      ],
+      "DO" : [
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "settings_type" : { "value" : { "approve_partner" : "approve_partner" } },
+            "roles" : { "value" : { "15" : "15" } },
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -261,7 +328,8 @@ function hwc_workflow_default_rules_configuration() {
       "DO" : [
         { "hwc_custom_mail_to_users_of_partner" : {
             "node" : [ "node" ],
-            "settings_type" : { "value" : { "approved" : "approved" } }
+            "settings_type" : { "value" : { "published" : "published" } },
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThe [node:type] item that you submitted for publication on your organisation\\u2019s profile has been validated by EU-OSHA and has now been published.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThank you for your participation in the Healthy Workplaces Campaign 2018-2019 Manage Dangerous Substances campaign.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -303,17 +371,18 @@ function hwc_workflow_default_rules_configuration() {
       "LABEL" : "External Provider notification  when to be Reviewed",
       "PLUGIN" : "reaction rule",
       "OWNER" : "rules",
-      "REQUIRES" : [ "rules", "workbench_moderation" ],
+      "REQUIRES" : [ "rules", "hwc_workflow", "workbench_moderation" ],
       "ON" : { "workbench_moderation_after_moderation_transition" : [] },
       "IF" : [
         { "data_is" : { "data" : [ "new-state" ], "value" : "needs_review" } },
         { "NOT data_is" : { "data" : [ "previous-state" ], "value" : "needs_review" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
+        { "hwc_mail_to_users_of_role" : {
+            "node" : [ "node" ],
+            "settings_type" : { "value" : { "reviewer" : "reviewer" } },
             "roles" : { "value" : { "13" : "13" } },
-            "subject" : "[HWC Website] CMW: ([node:nid]) [node:title-field]",
-            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for review. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
