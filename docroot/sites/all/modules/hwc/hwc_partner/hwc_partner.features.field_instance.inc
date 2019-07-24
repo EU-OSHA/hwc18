@@ -32,6 +32,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -90,6 +96,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 27,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -159,6 +171,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -215,6 +233,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -328,6 +352,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -415,6 +445,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -535,6 +571,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -588,6 +630,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 29,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -677,6 +725,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -755,6 +809,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -845,6 +905,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -924,6 +990,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1020,6 +1092,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1105,6 +1183,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1185,6 +1269,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1311,6 +1401,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1402,6 +1498,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1482,6 +1584,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1572,6 +1680,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1638,6 +1752,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1691,6 +1811,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1776,6 +1902,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1872,6 +2004,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1963,6 +2101,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2048,6 +2192,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2106,6 +2256,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 40,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2189,6 +2345,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2245,6 +2407,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 26,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2315,6 +2483,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2405,6 +2579,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2487,6 +2667,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2540,6 +2726,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 31,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2624,6 +2816,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2731,6 +2929,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'priority_areas' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2813,6 +3017,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2922,6 +3132,12 @@ function hwc_partner_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'hwc_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'newsletter_item' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3016,6 +3232,12 @@ function hwc_partner_field_default_field_instances() {
         'weight' => 0,
       ),
       'highlights_item_alternative' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'hwc_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

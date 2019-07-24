@@ -130,7 +130,7 @@ function osha_authentication_user_login(&$edit, $user) {
     module_load_include('admin.inc', 'osha_authentication');
     module_load_include('api.inc', 'osha_workflow');
 
-    //Try the sid that performed authentication (creation?) or DEFAULT one.
+    // Try the sid that performed authentication (creation?) or DEFAULT one.
     $sid = !empty($user->data['ldap_user']['init']['sid']) ? $user->data['ldap_user']['init']['sid'] : 'osha';
     /** @var LDAPServer $ldap_server */
     $ldap_servers = ldap_servers_get_servers($sid);
@@ -140,21 +140,22 @@ function osha_authentication_user_login(&$edit, $user) {
     // Assign user the calculated roles.
     $roles = osha_authentication_extract_user_roles(array_keys($authorization));
 
-    // Update user section assignment if user has roles 'campaign partner'
-    // Remove user from all sections before rebuilding it
+    // Update user section assignment if user has roles 'campaign partner'.
+    // Remove user from all sections before rebuilding it.
     workbench_access_rebuild_user($user->uid, array());
-    foreach($authorization as $role => $sections) {
-      switch($role) {
-        case ROLE_CAMPAIGN_PARTNER:
+    foreach ($authorization as $role => $sections) {
+      switch ($role) {
+        case HWC_ROLE_CAMPAIGN_PARTNER:
           try {
             workbench_access_rebuild_user($user->uid, array_unique($sections));
-          } catch(Exception $e) {
+          }
+          catch (Exception $e) {
             watchdog(
               'osha_authentication',
               'Error while rebuilding user: !uid, !message',
               array(
                 '!uid' => $user->uid,
-                '!message' => $e->getMessage()
+                '!message' => $e->getMessage(),
               ),
               WATCHDOG_ERROR
             );
@@ -202,9 +203,9 @@ function osha_authentication_build_user_from_ldap($user, $ldap_server) {
   $authorizations = array();
   $languages = array();
   $language_list = language_list();
-  foreach($user->ldap_groups as $dn) {
-    list($role_name, $language) = osha_authentication_get_role_from_dn($dn);
-    // section (Partner GUID) is read from user's 'gecos' attribute
+  foreach ($user->ldap_groups as $dn) {
+    list($role_name, $language) = osha_authentication_get_role_from_dn($dn, $user);
+    // Section (Partner GUID) is read from user's 'gecos' attribute.
     if (!empty($user->field_user_partner_guid[LANGUAGE_NONE][0]['value'])) {
       $partner_guid = $user->field_user_partner_guid[LANGUAGE_NONE][0]['value'];
       /** @var stdClass $term */
@@ -224,7 +225,7 @@ function osha_authentication_build_user_from_ldap($user, $ldap_server) {
       $authorizations[$role_name] = array();
     }
     if (!empty($language)) {
-      foreach($language_list as $key => $ob) {
+      foreach ($language_list as $key => $ob) {
         if (strcasecmp($language, $ob->name) == 0) {
           $languages[] = $key;
         }

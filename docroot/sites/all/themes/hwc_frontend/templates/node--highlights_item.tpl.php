@@ -60,7 +60,7 @@ if (!empty($campaign_id)) {
                                     'path' => sprintf("https://img.youtube.com/vi/%s/hqdefault.jpg", $video_id),
                                     'width' => ($node->old_newsletter ? '100%' : $highlight_img_width),
                                     'alt' => $title,
-                                    'attributes' => array('style' => 'border: 0px;width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';max-width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';height:auto;background-color: #ffffff;vertical-align:middle;')
+                                    'attributes' => array('style' => 'border: 0px;width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';max-width: ' . ($node->old_newsletter ? '100%' : $highlight_img_width . 'px') . ';height:auto;background-color: #ffffff;vertical-align:middle;'),
                                   )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                                     'html' => TRUE,
                                     'query' => $url_query,
@@ -82,7 +82,7 @@ if (!empty($campaign_id)) {
                               'path' => (isset($field_image) && !empty($field_image)) ? $field_image[0]['uri'] : '',
                               'width' => ($node->old_newsletter ? '100%' : ''),
                               'alt' => (isset($field_image) && !empty($field_image)) ? $field_image[0]['alt'] : '',
-                              'attributes' => array('style' => 'border: 0px;max-width: 100%;height:auto;background-color: #ffffff;vertical-align:middle;')
+                              'attributes' => array('style' => 'border: 0px;max-width: 100%;height:auto;background-color: #ffffff;vertical-align:middle;'),
                             )), url('node/' . $node->nid, array('absolute' => TRUE)), array(
                               'html' => TRUE,
                               'query' => $url_query,
@@ -197,7 +197,7 @@ if (!empty($campaign_id)) {
                           'path' => $directory . '/images/' . 'share-icon--green.png',
                           'width' => '20',
                           'height' => '20',
-                          'attributes' => array('style' => 'border:0px;width:20px;height:20px;')
+                          'attributes' => array('style' => 'border:0px;width:20px;height:20px;'),
                         )), $node_url, array(
                           'html' => TRUE,
                           'query' => $url_query + ['action' => 'share'],

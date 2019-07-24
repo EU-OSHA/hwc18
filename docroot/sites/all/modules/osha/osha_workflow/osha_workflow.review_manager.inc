@@ -185,7 +185,7 @@ function osha_workflow_access_rm_form($form, &$form_state, $access_type, $access
     );
   }
   $options = array('' => "Select a Review Manager");
-  $options += osha_workflow_users_get_users_from_role_as_options(OSHA_WORKFLOW_ROLE_REVIEW_MANAGER);
+  $options += osha_workflow_users_get_users_from_role_as_options(HWC_ROLE_WEBSITE_MANAGERS);
   $form['add_user'] = array(
     '#type' => 'select',
     '#title' => t('Add Project Manager'),
@@ -220,7 +220,7 @@ function osha_workflow_access_rm_form_validate($form, &$form_state) {
       form_set_error('add_user', t('The user already assigned.'));
     }
     elseif (!OshaWorkflowPermissions::userHasRole(
-        OSHA_WORKFLOW_ROLE_REVIEW_MANAGER, $account)) {
+      HWC_ROLE_WEBSITE_MANAGERS, $account)) {
         form_set_error('add_user', t('You can assign here only Review Managers.'));
     }
   }

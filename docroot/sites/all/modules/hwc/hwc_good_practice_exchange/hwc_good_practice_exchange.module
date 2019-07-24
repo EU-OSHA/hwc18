@@ -157,7 +157,7 @@ function hwc_good_practice_exchange_user_get_partner_type() {
   if (empty($user->workbench_access)) {
     workbench_access_user_load_data($user);
   }
-  if (in_array(ROLE_CAMPAIGN_PARTNER, $user->roles) && !empty($user->workbench_access)) {
+  if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles) && !empty($user->workbench_access)) {
     $sections = array_keys($user->workbench_access);
     foreach ($sections as $id_section) {
       if ($partner = hwc_partner_by_section_id_load($id_section)) {

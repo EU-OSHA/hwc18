@@ -37,7 +37,7 @@ class hwc_context_condition_partner_page extends context_condition {
     if ($node = menu_get_object()) {
       foreach ($this->get_contexts() as $context) {
         $values = $this->fetch_from_context($context, 'values');
-        if (count(array_intersect(array('administrator'), $user->roles))) {
+        if (count(array_intersect(array(HWC_ROLE_ADMIN), $user->roles))) {
           $this->condition_met($context);
         }
         else if (hwc_partner_match_user_partner($node) && !empty($values['TRUE'])) {

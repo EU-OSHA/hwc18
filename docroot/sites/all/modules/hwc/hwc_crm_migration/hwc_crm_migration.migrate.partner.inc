@@ -147,10 +147,10 @@ class PartnerMigration extends HwcCrmMigration {
     $is_oa = FALSE;
     if (!empty($term)) {
       $term = current($term);
-      if ($term->uuid == PARTNER_TYPE_FOP) {
+      if ($term->uuid == HWC_PARTNER_TYPE_FOP_UUID) {
         $is_fop = TRUE;
       }
-      if ($term->uuid == PARTNER_TYPE_OA) {
+      if ($term->uuid == HWC_PARTNER_TYPE_OA_UUID) {
         $is_oa = TRUE;
       }
     }

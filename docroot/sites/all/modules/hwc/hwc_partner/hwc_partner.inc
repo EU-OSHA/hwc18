@@ -49,8 +49,8 @@ function hwc_partner_match_user_partner($node, $account = NULL) {
   if (empty($account->workbench_access)) {
     workbench_access_user_load_data($account);
   }
-  if ($node && $node->type == 'partner' && in_array(ROLE_CAMPAIGN_PARTNER, $account->roles) && !empty($account->workbench_access) && !empty($node->workbench_access)) {
-    foreach(array_keys($account->workbench_access) as $id_section) {
+  if ($node && $node->type == 'partner' && in_array(HWC_ROLE_CAMPAIGN_PARTNER, $account->roles) && !empty($account->workbench_access) && !empty($node->workbench_access)) {
+    foreach (array_keys($account->workbench_access) as $id_section) {
       if (in_array($id_section, $node->workbench_access)) {
         return TRUE;
       }
@@ -94,7 +94,7 @@ function hwc_partner_is_ocp($partner) {
     /** @var stdClass $wrapper */
     $wrapper = entity_metadata_wrapper('node', $partner);
     if ($type = $wrapper->field_partner_type->value()) {
-      return $type->uuid == PARTNER_TYPE_OCP;
+      return $type->uuid == HWC_PARTNER_TYPE_OCP_UUID;
     }
   }
   return $ret;
@@ -106,7 +106,7 @@ function hwc_partner_is_mp($partner) {
     /** @var stdClass $wrapper */
     $wrapper = entity_metadata_wrapper('node', $partner);
     if ($type = $wrapper->field_partner_type->value()) {
-      return $type->uuid == PARTNER_TYPE_MP;
+      return $type->uuid == HWC_PARTNER_TYPE_MP_UUID;
     }
   }
   return $ret;
@@ -118,7 +118,7 @@ function hwc_partner_is_fop($partner) {
     /** @var stdClass $wrapper */
     $wrapper = entity_metadata_wrapper('node', $partner);
     if ($type = $wrapper->field_partner_type->value()) {
-      return $type->uuid == PARTNER_TYPE_FOP;
+      return $type->uuid == HWC_PARTNER_TYPE_FOP_UUID;
     }
   }
   return $ret;
@@ -131,18 +131,21 @@ function hwc_partner_is_fop($partner) {
  *   User account to check the partner type.
  *
  * @return mixed
- *   Returns partner type (PARTNER_TYPE_FOP, PARTNER_TYPE_MP, PARTNER_TYPE_OCP) or null
+ *   Returns partner type (HWC_PARTNER_TYPE_OCP_UUID, HWC_PARTNER_TYPE_MP_UUID, PARTNER_TYPE_OCP_UUID) or null
  */
 function hwc_partner_get_partner_type($account = NULL) {
   $partner = hwc_partner_get_account_partner($account);
 
   if (hwc_partner_is_ocp($partner)) {
-    return PARTNER_TYPE_OCP;
-  } elseif (hwc_partner_is_mp($partner)) {
-    return PARTNER_TYPE_MP;
-  } elseif (hwc_partner_is_fop($partner)) {
-    return PARTNER_TYPE_FOP;
-  } else {
+    return HWC_PARTNER_TYPE_OCP_UUID;
+  }
+  elseif (hwc_partner_is_mp($partner)) {
+    return HWC_PARTNER_TYPE_MP_UUID;
+  }
+  elseif (hwc_partner_is_fop($partner)) {
+    return HWC_PARTNER_TYPE_FOP_UUID;
+  }
+  else {
     return NULL;
   }
 

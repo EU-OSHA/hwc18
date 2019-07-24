@@ -8640,6 +8640,26 @@ foreach( $contexts[\'argument_entity_id:node_1\']->data->field_users[\'und\'] as
         'context' => 'logged-in-user',
         'not' => FALSE,
       ),
+      5 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 15,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
+      6 => array(
+        'name' => 'role',
+        'settings' => array(
+          'rids' => array(
+            0 => 17,
+          ),
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
+      ),
     ),
     'logic' => 'or',
     'type' => 'none',
@@ -8688,6 +8708,9 @@ foreach( $contexts[\'argument_entity_id:node_1\']->data->field_users[\'und\'] as
               1 => 11,
               2 => 12,
               3 => 13,
+              4 => 14,
+              5 => 15,
+              6 => 17,
             ),
           ),
           'context' => 'context_user_1',

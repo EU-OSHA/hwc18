@@ -151,16 +151,6 @@ function osha_workflow_views_default_views() {
   $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
   $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
   $handler->display->display_options['sorts']['timestamp']['granularity'] = 'minute';
-  /* Contextual filter: Node approval: User uid */
-  $handler->display->display_options['arguments']['user']['id'] = 'user';
-  $handler->display->display_options['arguments']['user']['table'] = 'osha_workflow_node_approval';
-  $handler->display->display_options['arguments']['user']['field'] = 'user';
-  $handler->display->display_options['arguments']['user']['relationship'] = 'osha_workflow_node_approval';
-  $handler->display->display_options['arguments']['user']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['user']['default_argument_type'] = 'current_user';
-  $handler->display->display_options['arguments']['user']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['user']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['user']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Node approval: Next */
   $handler->display->display_options['filters']['next']['id'] = 'next';
   $handler->display->display_options['filters']['next']['table'] = 'osha_workflow_node_approval';
@@ -177,18 +167,22 @@ function osha_workflow_views_default_views() {
   $handler = $view->new_display('page', 'Approver NR', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Needs Approval';
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'view osh approver needs review tab';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Workbench Moderation: Node */
+  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['required'] = TRUE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Node approval: Next */
-  $handler->display->display_options['filters']['next']['id'] = 'next';
-  $handler->display->display_options['filters']['next']['table'] = 'osha_workflow_node_approval';
-  $handler->display->display_options['filters']['next']['field'] = 'next';
-  $handler->display->display_options['filters']['next']['relationship'] = 'osha_workflow_node_approval';
-  $handler->display->display_options['filters']['next']['value']['value'] = '1';
   /* Filter criterion: Workbench Moderation: Current */
   $handler->display->display_options['filters']['current']['id'] = 'current';
   $handler->display->display_options['filters']['current']['table'] = 'workbench_moderation_node_history';
@@ -201,6 +195,11 @@ function osha_workflow_views_default_views() {
   $handler->display->display_options['filters']['state']['value'] = array(
     'to_be_approved' => 'to_be_approved',
   );
+  /* Filter criterion: Osha workflow: Roles based partner type filter */
+  $handler->display->display_options['filters']['roles_based_partner_type_filter']['id'] = 'roles_based_partner_type_filter';
+  $handler->display->display_options['filters']['roles_based_partner_type_filter']['table'] = 'osha_workflow';
+  $handler->display->display_options['filters']['roles_based_partner_type_filter']['field'] = 'roles_based_partner_type_filter';
+  $handler->display->display_options['filters']['roles_based_partner_type_filter']['value'] = '1';
   $handler->display->display_options['path'] = 'admin/workbench/approve';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Needs Approval';
@@ -774,12 +773,12 @@ function osha_workflow_views_default_views() {
     t('Author'),
     t('State'),
     t('Operations'),
-    t('All'),
     t('Approver NR'),
     t('Needs Approval'),
     t('Project Manager NR'),
     t('Needs Project Manager Review'),
     t('Node project manager'),
+    t('All'),
     t('Review Manager NR'),
     t('Needs Review Manager Review'),
     t('Content'),

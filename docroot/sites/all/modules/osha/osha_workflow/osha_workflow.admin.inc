@@ -648,11 +648,11 @@ function osha_workflow_access_section_review_form($form, &$form_state, $access_t
 
   global $user;
   $form['actions']['#access'] = FALSE;
-  if (in_array('administrator', $user->roles)) {
+  if (in_array(HWC_ROLE_ADMIN, $user->roles)) {
     $form['actions']['#access'] = TRUE;
   }
   if ($pms = osha_workflow_access_get_section_pm($access_type_id)) {
-    // Current user is among the PMs for this section
+    // Current user is among the PMs for this section.
     if (array_key_exists($user->uid, $pms)) {
       $form['actions']['#access'] = TRUE;
     }
