@@ -785,6 +785,7 @@ function osha_workflow_views_default_views() {
     t('Search'),
     t('Section'),
     t('My Content'),
+    t('My Content.'),
     t('My Content Non-Moderated'),
     t('revision user'),
     t('Activity'),
