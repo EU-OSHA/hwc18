@@ -245,16 +245,16 @@ function hwc_workflow_update_7013() {
 function hwc_workflow_update_7014() {
   module_load_include('inc', 'hwc_workflow', 'hwc_workflow.permissions');
 
-  $role = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
-  user_role_grant_permissions($role->rid, hwc_workflow_permission_role_een_rm());
+//  $role = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
+//  user_role_grant_permissions($role->rid, hwc_workflow_permission_role_een_rm());
 
-  $r1 = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
-  $role = array(
-    'rid' => $r1->rid,
-    'access_id' => 'section',
-    'access_scheme' => 'taxonomy',
-  );
-  drupal_write_record('workbench_access_role', $role);
+//  $r1 = user_role_load_by_name(HWC_ROLE_EEN_REVIEW_MANAGER);
+//  $role = array(
+//    'rid' => $r1->rid,
+//    'access_id' => 'section',
+//    'access_scheme' => 'taxonomy',
+//  );
+//  drupal_write_record('workbench_access_role', $role);
   variable_set('chosen_minimum_multiple', 5);
 }
 
@@ -270,4 +270,9 @@ function hwc_workflow_update_7015() {
  */
 function hwc_workflow_update_7016() {
   features_revert_module('hwc_workflow');
+  variable_set('hwc_workflow_append_rejection',FALSE);
+  variable_set('hwc_workflow_append_published',FALSE);
+  variable_set('hwc_workflow_append_reviewer',TRUE);
+  variable_set('hwc_workflow_append_approve_partner',TRUE);
+  variable_set('hwc_workflow_append_approve_mostra',TRUE);
 }

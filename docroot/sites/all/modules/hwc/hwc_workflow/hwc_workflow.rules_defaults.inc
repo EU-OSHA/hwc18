@@ -42,7 +42,7 @@ function hwc_workflow_default_rules_configuration() {
         { "hwc_custom_mail_to_users_of_partner" : {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "rejection" : "rejection" } },
-            "message" : "."
+            "message" : "\\u003Cp\\u003EDear Partner,\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EThe [node:type] item that you submitted for publication on your organisation\\u2019s profile has been validated by EU-OSHA and has been rejected. Please update.\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E\\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -98,7 +98,7 @@ function hwc_workflow_default_rules_configuration() {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "approve_mostra" : "approve_mostra" } },
             "roles" : { "value" : { "17" : "17" } },
-            "message" : "."
+            "message" : "\\u003Cp\\u003EDear [list_item:name],\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E[user:name] should approve this content \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -130,7 +130,7 @@ function hwc_workflow_default_rules_configuration() {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "approve_partner" : "approve_partner" } },
             "roles" : { "value" : { "17" : "17" } },
-            "message" : "\\u003Cp\\u003EDear [user:name],\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003EA content item should be approved by you: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E\\r\\n\\r\\n\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -161,7 +161,7 @@ function hwc_workflow_default_rules_configuration() {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "approve_mostra" : "approve_mostra" } },
             "roles" : { "value" : { "15" : "15" } },
-            "message" : "."
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -193,7 +193,7 @@ function hwc_workflow_default_rules_configuration() {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "approve_partner" : "approve_partner" } },
             "roles" : { "value" : { "15" : "15" } },
-            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for validation. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for approval. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
@@ -382,7 +382,7 @@ function hwc_workflow_default_rules_configuration() {
             "node" : [ "node" ],
             "settings_type" : { "value" : { "reviewer" : "reviewer" } },
             "roles" : { "value" : { "13" : "13" } },
-            "message" : "."
+            "message" : "\\u003Cp\\u003E[node:author:name] ([node:author:mail]) has submitted a [node:type] item for review. Please see the submitted update here: \\u003Ca href=\\u0022[node:url]\\u0022\\u003E[node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\r\\n\\u003Cp\\u003E__SIGNATURE__\\u003C\\/p\\u003E"
           }
         }
       ]
