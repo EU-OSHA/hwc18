@@ -539,12 +539,12 @@ function osha_publication_node_get_main_tags($item) {
         $tid = $map[$tid];
       }
       $term = taxonomy_term_load($tid);
-      if (!$term->field_tags_code) {
-        continue;
-      }
-      if (!$term->field_tags_code[LANGUAGE_NONE][0]['value']) {
-        continue;
-      }
+//      if (!$term->field_tags_code) {
+//        continue;
+//      }
+//      if (!$term->field_tags_code[LANGUAGE_NONE][0]['value']) {
+//        continue;
+//      }
       $tags[$tid] = $tid;
     }
   }
