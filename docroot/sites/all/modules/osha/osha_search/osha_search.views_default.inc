@@ -472,14 +472,6 @@ function osha_search_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Search';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'search_autocomplete';
-  $handler->display->display_options['style_options']['group_by'] = 'type';
-  $handler->display->display_options['style_options']['input_label'] = 'title_field';
-  $handler->display->display_options['style_options']['input_link'] = 'url';
-  $handler->display->display_options['style_options']['output_fields'] = array(
-    'title_field' => 'title_field',
-    'type' => 'type',
-  );
   /* Field: Indexed Multilingual Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_default_multilingual_node_index';
