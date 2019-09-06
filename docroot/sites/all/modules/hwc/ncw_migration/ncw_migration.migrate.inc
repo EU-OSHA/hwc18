@@ -200,7 +200,6 @@ function ncw_migration_migrate_api() {
         'group_name' => 'ncw',
         'dependencies' => array(),
         'class_name' => 'NCWTaxonomyPublicationTypeMigration',
-        'skip_ids' => array(4, 2, 3, 1, 3022),
       ),
       'tax_segment' => array(
         'group_name' => 'ncw',
