@@ -468,6 +468,8 @@ function social_dashboard_facebook_cron() {
 }
 
 function social_dashboard_linkedin_cron() {
+  return;
+
   $library_path = (module_exists('libraries') && libraries_get_path('linkedin')) ? libraries_get_path('linkedin') : 'sites/all/libraries/linkedin';
   require_once $library_path . "/vendor/autoload.php";
   $selected_tag = variable_get('social_linkedin_selected_tag', '');

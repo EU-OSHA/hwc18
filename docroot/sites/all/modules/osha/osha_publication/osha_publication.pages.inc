@@ -770,15 +770,15 @@ function _osha_publication_menu_case_studies_get_facets_def() {
       'options_callback' => '_osha_publication_language_list_options',
       'options_callback_args' => array(TRUE, TRUE),
     ),
-    'field_priority_area' => array(
+    'main_tags' => array(
       'label' => t('Topics'),
-      'field' => 'field_priority_area',
+      'field' => 'main_tags',
       'limit' => 150,
       'operator' => 'or',
       'min_count' => 1,
       'missing' => TRUE,
-      'options_callback' => '_osha_publication_taxonomy_filter_options_list',
-      'options_callback_args' => array('priority_area'),
+      'options_callback' => '_osha_publication_topic_filter_options_list',
+      'options_callback_args' => array(FALSE),
     ),
   );
 }
@@ -805,7 +805,6 @@ function _osha_publication_menu_publications_get_facets_def() {
       'options_callback' => '_osha_publication_language_list_options',
       'options_callback_args' => array(TRUE, TRUE),
     ),
-
     'main_tags' => array(
       'label' => t('Topics'),
       'field' => 'main_tags',

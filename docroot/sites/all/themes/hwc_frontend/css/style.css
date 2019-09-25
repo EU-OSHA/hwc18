@@ -9105,7 +9105,8 @@ div[class*='view-'] .field-name-field-summary {
 .form-item-field-publication-type,
 .form-item-language,
 .form-item-field-priority-area,
-.form-item-languages {
+.form-item-languages,
+.form-item-main-tags {
   margin-top: 0;
   padding-top: 10px;
   border-bottom: 1px dotted #749b00;
@@ -9118,7 +9119,8 @@ div[class*='view-'] .field-name-field-summary {
 .form-item-field-publication-type .checkbox:last-child,
 .form-item-language .checkbox:last-child,
 .form-item-field-priority-area .checkbox:last-child,
-.form-item-languages .checkbox:last-child {
+.form-item-languages .checkbox:last-child,
+.form-item-main-tags .checkbox:last-child {
   margin-bottom: 10px;
 }
 .form-item-field-publication-type > label,
@@ -9126,7 +9128,8 @@ div[class*='view-'] .field-name-field-summary {
 .form-item-field-priority-area > label,
 .form-item-relevant-for > label,
 .form-item-languages > label,
-.form-item-publication-type > label {
+.form-item-publication-type > label,
+.form-item-main-tags > label {
   font-size: 1.1em;
   font-weight: bold;
   width: 100%;
@@ -9139,7 +9142,8 @@ div[class*='view-'] .field-name-field-summary {
 .form-item-field-priority-area > label:after,
 .form-item-relevant-for > label:after,
 .form-item-languages > label:after,
-.form-item-publication-type > label:after {
+.form-item-publication-type > label:after,
+.form-item-main-tags > label:after {
   content: "\e250";
   font-family: "Glyphicons Halflings";
   margin-left: 10px;
@@ -9150,7 +9154,8 @@ div[class*='view-'] .field-name-field-summary {
 .form-item-field-priority-area > label.active:after,
 .form-item-relevant-for > label.active:after,
 .form-item-languages > label.active:after,
-.form-item-publication-type > label.active:after {
+.form-item-publication-type > label.active:after,
+.form-item-main-tags > label.active:after {
   content: "\e252";
   font-family: "Glyphicons Halflings";
   margin-left: 10px;
@@ -23198,7 +23203,8 @@ body.front .homepage-slider blockquote.image-field-caption p {
   #edit-left-column .form-item-field-publication-type,
   #edit-left-column .form-item-language,
   #edit-left-column .form-item-field-priority-area,
-  #edit-left-column .form-item-languages {
+  #edit-left-column .form-item-languages,
+  #edit-left-column .form-item-main-tags {
     margin-top: 0;
     padding-top: 10px;
     border-bottom: none;
@@ -23211,7 +23217,8 @@ body.front .homepage-slider blockquote.image-field-caption p {
   #edit-left-column .form-item-field-publication-type .checkbox:last-child,
   #edit-left-column .form-item-language .checkbox:last-child,
   #edit-left-column .form-item-field-priority-area .checkbox:last-child,
-  #edit-left-column .form-item-languages .checkbox:last-child {
+  #edit-left-column .form-item-languages .checkbox:last-child,
+  #edit-left-column .form-item-main-tags .checkbox:last-child {
     margin-bottom: 10px;
   }
   #edit-left-column .form-item-field-publication-type > label,
@@ -23219,7 +23226,8 @@ body.front .homepage-slider blockquote.image-field-caption p {
   #edit-left-column .form-item-field-priority-area > label,
   #edit-left-column .form-item-relevant-for > label,
   #edit-left-column .form-item-languages > label,
-  #edit-left-column .form-item-publication-type > label {
+  #edit-left-column .form-item-publication-type > label,
+  #edit-left-column .form-item-main-tags > label {
     font-size: 20px;
     font-weight: bold;
     width: 100%;
