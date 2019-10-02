@@ -71,12 +71,7 @@ function osha_publication_views_default_views() {
   $handler->display->display_options['filters']['machine_name']['value'] = array(
     'tools_and_publications_type' => 'tools_and_publications_type',
   );
-  /* Filter criterion: Taxonomy term: Term ID */
-  $handler->display->display_options['filters']['tid_raw']['id'] = 'tid_raw';
-  $handler->display->display_options['filters']['tid_raw']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['filters']['tid_raw']['field'] = 'tid_raw';
-  $handler->display->display_options['filters']['tid_raw']['operator'] = '!=';
-  $handler->display->display_options['filters']['tid_raw']['value']['value'] = '1821';
+  $handler->display->display_options['filters']['machine_name']['group'] = 1;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
