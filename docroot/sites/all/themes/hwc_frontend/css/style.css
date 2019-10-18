@@ -9533,7 +9533,8 @@ div[class*='view-'] .field-name-field-summary {
   padding-right: 0.30em;
 }
 #block-views-partners-block-1 .view-display-id-block_1 img {
-  width: 100%;
+  /*MDR-3256 Logos in the Homepage not correctly displayed*/
+  /*width: 100%;*/
   display: table;
 }
 #block-views-partners-block-1 .view-display-id-block_1 .view-display-id-attachment_1 {
