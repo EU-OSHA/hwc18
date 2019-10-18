@@ -1619,7 +1619,8 @@ ul.tabs--primary.nav.nav-tabs{
 		//home partners list
 		.view-display-id-block_1{
 			img{
-				width: 100%;
+				/*MDR-3256 Logos in the Homepage not correctly displayed*/
+				/*width: 100%;*/
 				display: table;
 			}
 			.view-display-id-attachment_1{
@@ -11962,4 +11963,21 @@ body.front .homepage-slider blockquote.image-field-caption p{
 /* Hide newsletter unsubscribe in Frontend MDR-2713 */
 .footer-unsubscribe{
 	display: none;
+}
+
+
+/* HOTFIX European Week Event - Related Resources flag */
+.page-node-164{
+	.field-name-field-recommended-resources{
+		.node-events{
+			padding-bottom: 0.5em;
+			.field-name-field-start-date{
+				background: url(/sites/all/themes/hwc_frontend/images/events/big/European-Union-180x180.png) no-repeat center !important;
+				background-size: 167px 150px !important;
+				.date-display-single{
+					display: none;
+				}
+			}
+		}
+	}
 }
