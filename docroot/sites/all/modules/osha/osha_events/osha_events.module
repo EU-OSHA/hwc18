@@ -59,6 +59,7 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
   $is_admin = count(array_intersect(array(HWC_ROLE_ADMIN), $user->roles));
 
   hwc_workflow_add_extra_fields($form, $form_state);
+
   $access = TRUE;
   if ($is_admin) {
     $form['field_tags']['#access'] = TRUE;
@@ -80,6 +81,11 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $access = FALSE;
     if (in_array(HWC_ROLE_CAMPAIGN_PARTNER, $user->roles)) {
       $form['field_for_the_web']['#access'] = FALSE;
+      $form['field_type_event']['#access'] = FALSE;
+      $form['field_agenda']['#access'] = FALSE;
+      $form['field_key_performance']['#access'] = FALSE;
+      $form['field_publications_exhibition_su']['#access'] = FALSE;
+      $form['field_media_promotion']['#access'] = FALSE;
     }
     $form['field_tags']['#access'] = FALSE;
     $form['field_activity']['#access'] = FALSE;
@@ -96,12 +102,6 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
     $form['field_show_in_ncw']['#access'] = FALSE;
     $form['field_show_eu_flag']['#access'] = FALSE;
   }
-
-  $form['field_type_event']['#access'] = $access;
-  $form['field_agenda']['#access'] = $access;
-  $form['field_key_performance']['#access'] = $access;
-  $form['field_publications_exhibition_su']['#access'] = $access;
-  $form['field_media_promotion']['#access'] = $access;
 
   $form['#validate'][] = 'osha_events_form_validate';
   $form['actions']['#attributes']['class'] = array('container');
@@ -182,6 +182,11 @@ function osha_events_form_events_node_form_alter(&$form, &$form_state) {
       'redirect',
       'additional_settings',
       'options',
+      'field_type_event',
+      'field_agenda',
+      'field_key_performance',
+      'field_publications_exhibition_su',
+      'field_media_promotion'
     ];
     foreach ($form as $k => $v) {
       if (is_array($v) && in_array($k, $disabled)) {
