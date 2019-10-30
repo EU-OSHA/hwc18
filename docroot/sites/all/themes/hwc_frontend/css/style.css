@@ -20991,6 +20991,17 @@ body.front .homepage-slider blockquote.image-field-caption p {
 .footer-unsubscribe {
   display: none;
 }
+/* HOTFIX European Week Event - Related Resources flag */
+.page-node-164 .field-name-field-recommended-resources .node-events {
+  padding-bottom: 0.5em;
+}
+.page-node-164 .field-name-field-recommended-resources .node-events .field-name-field-start-date {
+  background: url(/sites/all/themes/hwc_frontend/images/events/big/European-Union-180x180.png) no-repeat center !important;
+  background-size: 167px 150px !important;
+}
+.page-node-164 .field-name-field-recommended-resources .node-events .field-name-field-start-date .date-display-single {
+  display: none;
+}
 .footer {
   background: transparent url("../images/footer/bg-complete.png") no-repeat left;
   border: none;
