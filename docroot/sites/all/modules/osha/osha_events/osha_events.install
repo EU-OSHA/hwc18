@@ -291,3 +291,10 @@ function osha_events_update_7024() {
   features_revert_module('osha_events');
   features_revert_module('osha_news');
 }
+
+/**
+ * MDR-3351 Content of event (speakers, speech titles and presentations/CVs) not showing in a draft mode.
+ */
+function osha_events_update_7025() {
+  features_revert(array('osha_events' => array('views_view')));
+}
