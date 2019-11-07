@@ -10,8 +10,13 @@ function osha_views_query_alter(&$view, &$query) {
   if ($view->name == 'event_schedule_rev') {
     $node = menu_get_object();
     if ($node) {
-      $schedule = $node->field_schedule[LANGUAGE_NONE][0];
-      $query->where[0]['conditions'][0]['value'][':field_collection_item_revision_revision_id'] = $schedule['revision_id'];
+      $revision_ids = [];
+      foreach ($node->field_schedule[LANGUAGE_NONE] as $schedule) {
+        $revision_ids[] = $schedule['revision_id'];
+      }
+      $query->where[0]['conditions'][0]['field'] = 'field_collection_item_revision.revision_id';
+      $query->where[0]['conditions'][0]['operator'] = 'in';
+      $query->where[0]['conditions'][0]['value'] = $revision_ids;
     }
   }
   // Switch from JOIN to LEFT JOIN with workbench_moderation_node_history
