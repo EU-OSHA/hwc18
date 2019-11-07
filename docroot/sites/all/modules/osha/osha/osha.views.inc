@@ -14,9 +14,11 @@ function osha_views_query_alter(&$view, &$query) {
       foreach ($node->field_schedule[LANGUAGE_NONE] as $schedule) {
         $revision_ids[] = $schedule['revision_id'];
       }
-      $query->where[0]['conditions'][0]['field'] = 'field_collection_item_revision.revision_id';
-      $query->where[0]['conditions'][0]['operator'] = 'in';
-      $query->where[0]['conditions'][0]['value'] = $revision_ids;
+      if ($revision_ids) {
+        $query->where[0]['conditions'][0]['field'] = 'field_collection_item_revision.revision_id';
+        $query->where[0]['conditions'][0]['operator'] = 'in';
+        $query->where[0]['conditions'][0]['value'] = $revision_ids;
+      }
     }
   }
   // Switch from JOIN to LEFT JOIN with workbench_moderation_node_history
