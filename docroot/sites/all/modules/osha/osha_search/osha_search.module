@@ -126,10 +126,37 @@ function osha_search_block_view($delta = '') {
   );
 }
 
+function osha_search_get_exclude_search_articles() {
+  $xml_exclude = [];
+  $article_nids = [];
+  $query = '
+    SELECT n.nid, n.title 
+    FROM {node} n 
+    JOIN {field_data_field_article_type} t on (t.entity_id = n.nid) and (t.field_article_type_tid = :tid)
+    WHERE n.type = :type AND n.status = 1';
+  $allowed = variable_get('whitelist_articles', []);
+  $result = db_query($query, array(':type' => 'article', ':tid' => variable_get('exclude_article_type', 74)));
+  foreach ($result as $row) {
+    if (in_array($row->nid, $allowed)) {
+      continue;
+    }
+    $article_nids[$row->nid] = '(is_nid:"' . $row->nid . '")';
+    $xml_exclude[] = 'node/' . $row->nid;
+  }
+  //  echo implode("\n", $xml_exclude);
+  return $article_nids;
+}
+
 /**
  * Implements hook_search_api_solr_query_alter().
  */
 function osha_search_search_api_solr_query_alter(array &$call_args, SearchApiQueryInterface $query) {
+
+  if (variable_get('allow_exclude_search_articles', TRUE)) {
+    $nids = osha_search_get_exclude_search_articles();
+    $call_args['params']['fq'][] = '-( ' . implode(' OR ', $nids) . ' )';
+  }
+
   // Replace % with * to handle requested widlcard % (non-existing in solr).
   if (!empty($call_args['query'])) {
     $call_args['query'] = str_replace('%', '*', $call_args['query']);

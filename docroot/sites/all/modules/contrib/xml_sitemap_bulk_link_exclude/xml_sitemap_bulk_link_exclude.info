@@ -1,0 +1,12 @@
+name = XML Sitemap Bulk Link Exclude
+description = Provide options to remove more than one URL from sitemap at once using friendly configurations. Reduces manual way of visiting each node to exclude from XML sitemap.
+core = 7.x
+dependencies[] = xmlsitemap
+dependencies[] = xmlsitemap:xmlsitemap_node
+configure = admin/config/search/list/xml_exclude_links
+
+; Information added by Drupal.org packaging script on 2018-10-11
+version = "7.x-1.1"
+core = "7.x"
+project = "xml_sitemap_bulk_link_exclude"
+datestamp = "1539272284"
