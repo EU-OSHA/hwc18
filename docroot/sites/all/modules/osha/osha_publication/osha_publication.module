@@ -66,29 +66,6 @@ function osha_publication_block_view($delta = '') {
   return $block;
 }
 
-function osha_publication_req_param($form_state, $name, $default = NULL) {
-  if (!empty($form_state['values'][$name])) {
-    $ret = $form_state['values'][$name];
-    if (is_array($ret)) {
-      $ret = array_filter($ret);
-    }
-    return $ret;
-  }
-  if (!empty($_GET[$name])) {
-    if (is_array($_GET[$name])) {
-      $ret = array();
-      foreach ($_GET[$name] as $v) {
-        $ret[] = check_plain($v);
-      }
-      return $ret;
-    }
-    else {
-      return check_plain($_GET[$name]);
-    }
-  }
-  return $default;
-}
-
 /**
  * Implements hook_entity_info_alter().
  */
@@ -680,4 +657,27 @@ function osha_publication_panels_pane_content_alter(&$content, &$pane, $args, $c
       $content->content = !empty($node->field_aditional_resources) ? $title : '';
     }
   }
+}
+
+function osha_publication_req_param($form_state, $name, $default = NULL) {
+  if (!empty($form_state['values'][$name])) {
+    $ret = $form_state['values'][$name];
+    if (is_array($ret)) {
+      $ret = array_filter($ret);
+    }
+    return $ret;
+  }
+  if (!empty($_GET[$name])) {
+    if (is_array($_GET[$name])) {
+      $ret = array();
+      foreach ($_GET[$name] as $v) {
+        $ret[] = check_plain($v);
+      }
+      return $ret;
+    }
+    else {
+      return check_plain($_GET[$name]);
+    }
+  }
+  return $default;
 }
