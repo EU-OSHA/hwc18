@@ -135,7 +135,7 @@ function osha_search_get_exclude_search_articles() {
     JOIN {field_data_field_article_type} t on (t.entity_id = n.nid) and (t.field_article_type_tid = :tid)
     WHERE n.type = :type AND n.status = 1';
   $allowed = variable_get('whitelist_articles', []);
-  $result = db_query($query, array(':type' => 'article', ':tid' => variable_get('exclude_article_type', 74)));
+  $result = db_query($query, array(':type' => 'article', ':tid' => variable_get('exclude_article_type', 73)));
   foreach ($result as $row) {
     if (in_array($row->nid, $allowed)) {
       continue;
@@ -288,6 +288,11 @@ function osha_search_autocomplete_callback($search = '*') {
   );
   $params['fq'][] = 'ss_search_api_language:"' . $lang . '"';
   $params['fq'][] = 'is_status:"1"';
+
+  if (variable_get('allow_exclude_search_articles', TRUE)) {
+    $nids = osha_search_get_exclude_search_articles();
+    $params['fq'][] = '-( ' . implode(' OR ', $nids) . ' )';
+  }
   // Add condition for excluded bundles.
   foreach ($bundles as $key => $bundle) {
     if (empty($allowed_bundles[$key])) {
