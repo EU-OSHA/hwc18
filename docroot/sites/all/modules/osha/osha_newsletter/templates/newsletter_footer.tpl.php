@@ -105,7 +105,7 @@ global $language;
         <p><?php $text = t('<a href="@url" style="@style"> > Unsubscribe </a>',
             array(
               '@style' => 'color: #003399; text-decoration: none;" target="_blank',
-              '@url' => 'https://analytics-eu.clickdimensions.com/oshaeuropaeu-arn3o/pages/wqz3akcceemaabqvrpqfg.html',
+              '@url' => 'https://analytics-eu.clickdimensions.com/oshaeuropaeu-a1cuo/pages/nksvd1wpeema3qbqvroocg.html',
             )
           );
           $text = str_replace('href', 'target="_blank" href', $text);
