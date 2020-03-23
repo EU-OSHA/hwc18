@@ -16,3 +16,10 @@
         }
     }
 })(jQuery);
+
+
+
+jQuery(document).ready(function($){
+    $("#sliding-popup").insertBefore("body");
+});
+
